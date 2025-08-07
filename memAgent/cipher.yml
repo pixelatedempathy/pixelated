@@ -1,0 +1,32 @@
+# Cipher memory agent configuration
+
+llm:
+  provider: openai
+  model: gpt-4.1 # Or your Azure deployment/model name
+  apiKey: 4eF9wHRxYiwyxi7nkwSmh1dKl8RxYcMgLKff9tktHwSatWJBuNTMJQQJ99BFACYeBjFXJ3w3AAABACOG1tmF
+  maxIterations: 50
+  baseUrl: https://hoot.openai.azure.com/openai/deployments/xavier/
+  azure:
+    endpoint: https://hoot.openai.azure.com/openai/deployments/xavier/
+    deploymentName: xavier
+
+systemPrompt: "You are a helpful AI assistant with memory capabilities."
+
+# Azure OpenAI
+embedding:
+  type: openai
+  model: text-embedding-ada-002
+  apiKey: 4eF9wHRxYiwyxi7nkwSmh1dKl8RxYcMgLKff9tktHwSatWJBuNTMJQQJ99BFACYeBjFXJ3w3AAABACOG1tmF
+  baseUrl: https://hoot.openai.azure.com/openai/deployments/embed-east/
+  azure:
+    endpoint: https://hoot.openai.azure.com/openai/deployments/embed-east/
+    deploymentName: text-embedding-ada-002
+
+# Example MCP server configuration
+mcpServers:
+  cipher:
+    type: stdio
+    command: cipher
+    args: ["--mode", "mcp"]
+    env:
+      OPENAI_API_KEY: 4eF9wHRxYiwyxi7nkwSmh1dKl8RxYcMgLKff9tktHwSatWJBuNTMJQQJ99BFACYeBjFXJ3w3AAABACOG1tmF
