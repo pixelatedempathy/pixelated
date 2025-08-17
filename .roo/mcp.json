@@ -1,23 +1,4 @@
 {
   "mcpServers": {
-    "claude-context": {
-      "command": "npx",
-      "args": [
-        "@zilliz/claude-context-mcp@latest"
-      ],
-      "env": {
-        "EMBEDDING_PROVIDER": "Ollama",
-        "EMBEDDING_MODEL": "nomic-embed-text",
-        "OLLAMA_HOST": "https://api.pixelatedempathy.tech",
-        "MILVUS_ADDRESS": "https://in05-7dd26e6697c25ee.serverless.gcp-us-west1.cloud.zilliz.com",
-        "MILVUS_TOKEN": "3cde0cfc1cbe6a2fe692e883b7e8d17e1fcb8131d1009ba8b1a1bcca826cc633bf73bc217096c51951add2692ecc3532925219d7",
-        "EMBEDDING_BATCH_SIZE": "512"
-      }
-    },
-    "claude-context Docs": {
-      "url": "https://gitmcp.io/zilliztech/claude-context",
-      "disabled": false,
-      "autoApprove": []
-    }
   }
 }
