@@ -1,4 +1,4 @@
 {
     "python.languageServer": "None",
-    "kiroAgent.configureMCP": "Disabled"
+    "kiroAgent.configureMCP": "Enabled"
 }
