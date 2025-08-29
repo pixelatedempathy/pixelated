@@ -3,5 +3,7 @@
         "editor.defaultFormatter": "charliermarsh.ruff",
         "github.copilot.nextEditSuggestions.enabled": true
     },
-    "typescript.tsserver.maxTsServerMemory": 4048
+    "typescript.tsserver.maxTsServerMemory": 4048,
+    "gitlab.showPipelineUpdateNotifications": true,
+    "kiroAgent.configureMCP": "Disabled"
 }
