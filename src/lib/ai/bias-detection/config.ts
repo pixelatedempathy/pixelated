@@ -145,10 +145,10 @@ export function validateConfig(config: Partial<BiasDetectionConfig>): void {
 
     // Validate threshold ordering
     const warning =
-      thresholds.warning ?? DEFAULT_CONFIG.thresholds.warning
-    const high = thresholds.high ?? DEFAULT_CONFIG.thresholds.high
+      thresholds.warning ?? (DEFAULT_CONFIG.thresholds ? DEFAULT_CONFIG.thresholds.warning : 0.3)
+    const high = thresholds.high ?? (DEFAULT_CONFIG.thresholds ? DEFAULT_CONFIG.thresholds.high : 0.6)
     const critical =
-      thresholds.critical ?? DEFAULT_CONFIG.thresholds.critical
+      thresholds.critical ?? (DEFAULT_CONFIG.thresholds ? DEFAULT_CONFIG.thresholds.critical : 0.8)
 
     if (warning >= high || high >= critical) {
       errors.push(
@@ -252,43 +252,11 @@ export function mergeWithDefaults(
   userConfig?: Partial<BiasDetectionConfig>,
 ): BiasDetectionConfig {
   if (!userConfig) {
-    return { ...DEFAULT_CONFIG }
+    return { ...DEFAULT_CONFIG };
   }
-
-  // Validate before merging
-  validateConfig(userConfig)
-
-  // Deep merge configuration objects
-  const mergedConfig: BiasDetectionConfig = {
-    ...DEFAULT_CONFIG,
-    ...userConfig,
-    thresholds: {
-      ...DEFAULT_CONFIG.thresholds,
-      ...(userConfig.thresholds || {}),
-    },
-    layerWeights: {
-      ...DEFAULT_CONFIG.layerWeights,
-      ...(userConfig.layerWeights || {}),
-    },
-    metricsConfig: {
-      ...DEFAULT_CONFIG.metricsConfig,
-      ...(userConfig.metricsConfig || {}),
-    },
-    alertConfig: {
-      ...DEFAULT_CONFIG.alertConfig,
-      ...(userConfig.alertConfig || {}),
-    },
-    reportConfig: {
-      ...DEFAULT_CONFIG.reportConfig,
-      ...(userConfig.reportConfig || {}),
-    },
-    explanationConfig: {
-      ...DEFAULT_CONFIG.explanationConfig,
-      ...(userConfig.explanationConfig || {}),
-    },
-  }
-
-  return mergedConfig
+  validateConfig(userConfig);
+  const mergedConfig: BiasDetectionConfig = deepMergeConfigs(DEFAULT_CONFIG, userConfig) as BiasDetectionConfig;
+  return mergedConfig;
 }
 
 /**
@@ -300,13 +268,13 @@ export function loadConfigFromEnv(): Partial<BiasDetectionConfig> {
   // Load threshold values from environment
   const thresholds: Partial<BiasDetectionConfig['thresholds']> = {}
   if (process.env.BIAS_WARNING_THRESHOLD) {
-    thresholds.warningLevel = parseFloat(process.env.BIAS_WARNING_THRESHOLD)
+    thresholds.warning = parseFloat(process.env.BIAS_WARNING_THRESHOLD)
   }
   if (process.env.BIAS_HIGH_THRESHOLD) {
-    thresholds.highLevel = parseFloat(process.env.BIAS_HIGH_THRESHOLD)
+    thresholds.high = parseFloat(process.env.BIAS_HIGH_THRESHOLD)
   }
   if (process.env.BIAS_CRITICAL_THRESHOLD) {
-    thresholds.criticalLevel = parseFloat(process.env.BIAS_CRITICAL_THRESHOLD)
+    thresholds.critical = parseFloat(process.env.BIAS_CRITICAL_THRESHOLD)
   }
   if (Object.keys(thresholds).length > 0) {
     envConfig.thresholds = thresholds as BiasDetectionConfig['thresholds']
@@ -567,7 +535,8 @@ export class BiasDetectionConfigManager {
   }
 
   public getPythonServiceConfig() {
-    const url = new URL(this.config.pythonServiceUrl)
+    const urlStr = this.config.pythonServiceUrl ?? 'http://localhost:5000'
+    const url = new URL(urlStr)
     return {
       host: url.hostname,
       port: parseInt(url.port) || 5000,
@@ -608,8 +577,8 @@ export class BiasDetectionConfigManager {
       batchSize: this.config.performanceConfig?.batchSize ?? 100,
       enableMetrics:
         this.config.performanceConfig?.enableMetrics ??
-        this.config.metricsConfig.enableRealTimeMonitoring,
-      metricsInterval: this.config.performanceConfig?.metricsInterval ?? 60000,
+        (this.config.metricsConfig ? this.config.metricsConfig.enableRealTimeMonitoring : true),
+      metricsInterval: 60000,
     }
   }
 
@@ -617,17 +586,12 @@ export class BiasDetectionConfigManager {
     return {
       aif360: {
         enabled: this.config.mlToolkitConfig?.aif360?.enabled ?? true,
-        fallbackOnError: this.config.mlToolkitConfig?.aif360?.fallbackOnError ?? true,
       },
       fairlearn: {
         enabled: this.config.mlToolkitConfig?.fairlearn?.enabled ?? true,
-        fallbackOnError: this.config.mlToolkitConfig?.fairlearn?.fallbackOnError ?? true,
       },
-      huggingFace: {
-        enabled: this.config.mlToolkitConfig?.huggingFace?.enabled ?? true,
-        apiKey: this.config.mlToolkitConfig?.huggingFace?.apiKey ?? undefined,
-        model: this.config.mlToolkitConfig?.huggingFace?.model ?? 'unitary/toxic-bert',
-        fallbackOnError: this.config.mlToolkitConfig?.huggingFace?.fallbackOnError ?? true,
+      tensorflow: {
+        enabled: this.config.mlToolkitConfig?.tensorflow?.enabled ?? true,
       },
     }
   }
@@ -656,17 +620,21 @@ export class BiasDetectionConfigManager {
     }
     
     // Additional validation checks
-    const weights = Object.values(this.config.layerWeights)
-    const sum = weights.reduce((a: any, b: any) => (a as number) + (b as number), 0) as number
-    if (Math.abs(sum - 1.0) > 0.001) {
-      errors.push('Layer weights must sum to 1.0')
+    const weights = this.config.layerWeights
+    if (weights) {
+      const sum =
+        (weights.preprocessing ?? 0) +
+        (weights.modelLevel ?? 0) +
+        (weights.interactive ?? 0) +
+        (weights.evaluation ?? 0)
+      if (Math.abs(sum - 1.0) > 0.001) {
+        errors.push('Layer weights must sum to 1.0')
+      }
     }
-    
-    if (this.config?.['thresholds']?.['warning'] >= this.config?.['thresholds']?.['high']) {
+    if (this.config.thresholds && this.config.thresholds.warning >= this.config.thresholds.high) {
       errors.push('Warning threshold must be less than high threshold')
     }
-    
-    if (this.config?.['thresholds']?.['high'] >= this.config?.['thresholds']?.['critical']) {
+    if (this.config.thresholds && this.config.thresholds.high >= this.config.thresholds.critical) {
       errors.push('High threshold must be less than critical threshold')
     }
     
@@ -749,13 +717,8 @@ export class BiasDetectionConfigManager {
 /**
  * Global configuration instance
  */
-export const biasDetectionConfig = BiasDetectionConfigManager.getInstance()
-
-/**
- * Convenience function to get current configuration
- */
 export function getBiasDetectionConfig(): BiasDetectionConfig {
-  return biasDetectionConfig.getConfig()
+  return BiasDetectionConfigManager.getInstance().getConfig()
 }
 
 /**
