@@ -1,4 +1,4 @@
-e# Pixel 7.x Advanced Emotional Intelligence Research Roadmap
+# Pixel 7.x Advanced Emotional Intelligence Research Roadmap
 
 ## Overview
 
