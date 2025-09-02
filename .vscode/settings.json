@@ -3,12 +3,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "github-enterprise.uri": "https://ssh.dev.azure.com",
-    "[astro]": {
-        "editor.defaultFormatter": "astro-build.astro-vscode"
-    },
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff"
     }
 }
