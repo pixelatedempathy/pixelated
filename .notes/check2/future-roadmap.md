@@ -1,4 +1,3 @@
-```markdown
 # Check2 - Future Expansion Roadmap
 
 ## Post-MVP Expansion Plans
@@ -27,11 +26,11 @@
 
 ### 🤖 Phase 5: AI Integration
 
-#### Direct AI API Integration
-- **OpenAI Integration**: Send chunks directly to GPT-4
-- **Anthropic Integration**: Claude integration for analysis
-- **Custom Prompts**: Configurable AI instruction templates
-- **Response Processing**: Parse AI responses into action items
+#### Data Handling & Privacy
+ **Redaction**: Strip secrets/PII before any external call
+ **Opt-in Defaults**: AI features disabled by default
+ **Retention**: Configurable retention; no training on customer data
+ **Rate/Cost Controls**: Quotas, budgets, backoff/retry with idempotency keys
 
 #### Local AI Support
 - **Local LLMs**: Integrate with Ollama, LocalAI
@@ -108,12 +107,12 @@
 ## Enterprise Features
 
 ### Security & Compliance
-- **GDPR Compliance**: Data privacy for EU users
-- **Enterprise SSO**: Integration with corporate authentication
-- **Audit Logging**: Track all error analysis activities
-- **Data Encryption**: Secure error data storage
-
-### Scalability
+### Security & Compliance
+- **GDPR Alignment**: DPIA, DPA templates, data subject request handling
+- **SSO**: SAML 2.0 / OIDC; **SCIM** for provisioning
+- **Audit Logging**: Immutable logs, PII redaction, defined retention
+- **Encryption**: TLS in transit; AES-256 at rest; key rotation/KMS
+- **Certifications (Roadmap)**: SOC 2 Type II, ISO 27001
 - **Cloud Processing**: Offload analysis to cloud services
 - **Distributed Analysis**: Scale across multiple machines
 - **API Services**: RESTful API for programmatic access
@@ -124,8 +123,8 @@
 - **Custom Analyzers**: User-defined error analysis rules
 - **Workflow Integration**: Custom workflow triggers
 - **Brand Customization**: White-label options for enterprises
-
-## Community & Ecosystem
+- **Plugin Safety**: Process isolation, resource limits, allowlists
+- **ABI/Versioning**: Semver for plugin API with compatibility gates
 
 ### Open Source Strategy
 - **Core Open Source**: Keep main functionality free
@@ -174,4 +173,3 @@
 - **Partnerships**: Official framework integrations
 - **Community**: Self-sustaining user community
 - **Impact**: Measurable improvement in codebase quality
-```

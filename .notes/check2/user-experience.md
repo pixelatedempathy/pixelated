@@ -1,4 +1,3 @@
-```markdown
 # Check2 - User Experience Design
 
 ## CLI Interface
@@ -81,4 +80,3 @@ project-root/
 - Compatible with monorepos and multi-config setups
 - Integrates with existing CI/CD workflows
 - Supports custom ESLint configurations
-```
