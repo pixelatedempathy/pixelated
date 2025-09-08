@@ -1,4 +1,3 @@
-```markdown
 # Check2 - Implementation Plan
 
 ## Development Phases
@@ -27,11 +26,10 @@
    - Error deduplication
 
 4. **Generate Markdown Output**
+4. **Generate Markdown Output**
    - Structured markdown formatter
-   - Chunk splitting logic (~2000 lines)
+   - Chunk splitting (configurable by maxTokens/maxChars) with safe-boundary detection and overlap; default ~50k chars
    - Metadata headers
-
-#### Deliverables
 - Working CLI that processes TypeScript errors
 - Basic grouping by error type
 - Markdown output with metadata
@@ -145,7 +143,7 @@
 - **Configuration complexity**: Create setup wizard
 - **Learning curve**: Comprehensive documentation
 
-### Scope Risks
-- **Feature creep**: Stick to MVP for initial release
-- **Over-engineering**: Focus on core use cases first
-- **Platform compatibility**: Test on major platforms
+### Security & Privacy Risks
+ **PII/leakage in reports**: Redact usernames/home dirs; optional path hashing; allowlist scrubber
+ **Injection via CLI args/config**: Validate and sanitize inputs; avoid shelling out or use execFile with args
+ **Sensitive repo data**: Provide --redact and --no-snippets modes for shareable outputs
