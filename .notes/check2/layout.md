@@ -1,10 +1,4 @@
-```bash
-# Create the check2 directory
-mkdir -p /home/vivi/pixelated/.notes/check2
 
-# Create the main specification files
-cd /home/vivi/pixelated/.notes/check2
-```
 
 Let me provide you with all the file contents organized into logical sections:
 
