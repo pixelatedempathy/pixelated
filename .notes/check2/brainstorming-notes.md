@@ -1,4 +1,3 @@
-```markdown
 # Check2 - Original Brainstorming Session
 
 *Conversation from September 8, 2025*
@@ -83,4 +82,3 @@ A tool that becomes the go-to solution for large TypeScript codebase maintenance
 ---
 
 *"Check... check2... CHECK2!" - Let's make Chris Farley proud! 🎭*
-```
