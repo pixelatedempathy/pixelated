@@ -1,4 +1,3 @@
-```markdown
 # Check2 - Testing Strategy
 
 ## Testing Approach
@@ -152,4 +151,3 @@ Ensure proper chunking:
 - Collect user feedback on accuracy
 - Monitor performance in production use
 - Track success metrics over time
-```
