@@ -144,6 +144,6 @@
 - **Learning curve**: Comprehensive documentation
 
 ### Security & Privacy Risks
- **PII/leakage in reports**: Redact usernames/home dirs; optional path hashing; allowlist scrubber
- **Injection via CLI args/config**: Validate and sanitize inputs; avoid shelling out or use execFile with args
- **Sensitive repo data**: Provide --redact and --no-snippets modes for shareable outputs
+ **PII/leakage in reports**: Default-on redaction of usernames/home dirs and absolute paths; path hashing via SHA-256 with per-run random salt; allowlist scrubber; ensure logs/diagnostics apply the same redaction
+ **Injection via CLI args/config**: Validate inputs with JSON Schema (ajv); normalize/resolve paths; reject `..` traversal; avoid shelling out, or use `execFile` with `shell: false` and fixed argv
+ **Sensitive repo data**: Provide `--redact` and `--no-snippets` modes; add `--offline` (no network) switch; scrub secrets in-memory and in temp files; document data-handling policy
