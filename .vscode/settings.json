@@ -5,5 +5,5 @@
     },
     "typescript.tsserver.maxTsServerMemory": 4048,
     "gitlab.showPipelineUpdateNotifications": true,
-    "kiroAgent.configureMCP": "Disabled"
+    "kiroAgent.configureMCP": "Enabled"
 }
