@@ -1,32 +1,132 @@
 {
   "mcpServers": {
-    "supabase": {
+    "OpMemory": {
       "command": "npx",
       "args": [
         "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--access-token",
-        "${env:SUPABASE_ACCESS_TOKEN}"
+        "openmemory"
       ],
+      "env": {
+        "OPENMEMORY_API_KEY": "om-8u4kpiwqmus434epjpsdeuk86o7mnrgg",
+        "CLIENT_NAME": "cursor"
+      },
       "alwaysAllow": [
-        "list_tables",
-        "execute_sql",
-        "listTables",
-        "list_projects",
-        "list_organizations",
-        "get_organization",
-        "apply_migration",
-        "get_project",
-        "execute_query",
-        "generate_typescript_types",
-        "listProjects"
+        "add-memory",
+        "search-memories",
+        "delete-all-memories",
+        "list-memories"
       ]
     },
-    "mem0": {
-      "url": "https://mcp.composio.dev/mem0/abandoned-creamy-horse-Y39-hm?agent=cursor"
+    "serena": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant"
+      ],
+      "alwaysAllow": [
+        "activate_project",
+        "list_dir",
+        "find_file",
+        "search_for_pattern",
+        "find_symbol",
+        "get_symbols_overview",
+        "find_referencing_symbols",
+        "replace_symbol_body",
+        "insert_before_symbol",
+        "write_memory",
+        "insert_after_symbol",
+        "read_memory",
+        "list_memories",
+        "delete_memory",
+        "get_current_config",
+        "check_onboarding_performed",
+        "onboarding",
+        "think_about_collected_information",
+        "think_about_task_adherence",
+        "think_about_whether_you_are_done"
+      ]
     },
-    "perplexityai": {
-      "url": "https://mcp.composio.dev/perplexityai/abandoned-creamy-horse-Y39-hm?agent=cursor"
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "type": "stdio",
+      "alwaysAllow": [
+        "resolve-library-id",
+        "get-library-docs"
+      ]
+    },
+    "thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "type": "stdio",
+      "alwaysAllow": [
+        "sequentialthinking"
+      ]
+    },
+    "mongodb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mongodb-mcp-server"
+      ],
+      "type": "stdio",
+      "disabled": true,
+      "alwaysAllow": []
+    },
+    "linear": {
+      "command": "node",
+      "args": [
+        "/build/index.js"
+      ],
+      "env": {
+        "LINEAR_API_KEY": "lin_api_6JGfEFCL6ARc2WsiDmgSqhiLJ5LbH9nnIHpTeTN2"
+      },
+      "disabled": true,
+      "alwaysAllow": []
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_TOOLSETS",
+        "-e",
+        "GITHUB_READ_ONLY",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "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",
+        "GITHUB_TOOLSETS": "",
+        "GITHUB_READ_ONLY": ""
+      },
+      "disabled": true,
+      "alwaysAllow": []
+    },
+    "sentry": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-sentry",
+        "--auth-token",
+        "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"
+      ],
+      "alwaysAllow": [
+        "get_sentry_issue"
+      ]
     }
   }
 }
