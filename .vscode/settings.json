@@ -5,5 +5,52 @@
     },
     "typescript.tsserver.maxTsServerMemory": 4048,
     "gitlab.showPipelineUpdateNotifications": true,
-    "kiroAgent.configureMCP": "Enabled"
+    "python.analysis.autoImportCompletions": true
+    ,
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/.env": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.next": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/coverage": true,
+        "**/.cache": true,
+        "**/.DS_Store": true,
+        "**/.idea": true,
+        "**/.vscode": false
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/.env": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.next": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/coverage": true,
+        "**/.cache": true,
+        "**/.DS_Store": true,
+        "**/.idea": true
+    },
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/__pycache__/**": true,
+        "**/.venv/**": true,
+        "**/.env/**": true,
+        "**/.mypy_cache/**": true,
+        "**/.pytest_cache/**": true,
+        "**/.next/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/coverage/**": true,
+        "**/.cache/**": true,
+        "**/.DS_Store": true,
+        "**/.idea/**": true
+    }
 }

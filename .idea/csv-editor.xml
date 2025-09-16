@@ -199,13 +199,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/ai/inference/deployment/production_deployment/exports/large_test_csv.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="/ai/inference/deployment/production_deployment/exports/test_csv.csv">
           <value>
             <Attribute>

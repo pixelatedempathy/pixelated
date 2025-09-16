@@ -21,7 +21,7 @@ metadata:
     - ai-training
 model: 
   # Using DeepSeek-R1 for clinical reasoning capabilities
-  id: 'DeepSeek-R1-0528'
+  id: 'Qwen3-Next'
   options:
     temperature: 0.3  # Lower temperature for more consistent clinical responses
     top_p: 0.9

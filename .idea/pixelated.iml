@@ -79,6 +79,43 @@
       <excludeFolder url="file://$MODULE_DIR$/tests/htmlcov" />
       <excludeFolder url="file://$MODULE_DIR$/playwright-report" />
       <excludeFolder url="file://$MODULE_DIR$/test-results" />
+      <excludeFolder url="file://$MODULE_DIR$/.claude-flow" />
+      <excludeFolder url="file://$MODULE_DIR$/.crush" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/chatmodes" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/instructions" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/.hive-mind" />
+      <excludeFolder url="file://$MODULE_DIR$/.serena/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/.swarm" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/dataset_pipeline/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/inference/deployment/production_deployment/releases/pixelated_ai_v20250803_053213_q50_t2_f3/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/inference/deployment/production_deployment/releases/pixelated_ai_v20250803_054129_q50_t2_f3/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/mandy" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/models/MERTools/MER2025/MER2025_Track23/my_affectgpt/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/models/Wendy/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/models/third_party/MERTools/MER2025/MER2025_Track23/my_affectgpt/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/pipelines/youtube-transcription-pipeline/youtube_transcriptions/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/pixel/data/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/pixel/utils/MERTools/MER2025/MER2025_Track23/my_affectgpt/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/production/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/wendy/datasets" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/wendy/datasets-wendy/priority_4" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/wendy/datasets-wendy/priority_5" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/wendy/documentation" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/wendy/processing_systems" />
+      <excludeFolder url="file://$MODULE_DIR$/ai/youtube_transcripts" />
+      <excludeFolder url="file://$MODULE_DIR$/azure_agent_integration/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/cipher" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/alert-receiver/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/pixel/.crush/commands" />
+      <excludeFolder url="file://$MODULE_DIR$/pixel/.crush/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/pixel/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/pixel/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/coverage/home/vivi/pixelated/ai" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/security/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/wandb" />
     </content>
     <orderEntry type="jdk" jdkName="uv (pixelated)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

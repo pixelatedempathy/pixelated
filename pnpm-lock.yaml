@@ -95,6 +95,9 @@ importers:
       '@libsql/client':
         specifier: ^0.15.10
         version: 0.15.14
+      '@microsoft/clarity':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@neondatabase/serverless':
         specifier: ^1.0.1
         version: 1.0.1
@@ -2763,6 +2766,9 @@ packages:
 
   '@mermaid-js/parser@0.6.2':
     resolution: {integrity: sha512-+PO02uGF6L6Cs0Bw8RpGhikVvMWEysfAyl27qTlroUB8jSWr1lL0Sf6zi78ZxlSnmgSY2AMMKVgghnN9jTtwkQ==}
+
+  '@microsoft/clarity@1.0.0':
+    resolution: {integrity: sha512-2QY6SmXnqRj6dWhNY8NYCN3e53j4zCFebH4wGnNhdGV1mqAsQwql2fT0w8TISxCvwwfVp8idsWLIdrRHOms1PQ==}
 
   '@modelcontextprotocol/sdk@1.17.4':
     resolution: {integrity: sha512-zq24hfuAmmlNZvik0FLI58uE5sriN0WWsQzIlYnzSuKDAHFqJtBFrl/LfB1NLgJT5Y7dEBzaX4yAKqOPrcetaw==}
@@ -16862,6 +16868,8 @@ snapshots:
   '@mermaid-js/parser@0.6.2':
     dependencies:
       langium: 3.3.1
+
+  '@microsoft/clarity@1.0.0': {}
 
   '@modelcontextprotocol/sdk@1.17.4':
     dependencies:

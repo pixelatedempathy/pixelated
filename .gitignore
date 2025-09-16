@@ -153,18 +153,17 @@ claude-flow.bat
 claude-flow.ps1
 hive-mind-prompt-*.txt
 
-oc4vm-1.1.1.zip
-.clinerules/byterover-rules.md
-.kilocode/rules/byterover-rules.md
-.roo/rules/byterover-rules.md
-.windsurf/rules/byterover-rules.md
-.cursor/rules/byterover-rules.mdc
-.kiro/steering/byterover-rules.md
-.qoder/rules/byterover-rules.md
-.augment/rules/byterover-rules.md
 unsloth_compiled_cache
 wandb
 azure_agent_pixelated_integration
 Azure-Language-OpenAI-Conversational-Agent-Accelerator
 ai
 cipher
+.junie
+.amazonq
+.crush
+.github/chatmodes
+.github/instructions
+.github/prompts
+.qwen
+ai/wendy

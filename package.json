@@ -162,6 +162,7 @@
     "@iconify-json/lucide": "^1.2.57",
     "@iconify/utils": "2.2.0",
     "@libsql/client": "^0.15.10",
+    "@microsoft/clarity": "^1.0.0",
     "@neondatabase/serverless": "^1.0.1",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-tooltip": "^1.2.7",
