@@ -1,4 +1,5 @@
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+import { secureJoin } from '../../security/path'
 
 const logger = createBuildSafeLogger('default')
 import { existsSync } from 'fs'
@@ -50,30 +51,28 @@ export async function mergeAllDatasets(
 }
 
 export function mergedDatasetExists(outputPath?: string): boolean {
-  const defaultPath = join(
-    process.cwd(),
-    'data',
-    'merged',
-    'mental_health_dataset.jsonl',
-  )
-  const checkPath = outputPath || defaultPath
+  const baseDir = join(process.cwd(), 'data', 'merged');
+  const defaultPath = secureJoin(baseDir, 'mental_health_dataset.jsonl');
 
-  const exists = existsSync(checkPath)
-  logger.info('Checking merged dataset existence', { path: checkPath, exists })
+  let checkPath: string;
+  if (outputPath) {
+    checkPath = secureJoin(baseDir, outputPath);
+  } else {
+    checkPath = defaultPath;
+  }
 
-  return exists
+  const exists = existsSync(checkPath);
+  logger.info('Checking merged dataset existence', { path: checkPath, exists });
+
+  return exists;
 }
 
 export function getMergedDatasetPath(
   format: 'jsonl' | 'json' | 'csv' = 'jsonl',
 ): string {
   const extension = format === 'jsonl' ? 'jsonl' : format
-  const path = join(
-    process.cwd(),
-    'data',
-    'merged',
-    `mental_health_dataset.${extension}`,
-  )
+  const baseDir = join(process.cwd(), 'data', 'merged')
+  const path = secureJoin(baseDir, `mental_health_dataset.${extension}`)
 
   logger.debug('Generated merged dataset path', { format, path })
 

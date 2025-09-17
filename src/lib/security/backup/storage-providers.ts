@@ -6,7 +6,7 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
-import { securePathJoin } from '../../utils/index'
+import { secureJoin } from '../path'
 import * as path from 'path'
 import * as fs from 'fs/promises'
 import * as crypto from 'crypto'
@@ -124,7 +124,7 @@ export class FileSystemStorageProvider implements StorageProvider {
     this.config = {
       basePath:
         (config['basePath'] as string) ||
-        path.join(process.cwd(), 'data', 'backups'),
+        secureJoin(process.cwd(), 'data/backups'),
     }
   }
 
@@ -163,8 +163,8 @@ export class FileSystemStorageProvider implements StorageProvider {
         const entries = await fs.readdir(dirPath, { withFileTypes: true })
 
         for (const entry of entries) {
-          const fullPath = path.join(dirPath, entry.name)
-          const relPath = path.join(relativePath, entry.name)
+          const fullPath = secureJoin(dirPath, entry.name)
+          const relPath = relativePath ? secureJoin(relativePath, entry.name) : entry.name
 
           if (entry.isDirectory()) {
             await scanDir(fullPath, relPath)
@@ -200,9 +200,7 @@ export class FileSystemStorageProvider implements StorageProvider {
   }
 
   private getFullPath(key: string): string {
-    return securePathJoin(this.config.basePath, key, {
-      allowedExtensions: ['.enc', '.meta', '.json', '.txt'], // Allow common backup file extensions
-    })
+    return secureJoin(this.config.basePath, key)
   }
 }
 
@@ -264,14 +262,14 @@ export class MockCloudStorageProvider implements StorageProvider {
       bucket: (config['bucket'] as string) || 'mock-bucket',
       basePath:
         (config['basePath'] as string) ||
-        path.join(process.cwd(), 'data', 'mock-cloud'),
+        secureJoin(process.cwd(), 'data/mock-cloud'),
     }
   }
 
   async initialize(): Promise<void> {
     // Create the base directory for the mock cloud storage
-    const providerPath = path.join(this.config.basePath, this.config.provider)
-    const bucketPath = path.join(providerPath, this.config.bucket)
+    const providerPath = secureJoin(this.config.basePath, this.config.provider)
+    const bucketPath = secureJoin(providerPath, this.config.bucket)
     await fs.mkdir(bucketPath, { recursive: true })
 
     logger.info(
@@ -322,11 +320,8 @@ export class MockCloudStorageProvider implements StorageProvider {
   }
 
   async listFiles(pattern?: string): Promise<string[]> {
-    const bucketPath = path.join(
-      this.config.basePath,
-      this.config.provider,
-      this.config.bucket,
-    )
+    const providerPath = secureJoin(this.config.basePath, this.config.provider);
+    const bucketPath = secureJoin(providerPath, this.config.bucket);
 
     // Simulate network delay
     await new Promise((resolve) =>
@@ -344,8 +339,8 @@ export class MockCloudStorageProvider implements StorageProvider {
             continue
           }
 
-          const entryPath = path.join(dirPath, entry.name)
-          const keyPath = path.join(relativePath, entry.name)
+          const entryPath = secureJoin(dirPath, entry.name)
+          const keyPath = relativePath ? secureJoin(relativePath, entry.name) : entry.name
 
           if (entry.isDirectory()) {
             await scanDir(entryPath, keyPath)
@@ -401,9 +396,7 @@ export class MockCloudStorageProvider implements StorageProvider {
   }
 
   private getFullPath(key: string): string {
-    return securePathJoin(this.config.basePath, key, {
-      allowedExtensions: ['.enc', '.meta', '.json', '.txt'], // Allow common backup file extensions
-    })
+    return secureJoin(this.config.basePath, key)
   }
 }
 

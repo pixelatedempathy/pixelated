@@ -3,6 +3,7 @@ import * as cron from 'node-cron'
 import fs from 'fs/promises'
 import path from 'path'
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
+import { secureJoin } from '../security/path'
 
 const logger = createBuildSafeLogger('blog-publishing')
 
@@ -218,7 +219,7 @@ export class BlogPublishingService {
       const entries = await fs.readdir(dirPath, { withFileTypes: true })
 
       for (const entry of entries) {
-        const fullPath = path.join(dirPath, entry.name)
+        const fullPath = secureJoin(dirPath, entry.name)
 
         if (entry.isDirectory()) {
           await this.walkDirectory(fullPath)
