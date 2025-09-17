@@ -50,7 +50,13 @@ export class BlogPublishingService {
   private posts: Map<string, PostInfo> = new Map()
 
   constructor(contentDir = 'src/content/blog') {
-    this.contentDir = contentDir
+    const baseDir = path.resolve('src/content');
+    const resolvedContentDir = path.resolve(contentDir);
+
+    if (!resolvedContentDir.startsWith(baseDir)) {
+      throw new Error(`Content directory must be inside src/content. Path traversal detected: ${contentDir}`);
+    }
+    this.contentDir = resolvedContentDir;
   }
 
   /**
@@ -165,16 +171,22 @@ export class BlogPublishingService {
         return
       }
 
+      const resolvedPath = path.resolve(post.filePath);
+      if (!resolvedPath.startsWith(this.contentDir)) {
+        logger.error(`Security violation: attempt to access file outside of content directory. Path: ${post.filePath}`);
+        return;
+      }
+
       logger.info(`Publishing post: ${post.metadata.title}`)
 
       // Read the file
-      const content = await fs.readFile(post.filePath, 'utf8')
+      const content = await fs.readFile(resolvedPath, 'utf8')
 
       // Update the draft status in frontmatter
       const updatedContent = content.replace(/draft:\s*true/i, 'draft: false')
 
       // Write back to the file
-      await fs.writeFile(post.filePath, updatedContent, 'utf8')
+      await fs.writeFile(resolvedPath, updatedContent, 'utf8')
 
       // Update post status
       post.status = PostStatus.PUBLISHED
@@ -218,7 +230,12 @@ export class BlogPublishingService {
       const entries = await fs.readdir(dirPath, { withFileTypes: true })
 
       for (const entry of entries) {
-        const fullPath = path.join(dirPath, entry.name)
+        const fullPath = path.resolve(dirPath, entry.name)
+
+        if (!fullPath.startsWith(this.contentDir)) {
+          logger.warn(`Skipping file outside of content directory: ${fullPath}`);
+          continue;
+        }
 
         if (entry.isDirectory()) {
           await this.walkDirectory(fullPath)
@@ -239,7 +256,12 @@ export class BlogPublishingService {
    */
   private async processFile(filePath: string): Promise<void> {
     try {
-      const content = await fs.readFile(filePath, 'utf8')
+      const resolvedPath = path.resolve(filePath);
+      if (!resolvedPath.startsWith(this.contentDir)) {
+        logger.error(`Security violation: attempt to process file outside of content directory. Path: ${filePath}`);
+        return;
+      }
+      const content = await fs.readFile(resolvedPath, 'utf8')
 
       // Extract frontmatter between --- markers
       const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/)

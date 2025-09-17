@@ -121,10 +121,20 @@ export class FileSystemStorageProvider implements StorageProvider {
   }
 
   constructor(config: Record<string, unknown>) {
+    const defaultBasePath = path.join(process.cwd(), 'data', 'backups');
+    const userBasePath = config['basePath'] as string | undefined;
+
+    const basePath = userBasePath || defaultBasePath;
+
+    const resolvedBasePath = path.resolve(basePath);
+    const dataDir = path.resolve(process.cwd(), 'data');
+
+    if (!resolvedBasePath.startsWith(dataDir)) {
+        throw new Error(`Invalid basePath. Path must be within the project's data directory. Path: ${basePath}`);
+    }
+
     this.config = {
-      basePath:
-        (config['basePath'] as string) ||
-        path.join(process.cwd(), 'data', 'backups'),
+      basePath: resolvedBasePath,
     }
   }
 
@@ -200,9 +210,20 @@ export class FileSystemStorageProvider implements StorageProvider {
   }
 
   private getFullPath(key: string): string {
-    return securePathJoin(this.config.basePath, key, {
-      allowedExtensions: ['.enc', '.meta', '.json', '.txt'], // Allow common backup file extensions
-    })
+    const basePath = path.resolve(this.config.basePath);
+    const intendedPath = path.resolve(basePath, key);
+
+    if (!intendedPath.startsWith(basePath)) {
+      throw new Error(`Path traversal attempt detected for key: ${key}`);
+    }
+
+    const allowedExtensions = ['.enc', '.meta', '.json', '.txt'];
+    const ext = path.extname(intendedPath);
+    if (allowedExtensions.length > 0 && !allowedExtensions.includes(ext)) {
+      throw new Error(`Invalid file extension: ${ext}. Allowed: ${allowedExtensions.join(', ')}`);
+    }
+
+    return intendedPath;
   }
 }
 
@@ -401,9 +422,24 @@ export class MockCloudStorageProvider implements StorageProvider {
   }
 
   private getFullPath(key: string): string {
-    return securePathJoin(this.config.basePath, key, {
-      allowedExtensions: ['.enc', '.meta', '.json', '.txt'], // Allow common backup file extensions
-    })
+    const bucketPath = path.resolve(
+      this.config.basePath,
+      this.config.provider,
+      this.config.bucket,
+    );
+    const intendedPath = path.resolve(bucketPath, key);
+
+    if (!intendedPath.startsWith(bucketPath)) {
+        throw new Error(`Path traversal attempt detected for key: ${key}`);
+    }
+
+    const allowedExtensions = ['.enc', '.meta', '.json', '.txt'];
+    const ext = path.extname(intendedPath);
+    if (allowedExtensions.length > 0 && !allowedExtensions.includes(ext)) {
+        throw new Error(`Invalid file extension: ${ext}. Allowed: ${allowedExtensions.join(', ')}`);
+    }
+
+    return intendedPath;
   }
 }
 

@@ -2,7 +2,7 @@ import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 
 const logger = createBuildSafeLogger('default')
 import { existsSync } from 'fs'
-import { join } from 'path'
+import { join, resolve } from 'path'
 
 export interface DatasetMergeStats {
   totalDatasets: number
@@ -50,6 +50,7 @@ export async function mergeAllDatasets(
 }
 
 export function mergedDatasetExists(outputPath?: string): boolean {
+  const baseDir = resolve(process.cwd(), 'data', 'merged');
   const defaultPath = join(
     process.cwd(),
     'data',
@@ -58,8 +59,14 @@ export function mergedDatasetExists(outputPath?: string): boolean {
   )
   const checkPath = outputPath || defaultPath
 
-  const exists = existsSync(checkPath)
-  logger.info('Checking merged dataset existence', { path: checkPath, exists })
+  const resolvedPath = resolve(checkPath);
+  if (!resolvedPath.startsWith(baseDir)) {
+    logger.warn('Path traversal attempt detected', { path: checkPath });
+    return false;
+  }
+
+  const exists = existsSync(resolvedPath)
+  logger.info('Checking merged dataset existence', { path: resolvedPath, exists })
 
   return exists
 }
@@ -87,6 +94,18 @@ export async function validateMergedDataset(filePath: string): Promise<{
 }> {
   logger.info('Validating merged dataset', { filePath })
 
+  const baseDir = resolve(process.cwd(), 'data', 'merged');
+  const resolvedPath = resolve(filePath);
+
+  if (!resolvedPath.startsWith(baseDir)) {
+    logger.warn('Path traversal attempt detected', { filePath });
+    return {
+      isValid: false,
+      errors: ['File path is outside the allowed directory.'],
+      sampleCount: 0,
+    };
+  }
+
   // Mock validation for now
   const validation = {
     isValid: true,
@@ -94,13 +113,13 @@ export async function validateMergedDataset(filePath: string): Promise<{
     sampleCount: 9500,
   }
 
-  if (!existsSync(filePath)) {
+  if (!existsSync(resolvedPath)) {
     validation.isValid = false
     validation.errors.push('Dataset file does not exist')
     validation.sampleCount = 0
   }
 
-  logger.info('Dataset validation completed', { filePath, validation })
+  logger.info('Dataset validation completed', { filePath: resolvedPath, validation })
 
   return validation
 }

@@ -282,13 +282,20 @@ async function generatePost(
     return
   }
 
+  const baseDir = path.resolve(process.cwd(), 'src/content/blog');
+
   // Determine the target directory
-  let targetDir = path.join(process.cwd(), 'src/content/blog')
+  let targetDir = baseDir;
 
   if (seriesName) {
     // Convert series name to kebab-case directory name
     const seriesDirName = seriesName.toLowerCase().replace(/\s+/g, '-')
-    targetDir = path.join(targetDir, seriesDirName)
+    targetDir = path.resolve(baseDir, seriesDirName)
+
+    if (!targetDir.startsWith(baseDir)) {
+      console.log('Error: Invalid series name (path traversal attempt detected).');
+      return;
+    }
 
     // Ensure series directory exists
     await fs.mkdir(targetDir, { recursive: true })
@@ -300,7 +307,12 @@ async function generatePost(
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
 
-  const filePath = path.join(targetDir, `${slug}.mdx`)
+  const filePath = path.resolve(targetDir, `${slug}.mdx`)
+
+  if (!filePath.startsWith(targetDir)) {
+    console.log('Error: Invalid post title (path traversal attempt detected).');
+    return;
+  }
 
   // Check if file already exists
   try {
