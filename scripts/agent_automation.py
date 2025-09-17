@@ -52,18 +52,16 @@ class TaskMasterInterface:
         """Get the next available task"""
         try:
             result = subprocess.run(
-                self.base_cmd + ["next"], capture_output=True, text=True, timeout=30, check=False
+                self.base_cmd + ["next"], capture_output=True, text=True, timeout=30, check=True
             )
 
-            if result.returncode == 0:
-                # Parse the output to extract task information
-                output = result.stdout.strip()
-                if "No available tasks" in output:
-                    return None
+            output = result.stdout.strip()
+            if "No available tasks" in output:
+                return None
 
-                return self._parse_task_output(output)
+            return self._parse_task_output(output)
 
-        except Exception as e:
+        except (subprocess.CalledProcessError, Exception) as e:
             logger.error(f"Error getting next task: {e}")
             return None
 
@@ -75,23 +73,20 @@ class TaskMasterInterface:
                 capture_output=True,
                 text=True,
                 timeout=30,
-                check=False,
+                check=True,
             )
+            lines = result.stdout.strip().split("\n")
+            return [{"raw": line.strip()} for line in lines if "⏱️" in line or "✅" in line]
 
-            if result.returncode == 0:
-                lines = result.stdout.strip().split("\n")
-                return [{"raw": line.strip()} for line in lines if "⏱️" in line or "✅" in line]
-
-        except Exception as e:
+        except (subprocess.CalledProcessError, Exception) as e:
             logger.error(f"Error getting task list: {e}")
             return []
-        return []
 
     def set_task_status(self, task_id: str, status: str) -> bool:
         """Set task status"""
         try:
             result = subprocess.run(
-                self.base_cmd + ["set-status", f"--id={task_id}", f"--status={status}"],
+                self.base_cmd + ["set-status", "--id", task_id, "--status", status],
                 capture_output=True,
                 text=True,
                 timeout=30,
