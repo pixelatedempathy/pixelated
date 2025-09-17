@@ -1,0 +1,18 @@
+{
+  "name": "pixelated",
+  "root": "/home/vivi/pixelated",
+  "description": "Pixelated Empathy full-stack application",
+  "type": "web-app",
+  "languages": ["typescript", "python"],
+  "entry": "src/",
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "sentry": {
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp"
+    }
+  }
+}

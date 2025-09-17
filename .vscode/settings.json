@@ -52,5 +52,6 @@
         "**/.cache/**": true,
         "**/.DS_Store": true,
         "**/.idea/**": true
-    }
+    },
+    "qodana.projectId": "j46wq"
 }
