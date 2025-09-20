@@ -3,7 +3,19 @@
 import { Command } from 'commander'
 
 import { existsSync } from 'fs'
+import * as path from 'path'
 import TaskListManager from '../lib/services/TaskListManager'
+
+function validateFilePath(filePath: string): string | null {
+    const baseDir = path.resolve(process.cwd());
+    const resolvedPath = path.resolve(filePath);
+
+    if (!resolvedPath.startsWith(baseDir)) {
+        console.error(`❌ Error: File path is outside the current working directory. Path traversal is not allowed.`);
+        return null;
+    }
+    return resolvedPath;
+}
 import OllamaCheckInService from '../lib/services/OllamaCheckInService'
 import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
 
@@ -49,17 +61,22 @@ program
     try {
       const { file, taskId, summary, verbose } = options
 
-      if (!existsSync(file)) {
-        console.error(`❌ Task list file not found: ${file}`)
+      const validatedFile = validateFilePath(file);
+      if (!validatedFile) {
+        process.exit(1);
+      }
+
+      if (!existsSync(validatedFile)) {
+        console.error(`❌ Task list file not found: ${validatedFile}`)
         process.exit(1)
       }
 
       if (verbose) {
-        logger.info('Starting check-in process', { file, taskId, summary })
+        logger.info('Starting check-in process', { file: validatedFile, taskId, summary })
       }
 
       const taskManager = new TaskListManager()
-      const taskList = await taskManager.loadTaskList(file)
+      const taskList = await taskManager.loadTaskList(validatedFile)
 
       console.log('📋 Current task list status:')
       const taskSummary = taskManager.getTaskSummary(taskList)
@@ -177,18 +194,23 @@ program
     try {
       const { file } = options
 
-      if (!existsSync(file)) {
-        console.error(`❌ Task list file not found: ${file}`)
+      const validatedFile = validateFilePath(file);
+      if (!validatedFile) {
+        process.exit(1);
+      }
+
+      if (!existsSync(validatedFile)) {
+        console.error(`❌ Task list file not found: ${validatedFile}`)
         process.exit(1)
       }
 
       const taskManager = new TaskListManager()
-      const taskList = await taskManager.loadTaskList(file)
+      const taskList = await taskManager.loadTaskList(validatedFile)
       const summary = taskManager.getTaskSummary(taskList)
 
       console.log('📋 Task List Status')
       console.log('==================')
-      console.log(`File: ${file}`)
+      console.log(`File: ${validatedFile}`)
       console.log(`Total tasks: ${summary.total}`)
       console.log(`Completed: ${summary.completed}`)
       console.log(`Remaining: ${summary.remaining}`)
@@ -228,8 +250,13 @@ program
     try {
       const { file, title } = options
 
-      if (existsSync(file)) {
-        console.error(`❌ File already exists: ${file}`)
+      const validatedFile = validateFilePath(file);
+      if (!validatedFile) {
+        process.exit(1);
+      }
+
+      if (existsSync(validatedFile)) {
+        console.error(`❌ File already exists: ${validatedFile}`)
         process.exit(1)
       }
 
@@ -259,15 +286,15 @@ alwaysApply: false
 `
 
       const taskManager = new TaskListManager()
-      const taskList = await taskManager.loadTaskList(file)
+      const taskList = await taskManager.loadTaskList(validatedFile)
       taskList.content = content
       await taskManager.saveTaskList(taskList)
 
-      console.log(`✅ Task list created: ${file}`)
+      console.log(`✅ Task list created: ${validatedFile}`)
       console.log('You can now use the following commands:')
-      console.log(`  task-manager status -f ${file}`)
+      console.log(`  task-manager status -f ${validatedFile}`)
       console.log(
-        `  task-manager check-in -f ${file} -t <task-id> -s "<summary>"`,
+        `  task-manager check-in -f ${validatedFile} -t <task-id> -s "<summary>"`,
       )
     } catch (error: unknown) {
       console.error(
