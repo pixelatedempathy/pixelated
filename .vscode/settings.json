@@ -1,37 +1,14 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[astro]": {
-        "editor.defaultFormatter": "astro-build.astro-vscode"
-    },
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
-    "python-envs.pythonProjects": [
-        {
-            "path": "",
-            "envManager": "",
-            "packageManager": "ms-python.python:pip"
-        }
-    ],
+    "python.useEnvironmentsExtension": true,
     "chat.mcp.serverSampling": {
         "pixelated/.vscode/mcp.json: GitLab": {
             "allowedModels": [
                 "copilot/gpt-4.1",
-                "copilot/claude-3.5-sonnet",
-                "copilot/claude-3.7-sonnet",
-                "copilot/claude-3.7-sonnet-thought",
-                "copilot/claude-sonnet-4",
                 "copilot/gemini-2.0-flash-001",
                 "copilot/gemini-2.5-pro",
                 "copilot/gpt-4o",
-                "copilot/gpt-5",
                 "copilot/gpt-5-mini",
-                "copilot/grok-code-fast-1",
-                "copilot/o3-mini",
-                "copilot/o4-mini"
+                "copilot/grok-code-fast-1"
             ]
         }
     }
