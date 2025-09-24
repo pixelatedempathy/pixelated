@@ -1,6 +1,4 @@
-import { secureTimestampId, secureToken } from '../security/random'
 export * from './middleware'
-// Re-export session functions
 export { createSession, endSession, getSession } from './session'
 
 import type { AstroCookies } from 'astro'
@@ -16,7 +14,6 @@ export async function getCurrentUser(cookies: AstroCookies): Promise<User | null
     return null
   }
 
-  // getSession expects a session token
   const sessionData = await getSession(token)
   if (!sessionData || !sessionData.user) {
     return null
@@ -64,6 +61,8 @@ export interface User {
   email: string
   name?: string
   role: 'user' | 'admin' | 'therapist' | 'patient'
+  // Stored as a bcrypt hash in production
+  password?: string
   verified: boolean
   createdAt: Date
   lastLoginAt?: Date
@@ -111,7 +110,8 @@ export class AuthService {
 
   constructor() {
     logger.info('AuthService initialized')
-    this.initializeMockUsers()
+    // Initialize demo users asynchronously (fire-and-forget)
+    void this.initializeMockUsers()
   }
 
   /**
@@ -121,7 +121,6 @@ export class AuthService {
     try {
       logger.debug('Authenticating user', { email: credentials.email })
 
-      // Find user by email
       const user = Array.from(this.users.values()).find(
         (u) => u.email === credentials.email,
       )
@@ -133,9 +132,8 @@ export class AuthService {
         }
       }
 
-      // In production, verify password hash
-      // For now, accept any password for demo users
-      if (!this.verifyPassword(credentials.password, user)) {
+      // Verify password using bcrypt
+      if (!(await this.verifyPassword(credentials.password, user))) {
         return {
           success: false,
           error: 'Invalid email or password',
@@ -199,11 +197,17 @@ export class AuthService {
       }
 
       // Create new user
+      // Hash password before storing
+      const bcrypt = await import('bcryptjs')
+      const hashed = await bcrypt.hash(userData.password, 12)
+
       const user: User = {
         id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         email: userData.email,
         name: userData.name ?? '', // Ensure name is always a string
         role: userData.role || 'user',
+        // Store bcrypt hash
+        password: hashed,
         verified: false, // Requires email verification
         createdAt: new Date(),
       }
@@ -335,8 +339,9 @@ export class AuthService {
         return false
       }
 
-      // In production, hash the new password
-      // user.password = await hashPassword(newPassword)
+      // Hash and set the new password
+      const bcrypt = await import('bcryptjs')
+      user.password = await bcrypt.hash(newPassword, 12)
       resetRequest.used = true
 
       logger.info('Password reset successfully', {
@@ -370,18 +375,22 @@ export class AuthService {
     return session
   }
 
-  private verifyPassword(password: string, _user: User): boolean {
-    // In production, use proper password hashing (bcrypt, argon2, etc.)
-    // For demo purposes, accept any non-empty password
-    // Would normally check: bcrypt.compare(password, user.hashedPassword)
-    return password.length >= 6
+  private async verifyPassword(password: string, user: User): Promise<boolean> {
+    if (!user.password) return false
+    try {
+      const bcrypt = await import('bcryptjs')
+      return await bcrypt.compare(password, user.password)
+    } catch (_err) {
+      logger.error('Password verification error', { error: _err })
+      return false
+    }
   }
 
   private generateResetToken(): string {
     return `reset_${Date.now()}_${Math.random().toString(36).substr(2, 16)}`
   }
 
-  private initializeMockUsers() {
+  private async initializeMockUsers() {
     // Create some demo users for testing
     const demoUsers: User[] = [
       {
@@ -410,9 +419,16 @@ export class AuthService {
       },
     ]
 
-    demoUsers.forEach((user) => {
-      this.users.set(user.id, user)
-    })
+    // Assign a default demo password for demo accounts and hash it
+    const bcrypt = await import('bcryptjs')
+    const defaultPassword = 'password123'
+    await Promise.all(
+      demoUsers.map(async (user) => {
+        const hashed = await bcrypt.hash(defaultPassword, 12)
+        user.password = hashed
+        this.users.set(user.id, user)
+      }),
+    )
 
     logger.info('Demo users initialized', { count: demoUsers.length })
   }
@@ -470,4 +486,5 @@ export const auth = {
   authenticate,
   createUser,
 }
+export { requirePageAuth as requireAuth } from './serverAuth'
 export { requirePageAuth as requireAuth } from './serverAuth'

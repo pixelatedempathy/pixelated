@@ -249,6 +249,8 @@ export function Todo({ title = 'Todo List', initialTodos = [] }: TodoProps) {
 // - Prop validation: TypeScript provides compile-time checks. If this
 //   component must be consumed by non-TypeScript consumers, consider
 //   adding `prop-types` for runtime validation.
+// TODO: Consider adding unit tests for core interactions (add, delete, toggle) and
+// document expected behaviors for accessibility (keyboard support, ARIA attributes).
 // - Reordering todos: To support drag-and-drop reordering, integrate a
 //   lightweight library such as `@hello-pangea/dnd` and update `todos`
 //   order in state. We intentionally keep the core component minimal.

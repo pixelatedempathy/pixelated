@@ -1,5 +1,6 @@
 // import type { APIRoute } from 'astro'
-import { mongoAuthService } from '@/services/mongoAuth.service'
+import * as adapter from '@/adapters/betterAuthMongoAdapter'
+import { getSessionFromRequest } from '@/utils/auth'
 import { AuditEventType, createAuditLog } from '@/lib/audit'
 
 export const POST = async ({
@@ -8,9 +9,10 @@ export const POST = async ({
   request: Request
 }): Promise<Response> => {
   try {
-    // Get the authorization header
-    const authHeader = request.headers.get('authorization')
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    // Try to get session (token) from request (Authorization header or cookie)
+    const resolvedSession = await getSessionFromRequest(request)
+    const accessToken = resolvedSession?.session?.token || request.headers.get('authorization')?.split(' ')[1]
+    if (!accessToken) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -25,27 +27,11 @@ export const POST = async ({
       )
     }
 
-    const accessToken = authHeader.split(' ')[1]
-    if (!accessToken) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Invalid access token format',
-        }),
-        {
-          status: 401,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-    }
-
     const {
       user,
       session,
       accessToken: newAccessToken,
-    } = await mongoAuthService.refreshSession(accessToken)
+    } = await adapter.refreshToken(accessToken) as unknown as { user: unknown; session: unknown; accessToken: string }
 
     // Log the session refresh for HIPAA compliance
     await createAuditLog(

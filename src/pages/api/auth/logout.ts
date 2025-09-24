@@ -1,22 +1,21 @@
 // import type { APIRoute } from 'astro'
-import { MongoAuthService } from '@/services/mongoAuth.service'
+import * as adapter from '@/adapters/betterAuthMongoAdapter'
 import { createAuditLog, AuditEventType } from '@/lib/audit'
+import { getSessionFromRequest } from '@/utils/auth'
 
 type CookieStore = {
   get(name: string): { value: string } | undefined
   delete(name: string, options?: { path?: string }): void
 }
 
-export const POST = async ({ cookies }: { cookies: CookieStore }) => {
+export const POST = async ({ cookies, request }: { cookies: CookieStore; request?: Request }) => {
   try {
-    const authService = new MongoAuthService()
-
-    // Get the auth token from cookies
-    const token = cookies.get('auth-token')?.value
+    const session = await getSessionFromRequest((request as unknown) as Request)
+    const token = session?.session?.token || cookies.get('auth-token')?.value
 
     if (token) {
       // Invalidate the session
-      await authService.signOut(token)
+      await adapter.revokeToken(token)
 
       // Clear the auth cookie
       cookies.delete('auth-token', { path: '/' })
