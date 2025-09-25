@@ -1,490 +1,216 @@
-export * from './middleware'
-export { createSession, endSession, getSession } from './session'
-
-import type { AstroCookies } from 'astro'
-import type { User } from './index'
-
 /**
- * Get the current user from AstroCookies
+ * Authentication Module - Main export for Phase 7 JWT Authentication Service
+ * Provides complete authentication system with Better-Auth integration
  */
-export async function getCurrentUser(cookies: AstroCookies): Promise<User | null> {
-  // Try to get the session token from cookies
-  const token = cookies.get('auth-token')?.value
-  if (!token) {
-    return null
-  }
 
-  const sessionData = await getSession(token)
-  if (!sessionData || !sessionData.user) {
-    return null
-  }
-
-  return sessionData.user
-}
-
-/**
- * Check if the current user has the specified role
- */
-export async function hasRole(cookies: AstroCookies, role: string): Promise<boolean> {
-  const user = await getCurrentUser(cookies)
-  if (!user) {
-    return false
-  }
-  return user.role === role
-}
-
-/**
- * Check if the current user is authenticated
- */
-export async function isAuthenticated(cookies: AstroCookies): Promise<boolean> {
-  const user = await getCurrentUser(cookies)
-  return !!user
-}
-export type { SessionData } from './session'
-// Export authentication types and middleware
-export * from './types'
-
-// Export server-side auth functionality
+// JWT Service exports
 export {
-  verifyServerAuth,
-  protectRoute,
-  requirePageAuth,
-  trackSuspiciousActivity,
-} from './serverAuth'
+  generateTokenPair,
+  validateToken,
+  refreshAccessToken,
+  revokeToken,
+  cleanupExpiredTokens,
+  measureTokenOperation,
+  AuthenticationError,
+} from './jwt-service'
 
-import { createBuildSafeLogger } from '../logging/build-safe-logger'
+export type {
+  TokenPair,
+  TokenValidationResult,
+  ClientInfo,
+  UserRole,
+  TokenType,
+} from './jwt-service'
 
-const logger = createBuildSafeLogger('auth')
+// Better-Auth Integration exports
+export {
+  registerWithBetterAuth,
+  authenticateWithBetterAuth,
+  logoutFromBetterAuth,
+  getUserAuthentication,
+  getUserAuthenticationByBetterAuthId,
+  updateUserAuthentication,
+  validateJWTAndGetUser,
+  hasRequiredRole,
+  hasPermission,
+  getBetterAuthInstance,
+} from './better-auth-integration'
 
-export interface User {
-  id: string
-  email: string
-  name?: string
-  role: 'user' | 'admin' | 'therapist' | 'patient'
-  // Stored as a bcrypt hash in production
-  password?: string
-  verified: boolean
-  createdAt: Date
-  lastLoginAt?: Date
-}
+export type {
+  UserAuthentication,
+  AuthenticationResult,
+  LoginCredentials,
+  RegisterCredentials,
+} from './better-auth-integration'
 
-export interface AuthSession {
-  userId: string
-  sessionId: string
-  expiresAt: Date
-  isActive: boolean
-  deviceInfo?: {
-    userAgent: string
-    ip: string
-    location?: string
+export { AuthenticationStatus } from './better-auth-integration'
+
+// Middleware exports
+export {
+  authenticateRequest,
+  requireRole,
+  requirePermission,
+  requireAnyRole,
+  requireAnyPermission,
+  requireAdmin,
+  requireTherapistOrHigher,
+  requireAuthenticated,
+  optionalAuthentication,
+  extractTokenFromRequest,
+  getClientIp,
+  getClientInfo,
+  createAuthRateLimit,
+  csrfProtection,
+  securityHeaders,
+  createAuthMiddlewareStack,
+} from './middleware'
+
+export type { AuthenticatedRequest, ClientInfo as MiddlewareClientInfo } from './middleware'
+
+// Utility functions
+export * from './utils'
+
+// Configuration
+export { getAuthConfig } from './config'
+
+// Integration with Phase 6 MCP Server
+export { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
+
+/**
+ * Initialize authentication system
+ */
+export async function initializeAuthSystem(): Promise<void> {
+  try {
+    // Initialize Better-Auth database connection
+    const { initializeBetterAuthDatabase } = await import('./better-auth-integration')
+    await initializeBetterAuthDatabase()
+
+    // Start token cleanup scheduler
+    const { startTokenCleanupScheduler } = await import('./jwt-service')
+    startTokenCleanupScheduler()
+
+    console.log('✅ Authentication system initialized successfully')
+  } catch (error) {
+    console.error('❌ Failed to initialize authentication system:', error)
+    throw error
   }
-}
-
-export interface AuthCredentials {
-  email: string
-  password: string
-}
-
-export interface AuthResult {
-  success: boolean
-  user?: User
-  session?: AuthSession
-  error?: string
-  requiresVerification?: boolean
-}
-
-export interface PasswordResetRequest {
-  email: string
-  token: string
-  expiresAt: Date
-  used: boolean
 }
 
 /**
- * Authentication Service
+ * Create authentication API routes
  */
-export class AuthService {
-  private sessions = new Map<string, AuthSession>()
-  private users = new Map<string, User>()
-  private resetTokens = new Map<string, PasswordResetRequest>()
+export async function createAuthRoutes() {
+  const { Router } = await import('express')
+  const router = Router()
 
-  constructor() {
-    logger.info('AuthService initialized')
-    // Initialize demo users asynchronously (fire-and-forget)
-    void this.initializeMockUsers()
-  }
+  // Import route handlers
+  const {
+    handleRegister,
+    handleLogin,
+    handleLogout,
+    handleRefreshToken,
+    handleForgotPassword,
+    handleResetPassword,
+    handleVerifyEmail,
+  } = await import('./routes')
 
-  /**
-   * Authenticate user with email and password
-   */
-  async authenticate(credentials: AuthCredentials): Promise<AuthResult> {
-    try {
-      logger.debug('Authenticating user', { email: credentials.email })
+  // Public routes
+  router.post('/register', handleRegister)
+  router.post('/login', handleLogin)
+  router.post('/forgot-password', handleForgotPassword)
+  router.post('/reset-password', handleResetPassword)
+  router.post('/verify-email', handleVerifyEmail)
 
-      const user = Array.from(this.users.values()).find(
-        (u) => u.email === credentials.email,
-      )
+  // Protected routes
+  router.post('/logout', requireAuthenticated, handleLogout)
+  router.post('/refresh-token', handleRefreshToken)
 
-      if (!user) {
-        return {
-          success: false,
-          error: 'Invalid email or password',
-        }
-      }
-
-      // Verify password using bcrypt
-      if (!(await this.verifyPassword(credentials.password, user))) {
-        return {
-          success: false,
-          error: 'Invalid email or password',
-        }
-      }
-
-      if (!user.verified) {
-        return {
-          success: false,
-          error: 'Email verification required',
-          requiresVerification: true,
-        }
-      }
-
-      // Create session
-      const session = this.createSession(user.id)
-
-      // Update last login
-      user.lastLoginAt = new Date()
-
-      logger.info('User authenticated successfully', {
-        userId: user.id,
-        email: user.email,
-      })
-
-      return {
-        success: true,
-        user,
-        session,
-      }
-    } catch (error: unknown) {
-      logger.error('Authentication failed', { error, email: credentials.email })
-      return {
-        success: false,
-        error: 'Authentication failed',
-      }
-    }
-  }
-
-  /**
-   * Create a new user account
-   */
-  async createUser(userData: {
-    email: string
-    password: string
-    name?: string
-    role?: User['role']
-  }): Promise<AuthResult> {
-    try {
-      logger.debug('Creating new user', { email: userData.email })
-
-      // Check if user already exists
-      const existingUser = Array.from(this.users.values()).find(
-        (u) => u.email === userData.email,
-      )
-      if (existingUser) {
-        return {
-          success: false,
-          error: 'User with this email already exists',
-        }
-      }
-
-      // Create new user
-      // Hash password before storing
-      const bcrypt = await import('bcryptjs')
-      const hashed = await bcrypt.hash(userData.password, 12)
-
-      const user: User = {
-        id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        email: userData.email,
-        name: userData.name ?? '', // Ensure name is always a string
-        role: userData.role || 'user',
-        // Store bcrypt hash
-        password: hashed,
-        verified: false, // Requires email verification
-        createdAt: new Date(),
-      }
-
-      this.users.set(user.id, user)
-
-      logger.info('User created successfully', {
-        userId: user.id,
-        email: user.email,
-      })
-
-      return {
-        success: true,
-        user,
-        requiresVerification: true,
-      }
-    } catch (error: unknown) {
-      logger.error('User creation failed', { error, email: userData.email })
-      return {
-        success: false,
-        error: 'Failed to create user account',
-      }
-    }
-  }
-
-  /**
-   * Verify user session
-   */
-  async verifySession(sessionId: string): Promise<AuthResult> {
-    try {
-      const session = this.sessions.get(sessionId)
-
-      if (!session || !session.isActive || session.expiresAt < new Date()) {
-        return {
-          success: false,
-          error: 'Invalid or expired session',
-        }
-      }
-
-      const user = this.users.get(session.userId)
-      if (!user) {
-        return {
-          success: false,
-          error: 'User not found',
-        }
-      }
-
-      return {
-        success: true,
-        user,
-        session,
-      }
-    } catch (error: unknown) {
-      logger.error('Session verification failed', { error, sessionId })
-      return {
-        success: false,
-        error: 'Session verification failed',
-      }
-    }
-  }
-
-  /**
-   * Logout user and invalidate session
-   */
-  async logout(sessionId: string): Promise<boolean> {
-    try {
-      const session = this.sessions.get(sessionId)
-      if (session) {
-        session.isActive = false
-        logger.info('User logged out', { userId: session.userId, sessionId })
-      }
-      return true
-    } catch (error: unknown) {
-      logger.error('Logout failed', { error, sessionId })
-      return false
-    }
-  }
-
-  /**
-   * Request password reset
-   */
-  async requestPasswordReset(email: string): Promise<boolean> {
-    try {
-      const user = Array.from(this.users.values()).find(
-        (u) => u.email === email,
-      )
-      if (!user) {
-        // Don't reveal if email exists
-        return true
-      }
-
-      const token = this.generateResetToken()
-      const resetRequest: PasswordResetRequest = {
-        email,
-        token,
-        expiresAt: new Date(Date.now() + 3600000), // 1 hour
-        used: false,
-      }
-
-      this.resetTokens.set(token, resetRequest)
-
-      logger.info('Password reset requested', { email, token })
-      return true
-    } catch (error: unknown) {
-      logger.error('Password reset request failed', { error, email })
-      return false
-    }
-  }
-
-  /**
-   * Reset password with token
-   */
-  async resetPassword(token: string, newPassword: string): Promise<boolean> {
-    try {
-      const resetRequest = this.resetTokens.get(token)
-
-      if (
-        !resetRequest ||
-        resetRequest.used ||
-        resetRequest.expiresAt < new Date()
-      ) {
-        return false
-      }
-
-      const user = Array.from(this.users.values()).find(
-        (u) => u.email === resetRequest.email,
-      )
-      if (!user) {
-        return false
-      }
-
-      // Hash and set the new password
-      const bcrypt = await import('bcryptjs')
-      user.password = await bcrypt.hash(newPassword, 12)
-      resetRequest.used = true
-
-      logger.info('Password reset successfully', {
-        userId: user.id,
-        passwordLength: newPassword.length,
-      })
-      return true
-    } catch (error: unknown) {
-      logger.error('Password reset failed', { error, token })
-      return false
-    }
-  }
-
-  /**
-   * Get user by ID
-   */
-  async getUserById(userId: string): Promise<User | null> {
-    return this.users.get(userId) || null
-  }
-
-  private createSession(userId: string): AuthSession {
-    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-    const session: AuthSession = {
-      userId,
-      sessionId,
-      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
-      isActive: true,
+  // User profile routes
+  router.get('/profile', requireAuthenticated, async (req: AuthenticatedRequest, res: Response) => {
+    const user = req.context?.user
+    if (!user) {
+      return res.status(401).json({ success: false, error: 'User not found' })
     }
 
-    this.sessions.set(sessionId, session)
-    return session
-  }
-
-  private async verifyPassword(password: string, user: User): Promise<boolean> {
-    if (!user.password) return false
-    try {
-      const bcrypt = await import('bcryptjs')
-      return await bcrypt.compare(password, user.password)
-    } catch (_err) {
-      logger.error('Password verification error', { error: _err })
-      return false
+    const userAuth = getUserAuthentication(user.id)
+    if (!userAuth) {
+      return res.status(404).json({ success: false, error: 'User not found' })
     }
-  }
 
-  private generateResetToken(): string {
-    return `reset_${Date.now()}_${Math.random().toString(36).substr(2, 16)}`
-  }
-
-  private async initializeMockUsers() {
-    // Create some demo users for testing
-    const demoUsers: User[] = [
-      {
-        id: 'user_demo_admin',
-        email: 'admin@pixelated.health',
-        name: 'System Administrator',
-        role: 'admin',
-        verified: true,
-        createdAt: new Date('2024-01-01'),
+    res.json({
+      success: true,
+      user: {
+        id: userAuth.id,
+        email: userAuth.email,
+        role: userAuth.role,
+        createdAt: userAuth.createdAt,
+        lastLoginAt: userAuth.lastLoginAt,
       },
-      {
-        id: 'user_demo_therapist',
-        email: 'therapist@pixelated.health',
-        name: 'Dr. Sarah Johnson',
-        role: 'therapist',
-        verified: true,
-        createdAt: new Date('2024-01-15'),
-      },
-      {
-        id: 'user_demo_patient',
-        email: 'patient@pixelated.health',
-        name: 'John Doe',
-        role: 'patient',
-        verified: true,
-        createdAt: new Date('2024-02-01'),
-      },
-    ]
+    })
+  })
 
-    // Assign a default demo password for demo accounts and hash it
-    const bcrypt = await import('bcryptjs')
-    const defaultPassword = 'password123'
-    await Promise.all(
-      demoUsers.map(async (user) => {
-        const hashed = await bcrypt.hash(defaultPassword, 12)
-        user.password = hashed
-        this.users.set(user.id, user)
-      }),
-    )
+  return router
+}
 
-    logger.info('Demo users initialized', { count: demoUsers.length })
+/**
+ * Health check for authentication system
+ */
+export async function getAuthHealth(): Promise<{
+  status: 'healthy' | 'degraded' | 'unhealthy'
+  details: {
+    jwtService: boolean
+    betterAuth: boolean
+    redis: boolean
+    database: boolean
+  }
+}> {
+  try {
+    const { checkRedisConnection } = await import('../redis')
+    const { getBetterAuthInstance } = await import('./better-auth-integration')
+
+    const [redisHealth, betterAuthHealth] = await Promise.allSettled([
+      checkRedisConnection(),
+      Promise.resolve(true), // Better-Auth health check would go here
+    ])
+
+    const details = {
+      jwtService: true, // JWT service is stateless
+      betterAuth: betterAuthHealth.status === 'fulfilled',
+      redis: redisHealth.status === 'fulfilled' && redisHealth.value,
+      database: true, // Database health would be checked here
+    }
+
+    const allHealthy = Object.values(details).every(health => health)
+    
+    return {
+      status: allHealthy ? 'healthy' : 'degraded',
+      details,
+    }
+  } catch (error) {
+    return {
+      status: 'unhealthy',
+      details: {
+        jwtService: false,
+        betterAuth: false,
+        redis: false,
+        database: false,
+      },
+    }
   }
 }
 
-// Default auth service instance
-let authServiceInstance: AuthService | null = null
+/**
+ * Export security event types for external use
+ */
+export { SecurityEventType } from '../security'
 
 /**
- * Get the default auth service instance
+ * Default export for convenience
  */
-export function getAuthService(): AuthService {
-  if (!authServiceInstance) {
-    authServiceInstance = new AuthService()
-  }
-  return authServiceInstance
+export default {
+  initializeAuthSystem,
+  createAuthRoutes,
+  getAuthHealth,
+  // Add all other exports for convenience
+  ...module.exports,
 }
-
-/**
- * Authenticate user
- */
-export async function authenticate(
-  credentials: AuthCredentials,
-): Promise<AuthResult> {
-  const authService = getAuthService()
-  return authService.authenticate(credentials)
-}
-
-/**
- * Verify session
- */
-export async function verifySession(sessionId: string): Promise<AuthResult> {
-  const authService = getAuthService()
-  return authService.verifySession(sessionId)
-}
-
-/**
- * Create new user
- */
-export async function createUser(
-  userData: Parameters<AuthService['createUser']>[0],
-): Promise<AuthResult> {
-  const authService = getAuthService()
-  return authService.createUser(userData)
-}
-
-/**
- * Auth utility object for API routes
- */
-export const auth = {
-  verifySession,
-  getCurrentUser,
-  isAuthenticated,
-  hasRole,
-  authenticate,
-  createUser,
-}
-export { requirePageAuth as requireAuth } from './serverAuth'
-export { requirePageAuth as requireAuth } from './serverAuth'

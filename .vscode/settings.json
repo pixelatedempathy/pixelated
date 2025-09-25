@@ -118,5 +118,11 @@
         "source.organizeImports": "explicit",
         "source.fixAll.eslint": "explicit"
     },
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "python-envs.pythonProjects": [],
+    "roo-cline.newTaskRequireTodos": true,
+    "roo-cline.preventCompletionWithOpenTodos": true,
+    "sourcery.token": "user_ZW9Gn7o6imP9sHL_SJVyPaJkn4wNkG1SNzsFUTcEP4o4s1S467Ouhivmc5Y"
 }
