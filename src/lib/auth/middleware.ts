@@ -4,17 +4,16 @@
  */
 
 import type { Request, Response, NextFunction } from 'express'
-import { validateToken, AuthenticationError } from './jwt-service'
-import { 
-  getUserAuthentication, 
-  validateJWTAndGetUser, 
-  hasRequiredRole, 
+import { validateToken } from './jwt-service'
+import {
+  getUserAuthentication,
+  hasRequiredRole,
   hasPermission,
   type UserRole,
-  type UserAuthentication 
 } from './better-auth-integration'
 import { logSecurityEvent, SecurityEventType } from '../security'
-import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
+// Note: updatePhase6AuthenticationProgress intentionally not imported here because
+// it's not used by this middleware. Import it where needed by callers.
 
 // Client info extraction
 export interface ClientInfo {
@@ -34,21 +33,21 @@ export async function authenticateRequest(
   try {
     // Extract token from request
     const token = extractTokenFromRequest(req)
-    
+
     if (!token) {
       return sendUnauthorizedResponse(res, 'No authentication token provided')
     }
 
     // Validate token
     const validation = await validateToken(token, 'access')
-    
+
     if (!validation.valid) {
       return sendUnauthorizedResponse(res, 'Invalid authentication token')
     }
 
     // Check if user account is in good standing
     const userAuth = getUserAuthentication(validation.userId!)
-    
+
     if (!userAuth || userAuth.authenticationStatus !== 'authenticated') {
       return sendUnauthorizedResponse(res, 'User account is not authenticated')
     }
@@ -99,7 +98,7 @@ export async function authenticateRequest(
 export function requireRole(requiredRole: UserRole) {
   return async function(req: Request, res: Response, next: NextFunction): Promise<void> {
     const user = req.context?.user
-    
+
     if (!user) {
       return sendUnauthorizedResponse(res, 'User context not found')
     }
@@ -111,7 +110,7 @@ export function requireRole(requiredRole: UserRole) {
         userRole: user.role,
         endpoint: req.path,
       })
-      
+
       return sendForbiddenResponse(res, 'Insufficient permissions')
     }
 
@@ -125,7 +124,7 @@ export function requireRole(requiredRole: UserRole) {
 export function requirePermission(permission: string) {
   return async function(req: Request, res: Response, next: NextFunction): Promise<void> {
     const user = req.context?.user
-    
+
     if (!user) {
       return sendUnauthorizedResponse(res, 'User context not found')
     }
@@ -137,7 +136,7 @@ export function requirePermission(permission: string) {
         userRole: user.role,
         endpoint: req.path,
       })
-      
+
       return sendForbiddenResponse(res, 'Permission denied')
     }
 
@@ -151,20 +150,20 @@ export function requirePermission(permission: string) {
 export function requireAnyRole(allowedRoles: UserRole[]) {
   return async function(req: Request, res: Response, next: NextFunction): Promise<void> {
     const user = req.context?.user
-    
+
     if (!user) {
       return sendUnauthorizedResponse(res, 'User context not found')
     }
 
     const hasAllowedRole = allowedRoles.some(role => hasRequiredRole(user.role, role))
-    
+
     if (!hasAllowedRole) {
       await logSecurityEvent(SecurityEventType.PERMISSION_DENIED, user.id, {
         requiredRoles: allowedRoles,
         userRole: user.role,
         endpoint: req.path,
       })
-      
+
       return sendForbiddenResponse(res, 'Insufficient permissions')
     }
 
@@ -178,20 +177,20 @@ export function requireAnyRole(allowedRoles: UserRole[]) {
 export function requireAnyPermission(permissions: string[]) {
   return async function(req: Request, res: Response, next: NextFunction): Promise<void> {
     const user = req.context?.user
-    
+
     if (!user) {
       return sendUnauthorizedResponse(res, 'User context not found')
     }
 
     const hasAllowedPermission = permissions.some(permission => hasPermission(user.role, permission))
-    
+
     if (!hasAllowedPermission) {
       await logSecurityEvent(SecurityEventType.PERMISSION_DENIED, user.id, {
         requiredPermissions: permissions,
         userRole: user.role,
         endpoint: req.path,
       })
-      
+
       return sendForbiddenResponse(res, 'Permission denied')
     }
 
@@ -233,13 +232,13 @@ export async function optionalAuthentication(
 ): Promise<void> {
   try {
     const token = extractTokenFromRequest(req)
-    
+
     if (token) {
       const validation = await validateToken(token, 'access')
-      
+
       if (validation.valid && validation.userId) {
         const userAuth = getUserAuthentication(validation.userId)
-        
+
         if (userAuth && userAuth.authenticationStatus === 'authenticated') {
           req.context = req.context || {}
           req.context.user = {
@@ -251,7 +250,7 @@ export async function optionalAuthentication(
         }
       }
     }
-    
+
     next()
   } catch (error) {
     // Log but don't block - this is optional authentication
@@ -266,25 +265,25 @@ export async function optionalAuthentication(
 export function extractTokenFromRequest(req: Request): string | null {
   // Check Authorization header first
   const authHeader = req.headers.authorization
-  
+
   if (authHeader && authHeader.startsWith('Bearer ')) {
     return authHeader.substring(7) // Remove 'Bearer ' prefix
   }
-  
+
   // Check query parameters for WebSocket connections
   const tokenParam = req.query.token as string
-  
+
   if (tokenParam) {
     return tokenParam
   }
-  
+
   // Check cookie for fallback
   const tokenCookie = req.cookies?.auth_token
-  
+
   if (tokenCookie) {
     return tokenCookie
   }
-  
+
   return null
 }
 
@@ -292,9 +291,9 @@ export function extractTokenFromRequest(req: Request): string | null {
  * Get client IP address
  */
 export function getClientIp(req: Request): string {
-  return req.ip || 
-         req.headers['x-forwarded-for'] as string || 
-         req.headers['x-real-ip'] as string || 
+  return req.ip ||
+         req.headers['x-forwarded-for'] as string ||
+         req.headers['x-real-ip'] as string ||
          'unknown'
 }
 
@@ -356,14 +355,14 @@ export function createAuthRateLimit(options: {
   return async function(req: Request, res: Response, next: NextFunction): Promise<void> {
     const ip = getClientIp(req)
     const now = Date.now()
-    
+
     let requestData = requests.get(ip)
-    
+
     if (!requestData || now > requestData.resetTime) {
       requestData = { count: 0, resetTime: now + windowMs }
       requests.set(ip, requestData)
     }
-    
+
     // Check if limit exceeded
     if (requestData.count >= max) {
       await logSecurityEvent(SecurityEventType.RATE_LIMIT_EXCEEDED, null, {
@@ -372,7 +371,7 @@ export function createAuthRateLimit(options: {
         limit: max,
         windowMs: windowMs,
       })
-      
+
       return res.status(429).json({
         success: false,
         error: {
@@ -382,26 +381,27 @@ export function createAuthRateLimit(options: {
         },
       })
     }
-    
+
     // Increment counter
     requestData.count++
-    
+
     // Store original send function
     const originalSend = res.send
-    
+
     // Override send to track response status
-    res.send = function(body: any): Response {
-      const shouldSkip = 
+    res.send = function(body: unknown): Response {
+      const shouldSkip =
         (res.statusCode < 400 && skipSuccessfulRequests) ||
         (res.statusCode >= 400 && skipFailedRequests)
-      
+
       if (shouldSkip) {
         requestData!.count--
       }
-      
-      return originalSend.call(this, body)
+
+  // Forward the body to the original send implementation
+  return originalSend.call(this, body as Parameters<typeof originalSend>[0])
     }
-    
+
     next()
   }
 }
@@ -414,10 +414,10 @@ export function csrfProtection(req: Request, res: Response, next: NextFunction):
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
     return next()
   }
-  
+
   // Check for CSRF token
   const csrfToken = req.headers['x-csrf-token'] as string || req.body?._csrf
-  
+
   if (!csrfToken) {
     return res.status(403).json({
       success: false,
@@ -427,10 +427,10 @@ export function csrfProtection(req: Request, res: Response, next: NextFunction):
       },
     })
   }
-  
+
   // Validate CSRF token (implement proper validation)
   // This is a simplified example - use proper CSRF token generation/validation
-  
+
   next()
 }
 
@@ -444,13 +444,13 @@ export function securityHeaders(req: Request, res: Response, next: NextFunction)
   res.setHeader('X-XSS-Protection', '1; mode=block')
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
-  
+
   // CSP header (adjust based on your needs)
   res.setHeader(
     'Content-Security-Policy',
     "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' ws: wss:; frame-ancestors 'none';"
   )
-  
+
   next()
 }
 

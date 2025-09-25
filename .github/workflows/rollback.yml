@@ -8,7 +8,7 @@ on:
 
 env:
   NODE_VERSION: 24.8.0
-  PNPM_VERSION: 10.16.0
+  PNPM_VERSION: 10.17.1
   NODE_ENV: production
 
 jobs:

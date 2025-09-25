@@ -16,6 +16,9 @@ RUN apt-get update -qq && \
 ARG PNPM_VERSION=
 RUN npm install -g pnpm@$PNPM_VERSION
 
+# Install uv (lightweight dependency manager recommended by project)
+RUN python3 -m pip install --no-cache-dir uv || true
+
 WORKDIR /app
 
 # Create Python virtual environment for ML models
@@ -23,8 +26,13 @@ RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Install Python ML dependencies
+# Prefer using uv when available to ensure reproducible installs. Fall back to pip.
 COPY /src/lib/ai/bias-detection/requirements.txt .
-RUN pip install --no-cache-dir --requirement requirements.txt
+RUN if command -v uv >/dev/null 2>&1; then \
+            uv pip install --no-cache-dir --requirement requirements.txt; \
+        else \
+            pip install --no-cache-dir --requirement requirements.txt; \
+        fi
 
 # Build stage
 FROM base AS build

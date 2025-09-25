@@ -99,7 +99,7 @@ build-frontend:
       --build-arg SENTRY_AUTH_TOKEN="$SENTRY_AUTH_TOKEN" \
       --build-arg SENTRY_RELEASE="$BUILD_SENTRY_RELEASE" \
       --build-arg PUBLIC_SENTRY_DSN="$PUBLIC_SENTRY_DSN" \
-  --build-arg BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
+      --build-arg BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
       --cache-from type=registry,ref=$CI_REGISTRY_IMAGE:cache \
       --cache-to type=registry,ref=$CI_REGISTRY_IMAGE:cache,mode=max \
       -t $CONTAINER_IMAGE -t $CONTAINER_IMAGE_LATEST .
@@ -416,14 +416,19 @@ build-ai-backend:
     DOCKER_TLS_CERTDIR: ''
   before_script:
   - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
-  script:
-  - echo "Building AI backend components..."
-  - cd ai
-  - docker buildx create --use --name ai-builder || docker buildx use ai-builder
-  - docker buildx build --load \ --build-arg BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \ -t $CI_REGISTRY_IMAGE/ai:$CI_COMMIT_SHA -t $CI_REGISTRY_IMAGE/ai:latest .
-  - docker push $CI_REGISTRY_IMAGE/ai:$CI_COMMIT_SHA
-  - docker push $CI_REGISTRY_IMAGE/ai:latest
-  - echo "✅ AI backend container pushed to GitLab Container Registry"
+  script: |
+    echo "Building AI backend components..."
+    cd ai
+    docker buildx create --use --name ai-builder || docker buildx use ai-builder
+
+    docker buildx build \
+      --load \
+      --build-arg BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
+      -t $CI_REGISTRY_IMAGE/ai:$CI_COMMIT_SHA -t $CI_REGISTRY_IMAGE/ai:latest .
+
+    docker push $CI_REGISTRY_IMAGE/ai:$CI_COMMIT_SHA
+    docker push $CI_REGISTRY_IMAGE/ai:latest
+    echo "✅ AI backend container pushed to GitLab Container Registry"
   rules:
   - if: $CI_COMMIT_BRANCH == "master"
     changes:

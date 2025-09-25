@@ -90,7 +90,7 @@ async def get_current_agent(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Authentication service error",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) from e
 
 
 async def get_optional_current_agent(
@@ -224,14 +224,12 @@ class AuthMiddleware:
         try:
             # Validate token
             token_data = await self.auth_service.validate_token(token)
-            agent_id = token_data.get("sub")
+            if agent_id := token_data.get("sub"):
+                # Get agent details
+                return await self.auth_service.get_agent_by_id(agent_id)
 
-            if not agent_id:
+            else:
                 return None
-
-            # Get agent details
-            agent = await self.auth_service.get_agent_by_id(agent_id)
-            return agent
 
         except AuthenticationError:
             return None
@@ -306,15 +304,9 @@ async def validate_api_key(
     """
     try:
         # This would typically involve checking against stored hash
-        # For now, we'll use the auth service method
-        agent = await auth_service.get_agent_by_id(agent_id)
-        if not agent:
-            return False
-
-        # In a real implementation, you'd verify the API key hash
-        # This is a simplified version
-        return True
-
+        # For now, we'll use the auth service method and return whether
+        # the agent exists. Real API key verification should check a hash.
+        return bool(await auth_service.get_agent_by_id(agent_id))
     except Exception as e:
         logger.error("API key validation error", error=str(e))
         return False

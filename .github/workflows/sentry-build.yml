@@ -1,16 +1,22 @@
 name: Build & Sentry Release
 
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+  checks: read
+  pull-requests: read
+  security-events: write
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   workflow_dispatch:
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Map secrets into env so they can be referenced in `if` expressions
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NODE_OPTIONS: '--max-old-space-size=4096'

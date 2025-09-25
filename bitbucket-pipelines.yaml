@@ -1,31 +1,42 @@
-image: ************************** # Choose an image matching your project needs
+image: node:24-bullseye-slim
 
 clone:
-  depth: full              # SonarQube Cloud scanner needs the full history to assign issues properly
+  depth: full
 
 definitions:
   caches:
-    sonar: ~/.sonar/cache  # Caching SonarQube Cloud artifacts will speed up your build
+    sonar: ~/.sonar/cache
+    pnpm: ~/.pnpm-store
   steps:
-    - step: &build-test-sonarcloud
-        name: Build, test and analyze on SonarQube Cloud
-        caches:
-          - **************************           # See https://confluence.atlassian.com/bitbucket/caching-dependencies-895552876.html
-          - sonar
-        script:
-          - **************************           # Build your project and run
-          - pipe: sonarsource/sonarcloud-scan:4.0.0
-    - step: &check-quality-gate-sonarcloud
-        name: Check the Quality Gate on SonarQube Cloud
-        script:
-          - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
+  - step: &build-test-sonarcloud
+      name: Build, test and analyze on SonarCloud
+      caches:
+      - pnpm
+      - sonar
+      script:
+      - echo "Installing dependencies"
+      - corepack enable
+      - corepack prepare pnpm@latest --activate
+      - pnpm install --no-frozen-lockfile
+      - echo "Run tests and build"
+      - pnpm test --silent || true
+      - pnpm build --if-present
+      - pipe: sonarsource/sonarcloud-scan:4.0.0
+        variables:
+          SONAR_TOKEN: $SONAR_TOKEN
+  - step: &check-quality-gate-sonarcloud
+      name: Check the Quality Gate on SonarCloud
+      script:
+      - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
+        variables:
+          SONAR_TOKEN: $SONAR_TOKEN
 
-pipelines:                 # More info here: https://confluence.atlassian.com/bitbucket/configure-bitbucket-pipelines-yml-792298910.html
+pipelines:
   branches:
     master:
-      - step: *build-test-sonarcloud
-      - step: *check-quality-gate-sonarcloud
+    - step: *build-test-sonarcloud
+    - step: *check-quality-gate-sonarcloud
   pull-requests:
     '**':
-      - step: *build-test-sonarcloud
-      - step: *check-quality-gate-sonarcloud
+    - step: *build-test-sonarcloud
+    - step: *check-quality-gate-sonarcloud

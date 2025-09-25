@@ -113,7 +113,7 @@
         "**/secret-scan-artifacts": true,
         "**/security-scan-artifacts": true
     },
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit",
         "source.fixAll.eslint": "explicit"
@@ -124,5 +124,25 @@
     "python-envs.pythonProjects": [],
     "roo-cline.newTaskRequireTodos": true,
     "roo-cline.preventCompletionWithOpenTodos": true,
-    "sourcery.token": "user_ZW9Gn7o6imP9sHL_SJVyPaJkn4wNkG1SNzsFUTcEP4o4s1S467Ouhivmc5Y"
+    "github.copilot.chat.customOAIModels": {
+        "moonshotai/kimi-k2-instruct-0905": {
+            "name": "Kimi-K2-Instruct",
+            "url": "https://integrate.api.nvidia.com/v1",
+            "requiresAPIKey": true,
+            "toolCalling": true,
+            "vision": false,
+            "maxInputTokens": 256000,
+            "maxOutputTokens": 4096
+        },
+        "qwen/qwen3-next-80b-a3b-instruct": {
+            "name": "Qwen3-Next-Instruct",
+            "url": "https://integrate.api.nvidia.com/v1",
+            "requiresAPIKey": true,
+            "toolCalling": true,
+            "vision": false,
+            "maxInputTokens": 256000,
+            "maxOutputTokens": 4096
+        }
+    },
+    "files.autoSave": "afterDelay"
 }

@@ -38,7 +38,7 @@ export interface TokenValidationResult {
   role?: UserRole
   tokenId?: string
   expiresAt?: number
-  payload?: any
+  payload?: JwtPayload
   error?: string
 }
 
@@ -50,6 +50,29 @@ export interface ClientInfo {
 
 export type UserRole = 'admin' | 'therapist' | 'patient' | 'researcher' | 'guest'
 export type TokenType = 'access' | 'refresh'
+
+// JWT payload shape (partial) used by this service
+export interface JwtPayload {
+  sub?: string
+  role?: UserRole
+  jti?: string
+  type?: TokenType
+  exp?: number
+  client?: ClientInfo
+  accessTokenId?: string
+  [key: string]: unknown
+}
+
+// Token metadata stored in cache
+export interface TokenMetadata {
+  userId?: string
+  role?: UserRole
+  type?: TokenType
+  expiresAt?: number
+  clientInfo?: ClientInfo
+  accessTokenId?: string
+  id?: string
+}
 
 export class AuthenticationError extends Error {
   constructor(message: string, public code?: string) {
@@ -93,9 +116,9 @@ async function storeTokenMetadata(
 /**
  * Get token metadata from Redis
  */
-async function getTokenMetadata(tokenId: string): Promise<any | null> {
+async function getTokenMetadata(tokenId: string): Promise<TokenMetadata | null> {
   const key = `token:${tokenId}`
-  return await getFromCache(key)
+  return (await getFromCache(key)) as TokenMetadata | null
 }
 
 /**
@@ -113,7 +136,7 @@ async function isTokenRevoked(tokenId: string): Promise<boolean> {
 async function markTokenRevoked(tokenId: string, reason: string): Promise<void> {
   const revokedKey = `revoked:${tokenId}`
   const metadata = await getTokenMetadata(tokenId)
-  
+
   if (metadata) {
     await setInCache(revokedKey, { reason, revokedAt: currentTimestamp() }, 24 * 60 * 60) // 24 hours
     await removeFromCache(`token:${tokenId}`)
@@ -123,12 +146,10 @@ async function markTokenRevoked(tokenId: string, reason: string): Promise<void> 
 /**
  * Validate token security checks
  */
-function validateTokenSecurity(payload: any, metadata: any): void {
+function validateTokenSecurity(payload: JwtPayload, metadata: TokenMetadata | null): void {
   // Check for token binding (prevent session hijacking)
-  if (payload.client?.deviceId && metadata.clientInfo?.deviceId) {
-    if (payload.client.deviceId !== metadata.clientInfo.deviceId) {
-      throw new AuthenticationError('Token device binding mismatch', 'DEVICE_MISMATCH')
-    }
+  if (payload.client?.deviceId && metadata?.clientInfo?.deviceId && payload.client.deviceId !== metadata.clientInfo.deviceId) {
+    throw new AuthenticationError('Token device binding mismatch', 'DEVICE_MISMATCH')
   }
 }
 
@@ -137,8 +158,8 @@ function validateTokenSecurity(payload: any, metadata: any): void {
  */
 function extractTokenId(token: string): string {
   try {
-    const decoded = jwt.decode(token) as any
-    return decoded?.jti
+    const decoded = jwt.decode(token) as JwtPayload | null
+    return typeof decoded?.jti === 'string' ? decoded.jti : ''
   } catch {
     return ''
   }
@@ -190,7 +211,7 @@ export async function generateTokenPair(
   const accessToken = jwt.sign(accessPayload, JWT_CONFIG.secret, {
     algorithm: JWT_CONFIG.algorithm,
   })
-  
+
   const refreshToken = jwt.sign(refreshPayload, JWT_CONFIG.secret, {
     algorithm: JWT_CONFIG.algorithm,
   })
@@ -245,7 +266,7 @@ export async function validateToken(
     const payload = jwt.verify(token, JWT_CONFIG.secret, {
       audience: JWT_CONFIG.audience,
       issuer: JWT_CONFIG.issuer,
-    }) as any
+    }) as JwtPayload
 
     // Validate token type matches expected
     if (payload.type !== tokenType) {
@@ -265,13 +286,13 @@ export async function validateToken(
     }
 
     // Validate token metadata in Redis
-    const tokenMetadata = await getTokenMetadata(payload.jti)
+    const tokenMetadata = await getTokenMetadata(payload.jti || '')
     if (!tokenMetadata) {
       throw new AuthenticationError('Token metadata not found')
     }
 
     // Additional security checks
-    validateTokenSecurity(payload, tokenMetadata)
+  validateTokenSecurity(payload, tokenMetadata)
 
     // Log successful validation
     await logSecurityEvent(SecurityEventType.TOKEN_VALIDATED, payload.sub, {
@@ -419,16 +440,16 @@ export async function measureTokenOperation<T>(
   operationName: string
 ): Promise<T> {
   const start = performance.now()
-  
+
   try {
     const result = await operation()
     const duration = performance.now() - start
-    
+
     // Log performance metrics
     if (duration > 100) {
       console.warn(`Token operation ${operationName} took ${duration.toFixed(2)}ms`)
     }
-    
+
     return result
   } catch (error) {
     const duration = performance.now() - start

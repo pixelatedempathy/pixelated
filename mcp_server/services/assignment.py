@@ -5,8 +5,9 @@ This service provides intelligent task assignment strategies that consider
 agent capabilities, current load, performance history, and task requirements.
 """
 
+
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List, Optional, Dict, Any, Tuple
 from dataclasses import dataclass
 from enum import Enum
@@ -387,24 +388,45 @@ class TaskAssignmentService:
         Returns:
             Assignment score
         """
-        if priority_capability := next(
+        # Find the agent capability for priority handling explicitly (avoid walrus for clarity)
+        priority_capability = next(
             (cap for cap in agent.capabilities if cap.name == "priority_handling"),
             None,
-        ):
-            # Score based on priority level match
-            priority_level = task.priority.value
-            capability_level = priority_capability.level
+        )
 
-            score = (
-                1.0
-                if capability_level >= priority_level
-                else capability_level / priority_level
-            )
+        if priority_capability is not None:
+            # Score based on priority level match with defensive checks
+            priority_level = getattr(task.priority, "value", None)
+            capability_level = getattr(priority_capability, "level", None)
+
+            # Default fallback values and safety
+            capability_match = False
+            try:
+                if priority_level is None or capability_level is None:
+                    # Missing data -> conservative score
+                    score = 0.0
+                else:
+                    # Normalize to floats and avoid division by zero
+                    priority_level = float(priority_level)
+                    capability_level = float(capability_level)
+
+                    if priority_level == 0:
+                        # If task priority level is zero (unexpected), prefer higher capability
+                        score = 1.0 if capability_level >= priority_level else 0.0
+                    else:
+                        score = 1.0 if capability_level >= priority_level else capability_level / priority_level
+
+                    capability_match = capability_level >= priority_level
+            except Exception:
+                # Any unexpected type/error -> conservative fallback
+                score = 0.0
+                capability_match = False
+
             factors = {
-                "task_priority": task.priority.name,
+                "task_priority": getattr(task.priority, "name", None),
                 "task_priority_level": priority_level,
                 "agent_priority_level": capability_level,
-                "capability_match": capability_level >= priority_level
+                "capability_match": capability_match,
             }
 
         else:
@@ -586,8 +608,8 @@ class AssignmentHistoryTracker:
             "strategy": strategy.value,
             "score": score,
             "success": success,
-            "timestamp": datetime.utcnow().isoformat(),
-            "execution_time_seconds": execution_time_seconds
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "execution_time_seconds": execution_time_seconds,
         }
 
         self.assignment_history.append(record)
@@ -630,7 +652,8 @@ class AssignmentHistoryTracker:
             }
 
         total_assignments = len(agent_assignments)
-        successful_assignments = sum(1 for record in agent_assignments if record["success"])
+        successful_assignments = sum(bool(record["success"])
+                                 for record in agent_assignments)
         success_rate = successful_assignments / total_assignments if total_assignments > 0 else 0
 
         scores = [record["score"] for record in agent_assignments if record["score"] is not None]
@@ -677,7 +700,8 @@ class AssignmentHistoryTracker:
                 continue
 
             total_assignments = len(strategy_assignments)
-            successful_assignments = sum(1 for record in strategy_assignments if record["success"])
+            successful_assignments = sum(bool(record["success"])
+                                     for record in strategy_assignments)
             success_rate = successful_assignments / total_assignments if total_assignments > 0 else 0
 
             scores = [record["score"] for record in strategy_assignments if record["score"] is not None]
@@ -705,10 +729,7 @@ def init_assignment_service(service: Optional[TaskAssignmentService] = None) -> 
     tests and runtime code can opt into a shared instance.
     """
     global _assignment_service
-    if service is None:
-        _assignment_service = TaskAssignmentService()
-    else:
-        _assignment_service = service
+    _assignment_service = TaskAssignmentService() if service is None else service
 
 
 def get_assignment_service() -> TaskAssignmentService:
