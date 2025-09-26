@@ -36,7 +36,8 @@ function redactValue(val, keepLast = 8) {
       return 'REDACTED'
     }
     return `${s.slice(0, 4)}...${s.slice(-keepLast)}`
-  } catch {
+  } catch (e) {
+    console.error('Error in redactValue:', e)
     return '<invalid>'
   }
 }
