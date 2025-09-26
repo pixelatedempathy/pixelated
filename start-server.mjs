@@ -1,11 +1,11 @@
-#!usr/bin/env node
+#!/usr/bin/env node
 
 import { Sentry, closeSentry } from './instrument.mjs'
 
 import { createServer } from 'node:http'
 import { handler as ssrHandler } from './dist/server/entry.mjs'
 
-const port = process.env.PORT || process.env.WEBSITES_PORT || 4321
+const initialPort = Number(process.env.PORT || process.env.WEBSITES_PORT || 4321)
 const host = process.env.HOST || '0.0.0.0'
 
 const server = createServer(ssrHandler)
@@ -44,9 +44,17 @@ function logSentryStartupChecks() {
   }
 }
 
-// Error handling
 server.on('error', (err) => {
   console.error('Server error:', err)
+
+  if (err && err.code === 'EADDRINUSE') {
+    const fallbackDisabled = !!process.env.WEBSITES_PORT || !!process.env.NO_PORT_FALLBACK || !!process.env.FORCE_EXIT_ON_EADDRINUSE
+    if (!fallbackDisabled) {
+      console.warn('EADDRINUSE received on server (global handler) but port fallback is enabled — deferring to retry handler.')
+      return
+    }
+  }
+
   try {
     if (Sentry) {
       Sentry.captureException(err)
@@ -54,6 +62,7 @@ server.on('error', (err) => {
   } catch (e) {
     console.error('Failed to capture exception to Sentry:', e)
   }
+
   closeSentry().finally(() => process.exit(1))
 })
 
@@ -73,14 +82,55 @@ process.on('SIGINT', () => {
   })
 })
 
-server.listen(port, host, () => {
-  console.log(`Server running at http://${host}:${port}`)
-  try {
-    logSentryStartupChecks()
-  } catch (e) {
-    console.error('Failed to run Sentry startup checks:', e)
+function tryListen(portToTry, retriesLeft) {
+  const onListening = () => {
+    console.log(`Server running at http://${host}:${portToTry}`)
+    try {
+      logSentryStartupChecks()
+    } catch (e) {
+      console.error('Failed to run Sentry startup checks:', e)
+    }
   }
-})
+
+  const onError = (err) => {
+    if (err && err.code === 'EADDRINUSE') {
+      const fallbackDisabled = !!process.env.WEBSITES_PORT || !!process.env.NO_PORT_FALLBACK || !!process.env.FORCE_EXIT_ON_EADDRINUSE
+      console.error(`Port ${portToTry} is already in use.`)
+      try {
+        if (Sentry) {
+          Sentry.captureException(err)
+        }
+      } catch (e) {
+        console.error('Failed to capture EADDRINUSE to Sentry:', e)
+      }
+      if (fallbackDisabled) {
+        console.error('Port fallback disabled by environment (WEBSITES_PORT or NO_PORT_FALLBACK or FORCE_EXIT_ON_EADDRINUSE). Exiting.')
+        closeSentry().finally(() => process.exit(1))
+        return
+      }
+
+      if (retriesLeft <= 0) {
+        console.error('No retries left for port fallback. Exiting.')
+        closeSentry().finally(() => process.exit(1))
+        return
+      }
+
+      const nextPort = portToTry + 1
+      console.warn(`Attempting fallback to port ${nextPort} (${retriesLeft - 1} retries left)`)
+      // Small delay before retrying to avoid tight loop
+      setTimeout(() => tryListen(nextPort, retriesLeft - 1), 250)
+      return
+    }
+
+    console.error('Listen error:', err)
+  }
+
+  server.once('error', onError)
+  server.listen(portToTry, host, onListening)
+}
+
+const maxRetries = Number(process.env.PORT_FALLBACK_MAX_RETRIES || 10)
+tryListen(initialPort, maxRetries)
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason)
