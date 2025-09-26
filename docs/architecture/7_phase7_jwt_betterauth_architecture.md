@@ -1,4 +1,18 @@
-# Phase 7 JWT Authentication Service Architecture with Better-Auth Integration
+---
+post_title: "Phase 7 JWT Authentication Service Architecture with Better-Auth Integration"
+author1: "Pixelated Engineering"
+date: "2025-07-29"
+tags:
+  - architecture
+  - authentication
+  - jwt
+  - better-auth
+  - security
+  - hipaa
+  - phase7
+  - integration
+summary: "Comprehensive architecture for JWT authentication with Better-Auth, HIPAA compliance, and seamless integration with existing systems."
+---
 
 ## 🎯 Executive Summary
 

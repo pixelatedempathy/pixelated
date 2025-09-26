@@ -2,12 +2,10 @@ name: AI Model Validation Pipeline
 
 permissions:
   contents: read
-  id-token: write
   actions: read
   checks: read
   pull-requests: read
-  security-events: write
-
+  issues: write
 on:
   schedule:
   - cron: 0 0 * * *
