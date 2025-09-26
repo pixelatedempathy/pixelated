@@ -24,6 +24,7 @@ const isPortFallbackDisabled =
   !!process.env.FORCE_EXIT_ON_EADDRINUSE
 
 const server = createServer(ssrHandler)
+let activeRetryServer = null
 
 function redactValue(val, keepLast = 8) {
   if (!val) {
@@ -84,6 +85,15 @@ server.on('error', (err) => {
 
 process.on('SIGTERM', () => {
   console.log('SIGTERM received, shutting down gracefully')
+  try {
+    if (activeRetryServer && activeRetryServer !== server) {
+      // Only remove the 'error' listeners we added for retries.
+      activeRetryServer.removeAllListeners('error')
+      activeRetryServer.close(() => { })
+    }
+  } catch {
+    // ignore
+  }
   server.close(() => {
     console.log('Process terminated')
     process.exit(0)
@@ -92,6 +102,15 @@ process.on('SIGTERM', () => {
 
 process.on('SIGINT', () => {
   console.log('SIGINT received, shutting down gracefully')
+  try {
+    if (activeRetryServer && activeRetryServer !== server) {
+      // Only remove the 'error' listeners we added for retries.
+      activeRetryServer.removeAllListeners('error')
+      activeRetryServer.close(() => { })
+    }
+  } catch {
+    // ignore
+  }
   server.close(() => {
     console.log('Process terminated')
     process.exit(0)
@@ -112,7 +131,24 @@ function tryListen(portToTry, retriesLeft, delay = baseDelay) {
     port = 4321
   }
 
+  // If there's an existing retry server, close and detach it so it can be
+  // garbage collected before creating a new one.
+  if (activeRetryServer) {
+    try {
+      // Only clear 'error' listeners to avoid touching other process-wide
+      // handlers that may be registered elsewhere.
+      activeRetryServer.removeAllListeners('error')
+      activeRetryServer.close(() => { })
+    } catch {
+      // ignore
+    }
+    activeRetryServer = null
+  }
+
+  // Create a fresh server for this listen attempt. We keep a reference in
+  // activeRetryServer so we can clean it up on the next retry.
   const retryServer = createServer(ssrHandler)
+  activeRetryServer = retryServer
 
   const onListening = () => {
     retryServer.off('error', onError);
@@ -158,22 +194,6 @@ function tryListen(portToTry, retriesLeft, delay = baseDelay) {
 
   retryServer.once('error', onError)
   retryServer.listen(port, host, onListening)
-
-  process.once('SIGTERM', () => {
-    console.log('SIGTERM received, shutting down gracefully')
-    retryServer.close(() => {
-      console.log('Process terminated')
-      process.exit(0)
-    })
-  })
-
-  process.once('SIGINT', () => {
-    console.log('SIGINT received, shutting down gracefully')
-    retryServer.close(() => {
-      console.log('Process terminated')
-      process.exit(0)
-    })
-  })
 }
 
 const retriesRaw = process.env.PORT_FALLBACK_MAX_RETRIES;
