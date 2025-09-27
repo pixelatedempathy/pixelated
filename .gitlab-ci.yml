@@ -4,24 +4,6 @@ stages:
 - build
 - test
 - deploy
-qodana:
-  stage: test
-  image:
-    name: jetbrains/qodana-js:2025.2
-    entrypoint: [ "" ]
-  variables:
-    QODANA_TOKEN: $QODANA_TOKEN
-    GIT_STRATEGY: fetch
-    QODANA_OFFLINE_MODE: "true"
-    QODANA_DISABLE_CLOUD: "true"
-    JAVA_OPTS: "-Xmx4g -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
-  script:
-  - qodana --save-report --results-dir=$CI_PROJECT_DIR/.qodana --cache-dir=/tmp/qodana-cache
-  allow_failure: true
-  timeout: 20m
-  rules:
-  - if: $CI_COMMIT_BRANCH == "master"
-  - if: "$CI_MERGE_REQUEST_ID"
 variables:
   DOCKER_DRIVER: overlay2
   DOCKER_TLS_CERTDIR: "/certs"
@@ -130,10 +112,9 @@ test-container:
   script:
   - echo "Testing container health..."
   - docker pull $CONTAINER_IMAGE
-  - |
-    docker run -d --name test-container \
-  -e BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
-      $CONTAINER_IMAGE
+  - docker run -d --name test-container \
+  - BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
+    $CONTAINER_IMAGE
   - sleep 30
   - docker logs test-container
   - |

@@ -81,7 +81,6 @@ COPY --chown=astro:astro instrument.mjs ./
 
 COPY --chown=astro:astro astro ./astro
 
-COPY --chown=astro:astro .env* ./
 COPY --chown=astro:astro *.config.* ./
 
 RUN mkdir -p /tmp/.astro /app/node_modules/.astro && \

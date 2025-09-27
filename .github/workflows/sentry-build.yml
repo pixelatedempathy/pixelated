@@ -2,12 +2,6 @@ name: Build & Sentry Release
 
 permissions:
   contents: read
-  id-token: write
-  actions: read
-  checks: read
-  pull-requests: read
-  security-events: write
-
 on:
   push:
     branches: [ master ]
