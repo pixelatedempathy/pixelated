@@ -190,3 +190,7 @@ tsconfig.json.backup
 TYPESCRIPT_CRASH_FIX.md
 WARP.md
 .claude/
+
+checkov-results-fixed.sarif
+ai/techdeck
+playwright-report-browser-compat

@@ -11,7 +11,7 @@
 
 ## 🧠 Foundational Architecture
 
-### Base Model Selection: Harbringer-24B -- Mistral Small 3.1
+### Base Model Selection: Wayfarer2
 **Rationale**: Industry consensus for conversational and role-playing excellence
 - Superior dialogue capabilities
 - Strong reasoning foundation

@@ -88,7 +88,7 @@
 
 ## 🏗️ Project Architecture
 
-### Foundation Model: Qwen3-30B-A3B
+### Foundation Model: Wayfarer2
 **Rationale**: Industry consensus for conversational and role-playing excellence
 - Superior dialogue capabilities
 - Strong reasoning foundation
