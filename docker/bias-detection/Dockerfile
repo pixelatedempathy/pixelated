@@ -79,8 +79,7 @@ RUN addgroup --system --gid 1001 biasdetection && \
 
 COPY --from=build --chown=biasdetection:biasdetection /app/dist ./dist
 COPY --from=build --chown=biasdetection:biasdetection /app/node_modules ./node_modules
-COPY --from=build --chown=biasdetection:biasdetection /app/python ./python
-
+COPY --from=build --chown=biasdetection:biasdetection /app/src/lib/ai/bias-detection/python ./python
 RUN mkdir -p /app/cache && chown biasdetection:biasdetection /app/cache
 
 USER biasdetection

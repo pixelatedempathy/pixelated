@@ -2,12 +2,10 @@ name: AI Model Validation Pipeline
 
 permissions:
   contents: read
-  id-token: write
   actions: read
   checks: read
   pull-requests: read
-  security-events: write
-
+  issues: write
 on:
   schedule:
   - cron: 0 0 * * *
@@ -114,19 +112,19 @@ jobs:
           # Show verbose diagnostics on TLS/connection errors
           echo "Diagnosing with curl --verbose (redacting body)..."
           set +e
+          # Run verbose diagnostics without sending any authentication headers or secret values.
+          # This helps debug TLS/connection issues while avoiding hardcoded secrets in the workflow.
           curl --insecure --http1.1 -4 --tlsv1.2 --max-time 15 -v -o /dev/null \
             -X POST "${APP_URL}/api/ai/validation/webhook" \
             -H "Content-Type: application/json" \
             -H "x-github-event: workflow_dispatch" \
-            -H "x-hub-signature-256: REDACTED" \
-            -d '{"action":"validate","environment":"REDACTED"}' || true
-          echo "Attempting TLS 1.3 as fallback (verbosity, redacted body)..."
+            --data '{}' || true
+          echo "Attempting TLS 1.3 as fallback (verbosity, no auth headers)..."
           curl --insecure --http1.1 -4 --tlsv1.3 --max-time 15 -v -o /dev/null \
             -X POST "${APP_URL}/api/ai/validation/webhook" \
             -H "Content-Type: application/json" \
             -H "x-github-event: workflow_dispatch" \
-            -H "x-hub-signature-256: REDACTED" \
-            -d '{"action":"validate","environment":"REDACTED"}' || true
+            --data '{}' || true
           set -e
         elif [[ $STATUS_CODE -ge 200 && $STATUS_CODE -lt 300 ]]; then
           echo "success=true" >> "$GITHUB_OUTPUT"
@@ -162,11 +160,12 @@ jobs:
         if [[ ${CURL_EXIT} -ne 0 ]]; then
           echo "success=false" >> "$GITHUB_OUTPUT"
           echo "Failed to fetch validation results (curl exit ${CURL_EXIT})"
-          echo "Diagnosing fetch with curl --verbose (redacted token)..."
+          echo "Diagnosing fetch with curl --verbose (no auth headers)..."
+          # Diagnostic fetch without Authorization header to avoid leaking hardcoded tokens.
+          # We only need to validate connectivity/TLS here; authentication is performed in the main step.
           set +e
           curl --http1.1 -4 --tlsv1.2 --max-time 15 -v -o /dev/null \
-            "${APP_URL}/api/ai/validation/history?limit=1" \
-            -H "Authorization: Bearer REDACTED" || true
+            "${APP_URL}/api/ai/validation/history?limit=1" || true
           set -e
         elif [[ $STATUS_CODE -ge 200 && $STATUS_CODE -lt 300 ]]; then
           echo "success=true" >> "$GITHUB_OUTPUT"

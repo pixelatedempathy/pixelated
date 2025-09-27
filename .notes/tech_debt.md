@@ -1,3 +1,15 @@
+## PIXEL-ASTRO-12: Prevent runtime error from unsafe DOM writes
+
+- Date: 2025-09-25
+- Files changed:
+	- `src/components/widgets/SearchSwitch.astro`
+
+- Summary: A Sentry issue (PIXEL-ASTRO-12) reported a client-side runtime exception caused by unsafe DOM writes and non-null assertions when updating `#search-results`. The component used `document.getElementById('search-results')!` with `innerHTML +=` which throws when the element is missing or unexpectedly removed. This change avoids non-null assertions and constructs DOM nodes safely via `createElement`/`appendChild` and guards against missing container elements.
+
+- Follow-ups:
+	- Add a simple browser unit test for `SearchSwitch` to assert no-throw behavior when `#search-results` is absent.
+	- Consider auditing other components that use `!` non-null assertions with DOM mutations (search results, analytics widgets).
+
 Tech debt: standardize Python installs with uv
 --------------------------------------------
 
@@ -28,3 +40,8 @@ Notes:
 
 ## Notes
 - This file created to replace lost "technical debt" file during merge. Keep concise, append future runlog snippets here.
+
+### Documentation: PIXEL-ASTRO-12 follow-up
+
+- Documented investigation and defensive fixes on 2025-09-25. No tests were run at the user's request. See the SearchSwitch change for the primary fix.
+- Status: Closed (defensive fix applied). Recommended follow-ups remain: add unit test(s), run CI, audit similar patterns across UI code.

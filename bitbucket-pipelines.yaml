@@ -19,7 +19,7 @@ definitions:
       - corepack prepare pnpm@latest --activate
       - pnpm install --no-frozen-lockfile
       - echo "Run tests and build"
-      - pnpm test --silent || true
+      - pnpm test --silent
       - pnpm build --if-present
       - pipe: sonarsource/sonarcloud-scan:4.0.0
         variables:
