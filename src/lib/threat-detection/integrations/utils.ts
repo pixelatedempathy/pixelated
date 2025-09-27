@@ -1,11 +1,12 @@
 /**
  * Utility Functions for Threat Detection Integration
- * 
+ *
  * These helper functions provide common functionality used across
  * the threat detection integration components.
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+import crypto from 'crypto'
 import type { ThreatData, ThreatResponse, ResponseAction } from '../response-orchestration'
 
 const logger = createBuildSafeLogger('threat-detection-utils')
@@ -14,7 +15,41 @@ const logger = createBuildSafeLogger('threat-detection-utils')
  * Generate a unique threat ID
  */
 export function generateThreatId(): string {
-  return `threat_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+  try {
+    const c: unknown = crypto
+    const asObj = c as Record<string, unknown> | undefined
+    if (asObj && typeof asObj['randomUUID'] === 'function') {
+      const fn = asObj['randomUUID'] as () => string
+      return `threat_${fn()}`
+    }
+    if (asObj && typeof asObj['randomBytes'] === 'function') {
+      const fn = asObj['randomBytes'] as (size: number) => Buffer
+      return `threat_${fn(16).toString('hex')}`
+    }
+  } catch (_err) {
+    // Log at debug level to avoid swallowing errors silently
+    logger.debug('generateThreatId: crypto fallback failed', { error: String(_err) })
+  }
+  return _secureId('threat_')
+}
+
+function _secureId(prefix = ''): string {
+  try {
+    const c: unknown = crypto
+    const asObj = c as Record<string, unknown> | undefined
+    if (asObj && typeof asObj['randomUUID'] === 'function') {
+      const fn = asObj['randomUUID'] as () => string
+      return `${prefix}${fn()}`
+    }
+    if (asObj && typeof asObj['randomBytes'] === 'function') {
+      const fn = asObj['randomBytes'] as (size: number) => Buffer
+      return `${prefix}${fn(16).toString('hex')}`
+    }
+  } catch (_err) {
+    // Log at debug level to avoid swallowing errors silently
+    logger.debug('_secureId: crypto fallback failed', { error: String(_err) })
+  }
+  return `${prefix}${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
 }
 
 /**
@@ -47,9 +82,9 @@ export function validateThreatData(threatData: Partial<ThreatData>): boolean {
 /**
  * Sanitize sensitive data from threat context
  */
-export function sanitizeThreatContext(context: Record<string, any>): Record<string, any> {
+export function sanitizeThreatContext(context: Record<string, unknown>): Record<string, unknown> {
   const sensitiveFields = [
-    'password', 'token', 'secret', 'key', 'authorization', 
+    'password', 'token', 'secret', 'key', 'authorization',
     'credit_card', 'ssn', 'pii', 'personal', 'private'
   ]
 
@@ -57,17 +92,17 @@ export function sanitizeThreatContext(context: Record<string, any>): Record<stri
 
   Object.keys(sanitized).forEach(key => {
     const lowerKey = key.toLowerCase()
-    
+
     // Remove sensitive fields
     if (sensitiveFields.some(field => lowerKey.includes(field))) {
       delete sanitized[key]
       logger.debug('Removed sensitive field:', { field: key })
     }
-    
+
     // Sanitize string values that might contain sensitive info
-    if (typeof sanitized[key] === 'string' && sanitized[key].length > 100) {
+    if (typeof sanitized[key] === 'string' && (sanitized[key] as string).length > 100) {
       // Truncate long strings to prevent data leakage
-      sanitized[key] = sanitized[key].substring(0, 100) + '...'
+      sanitized[key] = (sanitized[key] as string).substring(0, 100) + '...'
     }
   })
 
@@ -92,7 +127,7 @@ export function calculateThreatScore(threatData: ThreatData): number {
   if (threatData.riskFactors) {
     const violationCount = threatData.riskFactors.violationCount || 0
     const timeWindow = threatData.riskFactors.timeWindow || 60000
-    
+
     // Calculate violation rate
     const violationRate = violationCount / (timeWindow / 1000)
     score += Math.min(violationRate * 10, 20) // Max 20 points from violation rate
@@ -186,7 +221,7 @@ export function isSensitiveEndpoint(endpoint: string): boolean {
 /**
  * Format threat response for logging
  */
-export function formatThreatResponseForLogging(response: ThreatResponse): Record<string, any> {
+export function formatThreatResponseForLogging(response: ThreatResponse): Record<string, unknown> {
   return {
     responseId: response.responseId,
     threatId: response.threatId,
@@ -207,8 +242,8 @@ export function formatThreatResponseForLogging(response: ThreatResponse): Record
  * Determine if a request should be blocked based on threat response
  */
 export function shouldBlockRequest(response: ThreatResponse): boolean {
-  return response.actions.some(action => 
-    action.actionType === 'block' || 
+  return response.actions.some(action =>
+    action.actionType === 'block' ||
     action.actionType === 'deny'
   )
 }
@@ -217,8 +252,8 @@ export function shouldBlockRequest(response: ThreatResponse): boolean {
  * Determine if a request should be rate limited based on threat response
  */
 export function shouldRateLimitRequest(response: ThreatResponse): boolean {
-  return response.actions.some(action => 
-    action.actionType === 'rate_limit' || 
+  return response.actions.some(action =>
+    action.actionType === 'rate_limit' ||
     action.actionType === 'throttle'
   )
 }
@@ -231,8 +266,8 @@ export function extractRateLimitParams(response: ThreatResponse): {
   windowMs: number
   message?: string
 } {
-  const rateLimitAction = response.actions.find(action => 
-    action.actionType === 'rate_limit' || 
+  const rateLimitAction = response.actions.find(action =>
+    action.actionType === 'rate_limit' ||
     action.actionType === 'throttle'
   )
 
@@ -256,12 +291,12 @@ export function extractRateLimitParams(response: ThreatResponse): {
 export function createErrorResponse(
   error: string,
   code: string = 'THREAT_DETECTION_ERROR',
-  details?: Record<string, any>
+  details?: Record<string, unknown>
 ): ThreatResponse {
   logger.error('Threat detection error:', { error, code, details })
 
   return {
-    responseId: `error_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    responseId: _secureId('error_'),
     threatId: 'error',
     severity: 'low',
     confidence: 0,
@@ -280,7 +315,7 @@ export function createErrorResponse(
 /**
  * Debounce function to limit how often a function can be called
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -292,7 +327,9 @@ export function debounce<T extends (...args: any[]) => any>(
     }
 
     timeout = setTimeout(() => {
-      func(...args)
+      // We intentionally ignore the return value of func for debounce
+      // and cast args to unknown[] to call safely.
+      ; (func as (...a: unknown[]) => unknown)(...args as unknown[])
       timeout = null
     }, wait)
   }
@@ -301,7 +338,7 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Throttle function to limit how often a function can be called
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {
@@ -309,7 +346,7 @@ export function throttle<T extends (...args: any[]) => any>(
 
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
-      func(...args)
+      ; (func as (...a: unknown[]) => unknown)(...args as unknown[])
       inThrottle = true
       setTimeout(() => {
         inThrottle = false
@@ -321,7 +358,7 @@ export function throttle<T extends (...args: any[]) => any>(
 /**
  * Memoize function results to avoid repeated calculations
  */
-export function memoize<T extends (...args: any[]) => any>(
+export function memoize<T extends (...args: unknown[]) => unknown>(
   func: T,
   keyGenerator?: (...args: Parameters<T>) => string
 ): T {
@@ -329,14 +366,14 @@ export function memoize<T extends (...args: any[]) => any>(
 
   return ((...args: Parameters<T>): ReturnType<T> => {
     const key = keyGenerator ? keyGenerator(...args) : JSON.stringify(args)
-    
+
     if (cache.has(key)) {
       return cache.get(key)!
     }
 
-    const result = func(...args)
-    cache.set(key, result)
-    return result
+    const result = (func as (...a: unknown[]) => unknown)(...args as unknown[])
+    cache.set(key, result as ReturnType<T>)
+    return result as ReturnType<T>
   }) as T
 }
 
@@ -357,10 +394,18 @@ export function severityToNumber(severity: string): number {
  * Convert numeric severity back to string
  */
 export function numberToSeverity(number: number): string {
-  if (number >= 4) return 'critical'
-  if (number >= 3) return 'high'
-  if (number >= 2) return 'medium'
-  if (number >= 1) return 'low'
+  if (number >= 4) {
+    return 'critical'
+  }
+  if (number >= 3) {
+    return 'high'
+  }
+  if (number >= 2) {
+    return 'medium'
+  }
+  if (number >= 1) {
+    return 'low'
+  }
   return 'low'
 }
 
@@ -407,28 +452,18 @@ export function isRateLimitBypassAllowed(
   }
 ): boolean {
   // Check role-based bypass
-  if (bypassRules.allowedRoles && context.userRole) {
-    if (bypassRules.allowedRoles.includes(context.userRole)) {
-      return true
-    }
+  if (bypassRules.allowedRoles && context.userRole && bypassRules.allowedRoles.includes(context.userRole)) {
+    return true
   }
 
   // Check IP-based bypass
-  if (bypassRules.allowedIPRanges && context.ip) {
-    if (bypassRules.allowedIPRanges.some(range => 
-      context.ip!.startsWith(range.replace('*', ''))
-    )) {
-      return true
-    }
+  if (bypassRules.allowedIPRanges && context.ip && bypassRules.allowedIPRanges.some(range => context.ip!.startsWith(range.replace('*', '')))) {
+    return true
   }
 
   // Check endpoint-based bypass
-  if (bypassRules.allowedEndpoints && context.endpoint) {
-    if (bypassRules.allowedEndpoints.some(pattern => 
-      context.endpoint!.includes(pattern)
-    )) {
-      return true
-    }
+  if (bypassRules.allowedEndpoints && context.endpoint && bypassRules.allowedEndpoints.some(pattern => context.endpoint!.includes(pattern))) {
+    return true
   }
 
   return false
@@ -438,9 +473,15 @@ export function isRateLimitBypassAllowed(
  * Format duration in human-readable format
  */
 export function formatDuration(ms: number): string {
-  if (ms < 1000) return `${ms}ms`
-  if (ms < 60000) return `${(ms / 1000).toFixed(1)}s`
-  if (ms < 3600000) return `${(ms / 60000).toFixed(1)}m`
+  if (ms < 1000) {
+    return `${ms}ms`
+  }
+  if (ms < 60000) {
+    return `${(ms / 1000).toFixed(1)}s`
+  }
+  if (ms < 3600000) {
+    return `${(ms / 60000).toFixed(1)}m`
+  }
   return `${(ms / 3600000).toFixed(1)}h`
 }
 
@@ -448,7 +489,7 @@ export function formatDuration(ms: number): string {
  * Generate a unique correlation ID for tracking requests
  */
 export function generateCorrelationId(): string {
-  return `corr_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+  return _secureId('corr_')
 }
 
 /**
@@ -457,12 +498,12 @@ export function generateCorrelationId(): string {
 export function createThreatAction(
   actionType: ResponseAction['actionType'],
   target: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ): ResponseAction {
   return {
     actionType,
     target,
     timestamp: new Date().toISOString(),
-    metadata: metadata || {}
+    metadata: (metadata as Record<string, unknown>) || {}
   }
 }

@@ -4,9 +4,9 @@
  */
 
 import * as tf from '@tensorflow/tfjs-node';
+import crypto from 'crypto';
 import { Redis } from 'ioredis';
 import { MongoClient } from 'mongodb';
-import { createHash } from 'crypto';
 import { EventEmitter } from 'events';
 
 export interface ModelConfig {
@@ -27,7 +27,7 @@ export interface PreprocessingConfig {
   };
   featureEngineering?: {
     techniques: string[];
-    parameters: Record<string, any>;
+    parameters: Record<string, number>;
   };
   dataValidation?: {
     requiredFields: string[];
@@ -46,7 +46,7 @@ export interface PostprocessingConfig {
   };
   confidenceCalibration?: {
     method: 'platt' | 'isotonic' | 'temperature';
-    calibrationData?: any[];
+    calibrationData?: unknown[];
   };
 }
 
@@ -60,12 +60,12 @@ export interface PerformanceTargets {
 export interface ModelPrediction {
   predictionId: string;
   modelId: string;
-  input: any;
-  output: any;
+  input: unknown;
+  output: unknown;
   confidence: number;
   latency: number;
   timestamp: Date;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface EnsemblePrediction extends ModelPrediction {
@@ -85,7 +85,7 @@ export interface ModelRegistry {
 export interface FeatureStore {
   getFeatures(featureSetId: string): Promise<FeatureSet>;
   updateFeatures(featureSetId: string, features: FeatureSet): Promise<void>;
-  validateFeatures(features: any[]): Promise<ValidationResult>;
+  validateFeatures(features: unknown[]): Promise<ValidationResult>;
   getFeatureHistory(featureSetId: string, timeframe: TimeWindow): Promise<FeatureHistory>;
 }
 
@@ -145,12 +145,12 @@ export class ModelServingServer extends EventEmitter {
   private async initializeServices(): Promise<void> {
     this.redis = new Redis(this.config.redisUrl);
     this.mongoClient = new MongoClient(this.config.mongoUrl);
-    
+
     // Initialize feature store and model registry
     this.featureStore = new RedisFeatureStore(this.redis);
     this.modelRegistry = new MongoModelRegistry(this.mongoClient);
     this.monitoring = new ComprehensiveModelMonitoring(this.redis, this.mongoClient);
-    
+
     await this.mongoClient.connect();
     this.emit('services_initialized');
   }
@@ -165,7 +165,7 @@ export class ModelServingServer extends EventEmitter {
 
       // Load TensorFlow model
       const model = await tf.loadLayersModel(modelConfig.modelPath);
-      
+
       // Warm up the model
       const warmupInput = tf.zeros([1, ...modelConfig.inputShape]);
       await model.predict(warmupInput);
@@ -185,7 +185,7 @@ export class ModelServingServer extends EventEmitter {
     }
   }
 
-  async predict(modelId: string, input: any): Promise<ModelPrediction> {
+  async predict(modelId: string, input: unknown): Promise<ModelPrediction> {
     const startTime = Date.now();
     const predictionId = this.generatePredictionId();
 
@@ -200,22 +200,19 @@ export class ModelServingServer extends EventEmitter {
       // Preprocess input
       const processedInput = await this.preprocessInput(input, config.preprocessing);
 
-      // Convert to tensor
-      const inputTensor = tf.tensor(processedInput, [1, ...config.inputShape]);
-
-      // Make prediction
-      const outputTensor = await model.predict(inputTensor) as tf.Tensor;
-      const output = await outputTensor.array();
+      // Run prediction inside tf.tidy so tensors are disposed automatically
+      const output = await tf.tidy(async () => {
+        const inputTensor = tf.tensor(processedInput, [1, ...config.inputShape]);
+        const outputTensor = (await model.predict(inputTensor)) as tf.Tensor;
+        const arr = await outputTensor.array();
+        return arr as unknown;
+      });
 
       // Postprocess output
       const processedOutput = await this.postprocessOutput(output, config.postprocessing);
 
       // Calculate confidence
       const confidence = this.calculateConfidence(output, config);
-
-      // Clean up tensors
-      inputTensor.dispose();
-      outputTensor.dispose();
 
       const latency = Date.now() - startTime;
       const prediction: ModelPrediction = {
@@ -243,7 +240,7 @@ export class ModelServingServer extends EventEmitter {
     }
   }
 
-  async ensemblePredict(modelIds: string[], input: any): Promise<EnsemblePrediction> {
+  async ensemblePredict(modelIds: string[], input: unknown): Promise<EnsemblePrediction> {
     const startTime = Date.now();
     const predictionId = this.generatePredictionId();
 
@@ -280,8 +277,8 @@ export class ModelServingServer extends EventEmitter {
     }
   }
 
-  private async preprocessInput(input: any, config?: PreprocessingConfig): Promise<any> {
-    if (!config) return input;
+  private async preprocessInput(input: unknown, config?: PreprocessingConfig): Promise<unknown> {
+    if (!config) { return input; }
 
     let processed = input;
 
@@ -306,8 +303,8 @@ export class ModelServingServer extends EventEmitter {
     return processed;
   }
 
-  private async postprocessOutput(output: any, config?: PostprocessingConfig): Promise<any> {
-    if (!config) return output;
+  private async postprocessOutput(output: unknown, config?: PostprocessingConfig): Promise<unknown> {
+    if (!config) { return output; }
 
     let processed = output;
 
@@ -329,7 +326,7 @@ export class ModelServingServer extends EventEmitter {
     return processed;
   }
 
-  private applyNormalization(data: any, config: PreprocessingConfig['normalization']): any {
+  private applyNormalization(data: unknown, config: PreprocessingConfig['normalization']): unknown {
     switch (config.method) {
       case 'min-max':
         return this.minMaxNormalize(data, config.parameters);
@@ -342,7 +339,7 @@ export class ModelServingServer extends EventEmitter {
     }
   }
 
-  private async applyFeatureEngineering(data: any, config: PreprocessingConfig['featureEngineering']): Promise<any> {
+  private async applyFeatureEngineering(data: unknown, config: PreprocessingConfig['featureEngineering']): Promise<unknown> {
     // Implement feature engineering techniques
     let engineered = data;
 
@@ -365,16 +362,54 @@ export class ModelServingServer extends EventEmitter {
     return engineered;
   }
 
-  private aggregatePredictions(predictions: ModelPrediction[]): any {
-    // Simple weighted average for regression
-    const weights = predictions.map(p => p.confidence);
-    const totalWeight = weights.reduce((sum, w) => sum + w, 0);
-    
-    const weightedSum = predictions.reduce((sum, pred, index) => {
-      return sum + pred.output * weights[index];
-    }, 0);
+  private aggregatePredictions(predictions: ModelPrediction[]): unknown {
+    // Support both regression (scalar outputs) and classification (vector outputs)
+    if (!predictions || predictions.length === 0) { return null; }
 
-    return weightedSum / totalWeight;
+    const weights = predictions.map(p => p.confidence || 0);
+    const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+
+    // If total weight is zero, fall back to simple averaging to avoid division by zero
+    if (totalWeight === 0) {
+      const outputs = predictions.map(p => p.output);
+      if (outputs.length === 0) { return null; }
+
+      const first = outputs[0];
+      if (Array.isArray(first)) {
+        // Average each class probability across predictions
+        const { length } = first as number[];
+        const sumVec = new Array(length).fill(0);
+        outputs.forEach(out => {
+          (out as number[]).forEach((v, i) => { sumVec[i] += v; });
+        });
+        return sumVec.map(v => v / outputs.length);
+      }
+
+      // Scalar outputs: simple mean
+      return outputs.reduce((a, b) => a + b, 0) / outputs.length;
+    }
+
+    const firstOutput = predictions[0].output;
+    if (Array.isArray(firstOutput)) {
+      // Weighted average for vector outputs (classification probabilities)
+      const { length } = firstOutput as number[];
+      const weightedSum = predictions.reduce((sum, pred, index) => {
+        const w = weights[index];
+        (pred.output as number[]).forEach((val, i) => {
+          sum[i] = (sum[i] || 0) + val * w;
+        });
+        return sum;
+      }, new Array(length).fill(0));
+
+      return weightedSum.map(v => v / totalWeight);
+    } else {
+      // Weighted average for scalar outputs (regression)
+      const weightedSum = predictions.reduce((sum, pred, index) => {
+        return sum + (pred.output as number) * weights[index];
+      }, 0);
+
+      return weightedSum / totalWeight;
+    }
   }
 
   private calculateUncertainty(predictions: ModelPrediction[]): number {
@@ -384,14 +419,16 @@ export class ModelServingServer extends EventEmitter {
     return Math.sqrt(variance);
   }
 
-  private calculateConfidence(output: any, config: ModelConfig): number {
+  private calculateConfidence(output: unknown, _config: ModelConfig): number {
     // Simple confidence calculation based on output distribution
     if (Array.isArray(output)) {
-      const maxValue = Math.max(...output);
-      const sum = output.reduce((acc, val) => acc + val, 0);
+      const arr = output as number[];
+      const maxValue = Math.max(...arr);
+      const sum = arr.reduce((acc, val) => acc + val, 0);
       return maxValue / sum;
     }
-    return Math.abs(output);
+    const val = typeof output === 'number' ? output : 0;
+    return Math.abs(val);
   }
 
   private calculateEnsembleConfidence(predictions: ModelPrediction[]): number {
@@ -413,11 +450,23 @@ export class ModelServingServer extends EventEmitter {
 
     existing.avgLatency = (existing.avgLatency + latency) / 2;
     existing.timestamp = new Date();
-    
+
     this.performanceCache.set(cacheKey, existing);
   }
 
   private generatePredictionId(): string {
+    try {
+      // node:crypto typings differ across versions; narrow at runtime
+      const maybeCrypto = crypto as unknown as { randomUUID?: () => string; randomBytes?: (n: number) => Buffer };
+      if (typeof maybeCrypto.randomUUID === 'function') {
+        return `pred_${maybeCrypto.randomUUID()}`;
+      }
+      if (typeof maybeCrypto.randomBytes === 'function') {
+        return `pred_${maybeCrypto.randomBytes(16).toString('hex')}`;
+      }
+    } catch (_e) {
+      // ignore errors generating crypto bytes; fallback below
+    }
     return `pred_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
@@ -426,7 +475,7 @@ export class ModelServingServer extends EventEmitter {
       Array.from(this.models.keys()).map(async (modelId) => {
         const metrics = this.performanceCache.get(`perf_${modelId}`);
         const drift = await this.monitoring.detectDrift(modelId);
-        
+
         return {
           modelId,
           status: metrics ? 'healthy' : 'unknown',
@@ -461,7 +510,7 @@ export class ModelServingServer extends EventEmitter {
 
 // Helper classes for dependencies
 class RedisFeatureStore implements FeatureStore {
-  constructor(private redis: Redis) {}
+  constructor(private redis: Redis) { }
 
   async getFeatures(featureSetId: string): Promise<FeatureSet> {
     const data = await this.redis.get(`features:${featureSetId}`);
@@ -472,7 +521,7 @@ class RedisFeatureStore implements FeatureStore {
     await this.redis.set(`features:${featureSetId}`, JSON.stringify(features), 'EX', 3600);
   }
 
-  async validateFeatures(features: any[]): Promise<ValidationResult> {
+  async validateFeatures(_features: unknown[]): Promise<ValidationResult> {
     // Implement feature validation logic
     return { isValid: true, errors: [] };
   }
@@ -484,7 +533,7 @@ class RedisFeatureStore implements FeatureStore {
 }
 
 class MongoModelRegistry implements ModelRegistry {
-  constructor(private mongoClient: MongoClient) {}
+  constructor(private mongoClient: MongoClient) { }
 
   async registerModel(config: ModelConfig): Promise<void> {
     const db = this.mongoClient.db('threat_detection');
@@ -531,7 +580,7 @@ class MongoModelRegistry implements ModelRegistry {
 }
 
 class ComprehensiveModelMonitoring implements ModelMonitoring {
-  constructor(private redis: Redis, private mongoClient: MongoClient) {}
+  constructor(private redis: Redis, private mongoClient: MongoClient) { }
 
   async trackPrediction(prediction: ModelPrediction): Promise<void> {
     const db = this.mongoClient.db('threat_detection');
@@ -539,7 +588,7 @@ class ComprehensiveModelMonitoring implements ModelMonitoring {
     await collection.insertOne(prediction);
   }
 
-  async detectDrift(modelId: string): Promise<DriftDetectionResult> {
+  async detectDrift(_modelId: string): Promise<DriftDetectionResult> {
     // Implement drift detection logic
     return {
       driftDetected: false,
@@ -567,7 +616,7 @@ class ComprehensiveModelMonitoring implements ModelMonitoring {
   async generateHealthReport(modelId: string): Promise<ModelHealthReport> {
     const drift = await this.detectDrift(modelId);
     const performance = await this.monitorPerformance(modelId);
-    
+
     return {
       modelId,
       status: drift.driftDetected ? 'degraded' : 'healthy',
@@ -580,12 +629,12 @@ class ComprehensiveModelMonitoring implements ModelMonitoring {
 
 // Type definitions
 interface FeatureSet {
-  features: any[];
-  metadata: Record<string, any>;
+  features: unknown[];
+  metadata: Record<string, unknown>;
 }
 
 interface FeatureHistory {
-  features: any[];
+  features: unknown[];
   timeframe: TimeWindow;
 }
 
@@ -610,7 +659,7 @@ interface ModelHealthReport {
 interface ValidationRule {
   field: string;
   type: 'required' | 'range' | 'format';
-  parameters?: any;
+  parameters?: unknown;
 }
 
 export { ModelServingServer };

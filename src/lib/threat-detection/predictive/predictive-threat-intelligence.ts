@@ -1,3 +1,26 @@
+import crypto from 'crypto'
+
+function _secureId(prefix = ''): string {
+  try {
+    const nodeCrypto = crypto as unknown as {
+      randomUUID?: () => string;
+      randomBytes?: (n: number) => Buffer;
+    };
+
+    if (typeof nodeCrypto.randomUUID === 'function') {
+      return `${prefix}${nodeCrypto.randomUUID()}`;
+    }
+
+    if (typeof nodeCrypto.randomBytes === 'function') {
+      return `${prefix}${nodeCrypto.randomBytes(16).toString('hex')}`;
+    }
+  } catch (_e) {
+    // ignore errors when crypto is unavailable
+  }
+
+  return `${prefix}${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
 /**
  * Predictive Threat Intelligence System
  * Provides time series forecasting, emerging threat detection, and threat propagation modeling
@@ -6,6 +29,7 @@
 import { Redis } from 'ioredis';
 import { MongoClient } from 'mongodb';
 import { EventEmitter } from 'events';
+import * as tf from '@tensorflow/tfjs-node';
 
 export interface ThreatData {
   threatId: string;
@@ -767,19 +791,19 @@ export class AdvancedPredictiveThreatIntelligence extends EventEmitter implement
   }
 
   private generateForecastId(): string {
-    return `forecast_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `forecast_${(crypto as unknown as { randomUUID: () => string }).randomUUID()}`;
   }
 
   private generateModelId(): string {
-    return `model_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `model_${(crypto as unknown as { randomUUID: () => string }).randomUUID()}`;
   }
 
   private generateAssessmentId(): string {
-    return `assessment_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `assessment_${(crypto as unknown as { randomUUID: () => string }).randomUUID()}`;
   }
 
   private generateGraphId(): string {
-    return `graph_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `graph_${(crypto as unknown as { randomUUID: () => string }).randomUUID()}`;
   }
 
   private async cacheForecast(forecast: ThreatForecast): Promise<void> {
@@ -1145,57 +1169,72 @@ class LSTMTimeSeriesForecaster extends TimeSeriesForecaster {
 
     this.isTraining = true;
     try {
-      // Create LSTM model architecture
-      const model = tf.sequential();
+      // Wrap model creation, data tensors, and training inside tf.tidy to dispose intermediate tensors
+      // Note: model.fit is async so we create and compile the model inside tidy, prepare xs/ys there,
+      // start training, await it, and then return the created forecasting model. We must ensure the
+      // model reference escapes tidy scope so it is not disposed; tidy will not dispose tensors referenced
+      // by the returned object. We therefore return a promise that resolves to the ForecastingModel.
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      return await tf.tidy(() => {
+        // Create LSTM model architecture
+        const model = tf.sequential();
 
-      // Add LSTM layers
-      model.add(tf.layers.lstm({
-        units: 64,
-        inputShape: [this.config.lookbackWindow, 1],
-        returnSequences: true,
-        activation: 'tanh'
-      }));
+        // Add LSTM layers
+        model.add(tf.layers.lstm({
+          units: 64,
+          inputShape: [this.config.lookbackWindow, 1],
+          returnSequences: true,
+          activation: 'tanh'
+        }));
 
-      model.add(tf.layers.dropout({ rate: 0.2 }));
+        model.add(tf.layers.dropout({ rate: 0.2 }));
 
-      model.add(tf.layers.lstm({
-        units: 32,
-        returnSequences: false,
-        activation: 'tanh'
-      }));
+        model.add(tf.layers.lstm({
+          units: 32,
+          returnSequences: false,
+          activation: 'tanh'
+        }));
 
-      model.add(tf.layers.dropout({ rate: 0.1 }));
+        model.add(tf.layers.dropout({ rate: 0.1 }));
 
-      // Output layer
-      model.add(tf.layers.dense({
-        units: this.config.predictionHorizon,
-        activation: 'linear'
-      }));
+        // Output layer
+        model.add(tf.layers.dense({
+          units: this.config.predictionHorizon,
+          activation: 'linear'
+        }));
 
-      // Compile model
-      model.compile({
-        optimizer: tf.train.adam(0.001),
-        loss: 'meanSquaredError',
-        metrics: ['mae']
-      });
+        // Compile model
+        model.compile({
+          optimizer: tf.train.adam(0.001),
+          loss: 'meanSquaredError',
+          metrics: ['mae']
+        });
 
-      // Prepare training data
-      const { xs, ys } = this.prepareTrainingData(data);
+        // Prepare training data
+        const { xs, ys } = this.prepareTrainingData(data);
 
-      // Train the model
-      await model.fit(xs, ys, {
-        epochs: 100,
-        batchSize: 32,
-        validationSplit: 0.2,
-        callbacks: {
-          onEpochEnd: (epoch, logs) => {
-            console.log(`Epoch ${epoch}: loss = ${logs?.loss}`);
+        // Train the model
+        const trainingPromise = model.fit(xs, ys, {
+          epochs: 100,
+          batchSize: 32,
+          validationSplit: 0.2,
+          callbacks: {
+            onEpochEnd: (epoch, logs) => {
+              console.log(`Epoch ${epoch}: loss = ${logs?.loss}`);
+            }
           }
-        }
-      });
+        });
 
-      this.model = model;
-      return this.createForecastingModel('general', model);
+        // Await inside the outer async function by returning a promise that resolves after training
+        return trainingPromise.then(() => {
+          // Keep model reference alive by assigning to this.model before tidy would dispose tensors
+          // Note: tidy will not dispose objects reachable from the returned value; returning the model
+          // directly would risk disposal of internal tensors. Instead, assign to this.model here and
+          // return the ForecastingModel wrapper.
+          this.model = model;
+          return this.createForecastingModel('general', model);
+        });
+      });
 
     } finally {
       this.isTraining = false;
@@ -1235,7 +1274,7 @@ class LSTMTimeSeriesForecaster extends TimeSeriesForecaster {
     for (let i = 0; i <= dataPoints.length - this.config.lookbackWindow - this.config.predictionHorizon; i++) {
       const xWindow = dataPoints.slice(i, i + this.config.lookbackWindow);
       const yWindow = dataPoints.slice(i + this.config.lookbackWindow,
-                                      i + this.config.lookbackWindow + this.config.predictionHorizon);
+        i + this.config.lookbackWindow + this.config.predictionHorizon);
 
       xs.push(xWindow.map(dp => dp.value));
       ys.push(...yWindow.map(dp => dp.value));
@@ -1255,11 +1294,11 @@ class LSTMTimeSeriesForecaster extends TimeSeriesForecaster {
         const inputShape = [1, this.config.lookbackWindow, 1];
         const dummyInput = tf.zeros(inputShape);
 
-        const prediction = model.predict(dummyInput) as tf.Tensor;
-        const value = (await prediction.data())[0];
-
-        prediction.dispose();
-        dummyInput.dispose();
+        const value = await tf.tidy(async () => {
+          const prediction = model.predict(dummyInput) as tf.Tensor;
+          const data = await prediction.data();
+          return data[0] as number;
+        })
 
         return {
           value: Math.max(0, Math.min(1, value)), // Clamp between 0 and 1

@@ -6,6 +6,7 @@
 import { Redis } from 'ioredis';
 import { MongoClient } from 'mongodb';
 import * as tf from '@tensorflow/tfjs-node';
+import crypto from 'crypto';
 import { EventEmitter } from 'events';
 
 export interface SecurityEvent {
@@ -470,15 +471,37 @@ export class AdvancedBehavioralAnalysisService extends EventEmitter implements B
   }
 
   private generateAnomalyId(): string {
-    return `anomaly_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return this._secureId('anomaly_');
   }
 
   private generateAnalysisId(): string {
-    return `analysis_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return this._secureId('analysis_');
   }
 
   private generateGraphId(): string {
-    return `graph_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return this._secureId('graph_');
+  }
+
+  // Use crypto.randomUUID when available, else crypto.randomBytes fallback
+  private _secureId(prefix = ''): string {
+    try {
+      const c: unknown = crypto
+      const asObj = c as Record<string, unknown> | undefined
+      // Node & modern runtimes
+      if (asObj && typeof asObj['randomUUID'] === 'function') {
+        const fn = asObj['randomUUID'] as () => string
+        return `${prefix}${fn()}`
+      }
+      if (asObj && typeof asObj['randomBytes'] === 'function') {
+        const fn = asObj['randomBytes'] as (size: number) => Buffer
+        return `${prefix}${fn(16).toString('hex')}`
+      }
+    } catch (_err) {
+      // ignore and fallback
+    }
+
+    // Last-resort fallback (not cryptographically secure)
+    return `${prefix}${Date.now()}_${Math.random().toString(36).slice(2, 11)}`
   }
 
   private convertEventsToSequences(events: SecurityEvent[]): BehavioralSequence[] {
@@ -799,9 +822,15 @@ class MLAnomalyDetector extends AnomalyDetector {
     const anomalies: Anomaly[] = [];
 
     try {
-      const inputTensor = tf.tensor2d([featureVector]);
-      const reconstruction = this.model.predict(inputTensor) as tf.Tensor;
-      const reconstructionError = tf.mean(tf.abs(tf.sub(inputTensor, reconstruction))).dataSync()[0];
+      // run tensor operations inside tf.tidy to ensure tensors are disposed
+      const { reconstructionError, anomalyScore } = tf.tidy(() => {
+        const inputTensor = tf.tensor2d([featureVector]);
+        const reconstruction = this.model.predict(inputTensor) as tf.Tensor;
+        const error = tf.mean(tf.abs(tf.sub(inputTensor, reconstruction))).dataSync()[0];
+
+        const score = this.isolationForest.predict([featureVector])[0];
+        return { reconstructionError: error, anomalyScore: score };
+      });
 
       const reconstructionThreshold = profile.baselineMetrics.sequentialThreshold || 0.1;
 
@@ -823,7 +852,6 @@ class MLAnomalyDetector extends AnomalyDetector {
         });
       }
 
-      const anomalyScore = this.isolationForest.predict([featureVector])[0];
       const isolationThreshold = 0.6; // Configurable threshold
 
       if (anomalyScore > isolationThreshold) {
@@ -843,10 +871,6 @@ class MLAnomalyDetector extends AnomalyDetector {
           timestamp: new Date()
         });
       }
-
-      // Cleanup tensors
-      inputTensor.dispose();
-      reconstruction.dispose();
 
     } catch (error) {
       console.error('Error in ML anomaly detection:', error);
@@ -898,18 +922,41 @@ class MLAnomalyDetector extends AnomalyDetector {
   private async detectTemporalAnomalies(profile: BehaviorProfile, features: BehavioralFeatures): Promise<Anomaly[]> {
     const anomalies: Anomaly[] = [];
 
-    if (features.temporal.timeOfDayPreference > 0.8) {
+    // Detect unusually strong time-of-day preferences
+    const timePref = features.temporal.timeOfDayPreference;
+    const baselineTimeThreshold = profile.baselineMetrics.timeOfDayThreshold ?? 0.5;
+
+    if (timePref > 0.8) {
+      // Very strong preference for a particular time-of-day
       anomalies.push({
         anomalyId: this.generateAnomalyId(),
         userId: profile.userId,
         patternId: 'temporal_unusual_time',
         anomalyType: 'novelty',
-        severity: 'medium',
-        deviationScore: features.temporal.timeOfDayPreference,
+        severity: timePref > 0.9 ? 'high' : 'medium',
+        deviationScore: timePref,
         confidence: 0.8,
         context: {
           type: 'temporal',
-          timeOfDayPreference: features.temporal.timeOfDayPreference
+          timeOfDayPreference: timePref,
+          baselineThreshold: baselineTimeThreshold
+        },
+        timestamp: new Date()
+      });
+    } else if (timePref > baselineTimeThreshold) {
+      // Mild deviation from baseline time-of-day behavior
+      anomalies.push({
+        anomalyId: this.generateAnomalyId(),
+        userId: profile.userId,
+        patternId: 'temporal_time_deviation',
+        anomalyType: 'deviation',
+        severity: 'low',
+        deviationScore: timePref / baselineTimeThreshold,
+        confidence: 0.65,
+        context: {
+          type: 'temporal',
+          timeOfDayPreference: timePref,
+          baselineThreshold: baselineTimeThreshold
         },
         timestamp: new Date()
       });
@@ -1190,7 +1237,17 @@ class SequentialPatternMiner extends PatternMiner {
     idLists: Record<string, number[][]>,
     minSupport: number
   ): boolean {
-    const support = this.calculateSequenceSupport(sequence, []);
+    // This is a simplified support calculation. A full SPADE implementation
+    // would join idLists for the full sequence. Here we compute support from
+    // the idLists passed in: count unique sequence IDs from the last item's
+    // idList. For single-item sequences this yields the correct support.
+    const lastItem = sequence[sequence.length - 1];
+    const idList = idLists[lastItem];
+    if (!idList) {
+      return false;
+    }
+    const uniqueSequenceIds = new Set(idList.map((entry) => entry[0]));
+    const support = uniqueSequenceIds.size;
     return support >= minSupport;
   }
 

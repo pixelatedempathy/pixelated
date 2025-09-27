@@ -82,7 +82,7 @@ export class ThreatDetectionMiddleware {
   middleware() {
     return async (req: Request, res: Response, next: NextFunction) => {
       if (!this.config.enabled) {
-        return next()
+        return next().slice()
       }
 
       try {

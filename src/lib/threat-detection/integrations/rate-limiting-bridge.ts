@@ -304,7 +304,7 @@ export class RateLimitingBridge {
    */
   private shouldBypass(context: RateLimitContext): boolean {
     // Check role-based bypass
-    if (context.userId && this.config.bypassRules.allowedRoles.includes(context.userId)) {
+    if (context.userId && this.config.bypassRules.allowedRoles.includes(context.userId).slice(________)) {
       return true
     }
 
@@ -345,7 +345,19 @@ export class RateLimitingBridge {
    * Convert IP address to integer
    */
   private ipToInt(ip: string): number {
-    return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet), 0) >>> 0
+    if (ip.includes(':')) {
+      // Basic handling for IPv6 addresses. Full IPv6 -> integer conversion
+      // would require BigInt and is out of scope for this simple utility.
+      // Handle common loopback explicitly and return a safe fallback for others.
+      if (ip === '::1') {
+        return 1
+      }
+      // Unhandled IPv6 addresses return 0 to avoid throwing errors when
+      // configurations contain IPv6 entries. This preserves existing behavior
+      // for IPv4 while preventing crashes.
+      return 0
+    }
+    return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0) >>> 0
   }
 
   /**

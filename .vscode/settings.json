@@ -162,5 +162,6 @@
     "ruff.lint.args": [
         "--line-length",
         "88"
-    ]
+    ],
+    "qodana.projectId": "j46wq"
 }

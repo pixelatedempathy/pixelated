@@ -7,6 +7,7 @@ import { EventEmitter } from 'events';
 import { Redis } from 'ioredis';
 import { MongoClient } from 'mongodb';
 import * as tf from '@tensorflow/tfjs-node';
+import crypto from 'crypto';
 
 export interface ThreatResponse {
   responseId: string;
@@ -18,15 +19,15 @@ export interface ThreatResponse {
   estimatedImpact: number;
   executionTime: Date;
   completedTime?: Date;
-  status: 'pending' | 'executing' | 'completed' | 'failed';
-  metadata?: Record<string, any>;
+  status: 'pending' | 'executing' | 'completed' | 'failed' | 'rolled_back';
+  metadata?: Record<string, unknown>;
 }
 
 export interface ResponseAction {
   actionId: string;
   actionType: string;
   target: string;
-  parameters: Record<string, any>;
+  parameters: Record<string, unknown>;
   priority: number;
   timeout: number;
   rollbackStrategy?: string;
@@ -36,7 +37,7 @@ export interface ResponseAction {
 export interface ValidationRule {
   ruleType: 'threshold' | 'pattern' | 'dependency';
   condition: string;
-  expectedValue: any;
+  expectedValue: unknown;
   operator: 'equals' | 'greater_than' | 'less_than' | 'contains' | 'matches';
 }
 
@@ -70,13 +71,13 @@ export interface IntegrationEndpoint {
 export interface NotificationChannel {
   name: string;
   type: 'email' | 'slack' | 'webhook' | 'sms';
-  config: Record<string, any>;
+  config: Record<string, unknown>;
   priority: number;
   enabled: boolean;
 }
 
 export interface ResponseOrchestrationService {
-  orchestrateResponse(threatId: string, threatData: any): Promise<ThreatResponse>;
+  orchestrateResponse(threatId: string, threatData: unknown): Promise<ThreatResponse>;
   executeResponse(response: ThreatResponse): Promise<boolean>;
   rollbackResponse(responseId: string): Promise<boolean>;
   validateAction(action: ResponseAction): Promise<boolean>;
@@ -94,8 +95,8 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
 
   constructor(
     private config: OrchestrationConfig,
-    private threatIntelligenceService: any,
-    private rateLimitingService: any
+    private threatIntelligenceService: unknown,
+    private rateLimitingService: unknown
   ) {
     super();
     this.initializeServices();
@@ -114,7 +115,7 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
     this.emit('orchestrator_initialized');
   }
 
-  async orchestrateResponse(threatId: string, threatData: any): Promise<ThreatResponse> {
+  async orchestrateResponse(threatId: string, threatData: unknown): Promise<ThreatResponse> {
     try {
       // Validate threat data
       if (!threatId || !threatData) {
@@ -215,7 +216,7 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
       const rollbackSuccess = rollbackResults.every(result => result.success);
 
       if (rollbackSuccess) {
-        response.status = 'completed'; // Mark as completed after successful rollback
+        response.status = 'rolled_back'; // Mark as rolled_back after successful rollback
         await this.updateThreatResponse(response);
       }
 
@@ -306,14 +307,14 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
     }
   }
 
-  private async analyzeThreat(threatData: any): Promise<ThreatAnalysis> {
+  private async analyzeThreat(threatData: unknown): Promise<ThreatAnalysis> {
     // Use ML decision engine for threat analysis
     const mlAnalysis = await this.decisionEngine.analyzeThreat(threatData);
 
     // Calculate threat severity and impact
     const severity = this.calculateThreatSeverity(threatData, mlAnalysis);
     const impact = this.calculateThreatImpact(threatData, mlAnalysis);
-    const confidence = mlAnalysis.confidence;
+    const {confidence} = mlAnalysis;
 
     return {
       threatId: threatData.threatId,
@@ -342,6 +343,8 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
     } else if (analysis.severity === 'medium' || analysis.impact > strategies.medium) {
       primaryType = 'investigate';
       escalationLevel = 2;
+    } else {
+      // Default case for low severity threats
     }
 
     return {
@@ -515,6 +518,8 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
 
     if (strategy.autoExecute) {
       await this.executeResponse(response);
+    } else {
+      // Response will be executed manually or through external trigger
     }
 
     // Send notifications
@@ -525,7 +530,9 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
   }
 
   private async integrateWithRateLimiting(response: ThreatResponse): Promise<void> {
-    if (!this.rateLimitingService) return;
+    if (!this.rateLimitingService) {
+      return;
+    }
 
     for (const action of response.actions) {
       if (action.actionType === 'rate_limiting') {
@@ -563,37 +570,60 @@ export class AdvancedResponseOrchestrator extends EventEmitter implements Respon
   }
 
   private generateResponseId(): string {
-    return `response_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return this.secureId('response_');
   }
 
   private generateActionId(): string {
-    return `action_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return this.secureId('action_');
   }
 
-  private calculateThreatSeverity(threatData: any, mlAnalysis: any): ThreatResponse['severity'] {
+  private secureId(prefix = ''): string {
+    try {
+      const c: unknown = crypto;
+      const { randomUUID, randomBytes } = c as Record<string, unknown> | undefined || {};
+      if (randomUUID && typeof randomUUID === 'function') {
+        return `${prefix}${randomUUID()}`;
+      }
+      if (randomBytes && typeof randomBytes === 'function') {
+        const fn = randomBytes as (size: number) => Buffer;
+        return `${prefix}${fn(16).toString('hex')}`;
+      }
+    } catch (_e) {
+      // ignore
+    }
+    return `${prefix}${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+  }
+
+  private calculateThreatSeverity(threatData: unknown, mlAnalysis: unknown): ThreatResponse['severity'] {
     // Implement severity calculation logic
-    if (mlAnalysis.riskScore > 0.8) return 'critical';
-    if (mlAnalysis.riskScore > 0.6) return 'high';
-    if (mlAnalysis.riskScore > 0.4) return 'medium';
+    if (mlAnalysis.riskScore > 0.8) {
+      return 'critical';
+    }
+    if (mlAnalysis.riskScore > 0.6) {
+      return 'high';
+    }
+    if (mlAnalysis.riskScore > 0.4) {
+      return 'medium';
+    }
     return 'low';
   }
 
-  private calculateThreatImpact(threatData: any, mlAnalysis: any): number {
+  private calculateThreatImpact(threatData: unknown, mlAnalysis: unknown): number {
     // Implement impact calculation logic
     return mlAnalysis.riskScore * 100; // Scale to 0-100 range
   }
 
-  private validateActionParameters(action: ResponseAction): { valid: boolean; errors?: string[] } {
+  private validateActionParameters(_action: ResponseAction): { valid: boolean; errors?: string[] } {
     // Implement parameter validation
     return { valid: true };
   }
 
-  private async validateActionDependencies(action: ResponseAction): Promise<{ valid: boolean; errors?: string[] }> {
+  private async validateActionDependencies(_action: ResponseAction): Promise<{ valid: boolean; errors?: string[] }> {
     // Implement dependency validation
     return { valid: true };
   }
 
-  private async validateBusinessRules(action: ResponseAction): Promise<{ valid: boolean; errors?: string[] }> {
+  private async validateBusinessRules(_action: ResponseAction): Promise<{ valid: boolean; errors?: string[] }> {
     // Implement business rule validation
     return { valid: true };
   }
@@ -625,7 +655,7 @@ interface ThreatAnalysis {
   severity: ThreatResponse['severity'];
   impact: number;
   confidence: number;
-  riskFactors: Record<string, any>;
+  riskFactors: Record<string, unknown>;
   recommendedActions: string[];
   analysisTimestamp: Date;
 }
@@ -653,7 +683,7 @@ abstract class ResponseExecutor {
 }
 
 abstract class DecisionEngine {
-  abstract analyzeThreat(threatData: any): Promise<any>;
+  abstract analyzeThreat(threatData: unknown): Promise<unknown>;
 }
 
 abstract class IntegrationManager {
@@ -748,7 +778,7 @@ class ConcurrentResponseExecutor extends ResponseExecutor {
 class MLDecisionEngine extends DecisionEngine {
   private model: tf.Sequential | null = null;
 
-  async analyzeThreat(threatData: any): Promise<any> {
+  async analyzeThreat(threatData: unknown): Promise<unknown> {
     // Initialize model if needed
     if (!this.model) {
       await this.initializeModel();
@@ -793,7 +823,7 @@ class MLDecisionEngine extends DecisionEngine {
     });
   }
 
-  private extractFeatures(threatData: any): number[] {
+  private extractFeatures(threatData: unknown): number[] {
     // Extract relevant features for ML analysis
     return [
       threatData.anomalyScore || 0,
@@ -809,15 +839,18 @@ class MLDecisionEngine extends DecisionEngine {
     ];
   }
 
-  private async predictThreatLevel(features: number[]): Promise<any> {
-    if (!this.model) throw new Error('Model not initialized');
+  private async predictThreatLevel(features: number[]): Promise<unknown> {
+    if (!this.model) {
+      throw new Error('Model not initialized');
+    }
 
-    const inputTensor = tf.tensor2d([features]);
-    const prediction = this.model.predict(inputTensor) as tf.Tensor;
-    const result = await prediction.data();
-
-    inputTensor.dispose();
-    prediction.dispose();
+    const result = await tf.tidy(async () => {
+      const inputTensor = tf.tensor2d([features]);
+      const prediction = (this.model.predict(inputTensor) as tf.Tensor);
+      const data = await prediction.data();
+      // prediction and inputTensor will be disposed by tidy
+      return Array.from(data) as number[]
+    })
 
     return {
       riskScore: result[0] * 0.3 + result[1] * 0.6 + result[2] * 0.9, // Weighted average
@@ -826,7 +859,7 @@ class MLDecisionEngine extends DecisionEngine {
     };
   }
 
-  private identifyRiskFactors(threatData: any): Record<string, any> {
+  private identifyRiskFactors(threatData: unknown): Record<string, unknown> {
     // Identify key risk factors from threat data
     return {
       userId: threatData.userId,
@@ -836,7 +869,7 @@ class MLDecisionEngine extends DecisionEngine {
     };
   }
 
-  private generateRecommendations(prediction: any): string[] {
+  private generateRecommendations(prediction: unknown): string[] {
     // Generate recommended actions based on prediction
     const recommendations: string[] = [];
 
@@ -901,7 +934,7 @@ class MultiSystemIntegrationManager extends IntegrationManager {
     }
   }
 
-  private async sendIntegrationRequest(endpoint: IntegrationEndpoint, data: any): Promise<void> {
+  private async sendIntegrationRequest(endpoint: IntegrationEndpoint, data: unknown): Promise<void> {
     // Implement HTTP request with proper authentication and retry logic
     console.log(`Sending integration request to ${endpoint.name}:`, data);
   }
@@ -962,36 +995,36 @@ class MultiChannelNotificationManager extends NotificationManager {
   }
 
   private async sendEmailNotification(
-    channel: NotificationChannel,
+    _channel: NotificationChannel,
     response: ThreatResponse,
-    success: boolean
+    _success: boolean
   ): Promise<void> {
     // Implement email notification
     console.log(`Sending email notification for response ${response.responseId}`);
   }
 
   private async sendSlackNotification(
-    channel: NotificationChannel,
+    _channel: NotificationChannel,
     response: ThreatResponse,
-    success: boolean
+    _success: boolean
   ): Promise<void> {
     // Implement Slack notification
     console.log(`Sending Slack notification for response ${response.responseId}`);
   }
 
   private async sendWebhookNotification(
-    channel: NotificationChannel,
+    _channel: NotificationChannel,
     response: ThreatResponse,
-    success: boolean
+    _success: boolean
   ): Promise<void> {
     // Implement webhook notification
     console.log(`Sending webhook notification for response ${response.responseId}`);
   }
 
   private async sendSMSNotification(
-    channel: NotificationChannel,
+    _channel: NotificationChannel,
     response: ThreatResponse,
-    success: boolean
+    _success: boolean
   ): Promise<void> {
     // Implement SMS notification
     console.log(`Sending SMS notification for response ${response.responseId}`);

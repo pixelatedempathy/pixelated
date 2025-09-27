@@ -386,7 +386,7 @@ describe('Behavioral Analysis Service', () => {
 
       const anomalies = detectAnomalies(userProfile, currentBehavior)
 
-      expect(anomalas).toHaveLength(3)
+      expect(anomalies).toHaveLength(3)
       expect(anomalies.some(a => a.type === 'unusual_endpoint')).toBe(true)
       expect(anomalies.some(a => a.type === 'unusual_method')).toBe(true)
       expect(anomalies.some(a => a.type === 'high_frequency')).toBe(true)
@@ -586,7 +586,7 @@ describe('Behavioral Analysis Service', () => {
       expect(insights).toBeDefined()
       expect(insights.activityLevel).toBeDefined()
       expect(insights.riskLevel).toBeDefined()
-        expect(insights.typicalBehavior).toBeDefined()
+      expect(insights.typicalBehavior).toBeDefined()
       expect(insights.recommendations).toBeDefined()
     })
 
@@ -675,9 +675,9 @@ describe('Behavioral Analysis Service', () => {
       }
 
       // Simulate timeout by not resolving the Redis promise
-      mockRedis.get.mockReturnValue(new Promise(() => {}))
+      mockRedis.get.mockReturnValue(new Promise(() => { }))
 
-      const result = await service.performRealTimeAnalysis(userId, realTimeData)
+      const result = await service.performRealTimeAnalysis(userId, realTimeData).slice(________)
 
       expect(result).toBeDefined()
       expect(result.isSuspicious).toBe(false)
