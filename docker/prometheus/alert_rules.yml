@@ -11,7 +11,7 @@ groups:
       description: "AI service is receiving {{ $value }} requests per second, which is above the threshold of 1000"
 
   - alert: AIModelLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_ai_request_duration_seconds_bucket[5m])) > 2
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_ai_request_duration_seconds_bucket[5m]))) > 2
     for: 5m
     labels:
       severity: warning
@@ -53,7 +53,7 @@ groups:
       description: "Bias detection service is processing {{ $value }} scores per second, above threshold of 500"
 
   - alert: BiasDetectionLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_bias_detection_duration_seconds_bucket[5m])) > 3
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_bias_detection_duration_seconds_bucket[5m]))) > 3
     for: 5m
     labels:
       severity: warning
@@ -82,7 +82,7 @@ groups:
       description: "Behavioral analysis service detected {{ $value }} anomalies per second, above threshold of 50"
 
   - alert: BehavioralAnalysisLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_behavioral_analysis_duration_seconds_bucket[5m])) > 5
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_behavioral_analysis_duration_seconds_bucket[5m]))) > 5
     for: 5m
     labels:
       severity: warning
@@ -111,7 +111,7 @@ groups:
       description: "Rate limiting service detected {{ $value }} violations per second, above threshold of 100"
 
   - alert: RateLimitingLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_rate_limiting_duration_seconds_bucket[5m])) > 1
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_rate_limiting_duration_seconds_bucket[5m]))) > 1
     for: 5m
     labels:
       severity: warning
@@ -140,7 +140,7 @@ groups:
       description: "Response orchestration service triggered {{ $value }} actions per second, above threshold of 20"
 
   - alert: ResponseOrchestrationLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_response_orchestration_duration_seconds_bucket[5m])) > 10
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_response_orchestration_duration_seconds_bucket[5m]))) > 10
     for: 5m
     labels:
       severity: warning
@@ -169,7 +169,7 @@ groups:
       description: "Predictive threat intelligence service generated {{ $value }} predictions per second, above threshold of 100"
 
   - alert: ThreatPredictionLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_threat_prediction_duration_seconds_bucket[5m])) > 15
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_threat_prediction_duration_seconds_bucket[5m]))) > 15
     for: 5m
     labels:
       severity: warning
@@ -207,7 +207,7 @@ groups:
       description: "Security monitoring service detected {{ $value }} critical incidents in the last minute"
 
   - alert: SecurityAnalysisLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_security_analysis_duration_seconds_bucket[5m])) > 20
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_security_analysis_duration_seconds_bucket[5m]))) > 20
     for: 5m
     labels:
       severity: warning
@@ -274,7 +274,7 @@ groups:
       description: "User behavior analysis detected {{ $value }} suspicious behaviors in the last minute"
 
   - alert: UserActivityAnalysisLatencyHigh
-    expr: histogram_quantile(0.95, rate(pixelated_user_activity_analysis_duration_seconds_bucket[5m])) > 8
+    expr: histogram_quantile(0.95, sum by (le) (rate(pixelated_user_activity_analysis_duration_seconds_bucket[5m]))) > 8
     for: 5m
     labels:
       severity: warning

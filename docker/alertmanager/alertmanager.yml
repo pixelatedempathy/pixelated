@@ -10,7 +10,10 @@ route:
   group_interval: 10s
   repeat_interval: 1h
   receiver: 'web.hook'
-
+  routes:
+  - match:
+      severity: 'critical'
+    receiver: 'critical-alerts'
 receivers:
 - name: 'web.hook'
   email_configs:

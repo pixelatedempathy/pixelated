@@ -30,15 +30,15 @@ jobs:
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@v0.16.1
-      continue-on-error: true
       with:
         scan-type: 'fs'
         scanners: 'vuln,secret,misconfig'
         format: 'sarif'
         output: 'trivy-results.sarif'
+        severity: 'HIGH,CRITICAL'
+        exit-code: '1'
     - name: Run Checkov scan
       uses: bridgecrewio/checkov-action@v12
-      continue-on-error: true
       with:
         directory: .
         framework: all
@@ -48,6 +48,7 @@ jobs:
         skip_path: "clusters/**"
         log_level: WARNING
         container_user: 0
+        soft_fail: false
 
     - name: Check for Checkov SARIF file
       id: checkov_sarif
