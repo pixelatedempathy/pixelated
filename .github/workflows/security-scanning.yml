@@ -126,6 +126,69 @@ jobs:
         name: checkov-sarif
         path: checkov-results.sarif
 
+    # --- COSIGN INTEGRATION START ---
+    - name: Install Cosign
+      run: |
+        curl -sSL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign
+        chmod +x cosign
+        sudo mv cosign /usr/local/bin/cosign
+
+    # Example: Sign built image after push (replace IMAGE_NAME and TAG as appropriate)
+    # Requires OIDC or COSIGN_PRIVATE_KEY secret configured in repo
+    - name: Sign container image with Cosign
+      env:
+        COSIGN_EXPERIMENTAL: "true"
+        # If using keyless OIDC signing, no key needed
+        # If using key, uncomment below and set secret in repo
+        # COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      run: |
+        # Replace IMAGE_NAME and TAG with actual values
+        IMAGE_NAME="ghcr.io/${{ github.repository }}/pixelated-app"
+        IMAGE_TAG="${{ github.sha }}"
+        # If using keyless signing (OIDC)
+        cosign sign --yes "${IMAGE_NAME}:${IMAGE_TAG}"
+        # If using key (uncomment below)
+        # echo "${COSIGN_PRIVATE_KEY}" > cosign.key
+        # cosign sign --key cosign.key "${IMAGE_NAME}:${IMAGE_TAG}"
+        # rm -f cosign.key
+
+    - name: Upload Cosign signature artifact
+      run: |
+        IMAGE_NAME="ghcr.io/${{ github.repository }}/pixelated-app"
+        IMAGE_TAG="${{ github.sha }}"
+        cosign download attestation "${IMAGE_NAME}:${IMAGE_TAG}" > cosign-attestation.json || true
+      continue-on-error: true
+      # Upload attestation file if produced
+    - name: Upload Cosign attestation
+      uses: actions/upload-artifact@v4
+      with:
+        name: cosign-attestation
+        path: cosign-attestation.json
+
+    # Verify signature before promotion/publish
+    - name: Verify container image signature with Cosign
+      env:
+        COSIGN_EXPERIMENTAL: "true"
+      run: |
+        IMAGE_NAME="ghcr.io/${{ github.repository }}/pixelated-app"
+        IMAGE_TAG="${{ github.sha }}"
+        cosign verify "${IMAGE_NAME}:${IMAGE_TAG}"
+      # Fail job if verification fails
+      continue-on-error: false
+
+    - name: Upload Cosign verification log
+      run: |
+        IMAGE_NAME="ghcr.io/${{ github.repository }}/pixelated-app"
+        IMAGE_TAG="${{ github.sha }}"
+        cosign verify "${IMAGE_NAME}:${IMAGE_TAG}" > cosign-verify.log 2>&1 || true
+      continue-on-error: true
+    - name: Upload Cosign verification artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cosign-verify-log
+        path: cosign-verify.log
+    # --- COSIGN INTEGRATION END ---
+
   dependency-check:
     name: Dependency Check
     runs-on: ubuntu-latest

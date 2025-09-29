@@ -19,7 +19,7 @@ receivers:
   email_configs:
   - to: 'security-team@pixelatedempathy.com'
     subject: '🚨 Pixelated Security Alert: {{ .GroupLabels.alertname }}'
-    body: |
+    text: |
       {{ range .Alerts }}
       Alert: {{ .Annotations.summary }}
       Description: {{ .Annotations.description }}
@@ -42,14 +42,14 @@ receivers:
       {{ end }}
 
   webhook_configs:
-  - url: '${ALERTMANAGER_WEBHOOK_URL:-http://localhost:8080/api/alerts}'
+  - url: 'http://localhost:8080/api/alerts'
     send_resolved: true
 
 - name: 'critical-alerts'
   email_configs:
   - to: 'emergency-response@pixelatedempathy.com'
     subject: '🚨 CRITICAL - Pixelated Security Alert: {{ .GroupLabels.alertname }}'
-    body: |
+    text: |
       CRITICAL ALERT - IMMEDIATE ATTENTION REQUIRED
 
       {{ range .Alerts }}
