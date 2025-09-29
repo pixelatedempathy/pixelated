@@ -59,4 +59,4 @@ jobs:
     - name: Run post scheduler
       run: pnpm run schedule-posts
       env:
-        GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

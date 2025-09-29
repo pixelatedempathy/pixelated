@@ -3,6 +3,7 @@ ARG BUILDKIT_INLINE_CACHE=1
 ARG NODE_VERSION=24
 FROM node:${NODE_VERSION}-slim AS base
 
+# Labels
 LABEL org.opencontainers.image.description="Astro"
 
 RUN apt-get update && \
@@ -49,8 +50,10 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable pnpm
 
-RUN addgroup -g 1001 astro && \
-    adduser -u 1001 -G astro -s /bin/sh -D astro
+RUN set -eux; \
+    # Create group/user for Alpine Linux
+    addgroup -g 1001 -S astro && \
+    adduser -S astro -u 1001 -G astro
 
 FROM base AS deps
 
