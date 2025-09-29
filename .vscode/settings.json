@@ -163,4 +163,5 @@
         "--line-length",
         "88"
     ],
+    "oxc.enable": true,
 }
