@@ -8,17 +8,17 @@ Primary goal
 - Protect end-users and downstream model consumers by filtering or labeling unsafe content and ensuring balanced, fair datasets.
 
 Tasks (complete to production scale)
-- [x] Implement clinical safety detectors and crisis flags with high recall and reviewed precision
-- [x] Integrate safety checks into the pipeline as a gating step (block / quarantine / flag)
-- [x] Implement demographic balancing analysis and balancing tools (up/down sampling strategies)
-- [x] Add bias detection and explainability hooks (SHAP/LIME adapters) for dataset versions
-- [x] Add manual review flow for flagged items with audit logging
-- [x] Add thresholds and circuit breakers to prevent mass release of unvetted content
-- [x] Implement unit/integration tests for safety logic with representative test vectors
-- [x] Provide documentation of fairness/bias metrics and how they are calculated
-- [x] Add monitoring/alerts for safety detector drift and false positives/negatives
-- [x] Ensure safety checks are configurable per environment and dataset version
-- [x] Add a reproducible audit trail for dataset changes and remediation actions
+- [ ] Implement clinical safety detectors and crisis flags with high recall and reviewed precision
+- [ ] Integrate safety checks into the pipeline as a gating step (block / quarantine / flag)
+- [ ] Implement demographic balancing analysis and balancing tools (up/down sampling strategies)
+- [ ] Add bias detection and explainability hooks (SHAP/LIME adapters) for dataset versions
+- [ ] Add manual review flow for flagged items with audit logging
+- [ ] Add thresholds and circuit breakers to prevent mass release of unvetted content
+- [ ] Implement unit/integration tests for safety logic with representative test vectors
+- [ ] Provide documentation of fairness/bias metrics and how they are calculated
+- [ ] Add monitoring/alerts for safety detector drift and false positives/negatives
+- [ ] Ensure safety checks are configurable per environment and dataset version
+- [ ] Add a reproducible audit trail for dataset changes and remediation actions
 
 ## Summary
 
