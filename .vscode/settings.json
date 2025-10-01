@@ -164,4 +164,7 @@
         "88"
     ],
     "oxc.enable": true,
+    "black-formatter.interpreter": [
+        "/root/pixelated/.venv/bin/activate"
+    ],
 }
