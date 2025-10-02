@@ -165,6 +165,7 @@
     ],
     "oxc.enable": true,
     "black-formatter.interpreter": [
-        "/root/pixelated/.venv/bin/activate"
+        "/root/pixelated/.venv/bin/python"
     ],
+    "black-formatter.importStrategy": "fromEnvironment",
 }
