@@ -168,4 +168,16 @@
         "/root/pixelated/.venv/bin/python"
     ],
     "black-formatter.importStrategy": "fromEnvironment",
+    "cubent.autocomplete.allowWithCopilot": true,
+    "cubent.autocomplete.enabled": true,
+    "cubent.autocomplete.inceptionApiKey": "sk_75b4e3290a0d0312c8559f4088cf4383",
+    "cubent.cubentCloudEnabled": true,
+    "cubent.mcp.alwaysAllow": true,
+    "cubent.mcp.enabled": true,
+    "cubent.mcp.serverCreationEnabled": true,
+    "gitlab.duoAgentPlatform.connectionType": "websocket",
+    "gitlab.real-timeSecurityScan.scanFileOnSave": false,
+    "gitlab.showPipelineUpdateNotifications": true,
+    "roo-code-nightly.newTaskRequireTodos": true,
+    "roo-code-nightly.preventCompletionWithOpenTodos": true,
 }
