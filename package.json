@@ -183,7 +183,7 @@
     "nanoid": "^5.1.6",
     "node-cron": "^4.2.1",
     "node-fetch": "^3.3.2",
-    "node-seal": "^5.1.6",
+    "node-seal": "^6.0.0",
     "openmemory": "^0.0.1",
     "pg": "^8.16.3",
     "postgres": "^3.4.7",
