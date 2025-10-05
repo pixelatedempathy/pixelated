@@ -301,7 +301,7 @@
     "remark-math": "^6.0.0",
     "remark-toc": "^9.0.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rollup-plugin-visualizer": "^6.0.3",
+    "rollup-plugin-visualizer": "^6.0.4",
     "satori": "^0.18.3",
     "satori-html": "^0.3.2",
     "scheduler": "^0.26.0",
