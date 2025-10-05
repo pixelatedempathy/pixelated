@@ -151,7 +151,7 @@
     "@sentry/astro": "^10.17.0",
     "@sentry/browser": "^10.17.0",
     "@sentry/node": "^10.15.0",
-    "@sentry/profiling-node": "^10.15.0",
+    "@sentry/profiling-node": "^10.17.0",
     "@sentry/toolbar": "1.0.0-beta.11",
     "@sentry/vite-plugin": "^4.3.0",
     "@spotlightjs/astro": "^3.2.5",
