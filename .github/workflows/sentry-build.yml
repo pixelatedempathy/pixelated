@@ -19,27 +19,30 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: 10.18.0
+
     - name: Use Node.js
       uses: actions/setup-node@v5
       with:
         node-version: '24'
+        cache: 'pnpm'
 
-    - name: Setup pnpm
+    - name: Get pnpm store directory
+      shell: bash
       run: |
-        corepack enable
-        # Ensure pnpm is available via corepack before using it
-        corepack prepare pnpm@latest --activate
-        pnpm -v
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+      id: pnpm-cache
 
     - name: Cache pnpm store
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.pnpm-store
-          ~/.local/share/pnpm
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-
+          ${{ runner.os }}-pnpm-store-
 
     - name: Install dependencies
       run: pnpm install --no-frozen-lockfile

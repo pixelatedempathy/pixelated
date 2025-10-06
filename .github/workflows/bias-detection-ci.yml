@@ -54,18 +54,17 @@ jobs:
         sarif_file: trivy-results.sarif
         category: trivy-scan
 
+    - name: Setup pnpm for CodeQL
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+        run_install: false
+
     - name: Setup Node.js for CodeQL
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack for CodeQL
-      run: corepack enable
-
-    - name: Setup pnpm for CodeQL
-      uses: pnpm/action-setup@v4.1.0
-      with:
-        run_install: false
+        cache: 'pnpm'
 
     - name: Get pnpm store directory for CodeQL
       id: pnpm-cache-codeql
@@ -103,17 +102,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.2.2
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4.1.0
-      with:
+        cache: 'pnpm'
         run_install: false
 
     - name: Get pnpm store directory
@@ -189,17 +187,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.2.2
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4.1.0
-      with:
+        cache: 'pnpm'
         run_install: false
 
     - name: Get pnpm store directory
@@ -354,17 +351,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.2.2
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4.1.0
-      with:
+        cache: 'pnpm'
         run_install: false
 
     - name: Get pnpm store directory
@@ -480,17 +476,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.2.2
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4.1.0
-      with:
+        cache: 'pnpm'
         run_install: false
 
     - name: Get pnpm store directory
@@ -539,17 +534,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.2.2
 
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4.1.0
+      with:
+        version: ${{ env.PNPM_VERSION }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4.1.0
-      with:
+        cache: 'pnpm'
         run_install: false
 
     - name: Get pnpm store directory

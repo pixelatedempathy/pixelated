@@ -47,25 +47,28 @@ ENV VITE_CACHE_DIR=/tmp/.vite
 ENV PORT=4321
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable pnpm
+ENV XDG_CACHE_HOME=/tmp/.cache
+RUN mkdir -p /tmp/.cache && corepack enable pnpm
 
 # Dependencies stage - optimized for caching
 FROM base AS deps
 
+# Copy package files first (as root to ensure proper setup)
+COPY --chown=astro:astro package.json pnpm-lock.yaml* ./
+
+# Create cache directories with proper permissions for astro user
+# Must be done as root before switching users
+RUN mkdir -p /tmp/.cache/node/corepack/v1 /app/.pnpm-store && \
+    chown -R astro:astro /tmp/.cache /app/.pnpm-store && \
+    chmod -R 777 /tmp/.cache && \
+    chmod -R 755 /app/.pnpm-store
+
 # Switch to non-root user for dependency installation
 USER astro
 
-# Copy package files with proper ownership. If pnpm-lock.yaml is not present in the
-# build context (e.g., some CI detached checkouts), fall back to copying only
-# package.json to avoid build failures. This keeps builds resilient while still
-# preferring a lockfile when available.
-RUN if [ -f pnpm-lock.yaml ]; then echo "✅ pnpm-lock.yaml found"; else echo "⚠️ pnpm-lock.yaml not found - continuing without lockfile"; fi
-COPY --chown=astro:astro package.json ./
-# Use a conditional approach to handle missing pnpm-lock.yaml gracefully
-RUN if [ -f pnpm-lock.yaml ]; then cp pnpm-lock.yaml /tmp/pnpm-lock.yaml; fi
-RUN if [ -f /tmp/pnpm-lock.yaml ]; then cp /tmp/pnpm-lock.yaml ./; fi
-
-# Configure pnpm store and install dependencies with optimizations
+# Configure pnpm to use a smaller cache directory and install dependencies
+# Use /tmp for corepack cache to avoid ENOSPC errors in user home
+ENV XDG_CACHE_HOME=/tmp/.cache
 RUN pnpm config set store-dir /app/.pnpm-store && \
     pnpm config set package-import-method copy && \
     pnpm config set registry https://registry.npmjs.org/ && \
@@ -78,26 +81,21 @@ RUN pnpm config set store-dir /app/.pnpm-store && \
 # Build stage - optimized for performance
 FROM base AS build
 
-# Build-time arguments for Sentry
-ARG SENTRY_DSN=""
-ARG SENTRY_AUTH_TOKEN=""
+# Non-sensitive build arguments
 ARG SENTRY_RELEASE=""
 ARG PUBLIC_SENTRY_DSN=""
-ARG BETTER_AUTH_SECRET=""
 
-# Set build environment variables
-ENV SENTRY_DSN=${SENTRY_DSN}
-ENV SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}
+# Set non-sensitive environment variables
 ENV SENTRY_RELEASE=${SENTRY_RELEASE}
 ENV PUBLIC_SENTRY_DSN=${PUBLIC_SENTRY_DSN}
-ENV BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
 
 # Switch to non-root user
 USER astro
 
-# Copy dependencies from deps stage
+# Copy dependencies and cache directories from deps stage (with proper permissions)
 COPY --from=deps --chown=astro:astro /app/node_modules ./node_modules
 COPY --from=deps --chown=astro:astro /app/.pnpm-store ./.pnpm-store
+COPY --from=deps --chown=astro:astro /tmp/.cache /tmp/.cache
 COPY --chown=astro:astro package.json ./
 COPY --chown=astro:astro pnpm-lock.yaml* ./
 
@@ -113,13 +111,21 @@ COPY --chown=astro:astro src ./src
 COPY --chown=astro:astro .env* ./
 COPY --chown=astro:astro *.config.* ./
 
-# Create cache directories with proper permissions
-RUN mkdir -p /tmp/.astro /app/node_modules/.astro && \
+# Create cache directories with proper permissions (including corepack cache)
+# Note: /tmp/.cache is already copied with correct permissions from deps stage
+RUN mkdir -p /tmp/.astro /app/node_modules/.astro /tmp/.cache/node/corepack/v1 && \
     chmod -R 755 /tmp/.astro /app/node_modules/.astro
 
 # Build with optimized settings - disable experimental TypeScript stripping for Node 24 compatibility
+# Secrets are mounted at build time and read from files (not exposed in image layers)
 ENV NODE_OPTIONS="--max-old-space-size=4096 --no-experimental-strip-types"
-RUN echo "🏗️ Starting optimized build process..." && \
+RUN --mount=type=secret,id=sentry_dsn \
+    --mount=type=secret,id=sentry_auth_token \
+    --mount=type=secret,id=better_auth_secret \
+    echo "🏗️ Starting optimized build process..." && \
+    export SENTRY_DSN=$(cat /run/secrets/sentry_dsn 2>/dev/null || echo "") && \
+    export SENTRY_AUTH_TOKEN=$(cat /run/secrets/sentry_auth_token 2>/dev/null || echo "") && \
+    export BETTER_AUTH_SECRET=$(cat /run/secrets/better_auth_secret 2>/dev/null || echo "") && \
     pnpm build --verbose > /tmp/build.log 2>&1 || (\
         echo "❌ Build failed, debugging..." && \
         cat /tmp/build.log && \
