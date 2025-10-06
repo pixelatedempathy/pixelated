@@ -158,5 +158,19 @@
     "cubent.cubentCloudEnabled": true,
     "cubent.mcp.alwaysAllow": true,
     "cubent.mcp.enabled": true,
-    "cubent.mcp.serverCreationEnabled": true
+    "cubent.mcp.serverCreationEnabled": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.automationProfile.linux": {
+        "path": "/usr/bin/zsh"
+    },
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "/usr/bin/zsh",
+            "args": []
+        },
+        "bash": {
+            "path": "/usr/bin/bash",
+            "args": []
+        }
+    }
 }
