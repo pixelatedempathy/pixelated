@@ -20,7 +20,7 @@ Summary:
 
 Proposed full change (Option A):
 - Replace `pip install` occurrences across the repository with `uv` equivalents where executable scripts, Dockerfiles, CI, and install scripts perform real installs.
-- Add `uv.lock`/`pyproject.toml` based sync steps in containers and CI where appropriate (e.g., `uv sync --no-frozen`).
+- Add `uv.lock`/`pyproject.toml` based sync steps in containers and CI where appropriate (e.g., `uv sync --frozen`).
 - Ensure `uv` is installed in Docker base stages and CI images before calling `uv`.
 - Update developer docs and READMEs to recommend `uv` for reproducible installs.
 
