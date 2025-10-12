@@ -1,0 +1,44 @@
+{
+  "log": true,
+  "host": "https://goat.pixelatedempathy.tech",
+  "non_interactive_mode": true,
+  "transformers": [
+    {
+      "path": "/home/vivi/.claude-code-router/plugins/dashscope-transformer.js",
+      "options": {
+        "enable_thinking": false,
+        "stream": true
+      }
+    }
+  ],
+  "providers": [
+    {
+      "name": "dashscope",
+      "api_base_url": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "api_key": "REDACTED",
+      "models": [
+        "qwen3-coder-plus"
+      ],
+      "transformer": {
+        "use": ["dashscope"]
+      }
+    },
+    {
+      "name": "ollama",
+      "api_base_url": "https://goat.pixelatedempathy.tech/v1/chat/completions",
+      "api_key": "REDACTED",
+      "models": [
+        "hf.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M",
+        "hf.co/unsloth/gemma-3n-E4B-it-GGUF:Q4_K_M",
+        "devstral:24b"
+      ]
+    }
+  ],
+  "router": {
+    "default": "ollama,hf.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M",
+    "think": "ollama,hf.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M",
+    "background": "ollama,hf.co/unsloth/gemma-3n-E4B-it-GGUF:Q4_K_M",
+    "long_context": "ollama,hf.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M",
+    "long_context_threshold": 60000
+  }
+}
