@@ -152,17 +152,11 @@
             "source.fixAll.ruff": "explicit"
         }
     },
-    "cubent.autocomplete.allowWithCopilot": true,
-    "cubent.autocomplete.enabled": true,
-    "cubent.autocomplete.inceptionApiKey": "sk_75b4e3290a0d0312c8559f4088cf4383",
-    "cubent.cubentCloudEnabled": true,
-    "cubent.mcp.alwaysAllow": true,
-    "cubent.mcp.enabled": true,
-    "cubent.mcp.serverCreationEnabled": true,
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.automationProfile.linux": {
-        "path": "/usr/bin/zsh"
-    },
+    "terminal.integrated.automationProfile.linux": null,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 14,
     "terminal.integrated.profiles.linux": {
         "zsh": {
             "path": "/usr/bin/zsh",
