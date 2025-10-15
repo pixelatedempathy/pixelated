@@ -155,7 +155,7 @@
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.automationProfile.linux": null,
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontFamily": "monospace",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.profiles.linux": {
         "zsh": {
