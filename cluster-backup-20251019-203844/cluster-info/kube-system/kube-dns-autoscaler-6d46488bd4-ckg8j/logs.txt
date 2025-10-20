@@ -1,0 +1,10 @@
+==== START logs for container autoscaler of pod kube-system/kube-dns-autoscaler-6d46488bd4-ckg8j ====
+I1001 19:11:52.954185       1 autoscaler.go:49] Scaling Namespace: kube-system, Target: deployment/kube-dns
+I1001 19:11:53.066844       1 plugin.go:50] Set control mode to linear
+I1001 19:11:53.066882       1 linear_controller.go:60] ConfigMap version change (old:  new: 1758129854720703012) - rebuilding params
+I1001 19:11:53.066894       1 linear_controller.go:61] Params from apiserver: 
+{"coresPerReplica":256,"includeUnschedulableNodes":true,"nodesPerReplica":16,"preventSinglePointFailure":true}
+I1001 19:11:53.066957       1 linear_controller.go:80] Defaulting min replicas count to 1 for linear controller
+I1008 17:31:53.069830       1 autoscaler_server.go:169] ConfigMap not found: Get "https://34.118.224.1:443/api/v1/namespaces/kube-system/configmaps/kube-dns-autoscaler": dial tcp 34.118.224.1:443: connect: connection refused, will create one with default params
+E1008 17:31:53.091142       1 autoscaler_server.go:129] Error syncing configMap with apiserver: Post "https://34.118.224.1:443/api/v1/namespaces/kube-system/configmaps": dial tcp 34.118.224.1:443: connect: connection refused
+==== END logs for container autoscaler of pod kube-system/kube-dns-autoscaler-6d46488bd4-ckg8j ====
