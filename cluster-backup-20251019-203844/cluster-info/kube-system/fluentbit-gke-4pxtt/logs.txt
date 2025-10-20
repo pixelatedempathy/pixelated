@@ -1,0 +1,21 @@
+==== START logs for container token-broker-adc-init of pod kube-system/fluentbit-gke-4pxtt ====
+==== END logs for container token-broker-adc-init of pod kube-system/fluentbit-gke-4pxtt ====
+==== START logs for container fluentbit-gke-init of pod kube-system/fluentbit-gke-4pxtt ====
+==== END logs for container fluentbit-gke-init of pod kube-system/fluentbit-gke-4pxtt ====
+==== START logs for container fluentbit of pod kube-system/fluentbit-gke-4pxtt ====
+[1mFluent Bit v1.8.12[0m
+* [1m[93mCopyright (C) 2019-2021 The Fluent Bit Authors[0m
+* [1m[93mCopyright (C) 2015-2018 Treasure Data[0m
+* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+* https://fluentbit.io
+
+==== END logs for container fluentbit of pod kube-system/fluentbit-gke-4pxtt ====
+==== START logs for container fluentbit-gke of pod kube-system/fluentbit-gke-4pxtt ====
+I1001 19:08:39.236122       1 stackdriver.go:101] Stackdriver sink is configured for project: pixelated-463209-e5, cluster-name: pixelcluster, instance: 8313410143684445444
+I1001 19:08:39.236236       1 server.go:58] Starting Fluent Bit GKE plugin server with &{LogBatchPoolSize:2 MaxLogBatchSize:0 Port:2021 MaxLogConnections:2 MaxInactivityDuration:10m0s}
+==== END logs for container fluentbit-gke of pod kube-system/fluentbit-gke-4pxtt ====
+==== START logs for container fluentbit-metrics-collector of pod kube-system/fluentbit-gke-4pxtt ====
+{"level":"info","ts":1759345721.3223357,"caller":"collector/main.go:47","msg":"Starting Metrics Collector","log_first_n":2,"log_interval(s)":3600}
+{"level":"info","ts":1759345721.3255336,"caller":"collector/multi_target_collector.go:62","msg":"Start Metrics Collector","target_url":"http://127.0.0.1:2020/api/v1/metrics/prometheus","target_name":"fluentbit"}
+{"level":"info","ts":1759345721.3263083,"caller":"collector/collector.go:128","msg":"Connecting to Cloud Monitoring","target_name":"fluentbit","endpoint":"monitoring.googleapis.com:443"}
+==== END logs for container fluentbit-metrics-collector of pod kube-system/fluentbit-gke-4pxtt ====
