@@ -1,0 +1,52 @@
+==== START logs for container csi-driver-registrar of pod kube-system/pdcsi-node-pcn98 ====
+I1001 19:08:06.329427       1 main.go:135] Version: v2.9.4-gke.42-0-g59f6114f
+I1001 19:08:06.329523       1 main.go:136] Running node-driver-registrar in mode=
+I1001 19:08:06.329535       1 main.go:157] Attempting to open a gRPC connection with: "/csi/csi.sock"
+I1001 19:08:06.329556       1 connection.go:214] Connecting to unix:///csi/csi.sock
+W1001 19:08:16.331225       1 connection.go:233] Still connecting to unix:///csi/csi.sock
+I1001 19:08:23.455760       1 main.go:164] Calling CSI driver to discover driver name
+I1001 19:08:23.455806       1 connection.go:243] GRPC call: /csi.v1.Identity/GetPluginInfo
+I1001 19:08:23.455817       1 connection.go:244] GRPC request: {}
+I1001 19:08:23.460230       1 connection.go:250] GRPC response: {"name":"pd.csi.storage.gke.io","vendor_version":"v1.20.3-gke.1"}
+I1001 19:08:23.460253       1 connection.go:251] GRPC error: <nil>
+I1001 19:08:23.460287       1 main.go:173] CSI driver name: "pd.csi.storage.gke.io"
+I1001 19:08:23.460324       1 node_register.go:55] Starting Registration Server at: /registration/pd.csi.storage.gke.io-reg.sock
+I1001 19:08:23.460601       1 node_register.go:64] Registration Server started at: /registration/pd.csi.storage.gke.io-reg.sock
+I1001 19:08:23.460820       1 node_register.go:88] Skipping HTTP server because endpoint is set to: ""
+I1001 19:08:24.039486       1 main.go:90] Received GetInfo call: &InfoRequest{}
+I1001 19:08:24.141722       1 main.go:101] Received NotifyRegistrationStatus call: &RegistrationStatus{PluginRegistered:true,Error:,}
+==== END logs for container csi-driver-registrar of pod kube-system/pdcsi-node-pcn98 ====
+==== START logs for container gce-pd-driver of pod kube-system/pdcsi-node-pcn98 ====
+I1001 19:08:23.390089      12 main.go:122] Operating compute environment set to: production and computeEndpoint is set to: <nil>
+I1001 19:08:23.391549      12 main.go:131] Sys info: NumCPU: 2 MAXPROC: 1
+I1001 19:08:23.391574      12 main.go:136] Driver vendor version v1.20.3-gke.1
+I1001 19:08:23.396931      12 mount_linux.go:324] Detected umount with safe 'not mounted' behavior
+I1001 19:08:23.399959      12 envvar.go:172] "Feature gate default state" feature="ClientsAllowCBOR" enabled=false
+I1001 19:08:23.399990      12 envvar.go:172] "Feature gate default state" feature="ClientsPreferCBOR" enabled=false
+I1001 19:08:23.400001      12 envvar.go:172] "Feature gate default state" feature="InformerResourceVersion" enabled=false
+I1001 19:08:23.400010      12 envvar.go:172] "Feature gate default state" feature="WatchListClient" enabled=false
+I1001 19:08:23.419298      12 cache.go:297] Successfully retrieved node info gke-pixelcluster-pixelcluster-node-po-07042413-8k1a
+I1001 19:08:23.420194      12 gce-pd-driver.go:101] Enabling volume access mode: SINGLE_NODE_WRITER
+I1001 19:08:23.420212      12 gce-pd-driver.go:101] Enabling volume access mode: MULTI_NODE_READER_ONLY
+I1001 19:08:23.420219      12 gce-pd-driver.go:101] Enabling volume access mode: MULTI_NODE_MULTI_WRITER
+I1001 19:08:23.420233      12 gce-pd-driver.go:111] Enabling controller service capability: CREATE_DELETE_VOLUME
+I1001 19:08:23.420242      12 gce-pd-driver.go:111] Enabling controller service capability: PUBLISH_UNPUBLISH_VOLUME
+I1001 19:08:23.420248      12 gce-pd-driver.go:111] Enabling controller service capability: CREATE_DELETE_SNAPSHOT
+I1001 19:08:23.420255      12 gce-pd-driver.go:111] Enabling controller service capability: LIST_SNAPSHOTS
+I1001 19:08:23.420283      12 gce-pd-driver.go:111] Enabling controller service capability: PUBLISH_READONLY
+I1001 19:08:23.420290      12 gce-pd-driver.go:111] Enabling controller service capability: EXPAND_VOLUME
+I1001 19:08:23.420296      12 gce-pd-driver.go:111] Enabling controller service capability: LIST_VOLUMES
+I1001 19:08:23.420301      12 gce-pd-driver.go:111] Enabling controller service capability: LIST_VOLUMES_PUBLISHED_NODES
+I1001 19:08:23.420307      12 gce-pd-driver.go:111] Enabling controller service capability: CLONE_VOLUME
+I1001 19:08:23.420312      12 gce-pd-driver.go:111] Enabling controller service capability: MODIFY_VOLUME
+I1001 19:08:23.420323      12 gce-pd-driver.go:121] Enabling node service capability: STAGE_UNSTAGE_VOLUME
+I1001 19:08:23.420330      12 gce-pd-driver.go:121] Enabling node service capability: EXPAND_VOLUME
+I1001 19:08:23.420337      12 gce-pd-driver.go:121] Enabling node service capability: GET_VOLUME_STATS
+I1001 19:08:23.420346      12 gce-pd-driver.go:186] Driver: pd.csi.storage.gke.io
+I1001 19:08:23.420414      12 server.go:122] Start listening with scheme unix, addr /csi/csi.sock
+I1001 19:08:23.420664      12 server.go:141] Listening for connections on address: &net.UnixAddr{Name:"/csi/csi.sock", Net:"unix"}
+I1001 19:08:23.459249      12 utils.go:82] /csi.v1.Identity/GetPluginInfo called with request: 
+I1001 19:08:23.459483      12 utils.go:91] /csi.v1.Identity/GetPluginInfo returned with response: name:"pd.csi.storage.gke.io"  vendor_version:"v1.20.3-gke.1"
+I1001 19:08:24.041576      12 utils.go:82] /csi.v1.Node/NodeGetInfo called with request: 
+I1001 19:08:24.041811      12 utils.go:91] /csi.v1.Node/NodeGetInfo returned with response: node_id:"projects/pixelated-463209-e5/zones/us-east1-d/instances/gke-pixelcluster-pixelcluster-node-po-07042413-8k1a"  max_volumes_per_node:15  accessible_topology:{segments:{key:"topology.gke.io/zone"  value:"us-east1-d"}}
+==== END logs for container gce-pd-driver of pod kube-system/pdcsi-node-pcn98 ====
