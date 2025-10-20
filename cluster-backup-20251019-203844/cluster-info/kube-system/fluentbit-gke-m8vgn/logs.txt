@@ -1,0 +1,22 @@
+==== START logs for container token-broker-adc-init of pod kube-system/fluentbit-gke-m8vgn ====
+==== END logs for container token-broker-adc-init of pod kube-system/fluentbit-gke-m8vgn ====
+==== START logs for container fluentbit-gke-init of pod kube-system/fluentbit-gke-m8vgn ====
+==== END logs for container fluentbit-gke-init of pod kube-system/fluentbit-gke-m8vgn ====
+==== START logs for container fluentbit of pod kube-system/fluentbit-gke-m8vgn ====
+[1mFluent Bit v1.8.12[0m
+* [1m[93mCopyright (C) 2019-2021 The Fluent Bit Authors[0m
+* [1m[93mCopyright (C) 2015-2018 Treasure Data[0m
+* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+* https://fluentbit.io
+
+==== END logs for container fluentbit of pod kube-system/fluentbit-gke-m8vgn ====
+==== START logs for container fluentbit-gke of pod kube-system/fluentbit-gke-m8vgn ====
+I1001 19:12:24.344581       1 stackdriver.go:101] Stackdriver sink is configured for project: pixelated-463209-e5, cluster-name: pixelcluster, instance: 2376283074384151085
+I1001 19:12:24.344858       1 server.go:58] Starting Fluent Bit GKE plugin server with &{LogBatchPoolSize:2 MaxLogBatchSize:0 Port:2021 MaxLogConnections:2 MaxInactivityDuration:10m0s}
+==== END logs for container fluentbit-gke of pod kube-system/fluentbit-gke-m8vgn ====
+==== START logs for container fluentbit-metrics-collector of pod kube-system/fluentbit-gke-m8vgn ====
+{"level":"info","ts":1759345947.3403232,"caller":"collector/main.go:47","msg":"Starting Metrics Collector","log_first_n":2,"log_interval(s)":3600}
+{"level":"info","ts":1759345947.341994,"caller":"collector/multi_target_collector.go:62","msg":"Start Metrics Collector","target_url":"http://127.0.0.1:2020/api/v1/metrics/prometheus","target_name":"fluentbit"}
+{"level":"info","ts":1759345947.342253,"caller":"collector/collector.go:128","msg":"Connecting to Cloud Monitoring","target_name":"fluentbit","endpoint":"monitoring.googleapis.com:443"}
+{"level":"error","ts":1759412307.345585,"caller":"gcm/export.go:511","msg":"Failed to export self-observability metrics to Cloud Monitoring","error":"rpc error: code = Unavailable desc = error reading from server: read tcp 10.142.0.22:35026->74.125.196.95:443: read: connection reset by peer","stacktrace":"google3/cloud/kubernetes/metrics/common/gcm/gcm.(*exporter).startSelfObservability\n\tcloud/kubernetes/metrics/common/gcm/export.go:511"}
+==== END logs for container fluentbit-metrics-collector of pod kube-system/fluentbit-gke-m8vgn ====
