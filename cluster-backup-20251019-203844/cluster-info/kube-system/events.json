@@ -1,0 +1,40 @@
+{
+    "kind": "EventList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "1760920728320322999"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "metrics-server-v1.33.0-77d549c684-ll4jb.186a8b0e1680e623",
+                "namespace": "kube-system",
+                "uid": "fd871064-270e-437d-9354-660c7fb4ee06",
+                "resourceVersion": "1760920017101023024",
+                "creationTimestamp": "2025-10-20T00:26:57Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "kube-system",
+                "name": "metrics-server-v1.33.0-77d549c684-ll4jb",
+                "uid": "c06ee1e0-6101-402c-a370-8155aa05ed5d",
+                "apiVersion": "v1",
+                "resourceVersion": "1759345694792911002",
+                "fieldPath": "spec.containers{metrics-server}"
+            },
+            "reason": "Unhealthy",
+            "message": "Liveness probe failed: Get \"https://10.72.0.9:10250/livez\": context deadline exceeded",
+            "source": {
+                "component": "kubelet",
+                "host": "gke-pixelcluster-pixelcluster-node-po-07042413-8k1a"
+            },
+            "firstTimestamp": "2025-10-02T02:18:17Z",
+            "lastTimestamp": "2025-10-20T00:26:57Z",
+            "count": 14,
+            "type": "Warning",
+            "eventTime": null,
+            "reportingComponent": "kubelet",
+            "reportingInstance": "gke-pixelcluster-pixelcluster-node-po-07042413-8k1a"
+        }
+    ]
+}
