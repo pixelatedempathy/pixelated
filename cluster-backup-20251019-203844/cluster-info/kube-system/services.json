@@ -1,0 +1,152 @@
+{
+    "kind": "ServiceList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "1760920728736313000"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "default-http-backend",
+                "namespace": "kube-system",
+                "uid": "ded843f7-a803-44c1-b48d-434a37cd9329",
+                "resourceVersion": "1759343265880015023",
+                "creationTimestamp": "2025-09-17T17:09:23Z",
+                "labels": {
+                    "addonmanager.kubernetes.io/mode": "Reconcile",
+                    "k8s-app": "glbc",
+                    "kubernetes.io/cluster-service": "true",
+                    "kubernetes.io/name": "GLBCDefaultBackend"
+                },
+                "annotations": {
+                    "components.gke.io/component-name": "l7-lb-controller-combined",
+                    "components.gke.io/component-version": "1.36.4-gke.0",
+                    "components.gke.io/layer": "addon"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "http",
+                        "protocol": "TCP",
+                        "port": 80,
+                        "targetPort": 8080,
+                        "nodePort": 30300
+                    }
+                ],
+                "selector": {
+                    "k8s-app": "glbc"
+                },
+                "clusterIP": "34.118.233.177",
+                "clusterIPs": [
+                    "34.118.233.177"
+                ],
+                "type": "NodePort",
+                "sessionAffinity": "None",
+                "externalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "metadata": {
+                "name": "kube-dns",
+                "namespace": "kube-system",
+                "uid": "744818ad-3545-45bb-ae95-8be0f30f4e57",
+                "resourceVersion": "1758128916095871020",
+                "creationTimestamp": "2025-09-17T17:08:36Z",
+                "labels": {
+                    "addonmanager.kubernetes.io/mode": "Reconcile",
+                    "k8s-app": "kube-dns",
+                    "kubernetes.io/cluster-service": "true",
+                    "kubernetes.io/name": "KubeDNS"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "dns",
+                        "protocol": "UDP",
+                        "port": 53,
+                        "targetPort": 53
+                    },
+                    {
+                        "name": "dns-tcp",
+                        "protocol": "TCP",
+                        "port": 53,
+                        "targetPort": 53
+                    }
+                ],
+                "selector": {
+                    "k8s-app": "kube-dns"
+                },
+                "clusterIP": "34.118.224.10",
+                "clusterIPs": [
+                    "34.118.224.10"
+                ],
+                "type": "ClusterIP",
+                "sessionAffinity": "None",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "metadata": {
+                "name": "metrics-server",
+                "namespace": "kube-system",
+                "uid": "86a9e45d-7842-4bf7-a2cc-2a78127e8d0d",
+                "resourceVersion": "1758128977126399011",
+                "creationTimestamp": "2025-09-17T17:09:37Z",
+                "labels": {
+                    "addonmanager.kubernetes.io/mode": "Reconcile",
+                    "kubernetes.io/cluster-service": "true",
+                    "kubernetes.io/name": "Metrics-server"
+                },
+                "annotations": {
+                    "cloud.google.com/neg": "{\"ingress\":true}",
+                    "components.gke.io/component-name": "metrics-server",
+                    "components.gke.io/component-version": "1.33.0-gke.3",
+                    "components.gke.io/layer": "addon"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "protocol": "TCP",
+                        "port": 443,
+                        "targetPort": "https"
+                    }
+                ],
+                "selector": {
+                    "k8s-app": "metrics-server"
+                },
+                "clusterIP": "34.118.230.61",
+                "clusterIPs": [
+                    "34.118.230.61"
+                ],
+                "type": "ClusterIP",
+                "sessionAffinity": "None",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ]
+}
