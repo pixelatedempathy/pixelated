@@ -1,0 +1,8 @@
+{
+    "kind": "ReplicaSetList",
+    "apiVersion": "apps/v1",
+    "metadata": {
+        "resourceVersion": "1760920745880130000"
+    },
+    "items": null
+}
