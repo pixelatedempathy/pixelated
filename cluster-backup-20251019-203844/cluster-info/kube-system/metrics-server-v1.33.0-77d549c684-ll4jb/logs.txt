@@ -1,0 +1,186 @@
+==== START logs for container metrics-server of pod kube-system/metrics-server-v1.33.0-77d549c684-ll4jb ====
+I1001 19:09:00.212190       1 serving.go:374] Generated self-signed cert (/tmp/apiserver.crt, /tmp/apiserver.key)
+I1001 19:09:14.411478       1 handler.go:275] Adding GroupVersion metrics.k8s.io v1beta1 to ResourceManager
+I1001 19:09:15.547609       1 secure_serving.go:213] Serving securely on [::]:10250
+I1001 19:09:15.547726       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I1001 19:09:15.547744       1 shared_informer.go:311] Waiting for caches to sync for RequestHeaderAuthRequestController
+I1001 19:09:15.547838       1 dynamic_serving_content.go:132] "Starting controller" name="serving-cert::/tmp/apiserver.crt::/tmp/apiserver.key"
+I1001 19:09:15.548212       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1001 19:09:15.548458       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I1001 19:09:15.548474       1 shared_informer.go:311] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1001 19:09:15.548509       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I1001 19:09:15.548519       1 shared_informer.go:311] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1001 19:09:15.649176       1 shared_informer.go:318] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1001 19:09:15.649239       1 shared_informer.go:318] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1001 19:09:15.748561       1 shared_informer.go:318] Caches are synced for RequestHeaderAuthRequestController
+E1001 19:09:25.412604       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.18:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-07042413-znzk" timeout="10s"
+E1001 19:09:55.231747       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.18:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-07042413-znzk" timeout="10s"
+E1001 19:10:25.222671       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.18:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-07042413-znzk" timeout="10s"
+E1001 19:14:25.227429       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.19:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-e70f" timeout="10s"
+E1001 19:14:55.216358       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.19:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-e70f" timeout="10s"
+E1001 19:15:25.214502       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.19:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-e70f" timeout="10s"
+E1001 19:15:55.242571       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.19:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-e70f" timeout="10s"
+E1001 19:18:25.215464       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.20:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-0brb" timeout="10s"
+E1001 19:18:55.241671       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.20:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-0brb" timeout="10s"
+E1001 19:19:25.222244       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.20:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-0brb" timeout="10s"
+E1001 19:19:55.238410       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.20:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-0brb" timeout="10s"
+I1002 17:32:42.916189       1 trace.go:236] Trace[1126069187]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:7c0aab47-e640-4be1-9b76-17bb09747a72,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (02-Oct-2025 17:32:41.319) (total time: 1592ms):
+Trace[1126069187]: ---"Writing http response done" count:37 1591ms (17:32:42.911)
+Trace[1126069187]: [1.592101768s] [1.592101768s] END
+E1003 04:07:58.011764       1 writers.go:122] apiserver was unable to write a JSON response: http: Handler timeout
+E1003 04:07:58.012012       1 status.go:71] apiserver received an error that is not an metav1.Status: &errors.errorString{s:"http: Handler timeout"}: http: Handler timeout
+E1003 04:07:58.112155       1 writers.go:122] apiserver was unable to write a JSON response: http: Handler timeout
+E1003 04:07:58.311637       1 writers.go:122] apiserver was unable to write a JSON response: http: Handler timeout
+E1003 04:07:58.311692       1 status.go:71] apiserver received an error that is not an metav1.Status: &errors.errorString{s:"http: Handler timeout"}: http: Handler timeout
+E1003 04:07:58.313077       1 writers.go:122] apiserver was unable to write a JSON response: http: Handler timeout
+E1003 04:07:58.313115       1 status.go:71] apiserver received an error that is not an metav1.Status: &errors.errorString{s:"http: Handler timeout"}: http: Handler timeout
+E1003 04:07:58.313357       1 writers.go:135] apiserver was unable to write a fallback JSON response: http: Handler timeout
+E1003 04:07:58.314578       1 writers.go:122] apiserver was unable to write a JSON response: http: Handler timeout
+E1003 04:07:58.316410       1 timeout.go:142] post-timeout activity - time-elapsed: 402.116791ms, GET "/apis/metrics.k8s.io/v1beta1" result: <nil>
+E1003 04:07:58.316469       1 status.go:71] apiserver received an error that is not an metav1.Status: &errors.errorString{s:"http: Handler timeout"}: http: Handler timeout
+E1003 04:07:58.411892       1 timeout.go:142] post-timeout activity - time-elapsed: 98.266234ms, GET "/apis" result: <nil>
+E1003 04:07:58.511556       1 writers.go:135] apiserver was unable to write a fallback JSON response: http: Handler timeout
+E1003 04:07:58.511695       1 timeout.go:142] post-timeout activity - time-elapsed: 599.045348ms, GET "/apis/metrics.k8s.io/v1beta1" result: <nil>
+E1003 04:07:58.511776       1 writers.go:135] apiserver was unable to write a fallback JSON response: http: Handler timeout
+E1003 04:07:58.511822       1 writers.go:135] apiserver was unable to write a fallback JSON response: http: Handler timeout
+E1003 04:07:59.013095       1 status.go:71] apiserver received an error that is not an metav1.Status: &errors.errorString{s:"http: Handler timeout"}: http: Handler timeout
+E1003 04:07:59.013215       1 writers.go:135] apiserver was unable to write a fallback JSON response: http: Handler timeout
+E1003 04:07:59.214118       1 timeout.go:142] post-timeout activity - time-elapsed: 1.301672869s, GET "/apis/metrics.k8s.io/v1beta1" result: <nil>
+E1003 04:07:59.214219       1 timeout.go:142] post-timeout activity - time-elapsed: 1.301653968s, GET "/apis/metrics.k8s.io/v1beta1" result: <nil>
+E1003 04:07:59.514106       1 timeout.go:142] post-timeout activity - time-elapsed: 1.601626306s, GET "/apis/metrics.k8s.io/v1beta1" result: <nil>
+E1004 09:08:55.227405       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.24:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-9cxn" timeout="10s"
+E1004 09:09:25.235757       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.24:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-9cxn" timeout="10s"
+E1004 09:09:55.240455       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.24:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-9cxn" timeout="10s"
+E1004 09:10:25.218600       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.24:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-9cxn" timeout="10s"
+E1004 21:48:25.242614       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.25:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-fwnv" timeout="10s"
+E1004 21:48:55.242387       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.25:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-fwnv" timeout="10s"
+E1004 21:49:25.229379       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.25:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-fwnv" timeout="10s"
+E1004 21:49:55.242925       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.25:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-fwnv" timeout="10s"
+I1005 08:03:42.211372       1 trace.go:236] Trace[1933468193]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:32ad52c7-efbf-4ded-afa2-3cd41d777823,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (05-Oct-2025 08:03:41.395) (total time: 717ms):
+Trace[1933468193]: ---"Listing from storage done" 716ms (08:03:42.112)
+Trace[1933468193]: [717.818119ms] [717.818119ms] END
+E1005 09:36:25.225440       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.26:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nkwp" timeout="10s"
+E1005 09:36:55.236406       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.26:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nkwp" timeout="10s"
+E1005 09:37:25.222568       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.26:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nkwp" timeout="10s"
+E1005 09:37:55.227507       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.26:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nkwp" timeout="10s"
+I1005 11:53:42.611459       1 trace.go:236] Trace[1093027770]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:50d13e9e-487c-4c37-8919-5744340aad18,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (05-Oct-2025 11:53:41.282) (total time: 1231ms):
+Trace[1093027770]: ---"Listing from storage done" 1032ms (11:53:42.314)
+Trace[1093027770]: ---"Writing http response done" count:42 199ms (11:53:42.513)
+Trace[1093027770]: [1.23183712s] [1.23183712s] END
+I1005 20:24:41.812020       1 trace.go:236] Trace[266514966]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:932d2913-71d3-493e-88f0-2fbdd4f81fc6,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (05-Oct-2025 20:24:41.274) (total time: 537ms):
+Trace[266514966]: ---"Writing http response done" count:47 536ms (20:24:41.811)
+Trace[266514966]: [537.421901ms] [537.421901ms] END
+E1005 20:40:25.218866       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.27:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-cbrq" timeout="10s"
+E1005 20:40:55.225390       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.27:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-cbrq" timeout="10s"
+E1005 20:41:25.232863       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.27:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-cbrq" timeout="10s"
+E1005 20:41:55.229523       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.27:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-cbrq" timeout="10s"
+E1006 00:09:55.220764       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.28:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nwf8" timeout="10s"
+E1006 00:10:25.233770       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.28:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nwf8" timeout="10s"
+E1006 00:10:55.223914       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.28:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nwf8" timeout="10s"
+E1006 00:11:25.230475       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.28:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-nwf8" timeout="10s"
+I1006 01:21:43.325330       1 trace.go:236] Trace[1658920383]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:28f593af-b5de-462e-8a43-3c36003d064b,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 01:21:41.291) (total time: 2022ms):
+Trace[1658920383]: ---"Writing http response done" count:42 2020ms (01:21:43.313)
+Trace[1658920383]: [2.022034192s] [2.022034192s] END
+I1006 02:57:42.712554       1 trace.go:236] Trace[764750854]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:e226f7a1-ecde-4f27-a7b1-c66f78ab0f2c,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 02:57:41.278) (total time: 1434ms):
+Trace[764750854]: ---"Writing http response done" count:48 1433ms (02:57:42.712)
+Trace[764750854]: [1.434428958s] [1.434428958s] END
+I1006 05:26:42.813939       1 trace.go:236] Trace[281214520]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:6f0af822-076f-4590-a077-7e3177b86334,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 05:26:41.275) (total time: 1538ms):
+Trace[281214520]: ---"Listing from storage done" 1537ms (05:26:42.813)
+Trace[281214520]: [1.538639292s] [1.538639292s] END
+I1006 08:07:41.814172       1 trace.go:236] Trace[609242119]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:566d1828-31ed-400b-ae5f-14bcbe426dcc,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 08:07:41.278) (total time: 535ms):
+Trace[609242119]: ---"Writing http response done" count:48 534ms (08:07:41.814)
+Trace[609242119]: [535.599071ms] [535.599071ms] END
+I1006 12:57:43.811693       1 trace.go:236] Trace[2055493478]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:24013c12-4a80-4a32-a531-b134454f9f8f,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 12:57:41.275) (total time: 2339ms):
+Trace[2055493478]: ---"Listing from storage done" 2338ms (12:57:43.614)
+Trace[2055493478]: [2.339220348s] [2.339220348s] END
+I1006 13:51:42.011833       1 trace.go:236] Trace[1246323227]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:e2a4f36c-6ae5-44c1-95ef-9798fbb022cf,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 13:51:41.280) (total time: 731ms):
+Trace[1246323227]: ---"Writing http response done" count:48 731ms (13:51:42.011)
+Trace[1246323227]: [731.432849ms] [731.432849ms] END
+E1006 17:07:55.238955       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.29:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-wb5d" timeout="10s"
+E1006 17:08:25.217568       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.29:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-wb5d" timeout="10s"
+I1006 22:06:43.113045       1 trace.go:236] Trace[852295194]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:312791fc-d634-4959-a123-8551cd08f4af,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (06-Oct-2025 22:06:41.272) (total time: 1738ms):
+Trace[852295194]: ---"Writing http response done" count:42 1738ms (22:06:43.011)
+Trace[852295194]: [1.738835909s] [1.738835909s] END
+I1007 07:25:42.414043       1 trace.go:236] Trace[1400260979]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:091c7914-4e12-4f55-9d49-b58bd942fc55,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (07-Oct-2025 07:25:41.281) (total time: 1132ms):
+Trace[1400260979]: ---"Writing http response done" count:48 1131ms (07:25:42.413)
+Trace[1400260979]: [1.132502187s] [1.132502187s] END
+E1007 10:23:25.232977       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.30:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-m8nk" timeout="10s"
+E1007 10:23:55.237622       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.30:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-m8nk" timeout="10s"
+E1007 10:24:25.229689       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.30:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-2f2dbfad-m8nk" timeout="10s"
+I1007 12:17:41.899572       1 trace.go:236] Trace[921366403]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:9c4ec495-16da-4f9a-ac24-003e154d0909,client:172.16.0.6,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (07-Oct-2025 12:17:41.274) (total time: 623ms):
+Trace[921366403]: ---"Writing http response done" count:42 623ms (12:17:41.897)
+Trace[921366403]: [623.260959ms] [623.260959ms] END
+E1008 01:36:55.229481       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.31:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-ds55" timeout="10s"
+E1008 01:37:25.236443       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.31:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-ds55" timeout="10s"
+E1008 01:37:55.231602       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://10.142.0.31:10250/metrics/resource\": context deadline exceeded" node="gke-pixelcluster-pixelcluster-node-po-237013a9-ds55" timeout="10s"
+E1008 17:28:02.911349       1 timeout.go:142] post-timeout activity - time-elapsed: 2.831µs, GET "/readyz" result: <nil>
+I1008 19:23:06.913067       1 trace.go:236] Trace[600180394]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:0054444d-2bc6-4e41-9577-a9a1ea5baf77,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (08-Oct-2025 19:23:04.774) (total time: 2039ms):
+Trace[600180394]: ---"Writing http response done" count:42 2038ms (19:23:06.813)
+Trace[600180394]: [2.039182935s] [2.039182935s] END
+I1009 13:45:06.412247       1 trace.go:236] Trace[1144481747]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:9d93588f-f5cd-4929-a564-2891aad476b0,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (09-Oct-2025 13:45:04.776) (total time: 1635ms):
+Trace[1144481747]: ---"Writing http response done" count:42 1633ms (13:45:06.411)
+Trace[1144481747]: [1.635229517s] [1.635229517s] END
+I1009 15:37:05.712394       1 trace.go:236] Trace[494701313]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:18cad5ef-ec9f-4818-90e1-c909f87c5c5e,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (09-Oct-2025 15:37:04.775) (total time: 936ms):
+Trace[494701313]: ---"Listing from storage done" 935ms (15:37:05.711)
+Trace[494701313]: [936.375471ms] [936.375471ms] END
+I1010 01:47:06.013561       1 trace.go:236] Trace[1827982021]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:36ed407d-6914-4332-9513-03bea9115512,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (10-Oct-2025 01:47:04.834) (total time: 1179ms):
+Trace[1827982021]: ---"Listing from storage done" 1178ms (01:47:06.012)
+Trace[1827982021]: [1.179073088s] [1.179073088s] END
+I1010 09:44:05.313785       1 trace.go:236] Trace[1242755687]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:e23269bc-f5f6-4bd8-b405-b90d59dad30a,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (10-Oct-2025 09:44:04.776) (total time: 537ms):
+Trace[1242755687]: ---"Writing http response done" count:42 536ms (09:44:05.313)
+Trace[1242755687]: [537.35921ms] [537.35921ms] END
+E1010 15:21:17.113007       1 timeout.go:142] post-timeout activity - time-elapsed: 254.986µs, GET "/livez" result: <nil>
+I1011 04:14:25.639385       1 request.go:697] Waited for 1.90912819s due to client-side throttling, not priority and fairness, request: POST:https://34.118.224.1:443/apis/authorization.k8s.io/v1/subjectaccessreviews?timeout=10s
+E1011 04:45:23.214010       1 timeout.go:142] post-timeout activity - time-elapsed: 145.181µs, GET "/readyz" result: <nil>
+E1011 06:19:43.811876       1 timeout.go:142] post-timeout activity - time-elapsed: 99.143796ms, GET "/readyz" result: <nil>
+I1011 15:04:05.511739       1 trace.go:236] Trace[2078443725]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:5b822288-b3d1-4047-b7b7-cb415e6f2966,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (11-Oct-2025 15:04:04.774) (total time: 637ms):
+Trace[2078443725]: ---"Writing http response done" count:42 637ms (15:04:05.412)
+Trace[2078443725]: [637.24929ms] [637.24929ms] END
+E1012 22:37:44.513075       1 timeout.go:142] post-timeout activity - time-elapsed: 161.27µs, GET "/readyz" result: <nil>
+I1013 19:04:06.712517       1 trace.go:236] Trace[546763183]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:755b4d9d-2c84-4c22-8f03-bb49f82b758d,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (13-Oct-2025 19:04:04.797) (total time: 1914ms):
+Trace[546763183]: ---"Writing http response done" count:42 1914ms (19:04:06.712)
+Trace[546763183]: [1.914402446s] [1.914402446s] END
+I1014 13:33:06.614687       1 trace.go:236] Trace[1244633426]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:d3aed75f-239c-4333-883f-5aaeefbfcf6c,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (14-Oct-2025 13:33:04.774) (total time: 1840ms):
+Trace[1244633426]: ---"Writing http response done" count:42 1840ms (13:33:06.614)
+Trace[1244633426]: [1.840324352s] [1.840324352s] END
+I1014 17:47:05.795909       1 trace.go:236] Trace[119298462]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:dfed8736-3152-4fee-9e21-7c1e3c3a39f0,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (14-Oct-2025 17:47:04.775) (total time: 937ms):
+Trace[119298462]: ---"Writing http response done" count:42 936ms (17:47:05.712)
+Trace[119298462]: [937.153219ms] [937.153219ms] END
+I1015 00:45:07.012384       1 trace.go:236] Trace[1807691311]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:7f6ac463-ce40-48ca-9293-64ce02ce8266,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (15-Oct-2025 00:45:04.851) (total time: 2160ms):
+Trace[1807691311]: ---"Writing http response done" count:42 2159ms (00:45:07.011)
+Trace[1807691311]: [2.160627783s] [2.160627783s] END
+I1015 18:13:06.413470       1 trace.go:236] Trace[1487645028]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:a9e22b24-c770-4b05-8a1d-8f90a4843be0,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (15-Oct-2025 18:13:04.775) (total time: 1638ms):
+Trace[1487645028]: ---"Writing http response done" count:42 1636ms (18:13:06.413)
+Trace[1487645028]: [1.638001788s] [1.638001788s] END
+I1016 06:05:06.712324       1 trace.go:236] Trace[1434583774]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:d0a7f515-5e03-4388-9ece-08f07d23af46,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (16-Oct-2025 06:05:04.774) (total time: 1937ms):
+Trace[1434583774]: ---"Writing http response done" count:42 1936ms (06:05:06.711)
+Trace[1434583774]: [1.937635331s] [1.937635331s] END
+I1016 11:53:06.413436       1 trace.go:236] Trace[397464020]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:2e2b4270-5a77-4790-b678-7020e1f7af7f,client:172.16.0.4,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (16-Oct-2025 11:53:04.773) (total time: 1639ms):
+Trace[397464020]: ---"Listing from storage done" 1638ms (11:53:06.412)
+Trace[397464020]: [1.639100634s] [1.639100634s] END
+E1016 13:16:42.713426       1 timeout.go:142] post-timeout activity - time-elapsed: 158.411µs, GET "/readyz" result: <nil>
+E1016 13:16:57.213110       1 timeout.go:142] post-timeout activity - time-elapsed: 336.082µs, GET "/livez" result: <nil>
+E1016 13:17:04.214499       1 timeout.go:142] post-timeout activity - time-elapsed: 264.727µs, GET "/readyz" result: <nil>
+I1016 15:46:47.515228       1 trace.go:236] Trace[718995106]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:93936db9-ceaf-4253-a8a3-9e35f64eae43,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (16-Oct-2025 15:46:46.259) (total time: 1255ms):
+Trace[718995106]: ---"Writing http response done" count:42 1253ms (15:46:47.514)
+Trace[718995106]: [1.255037966s] [1.255037966s] END
+E1016 20:22:02.714206       1 timeout.go:142] post-timeout activity - time-elapsed: 123.281µs, GET "/readyz" result: <nil>
+I1017 06:54:48.513672       1 trace.go:236] Trace[227896758]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:42f675fc-8267-4f2f-b951-1039691de2d2,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (17-Oct-2025 06:54:46.259) (total time: 2253ms):
+Trace[227896758]: ---"Writing http response done" count:42 2252ms (06:54:48.513)
+Trace[227896758]: [2.253436071s] [2.253436071s] END
+I1017 13:36:48.013067       1 trace.go:236] Trace[1271936726]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:f57feede-4da0-4e6c-bb4e-49813d41ac5c,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (17-Oct-2025 13:36:46.258) (total time: 1753ms):
+Trace[1271936726]: ---"Listing from storage done" 1752ms (13:36:48.011)
+Trace[1271936726]: [1.753874441s] [1.753874441s] END
+I1018 13:45:47.113523       1 trace.go:236] Trace[1117143526]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:064a3f90-34db-4f7a-8781-be1e8a7b651d,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (18-Oct-2025 13:45:46.259) (total time: 853ms):
+Trace[1117143526]: ---"Listing from storage done" 853ms (13:45:47.112)
+Trace[1117143526]: [853.92915ms] [853.92915ms] END
+I1018 16:34:46.996335       1 trace.go:236] Trace[508539099]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:75dad016-5aa1-444b-8eea-c3ff4b33bed8,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (18-Oct-2025 16:34:46.258) (total time: 737ms):
+Trace[508539099]: ---"Writing http response done" count:42 736ms (16:34:46.995)
+Trace[508539099]: [737.892072ms] [737.892072ms] END
+I1019 06:38:47.015357       1 trace.go:236] Trace[2082584597]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:b2b52a09-bc29-449a-9a43-a9de4799544a,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (19-Oct-2025 06:38:46.258) (total time: 756ms):
+Trace[2082584597]: ---"Listing from storage done" 756ms (06:38:47.014)
+Trace[2082584597]: [756.889402ms] [756.889402ms] END
+I1019 10:24:47.514256       1 trace.go:236] Trace[911792476]: "List" accept:application/vnd.kubernetes.protobuf, */*,audit-id:3ca712ed-dd8a-437a-a27f-5f4d97d055af,client:172.16.0.5,api-group:metrics.k8s.io,api-version:v1beta1,name:,subresource:,namespace:,protocol:HTTP/2.0,resource:pods,scope:cluster,url:/apis/metrics.k8s.io/v1beta1/pods,user-agent:vpa-recommender/v0.0.0 (linux/amd64) kubernetes/$Format,verb:LIST (19-Oct-2025 10:24:46.257) (total time: 1255ms):
+Trace[911792476]: ---"Writing http response done" count:42 1255ms (10:24:47.513)
+Trace[911792476]: [1.255956937s] [1.255956937s] END
+==== END logs for container metrics-server of pod kube-system/metrics-server-v1.33.0-77d549c684-ll4jb ====
