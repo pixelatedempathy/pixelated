@@ -1,0 +1,24 @@
+==== START logs for container autoscaler of pod kube-system/konnectivity-agent-autoscaler-59849cb6b9-t792l ====
+I1016 13:21:13.429099       1 autoscaler.go:49] Scaling Namespace: kube-system, Target: deployment/konnectivity-agent
+I1016 13:21:13.543608       1 plugin.go:50] Set control mode to ladder
+I1016 13:21:13.543680       1 ladder_controller.go:73] Detected ConfigMap version change (old:  new: 1758128957953823001) - rebuilding lookup entries
+I1016 13:21:13.543694       1 ladder_controller.go:74] Params from apiserver: 
+{
+  "coresToReplicas": [],
+  "nodesToReplicas":
+  [
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
+    [5, 5],
+    [6, 6],
+    [10, 8],
+    [100, 12],
+    [250, 18],
+    [500, 25],
+    [2000, 50],
+    [5000, 100]
+  ]
+}
+==== END logs for container autoscaler of pod kube-system/konnectivity-agent-autoscaler-59849cb6b9-t792l ====
