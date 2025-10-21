@@ -195,3 +195,6 @@ gitlab-runner-values.yaml
 .qoder/rules/byterover-rules.md
 .augment/rules/byterover-rules.md
 gcp-service-account-key.json
+
+# Allow Git repositories in ai/ subdirectories
+!ai/**/.git
