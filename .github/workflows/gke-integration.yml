@@ -48,7 +48,7 @@ jobs:
               await github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                workflow_id: 'gke-deploy.yml',
+                workflow_id: 'gke-deploy-enhanced.yml',
                 ref: '${{ github.event.workflow_run.head_sha }}',
                 inputs: {
                   deployment_strategy: strategy,
@@ -139,7 +139,7 @@ jobs:
               await github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                workflow_id: 'gke-deploy.yml',
+                workflow_id: 'gke-deploy-enhanced.yml',
                 ref: '${{ github.event.workflow_run.head_sha }}',
                 inputs: {
                   deployment_strategy: 'cleanup',

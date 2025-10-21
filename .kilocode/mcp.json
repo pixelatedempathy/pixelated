@@ -33,6 +33,22 @@
         "byterover-store-knowledge",
         "byterover-retrieve-knowledge"
       ]
+    },
+    "openmemory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "openmemory"
+      ],
+      "env": {
+        "OPENMEMORY_API_KEY": "om-8u4kpiwqmus434epjpsdeuk86o7mnrgg"
+      },
+      "type": "stdio",
+      "alwaysAllow": [
+        "list-memories",
+        "add-memory",
+        "search-memories"
+      ]
     }
   }
 }
