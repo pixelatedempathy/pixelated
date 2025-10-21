@@ -103,19 +103,8 @@ async def main(once: bool = False) -> None:
 
     server = ByteroverMCPServer(knowledge_dir)
 
-    # If running interactively (stdin is a TTY) we likely were started manually
-    # by a developer. In that case, avoid entering the blocking stdin loop
-    # which will appear to 'hang' — print a helpful message and exit.
-    # When the MCP host runs this server it will pipe stdin, making isatty() false,
-    # so normal behavior is preserved.
-    try:
-        if sys.stdin.isatty():
-            print("No MCP host detected on stdin (tty). Exiting to avoid blocking.\n" \
-                  "To run the server use a MCP host or pipe a single request for testing.")
-            return
-    except Exception:
-        # If any unexpected error checking TTY, proceed normally.
-        pass
+    # Always run the server — VS Code will connect via stdin/stdout as an MCP host.
+    # This prevents the disconnect/restart cycle.
 
     # Simple MCP-like interface for stdin/stdout
     processed_one = False
@@ -290,14 +279,8 @@ def _cli() -> int:
         print(json.dumps({"status": "ok", "tools": tools_meta}))
         return 0
 
-    # If running interactively, avoid blocking
-    try:
-        if sys.stdin.isatty():
-            print("No MCP host detected on stdin (tty). Exiting to avoid blocking.\n" \
-                  "To run the server use a MCP host or pipe a single request for testing.")
-            return 0
-    except Exception:
-        pass
+    # Always run the server — VS Code will connect via stdin/stdout as an MCP host.
+    # This prevents the disconnect/restart cycle.
 
     asyncio.run(main(once=args.once))
     return 0
