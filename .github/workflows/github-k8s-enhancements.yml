@@ -53,6 +53,11 @@ jobs:
         with:
           credentials_json: ${{ env.GCP_SERVICE_ACCOUNT_KEY || secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ env.GCP_PROJECT_ID || secrets.GCP_PROJECT_ID }}
+          universe: googleapis.com
+          cleanup_credentials: true
+          access_token_lifetime: 3600s
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+          id_token_include_email: false
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
@@ -365,6 +370,11 @@ jobs:
         with:
           credentials_json: ${{ env.GCP_SERVICE_ACCOUNT_KEY || secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ env.GCP_PROJECT_ID || secrets.GCP_PROJECT_ID }}
+          universe: googleapis.com
+          cleanup_credentials: true
+          access_token_lifetime: 3600s
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+          id_token_include_email: false
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
