@@ -20,8 +20,9 @@
       ]
     },
     "byterover-mcp": {
-      "command": "/home/vivi/pixelated/.venv/bin/python",
+      "command": "uv",
       "args": [
+        "run",
         "-m",
         "mcp_server.mcp_server"
       ],

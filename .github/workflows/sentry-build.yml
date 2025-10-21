@@ -98,17 +98,6 @@ jobs:
           echo "IMAGE_TAG_BRANCH=$IMAGE_TAG_BRANCH" >> $GITHUB_ENV
           echo "IMAGE_TAG_LATEST=$IMAGE_TAG_LATEST" >> $GITHUB_ENV
 
-      - name: Push Docker image to GitHub Container Registry (automated)
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "🔧 Preparing to push Docker images to GHCR..."
-          echo "Note: Using GITHUB_TOKEN for authentication."
-          echo "Ensure the repository/organization allows 'packages: write' permissions for workflow runs."
-
-          echo "📤 Will push Docker images using authenticated action step"
-
       - name: Authenticate with GitHub Container Registry
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         uses: docker/login-action@v3
@@ -117,20 +106,11 @@ jobs:
           username: ${{ github.actor }}
           # Use GITHUB_TOKEN for authentication (more secure, no need for separate PAT)
           password: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: false
 
-      - name: Push Docker images (authenticated)
+      - name: Push Docker images
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         run: |
           echo "📤 Pushing Docker images..."
-
-          # Validate that we're logged in to the registry
-          echo "🔍 Verifying registry authentication..."
-          if ! docker info | grep -q "ghcr.io"; then
-            echo "❌ Failed to authenticate with GitHub Container Registry"
-            echo "🔧 Please ensure your PERSONAL_ACCESS_TOKEN has 'write:packages' scope"
-            exit 1
-          fi
 
           # Push images with individual error handling
           echo "📦 Pushing $IMAGE_TAG_SHA..."

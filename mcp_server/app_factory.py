@@ -271,6 +271,8 @@ def create_mcp_app(config: MCPConfig | None = None) -> FastAPI:
         agents_router,
         prefix="/api/v1/agents",
         tags=["agents"]
+    )
+
     app.include_router(
         byterover_router,
         prefix="/api/v1/byterover",

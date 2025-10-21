@@ -194,3 +194,4 @@ gitlab-runner-values.yaml
 .kiro/steering/byterover-rules.md
 .qoder/rules/byterover-rules.md
 .augment/rules/byterover-rules.md
+gcp-service-account-key.json

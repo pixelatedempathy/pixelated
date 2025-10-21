@@ -144,7 +144,36 @@ async def main(once: bool = False) -> None:
                         response["result"] = {
                             "protocolVersion": "2024-11-05",
                             "capabilities": {
-                                "tools": {},
+                                "tools": [
+                                    {
+                                        "name": "byterover-store-knowledge",
+                                        "description": "Store knowledge about patterns, APIs, architectural decisions, error solutions, debugging techniques, reusable code patterns, or utility functions",
+                                        "inputSchema": {
+                                            "type": "object",
+                                            "properties": {
+                                                "content": {
+                                                    "type": "string",
+                                                    "description": "The knowledge content to store"
+                                                }
+                                            },
+                                            "required": ["content"]
+                                        }
+                                    },
+                                    {
+                                        "name": "byterover-retrieve-knowledge",
+                                        "description": "Retrieve relevant knowledge for context, patterns, solutions, or architectural decisions",
+                                        "inputSchema": {
+                                            "type": "object",
+                                            "properties": {
+                                                "query": {
+                                                    "type": "string",
+                                                    "description": "The query to search for relevant knowledge"
+                                                }
+                                            },
+                                            "required": ["query"]
+                                        }
+                                    }
+                                ],
                                 "resources": {},
                                 "prompts": {}
                             },
