@@ -1,3 +1,4 @@
+/* jshint esversion: 6, node: true */
 // Quicksort implementation with optional comparator
 // Exports: quicksort(array, comparator) -> returns a new sorted array
 
@@ -9,7 +10,7 @@
  */
 function defaultCompare(a, b) {
     if (a === b) return 0
-    return a < b ? -1 : 1
+    return a < b ? -1 : 1;
 }
 
 /**
@@ -65,4 +66,4 @@ function quicksort(array, comparator) {
     return a
 }
 
-module.exports = { quicksort }
+module.exports = { quicksort };

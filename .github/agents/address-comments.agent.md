@@ -1,30 +1,6 @@
 ---
 description: "Address PR comments"
-tools:
-  [
-    "changes",
-    "codebase",
-    "editFiles",
-    "extensions",
-    "fetch",
-    "findTestFiles",
-    "githubRepo",
-    "new",
-    "openSimpleBrowser",
-    "problems",
-    "runCommands",
-    "runTasks",
-    "runTests",
-    "search",
-    "searchResults",
-    "terminalLastCommand",
-    "terminalSelection",
-    "testFailure",
-    "usages",
-    "vscodeAPI",
-    "microsoft.docs.mcp",
-    "github",
-  ]
+tools: ['edit', 'runNotebooks', 'search', 'new', 'oraios/serena/*', 'runCommands', 'runTasks', 'runSubagent', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runTests', 'github.vscode-pull-request-github/copilotCodingAgent', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/suggest-fix', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'github.vscode-pull-request-github/renderIssues', 'github.vscode-pull-request-github/activePullRequest', 'github.vscode-pull-request-github/openPullRequest']
 ---
 
 # Universal PR Comment Addresser

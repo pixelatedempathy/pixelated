@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* jshint esversion: 6, node: true */
 // IMPORTANT: Import Sentry instrumentation first
 import '../instrument.mjs'
 
@@ -33,13 +34,13 @@ let pathCounter = 0;
 // Generate safe path ID and cache the mapping
 function generateSafePathId(filePath) {
   const safeId = `path_${++pathCounter}`;
-  
+
   // LRU: delete oldest entry if cache is full
   if (PATH_CACHE.size >= MAX_CACHE_SIZE) {
     const firstKey = PATH_CACHE.keys().next().value;
     PATH_CACHE.delete(firstKey);
   }
-  
+
   PATH_CACHE.set(safeId, filePath);
   return safeId;
 }
@@ -48,6 +49,7 @@ function generateSafePathId(filePath) {
 function getActualPath(safeId) {
   return PATH_CACHE.get(safeId) || null;
 }
+
 
 // Run blog publisher command
 // Basic argument parsing and validation reused from CLI
@@ -227,13 +229,12 @@ function generateHTML(content = '', message = '') {
     <h1>📝 Blog Management Interface</h1>
   </header>
 
-  ${
-    message
+  ${message
       ? `<div class="message ${message.type || ''}">
     ${message.text}
   </div>`
       : ''
-  }
+    }
 
   <div class="card">
     <h2>Actions</h2>

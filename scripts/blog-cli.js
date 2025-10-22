@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* jshint esversion: 6, node: true */
+
 /**
  * 🌟 Pixelated Blog Helper CLI 🌟
  * A lightweight command-line interface for the blog publishing system
@@ -8,6 +10,7 @@
 // Import dependencies
 import { createInterface } from 'readline'
 import { spawnSync } from 'child_process'
+import { fileURLToPath } from 'url'
 
 // ANSI colors for pretty output
 const colors = {
@@ -22,11 +25,13 @@ const colors = {
   cyan: '\x1b[36m',
 }
 
+
 // Create readline interface
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 })
+
 
 // Helper functions
 function clear() {
@@ -75,6 +80,7 @@ function parseArgs(command) {
   return args
 }
 
+
 function isSafeToken(token) {
   if (typeof token !== 'string' || token.length === 0) {
     return false
@@ -92,6 +98,7 @@ const ALLOWED_TOP_LEVEL = new Set([
   'generate',
   'publish',
 ])
+
 
 function runCommand(command) {
   try {
@@ -313,7 +320,10 @@ rl.on('close', () => {
   process.exit(0)
 })
 
-// Start the CLI
-start()
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="10334f97-4b6c-538b-8a25-0e6bf4dcd9d4")}catch(e){}}();
-//# debugId=10334f97-4b6c-538b-8a25-0e6bf4dcd9d4
+// Start the CLI only when executed directly (prevents side-effects on import)
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  start()
+}
+
+// Export helpers for testing
+export { parseArgs, isSafeToken, runCommand, start }
