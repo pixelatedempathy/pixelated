@@ -270,3 +270,5 @@ verbose/coverage/
 *.wav
 *.flac
 *.aac
+
+ai/
