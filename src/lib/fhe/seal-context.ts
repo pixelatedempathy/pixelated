@@ -85,7 +85,7 @@ export class SealContext {
         } else {
           // No SEAL implementation available
           throw new Error(
-            'Failed to load SEAL: node-seal not available and no browser fallback found',
+            'Failed to load SEAL: node-seal not available and no browser fallback found', { cause: err },
           )
         }
       }
@@ -128,7 +128,7 @@ export class SealContext {
     } catch (error: unknown) {
       logger.error('Failed to initialize SEAL context', { error })
       throw new Error(
-        `SEAL initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        `SEAL initialization failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     } finally {
       this.loadPromise = null

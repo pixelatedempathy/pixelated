@@ -124,7 +124,7 @@ export class AutomatedThreatResponseOrchestratorCore extends EventEmitter implem
       logger.info('Redis connection established for response orchestrator');
     } catch (error) {
       logger.error('Failed to connect to Redis:', { error });
-      throw new Error('Redis connection failed');
+      throw new Error('Redis connection failed', { cause: error });
     }
   }
 
@@ -136,7 +136,7 @@ export class AutomatedThreatResponseOrchestratorCore extends EventEmitter implem
       logger.info('MongoDB connection established for response orchestrator');
     } catch (error) {
       logger.error('Failed to connect to MongoDB:', { error });
-      throw new Error('MongoDB connection failed');
+      throw new Error('MongoDB connection failed', { cause: error });
     }
   }
 

@@ -202,7 +202,7 @@ export class ConfigurationManager extends EventEmitter {
       });
     } catch (error) {
       logger.error('Failed to initialize Configuration Manager', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 

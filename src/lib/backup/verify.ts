@@ -91,7 +91,7 @@ export class BackupVerificationService extends EventEmitter {
 
       return results
     } catch (error: unknown) {
-      throw new Error(`Failed to verify backups: ${error?.['message'] || 'Unknown error'}`)
+      throw new Error(`Failed to verify backups: ${error?.['message'] || 'Unknown error'}`, { cause: error })
     }
   }
 
@@ -257,7 +257,7 @@ export class BackupVerificationService extends EventEmitter {
       // Verify restoration capability
       await this.verifyRestoration(backup)
     } catch (error: unknown) {
-      throw new Error(`Backup content verification failed: ${String(error)}`)
+      throw new Error(`Backup content verification failed: ${String(error)}`, { cause: error })
     }
   }
 

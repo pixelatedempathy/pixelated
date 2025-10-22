@@ -93,7 +93,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
         error,
       );
       throw new Error(
-        `Google Cloud Storage initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        `Google Cloud Storage initialization failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       );
     }
   }
@@ -133,7 +133,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
     } catch (error: unknown) {
       console.error('Failed to list files from Google Cloud Storage:', error)
       throw new Error(
-        `Failed to list files: ${error instanceof Error ? String(error) : String(error)}`,
+        `Failed to list files: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -170,7 +170,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
         error,
       )
       throw new Error(
-        `Failed to store file: ${error instanceof Error ? String(error) : String(error)}`,
+        `Failed to store file: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -198,7 +198,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
         error,
       )
       throw new Error(
-        `Failed to get file: ${error instanceof Error ? String(error) : String(error)}`,
+        `Failed to get file: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -224,7 +224,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
         error,
       )
       throw new Error(
-        `Failed to delete file: ${error instanceof Error ? String(error) : String(error)}`,
+        `Failed to delete file: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }

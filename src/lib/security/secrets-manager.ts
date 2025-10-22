@@ -93,7 +93,7 @@ export class SecretsManager {
       
     } catch (error) {
       logger.error('Failed to load secrets', { error })
-      throw new Error('Secrets manager initialization failed')
+      throw new Error('Secrets manager initialization failed', { cause: error })
     }
   }
   

@@ -53,7 +53,7 @@ export function createCryptoSystem(options: CryptoSystemOptions): CryptoSystem {
         return decoder.decode(new Uint8Array(dataArray))
       } catch (error: unknown) {
         throw new Error(
-          `Decryption failed: ${error instanceof Error ? String(error) : String(error)}`,
+          `Decryption failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
         )
       }
     },

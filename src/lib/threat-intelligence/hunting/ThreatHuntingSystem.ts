@@ -108,7 +108,7 @@ export class ThreatHuntingSystemCore extends EventEmitter implements ThreatHunti
       logger.info('Redis connection established for threat hunting');
     } catch (error) {
       logger.error('Failed to connect to Redis:', { error });
-      throw new Error('Redis connection failed');
+      throw new Error('Redis connection failed', { cause: error });
     }
   }
 
@@ -120,7 +120,7 @@ export class ThreatHuntingSystemCore extends EventEmitter implements ThreatHunti
       logger.info('MongoDB connection established for threat hunting');
     } catch (error) {
       logger.error('Failed to connect to MongoDB:', { error });
-      throw new Error('MongoDB connection failed');
+      throw new Error('MongoDB connection failed', { cause: error });
     }
   }
 

@@ -417,7 +417,7 @@ export class JWTTokenService {
 
     } catch (error) {
       await this.securityLogger.logTokenCleanupFailure(error)
-      throw new Error('Token cleanup failed')
+      throw new Error('Token cleanup failed', { cause: error })
     }
   }
 

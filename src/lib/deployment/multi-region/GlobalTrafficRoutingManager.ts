@@ -90,7 +90,7 @@ export class GlobalTrafficRoutingManager extends EventEmitter {
       this.emit('initialized', { strategy: this.config.strategy });
     } catch (error) {
       logger.error('Failed to initialize Global Traffic Routing Manager', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 

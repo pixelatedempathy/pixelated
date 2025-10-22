@@ -259,7 +259,7 @@ export function createMentalHealthChat(
       logger.info('MentalHealthChat initialized successfully')
     } catch (error: unknown) {
       logger.error('Failed to initialize MentalHealthChat', { error })
-      throw new Error('MentalHealthChat initialization failed')
+      throw new Error('MentalHealthChat initialization failed', { cause: error })
     }
   }
 

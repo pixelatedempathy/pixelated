@@ -104,7 +104,7 @@ export class CloudProviderManager {
       logger.info('Cloud provider connections initialized successfully');
     } catch (error) {
       logger.error('Failed to initialize cloud provider connections', { error });
-      throw new Error(`Cloud provider initialization failed: ${error.message}`);
+      throw new Error(`Cloud provider initialization failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -262,7 +262,7 @@ export class CloudProviderManager {
       return result;
     } catch (error) {
       logger.error(`Failed to deploy infrastructure to region: ${region.name}`, { error });
-      throw new Error(`Region deployment failed: ${error.message}`);
+      throw new Error(`Region deployment failed: ${error.message}`, { cause: error });
     }
   }
 

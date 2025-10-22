@@ -106,7 +106,7 @@ export class HealthMonitor extends EventEmitter {
       this.emit('initialized', { regions: regions.length });
     } catch (error) {
       logger.error('Failed to initialize Health Monitor', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 

@@ -215,7 +215,7 @@ export class ThreatIntelligenceDatabase extends EventEmitter {
       this.emit('initialized', { timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize Threat Intelligence Database', { error: error.message });
-      throw new Error(`Failed to initialize threat intelligence database: ${error.message}`);
+      throw new Error(`Failed to initialize threat intelligence database: ${error.message}`, { cause: error });
     }
   }
 
@@ -417,7 +417,7 @@ export class ThreatIntelligenceDatabase extends EventEmitter {
       new Date(stixObject.created);
       new Date(stixObject.modified);
     } catch (error) {
-      throw new Error('Invalid STIX timestamp format');
+      throw new Error('Invalid STIX timestamp format', { cause: error });
     }
 
     // Type-specific validation

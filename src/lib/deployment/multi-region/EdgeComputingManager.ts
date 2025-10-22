@@ -226,7 +226,7 @@ export class EdgeComputingManager extends EventEmitter {
       this.emit('initialized', { locations: this.config.locations.length });
     } catch (error) {
       logger.error('Failed to initialize Edge Computing Manager', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -306,7 +306,7 @@ export class EdgeComputingManager extends EventEmitter {
       return statuses;
     } catch (error) {
       logger.error('Edge node deployment failed', { error });
-      throw new Error(`Deployment failed: ${error.message}`);
+      throw new Error(`Deployment failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -422,7 +422,7 @@ export class EdgeComputingManager extends EventEmitter {
       return { workerId: `worker-${location.id}`, scriptSize: workerScript.length };
     } catch (error) {
       logger.error(`Cloudflare Worker deployment failed: ${location.name}`, { error });
-      throw new Error(`Cloudflare deployment failed: ${error.message}`);
+      throw new Error(`Cloudflare deployment failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -443,7 +443,7 @@ export class EdgeComputingManager extends EventEmitter {
       return { functionArn: `arn:aws:lambda:${location.region}:function:edge-${location.id}`, version: '1.0' };
     } catch (error) {
       logger.error(`AWS Lambda@Edge deployment failed: ${location.name}`, { error });
-      throw new Error(`AWS Lambda deployment failed: ${error.message}`);
+      throw new Error(`AWS Lambda deployment failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -464,7 +464,7 @@ export class EdgeComputingManager extends EventEmitter {
       return { functionId: `function-${location.id}`, region: location.region };
     } catch (error) {
       logger.error(`Azure Edge deployment failed: ${location.name}`, { error });
-      throw new Error(`Azure Edge deployment failed: ${error.message}`);
+      throw new Error(`Azure Edge deployment failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -485,7 +485,7 @@ export class EdgeComputingManager extends EventEmitter {
       return { functionName: `edge-${location.id}`, region: location.region };
     } catch (error) {
       logger.error(`GCP Edge deployment failed: ${location.name}`, { error });
-      throw new Error(`GCP Edge deployment failed: ${error.message}`);
+      throw new Error(`GCP Edge deployment failed: ${error.message}`, { cause: error });
     }
   }
 

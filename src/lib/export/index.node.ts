@@ -241,7 +241,7 @@ export class ExportService {
       const errorMessage =
         error instanceof Error ? String(error) : String(error)
       logger.error('Failed to export conversation', { error: errorMessage })
-      throw new Error(`Export failed: ${errorMessage}`)
+      throw new Error(`Export failed: ${errorMessage}`, { cause: error })
     }
   }
 
@@ -522,7 +522,7 @@ export class ExportService {
           return { data: new Uint8Array(encryptedData.data) }
         } catch (err: unknown) {
           const error = err as Error
-          throw new Error(`Encryption failed: ${String(error)}`)
+          throw new Error(`Encryption failed: ${String(error)}`, { cause: err })
         }
       }
 

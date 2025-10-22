@@ -110,6 +110,6 @@ test('basic browser compatibility check', async ({ page, browser }) => {
   } catch (err: unknown) {
     console.error('Error parsing features JSON:', err)
     // Include the content in the error message for better debugging
-    throw new Error(`Failed to parse features JSON. Content: ${content}`)
+    throw new Error(`Failed to parse features JSON. Content: ${content}`, { cause: err })
   }
 })

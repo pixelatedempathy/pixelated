@@ -270,7 +270,7 @@ export async function calculate(
     logger.error('Error calculating notification effectiveness:', {
       error: (error as Error).message,
     })
-    throw new Error('Failed to calculate notification effectiveness')
+    throw new Error('Failed to calculate notification effectiveness', { cause: error })
   }
 }
 

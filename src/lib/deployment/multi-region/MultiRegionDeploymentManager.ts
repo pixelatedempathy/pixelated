@@ -114,7 +114,7 @@ export class MultiRegionDeploymentManager extends EventEmitter {
       this.emit('initialized', { regions: this.config.regions.length });
     } catch (error) {
       logger.error('Failed to initialize Multi-Region Deployment Manager', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -157,7 +157,7 @@ export class MultiRegionDeploymentManager extends EventEmitter {
       return statuses;
     } catch (error) {
       logger.error('Multi-region deployment failed', { error });
-      throw new Error(`Deployment failed: ${error.message}`);
+      throw new Error(`Deployment failed: ${error.message}`, { cause: error });
     }
   }
 
@@ -273,7 +273,7 @@ export class MultiRegionDeploymentManager extends EventEmitter {
       logger.info(`Regional services configured for: ${region.name}`);
     } catch (error) {
       logger.error(`Failed to configure regional services for: ${region.name}`, { error });
-      throw new Error(`Service configuration failed: ${error.message}`);
+      throw new Error(`Service configuration failed: ${error.message}`, { cause: error });
     }
   }
 

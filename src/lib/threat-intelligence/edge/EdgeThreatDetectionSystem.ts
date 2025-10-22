@@ -104,7 +104,7 @@ export class EdgeThreatDetectionSystemCore extends EventEmitter implements EdgeT
       logger.info('Redis connection established for edge detection');
     } catch (error) {
       logger.error('Failed to connect to Redis:', { error });
-      throw new Error('Redis connection failed');
+      throw new Error('Redis connection failed', { cause: error });
     }
   }
 

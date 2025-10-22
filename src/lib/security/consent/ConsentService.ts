@@ -53,7 +53,7 @@ export class ConsentService {
       })
     } catch (error: unknown) {
       logger.error('Unexpected error in getConsentTypes', error)
-      throw new Error('Failed to fetch consent types')
+      throw new Error('Failed to fetch consent types', { cause: error })
     }
   }
 
@@ -83,7 +83,7 @@ export class ConsentService {
       }
     } catch (error: unknown) {
       logger.error('Unexpected error in getCurrentConsentVersion', error)
-      throw new Error('Failed to fetch current consent version')
+      throw new Error('Failed to fetch current consent version', { cause: error })
     }
   }
 
@@ -108,7 +108,7 @@ export class ConsentService {
       }))
     } catch (error: unknown) {
       logger.error('Unexpected error in getConsentOptions', error)
-      throw new Error('Failed to fetch consent options')
+      throw new Error('Failed to fetch consent options', { cause: error })
     }
   }
 
@@ -127,7 +127,7 @@ export class ConsentService {
       return null
     } catch (error: unknown) {
       logger.error('Unexpected error in getUserConsent', error)
-      throw new Error('Failed to fetch user consent')
+      throw new Error('Failed to fetch user consent', { cause: error })
     }
   }
 
@@ -144,7 +144,7 @@ export class ConsentService {
       return []
     } catch (error: unknown) {
       logger.error('Unexpected error in getUserConsentStatus', error)
-      throw new Error('Failed to fetch user consent status')
+      throw new Error('Failed to fetch user consent status', { cause: error })
     }
   }
 
@@ -159,7 +159,7 @@ export class ConsentService {
       return {} as unknown as UserConsent
     } catch (error: unknown) {
       logger.error('Unexpected error in grantConsent', error)
-      throw new Error('Failed to grant consent')
+      throw new Error('Failed to grant consent', { cause: error })
     }
   }
 
@@ -174,7 +174,7 @@ export class ConsentService {
       return true
     } catch (error: unknown) {
       logger.error('Unexpected error in withdrawConsent', error)
-      throw new Error('Failed to withdraw consent')
+      throw new Error('Failed to withdraw consent', { cause: error })
     }
   }
 
@@ -193,7 +193,7 @@ export class ConsentService {
       return false
     } catch (error: unknown) {
       logger.error('Unexpected error in hasActiveConsent', error)
-      throw new Error('Failed to check active consent')
+      throw new Error('Failed to check active consent', { cause: error })
     }
   }
 

@@ -167,7 +167,7 @@ export class AutomatedThreatResponseOrchestrator extends EventEmitter {
       this.emit('initialized', { timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize response orchestrator', { error: error.message });
-      throw new Error(`Failed to initialize response orchestrator: ${error.message}`);
+      throw new Error(`Failed to initialize response orchestrator: ${error.message}`, { cause: error });
     }
   }
 

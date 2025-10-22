@@ -136,7 +136,7 @@ export class GlobalThreatIntelligenceNetworkCore extends EventEmitter implements
       logger.info('Redis connection established');
     } catch (error) {
       logger.error('Failed to connect to Redis:', { error });
-      throw new Error('Redis connection failed');
+      throw new Error('Redis connection failed', { cause: error });
     }
   }
 
@@ -148,7 +148,7 @@ export class GlobalThreatIntelligenceNetworkCore extends EventEmitter implements
       logger.info('MongoDB connection established');
     } catch (error) {
       logger.error('Failed to connect to MongoDB:', { error });
-      throw new Error('MongoDB connection failed');
+      throw new Error('MongoDB connection failed', { cause: error });
     }
   }
 

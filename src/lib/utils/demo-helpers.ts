@@ -509,7 +509,7 @@ export function downloadExportData(exportData: ExportData): void {
     URL.revokeObjectURL(url)
   } catch (error: unknown) {
     console.error('Export failed:', error)
-    throw new Error('Failed to export analysis results. Please try again.')
+    throw new Error('Failed to export analysis results. Please try again.', { cause: error })
   }
 }
 

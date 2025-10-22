@@ -122,7 +122,7 @@ export class ThreatIntelligenceNetwork extends EventEmitter {
 
     } catch (error) {
       logger.error('Failed to initialize Threat Intelligence Network', { error: (error as Error).message });
-      throw new Error(`Failed to initialize threat intelligence network: ${(error as Error).message}`);
+      throw new Error(`Failed to initialize threat intelligence network: ${(error as Error).message}`, { cause: error });
     }
   }
 

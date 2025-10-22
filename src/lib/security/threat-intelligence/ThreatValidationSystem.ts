@@ -214,7 +214,7 @@ export class ThreatValidationSystem extends EventEmitter {
       this.emit('initialized', { timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize Threat Validation System', { error: (error as Error).message });
-      throw new Error(`Failed to initialize threat validation system: ${(error as Error).message}`);
+      throw new Error(`Failed to initialize threat validation system: ${(error as Error).message}`, { cause: error });
     }
   }
 

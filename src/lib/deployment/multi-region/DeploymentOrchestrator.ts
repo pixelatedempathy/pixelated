@@ -118,7 +118,7 @@ export class DeploymentOrchestrator extends EventEmitter {
       this.emit('initialized', { maxParallelDeployments: this.config.maxParallelDeployments });
     } catch (error) {
       logger.error('Failed to initialize Deployment Orchestrator', { error });
-      throw new Error(`Initialization failed: ${error.message}`);
+      throw new Error(`Initialization failed: ${error.message}`, { cause: error });
     }
   }
 

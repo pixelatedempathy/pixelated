@@ -514,7 +514,7 @@ export class SecurityEventLogger {
 
     } catch (error) {
       logger.error('Error generating audit report', error)
-      throw new Error('Audit report generation failed')
+      throw new Error('Audit report generation failed', { cause: error })
     }
   }
 

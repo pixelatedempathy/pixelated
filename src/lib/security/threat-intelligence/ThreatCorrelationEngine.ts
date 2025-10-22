@@ -160,7 +160,7 @@ export class ThreatCorrelationEngine extends EventEmitter {
       this.emit('initialized', { timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize Threat Correlation Engine', { error: error.message });
-      throw new Error(`Failed to initialize threat correlation engine: ${error.message}`);
+      throw new Error(`Failed to initialize threat correlation engine: ${error.message}`, { cause: error });
     }
   }
 

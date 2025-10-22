@@ -134,7 +134,7 @@ private async verifyToken(_token: string): Promise<string> {
         .error('Token verification failed', {
           error: error instanceof Error ? String(error) : String(error),
         })
-      throw new Error('Invalid token')
+      throw new Error('Invalid token', { cause: error })
     }
   }
 

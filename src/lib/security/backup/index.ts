@@ -450,7 +450,7 @@ export class BackupSecurityManager {
         `Failed to initialize backup security manager: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -532,7 +532,7 @@ export class BackupSecurityManager {
     } catch (error: unknown) {
       logger.error('Backup creation failed:', { error: String(error) })
       throw new Error(
-        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`,
+        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -589,7 +589,7 @@ export class BackupSecurityManager {
       )
     } catch (error: unknown) {
       logger.error('Decryption failed:', { error: String(error) })
-      throw new Error('Failed to decrypt backup data')
+      throw new Error('Failed to decrypt backup data', { cause: error })
     }
   }
 
@@ -1009,7 +1009,7 @@ export class BackupSecurityManager {
         `Failed to restore data: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`,
+        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
       )
     }
   }
@@ -1074,7 +1074,7 @@ async function getStorageProvider(
       `Failed to load storage provider: ${error instanceof Error ? String(error) : String(error)}`,
     )
     throw new Error(
-      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`,
+      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
     )
   }
 }

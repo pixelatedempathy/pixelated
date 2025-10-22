@@ -144,7 +144,7 @@ export class GlobalThreatIntelligenceNetwork extends EventEmitter {
       this.emit('initialized', { region: this.region, timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize Global Threat Intelligence Network', { error: error.message, region: this.region });
-      throw new Error(`Failed to initialize threat intelligence network: ${error.message}`);
+      throw new Error(`Failed to initialize threat intelligence network: ${error.message}`, { cause: error });
     }
   }
 

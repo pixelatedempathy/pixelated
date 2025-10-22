@@ -219,7 +219,7 @@ export class ThreatHuntingSystem extends EventEmitter {
       this.emit('initialized', { timestamp: new Date() });
     } catch (error) {
       logger.error('Failed to initialize Threat Hunting System', { error: error.message });
-      throw new Error(`Failed to initialize threat hunting system: ${error.message}`);
+      throw new Error(`Failed to initialize threat hunting system: ${error.message}`, { cause: error });
     }
   }
 
