@@ -123,8 +123,10 @@ class OfflineManager {
 
   private initialize(): void {
     // Monitor network state
-    const { useOfflineDetection } = require('@/hooks/useOfflineDetection')
-    
+    // NOTE: We intentionally avoid importing or calling React hooks at module
+    // initialization time. The type `OfflineState` is imported at top-level
+    // for typing purposes; any runtime hookup to React should occur inside a
+    // React component where hooks are legal.
 
     // Set up auto-sync interval
     if (this.config.enableAutoSync) {
