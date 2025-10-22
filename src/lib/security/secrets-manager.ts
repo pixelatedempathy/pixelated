@@ -3,7 +3,7 @@
  * Handles sensitive configuration data with encryption and secure storage
  */
 
-import { createHash, randomBytes } from 'crypto'
+import { randomBytes } from 'crypto'
 import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import { getLogger } from '@/lib/logging'

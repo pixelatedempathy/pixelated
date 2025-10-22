@@ -35,7 +35,7 @@ export const PersistentStateDemo: FC = () => {
   })
 
   // Persistent object state
-  const [preferences, setPreferences, updatePreference, removePreference, prefsLoaded] = usePersistentObject<DemoObject>({
+  const [preferences, setPreferences, updatePreference, ,prefsLoaded] = usePersistentObject<DemoObject>({
     key: 'demo_preferences',
     defaultValue: {
       theme: 'light',

@@ -3,7 +3,7 @@
  * Orchestrates deployment, rollback, and environment management
  */
 
-import type { DeploymentConfig, DeploymentStatus, RollbackPlan } from '@/types/deployment'
+import type { DeploymentConfig, RollbackPlan } from '@/types/deployment'
 
 export interface EnvironmentConfig {
   name: string
@@ -278,7 +278,7 @@ class ProductionManager {
   }
 
   private async deployBlueGreen(environment: string, artifact: DeploymentArtifact): Promise<void> {
-    const env = this.environments.get(environment)!
+    
 
     console.log(`Deploying ${artifact.version} to ${environment} (blue-green)`)
 
@@ -296,7 +296,7 @@ class ProductionManager {
   }
 
   private async deployCanary(environment: string, artifact: DeploymentArtifact): Promise<void> {
-    const env = this.environments.get(environment)!
+    
 
     console.log(`Deploying ${artifact.version} to ${environment} (canary)`)
 

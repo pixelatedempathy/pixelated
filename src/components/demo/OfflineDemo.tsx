@@ -17,7 +17,6 @@ interface DemoData {
 export const OfflineDemo: FC = () => {
   const {
     isOnline,
-    isOffline,
     connectionQuality,
     hasPendingRequests,
     queueStats,

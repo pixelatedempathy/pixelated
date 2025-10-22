@@ -285,7 +285,7 @@ class IndexingStrategy {
    */
   generateIndexSQL(indexes: IndexDefinition[]): string {
     return indexes.map(index => {
-      const unique = index.unique ? 'UNIQUE' : ''
+      
       const where = index.where ? ` WHERE ${index.where}` : ''
       const columns = index.columns.join(', ')
 

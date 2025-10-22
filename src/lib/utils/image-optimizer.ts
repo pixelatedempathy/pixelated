@@ -3,9 +3,9 @@
  * Compress and optimize static assets for better performance
  */
 
-import { readFile, writeFile, mkdir } from 'fs/promises'
+import { readFile, mkdir } from 'fs/promises'
 import { existsSync, statSync } from 'fs'
-import { join, dirname } from 'path'
+import { join, } from 'path'
 import { getLogger } from '@/lib/logging'
 
 const logger = getLogger('image-optimizer')
@@ -404,8 +404,8 @@ export const imageOptimizer = new ImageOptimizer()
 export async function optimizePublicImages(): Promise<void> {
   logger.info('Starting public image optimization')
 
-  const publicDir = './public'
-  const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp']
+  
+  
   const imagePaths: string[] = []
 
   // Recursively find all images (this would need a proper implementation)

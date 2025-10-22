@@ -3,7 +3,7 @@
  * Secure multi-user collaboration with real-time synchronization
  */
 
-import type { UserProfile, CollaborationSession, Message, Notification } from '@/types/collaboration'
+import type { UserProfile, CollaborationSession, Notification } from '@/types/collaboration'
 
 export interface CollaborationConfig {
   maxParticipants: number

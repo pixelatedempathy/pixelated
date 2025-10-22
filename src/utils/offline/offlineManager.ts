@@ -4,7 +4,7 @@
  */
 
 import requestQueue, { type QueuedRequest } from './requestQueue'
-import useOfflineDetection, { type OfflineState } from '@/hooks/useOfflineDetection'
+import { type OfflineState } from '@/hooks/useOfflineDetection'
 
 export interface OfflineManagerConfig {
   enableRequestQueue?: boolean
@@ -25,8 +25,7 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
     enableRequestQueue = true,
     criticalPaths = [],
     onRequestQueued,
-    onRequestProcessed,
-  } = config
+    } = config
 
   return async (
     url: string,
@@ -125,10 +124,7 @@ class OfflineManager {
   private initialize(): void {
     // Monitor network state
     const { useOfflineDetection } = require('@/hooks/useOfflineDetection')
-    const networkDetection = useOfflineDetection({
-      onOnline: this.handleOnline.bind(this),
-      onOffline: this.handleOffline.bind(this),
-    })
+    
 
     // Set up auto-sync interval
     if (this.config.enableAutoSync) {

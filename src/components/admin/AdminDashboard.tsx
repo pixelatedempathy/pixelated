@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import React from 'react'
 import { usePersistentState } from '@/hooks/usePersistentState'
-import { AdvancedVisualization } from '@/lib/analytics/advancedVisualization'
+
 import { OfflineIndicator } from '@/components/layout/OfflineIndicator'
-import { AnimationWrapper, FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
-import { ResponsiveContainer, ResponsiveText } from '@/components/layout/ResponsiveUtils'
+import { FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
+import { ResponsiveContainer, } from '@/components/layout/ResponsiveUtils'
 
 interface InstitutionMetrics {
   totalPatients: number
@@ -86,15 +86,7 @@ export const AdminDashboard: FC = () => {
     uptime: 99.9,
   }
 
-  const analyticsData = therapists.map((therapist) => ({
-    therapistId: therapist.id,
-    therapistName: therapist.name,
-    patientCount: therapist.patientsCount,
-    avgRating: therapist.avgSessionRating,
-    completionRate: therapist.completionRate,
-    highRiskPatients: therapist.riskLevelDistribution.high + therapist.riskLevelDistribution.critical,
-    performanceScore: (therapist.avgSessionRating * 20) + (therapist.completionRate * 0.5),
-  }))
+  
 
   return (
     <ResponsiveContainer size="full">

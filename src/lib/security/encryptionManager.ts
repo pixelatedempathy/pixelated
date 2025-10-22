@@ -3,7 +3,7 @@
  * Handles key rotation, perfect forward secrecy, and HSM integration
  */
 
-import type { CryptoKeyPair, JsonWebKey } from '@/types/crypto'
+import type { CryptoKeyPair, } from '@/types/crypto'
 
 export interface EncryptionConfig {
   algorithm: 'AES-GCM' | 'AES-CBC' | 'RSA-OAEP'

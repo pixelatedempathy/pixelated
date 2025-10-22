@@ -3,7 +3,7 @@
  * Multi-layered testing strategy with coverage and performance validation
  */
 
-import type { TestConfig, TestResult, CoverageReport } from '@/types/testing'
+import type { TestResult, CoverageReport } from '@/types/testing'
 
 export interface TestSuiteConfig {
   layers: ('unit' | 'integration' | 'e2e' | 'performance' | 'security')[]

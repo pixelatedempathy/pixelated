@@ -24,7 +24,7 @@ function isProtectedRoute(request: Request) {
  */
 const projectAuthMiddleware = async (context: any, next: any) => {
   const { request } = context
-  const locals = context.locals || {}
+  
   // Allow non-protected routes through quickly
   if (!isProtectedRoute(request)) {
     return next()

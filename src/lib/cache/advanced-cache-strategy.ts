@@ -486,12 +486,7 @@ export class AdvancedCacheStrategy {
     
     try {
       // Preload dashboard data for active users
-      const activeUsersQuery = `
-        SELECT DISTINCT therapist_id 
-        FROM bias_analyses 
-        WHERE created_at >= NOW() - INTERVAL '7 days'
-        LIMIT 100
-      `
+      
       
       // This would need to be implemented with actual database access
       logger.info('Cache warmup completed')

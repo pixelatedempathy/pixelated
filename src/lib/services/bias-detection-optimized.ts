@@ -499,8 +499,8 @@ export class OptimizedBiasDetectionService {
     // Process in batches to avoid overwhelming the system
     for (let i = 0; i < texts.length; i += batchSize) {
       const batch = texts.slice(i, i + batchSize)
-      const batchDemographics = options.demographics?.slice(i, i + batchSize) || []
-      const batchContext = options.context?.slice(i, i + batchSize) || []
+      
+      
       
       const batchPromises = batch.map(async (text, index) => {
         const startTime = performance.now()

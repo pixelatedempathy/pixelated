@@ -3,8 +3,8 @@ import React from 'react'
 import { usePersistentState } from '@/hooks/usePersistentState'
 import { AdvancedVisualization } from '@/lib/analytics/advancedVisualization'
 import { OfflineIndicator } from '@/components/layout/OfflineIndicator'
-import { AnimationWrapper, FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
-import { ResponsiveContainer, ResponsiveText } from '@/components/layout/ResponsiveUtils'
+import { FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
+import { ResponsiveContainer, } from '@/components/layout/ResponsiveUtils'
 
 interface ResearchStudy {
   id: string

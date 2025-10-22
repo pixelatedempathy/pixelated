@@ -244,7 +244,7 @@ class RateLimiter {
       const keys = await this.config.storage.keys(pattern)
 
       // Remove keys older than 24 hours
-      const cutoff = Date.now() - (24 * 60 * 60 * 1000)
+      
       let cleanedCount = 0
 
       for (const key of keys) {

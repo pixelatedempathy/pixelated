@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import React from 'react'
 import { useSyncedState, useSyncedObject } from '@/hooks/useSyncedState'
 import { OfflineIndicator } from '@/components/layout/OfflineIndicator'
-import { AnimationWrapper, FadeIn } from '@/components/layout/AdvancedAnimations'
+import { FadeIn } from '@/components/layout/AdvancedAnimations'
 import { ResponsiveContainer, ResponsiveText } from '@/components/layout/ResponsiveUtils'
 import tabSyncManager from '@/utils/sync/tabSyncManager'
 

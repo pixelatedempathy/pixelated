@@ -3,8 +3,8 @@ import React from 'react'
 import { usePersistentState } from '@/hooks/usePersistentState'
 import { AdvancedVisualization } from '@/lib/analytics/advancedVisualization'
 import { OfflineIndicator } from '@/components/layout/OfflineIndicator'
-import { AnimationWrapper, FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
-import { ResponsiveContainer, ResponsiveText } from '@/components/layout/ResponsiveUtils'
+import { FadeIn, SlideUp } from '@/components/layout/AdvancedAnimations'
+import { ResponsiveContainer, } from '@/components/layout/ResponsiveUtils'
 
 interface PatientSummary {
   id: string
@@ -80,22 +80,9 @@ export const TherapistDashboard: FC = () => {
     lastContact: patient.lastSession,
   }))
 
-  const getRiskColor = (risk: string) => {
-    const colors = {
-      low: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200',
-      medium: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200',
-      high: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-200',
-      critical: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200',
-    }
-    return colors[risk as keyof typeof colors] || colors.low
-  }
+  
 
-  const getProgressColor = (progress: number) => {
-    if (progress >= 80) return 'bg-green-500'
-    if (progress >= 60) return 'bg-blue-500'
-    if (progress >= 40) return 'bg-yellow-500'
-    return 'bg-red-500'
-  }
+  
 
   return (
     <ResponsiveContainer size="full">

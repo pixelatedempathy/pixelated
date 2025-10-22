@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import type { APIContext } from 'astro'
+
 import { POST as registerHandler } from '../../../pages/api/auth/register'
 import { POST as loginHandler } from '../../../pages/api/auth/login'
 import { POST as logoutHandler } from '../../../pages/api/auth/logout'

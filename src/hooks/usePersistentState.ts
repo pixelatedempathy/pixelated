@@ -35,7 +35,11 @@ export function usePersistentState<T>({
     setState(storedValue)
     lastStoredValueRef.current = storedValue
     setIsLoaded(true)
-  }, [key, defaultValue])
+  }, [
+	key,
+	defaultValue,
+	storageOptions
+])
 
   // Cross-tab synchronization
   useEffect(() => {
@@ -242,17 +246,17 @@ export function usePersistentMap<K extends string | number | symbol, V>({
     const newMap = new Map(mapState)
     newMap.set(key, value)
     setState(Array.from(newMap.entries()))
-  }, [mapState, setState])
+  }, [setState])
 
-  const get = useCallback((key: K) => mapState.get(key), [mapState])
+  const get = useCallback((key: K) => mapState.get(key), [])
 
-  const has = useCallback((key: K) => mapState.has(key), [mapState])
+  const has = useCallback((key: K) => mapState.has(key), [])
 
   const remove = useCallback((key: K) => {
     const newMap = new Map(mapState)
     newMap.delete(key)
     setState(Array.from(newMap.entries()))
-  }, [mapState, setState])
+  }, [setState])
 
   const clear = useCallback(() => {
     setState([])

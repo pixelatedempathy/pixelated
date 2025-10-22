@@ -235,7 +235,7 @@ class TabSyncManager {
   }
 
   private handleStateRequest(message: SyncMessage): void {
-    const { key, tabId } = message
+    const { key, } = message
     const value = storageManager.get(key)
 
     if (value !== undefined) {

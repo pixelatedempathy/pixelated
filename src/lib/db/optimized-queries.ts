@@ -3,7 +3,7 @@
  * High-performance queries with proper indexing, connection pooling, and query optimization
  */
 
-import { Pool, PoolClient, QueryResult } from 'pg'
+import { PoolClient, QueryResult } from 'pg'
 import { getPool } from './index'
 import { getLogger } from '@/lib/logging'
 

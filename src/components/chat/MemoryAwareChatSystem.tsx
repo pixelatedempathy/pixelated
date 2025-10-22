@@ -78,7 +78,7 @@ export function MemoryAwareChatSystem({
     if (messages.length > 4) {
       Promise.resolve(getConversationSummary()).then(setConversationSummary)
     }
-  }, [messages, getConversationSummary])
+  }, [messages])
 
   const handleExportConversation = async () => {
     try {

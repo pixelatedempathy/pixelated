@@ -44,7 +44,11 @@ export function useSyncedState<T>({
     setState(storedValue)
     lastSyncValueRef.current = storedValue
     setIsLoaded(true)
-  }, [key, defaultValue])
+  }, [
+	key,
+	defaultValue,
+	storageOptions
+])
 
   // Set up tab synchronization listeners
   useEffect(() => {

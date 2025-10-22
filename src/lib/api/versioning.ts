@@ -151,7 +151,7 @@ class ApiVersionManager {
     if (!this.isDeprecated(endpoint)) return null
 
     const sunsetDate = endpoint.sunsetDate || this.calculateSunsetDate(endpoint.version)
-    const daysUntilSunset = Math.ceil((sunsetDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+    
 
     return `This API version (${endpoint.version.major}.${endpoint.version.minor}.${endpoint.version.patch}) is deprecated and will be removed on ${sunsetDate.toISOString().split('T')[0]}. Please migrate to v${this.config.currentVersion.major}.${this.config.currentVersion.minor}.${this.config.currentVersion.patch}.`
   }
