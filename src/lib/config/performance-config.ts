@@ -529,8 +529,10 @@ export class PerformanceOptimizer {
    * Generate ETag for caching
    */
   private generateETag(data: any): string {
-    const crypto = require('crypto')
-    return crypto.createHash('md5').update(JSON.stringify(data)).digest('hex')
+    // Use Node's crypto module via ESM import at top-level
+    // eslint-disable-next-line import/no-extraneous-dependencies
+    const { createHash } = require('crypto')
+    return createHash('md5').update(JSON.stringify(data)).digest('hex')
   }
   
   /**
