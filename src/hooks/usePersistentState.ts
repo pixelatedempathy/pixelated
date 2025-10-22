@@ -248,7 +248,7 @@ export function usePersistentMap<K extends string | number | symbol, V>({
 
   const has = useCallback((key: K) => mapState.has(key), [mapState])
 
-  const delete = useCallback((key: K) => {
+  const remove = useCallback((key: K) => {
     const newMap = new Map(mapState)
     newMap.delete(key)
     setState(Array.from(newMap.entries()))
@@ -260,7 +260,7 @@ export function usePersistentMap<K extends string | number | symbol, V>({
 
   return [
     mapState,
-    { set, get, has, delete, clear },
+    { set, get, has, remove, clear },
     isLoaded,
   ] as const
 }
