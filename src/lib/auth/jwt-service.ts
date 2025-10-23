@@ -5,7 +5,7 @@
  */
 
 import jwt from 'jsonwebtoken'
-import { nanoid } from 'nanoid'
+import { randomBytes } from 'crypto'
 import { redis, getFromCache, setInCache, removeFromCache } from '../redis'
 import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
@@ -93,7 +93,8 @@ export class AuthenticationError extends Error {
  * Generate secure random token identifier
  */
 function generateSecureToken(): string {
-  return nanoid(32)
+  // 32 bytes => 64 hex characters (256 bits of entropy)
+  return randomBytes(32).toString('hex')
 }
 
 /**

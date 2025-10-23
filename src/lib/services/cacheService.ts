@@ -94,13 +94,21 @@ export class EnhancedCacheService implements CacheClient {
     if (this.baseService instanceof MemoryCacheService) {
       const memoryService = this.baseService as any
       const allKeys = Array.from(memoryService.cache.keys()) as string[]
+      // Convert wildcard pattern (with '*') into a safe RegExp.
+      // Escape regex special chars except '*' then replace '*' with '.*'
+      const escapeExceptStar = (s: string) =>
+        s.replace(/[-\/\\^$+?.()|[\]{}]/g, '\\$&')
+      const regex = new RegExp(
+        '^' + escapeExceptStar(pattern).replace(/\*/g, '.*') + '$',
+      )
+
       return allKeys
         .map((key) =>
           key.startsWith(memoryService.prefix)
             ? key.substring(memoryService.prefix.length)
             : key,
         )
-        .filter((key) => key.includes(pattern.replace('*', '')))
+        .filter((key) => regex.test(key))
     }
 
     // For Vercel KV, we can't easily implement keys without Redis SCAN

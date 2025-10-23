@@ -7,6 +7,8 @@
 // Stub implementation to prevent build failures
 // The full implementation exists in src/lib/auth/phase6-integration.ts but needs to be migrated
 
+import { secureRandomUUID } from '@/lib/crypto/secure-random' // new import (uses project alias)
+
 export type AuthenticationEvent =
   | 'user_created'
   | 'user_registered'
@@ -50,8 +52,12 @@ export async function updatePhase6AuthenticationProgress(
   metadata: Record<string, unknown> = {},
 ): Promise<void> {
   try {
-    // Log the event for debugging
+    // Generate a cryptographically secure event id for traceability
+    const eventId = secureRandomUUID()
+
+    // Log the event for debugging (now includes secure eventId)
     console.debug('[Phase6] Authentication progress:', {
+      eventId,
       userId,
       event,
       metadata,

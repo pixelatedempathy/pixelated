@@ -3,7 +3,10 @@
  * Collects application metrics for Prometheus
  */
 
-const promClient = require('prom-client')
+import { getLogger } from '@/lib/logging'
+import promClient from 'prom-client'
+
+const logger = getLogger('metrics-middleware')
 
 // Create a Registry to register the metrics
 const register = new promClient.Registry()

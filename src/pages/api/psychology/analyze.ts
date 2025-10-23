@@ -3,11 +3,11 @@ export const prerender = false
 export interface AnalyzeRequest {
   content: string
   analysisType:
-    | 'session'
-    | 'progress'
-    | 'intervention'
-    | 'risk'
-    | 'comprehensive'
+  | 'session'
+  | 'progress'
+  | 'intervention'
+  | 'risk'
+  | 'comprehensive'
   clientContext?: {
     id?: string
     demographics?: {
@@ -66,12 +66,12 @@ export interface AnalyzeResponse {
 
 export interface ClinicalObservation {
   category:
-    | 'affect'
-    | 'cognition'
-    | 'behavior'
-    | 'interpersonal'
-    | 'risk'
-    | 'strength'
+  | 'affect'
+  | 'cognition'
+  | 'behavior'
+  | 'interpersonal'
+  | 'risk'
+  | 'strength'
   observation: string
   severity: 'low' | 'moderate' | 'high'
   clinicalSignificance: string
@@ -315,10 +315,10 @@ function assessRisk(
 ): RiskAssessment {
   // Suicidal ideation assessment
   const suicidalPatterns = {
-    passive: /wish I was dead|better off dead|tired of living/gi,
-    active: /want to die|suicide|kill myself|end my life/gi,
-    plan: /plan to|how to|method|when I|specific way/gi,
-    intent: /going to|will do|tonight|tomorrow|soon/gi,
+    passive: /want to die|suicide|kill myself|end my life|not worth it/gi,
+    active: /kill myself|end it all|suicide|die/gi,
+    plan: /plan to|how to|method|when I|specific way|prepared/gi,
+    intent: /going to|will do|tonight|tomorrow|soon|doing it/gi,
   }
 
   let suicidalSeverity: RiskAssessment['suicidalIdeation']['severity'] = 'none'
@@ -396,17 +396,17 @@ function assessRisk(
     immediateActions:
       overallRisk === 'imminent'
         ? [
-            'Conduct immediate safety assessment',
-            'Contact emergency services if necessary',
-            'Implement safety plan',
-            'Notify supervisor',
-          ]
+          'Conduct immediate safety assessment',
+          'Contact emergency services if necessary',
+          'Implement safety plan',
+          'Notify supervisor',
+        ]
         : overallRisk === 'high'
           ? [
-              'Develop comprehensive safety plan',
-              'Increase session frequency',
-              'Consider hospitalization assessment',
-            ]
+            'Develop comprehensive safety plan',
+            'Increase session frequency',
+            'Consider hospitalization assessment',
+          ]
           : [],
   }
 }
@@ -615,8 +615,8 @@ export const POST = async ({ request }: APIContext) => {
       Math.max(
         60,
         85 -
-          (observations.length > 10 ? 10 : 0) +
-          (body.content.length > 500 ? 10 : 0),
+        (observations.length > 10 ? 10 : 0) +
+        (body.content.length > 500 ? 10 : 0),
       ),
     )
 
@@ -632,16 +632,16 @@ export const POST = async ({ request }: APIContext) => {
         progressMetrics,
         culturalFactors: options.includeCulturalFactors
           ? [
-              {
-                domain: 'communication',
-                factor: 'Client communication style appears direct and open',
-                impact: 'positive',
-                considerations: [
-                  'Continue current approach',
-                  'Monitor for cultural preferences',
-                ],
-              },
-            ]
+            {
+              domain: 'communication',
+              factor: 'Client communication style appears direct and open',
+              impact: 'positive',
+              considerations: [
+                'Continue current approach',
+                'Monitor for cultural preferences',
+              ],
+            },
+          ]
           : undefined,
       },
       recommendations,
@@ -678,7 +678,7 @@ export const POST = async ({ request }: APIContext) => {
         generatedAt: new Date().toISOString(),
         flags:
           riskAssessment?.overallRisk === 'high' ||
-          riskAssessment?.overallRisk === 'imminent'
+            riskAssessment?.overallRisk === 'imminent'
             ? ['HIGH_RISK']
             : [],
       },

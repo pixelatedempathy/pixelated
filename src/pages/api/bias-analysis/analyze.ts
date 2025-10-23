@@ -115,6 +115,8 @@ export const POST: APIRoute = async ({ request }) => {
   // Generate unique UUIDs first
   const analysisId = randomUUID()
   const sessionId = randomUUID()
+  // New: per-request id for safe correlation
+  const requestId = randomUUID()
   // Use null for therapist and client IDs since no users exist yet
   const therapistId = null
   const clientId = null
@@ -220,17 +222,15 @@ export const POST: APIRoute = async ({ request }) => {
       client.release()
     }
   } catch (error) {
-    console.error('Bias analysis POST error:', error)
-
-    const errorMessage = error instanceof Error ? error.message : String(error)
+    // Log full error server-side with requestId (do not expose stack to client)
+    console.error(`Bias analysis POST error - requestId=${requestId}`, error)
 
     return new Response(
       JSON.stringify({
         error: 'Internal server error',
         message:
-          process.env['NODE_ENV'] === 'development'
-            ? errorMessage
-            : 'An error occurred',
+          'An internal error occurred. Provide the requestId to support for details.',
+        requestId,
       }),
       {
         status: 500,
@@ -241,6 +241,9 @@ export const POST: APIRoute = async ({ request }) => {
 }
 
 export const GET: APIRoute = async ({ request }) => {
+  // New: per-request id for safe correlation
+  const requestId = randomUUID()
+
   try {
     // Apply security middleware
     const securityResult = await securityMiddleware(request, {})
@@ -274,18 +277,15 @@ export const GET: APIRoute = async ({ request }) => {
       client.release()
     }
   } catch (error) {
-    console.error('API status check error:', error)
-
-    const errorMessage =
-      error instanceof Error ? error.message : 'Unknown error'
+    // Log full error server-side with requestId (do not expose stack to client)
+    console.error(`API status check error - requestId=${requestId}`, error)
 
     return new Response(
       JSON.stringify({
-        error: 'Database connection failed',
+        error: 'Service unavailable',
         message:
-          process.env['NODE_ENV'] === 'development'
-            ? errorMessage
-            : 'Service unavailable',
+          'An internal error occurred. Provide the requestId to support for details.',
+        requestId,
       }),
       {
         status: 503,

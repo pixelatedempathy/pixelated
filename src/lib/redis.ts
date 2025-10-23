@@ -29,6 +29,16 @@ function createMockRedisClient() {
 
   const mockStore = new Map<string, string>()
 
+  // Helper: convert glob-style pattern (supports '*') into a safe RegExp
+  // Escapes regex metacharacters except '*' then replaces all '*' with '.*'
+  const patternToRegex = (pattern: string): RegExp => {
+    if (pattern === '*' || pattern === '') return /^.*$/
+    // Escape regex special chars except '*'
+    const escaped = pattern.replace(/[-[\]{}()+?.,\\^$|#\s]/g, '\\$&')
+    const regexStr = '^' + escaped.replace(/\*/g, '.*') + '$'
+    return new RegExp(regexStr)
+  }
+
   // Return a mock client with all Redis operations needed by the threat detection system
   return {
     // Basic operations
@@ -149,10 +159,10 @@ function createMockRedisClient() {
     },
 
     // Additional operations
-    keys: async (pattern: string) =>
-      Array.from(mockStore.keys()).filter(
-        (k) => pattern === '*' || k.includes(pattern.replace('*', '')),
-      ),
+    keys: async (pattern: string) => {
+      const re = patternToRegex(pattern)
+      return Array.from(mockStore.keys()).filter((k) => re.test(k))
+    },
     flushall: async () => {
       mockStore.clear()
       return 'OK'

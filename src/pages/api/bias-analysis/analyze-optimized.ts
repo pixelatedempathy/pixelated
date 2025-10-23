@@ -53,6 +53,16 @@ interface PerformanceMetrics {
   error?: string
 }
 
+// Add small helper to avoid exposing stacks in responses and to control logging
+const isProduction = process.env.NODE_ENV === 'production'
+
+function safeErrorForLogging(err: unknown) {
+  return {
+    message: err instanceof Error ? err.message : String(err),
+    stack: err instanceof Error ? err.stack : undefined,
+  }
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const requestId = randomUUID()
   const startTime = Date.now()
@@ -195,16 +205,21 @@ export const POST: APIRoute = async ({ request }) => {
       },
     })
   } catch (error) {
+    // Replace detailed exposure with sanitized handling and controlled logging
     metrics.totalTime = Date.now() - startTime
-    metrics.error = error instanceof Error ? error.message : String(error)
+    const safe = safeErrorForLogging(error)
+    // In production do not expose internal messages; keep a short safe message
+    metrics.error = isProduction ? 'Internal server error' : safe.message
 
+    // Log full stack only when not in production (so support can debug); always include requestId
     logger.error('Bias analysis request failed', {
       requestId,
       totalTime: metrics.totalTime,
       error: metrics.error,
+      ...(isProduction ? {} : { stack: safe.stack }),
     })
 
-    // Return appropriate error response
+    // Return sanitized error to client (no stack)
     if (error instanceof Error && error.message === 'Analysis timeout') {
       return new Response(
         JSON.stringify({
@@ -224,9 +239,7 @@ export const POST: APIRoute = async ({ request }) => {
       JSON.stringify({
         error: 'Internal server error',
         message:
-          process.env.NODE_ENV === 'development'
-            ? metrics.error
-            : 'An error occurred during analysis',
+          'An internal error occurred. Please provide the requestId to support for details.',
         requestId,
       }),
       {
@@ -306,12 +319,14 @@ export const GET: APIRoute = async ({ request }) => {
     )
   } catch (error) {
     const totalTime = Date.now() - startTime
-    const errorMessage = error instanceof Error ? error.message : String(error)
+    const safe = safeErrorForLogging(error)
+    const safeMessage = isProduction ? 'Internal server error' : safe.message
 
     logger.error('Bias summary request failed', {
       requestId,
       totalTime,
-      error: errorMessage,
+      error: safeMessage,
+      ...(isProduction ? {} : { stack: safe.stack }),
     })
 
     if (error instanceof Error && error.message === 'Summary timeout') {
@@ -332,9 +347,7 @@ export const GET: APIRoute = async ({ request }) => {
       JSON.stringify({
         error: 'Internal server error',
         message:
-          process.env.NODE_ENV === 'development'
-            ? errorMessage
-            : 'Failed to retrieve summary',
+          'An internal error occurred. Please provide the requestId to support for details.',
         requestId,
       }),
       {
@@ -351,32 +364,53 @@ export const PUT: APIRoute = async ({ request }) => {
   const startTime = Date.now()
 
   try {
-    // Apply security middleware
-    const securityResult = await securityMiddleware(request, {})
+    // Apply security middleware with timeout (same pattern as POST)
+    const securityStart = Date.now()
+    const securityResult = await Promise.race([
+      securityMiddleware(request, {}),
+      new Promise<Response>((resolve) =>
+        setTimeout(
+          () =>
+            resolve(new Response('Security check timeout', { status: 408 })),
+          5000,
+        ),
+      ),
+    ])
+
     if (securityResult) {
       return securityResult
     }
 
-    // Parse request body
-    const body = await request.json()
-    const { texts, options } = body
+    // Parse and validate batch request body
+    const BatchRequestSchema = z.object({
+      items: z.array(AnalyzeBiasRequestSchema).min(1).max(20), // limit to 20 items per batch
+    })
 
-    if (!Array.isArray(texts) || texts.length === 0) {
+    let body: z.infer<typeof BatchRequestSchema>
+
+    try {
+      const rawBody = await request.json()
+      body = BatchRequestSchema.parse(rawBody)
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return new Response(
+          JSON.stringify({
+            error: 'Validation failed',
+            details: error.errors.map((e) => ({
+              field: e.path.join('.'),
+              message: e.message,
+            })),
+          }),
+          {
+            status: 400,
+            headers: CACHE_HEADERS,
+          },
+        )
+      }
+
       return new Response(
         JSON.stringify({
-          error: 'texts must be a non-empty array',
-        }),
-        {
-          status: 400,
-          headers: CACHE_HEADERS,
-        },
-      )
-    }
-
-    if (texts.length > 100) {
-      return new Response(
-        JSON.stringify({
-          error: 'Maximum 100 texts allowed per batch request',
+          error: 'Invalid request body',
         }),
         {
           status: 400,
@@ -388,21 +422,68 @@ export const PUT: APIRoute = async ({ request }) => {
     // Get optimized bias detection service
     const biasService = getOptimizedBiasDetectionService()
 
-    // Perform batch analysis with timeout
-    const results = await Promise.race([
-      biasService.batchAnalyzeBias(texts, options || {}),
-      new Promise<never>(
-        (_, reject) =>
-          setTimeout(() => reject(new Error('Batch analysis timeout')), 60000), // 60 second timeout
-      ),
-    ])
+    // Process all items in parallel with per-item timeouts
+    const perItemTimeoutMs = 30000 // 30s per item
+    const analysisPromises = body.items.map((item) =>
+      Promise.race([
+        biasService.analyzeBias({
+          text: item.text,
+          context: item.context,
+          demographics: item.demographics,
+          sessionType: item.sessionType,
+          therapistNotes: item.therapistNotes,
+          therapistId: item.therapistId,
+          clientId: item.clientId,
+        }),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Analysis timeout')), perItemTimeoutMs),
+        ),
+      ]),
+    )
+
+    const settled = await Promise.allSettled(analysisPromises)
+
+    const results = settled.map((res, idx) => {
+      if (res.status === 'fulfilled') {
+        const r = res.value
+        return {
+          success: true,
+          index: idx,
+          analysis: {
+            id: r.id,
+            sessionId: r.sessionId,
+            overallBiasScore: r.overallBiasScore,
+            alertLevel: r.alertLevel,
+            confidence: r.confidence,
+            layerResults: r.layerResults,
+            recommendations: r.recommendations,
+            demographics: r.demographics,
+            sessionType: r.sessionType,
+            processingTimeMs: r.processingTimeMs,
+            createdAt: r.createdAt,
+            cached: r.cached,
+          },
+        }
+      }
+
+      const message =
+        res.reason instanceof Error ? res.reason.message : String(res.reason)
+      const safeMsg = isProduction ? 'Analysis failed' : message
+
+      return {
+        success: false,
+        index: idx,
+        error: safeMsg,
+      }
+    })
 
     const totalTime = Date.now() - startTime
 
-    logger.info('Batch bias analysis request completed', {
+    logger.info('Batch bias analysis completed', {
       requestId,
       totalTime,
-      textCount: texts.length,
+      count: results.length,
+      failures: results.filter((r) => !r.success).length,
     })
 
     return new Response(
@@ -412,8 +493,6 @@ export const PUT: APIRoute = async ({ request }) => {
         performance: {
           requestId,
           totalTime,
-          textCount: texts.length,
-          avgTimePerText: Math.round(totalTime / texts.length),
         },
       }),
       {
@@ -422,24 +501,25 @@ export const PUT: APIRoute = async ({ request }) => {
           ...CACHE_HEADERS,
           'X-Request-ID': requestId,
           'X-Processing-Time': totalTime.toString(),
-          'X-Text-Count': texts.length.toString(),
         },
       },
     )
   } catch (error) {
     const totalTime = Date.now() - startTime
-    const errorMessage = error instanceof Error ? error.message : String(error)
+    const safe = safeErrorForLogging(error)
+    const safeMessage = isProduction ? 'Internal server error' : safe.message
 
-    logger.error('Batch bias analysis request failed', {
+    logger.error('Batch bias analysis failed', {
       requestId,
       totalTime,
-      error: errorMessage,
+      error: safeMessage,
+      ...(isProduction ? {} : { stack: safe.stack }),
     })
 
-    if (error instanceof Error && error.message === 'Batch analysis timeout') {
+    if (error instanceof Error && error.message === 'Analysis timeout') {
       return new Response(
         JSON.stringify({
-          error: 'Batch analysis timeout',
+          error: 'Analysis timeout',
           message: 'The batch analysis took too long to complete',
           requestId,
         }),
@@ -454,9 +534,7 @@ export const PUT: APIRoute = async ({ request }) => {
       JSON.stringify({
         error: 'Internal server error',
         message:
-          process.env.NODE_ENV === 'development'
-            ? errorMessage
-            : 'Batch analysis failed',
+          'An internal error occurred. Please provide the requestId to support for details.',
         requestId,
       }),
       {
