@@ -268,7 +268,9 @@ export class FHEAnalyticsService {
       return finalResult
     } catch (error: unknown) {
       logger.error('Failed to analyze sentiment trend', { error })
-      throw new Error(`Sentiment analysis error: ${(error as Error).message}`, { cause: error })
+      throw new Error(`Sentiment analysis error: ${(error as Error).message}`, {
+        cause: error,
+      })
     }
   }
 

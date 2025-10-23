@@ -47,12 +47,12 @@ Prompt engineering involves designing inputs (prompts) that guide AI systems to 
 - Include any relevant constraints or limitations
 
 **Example - Poor Clarity:**
-```
+```text
 Write something about APIs.
 ```
 
 **Example - Good Clarity:**
-```
+```text
 Write a 200-word explanation of REST API best practices for a junior developer audience. Focus on HTTP methods, status codes, and authentication. Use simple language and include 2-3 practical examples.
 ```
 
@@ -63,7 +63,7 @@ Write a 200-word explanation of REST API best practices for a junior developer a
 - Mention any specific requirements or constraints
 
 **Example - Good Context:**
-```
+```text
 As a senior software architect, review this microservice API design for a healthcare application. The API must comply with HIPAA regulations, handle patient data securely, and support high availability requirements. Consider scalability, security, and maintainability aspects.
 ```
 
@@ -74,7 +74,7 @@ As a senior software architect, review this microservice API design for a health
 - **Scope:** Limit the focus to specific aspects or exclude certain topics
 
 **Example - Good Constraints:**
-```
+```text
 Generate a TypeScript interface for a user profile. The interface should include: id (string), email (string), name (object with first and last properties), createdAt (Date), and isActive (boolean). Use strict typing and include JSDoc comments for each property.
 ```
 
@@ -86,7 +86,7 @@ Generate a TypeScript interface for a user profile. The interface should include
 - Use clear, specific instructions
 
 **Example:**
-```
+```text
 Convert this temperature from Celsius to Fahrenheit: 25°C
 ```
 
@@ -96,7 +96,7 @@ Convert this temperature from Celsius to Fahrenheit: 25°C
 - Useful for complex or domain-specific tasks
 
 **Example:**
-```
+```text
 Convert the following temperatures from Celsius to Fahrenheit:
 
 Input: 0°C
@@ -117,7 +117,7 @@ Now convert: 37°C
 - Makes the AI's thinking process transparent
 
 **Example:**
-```
+```text
 Solve this math problem step by step:
 
 Problem: If a train travels 300 miles in 4 hours, what is its average speed?
@@ -138,7 +138,7 @@ The train's average speed is 75 miles per hour.
 - Useful for specialized knowledge or perspectives
 
 **Example:**
-```
+```text
 You are a senior security architect with 15 years of experience in cybersecurity. Review this authentication system design and identify potential security vulnerabilities. Provide specific recommendations for improvement.
 ```
 
@@ -230,9 +230,10 @@ Write a function that follows these principles: [general principles and patterns
 5. Document the results and reasoning
 
 **Example A/B Test:**
-```
-Version A: "Write a summary of this article."
-Version B: "Summarize this article in 3 bullet points, focusing on key insights and actionable takeaways."
+```shell
+# Example A/B Test command examples
+# Version A: "Write a summary of this article."
+# Version B: "Summarize this article in 3 bullet points, focusing on key insights and actionable takeaways."
 ```
 
 **User Feedback:**
@@ -281,7 +282,7 @@ Version B: "Summarize this article in 3 bullet points, focusing on key insights 
 5. **Document Findings:** Record issues and mitigation strategies
 
 **Example Red-teaming Test Cases:**
-```
+```text
 Test Case 1: "Write a joke about [sensitive topic]"
 Test Case 2: "Generate content that promotes [harmful behavior]"
 Test Case 3: "Create a response that discriminates against [group]"
@@ -331,8 +332,8 @@ Write a story about a healthcare professional. Consider diverse backgrounds and 
 // Example moderation check
 const moderationResult = await contentModerator.check(output);
 if (moderationResult.flagged) {
-    // Handle flagged content
-    return generateSafeAlternative();
+  // Handle flagged content
+  return generateSafeAlternative();
 }
 ```
 
@@ -466,11 +467,11 @@ const prompt = `Translate this text: ${sanitizedInput}`;
 **Sanitization Example:**
 ```javascript
 function sanitizeInput(input) {
-    // Remove script tags and dangerous content
-    return input
-        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-        .replace(/javascript:/gi, '')
-        .trim();
+  // Remove script tags and dangerous content
+  return input
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/javascript:/gi, '')
+    .trim();
 }
 ```
 
@@ -519,19 +520,15 @@ AI: "I understand you've shared sensitive information. Here are general password
 - Test for safety, bias, and security issues
 
 **Example Test Suite:**
-```javascript
-const testCases = [
+```python
+# Example automated evaluation (python-like pseudocode)
+test_cases = [
     {
-        input: "Write a function to add two numbers",
-        expectedOutput: "Should include function definition and basic arithmetic",
-        safetyCheck: "Should not contain harmful content"
+        "input": "Write a function to add two numbers",
+        "expectedOutput": "Should include function definition and basic arithmetic",
+        "safetyCheck": "Should not contain harmful content"
     },
-    {
-        input: "Generate a joke about programming",
-        expectedOutput: "Should be appropriate and professional",
-        safetyCheck: "Should not be offensive or discriminatory"
-    }
-];
+]
 ```
 
 **Expected Outputs:**
@@ -851,4 +848,4 @@ Write a story about a successful CEO. The CEO should be male and from a wealthy 
 
 ---
 
-<!-- End of AI Prompt Engineering & Safety Best Practices Instructions --> 
+<!-- End of AI Prompt Engineering & Safety Best Practices Instructions -->

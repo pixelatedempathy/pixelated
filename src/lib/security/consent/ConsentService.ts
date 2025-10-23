@@ -23,7 +23,6 @@ import type {
 const logger = createBuildSafeLogger('consent-service')
 
 export class ConsentService {
-
   /**
    * Get all active consent types
    */
@@ -63,27 +62,39 @@ export class ConsentService {
   async getCurrentConsentVersion(
     consentTypeId: string,
   ): Promise<ConsentVersion> {
-    void consentTypeId;
+    void consentTypeId
     try {
       // TODO: Replace with MongoDB implementation
       const data: unknown = {} // Stub: Replace with MongoDB result
       return {
         id: (data as Record<string, unknown>)['id'] as string,
-        consentTypeId: (data as Record<string, unknown>)['consent_type_id'] as string,
+        consentTypeId: (data as Record<string, unknown>)[
+          'consent_type_id'
+        ] as string,
         version: (data as Record<string, unknown>)['version'] as string,
-        effectiveDate: (data as Record<string, unknown>)['effective_date'] as string,
-        expirationDate: (data as Record<string, unknown>)['expiration_date'] as string,
-        documentText: (data as Record<string, unknown>)['document_text'] as string,
+        effectiveDate: (data as Record<string, unknown>)[
+          'effective_date'
+        ] as string,
+        expirationDate: (data as Record<string, unknown>)[
+          'expiration_date'
+        ] as string,
+        documentText: (data as Record<string, unknown>)[
+          'document_text'
+        ] as string,
         summary: (data as Record<string, unknown>)['summary'] as string,
         isCurrent: (data as Record<string, unknown>)['is_current'] as boolean,
-        approvalDate: (data as Record<string, unknown>)['approval_date'] as string,
+        approvalDate: (data as Record<string, unknown>)[
+          'approval_date'
+        ] as string,
         approvedBy: (data as Record<string, unknown>)['approved_by'] as string,
         createdAt: (data as Record<string, unknown>)['created_at'] as string,
         updatedAt: (data as Record<string, unknown>)['updated_at'] as string,
       }
     } catch (error: unknown) {
       logger.error('Unexpected error in getCurrentConsentVersion', error)
-      throw new Error('Failed to fetch current consent version', { cause: error })
+      throw new Error('Failed to fetch current consent version', {
+        cause: error,
+      })
     }
   }
 
@@ -91,7 +102,7 @@ export class ConsentService {
    * Get options for a specific consent type
    */
   async getConsentOptions(consentTypeId: string): Promise<ConsentOption[]> {
-    void consentTypeId;
+    void consentTypeId
     try {
       // TODO: Replace with MongoDB implementation
       const data: unknown[] = [] // Stub: Replace with MongoDB result
@@ -119,8 +130,8 @@ export class ConsentService {
     userId: string,
     consentTypeId: string,
   ): Promise<UserConsent | null> {
-    void userId;
-    void consentTypeId;
+    void userId
+    void consentTypeId
     try {
       // Get current version ID for this consent type
       // TODO: Replace with MongoDB implementation
@@ -137,7 +148,7 @@ export class ConsentService {
   async getUserConsentStatus(
     params: GetConsentStatusParams,
   ): Promise<UserConsentStatus[]> {
-    void params;
+    void params
     try {
       // Get consent types - either all or specific one
       // TODO: Replace with MongoDB implementation
@@ -152,7 +163,7 @@ export class ConsentService {
    * Grant consent for a user
    */
   async grantConsent(params: GrantConsentParams): Promise<UserConsent> {
-    void params;
+    void params
     try {
       // Check if there's already an active consent for this version
       // TODO: Replace with MongoDB implementation
@@ -167,7 +178,7 @@ export class ConsentService {
    * Withdraw a user's consent
    */
   async withdrawConsent(params: WithdrawConsentParams): Promise<boolean> {
-    void params;
+    void params
     try {
       // Get the consent record
       // TODO: Replace with MongoDB implementation
@@ -185,8 +196,8 @@ export class ConsentService {
     userId: string,
     consentTypeId: string,
   ): Promise<boolean> {
-    void userId;
-    void consentTypeId;
+    void userId
+    void consentTypeId
     try {
       // Get the consent type
       // TODO: Replace with MongoDB implementation
@@ -196,7 +207,6 @@ export class ConsentService {
       throw new Error('Failed to check active consent', { cause: error })
     }
   }
-
 }
 
 // Export a singleton instance

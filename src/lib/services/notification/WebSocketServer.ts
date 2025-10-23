@@ -115,7 +115,7 @@ export class WebSocketServer {
   /**
    * Verify the authentication token
    */
-private async verifyToken(_token: string): Promise<string> {
+  private async verifyToken(_token: string): Promise<string> {
     try {
       // Use Supabase admin client to verify the token and get user information
       // TODO: Replace with MongoDB/auth provider implementation for token verification and user lookup

@@ -340,28 +340,28 @@ export class BackupSecurityManager {
     // Simple UUID v4 implementation that works everywhere
     let uuid = ''
 
-      // Use crypto-secure random values for UUID v4 generation
-      const randBytes = isBrowser
-        ? window.crypto.getRandomValues(new Uint8Array(16))
-        : NodeCrypto.randomBytes(16)
+    // Use crypto-secure random values for UUID v4 generation
+    const randBytes = isBrowser
+      ? window.crypto.getRandomValues(new Uint8Array(16))
+      : NodeCrypto.randomBytes(16)
 
-      // Per RFC4122 v4: set bits for version and `clock_seq_hi_and_reserved`
-      if (randBytes[6] !== undefined) {
-        randBytes[6] = (randBytes[6] & 0x0f) | 0x40
-      }
-      if (randBytes[8] !== undefined) {
-        randBytes[8] = (randBytes[8] & 0x3f) | 0x80
-      }
+    // Per RFC4122 v4: set bits for version and `clock_seq_hi_and_reserved`
+    if (randBytes[6] !== undefined) {
+      randBytes[6] = (randBytes[6] & 0x0f) | 0x40
+    }
+    if (randBytes[8] !== undefined) {
+      randBytes[8] = (randBytes[8] & 0x3f) | 0x80
+    }
 
-      for (let i = 0; i < 16; i++) {
-        const byte = randBytes[i]
-        const hex = (byte !== undefined ? byte : 0).toString(16).padStart(2, '0')
-        // Insert dashes at the appropriate positions
-        if (i === 4 || i === 6 || i === 8 || i === 10) {
-          uuid += '-'
-        }
-        uuid += hex
+    for (let i = 0; i < 16; i++) {
+      const byte = randBytes[i]
+      const hex = (byte !== undefined ? byte : 0).toString(16).padStart(2, '0')
+      // Insert dashes at the appropriate positions
+      if (i === 4 || i === 6 || i === 8 || i === 10) {
+        uuid += '-'
       }
+      uuid += hex
+    }
 
     return uuid
   }
@@ -450,7 +450,8 @@ export class BackupSecurityManager {
         `Failed to initialize backup security manager: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
+        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        { cause: error },
       )
     }
   }
@@ -532,7 +533,8 @@ export class BackupSecurityManager {
     } catch (error: unknown) {
       logger.error('Backup creation failed:', { error: String(error) })
       throw new Error(
-        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
+        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`,
+        { cause: error },
       )
     }
   }
@@ -604,7 +606,7 @@ export class BackupSecurityManager {
       new Uint8Array(dataBuffer).set(data)
       const hashBuffer = await window.crypto.subtle.digest(
         'SHA-256',
-        dataBuffer
+        dataBuffer,
       )
       return Array.from(new Uint8Array(hashBuffer))
         .map((b) => b.toString(16).padStart(2, '0'))
@@ -1009,7 +1011,8 @@ export class BackupSecurityManager {
         `Failed to restore data: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
+        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`,
+        { cause: error },
       )
     }
   }
@@ -1074,7 +1077,8 @@ async function getStorageProvider(
       `Failed to load storage provider: ${error instanceof Error ? String(error) : String(error)}`,
     )
     throw new Error(
-      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
+      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`,
+      { cause: error },
     )
   }
 }

@@ -17,7 +17,8 @@ export function tryRequireNode(moduleName: string): any | null {
 }
 
 // Use Node crypto via guarded require when available; fallback to runtime checks for browsers
-const nodeCrypto: typeof import('crypto') | undefined = tryRequireNode('crypto') || undefined
+const nodeCrypto: typeof import('crypto') | undefined =
+  tryRequireNode('crypto') || undefined
 
 /**
  * Gets random bytes using Web Crypto API (browser) or Node.js crypto (server)
@@ -25,7 +26,11 @@ const nodeCrypto: typeof import('crypto') | undefined = tryRequireNode('crypto')
  * @returns Uint8Array of random bytes
  */
 export function getRandomBytes(size: number): Uint8Array {
-  if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+  if (
+    typeof window !== 'undefined' &&
+    window.crypto &&
+    window.crypto.getRandomValues
+  ) {
     // Browser environment - use Web Crypto API
     const bytes = new Uint8Array(size)
     window.crypto.getRandomValues(bytes)
@@ -42,7 +47,7 @@ export function getRandomBytes(size: number): Uint8Array {
       // No cryptographically secure random available
       throw new Error(
         'Cryptographically secure random number generation is not supported in this environment. ' +
-        'Math.random() fallback has been removed for security. Please run in a secure context (browser with crypto.getRandomValues or Node.js with crypto.randomBytes).'
+          'Math.random() fallback has been removed for security. Please run in a secure context (browser with crypto.getRandomValues or Node.js with crypto.randomBytes).',
       )
     }
   }
@@ -67,16 +72,16 @@ function bytesToUint32BE(bytes: Uint8Array): number {
  */
 export function secureRandomInt(maxExclusive: number): number {
   if (!Number.isInteger(maxExclusive) || maxExclusive < 1) {
-    throw new Error('maxExclusive must be positive integer');
+    throw new Error('maxExclusive must be positive integer')
   }
-  const maxUint32 = 0xFFFFFFFF;
+  const maxUint32 = 0xffffffff
   // Find rejection sampling threshold: only accept random values < rangeLimit
-  const rangeLimit = Math.floor(maxUint32 / maxExclusive) * maxExclusive;
+  const rangeLimit = Math.floor(maxUint32 / maxExclusive) * maxExclusive
   while (true) {
-    const bytes = getRandomBytes(4);
-    const randUint = bytesToUint32BE(bytes);
+    const bytes = getRandomBytes(4)
+    const randUint = bytesToUint32BE(bytes)
     if (randUint < rangeLimit) {
-      return randUint % maxExclusive;
+      return randUint % maxExclusive
     }
     // Otherwise, extremely rare (<<0.5% for small maxExclusive), try again.
   }
@@ -104,24 +109,34 @@ export function cn(...inputs: ClassValue[]): string {
  * @returns A unique UUID string
  */
 export function generateUniqueId(): string {
-  if (typeof window !== 'undefined' && window.crypto && window.crypto.randomUUID) {
+  if (
+    typeof window !== 'undefined' &&
+    window.crypto &&
+    window.crypto.randomUUID
+  ) {
     // Browser environment with Web Crypto API
     return window.crypto.randomUUID()
-  } else if (typeof (globalThis as any).crypto !== 'undefined' && (globalThis as any).crypto.randomUUID) {
+  } else if (
+    typeof (globalThis as any).crypto !== 'undefined' &&
+    (globalThis as any).crypto.randomUUID
+  ) {
     // Browser or Node.js global crypto (Node 18+ exposes globalThis.crypto)
     return (globalThis as any).crypto.randomUUID()
   } else {
     // Fallback UUID generation
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const bytes = getRandomBytes(1);
-      const byte = bytes[0];
-      if (byte === undefined) {
-        throw new Error('generateUniqueId: Unexpected undefined byte');
-      }
-      const r = byte & 0xf;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      function (c) {
+        const bytes = getRandomBytes(1)
+        const byte = bytes[0]
+        if (byte === undefined) {
+          throw new Error('generateUniqueId: Unexpected undefined byte')
+        }
+        const r = byte & 0xf
+        const v = c === 'x' ? r : (r & 0x3) | 0x8
+        return v.toString(16)
+      },
+    )
   }
 }
 
@@ -132,9 +147,11 @@ export function generateUniqueId(): string {
  */
 export function generateSimpleId(prefix = 'id'): string {
   // Use crypto for random value
-  const bytes = getRandomBytes(4);
-  const randPart = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
-  return `${prefix}_${Date.now()}_${randPart}`;
+  const bytes = getRandomBytes(4)
+  const randPart = Array.from(bytes, (byte) =>
+    byte.toString(16).padStart(2, '0'),
+  ).join('')
+  return `${prefix}_${Date.now()}_${randPart}`
 }
 
 /**
@@ -148,11 +165,11 @@ export function generateShortId(length = 8): string {
   // Secure random index selection, safely guard bytes access
   const bytes = getRandomBytes(length)
   for (let i = 0; i < length; i++) {
-    const byte = bytes[i];
+    const byte = bytes[i]
     if (byte === undefined) {
-      throw new Error('generateShortId: Unexpected undefined byte');
+      throw new Error('generateShortId: Unexpected undefined byte')
     }
-    result += chars.charAt(byte % chars.length);
+    result += chars.charAt(byte % chars.length)
   }
   return result
 }
@@ -167,7 +184,7 @@ export function generateShortId(length = 8): string {
  * @returns Promise that resolves after delay
  */
 export function delay(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 /**
@@ -180,7 +197,7 @@ export function delay(ms: number): Promise<void> {
 export async function retry<T>(
   fn: () => Promise<T>,
   maxAttempts = 3,
-  baseDelay = 1000
+  baseDelay = 1000,
 ): Promise<T> {
   let lastError: Error
 
@@ -210,7 +227,7 @@ export async function retry<T>(
  */
 export function debounce<T extends (...args: unknown[]) => unknown>(
   fn: T,
-  delay: number
+  delay: number,
 ): (...args: Parameters<T>) => void {
   let timeoutId: NodeJS.Timeout
 
@@ -228,7 +245,7 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
  */
 export function throttle<T extends (...args: unknown[]) => unknown>(
   fn: T,
-  interval: number
+  interval: number,
 ): (...args: Parameters<T>) => void {
   let lastCallTime = 0
 
@@ -271,7 +288,7 @@ export function unique<T>(array: T[], keyFn?: (item: T) => unknown): T[] {
   }
 
   const seen = new Set()
-  return array.filter(item => {
+  return array.filter((item) => {
     const key = keyFn(item)
     if (seen.has(key)) {
       return false
@@ -289,29 +306,34 @@ export function unique<T>(array: T[], keyFn?: (item: T) => unknown): T[] {
  */
 export function groupBy<T, K extends string | number | symbol>(
   array: T[],
-  keyFn: (item: T) => K
+  keyFn: (item: T) => K,
 ): Record<K, T[]> {
-  return array.reduce((groups, item) => {
-    const key = keyFn(item)
-    if (!groups[key]) {
-      groups[key] = []
-    }
-    groups[key].push(item)
-    return groups
-  }, {} as Record<K, T[]>)
+  return array.reduce(
+    (groups, item) => {
+      const key = keyFn(item)
+      if (!groups[key]) {
+        groups[key] = []
+      }
+      groups[key].push(item)
+      return groups
+    },
+    {} as Record<K, T[]>,
+  )
 }
 
 /**
  * Asserts that an array is dense (no holes), otherwise throws.
  * The main value is to type-narrow arr from (T | undefined)[] to T[] for strict TypeScript assignment.
  */
-const assertDense: <U>(array: (U | undefined)[]) => asserts array is U[] = <U>(array: (U | undefined)[]): asserts array is U[] => {
+const assertDense: <U>(array: (U | undefined)[]) => asserts array is U[] = <U>(
+  array: (U | undefined)[],
+): asserts array is U[] => {
   for (let i = 0; i < array.length; ++i) {
     if (!(i in array)) {
-      throw new Error(`Sparse array detected at index ${i}`);
+      throw new Error(`Sparse array detected at index ${i}`)
     }
   }
-};
+}
 
 /**
  * Returns a shuffled copy of the input using Fisher-Yates and crypto secure random.
@@ -320,23 +342,23 @@ const assertDense: <U>(array: (U | undefined)[]) => asserts array is U[] = <U>(a
  */
 export function shuffle<T>(input: readonly T[]): T[] {
   if (input.some((_, i, a) => !(i in a))) {
-    throw new Error('Cannot shuffle sparse arrays: input contains holes.');
+    throw new Error('Cannot shuffle sparse arrays: input contains holes.')
   }
   // Defensive copy. Still, TS cannot infer runtime density, so we assert.
-  const arr = input.map(x => x);
-  assertDense(arr);
-  const denseArr = arr as T[]; // TS type-narrow after runtime assertion
+  const arr = input.map((x) => x)
+  assertDense(arr)
+  const denseArr = arr as T[] // TS type-narrow after runtime assertion
 
   for (let i = denseArr.length - 1; i > 0; i--) {
     // Secure, bias-free random int between 0 and i (inclusive)
-    const j = secureRandomInt(i + 1);
+    const j = secureRandomInt(i + 1)
     // No need for bounds check: arr is dense (checked above)
     // The preceding assertDense() guarantees no holes, safe to non-null '!'.
-    const temp: T = denseArr[i]!;
-    denseArr[i] = denseArr[j]!;
-    denseArr[j] = temp;
+    const temp: T = denseArr[i]!
+    denseArr[i] = denseArr[j]!
+    denseArr[j] = temp
   }
-  return denseArr;
+  return denseArr
 }
 
 // ============================================================================
@@ -358,7 +380,7 @@ export function deepClone<T>(obj: T): T {
   }
 
   if (obj instanceof Array) {
-    return obj.map(item => deepClone(item)) as T
+    return obj.map((item) => deepClone(item)) as T
   }
 
   if (typeof obj === 'object') {
@@ -391,10 +413,10 @@ export function isEmpty(obj: Record<string, unknown>): boolean {
  */
 export function pick<T extends Record<string, unknown>, K extends keyof T>(
   obj: T,
-  keys: K[]
+  keys: K[],
 ): Pick<T, K> {
   const result = {} as Pick<T, K>
-  keys.forEach(key => {
+  keys.forEach((key) => {
     if (key in obj) {
       result[key] = obj[key]
     }
@@ -410,10 +432,10 @@ export function pick<T extends Record<string, unknown>, K extends keyof T>(
  */
 export function omit<T extends Record<string, unknown>, K extends keyof T>(
   obj: T,
-  keys: K[]
+  keys: K[],
 ): Omit<T, K> {
   const result = { ...obj }
-  keys.forEach(key => {
+  keys.forEach((key) => {
     delete result[key]
   })
   return result
@@ -441,7 +463,7 @@ export function titleCase(str: string): string {
   return str
     .toLowerCase()
     .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
 
@@ -465,7 +487,7 @@ export function kebabCase(str: string): string {
 export function camelCase(str: string): string {
   return str
     .replace(/(^\w|[A-Z]|\b\w)/g, (word, index) =>
-      index === 0 ? word.toLowerCase() : word.toUpperCase()
+      index === 0 ? word.toLowerCase() : word.toUpperCase(),
     )
     .replace(/\s+/g, '')
 }
@@ -554,8 +576,8 @@ export function formatDate(
   options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'short',
-    day: 'numeric'
-  }
+    day: 'numeric',
+  },
 ): string {
   return new Intl.DateTimeFormat('en-US', options).format(date)
 }
@@ -576,7 +598,7 @@ export function timeAgo(date: Date): string {
     { label: 'day', seconds: 86400 },
     { label: 'hour', seconds: 3600 },
     { label: 'minute', seconds: 60 },
-    { label: 'second', seconds: 1 }
+    { label: 'second', seconds: 1 },
   ]
 
   for (const interval of intervals) {
@@ -680,9 +702,12 @@ export function isNotEmpty(str: string | null | undefined): str is string {
 export function createError(
   message: string,
   code?: string,
-  details?: Record<string, unknown>
+  details?: Record<string, unknown>,
 ): Error & { code?: string; details?: Record<string, unknown> } {
-  const error = new Error(message) as Error & { code?: string; details?: Record<string, unknown> }
+  const error = new Error(message) as Error & {
+    code?: string
+    details?: Record<string, unknown>
+  }
   if (code) {
     error.code = code
   }
@@ -698,7 +723,7 @@ export function createError(
  * @returns Result object with success/error state
  */
 export async function safeExecute<T>(
-  fn: () => Promise<T>
+  fn: () => Promise<T>,
 ): Promise<{ success: true; data: T } | { success: false; error: Error }> {
   try {
     const data = await fn()
@@ -823,8 +848,14 @@ export function removeStorageItem(key: string): void {
  * @param params - Query parameters object
  * @returns URL with query parameters
  */
-export function buildUrl(baseUrl: string, params: Record<string, string | number | boolean>): string {
-  const url = new URL(baseUrl, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+export function buildUrl(
+  baseUrl: string,
+  params: Record<string, string | number | boolean>,
+): string {
+  const url = new URL(
+    baseUrl,
+    typeof window !== 'undefined' ? window.location.origin : 'http://localhost',
+  )
 
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
@@ -841,7 +872,10 @@ export function buildUrl(baseUrl: string, params: Record<string, string | number
  * @returns Object with query parameters
  */
 export function parseQueryParams(url: string): Record<string, string> {
-  const urlObj = new URL(url, typeof window !== 'undefined' ? window.location.origin : 'http://localhost')
+  const urlObj = new URL(
+    url,
+    typeof window !== 'undefined' ? window.location.origin : 'http://localhost',
+  )
   const params: Record<string, string> = {}
 
   urlObj.searchParams.forEach((value, key) => {
@@ -863,13 +897,13 @@ export function parseQueryParams(url: string): Record<string, string> {
  */
 export function randomInt(min: number, max: number): number {
   if (min > max) {
-    throw new Error('min must be <= max');
+    throw new Error('min must be <= max')
   }
-  const range = max - min + 1;
+  const range = max - min + 1
   // Use crypto to get random integer in range
-  const randomBuffer = getRandomBytes(4);
-  const randUint = bytesToUint32BE(randomBuffer);
-  return min + (randUint % range);
+  const randomBuffer = getRandomBytes(4)
+  const randUint = bytesToUint32BE(randomBuffer)
+  return min + (randUint % range)
 }
 
 /**
@@ -901,11 +935,11 @@ export function range(start: number, end: number, step = 1): number[] {
  */
 export function randomElement<T>(array: readonly T[]): T | undefined {
   if (array.length === 0) {
-    return undefined;
+    return undefined
   }
   // Secure, bias-free random index
-  const idx = secureRandomInt(array.length);
-  return array[idx];
+  const idx = secureRandomInt(array.length)
+  return array[idx]
 }
 
 /**

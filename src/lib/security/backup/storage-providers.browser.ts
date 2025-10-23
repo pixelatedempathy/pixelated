@@ -129,7 +129,8 @@ export class LocalStorageProvider implements StorageProvider {
         `Failed to store file in localStorage: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `LocalStorage error: ${error instanceof Error ? String(error) : String(error)}`, { cause: error },
+        `LocalStorage error: ${error instanceof Error ? String(error) : String(error)}`,
+        { cause: error },
       )
     }
   }

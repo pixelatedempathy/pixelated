@@ -5,9 +5,7 @@
     {
       "type": "stat",
       "title": "Total Safety Events",
-      "targets": [
-        { "expr": "sum(pixel_events_total)" }
-      ],
+      "targets": [{ "expr": "sum(pixel_events_total)" }],
       "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 }
     },
     {

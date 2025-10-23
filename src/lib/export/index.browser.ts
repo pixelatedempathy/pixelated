@@ -309,7 +309,8 @@ export class ExportService {
           return JSON.stringify(jwe, null, 2)
         } catch (err: unknown) {
           throw new Error(
-            `Encryption failed: ${err instanceof Error ? (err as Error)?.message || String(err) : String(err)}`, { cause: err },
+            `Encryption failed: ${err instanceof Error ? (err as Error)?.message || String(err) : String(err)}`,
+            { cause: err },
           )
         }
       }

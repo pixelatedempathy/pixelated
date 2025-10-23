@@ -35,13 +35,10 @@ export function useChatWithMemory(
       setIsLoading(true)
       try {
         if (options.enableMemory) {
-          await memory.addMemory(
-            `user: ${message}`,
-            {
-              role: 'user',
-              sessionId,
-            },
-          )
+          await memory.addMemory(`user: ${message}`, {
+            role: 'user',
+            sessionId,
+          })
         }
 
         // This is a bit of a hack to get the form submission to work
@@ -55,13 +52,10 @@ export function useChatWithMemory(
         const responseContent = lastMessage?.content
 
         if (options.enableMemory && responseContent) {
-          await memory.addMemory(
-            `assistant: ${responseContent}`,
-            {
-              role: 'assistant',
-              sessionId,
-            },
-          )
+          await memory.addMemory(`assistant: ${responseContent}`, {
+            role: 'assistant',
+            sessionId,
+          })
         }
 
         return responseContent

@@ -1,5 +1,8 @@
-import { useState, useEffect, } from 'react'
-import { useChatWithMemory, UseChatWithMemoryReturn } from '@/hooks/useChatWithMemory'
+import { useState, useEffect } from 'react'
+import {
+  useChatWithMemory,
+  UseChatWithMemoryReturn,
+} from '@/hooks/useChatWithMemory'
 import { useAuth } from '@/hooks/useAuth'
 import { ChatContainer } from './ChatContainer'
 
@@ -54,24 +57,20 @@ export function MemoryAwareChatSystem({
   const [showSettings, setShowSettings] = useState(false)
   const [conversationSummary, setConversationSummary] = useState<string>('')
 
-  const {
-    messages,
-    isLoading,
-    sendMessage,
-    memory,
-  }: UseChatWithMemoryReturn = useChatWithMemory({
-    sessionId: sessionId as string,
-    enableMemory,
-    enableAnalysis,
-    maxMemoryContext: 15,
-  })
+  const { messages, isLoading, sendMessage, memory }: UseChatWithMemoryReturn =
+    useChatWithMemory({
+      sessionId: sessionId as string,
+      enableMemory,
+      enableAnalysis,
+      maxMemoryContext: 15,
+    })
 
   const getConversationSummary = async () => {
     // This is a placeholder. In a real implementation, you might call an API.
     return `This has been a productive conversation about ${
-          memory.stats?.totalMemories
-        } topics.`;
-  };
+      memory.stats?.totalMemories
+    } topics.`
+  }
 
   // Generate conversation summary when messages change
   useEffect(() => {
@@ -222,10 +221,7 @@ export function MemoryAwareChatSystem({
 
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <Label
-                htmlFor="analysis-toggle"
-                className="text-sm font-medium"
-              >
+              <Label htmlFor="analysis-toggle" className="text-sm font-medium">
                 Enable Analysis
               </Label>
               <p className="text-xs text-gray-600 dark:text-gray-400">
@@ -246,15 +242,15 @@ export function MemoryAwareChatSystem({
   const handleRegenerate = () => {
     // This is a placeholder. A real implementation would be more complex.
     if (messages.length > 0) {
-      sendMessage('Please regenerate the last response.');
+      sendMessage('Please regenerate the last response.')
     }
-  };
+  }
 
   const handleClear = () => {
     // This is a placeholder.
     // In a real implementation, you might want to confirm with the user.
-    memory.clearMemories();
-  };
+    memory.clearMemories()
+  }
 
   const renderActionButtons = () => (
     <div className="flex flex-wrap gap-2">
@@ -390,7 +386,9 @@ export function MemoryAwareChatSystem({
             <Info className="h-4 w-4" />
             <span className="text-sm font-medium">Error</span>
           </div>
-          <p className="text-sm text-red-600 dark:text-red-400 mt-1">{memory.error.toString()}</p>
+          <p className="text-sm text-red-600 dark:text-red-400 mt-1">
+            {memory.error.toString()}
+          </p>
         </div>
       )}
 

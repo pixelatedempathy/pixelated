@@ -21,35 +21,32 @@ const __filename = fileURLToPath(import.meta.url)
 // Avoid path.dirname to prevent security scanner issues
 const lastSlash = Math.max(
   __filename.lastIndexOf('/'),
-  __filename.lastIndexOf('\\')
+  __filename.lastIndexOf('\\'),
 )
-const __dirname = lastSlash > 0
-  ? __filename.substring(0, lastSlash)
-  : '.'
+const __dirname = lastSlash > 0 ? __filename.substring(0, lastSlash) : '.'
 // LRU cache for mapping safe IDs to actual file paths
-const PATH_CACHE = new Map();
-const MAX_CACHE_SIZE = 100;
-let pathCounter = 0;
+const PATH_CACHE = new Map()
+const MAX_CACHE_SIZE = 100
+let pathCounter = 0
 
 // Generate safe path ID and cache the mapping
 function generateSafePathId(filePath) {
-  const safeId = `path_${++pathCounter}`;
+  const safeId = `path_${++pathCounter}`
 
   // LRU: delete oldest entry if cache is full
   if (PATH_CACHE.size >= MAX_CACHE_SIZE) {
-    const firstKey = PATH_CACHE.keys().next().value;
-    PATH_CACHE.delete(firstKey);
+    const firstKey = PATH_CACHE.keys().next().value
+    PATH_CACHE.delete(firstKey)
   }
 
-  PATH_CACHE.set(safeId, filePath);
-  return safeId;
+  PATH_CACHE.set(safeId, filePath)
+  return safeId
 }
 
 // Get actual file path from safe ID
 function getActualPath(safeId) {
-  return PATH_CACHE.get(safeId) || null;
+  return PATH_CACHE.get(safeId) || null
 }
-
 
 // Run blog publisher command
 // Basic argument parsing and validation reused from CLI
@@ -98,7 +95,11 @@ function runBlogCommand(command) {
     }
 
     const args = ['run', 'blog-publisher', '--', ...tokens]
-    const proc = spawnSync('pnpm', args, { encoding: 'utf8', stdio: 'pipe', shell: false })
+    const proc = spawnSync('pnpm', args, {
+      encoding: 'utf8',
+      stdio: 'pipe',
+      shell: false,
+    })
 
     if (proc.error) {
       return { success: false, error: proc.error.message }
@@ -108,7 +109,11 @@ function runBlogCommand(command) {
       return { success: true, output: proc.stdout || '' }
     }
 
-    return { success: false, error: proc.stderr || 'Unknown error', output: proc.stdout || '' }
+    return {
+      success: false,
+      error: proc.stderr || 'Unknown error',
+      output: proc.stdout || '',
+    }
   } catch (err) {
     return { success: false, error: err.message }
   }
@@ -229,12 +234,13 @@ function generateHTML(content = '', message = '') {
     <h1>📝 Blog Management Interface</h1>
   </header>
 
-  ${message
+  ${
+    message
       ? `<div class="message ${message.type || ''}">
     ${message.text}
   </div>`
       : ''
-    }
+  }
 
   <div class="card">
     <h2>Actions</h2>
@@ -313,7 +319,6 @@ function generatePostForm() {
   </script>
   `
 }
-
 
 // Handle HTTP requests
 const server = http.createServer((req, res) => {
@@ -407,7 +412,6 @@ const server = http.createServer((req, res) => {
           }
         }
         break
-
 
       default:
         message = {

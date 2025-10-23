@@ -2,7 +2,11 @@ import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
 
 const logger = createBuildSafeLogger('BiasExportAPI')
 
-export const GET = async ({ request }: { request: Request }): Promise<Response> => {
+export const GET = async ({
+  request,
+}: {
+  request: Request
+}): Promise<Response> => {
   const startTime = Date.now()
 
   try {
@@ -82,21 +86,25 @@ export const GET = async ({ request }: { request: Request }): Promise<Response> 
         status: 200,
         headers: {
           'Content-Type': 'text/csv',
-          'Content-Disposition': 'attachment; filename="bias-detection-export.csv"',
+          'Content-Disposition':
+            'attachment; filename="bias-detection-export.csv"',
         },
       })
     }
 
-    return new Response(JSON.stringify({
-      success: true,
-      data: mockExportData,
-      processingTime,
-    }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: mockExportData,
+        processingTime,
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
-    })
+    )
   } catch (error: unknown) {
     logger.error('Export failed', { error })
 
@@ -114,30 +122,43 @@ export const GET = async ({ request }: { request: Request }): Promise<Response> 
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      },
     )
   }
 }
 
 function convertToCSV(data: Record<string, unknown>): string {
-  const sessions = (data.sessions as Array<Record<string, unknown>> | undefined) || []
-  const headers = ['sessionId', 'timestamp', 'biasScore', 'alertLevel', 'gender', 'age', 'ethnicity', 'scenario']
+  const sessions =
+    (data.sessions as Array<Record<string, unknown>> | undefined) || []
+  const headers = [
+    'sessionId',
+    'timestamp',
+    'biasScore',
+    'alertLevel',
+    'gender',
+    'age',
+    'ethnicity',
+    'scenario',
+  ]
 
   const csvRows = [
     headers.join(','),
     ...sessions.map((session) => {
-      const demographics = session.participantDemographics as Record<string, unknown> | undefined
+      const demographics = session.participantDemographics as
+        | Record<string, unknown>
+        | undefined
       return [
-        session.sessionId as string || '',
-        session.timestamp as string || '',
+        (session.sessionId as string) || '',
+        (session.timestamp as string) || '',
         String(session.biasScore ?? ''),
-        session.alertLevel as string || '',
-        demographics?.gender as string || '',
+        (session.alertLevel as string) || '',
+        (demographics?.gender as string) || '',
         String(demographics?.age ?? ''),
-        demographics?.ethnicity as string || '',
-        session.scenario as string || '',
+        (demographics?.ethnicity as string) || '',
+        (session.scenario as string) || '',
       ].join(',')
-    })]
+    }),
+  ]
 
   return csvRows.join('\n')
 }

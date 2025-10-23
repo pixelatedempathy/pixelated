@@ -150,7 +150,8 @@ export class KeyRotationService extends EventEmitter {
           details: { error: errorMessage },
         })
         throw new Error(
-          'Critical: AWS client initialization failed in production', { cause: error },
+          'Critical: AWS client initialization failed in production',
+          { cause: error },
         )
       }
     }
@@ -530,7 +531,8 @@ export class KeyRotationService extends EventEmitter {
         error,
       })
       throw new Error(
-        `HIPAA++ Key rotation initialization error: ${errorMessage}`, { cause: error },
+        `HIPAA++ Key rotation initialization error: ${errorMessage}`,
+        { cause: error },
       )
     }
   }
@@ -713,7 +715,9 @@ export class KeyRotationService extends EventEmitter {
 
       logger.error('HIPAA++ Key rotation failed', { error, rotationId })
       this.emit('rotation-failed', { error: errorMessage, rotationId })
-      throw new Error(`HIPAA++ Key rotation error: ${errorMessage}`, { cause: error })
+      throw new Error(`HIPAA++ Key rotation error: ${errorMessage}`, {
+        cause: error,
+      })
     }
   }
 
@@ -876,7 +880,9 @@ export class KeyRotationService extends EventEmitter {
       })
 
       logger.error(`Failed to store key ${keyPair.id}`, { error })
-      throw new Error(`HIPAA++ Key storage error: ${errorMessage}`, { cause: error })
+      throw new Error(`HIPAA++ Key storage error: ${errorMessage}`, {
+        cause: error,
+      })
     }
   }
 

@@ -33,13 +33,24 @@ function createMockRedisClient() {
   return {
     // Basic operations
     get: async (key: string) => mockStore.get(key) || null,
-    set: async (key: string, value: string) => { mockStore.set(key, value); return 'OK' },
-    del: async (key: string) => { const existed = mockStore.has(key); mockStore.delete(key); return existed ? 1 : 0 },
-    exists: async (key: string) => mockStore.has(key) ? 1 : 0,
-    expire: async (key: string, seconds: number) => mockStore.has(key) ? 1 : 0,
-    
+    set: async (key: string, value: string) => {
+      mockStore.set(key, value)
+      return 'OK'
+    },
+    del: async (key: string) => {
+      const existed = mockStore.has(key)
+      mockStore.delete(key)
+      return existed ? 1 : 0
+    },
+    exists: async (key: string) => (mockStore.has(key) ? 1 : 0),
+    expire: async (key: string, seconds: number) =>
+      mockStore.has(key) ? 1 : 0,
+
     // Advanced operations needed by rate limiter
-    setex: async (key: string, seconds: number, value: string) => { mockStore.set(key, value); return 'OK' },
+    setex: async (key: string, seconds: number, value: string) => {
+      mockStore.set(key, value)
+      return 'OK'
+    },
     hincrby: async (key: string, field: string, increment: number) => {
       const hashKey = `${key}:${field}`
       const current = parseInt(mockStore.get(hashKey) || '0')
@@ -61,20 +72,24 @@ function createMockRedisClient() {
       mockStore.set(`${key}:${field}`, value)
       return 1
     },
-    
+
     // Pipeline operations
     pipeline: () => ({
-      setex: (key: string, seconds: number, value: string) => ({ setex: [key, seconds, value] }),
-      hincrby: (key: string, field: string, increment: number) => ({ hincrby: [key, field, increment] }),
-      exec: async () => [['OK'], [1]] // Mock successful pipeline execution
+      setex: (key: string, seconds: number, value: string) => ({
+        setex: [key, seconds, value],
+      }),
+      hincrby: (key: string, field: string, increment: number) => ({
+        hincrby: [key, field, increment],
+      }),
+      exec: async () => [['OK'], [1]], // Mock successful pipeline execution
     }),
-    
+
     // Connection operations
     ping: async () => 'PONG',
     quit: async () => 'OK',
     disconnect: () => {},
     status: 'ready',
-    
+
     // List operations
     lpush: async (key: string, ...values: string[]) => {
       const listKey = `list:${key}`
@@ -98,7 +113,7 @@ function createMockRedisClient() {
       mockStore.set(listKey, JSON.stringify(filtered))
       return list.length - filtered.length
     },
-    
+
     // Sorted set operations
     zadd: async (key: string, score: number, member: string) => {
       const zsetKey = `zset:${key}`
@@ -113,7 +128,9 @@ function createMockRedisClient() {
       const existing = mockStore.get(zsetKey) || '{}'
       const zset = JSON.parse(existing)
       return Object.entries(zset)
-        .filter(([_, score]) => (score as number) >= min && (score as number) <= max)
+        .filter(
+          ([_, score]) => (score as number) >= min && (score as number) <= max,
+        )
         .map(([member]) => member)
     },
     zremrangebyscore: async (key: string, min: number, max: number) => {
@@ -130,14 +147,18 @@ function createMockRedisClient() {
       mockStore.set(zsetKey, JSON.stringify(zset))
       return removed
     },
-    
+
     // Additional operations
-    keys: async (pattern: string) => Array.from(mockStore.keys()).filter(k => 
-      pattern === '*' || k.includes(pattern.replace('*', ''))
-    ),
-    flushall: async () => { mockStore.clear(); return 'OK' },
-    ttl: async (key: string) => mockStore.has(key) ? -1 : -2,
-    
+    keys: async (pattern: string) =>
+      Array.from(mockStore.keys()).filter(
+        (k) => pattern === '*' || k.includes(pattern.replace('*', '')),
+      ),
+    flushall: async () => {
+      mockStore.clear()
+      return 'OK'
+    },
+    ttl: async (key: string) => (mockStore.has(key) ? -1 : -2),
+
     // Event emitter methods (for compatibility)
     on: () => {},
     off: () => {},

@@ -9,7 +9,7 @@ import { initSentry } from './src/lib/sentry/config'
 const sentryConfig = initSentry({
   integrations: (defaultIntegrations) => {
     const withoutSpotlight = defaultIntegrations.filter(
-      (integration) => integration && integration.name !== 'Spotlight'
+      (integration) => integration && integration.name !== 'Spotlight',
     )
     return [
       ...withoutSpotlight,
