@@ -10,7 +10,7 @@ export interface QueuedRequest {
   url: string
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
   headers: Record<string, string>
-  body?: any
+  body?: unknown
   timestamp: number
   retryCount: number
   maxRetries: number
@@ -154,7 +154,7 @@ class RequestQueue {
           const response = await fetch(request.url, {
             method: request.method,
             headers: request.headers,
-            body: request.body ? JSON.stringify(request.body) : undefined,
+            body: request.body ? (typeof request.body === 'string' ? request.body : JSON.stringify(request.body)) : undefined,
           })
 
           if (response.ok) {

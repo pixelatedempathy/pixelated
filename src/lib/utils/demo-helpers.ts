@@ -565,9 +565,12 @@ export function generateSessionId(): string {
   if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
     window.crypto.getRandomValues(array)
   } else if (typeof process !== 'undefined' && process.versions && process.versions.node) {
-    // Node.js fallback - use require guarded at runtime to avoid bundler issues
+    // Node.js fallback - use guarded runtime require to avoid bundler issues
+    // Use tryRequireNode from utils to avoid bundlers including `crypto` in frontend bundles
+    // Import dynamically to prevent circular import at module-eval time
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const crypto = require('crypto')
+    const { tryRequireNode } = require('@/lib/utils') as typeof import('@/lib/utils')
+    const crypto = tryRequireNode('crypto') || require('crypto')
     const buf = crypto.randomBytes(8)
     array[0] = buf.readUInt32LE(0)
     array[1] = buf.readUInt32LE(4)

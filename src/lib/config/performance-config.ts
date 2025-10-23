@@ -529,14 +529,13 @@ export class PerformanceOptimizer {
    * Generate ETag for caching
    */
   private generateETag(data: any): string {
-    // Guarded require to avoid bundling Node crypto into frontend builds
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // Use guarded runtime require helper to avoid bundling Node crypto into frontend builds
     let createHash: ((algo: string) => import('crypto').Hash) | undefined
     try {
-      // Use eval-based require to avoid static analysis by bundlers
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const req: any = eval('require')
-      const crypto = req('crypto')
+      // Require the helper at runtime to avoid top-level circular imports in some environments
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { tryRequireNode } = require('@/lib/utils') as typeof import('@/lib/utils')
+      const crypto = tryRequireNode('crypto')
       createHash = crypto?.createHash
     } catch {
       createHash = undefined

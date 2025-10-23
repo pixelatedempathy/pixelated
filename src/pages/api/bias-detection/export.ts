@@ -4,7 +4,7 @@ const logger = createBuildSafeLogger('BiasExportAPI')
 
 export const GET = async ({ request }: { request: Request }): Promise<Response> => {
   const startTime = Date.now()
-  
+
   try {
     // Parse URL parameters
     const url = new URL(request.url)
@@ -122,7 +122,7 @@ export const GET = async ({ request }: { request: Request }): Promise<Response> 
 function convertToCSV(data: Record<string, unknown>): string {
   const sessions = (data.sessions as Array<Record<string, unknown>> | undefined) || []
   const headers = ['sessionId', 'timestamp', 'biasScore', 'alertLevel', 'gender', 'age', 'ethnicity', 'scenario']
-  
+
   const csvRows = [
     headers.join(','),
     ...sessions.map((session) => {
@@ -138,6 +138,6 @@ function convertToCSV(data: Record<string, unknown>): string {
         session.scenario as string || '',
       ].join(',')
     })]
-  
+
   return csvRows.join('\n')
 }

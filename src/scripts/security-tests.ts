@@ -187,32 +187,31 @@ async function generateReport(suites: TestSuite[]): Promise<string> {
   </div>
 
   ${suites
-    .map(
-      (suite) => `
+      .map(
+        (suite) => `
     <div class="suite">
       <h2>${suite.name}</h2>
       <p>Duration: ${((suite.endTime - suite.startTime) / 1000).toFixed(2)}s</p>
       ${suite.results
-        .map(
-          (test) => `
+            .map(
+              (test) => `
         <div class="test ${test.passed ? 'passed' : 'failed'}">
           <h3>
             ${test.passed ? '✅' : '❌'} ${test.name}
             <span class="severity ${test.severity}">${test.severity}</span>
           </h3>
-          ${
-            test.details.length > 0
-              ? `<div class="details">${test.details.join('\n')}</div>`
-              : ''
-          }
+          ${test.details.length > 0
+                  ? `<div class="details">${test.details.join('\n')}</div>`
+                  : ''
+                }
         </div>
       `,
-        )
-        .join('')}
+            )
+            .join('')}
     </div>
   `,
-    )
-    .join('')}
+      )
+      .join('')}
 </body>
 </html>
   `
@@ -302,7 +301,7 @@ async function main() {
 }
 
 // Execute main function
-main().catch(() => {
-  console.error('Unhandled error')
+main().catch((error: unknown) => {
+  console.error('Unhandled error', String(error))
   process.exit(1)
 })

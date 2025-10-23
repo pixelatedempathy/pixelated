@@ -62,8 +62,8 @@ export const POST: APIRoute = async ({ request }) => {
           score = Number(scoreOrObj as unknown as number || 0)
         }
 
-  // Determine category using helper mapping (allows expansion without changing this file)
-  const category = getSkillCategory(skillName, explicitCategory);
+        // Determine category using helper mapping (allows expansion without changing this file)
+        const category = getSkillCategory(skillName, explicitCategory);
 
         skillInserts.push({
           therapistId,

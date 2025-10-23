@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from 'clsx'
 
 // Helper to synchronously require Node modules in Node-only environments without
 // triggering static bundlers or TypeScript/ESLint `no-require-imports` errors.
-function tryRequireNode(moduleName: string): any | null {
+export function tryRequireNode(moduleName: string): any | null {
   try {
     if (typeof window === 'undefined' && typeof process !== 'undefined') {
       // Use eval to avoid bundlers rewriting/including the require call.
