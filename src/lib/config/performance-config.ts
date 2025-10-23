@@ -23,7 +23,7 @@ export interface PerformanceConfig {
       etag: boolean
     }
   }
-  
+
   // Database Performance
   database: {
     pool: {
@@ -43,7 +43,7 @@ export interface PerformanceConfig {
       enableSlowQueryLog: boolean
     }
   }
-  
+
   // Redis Cache Performance
   redis: {
     connection: {
@@ -66,7 +66,7 @@ export interface PerformanceConfig {
       batchSize: number
     }
   }
-  
+
   // ML Model Performance
   ml: {
     model: {
@@ -81,7 +81,7 @@ export interface PerformanceConfig {
       enableAsyncProcessing: boolean
     }
   }
-  
+
   // Frontend Performance
   frontend: {
     bundle: {
@@ -102,7 +102,7 @@ export interface PerformanceConfig {
       enableCaching: boolean
     }
   }
-  
+
   // Monitoring and Alerting
   monitoring: {
     enabled: boolean
@@ -228,7 +228,7 @@ const ENV_CONFIGS = {
       }
     }
   },
-  
+
   staging: {
     api: {
       timeout: 15000,
@@ -334,7 +334,7 @@ const ENV_CONFIGS = {
       }
     }
   },
-  
+
   production: {
     api: {
       timeout: 10000,
@@ -449,7 +449,7 @@ const ENV_CONFIGS = {
 export function getPerformanceConfig(): PerformanceConfig {
   const env = process.env.NODE_ENV || 'development'
   const config = ENV_CONFIGS[env as keyof typeof ENV_CONFIGS] || ENV_CONFIGS.development
-  
+
   // Override with environment variables if present
   return {
     ...config,
@@ -484,11 +484,11 @@ export function getPerformanceConfig(): PerformanceConfig {
  */
 export class PerformanceOptimizer {
   private config: PerformanceConfig
-  
+
   constructor() {
     this.config = getPerformanceConfig()
   }
-  
+
   /**
    * Optimize API response with compression and caching
    */
@@ -504,37 +504,60 @@ export class PerformanceOptimizer {
       'Content-Type': 'application/json',
       'X-Response-Time': Date.now().toString()
     }
-    
+
     // Add compression headers if enabled
     if (options.enableCompression ?? this.config.api.compression.enabled) {
       headers['Content-Encoding'] = 'gzip'
       headers['Vary'] = 'Accept-Encoding'
     }
-    
+
     // Add caching headers if enabled
     if (options.enableCaching ?? this.config.api.caching.enabled) {
       headers['Cache-Control'] = `max-age=${this.config.api.caching.ttl}`
       headers['ETag'] = options.etag || `"${this.generateETag(data)}"`
     }
-    
+
     // Add security headers
     headers['X-Content-Type-Options'] = 'nosniff'
     headers['X-Frame-Options'] = 'DENY'
     headers['X-XSS-Protection'] = '1; mode=block'
-    
+
     return { data, headers }
   }
-  
+
   /**
    * Generate ETag for caching
    */
   private generateETag(data: any): string {
-    // Use Node's crypto module via ESM import at top-level
-    // eslint-disable-next-line import/no-extraneous-dependencies
-    const { createHash } = require('crypto')
+    // Guarded require to avoid bundling Node crypto into frontend builds
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    let createHash: ((algo: string) => import('crypto').Hash) | undefined
+    try {
+      // Use eval-based require to avoid static analysis by bundlers
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const req: any = eval('require')
+      const crypto = req('crypto')
+      createHash = crypto?.createHash
+    } catch {
+      createHash = undefined
+    }
+
+    if (!createHash) {
+      // Fallback to a deterministic but weaker hash if crypto isn't available.
+      // This avoids runtime exceptions while keeping behavior predictable.
+      const str = JSON.stringify(data)
+      let hash = 0
+      for (let i = 0; i < str.length; i++) {
+        const chr = str.charCodeAt(i)
+        hash = (hash << 5) - hash + chr
+        hash |= 0
+      }
+      return Math.abs(hash).toString(16)
+    }
+
     return createHash('md5').update(JSON.stringify(data)).digest('hex')
   }
-  
+
   /**
    * Optimize database query with connection pooling and caching
    */
@@ -549,51 +572,51 @@ export class PerformanceOptimizer {
   ): Promise<T> {
     // Implementation would depend on actual database client
     // This is a placeholder for the optimization logic
-    
+
     return {} as T
   }
-  
+
   /**
    * Optimize Redis operations with pipelining and batching
    */
   optimizeRedisOperations(operations: any[]): any[] {
     // Group operations by type for batching
     const batchedOperations = this.batchOperations(operations)
-    
+
     return batchedOperations
   }
-  
+
   /**
    * Batch operations for better performance
    */
   private batchOperations(operations: any[]): any[] {
     const batchSize = this.config.redis.performance.batchSize
     const batches: any[] = []
-    
+
     for (let i = 0; i < operations.length; i += batchSize) {
       batches.push(operations.slice(i, i + batchSize))
     }
-    
+
     return batches
   }
-  
+
   /**
    * Optimize ML model inference with batching and caching
    */
   optimizeMLInference(inputs: any[]): any[] {
     const batchSize = this.config.ml.model.batchSize
     const maxConcurrent = this.config.ml.model.maxConcurrent
-    
+
     // Split into batches
     const batches: any[] = []
     for (let i = 0; i < inputs.length; i += batchSize) {
       batches.push(inputs.slice(i, i + batchSize))
     }
-    
+
     // Process batches with concurrency limit
     return this.processBatchesConcurrently(batches, maxConcurrent)
   }
-  
+
   /**
    * Process batches with concurrency control
    */
@@ -601,7 +624,7 @@ export class PerformanceOptimizer {
     // Implementation would handle concurrent processing
     return batches
   }
-  
+
   /**
    * Optimize frontend bundle with code splitting and compression
    */
@@ -619,14 +642,14 @@ export class PerformanceOptimizer {
       enableTreeShaking: options.enableTreeShaking ?? this.config.frontend.bundle.enableTreeShaking,
       enableCompression: options.enableCompression ?? this.config.frontend.bundle.enableCompression
     }
-    
+
     return {
       chunks: [],
       assets: [],
       optimization: config
     }
   }
-  
+
   /**
    * Monitor performance metrics
    */
@@ -644,7 +667,7 @@ export class PerformanceOptimizer {
       errorRate: 0
     }
   }
-  
+
   /**
    * Check if performance thresholds are met
    */
@@ -658,23 +681,23 @@ export class PerformanceOptimizer {
     violations: string[]
   } {
     const violations: string[] = []
-    
+
     if (metrics.apiLatency > this.config.monitoring.thresholds.apiResponseTime) {
       violations.push(`API latency ${metrics.apiLatency}ms exceeds threshold ${this.config.monitoring.thresholds.apiResponseTime}ms`)
     }
-    
+
     if (metrics.databaseLatency > this.config.monitoring.thresholds.databaseQueryTime) {
       violations.push(`Database latency ${metrics.databaseLatency}ms exceeds threshold ${this.config.monitoring.thresholds.databaseQueryTime}ms`)
     }
-    
+
     if (metrics.cacheHitRate < this.config.monitoring.thresholds.cacheHitRate) {
       violations.push(`Cache hit rate ${metrics.cacheHitRate} below threshold ${this.config.monitoring.thresholds.cacheHitRate}`)
     }
-    
+
     if (metrics.errorRate > this.config.monitoring.thresholds.errorRate) {
       violations.push(`Error rate ${metrics.errorRate} exceeds threshold ${this.config.monitoring.thresholds.errorRate}`)
     }
-    
+
     return {
       passed: violations.length === 0,
       violations
@@ -690,11 +713,11 @@ export const performanceOptimizer = new PerformanceOptimizer()
  */
 export class PerformanceMonitoringService {
   private config: PerformanceConfig
-  
+
   constructor() {
     this.config = getPerformanceConfig()
   }
-  
+
   /**
    * Start performance monitoring
    */
@@ -703,13 +726,13 @@ export class PerformanceMonitoringService {
       logger.info('Performance monitoring is disabled')
       return
     }
-    
+
     logger.info('Starting performance monitoring service')
-    
+
     // Set up monitoring intervals
     this.setupMonitoringIntervals()
   }
-  
+
   /**
    * Set up monitoring intervals
    */
@@ -718,13 +741,13 @@ export class PerformanceMonitoringService {
     setInterval(() => {
       this.collectMetrics()
     }, 30000)
-    
+
     // Report every 5 minutes
     setInterval(() => {
       this.reportMetrics()
     }, 300000)
   }
-  
+
   /**
    * Collect performance metrics
    */
@@ -732,23 +755,23 @@ export class PerformanceMonitoringService {
     try {
       const metrics = await performanceOptimizer.monitorPerformance()
       const thresholdCheck = performanceOptimizer.checkPerformanceThresholds(metrics)
-      
+
       if (!thresholdCheck.passed) {
         logger.warn('Performance thresholds violated', {
           violations: thresholdCheck.violations
         })
-        
+
         // Send alerts if enabled
         if (this.config.monitoring.alerting.enabled) {
           await this.sendAlerts(thresholdCheck.violations)
         }
       }
-      
+
     } catch (error) {
       logger.error('Failed to collect performance metrics', { error })
     }
   }
-  
+
   /**
    * Report metrics to external monitoring service
    */
@@ -756,7 +779,7 @@ export class PerformanceMonitoringService {
     // Implementation would send metrics to external service
     logger.info('Performance metrics reported')
   }
-  
+
   /**
    * Send performance alerts
    */

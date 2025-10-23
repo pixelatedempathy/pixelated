@@ -195,18 +195,18 @@ export const GET: APIRoute = async ({ request }) => {
 
       const interval =
         timeRange === '7d' ? '7 days' :
-        timeRange === '30d' ? '30 days' :
-        timeRange === '90d' ? '90 days' :
-        timeRange === '1y' ? '1 year' : '30 days';
+          timeRange === '30d' ? '30 days' :
+            timeRange === '90d' ? '90 days' :
+              timeRange === '1y' ? '1 year' : '30 days';
       const result = await client.query(query, [sessionId, interval]);
       // Transform data for client consumption
-      const sessionMetrics: Array<any> = [];
-      const skillProgress: Array<any> = [];
+      const sessionMetrics: Array<Record<string, unknown>> = [];
+      const skillProgress: Array<Record<string, unknown>> = [];
 
       result.rows.forEach(row => {
         const meta = typeof row.metadata === 'string'
-          ? JSON.parse(row.metadata || '{}')
-          : (row.metadata ?? {})
+          ? JSON.parse(row.metadata || '{}') as Record<string, unknown>
+          : (row.metadata ?? {}) as Record<string, unknown>
         if (row.metric_category === 'skill') {
           skillProgress.push({
             skill: row.metric_name.replace('skill_', ''),

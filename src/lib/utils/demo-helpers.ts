@@ -561,16 +561,16 @@ export function determineAlertLevel(
  */
 export function generateSessionId(): string {
   // Use cryptographically secure random values for session ID
-  const array = new Uint32Array(2);
+  const array = new Uint32Array(2)
   if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
-    window.crypto.getRandomValues(array);
+    window.crypto.getRandomValues(array)
   } else if (typeof process !== 'undefined' && process.versions && process.versions.node) {
-    // Node.js fallback
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const crypto = require('crypto');
-    const buf = crypto.randomBytes(8);
-    array[0] = buf.readUInt32LE(0);
-    array[1] = buf.readUInt32LE(4);
+    // Node.js fallback - use require guarded at runtime to avoid bundler issues
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const crypto = require('crypto')
+    const buf = crypto.randomBytes(8)
+    array[0] = buf.readUInt32LE(0)
+    array[1] = buf.readUInt32LE(4)
   } else {
     // Fallback to Math.random (should not happen)
     array[0] = Math.floor(Math.random() * 0xffffffff);

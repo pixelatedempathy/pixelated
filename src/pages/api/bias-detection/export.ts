@@ -119,23 +119,25 @@ export const GET = async ({ request }: { request: Request }): Promise<Response> 
   }
 }
 
-function convertToCSV(data: any): string {
-  const sessions = data.sessions || []
+function convertToCSV(data: Record<string, unknown>): string {
+  const sessions = (data.sessions as Array<Record<string, unknown>> | undefined) || []
   const headers = ['sessionId', 'timestamp', 'biasScore', 'alertLevel', 'gender', 'age', 'ethnicity', 'scenario']
   
   const csvRows = [
     headers.join(','),
-    ...sessions.map((session: any) => [
-      session.sessionId,
-      session.timestamp,
-      session.biasScore,
-      session.alertLevel,
-      session.participantDemographics?.gender || '',
-      session.participantDemographics?.age || '',
-      session.participantDemographics?.ethnicity || '',
-      session.scenario || '',
-    ].join(','))
-  ]
+    ...sessions.map((session) => {
+      const demographics = session.participantDemographics as Record<string, unknown> | undefined
+      return [
+        session.sessionId as string || '',
+        session.timestamp as string || '',
+        String(session.biasScore ?? ''),
+        session.alertLevel as string || '',
+        demographics?.gender as string || '',
+        String(demographics?.age ?? ''),
+        demographics?.ethnicity as string || '',
+        session.scenario as string || '',
+      ].join(',')
+    })]
   
   return csvRows.join('\n')
 }

@@ -81,7 +81,7 @@ function generateUUID(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     // Use secure random byte for fallback UUID generation
     let r = 0
-      try {
+    try {
       if (!isBrowser) {
         // Use guarded require helper to avoid bundler inclusion
         const nodeCrypto = tryRequireNode('crypto')

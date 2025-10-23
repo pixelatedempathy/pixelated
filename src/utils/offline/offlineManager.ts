@@ -25,7 +25,7 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
     enableRequestQueue = true,
     criticalPaths = [],
     onRequestQueued,
-    } = config
+  } = config
 
   return async (
     url: string,
@@ -103,7 +103,7 @@ class OfflineManager {
   private config: Required<OfflineManagerConfig>
   private syncInterval: NodeJS.Timeout | null = null
   private networkState: OfflineState | null = null
-  private listeners: Map<string, Set<Function>> = new Map()
+  private listeners: Map<string, Set<(payload?: unknown) => void>> = new Map()
 
   constructor(config: OfflineManagerConfig = {}) {
     this.config = {
@@ -111,10 +111,10 @@ class OfflineManager {
       enableAutoSync: true,
       syncInterval: 30000, // 30 seconds
       criticalPaths: ['/api/auth', '/api/emergency', '/api/sync'],
-      onRequestQueued: () => {},
-      onRequestProcessed: () => {},
-      onSyncStart: () => {},
-      onSyncComplete: () => {},
+      onRequestQueued: () => { },
+      onRequestProcessed: () => { },
+      onSyncStart: () => { },
+      onSyncComplete: () => { },
       ...config,
     }
 
@@ -175,7 +175,7 @@ class OfflineManager {
     }
   }
 
-  private emit(event: string, data?: any): void {
+  private emit(event: string, data?: unknown): void {
     const eventListeners = this.listeners.get(event)
     if (eventListeners) {
       eventListeners.forEach(listener => listener(data))
@@ -185,7 +185,10 @@ class OfflineManager {
   /**
    * Subscribe to offline manager events
    */
-  on(event: 'online' | 'offline' | 'syncStart' | 'syncComplete' | 'requestQueued', listener: Function): () => void {
+  on(
+    event: 'online' | 'offline' | 'syncStart' | 'syncComplete' | 'requestQueued',
+    listener: (payload?: unknown) => void,
+  ): () => void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, new Set())
     }

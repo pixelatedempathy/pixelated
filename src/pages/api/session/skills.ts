@@ -54,13 +54,12 @@ export const POST: APIRoute = async ({ request }) => {
         let score: number;
         let explicitCategory: string | undefined;
 
-        if (typeof scoreOrObj === 'object' && scoreOrObj !== null && ('score' in scoreOrObj)) {
-          // @ts-expect-error incoming payload from runtime
-          score = Number((scoreOrObj as any).score);
-          // @ts-expect-error
-          explicitCategory = (scoreOrObj as any).category;
+        if (typeof scoreOrObj === 'object' && scoreOrObj !== null && 'score' in (scoreOrObj as Record<string, unknown>)) {
+          const obj = scoreOrObj as Record<string, unknown>
+          score = Number(obj.score as number ?? obj.score as string ?? 0)
+          explicitCategory = typeof obj.category === 'string' ? obj.category : undefined
         } else {
-          score = Number(scoreOrObj as any);
+          score = Number(scoreOrObj as unknown as number || 0)
         }
 
   // Determine category using helper mapping (allows expansion without changing this file)
@@ -83,7 +82,7 @@ export const POST: APIRoute = async ({ request }) => {
           .join(', ');
 
         // Build parameter array
-        const params: any[] = [];
+        const params: Array<string | number> = [];
         skillInserts.forEach(insert => {
           params.push(insert.therapistId, insert.skillName, insert.category, insert.score, 1);
         });
