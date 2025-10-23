@@ -15,7 +15,7 @@ services:
       - MCP_PORT=8080
       - MONGODB_URI=mongodb://mongodb:27017/mcp_server
       - REDIS_URL=redis://redis:6379/0
-      - JWT_SECRET=your-jwt-secret-key-here-minimum-32-characters
+      - JWT_SECRET=${JWT_SECRET:-please-change-this-jwt-secret-key}
       - FLASK_API_URL=http://flask-service:5000
       - WEBSOCKET_ENABLED=true
       - WEBSOCKET_MAX_CONNECTIONS=1000
@@ -94,8 +94,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-changeme}
       - MONGO_INITDB_DATABASE=mcp_server
     volumes:
       - mongodb_data:/data/db
@@ -171,7 +171,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-changeme}
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
       - grafana_data:/var/lib/grafana
