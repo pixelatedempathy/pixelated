@@ -42,7 +42,7 @@ RUN node create-prod-package.js
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm config set store-dir /pnpm/store && \
     mv package.prod.json package.json && \
-    pnpm install --frozen-lockfile --prod
+    ONNXRUNTIME_DISABLE_GPU=1 pnpm install --frozen-lockfile --prod
 
 FROM base AS build
 
@@ -66,7 +66,7 @@ FROM base AS runtime
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:4321/api/health/simple || exit 1
+    CMD curl -f http://localhost:4321/health || exit 1
 
 USER astro
 
