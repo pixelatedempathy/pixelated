@@ -58,7 +58,7 @@ export default defineConfig({
         '/node_modules/**',
         'node_modules/**',
         'mcp_server/**',
-        '/mcp_server/**'
+        '/mcp_server/**',
       ],
     },
   },

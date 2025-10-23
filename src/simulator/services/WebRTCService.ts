@@ -40,7 +40,9 @@ export class WebRTCService implements WebRTCServiceInterface {
       console.log('WebRTC service initialized')
     } catch (error: unknown) {
       console.error('Error initializing WebRTC connection:', error)
-      throw new Error('Failed to initialize WebRTC connection', { cause: error })
+      throw new Error('Failed to initialize WebRTC connection', {
+        cause: error,
+      })
     }
   }
 

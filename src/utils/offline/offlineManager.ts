@@ -27,20 +27,15 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
     onRequestQueued,
   } = config
 
-  return async (
-    url: string,
-    options: RequestInit = {}
-  ): Promise<Response> => {
-    const isCriticalPath = criticalPaths.some(path => url.includes(path))
+  return async (url: string, options: RequestInit = {}): Promise<Response> => {
+    const isCriticalPath = criticalPaths.some((path) => url.includes(path))
 
     try {
       // Try the request immediately if online
       const response = await fetch(url, {
         ...options,
         // Add timeout for critical requests
-        signal: isCriticalPath
-          ? AbortSignal.timeout(5000)
-          : options.signal,
+        signal: isCriticalPath ? AbortSignal.timeout(5000) : options.signal,
       })
 
       if (response.ok) {
@@ -56,7 +51,7 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
         const queued = requestQueue.add({
           url,
           method: (options.method as any) || 'GET',
-          headers: options.headers as Record<string, string> || {},
+          headers: (options.headers as Record<string, string>) || {},
           body: options.body,
           priority,
           maxRetries: isCriticalPath ? 5 : 3,
@@ -67,7 +62,7 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
             id: `req_${Date.now()}`,
             url,
             method: (options.method as any) || 'GET',
-            headers: options.headers as Record<string, string> || {},
+            headers: (options.headers as Record<string, string>) || {},
             body: options.body,
             timestamp: Date.now(),
             retryCount: 0,
@@ -87,7 +82,7 @@ export function createOfflineFetch(config: OfflineManagerConfig = {}) {
             status: 202,
             statusText: 'Queued',
             headers: { 'Content-Type': 'application/json' },
-          }
+          },
         )
       }
 
@@ -111,10 +106,10 @@ class OfflineManager {
       enableAutoSync: true,
       syncInterval: 30000, // 30 seconds
       criticalPaths: ['/api/auth', '/api/emergency', '/api/sync'],
-      onRequestQueued: () => { },
-      onRequestProcessed: () => { },
-      onSyncStart: () => { },
-      onSyncComplete: () => { },
+      onRequestQueued: () => {},
+      onRequestProcessed: () => {},
+      onSyncStart: () => {},
+      onSyncComplete: () => {},
       ...config,
     }
 
@@ -136,7 +131,10 @@ class OfflineManager {
     // Handle visibility change for sync optimization
     if (typeof document !== 'undefined') {
       document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && this.networkState?.isOnline) {
+        if (
+          document.visibilityState === 'visible' &&
+          this.networkState?.isOnline
+        ) {
           this.sync()
         }
       })
@@ -144,7 +142,11 @@ class OfflineManager {
   }
 
   private handleOnline(): void {
-    this.networkState = { ...this.networkState, isOnline: true, isOffline: false } as OfflineState
+    this.networkState = {
+      ...this.networkState,
+      isOnline: true,
+      isOffline: false,
+    } as OfflineState
     this.emit('online')
 
     // Immediately try to sync when coming back online
@@ -152,7 +154,11 @@ class OfflineManager {
   }
 
   private handleOffline(): void {
-    this.networkState = { ...this.networkState, isOnline: false, isOffline: true } as OfflineState
+    this.networkState = {
+      ...this.networkState,
+      isOnline: false,
+      isOffline: true,
+    } as OfflineState
     this.emit('offline')
   }
 
@@ -178,7 +184,7 @@ class OfflineManager {
   private emit(event: string, data?: unknown): void {
     const eventListeners = this.listeners.get(event)
     if (eventListeners) {
-      eventListeners.forEach(listener => listener(data))
+      eventListeners.forEach((listener) => listener(data))
     }
   }
 
@@ -186,7 +192,12 @@ class OfflineManager {
    * Subscribe to offline manager events
    */
   on(
-    event: 'online' | 'offline' | 'syncStart' | 'syncComplete' | 'requestQueued',
+    event:
+      | 'online'
+      | 'offline'
+      | 'syncStart'
+      | 'syncComplete'
+      | 'requestQueued',
     listener: (payload?: unknown) => void,
   ): () => void {
     if (!this.listeners.has(event)) {

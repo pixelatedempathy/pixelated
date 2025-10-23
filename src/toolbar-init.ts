@@ -11,7 +11,10 @@ function setupStagewise() {
       initToolbar(stagewiseConfig)
     } catch (error: unknown) {
       // Toolbar not available, continue without it
-      console.debug('Development toolbar not available, continuing without it', String(error))
+      console.debug(
+        'Development toolbar not available, continuing without it',
+        String(error),
+      )
     }
   }
 }
