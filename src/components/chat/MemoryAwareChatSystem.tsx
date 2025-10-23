@@ -63,6 +63,7 @@ export function MemoryAwareChatSystem({
       enableMemory,
       enableAnalysis,
       maxMemoryContext: 15,
+      api: '/api/mental-health/chat', // Use the actual therapeutic AI endpoint
     })
 
   const getConversationSummary = async () => {

@@ -36,16 +36,57 @@ class TrainingSession {
     console.log('🎭 Pixelated Empathy Training Session initialized')
   }
 
+  // Helper: safely parse JSON from script tags (defensive)
+  safeParseJSON(text) {
+    try {
+      return JSON.parse(text)
+    } catch (err) {
+      console.warn('Failed to parse JSON from page script:', err)
+      return null
+    }
+  }
+
+  // Helper: basic sanitizer for identifiers we send to network (alphanumeric, dash, underscore)
+  validateId(id) {
+    if (typeof id !== 'string') return undefined
+    const match = id.match(/^[\w-]+$/)
+    return match ? id : undefined
+  }
+
+  // Helper: explicit safe text setter (uses textContent so HTML is never interpreted)
+  safeSetText(el, text) {
+    if (!el) return
+    // ensure we always convert non-strings to string to avoid "null"/"undefined" surprises
+    el.textContent = text == null ? '' : String(text)
+  }
+
+  // Helper: coerce numeric-like values to a safe number 0..1 or 0..5 as needed
+  coerceNumber(v, fallback = 0) {
+    const n = Number(v)
+    return Number.isFinite(n) ? n : fallback
+  }
+
   loadSessionData() {
     const sessionScript = document.getElementById('session-data')
     const userScript = document.getElementById('user-data')
 
     if (sessionScript) {
-      this.sessionData = JSON.parse(sessionScript.textContent)
+      // use defensive JSON parse
+      const parsed = this.safeParseJSON(sessionScript.textContent)
+      this.sessionData = parsed || null
     }
 
     if (userScript) {
-      this.userData = JSON.parse(userScript.textContent)
+      const parsed = this.safeParseJSON(userScript.textContent)
+      this.userData = parsed || null
+    }
+
+    // Validate ids before using them elsewhere (prevents accidental injection of unexpected values)
+    if (this.sessionData && this.sessionData.sessionId) {
+      this.sessionData.sessionId = this.validateId(this.sessionData.sessionId)
+    }
+    if (this.userData && this.userData.id) {
+      this.userData.id = this.validateId(String(this.userData.id))
     }
 
     console.log('Session data loaded:', this.sessionData)
@@ -61,6 +102,7 @@ class TrainingSession {
     this.socket = io(socketUrl, {
       path: '/api/training/socket',
       auth: {
+        // only send validated ids
         sessionId: this.sessionData?.sessionId,
         userId: this.userData?.id,
         role: this.userData?.role,
@@ -324,22 +366,28 @@ class TrainingSession {
       minute: '2-digit',
     })
 
-    let messageHTML = `
-      <div class="message-content">${content}</div>
-      <div class="message-meta text-xs opacity-75 mt-1">
-        ${timeString}
-    `
+    // Build message content and metadata safely using textContent to avoid XSS
+    const contentDiv = document.createElement('div')
+    contentDiv.className = 'message-content'
+    // safe setter (ensures no HTML interpretation)
+    this.safeSetText(contentDiv, content)
 
+    const metaDiv = document.createElement('div')
+    metaDiv.className = 'message-meta text-xs opacity-75 mt-1'
+
+    // Compose metadata text safely (no HTML injection)
+    let metaText = timeString
     if (sender === 'client' && metadata.emotionalState) {
-      messageHTML += ` • ${metadata.emotionalState}`
+      metaText += ` • ${metadata.emotionalState}`
     }
-
     if (sender === 'therapist' && metadata.interventionType) {
-      messageHTML += ` • ${metadata.interventionType}`
+      metaText += ` • ${metadata.interventionType}`
     }
+    this.safeSetText(metaDiv, metaText)
 
-    messageHTML += '</div>'
-    messageDiv.innerHTML = messageHTML
+    // Append safe nodes
+    messageDiv.appendChild(contentDiv)
+    messageDiv.appendChild(metaDiv)
 
     messagesContainer.appendChild(messageDiv)
     messagesContainer.scrollTop = messagesContainer.scrollHeight
@@ -349,19 +397,34 @@ class TrainingSession {
     const messagesContainer = document.getElementById('messages-container')
     if (!messagesContainer) return
 
+    // Create outer typing wrapper
     const typingDiv = document.createElement('div')
     typingDiv.id = 'typing-indicator'
     typingDiv.className = 'typing-indicator'
-    typingDiv.innerHTML = `
-      <div class="message-bubble message-client">
-        <div class="typing-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="text-xs opacity-75 mt-1">Client is typing...</div>
-      </div>
-    `
+
+    // Create message bubble
+    const bubble = document.createElement('div')
+    bubble.className = 'message-bubble message-client'
+
+    // Create typing dots container and dots (constructed safely)
+    const typingDots = document.createElement('div')
+    typingDots.className = 'typing-dots'
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement('span')
+      // visually decorative; mark as presentational for a11y
+      dot.setAttribute('aria-hidden', 'true')
+      typingDots.appendChild(dot)
+    }
+
+    // Create meta text element using textContent to avoid HTML parsing
+    const meta = document.createElement('div')
+    meta.className = 'text-xs opacity-75 mt-1'
+    meta.textContent = 'Client is typing...'
+
+    // Compose nodes
+    bubble.appendChild(typingDots)
+    bubble.appendChild(meta)
+    typingDiv.appendChild(bubble)
 
     messagesContainer.appendChild(typingDiv)
     messagesContainer.scrollTop = messagesContainer.scrollHeight
@@ -381,7 +444,7 @@ class TrainingSession {
 
     // Update emotional state display
     if (emotionalState) {
-      emotionalState.textContent = state.emotionalState || 'Neutral'
+      this.safeSetText(emotionalState, state.emotionalState || 'Neutral')
     }
 
     // Update avatar emotion emoji
@@ -398,18 +461,22 @@ class TrainingSession {
         engaged: '😊',
       }
 
-      emotionSpan.textContent = emotions[state.emotionalState] || '😐'
+      this.safeSetText(emotionSpan, emotions[state.emotionalState] || '😐')
     }
 
     // Update avatar border color based on state
     if (avatar) {
       let borderColor = '#93c5fd' // Default blue
 
-      if (state.crisisRisk > 0.6) {
+      const crisisRisk = this.coerceNumber(state.crisisRisk, 0)
+      const resistanceLevel = this.coerceNumber(state.resistanceLevel, 0)
+      const trustLevel = this.coerceNumber(state.trustLevel, 0)
+
+      if (crisisRisk > 0.6) {
         borderColor = '#ef4444' // Crisis red
-      } else if (state.resistanceLevel > 0.7) {
+      } else if (resistanceLevel > 0.7) {
         borderColor = '#f59e0b' // Resistance amber
-      } else if (state.trustLevel > 0.6) {
+      } else if (trustLevel > 0.6) {
         borderColor = '#10b981' // Trust green
       }
 
@@ -430,12 +497,14 @@ class TrainingSession {
     const meter = document.getElementById(meterId)
     const percentage = document.getElementById(percentageId)
 
+    const v = this.coerceNumber(value, 0)
+
     if (meter) {
-      meter.style.width = `${(value || 0) * 100}%`
+      meter.style.width = `${v * 100}%`
     }
 
     if (percentage) {
-      percentage.textContent = `${Math.round((value || 0) * 100)}%`
+      this.safeSetText(percentage, `${Math.round(v * 100)}%`)
     }
   }
 
@@ -455,12 +524,16 @@ class TrainingSession {
         const meter = document.getElementById(mapping.meter)
         const score = document.getElementById(mapping.score)
 
+        const numeric = this.coerceNumber(value, 0)
+
         if (meter) {
-          meter.style.width = `${(value / 5) * 100}%`
+          // skill values expected 0..5
+          meter.style.width = `${(numeric / 5) * 100}%`
         }
 
         if (score) {
-          score.textContent = `${value.toFixed(1)}/5`
+          // ensure formatting won't throw
+          this.safeSetText(score, `${numeric.toFixed(1)}/5`)
         }
       }
     })
@@ -581,7 +654,8 @@ class TrainingSession {
     const alertMessage = document.getElementById('crisis-message')
 
     if (alertsContainer && alertMessage) {
-      alertMessage.textContent = message
+      // always set textContent via helper (prevents HTML interpretation)
+      this.safeSetText(alertMessage, message)
       alertsContainer.classList.remove('hidden')
 
       // Auto-hide after 10 seconds for non-critical alerts
@@ -608,7 +682,8 @@ class TrainingSession {
             : 'bg-blue-100 text-blue-800'
     }`
 
-    feedbackDiv.textContent = message
+    // set message safely
+    this.safeSetText(feedbackDiv, message)
     feedbackContainer.insertBefore(feedbackDiv, feedbackContainer.firstChild)
 
     // Remove old feedback messages (keep last 5)

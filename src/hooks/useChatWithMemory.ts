@@ -10,6 +10,7 @@ export interface ChatWithMemoryOptions {
   enableMemory?: boolean
   enableAnalysis?: boolean
   maxMemoryContext?: number
+  api?: string // Allow API endpoint override
 }
 
 export type UseChatWithMemoryReturn = UseChatReturn & {
@@ -23,7 +24,10 @@ export function useChatWithMemory(
   const { initialMessages = [], sessionId } = options
   const [isLoading, setIsLoading] = useState(false)
 
-  const chat = useChat({ initialMessages })
+  const chat = useChat({ 
+    initialMessages,
+    api: options.api || '/api/chat'
+  })
   const memory = useMemory({
     userId: sessionId,
     category: 'conversation',
