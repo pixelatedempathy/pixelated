@@ -297,7 +297,7 @@ function mainPrompt() {
 // Start the CLI
 async function start() {
   showHeader()
-  console.log(`${colors.cyan}Welcome to the Blog CLI!${colors.reset}`)
+  console.log(`${colors.cyan}Welcome to the Blog CLI!${colors.reset}`);
   console.log(
     `${colors.dim}Type 'help' to see available commands or 'exit' to quit${colors.reset}`,
   )

@@ -1,5 +1,4 @@
 ---
-applyTo: ['none']
 description: "Comprehensive best practices for AI prompt engineering, safety frameworks, bias mitigation, and responsible AI usage for Copilot and LLMs."
 ---
 
@@ -36,18 +35,6 @@ Prompt engineering involves designing inputs (prompts) that guide AI systems to 
 - Content creation and summarization
 - Problem-solving and decision support
 - Automation and workflow optimization
-
-## Table of Contents
-
-1. [What is Prompt Engineering?](#what-is-prompt-engineering)
-2. [Prompt Engineering Fundamentals](#prompt-engineering-fundamentals)
-3. [Safety & Bias Mitigation](#safety--bias-mitigation)
-4. [Responsible AI Usage](#responsible-ai-usage)
-5. [Security](#security)
-6. [Testing & Validation](#testing--validation)
-7. [Documentation & Support](#documentation--support)
-8. [Templates & Checklists](#templates--checklists)
-9. [References](#references)
 
 ## Prompt Engineering Fundamentals
 
@@ -239,7 +226,7 @@ Write a function that follows these principles: [general principles and patterns
 1. Create two or more prompt variations
 2. Test with representative inputs
 3. Evaluate outputs for quality, safety, and relevance
-4. Choose the best performing version
+4. Choose the best-performing version
 5. Document the results and reasoning
 
 **Example A/B Test:**

@@ -18,7 +18,7 @@ then you should refuse to address it and explain why.
 - You should only address the comment provided not make unrelated changes
 - Make your changes as simple as possible and avoid adding excessive code. If you see an opportunity to simplify, take it. Less is more.
 - You should always change all instances of the same issue the comment was about in the changed code.
-- Always add test coverage for you changes if it is not already present.
+- Always add test coverage for your changes if it is not already present.
 
 ## After Fixing a comment
 
