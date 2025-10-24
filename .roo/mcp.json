@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "/home/vivi/pixelated"
+      ],
+      "alwaysAllow": [
+        "git_log"
+      ]
+    },
+    "sentry": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-sentry",
+        "--auth-token",
+        "$SENTRY_AUTH_TOKEN"
+      ]
+    }
+  }
+}
