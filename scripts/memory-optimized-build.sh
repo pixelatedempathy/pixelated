@@ -10,9 +10,9 @@ MEMORY_SAFE="4096"       # 4GB safe mode
 MEMORY_CRITICAL="2048"   # 2GB critical mode
 
 # Build optimization flags
-NODE_FLAGS_OPTIMIZED="--max-old-space-size=${MEMORY_THRESHOLD} --gc-interval=100"
+NODE_FLAGS_OPTIMIZED="--max-old-space-size=${MEMORY_THRESHOLD}"
 NODE_FLAGS_SAFE="--max-old-space-size=${MEMORY_SAFE}"
-NODE_FLAGS_CRITICAL="--max-old-space-size=${MEMORY_CRITICAL} --gc-interval=50"
+NODE_FLAGS_CRITICAL="--max-old-space-size=${MEMORY_CRITICAL}"
 
 # Function to detect available memory
 detect_memory() {

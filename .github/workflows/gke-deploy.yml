@@ -13,27 +13,27 @@ on:
   workflow_dispatch:
     inputs:
       deployment_strategy:
-        description: 'Deployment strategy (rolling, blue-green, canary)'
+        description: "Deployment strategy (rolling, blue-green, canary)"
         required: false
-        default: 'rolling'
+        default: "rolling"
         type: choice
         options:
           - rolling
           - blue-green
           - canary
       environment:
-        description: 'Target environment'
+        description: "Target environment"
         required: false
-        default: 'production'
+        default: "production"
         type: choice
         options:
           - production
           - staging
 
 env:
-  NODE_VERSION: '24'
-  PNPM_VERSION: '10.18.2'
-  PYTHON_VERSION: '3.11'
+  NODE_VERSION: "24"
+  PNPM_VERSION: "10.19.0"
+  PYTHON_VERSION: "3.11"
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -260,15 +260,15 @@ jobs:
         continue-on-error: true
         with:
           image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          format: "sarif"
+          output: "trivy-results.sarif"
 
       - name: Upload Trivy scan results
         uses: github/codeql-action/upload-sarif@v3
         if: always()
         continue-on-error: true
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: "trivy-results.sarif"
 
       - name: Container security check
         run: |
@@ -287,7 +287,7 @@ jobs:
           else
             echo "✅ Container configured with non-root user: $USER_ID"
           fi
-          
+
           # Check exposed ports
           EXPOSED_PORTS=$(docker inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} --format='{{range $p, $conf := .Config.ExposedPorts}}{{$p}} {{end}}' 2>/dev/null || echo "")
           echo "ℹ️ Exposed ports: ${EXPOSED_PORTS:-none}"
@@ -448,7 +448,7 @@ jobs:
           echo "🔧 Configuring kubectl..."
           kubectl config current-context
           kubectl cluster-info
-          
+
           # Create namespace if it doesn't exist
           kubectl create namespace ${{ env.GKE_NAMESPACE || secrets.GKE_NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
           kubectl config set-context --current --namespace=${{ env.GKE_NAMESPACE || secrets.GKE_NAMESPACE }}
@@ -471,13 +471,13 @@ jobs:
           echo "🚀 Deploying to GKE cluster: ${{ env.GKE_CLUSTER_NAME || secrets.GKE_CLUSTER_NAME }}"
           echo "📦 Container image: $CONTAINER_IMAGE"
           echo "🎯 Deployment strategy: $DEPLOYMENT_STRATEGY"
-          
+
           # Set deployment variables
           export CI_COMMIT_SHORT_SHA=${{ github.sha }}
-          
+
           # Pre-deployment validation
           echo "🔍 Pre-deployment validation..."
-          
+
           # Check deployment strategy and validate
           case $DEPLOYMENT_STRATEGY in
             rolling|blue-green|canary)
@@ -488,10 +488,10 @@ jobs:
               exit 1
               ;;
           esac
-          
+
           # Apply Kubernetes manifests based on strategy
           echo "📋 Applying Kubernetes manifests using $DEPLOYMENT_STRATEGY strategy..."
-          
+
           case $DEPLOYMENT_STRATEGY in
             rolling)
               # Standard rolling update
@@ -506,7 +506,7 @@ jobs:
               . ./scripts/deploy-canary.sh
               ;;
           esac
-          
+
           # Wait for rollout based on strategy
           echo "⏳ Waiting for deployment rollout..."
           case $DEPLOYMENT_STRATEGY in
@@ -536,10 +536,10 @@ jobs:
               fi
               ;;
           esac
-          
+
           # Post-deployment validation with health checks
           echo "🔍 Post-deployment validation..."
-          
+
           # Run comprehensive health checks
           if ! . ./scripts/health-check-comprehensive.sh; then
             echo "❌ Health checks failed"
@@ -549,7 +549,7 @@ jobs:
             fi
             exit 1
           fi
-          
+
           # Performance validation for canary deployments
           if [ "$DEPLOYMENT_STRATEGY" = "canary" ]; then
             echo "📈 Validating canary performance..."
@@ -562,11 +562,11 @@ jobs:
               exit 1
             fi
           fi
-          
+
           echo "✅ GKE deployment completed successfully"
           echo "🌐 Application URL: ${{ env.GKE_ENVIRONMENT_URL || secrets.GKE_ENVIRONMENT_URL }}"
           echo "📊 Deployment strategy: $DEPLOYMENT_STRATEGY"
-          
+
           # Store deployment metadata
           echo "status=success" >> $GITHUB_OUTPUT
           echo "strategy=$DEPLOYMENT_STRATEGY" >> $GITHUB_OUTPUT
@@ -639,25 +639,25 @@ jobs:
           GKE_ENVIRONMENT_URL: ${{ env.GKE_ENVIRONMENT_URL || secrets.GKE_ENVIRONMENT_URL }}
         run: |
           echo "🏥 Running GKE health checks..."
-          
+
           # Check deployment health
           echo "📊 Deployment status:"
           kubectl get deployment pixelated -o wide
-          
+
           # Check pod health
           echo "🔍 Pod health:"
           kubectl get pods -l app=pixelated -o wide
-          
+
           # Check service status
           echo "🌐 Service status:"
           kubectl get service $GKE_SERVICE_NAME
-          
+
           # Detailed health check
           READY_PODS=$(kubectl get pods -l app=pixelated -o json | jq '[.items[] | select(.status.phase == "Running" and (.status.containerStatuses[]?.ready // false))] | length')
           TOTAL_PODS=$(kubectl get pods -l app=pixelated -o json | jq '.items | length')
-          
+
           echo "📈 Health summary: $READY_PODS/$TOTAL_PODS pods ready"
-          
+
           if [ "$READY_PODS" -eq 0 ]; then
             echo "❌ No healthy pods found"
             kubectl describe pods -l app=pixelated
@@ -668,7 +668,7 @@ jobs:
           else
             echo "✅ All pods are healthy"
           fi
-          
+
           # Test internal connectivity if possible
           if [ -n "$GKE_ENVIRONMENT_URL" ]; then
             echo "🌐 Testing external connectivity..."
@@ -678,7 +678,7 @@ jobs:
               echo "⚠️ External health check failed"
             fi
           fi
-          
+
           echo "✅ GKE health check completed"
 
   # Cleanup job - runs after deployments
@@ -745,16 +745,16 @@ jobs:
           echo "📋 Configuration:"
           echo "  - Keep last $KEEP_IMAGES images"
           echo "  - Cleanup images older than $CLEANUP_OLDER_THAN"
-          
+
           # Get list of images sorted by creation date (newest first)
           IMAGES=$(docker images --format "{{.Repository}}:{{.Tag}}\t{{.CreatedAt}}" | \
             grep ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | \
             head -20 | \
             sort -k2 -r)
-          
+
           IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
           echo "📊 Found $IMAGE_COUNT images for ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
-          
+
           if [ $IMAGE_COUNT -gt $KEEP_IMAGES ]; then
             # Remove images beyond the keep threshold
             IMAGES_TO_REMOVE=$(echo "$IMAGES" | tail -n +$((KEEP_IMAGES + 1)) | awk '{print $1}')
@@ -767,5 +767,5 @@ jobs:
           else
             echo "✅ Image count within retention policy"
           fi
-          
+
           echo "📊 Cleanup completed successfully"
