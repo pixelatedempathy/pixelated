@@ -38,7 +38,7 @@ jobs:
     if: github.event.inputs.feature_type == 'deployment-status'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Load GCP environment
         run: |
@@ -47,7 +47,7 @@ jobs:
           echo "Using GitHub Secrets for GCP configuration"
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           credentials_json: ${{ env.GCP_SERVICE_ACCOUNT_KEY || secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ env.GCP_PROJECT_ID || secrets.GCP_PROJECT_ID }}
@@ -58,7 +58,7 @@ jobs:
           id_token_include_email: false
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       - name: Get GKE credentials
         run: |
@@ -68,7 +68,7 @@ jobs:
 
       - name: Create GitHub-native deployment
         id: create_deployment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const cluster = process.env.GKE_CLUSTER_NAME || 'pixelcluster';
@@ -90,7 +90,7 @@ jobs:
             return res.data.id;
 
       - name: Update deployment status
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const healthCheck = { pods_ready: '15/15', services_healthy: '5/5', deployments_stable: '3/3', cluster_health: 'healthy' };
@@ -120,7 +120,7 @@ jobs:
     if: github.event.inputs.feature_type == 'pr-integration'
     steps:
       - name: Checkout PR code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Load environment
         run: |
@@ -129,7 +129,7 @@ jobs:
           echo "Using GitHub Secrets for GKE environment URL"
 
       - name: Create PR deployment preview
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const previewUrl = process.env.GKE_ENVIRONMENT_URL || 'http://35.243.226.27';
@@ -178,7 +178,7 @@ jobs:
           echo "Using GitHub Secrets for GKE namespace and deployment name"
 
       - name: Create K8s incident issue with GitHub-native features
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const cluster = process.env.GKE_CLUSTER_NAME || 'pixelcluster';
