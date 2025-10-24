@@ -1,2 +1,0 @@
-==== START logs for container kube-proxy of pod kube-system/kube-proxy-gke-pixelcluster-pixelcluster-node-po-237013a9-42pe ====
-==== END logs for container kube-proxy of pod kube-system/kube-proxy-gke-pixelcluster-pixelcluster-node-po-237013a9-42pe ====
