@@ -16,9 +16,7 @@
       "name": "dashscope",
       "api_base_url": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
       "api_key": "REDACTED",
-      "models": [
-        "qwen3-coder-plus"
-      ],
+      "models": ["qwen3-coder-plus"],
       "transformer": {
         "use": ["dashscope"]
       }
