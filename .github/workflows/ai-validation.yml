@@ -5,7 +5,7 @@ permissions:
   actions: read
   checks: read
   pull-requests: read
-  security-events: write
+  # security-events: write - Not needed as we only create issues, not security events
   issues: write
 on:
   schedule:

@@ -1,5 +1,9 @@
 name: Bias Detection Engine CI/CD
 
+concurrency:
+  group: bias-detection-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   id-token: write
