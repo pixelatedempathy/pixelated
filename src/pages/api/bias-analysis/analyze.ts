@@ -111,6 +111,50 @@ function simpleBiasDetection(text: string): {
   }
 }
 
+// Add: production flag, safe headers, and error scrubbing helpers
+const isProduction = process.env.NODE_ENV === 'production'
+const SAFE_HEADERS = {
+  'Content-Type': 'application/json',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'X-XSS-Protection': '1; mode=block',
+}
+
+function safeErrorForLogging(err: unknown) {
+  return {
+    message: err instanceof Error ? err.message : String(err),
+    stack: err instanceof Error ? err.stack : undefined,
+  }
+}
+
+// Basic scrubber: remove stack/trace-like fields from objects sent to clients
+function scrubForClient(input: unknown): unknown {
+  if (input instanceof Error) {
+    return { error: input.message }
+  }
+  if (input === null || typeof input !== 'object') return input
+  try {
+    // JSON round-trip with replacer to drop stack/trace-like keys
+    return JSON.parse(
+      JSON.stringify(input, (_key, value) => {
+        if (
+          typeof _key === 'string' &&
+          (_key.toLowerCase().includes('stack') ||
+            _key.toLowerCase().includes('trace') ||
+            _key.toLowerCase().includes('password') ||
+            _key.toLowerCase().includes('secret') ||
+            _key.toLowerCase().includes('token'))
+        ) {
+          return undefined
+        }
+        return value
+      }),
+    )
+  } catch {
+    return { error: 'An error occurred' }
+  }
+}
+
 export const POST: APIRoute = async ({ request }) => {
   // Generate unique UUIDs first
   const analysisId = randomUUID()
@@ -222,19 +266,29 @@ export const POST: APIRoute = async ({ request }) => {
       client.release()
     }
   } catch (error) {
-    // Log full error server-side with requestId (do not expose stack to client)
-    console.error(`Bias analysis POST error - requestId=${requestId}`, error)
+    // Log safe error server-side (includes stack for internal debugging)
+    console.error(
+      `Bias analysis POST error - requestId=${requestId}`,
+      safeErrorForLogging(error),
+    )
+
+    const clientMessage = isProduction
+      ? 'An internal error occurred. Provide the requestId to support for details.'
+      : error instanceof Error
+      ? error.message
+      : String(error)
 
     return new Response(
-      JSON.stringify({
-        error: 'Internal server error',
-        message:
-          'An internal error occurred. Provide the requestId to support for details.',
-        requestId,
-      }),
+      JSON.stringify(
+        scrubForClient({
+          error: 'Internal server error',
+          message: clientMessage,
+          requestId,
+        }),
+      ),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: SAFE_HEADERS,
       },
     )
   }
@@ -277,19 +331,29 @@ export const GET: APIRoute = async ({ request }) => {
       client.release()
     }
   } catch (error) {
-    // Log full error server-side with requestId (do not expose stack to client)
-    console.error(`API status check error - requestId=${requestId}`, error)
+    // Log safe error server-side (includes stack for internal debugging)
+    console.error(
+      `API status check error - requestId=${requestId}`,
+      safeErrorForLogging(error),
+    )
+
+    const clientMessage = isProduction
+      ? 'An internal error occurred. Provide the requestId to support for details.'
+      : error instanceof Error
+      ? error.message
+      : String(error)
 
     return new Response(
-      JSON.stringify({
-        error: 'Service unavailable',
-        message:
-          'An internal error occurred. Provide the requestId to support for details.',
-        requestId,
-      }),
+      JSON.stringify(
+        scrubForClient({
+          error: 'Service unavailable',
+          message: clientMessage,
+          requestId,
+        }),
+      ),
       {
         status: 503,
-        headers: { 'Content-Type': 'application/json' },
+        headers: SAFE_HEADERS,
       },
     )
   }

@@ -125,12 +125,12 @@ jobs:
           # Resource utilization analysis
           CPU_USAGE=$(kubectl top nodes --no-headers 2>/dev/null | awk '{sum+=$3} END {print sum/NR}' | sed 's/%//' || echo "0")
           MEM_USAGE=$(kubectl top nodes --no-headers 2>/dev/null | awk '{sum+=$5} END {print sum/NR}' | sed 's/%//' || echo "0")
-          
+
           # Cost optimization recommendations
           if command -v bc &> /dev/null && (( $(echo "$CPU_USAGE < 30" | bc -l) )); then
             echo "💡 Recommendation: Consider scaling down - CPU usage is ${CPU_USAGE}%"
           fi
-          
+
           if command -v bc &> /dev/null && (( $(echo "$MEM_USAGE > 80" | bc -l) )); then
             echo "⚠️ Alert: High memory usage at ${MEM_USAGE}% - consider scaling up"
           fi
@@ -301,7 +301,7 @@ jobs:
           echo "## GitHub CLI K8s Commands (GitLab doesn't have equivalent):"
           echo ""
           echo "### Deployment Management:"
-          echo "gh workflow run gke-deploy-enhanced.yml -f deployment_strategy=canary -f environment=production"
+          echo "gh workflow run gke-rollback.yml -f environment=production"
           echo "gh workflow run gke-rollback.yml -f environment=production"
           echo "gh workflow run gke-monitoring.yml -f check_type=comprehensive"
           echo ""

@@ -63,6 +63,52 @@ function safeErrorForLogging(err: unknown) {
   }
 }
 
+// Add: scrub responses before sending to clients to avoid exposing stack traces or sensitive fields
+function scrubForClient(input: unknown): unknown {
+  const seen = new WeakSet()
+  function scrub(value: any): any {
+    if (value === null || typeof value !== 'object') {
+      return value
+    }
+    if (seen.has(value)) return undefined
+    seen.add(value)
+
+    if (Array.isArray(value)) {
+      return value.map(scrub)
+    }
+
+    const out: Record<string, unknown> = {}
+    for (const [key, val] of Object.entries(value)) {
+      const lk = key.toLowerCase()
+      // Remove definitely sensitive keys
+      if (
+        lk === 'stack' ||
+        lk === 'trace' ||
+        lk.includes('stack') ||
+        lk.includes('trace') ||
+        lk.includes('password') ||
+        lk.includes('secret') ||
+        lk.includes('token') ||
+        lk.includes('authorization') ||
+        lk.includes('ssn') ||
+        lk.includes('credit_card')
+      ) {
+        continue
+      }
+
+      if (typeof val === 'string') {
+        // Truncate very long strings to avoid leaking data
+        out[key] = val.length > 1000 ? val.slice(0, 1000) + '...' : val
+      } else {
+        out[key] = scrub(val)
+      }
+    }
+    return out
+  }
+
+  return scrub(input)
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const requestId = randomUUID()
   const startTime = Date.now()
@@ -104,13 +150,15 @@ export const POST: APIRoute = async ({ request }) => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         return new Response(
-          JSON.stringify({
-            error: 'Validation failed',
-            details: error.errors.map((e) => ({
-              field: e.path.join('.'),
-              message: e.message,
-            })),
-          }),
+          JSON.stringify(
+            scrubForClient({
+              error: 'Validation failed',
+              details: error.errors.map((e) => ({
+                field: e.path.join('.'),
+                message: e.message,
+              })),
+            }),
+          ),
           {
             status: 400,
             headers: CACHE_HEADERS,
@@ -119,9 +167,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
 
       return new Response(
-        JSON.stringify({
-          error: 'Invalid request body',
-        }),
+        JSON.stringify(scrubForClient({ error: 'Invalid request body' })),
         {
           status: 400,
           headers: CACHE_HEADERS,
@@ -195,7 +241,7 @@ export const POST: APIRoute = async ({ request }) => {
       alertLevel: analysisResult.alertLevel,
     })
 
-    return new Response(JSON.stringify(response), {
+    return new Response(JSON.stringify(scrubForClient(response)), {
       status: 200,
       headers: {
         ...CACHE_HEADERS,
@@ -222,12 +268,14 @@ export const POST: APIRoute = async ({ request }) => {
     // Return sanitized error to client (no stack)
     if (error instanceof Error && error.message === 'Analysis timeout') {
       return new Response(
-        JSON.stringify({
-          error: 'Analysis timeout',
-          message:
-            'The bias analysis took too long to complete. Please try again.',
-          requestId,
-        }),
+        JSON.stringify(
+          scrubForClient({
+            error: 'Analysis timeout',
+            message:
+              'The bias analysis took too long to complete. Please try again.',
+            requestId,
+          }),
+        ),
         {
           status: 408,
           headers: CACHE_HEADERS,
@@ -236,12 +284,14 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({
-        error: 'Internal server error',
-        message:
-          'An internal error occurred. Please provide the requestId to support for details.',
-        requestId,
-      }),
+      JSON.stringify(
+        scrubForClient({
+          error: 'Internal server error',
+          message:
+            'An internal error occurred. Please provide the requestId to support for details.',
+          requestId,
+        }),
+      ),
       {
         status: 500,
         headers: CACHE_HEADERS,
@@ -268,9 +318,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     if (!therapistId) {
       return new Response(
-        JSON.stringify({
-          error: 'therapistId is required',
-        }),
+        JSON.stringify(scrubForClient({ error: 'therapistId is required' })),
         {
           status: 400,
           headers: CACHE_HEADERS,
@@ -300,14 +348,16 @@ export const GET: APIRoute = async ({ request }) => {
     })
 
     return new Response(
-      JSON.stringify({
-        success: true,
-        summary,
-        performance: {
-          requestId,
-          totalTime,
-        },
-      }),
+      JSON.stringify(
+        scrubForClient({
+          success: true,
+          summary,
+          performance: {
+            requestId,
+            totalTime,
+          },
+        }),
+      ),
       {
         status: 200,
         headers: {
@@ -331,11 +381,13 @@ export const GET: APIRoute = async ({ request }) => {
 
     if (error instanceof Error && error.message === 'Summary timeout') {
       return new Response(
-        JSON.stringify({
-          error: 'Summary timeout',
-          message: 'The summary request took too long to complete',
-          requestId,
-        }),
+        JSON.stringify(
+          scrubForClient({
+            error: 'Summary timeout',
+            message: 'The summary request took too long to complete',
+            requestId,
+          }),
+        ),
         {
           status: 408,
           headers: CACHE_HEADERS,
@@ -344,12 +396,14 @@ export const GET: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({
-        error: 'Internal server error',
-        message:
-          'An internal error occurred. Please provide the requestId to support for details.',
-        requestId,
-      }),
+      JSON.stringify(
+        scrubForClient({
+          error: 'Internal server error',
+          message:
+            'An internal error occurred. Please provide the requestId to support for details.',
+          requestId,
+        }),
+      ),
       {
         status: 500,
         headers: CACHE_HEADERS,
@@ -394,13 +448,15 @@ export const PUT: APIRoute = async ({ request }) => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         return new Response(
-          JSON.stringify({
-            error: 'Validation failed',
-            details: error.errors.map((e) => ({
-              field: e.path.join('.'),
-              message: e.message,
-            })),
-          }),
+          JSON.stringify(
+            scrubForClient({
+              error: 'Validation failed',
+              details: error.errors.map((e) => ({
+                field: e.path.join('.'),
+                message: e.message,
+              })),
+            }),
+          ),
           {
             status: 400,
             headers: CACHE_HEADERS,
@@ -409,9 +465,7 @@ export const PUT: APIRoute = async ({ request }) => {
       }
 
       return new Response(
-        JSON.stringify({
-          error: 'Invalid request body',
-        }),
+        JSON.stringify(scrubForClient({ error: 'Invalid request body' })),
         {
           status: 400,
           headers: CACHE_HEADERS,
@@ -487,14 +541,16 @@ export const PUT: APIRoute = async ({ request }) => {
     })
 
     return new Response(
-      JSON.stringify({
-        success: true,
-        results,
-        performance: {
-          requestId,
-          totalTime,
-        },
-      }),
+      JSON.stringify(
+        scrubForClient({
+          success: true,
+          results,
+          performance: {
+            requestId,
+            totalTime,
+          },
+        }),
+      ),
       {
         status: 200,
         headers: {
@@ -518,11 +574,13 @@ export const PUT: APIRoute = async ({ request }) => {
 
     if (error instanceof Error && error.message === 'Analysis timeout') {
       return new Response(
-        JSON.stringify({
-          error: 'Analysis timeout',
-          message: 'The batch analysis took too long to complete',
-          requestId,
-        }),
+        JSON.stringify(
+          scrubForClient({
+            error: 'Analysis timeout',
+            message: 'The batch analysis took too long to complete',
+            requestId,
+          }),
+        ),
         {
           status: 408,
           headers: CACHE_HEADERS,
@@ -531,12 +589,14 @@ export const PUT: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({
-        error: 'Internal server error',
-        message:
-          'An internal error occurred. Please provide the requestId to support for details.',
-        requestId,
-      }),
+      JSON.stringify(
+        scrubForClient({
+          error: 'Internal server error',
+          message:
+            'An internal error occurred. Please provide the requestId to support for details.',
+          requestId,
+        }),
+      ),
       {
         status: 500,
         headers: CACHE_HEADERS,

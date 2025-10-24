@@ -99,7 +99,7 @@ jobs:
               console.warn('No deployment_id available from previous step; skipping createDeploymentStatus');
               return;
             }
-            
+
             if (isNaN(Number(deploymentId))) {
               throw new Error(`Invalid deployment_id: ${deploymentId}`);
             } else {
@@ -223,10 +223,10 @@ jobs:
         run: |
           echo "🔧 GitHub CLI provides SUPERIOR Kubernetes integration compared to GitLab"
           echo ""
-          echo "## GitHub CLI K8s Commands (GitLab doesn't have equivalent):"
+          echo "## GitHub CLI K8s Commands (use existing workflows; removed reference to missing workflow):"
           echo ""
+          # Removed any reference to gke-deploy-enhanced.yml to avoid runtime failures
           echo "### Deployment Management:"
-          echo "gh workflow run gke-deploy-enhanced.yml -f deployment_strategy=canary -f environment=production"
           echo "gh workflow run gke-rollback.yml -f environment=production"
           echo "gh workflow run gke-monitoring.yml -f check_type=comprehensive"
           echo ""

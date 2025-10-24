@@ -212,7 +212,7 @@ export function isSuspiciousIP(ip: string): boolean {
     return false
   }
 
-  // TODO: Add external threat intelligence checks here
+  // TODO [KAN-15]: Add external threat intelligence checks here
   // For now, consider non-private IPs as potentially suspicious
   return true
 }
@@ -369,7 +369,7 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
     timeout = setTimeout(() => {
       // We intentionally ignore the return value of func for debounce
       // and cast args to unknown[] to call safely.
-      ;(func as (...a: unknown[]) => unknown)(...(args as unknown[]))
+      ; (func as (...a: unknown[]) => unknown)(...(args as unknown[]))
       timeout = null
     }, wait)
   }
@@ -386,7 +386,7 @@ export function throttle<T extends (...args: unknown[]) => unknown>(
 
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
-      ;(func as (...a: unknown[]) => unknown)(...(args as unknown[]))
+      ; (func as (...a: unknown[]) => unknown)(...(args as unknown[]))
       inThrottle = true
       setTimeout(() => {
         inThrottle = false
@@ -521,9 +521,13 @@ export function isRateLimitBypassAllowed(
   if (
     bypassRules.allowedIPRanges &&
     context.ip &&
-    bypassRules.allowedIPRanges.some((range) =>
-      context.ip!.startsWith(range.replace('*', '')),
-    )
+    bypassRules.allowedIPRanges.some((range) => {
+      // Fix: ensure ALL '*' occurrences are removed before matching.
+      // Using split/join avoids relying on regex replace semantics and
+      // guarantees all '*' characters are removed.
+      const normalizedRange = range.split('*').join('')
+      return context.ip!.startsWith(normalizedRange)
+    })
   ) {
     return true
   }

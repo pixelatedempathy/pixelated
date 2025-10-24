@@ -5,31 +5,19 @@ permissions:
 
 on:
   workflow_dispatch:
-    inputs:
-      release:
-        description: "Helm release name"
-        required: true
-        default: "pixelated"
-      namespace:
-        description: "Kubernetes namespace"
-        required: true
-        default: "production"
-      image:
-        description: "Container image repository"
-        required: true
-        default: "ghcr.io/pixelated/ai-service"
-      tag:
-        description: "Image tag (e.g., SHA)"
-        required: true
-      kubeconfig:
-        description: "Base64-encoded kubeconfig (optional if using GKE auth steps)"
-        required: false
-        default: ""
 
 jobs:
   production-deploy:
     name: Deploy to GKE (Production)
     runs-on: ubuntu-latest
+    env:
+      # Read deployment parameters from repository secrets where available.
+      # These should be configured in Settings → Secrets in the repo/organization.
+      RELEASE: ${{ secrets.RELEASE_NAME }}
+      NAMESPACE: ${{ secrets.NAMESPACE }}
+      IMAGE: ${{ secrets.IMAGE }}
+      TAG: ${{ secrets.TAG }}
+      KUBECONFIG_B64: ${{ secrets.KUBECONFIG_B64 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,16 +28,20 @@ jobs:
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
 
-      - name: Configure kubeconfig (if provided)
-        if: inputs.kubeconfig != ''
-        run: |
-          echo "${{ inputs.kubeconfig }}" | base64 -d > $HOME/.kube/config
-
       - name: Deploy with Helm
         run: |
+          # apply safe defaults if secrets are not set
+          RELEASE="${RELEASE:-pixelated}"
+          NAMESPACE="${NAMESPACE:-production}"
+          IMAGE="${IMAGE:-ghcr.io/pixelated/ai-service}"
+          TAG="${TAG:-}"
+          if [ -n "$KUBECONFIG_B64" ]; then
+            echo "$KUBECONFIG_B64" | base64 -d > $HOME/.kube/config
+          fi
+
           bash scripts/deploy/production_deploy.sh \
-            -r "${{ inputs.release }}" \
-            -n "${{ inputs.namespace }}" \
-            -i "${{ inputs.image }}" \
-            -t "${{ inputs.tag }}" \
+            -r "$RELEASE" \
+            -n "$NAMESPACE" \
+            -i "$IMAGE" \
+            -t "$TAG" \
             --wait

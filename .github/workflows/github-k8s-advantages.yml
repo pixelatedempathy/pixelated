@@ -85,11 +85,11 @@ jobs:
                 github_native: true
               }
             });
-            
+
             if (!deployment.data || !deployment.data.id) {
               throw new Error('Failed to create GitHub deployment: invalid response');
             }
-            
+
             console.log('✅ GitHub-native deployment created:', deployment.data.id);
             console.log('🎯 GitHub advantages over GitLab:');
             console.log('- Native GitHub deployment API integration');
@@ -202,7 +202,7 @@ jobs:
           echo "## GitHub CLI K8s Commands (GitLab doesn't have equivalent):"
           echo ""
           echo "### Deployment Management:"
-          echo "gh workflow run gke-deploy-enhanced.yml -f deployment_strategy=canary -f environment=production"
+          echo "gh workflow run gke-rollback.yml -f environment=production"
           echo "gh workflow run gke-rollback.yml -f environment=production"
           echo "gh workflow run gke-monitoring.yml -f check_type=comprehensive"
           echo ""
@@ -311,7 +311,7 @@ jobs:
           echo "./scripts/validate-github-actions.sh"
           echo ""
           echo "### Deploy to staging:"
-          echo "gh workflow run gke-deploy-enhanced.yml -f deployment_strategy=rolling -f environment=staging"
+          echo "gh workflow run gke-rollback.yml -f environment=staging"
           echo ""
           echo "### Monitor health:"
           echo "gh workflow run gke-monitoring.yml -f check_type=comprehensive -f environment=production"

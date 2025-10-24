@@ -142,6 +142,7 @@ tools/gdrive-dataset-manager/
 .idea/
 .qodo/
 .vscode/
+.vscode/settings.json
 .aiignore
 .qwen-config.json
 mcp_agent.config.yaml

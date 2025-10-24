@@ -20,6 +20,15 @@ const JWT_CONFIG = {
   algorithm: 'HS256' as const,
 }
 
+// --- Security hardening: require explicit secret in production ---
+// Prevent accidental use of a predictable fallback secret in production environments.
+// This avoids reliance on insecure randomness or predictable secrets.
+if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'fallback-secret-change-in-production')) {
+  // Fail fast so deployments are not started with an insecure secret.
+  // Operators should provide a strong secret via environment variables or a secret store.
+  throw new Error('JWT_SECRET must be set to a strong secret in production')
+}
+
 // Types
 export interface TokenPair {
   accessToken: string
@@ -90,11 +99,21 @@ export class AuthenticationError extends Error {
 }
 
 /**
+ * Generate secure random hex string
+ * Uses Node's crypto.randomBytes (cryptographically secure).
+ * Replaces any use of Math.random for security-sensitive identifiers.
+ */
+function secureRandomHex(bytes = 32): string {
+  // 32 bytes => 64 hex characters (256 bits of entropy)
+  return randomBytes(bytes).toString('hex')
+}
+
+/**
  * Generate secure random token identifier
  */
 function generateSecureToken(): string {
-  // 32 bytes => 64 hex characters (256 bits of entropy)
-  return randomBytes(32).toString('hex')
+  // Use secureRandomHex to avoid accidental insecure randomness (e.g., Math.random)
+  return secureRandomHex(32)
 }
 
 /**
