@@ -1,2 +1,0 @@
-==== START logs for container kube-proxy of pod kube-system/kube-proxy-gke-pixelcluster-pixelcluster-node-po-2f2dbfad-kazt ====
-==== END logs for container kube-proxy of pod kube-system/kube-proxy-gke-pixelcluster-pixelcluster-node-po-2f2dbfad-kazt ====
