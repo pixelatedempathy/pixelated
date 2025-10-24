@@ -1,6 +1,1 @@
-processed/mini_pipeline/combined_dataset.jsonl filter=lfs diff=lfs merge=lfs -text
-processed/mini_pipeline/splits/train.jsonl filter=lfs diff=lfs merge=lfs -text
-processed/phases/phase4_priority_wayfarer.jsonl filter=lfs diff=lfs merge=lfs -text
-processed/mental_health_clean.jsonl filter=lfs diff=lfs merge=lfs -text
-processed/phases/phase2_cot_reasoning.jsonl filter=lfs diff=lfs merge=lfs -text
-processed/splits/train.jsonl filter=lfs diff=lfs merge=lfs -text
+# LFS tracking removed - files moved to .gitignore to prevent future commits
