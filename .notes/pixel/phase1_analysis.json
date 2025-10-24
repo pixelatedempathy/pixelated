@@ -20,18 +20,9 @@
     "Wendy"
   ],
   "large_files": [
-    [
-      "datasets/priority_2/priority_2_FINAL.jsonl",
-      329.7290267944336
-    ],
-    [
-      "datasets/priority_3/priority_3_FINAL.jsonl",
-      370.3592596054077
-    ],
-    [
-      "datasets/priority_1/priority_1_FINAL.jsonl",
-      462.09916496276855
-    ],
+    ["datasets/priority_2/priority_2_FINAL.jsonl", 329.7290267944336],
+    ["datasets/priority_3/priority_3_FINAL.jsonl", 370.3592596054077],
+    ["datasets/priority_1/priority_1_FINAL.jsonl", 462.09916496276855],
     [
       "bpidw3qj.default-default/ImapMail/outlook.office365.com/INBOX",
       366.47044563293457
@@ -64,18 +55,9 @@
       "drive-download-20251014T134038Z-1-001/reddit_depression_dataset.csv",
       1111.2952518463135
     ],
-    [
-      "Wendy/datasets/priority_2/priority_2_FINAL.jsonl",
-      329.7290267944336
-    ],
-    [
-      "Wendy/datasets/priority_3/priority_3_FINAL.jsonl",
-      370.3592596054077
-    ],
-    [
-      "Wendy/datasets/priority_1/priority_1_FINAL.jsonl",
-      462.09916496276855
-    ],
+    ["Wendy/datasets/priority_2/priority_2_FINAL.jsonl", 329.7290267944336],
+    ["Wendy/datasets/priority_3/priority_3_FINAL.jsonl", 370.3592596054077],
+    ["Wendy/datasets/priority_1/priority_1_FINAL.jsonl", 462.09916496276855],
     [
       "Wendy/training_data/splits/pixelated_empathy_val_20250526_174637.jsonl",
       190.41833782196045
