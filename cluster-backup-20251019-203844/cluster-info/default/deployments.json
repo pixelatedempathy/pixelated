@@ -1,8 +1,0 @@
-{
-    "kind": "DeploymentList",
-    "apiVersion": "apps/v1",
-    "metadata": {
-        "resourceVersion": "1760920745766519000"
-    },
-    "items": null
-}
