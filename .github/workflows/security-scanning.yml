@@ -29,7 +29,7 @@ jobs:
         python3 -m pip install --no-cache-dir uv || true
 
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@0.28.0
+      uses: aquasecurity/trivy-action@0.33.1
       continue-on-error: true
       with:
         scan-type: 'fs'
@@ -82,7 +82,7 @@ jobs:
         path: trivy-missing.txt
 
     - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       if: ${{ always() && steps.trivy_sarif.outputs.found == 'true' }}
       continue-on-error: true
       with:
@@ -97,7 +97,7 @@ jobs:
         path: trivy-results.sarif
 
     - name: Upload Checkov scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       if: ${{ always() && steps.checkov_sarif.outputs.found == 'true' }}
       continue-on-error: true
       with:
@@ -133,7 +133,7 @@ jobs:
       uses: actions/checkout@v5
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '24'
 
