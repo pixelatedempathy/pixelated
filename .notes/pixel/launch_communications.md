@@ -2,7 +2,7 @@
 
 **Target**: Beta Launch Announcement & User Onboarding  
 **Status**: Draft Ready for Review  
-**Updated**: January 2025  
+**Updated**: October 2025  
 
 ---
 
