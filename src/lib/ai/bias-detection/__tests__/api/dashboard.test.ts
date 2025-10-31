@@ -218,24 +218,21 @@ describe('Bias Detection Dashboard API Endpoint', () => {
   const createMockRequest = (
     searchParams: Record<string, string> = {},
     headers: Record<string, string> = {},
-  ) => {
+  ): Request => {
     const url = new URL('http://localhost:3000/api/bias-detection/dashboard')
     Object.entries(searchParams).forEach(([key, value]) => {
       url.searchParams.set(key, value)
     })
 
-    const defaultHeaders: Record<string, string> = {
+    const requestHeaders = new Headers({
       'authorization': 'Bearer valid-token',
       'content-type': 'application/json',
       ...headers,
-    }
+    })
 
-    return {
-      url: url.toString(),
-      headers: {
-        get: vi.fn((key: string) => defaultHeaders[key.toLowerCase()] || null),
-      },
-    }
+    return new Request(url.toString(), {
+      headers: requestHeaders,
+    })
   }
 
   beforeEach(() => {
@@ -252,7 +249,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
     global.Response = vi
       .fn()
       .mockImplementation((body: string, init?: ResponseInit) => {
-        let responseData
+        let responseData: any
         try {
           responseData = JSON.parse(body) as unknown
         } catch {
@@ -286,7 +283,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
   describe('GET /api/bias-detection/dashboard', () => {
     it('should successfully return dashboard data with default parameters', async () => {
       const request = createMockRequest()
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -312,7 +309,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
     it('should handle custom time range parameter', async () => {
       const request = createMockRequest({ timeRange: '7d' })
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -328,7 +325,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
     it('should handle custom demographic filter parameter', async () => {
       const request = createMockRequest({ demographic: 'female' })
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -346,7 +343,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
         timeRange: '30d',
         demographic: 'hispanic',
       })
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -375,7 +372,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
           },
         })) as unknown as typeof Response
 
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200) // Mock API always returns 200
 
@@ -419,7 +416,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
       mockBiasEngine.getDashboardData.mockResolvedValue(emptyDashboardData)
 
       const request = createMockRequest()
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -435,7 +432,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
       for (const timeRange of validTimeRanges) {
         const request = createMockRequest({ timeRange })
-        const response = await GET({ request } as { request: Request })
+        const response = await GET({ request })
 
         expect(response.status).toBe(200)
         // expect(mockBiasEngine.getDashboardData).toHaveBeenCalledWith({
@@ -447,7 +444,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
     it('should handle invalid time range gracefully', async () => {
       const request = createMockRequest({ timeRange: 'invalid' })
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -459,7 +456,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
     it('should set appropriate response headers', async () => {
       const request = createMockRequest()
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.headers.get('Content-Type')).toBe('application/json')
       expect(response.headers.get('X-Processing-Time')).toBeDefined()
@@ -471,7 +468,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
       )
 
       const responses = await Promise.all(
-        requests.map((request) => GET({ request } as { request: Request })),
+        requests.map((request) => GET({ request })),
       )
 
       responses.forEach((response: Response) => {
@@ -501,7 +498,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
           },
         })) as unknown as typeof Response
 
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200) // Mock API always returns 200
 
@@ -513,7 +510,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
 
     it('should log performance metrics', async () => {
       const request = createMockRequest()
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request })
 
       expect(response.status).toBe(200)
 
@@ -545,7 +542,7 @@ describe('Bias Detection Dashboard API Endpoint', () => {
         },
       }
 
-      const response = await GET({ request } as { request: Request })
+      const response = await GET({ request: request as unknown as Request })
 
       expect(response.status).toBe(200)
 
