@@ -1,0 +1,2200 @@
+[7m563[0m         SELF_ATTESTATION: 0,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m566[0m         ONSITE_ASSESSMENT: 0,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m567[0m       } as Record<VerificationMethod, number>,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m557[0m:[93m29[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ low: number; medium: number; high: number; }' to type 'Record<ComplianceLevel, number>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ low: number; medium: number; high: number; }' is missing the following properties from type 'Record<ComplianceLevel, number>': not_verified, self_attested, third_party_verified, hipaa_certified, non_compliant
+
+[7m557[0m       verificationsByLevel: {
+[7m   [0m [91m                            ~[0m
+[7m558[0m         low: 0,
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m560[0m         high: 0,
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m561[0m       } as Record<ComplianceLevel, number>,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m524[0m:[93m57[0m - [91merror[0m[90m ts(2322): [0mType '"TELEMEDICINE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m524[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                                        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m524[0m:[93m39[0m - [91merror[0m[90m ts(2322): [0mType '"DATA_ANALYTICS"' is not assignable to type 'BusinessAssociateType'.
+
+[7m524[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m524[0m:[93m22[0m - [91merror[0m[90m ts(2322): [0mType '"CLOUD_SERVICE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m524[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m524[0m:[93m8[0m - [91merror[0m[90m ts(2322): [0mType '"EHR_VENDOR"' is not assignable to type 'BusinessAssociateType'.
+
+[7m524[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m       ~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m512[0m:[93m57[0m - [91merror[0m[90m ts(2322): [0mType '"TELEMEDICINE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m512[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                                        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m512[0m:[93m39[0m - [91merror[0m[90m ts(2322): [0mType '"DATA_ANALYTICS"' is not assignable to type 'BusinessAssociateType'.
+
+[7m512[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m512[0m:[93m22[0m - [91merror[0m[90m ts(2322): [0mType '"CLOUD_SERVICE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m512[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m512[0m:[93m8[0m - [91merror[0m[90m ts(2322): [0mType '"EHR_VENDOR"' is not assignable to type 'BusinessAssociateType'.
+
+[7m512[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m       ~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m81[0m:[93m10[0m - [91merror[0m[90m ts(2551): [0mProperty 'backupProvider' does not exist on type 'AutomatedRecoverySystem'. Did you mean '_backupProvider'?
+
+[7m81[0m     this.backupProvider = backupProvider
+[7m  [0m [91m         ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m80[0m:[93m10[0m - [91merror[0m[90m ts(2551): [0mProperty 'recoveryManager' does not exist on type 'AutomatedRecoverySystem'. Did you mean '_recoveryManager'?
+
+[7m80[0m     this.recoveryManager = recoveryManager
+[7m  [0m [91m         ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m79[0m:[93m10[0m - [91merror[0m[90m ts(2551): [0mProperty 'config' does not exist on type 'AutomatedRecoverySystem'. Did you mean '_config'?
+
+[7m79[0m     this.config = config
+[7m  [0m [91m         ~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m63[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty '_backupProvider' has no initializer and is not definitely assigned in the constructor.
+
+[7m63[0m   private _backupProvider: () => Promise<BackupMetadata[]>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m61[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty '_recoveryManager' has no initializer and is not definitely assigned in the constructor.
+
+[7m61[0m   private _recoveryManager: RecoveryTestingManager
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m60[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty '_config' has no initializer and is not definitely assigned in the constructor.
+
+[7m60[0m   private _config: AutomatedRecoveryConfig
+[7m  [0m [91m          ~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m65[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_currentEnvironmentIndex' is declared but its value is never read.
+
+[7m65[0m   private _currentEnvironmentIndex = 0
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m64[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_isInitialized' is declared but its value is never read.
+
+[7m64[0m   private _isInitialized = false
+[7m  [0m [93m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m63[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_backupProvider' is declared but its value is never read.
+
+[7m63[0m   private _backupProvider: () => Promise<BackupMetadata[]>
+[7m  [0m [93m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m62[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_scheduledJobs' is declared but its value is never read.
+
+[7m62[0m   private _scheduledJobs: Map<string, cron.ScheduledTask> = new Map()
+[7m  [0m [93m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m61[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_recoveryManager' is declared but its value is never read.
+
+[7m61[0m   private _recoveryManager: RecoveryTestingManager
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/automated-recovery.ts[0m:[93m60[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_config' is declared but its value is never read.
+
+[7m60[0m   private _config: AutomatedRecoveryConfig
+[7m  [0m [93m          ~~~~~~~[0m
+
+[96msrc/lib/security/backup/index.ts[0m:[93m106[0m:[93m30[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<...>', gave the following error.
+  Overload 2 of 2, '(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<...>', gave the following error.
+
+[7m106[0m           { name: 'AES-GCM', iv: toCryptoBufferSource(iv) },
+[7m   [0m [91m                             ~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m93[0m:[93m11[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  The last overload gave the following error.
+
+[7m93[0m           toCryptoBufferSource(key),
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m74[0m:[93m30[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<...>', gave the following error.
+  Overload 2 of 2, '(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<...>', gave the following error.
+
+[7m74[0m           { name: 'AES-GCM', iv: toCryptoBufferSource(iv) },
+[7m  [0m [91m                             ~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m68[0m:[93m11[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  The last overload gave the following error.
+
+[7m68[0m           toCryptoBufferSource(key),
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m921[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m921[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m922[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m928[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m929[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m907[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m907[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m908[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m915[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m916[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m789[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m789[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m790[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m796[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m797[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m770[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m770[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m771[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m779[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m780[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m674[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m674[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m675[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m683[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m684[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m634[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'iv' is declared but its value is never read.
+
+[7m634[0m     iv: Uint8Array,
+[7m   [0m [93m    ~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m564[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m564[0m       : await this.getRandomBytes(16)
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m519[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m519[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m520[0m         AuditEventType.CREATE,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m529[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m530[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m472[0m:[93m11[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m472[0m         ? await dlpService.scanContent(new TextDecoder().decode(data), {
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m473[0m             userId: 'system',
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m475[0m             metadata: { mode: 'backup' },
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m476[0m           })
+[7m   [0m [93m~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/index.ts[0m:[93m230[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'recoveryTestingManager' is declared but its value is never read.
+
+[7m230[0m   private recoveryTestingManager!: RecoveryTestingManager
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/backup/recovery-testing.ts[0m:[93m462[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m462[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m463[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m471[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m472[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/recovery-testing.ts[0m:[93m429[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m429[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m430[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m442[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m443[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/recovery-testing.ts[0m:[93m357[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m357[0m       await logAuditEvent(
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m358[0m         AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m365[0m         },
+[7m   [0m [93m~~~~~~~~~~[0m
+[7m366[0m       )
+[7m   [0m [93m~~~~~~~[0m
+[96msrc/lib/security/backup/recovery-testing.ts[0m:[93m332[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m332[0m     await logAuditEvent(
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~[0m
+[7m333[0m       AuditEventType.SECURITY,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m341[0m       },
+[7m   [0m [93m~~~~~~~~[0m
+[7m342[0m     )
+[7m   [0m [93m~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers-wrapper.ts[0m:[93m101[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'getLogger'.
+
+[7m101[0m   const logger = getLogger(prefix)
+[7m   [0m [91m                 ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers-wrapper.ts[0m:[93m25[0m:[93m7[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'providerModule' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m25[0m   let providerModule
+[7m  [0m [93m      ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m1014[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'StorageSharedKeyCredential' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m1014[0m       let StorageSharedKeyCredential
+[7m    [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m1013[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'BlobServiceClient' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m1013[0m       let BlobServiceClient
+[7m    [0m [93m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m678[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'DeleteObjectCommand' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m678[0m       let DeleteObjectCommand
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m612[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'ListObjectsV2Command' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m612[0m       let ListObjectsV2Command
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m571[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'GetObjectCommand' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m571[0m       let GetObjectCommand
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m530[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'PutObjectCommand' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m530[0m       let PutObjectCommand
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers.ts[0m:[93m482[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'S3Client' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m482[0m       let S3Client
+[7m   [0m [93m          ~~~~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers/aws-s3.ts[0m:[93m92[0m:[93m22[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ [key: string]: string; } | undefined' to type 'S3Credentials' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ [key: string]: string; }' is missing the following properties from type 'S3Credentials': accessKeyId, secretAccessKey
+
+[7m92[0m         credentials: this.config.credentials as S3Credentials,
+[7m  [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/aws-s3.ts[0m:[93m8[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"../backup-types"' has no exported member 'StorageProvider'.
+
+[7m8[0m import type { StorageProvider, StorageProviderConfig } from '../backup-types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m217[0m:[93m20[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m217[0m       const file = this.bucket.file(key)
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m188[0m:[93m20[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m188[0m       const file = this.bucket.file(key)
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m150[0m:[93m20[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m150[0m       const file = this.bucket.file(key)
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m122[0m:[93m29[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m122[0m       const [files] = await this.bucket.getFiles(options)
+[7m   [0m [91m                            ~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m87[0m:[93m21[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m87[0m       this.bucket = this.storage.bucket(this.bucketName)
+[7m  [0m [91m                    ~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m80[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'Storage' is not assignable to type 'GoogleCloudStorage'.
+  The types returned by 'bucket(...).file(...).delete(...)' are incompatible between these types.
+
+[7m80[0m       this.storage = new Storage({
+[7m  [0m [91m      ~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/google-cloud.ts[0m:[93m8[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"../backup-types"' has no exported member 'StorageProvider'.
+
+[7m8[0m import type { StorageProvider, StorageProviderConfig } from '../backup-types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m178[0m:[93m13[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m178[0m       await this.fs.unlink(fullPath)
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m171[0m:[93m15[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m171[0m         await this.fs.access(fullPath)
+[7m   [0m [91m              ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m167[0m:[93m24[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m167[0m       const fullPath = this.path.join(this.basePath, key)
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m150[0m:[93m26[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m150[0m       const data = await this.fs.readFile(fullPath)
+[7m   [0m [91m                         ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m147[0m:[93m13[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m147[0m       await this.fs.access(fullPath)
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m144[0m:[93m24[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m144[0m       const fullPath = this.path.join(this.basePath, key)
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m129[0m:[93m13[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m129[0m       await this.fs.writeFile(fullPath, data)
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m126[0m:[93m13[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m126[0m       await this.fs.mkdir(dir, { recursive: true })
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m125[0m:[93m19[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m125[0m       const dir = this.path.dirname(fullPath)
+[7m   [0m [91m                  ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m122[0m:[93m24[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m122[0m       const fullPath = this.path.join(this.basePath, key)
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m93[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m93[0m         this.path.relative(this.basePath, file),
+[7m  [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m66[0m:[93m13[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m66[0m       await this.fs.mkdir(this.basePath, { recursive: true })
+[7m  [0m [91m            ~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m51[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '{ (path: PathLike, options: MakeDirectoryOptions & { recursive: true; }): Promise<string | undefined>; (path: PathLike, options?: Mode | ... 2 more ... | undefined): Promise<...>; (path: PathLike, options?: MakeDirectoryOptions | ... 2 more ... | undefined): Promise<...>; }' is not assignable to type '(path: string, options?: { recursive?: boolean | undefined; } | undefined) => Promise<void>'.
+  Types of parameters 'options' and 'options' are incompatible.
+
+[7m51[0m         mkdir: fsModule.mkdir,
+[7m  [0m [91m        ~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/local-fs.ts[0m:[93m37[0m:[93m23[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'config' is declared but its value is never read.
+
+[7m37[0m   constructor(private config: StorageProviderConfig) {
+[7m  [0m [93m                      ~~~~~~[0m
+
+[96msrc/lib/security/backup/storage-providers/memory.ts[0m:[93m8[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"../backup-types"' has no exported member 'StorageProvider'.
+
+[7m8[0m import type { StorageProvider, StorageProviderConfig } from '../backup-types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/backup/storage-providers/memory.ts[0m:[93m14[0m:[93m23[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'config' is declared but its value is never read.
+
+[7m14[0m   constructor(private config: StorageProviderConfig) {}
+[7m  [0m [93m                      ~~~~~~[0m
+
+[96msrc/lib/security/consent/ConsentService.ts[0m:[93m109[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(option: Record<string, unknown>) => { id: string; consentTypeId: string; optionName: string; description: string; isRequired: boolean; defaultValue: unknown; displayOrder: number; createdAt: string; updatedAt: string; }' is not assignable to parameter of type '(value: unknown, index: number, array: unknown[]) => { id: string; consentTypeId: string; optionName: string; description: string; isRequired: boolean; defaultValue: unknown; displayOrder: number; createdAt: string; updatedAt: string; }'.
+  Types of parameters 'option' and 'value' are incompatible.
+
+[7m109[0m       return data.map((option: Record<string, unknown>) => ({
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m         id: option['id'] as string,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m118[0m         updatedAt: option['updated_at'] as string,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m119[0m       }))
+[7m   [0m [91m~~~~~~~~[0m
+[96msrc/lib/security/consent/ConsentService.ts[0m:[93m109[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ id: string; consentTypeId: string; optionName: string; description: string; isRequired: boolean; defaultValue: unknown; displayOrder: number; createdAt: string; updatedAt: string; }[]' is not assignable to type 'ConsentOption[]'.
+  Type '{ id: string; consentTypeId: string; optionName: string; description: string; isRequired: boolean; defaultValue: unknown; displayOrder: number; createdAt: string; updatedAt: string; }' is not assignable to type 'ConsentOption'.
+
+[7m109[0m       return data.map((option: Record<string, unknown>) => ({
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/consent/ConsentService.ts[0m:[93m33[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ id: string; name: string; description: string; scope: string; isActive: boolean; createdAt: string; updatedAt: string; }[]' is not assignable to type 'ConsentType[]'.
+  Type '{ id: string; name: string; description: string; scope: string; isActive: boolean; createdAt: string; updatedAt: string; }' is not assignable to type 'ConsentType'.
+
+[7m33[0m       return data.map((type: unknown) => {
+[7m  [0m [91m      ~~~~~~[0m
+
+[96msrc/lib/security/pii/index.ts[0m:[93m583[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'never'.
+
+[7m583[0m             processedArray.push(await processValue(item))
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/pii/index.ts[0m:[93m537[0m:[93m31[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m537[0m     const result = JSON.parse(JSON.stringify(data) as unknown) as T
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/pii/index.ts[0m:[93m412[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'data' does not exist in type 'PIIDetectionResult'.
+
+[7m412[0m         data: { hasPII: 'false', confidence: '0', types: '' },
+[7m   [0m [91m        ~~~~[0m
+[96msrc/lib/security/pii/index.ts[0m:[93m392[0m:[93m31[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'RealFHEService' to type 'FHEService' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'isInitialized' is private in type 'RealFHEService' but not in type 'FHEService'.
+
+[7m392[0m       const fheServiceTyped = fheService as FHEService
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/pii/index.ts[0m:[93m420[0m:[93m7[0m - [93mwarning[0m[90m ts(7027): [0mUnreachable code detected.
+
+[7m420[0m       const hasPII = (result.data as { hasPII: string }).hasPII === 'true'
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m421[0m       const confidence =
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m448[0m 
+[7m   [0m [93m[0m
+[7m449[0m       return detectionResult
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/pii/middleware.ts[0m:[93m122[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: APIContext, next: MiddlewareNext) => Promise<Response>' is not assignable to parameter of type 'MiddlewareHandler'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m122[0m export const onRequest = defineMiddleware(async (context: APIContext, next) => {
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/pii/middleware.ts[0m:[93m122[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m122[0m export const onRequest = defineMiddleware(async (context: APIContext, next) => {
+[7m   [0m [93m                                                 ~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1476[0m:[93m7[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m1476[0m   get config(): ResponseOrchestratorConfig {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1461[0m:[93m54[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1461[0m       logger.error('Error during shutdown', { error: error.message })
+[7m    [0m [91m                                                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1417[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1417[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1343[0m:[93m63[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1343[0m       logger.error('Failed to get active responses', { error: error.message })
+[7m    [0m [91m                                                              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1326[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1326[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1308[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1308[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1279[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1279[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1193[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1193[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1163[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1163[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1125[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1125[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m625[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m625[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m504[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m504[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m491[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m491[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m451[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m451[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m400[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m400[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m293[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m293[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m261[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m261[0m       logger.error('Failed to setup Redis pub/sub', { error: error.message })
+[7m   [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m254[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m254[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m250[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m250[0m           const responseData = JSON.parse(message)
+[7m   [0m [91m                                          ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m242[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m242[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m238[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m238[0m           const threatData = JSON.parse(message)
+[7m   [0m [91m                                        ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m221[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m221[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m195[0m:[93m56[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m195[0m         `Failed to initialize response orchestrator: ${error.message}`,
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m192[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m192[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m147[0m:[93m23[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m147[0m   constructor(private config: ResponseOrchestratorConfig) {
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m141[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m141[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m140[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'responsesCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m140[0m   private responsesCollection: Collection<ThreatResponse>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m139[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m139[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m138[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m138[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m13[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../audit-logging' or its corresponding type declarations.
+
+[7m13[0m import { auditLog } from '../audit-logging'
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1290[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'rollbackAction' is declared but its value is never read.
+
+[7m1290[0m     rollbackAction: ResponseAction,
+[7m    [0m [93m    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1087[0m:[93m39[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1087[0m   private async simulateCollectAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1079[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1079[0m   private async simulateRemediateAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                        ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1071[0m:[93m40[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1071[0m   private async simulateEscalateAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                       ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1063[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1063[0m   private async simulateNotifyAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                     ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1055[0m:[93m39[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1055[0m   private async simulateIsolateAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/AutomatedThreatResponseOrchestrator.ts[0m:[93m1045[0m:[93m37[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m1045[0m   private async simulateBlockAction(action: ResponseAction): Promise<void> {
+[7m    [0m [93m                                    ~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1289[0m:[93m7[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m1289[0m   get config(): EdgeDetectionConfig {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1272[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1272[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1259[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'shutdown' does not exist on type 'BiasDetectionEngine'.
+
+[7m1259[0m       await this.biasDetector.shutdown()
+[7m    [0m [91m                              ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1227[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'DetectionInput'.
+
+[7m1227[0m       const bPriority = priorityOrder[b.metadata?.priority || 'medium']
+[7m    [0m [91m                                        ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1226[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'DetectionInput'.
+
+[7m1226[0m       const aPriority = priorityOrder[a.metadata?.priority || 'medium']
+[7m    [0m [91m                                        ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1220[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'metadata' does not exist in type 'DetectionInput'.
+
+[7m1220[0m       metadata: { ...input.context, priority, requestId },
+[7m    [0m [91m      ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1153[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1153[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1114[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1114[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1104[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1104[0m             error: error.message,
+[7m    [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1101[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ input: DetectionInput; }' is not assignable to parameter of type '{ id: string; input: DetectionInput; priority?: "low" | "medium" | "high" | undefined; }'.
+  Property 'id' is missing in type '{ input: DetectionInput; }' but required in type '{ id: string; input: DetectionInput; priority?: "low" | "medium" | "high" | undefined; }'.
+
+[7m1101[0m           return await this.processDetectionRequest({ input })
+[7m    [0m [91m                                                    ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m1055[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m1055[0m       this.cache.delete(firstKey)
+[7m    [0m [91m                        ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m924[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{}' is not assignable to type 'string'.
+
+[7m924[0m               value: input.data.process_id,
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m914[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{}' is not assignable to type 'string'.
+
+[7m914[0m               value: input.data.hash,
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m904[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{}' is not assignable to type 'string'.
+
+[7m904[0m               value: input.data.user_id,
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m894[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{}' is not assignable to type 'string'.
+
+[7m894[0m               value: input.data.ip_address,
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m786[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m786[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m704[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m704[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m688[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyze' does not exist on type 'BiasDetectionEngine'.
+
+[7m688[0m       const biasResult = await this.biasDetector.analyze({
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m614[0m:[93m5[0m - [91merror[0m[90m ts(2739): [0mType 'Record<string, ModelResult>' is missing the following properties from type '{ anomaly: ModelResult; classification: ModelResult; clustering: ModelResult; prediction: ModelResult; }': anomaly, classification, clustering, prediction
+
+[7m614[0m     return results
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m608[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'startTime'.
+
+[7m608[0m           processing_time: Date.now() - startTime,
+[7m   [0m [91m                                        ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m595[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m595[0m           error: error.message,
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m534[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{}[]' is not assignable to type 'number[]'.
+  Type '{}' is not assignable to type 'number'.
+
+[7m534[0m     return features.slice(0, 10)
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m516[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{}[]' is not assignable to type 'number[]'.
+  Type '{}' is not assignable to type 'number'.
+
+[7m516[0m     return features.slice(0, 10)
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m498[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{}[]' is not assignable to type 'number[]'.
+  Type '{}' is not assignable to type 'number'.
+
+[7m498[0m     return features.slice(0, 10)
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m480[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{}[]' is not assignable to type 'number[]'.
+  Type '{}' is not assignable to type 'number'.
+
+[7m480[0m     return features.slice(0, 10) // Ensure consistent length
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m457[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m457[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m420[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m420[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m312[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m312[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m301[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m301[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m297[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m297[0m           const update = JSON.parse(message)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m287[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m287[0m               error: error.message,
+[7m   [0m [91m                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m283[0m:[93m40[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m283[0m             const request = JSON.parse(message)
+[7m   [0m [91m                                       ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m262[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m262[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m221[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m221[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m209[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m209[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m173[0m:[93m56[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m173[0m         `Failed to initialize edge threat detection: ${error.message}`,
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m168[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m168[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m124[0m:[93m13[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m124[0m     private config: EdgeDetectionConfig,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m13[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../audit-logging' or its corresponding type declarations.
+
+[7m13[0m import { auditLog } from '../audit-logging'
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/EdgeThreatDetectionSystem.ts[0m:[93m567[0m:[93m29[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m567[0m         const prediction = (await model.predict(inputTensor)) as tf.Tensor
+[7m   [0m [93m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1972[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'isValidEmail' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1972[0m           return this.isValidEmail(value)
+[7m    [0m [91m                      ~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1970[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'isValidURL' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1970[0m           return this.isValidURL(value)
+[7m    [0m [91m                      ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1968[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'isValidHash' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1968[0m           return this.isValidHash(value)
+[7m    [0m [91m                      ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1808[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ insertOne: { document: ThreatIndicator; }; }' is not assignable to parameter of type 'never'.
+
+[7m1808[0m           operations.push({
+[7m    [0m [91m                          ~[0m
+[7m1809[0m             insertOne: {
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m ...[0m 
+[7m1811[0m             },
+[7m    [0m [91m~~~~~~~~~~~~~~[0m
+[7m1812[0m           })
+[7m    [0m [91m~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1787[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ updateOne: { filter: { id: string; }; update: { $set: { confidence: number; severity: "low" | "medium" | "high" | "critical"; threat_type: string; description: string; last_seen: Date; tags: string[]; attributes: Record<...>; relationships: ThreatRelationship[]; raw_data: Record<...> | undefined; }; }; }; }' is not assignable to parameter of type 'never'.
+
+[7m1787[0m           operations.push({
+[7m    [0m [91m                          ~[0m
+[7m1788[0m             updateOne: {
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m ...[0m 
+[7m1803[0m             },
+[7m    [0m [91m~~~~~~~~~~~~~~[0m
+[7m1804[0m           })
+[7m    [0m [91m~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1593[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'validateIndicator' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1593[0m       return this.validateIndicator(indicator, transformation.parameters)
+[7m    [0m [91m                  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1577[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'getIPGeolocation' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1577[0m         indicator.attributes.geolocation = await this.getIPGeolocation(
+[7m    [0m [91m                                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1554[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'normalizeIndicatorValue' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1554[0m         indicator.value = this.normalizeIndicatorValue(
+[7m    [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1541[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'evaluateFilterCondition' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1541[0m       return this.evaluateFilterCondition(fieldValue, transformation.parameters)
+[7m    [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1538[0m:[93m27[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'ThreatIndicator' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Index signature for type 'string' is missing in type 'ThreatIndicator'.
+
+[7m1538[0m       const fieldValue = (indicator as Record<string, unknown>)[
+[7m    [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1521[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapConfidence' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1521[0m         indicator.confidence = this.mapConfidence(
+[7m    [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1516[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapSeverity' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1516[0m         indicator.severity = this.mapSeverity(
+[7m    [0m [91m                                  ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1201[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapMISPToThreatType' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1201[0m         threat_type: this.mapMISPToThreatType(attribute),
+[7m    [0m [91m                          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1200[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapMISPToSeverity' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1200[0m         severity: this.mapMISPToSeverity(attribute),
+[7m    [0m [91m                       ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1199[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapMISPToConfidence' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1199[0m         confidence: this.mapMISPToConfidence(attribute),
+[7m    [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1197[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type '"email" | "url" | "domain" | "file" | "hash" | "behavior" | "ip" | "vulnerability"'.
+
+[7m1197[0m         type: indicatorType,
+[7m    [0m [91m        ~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1092[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapSTIXReliability' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1092[0m         source_reliability: this.mapSTIXReliability(
+[7m    [0m [91m                                 ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1080[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'extractThreatTypeFromSTIX' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1080[0m         threat_type: this.extractThreatTypeFromSTIX(stixObject),
+[7m    [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1077[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapSTIXSeverity' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1077[0m         severity: this.mapSTIXSeverity(
+[7m    [0m [91m                       ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1074[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'mapSTIXConfidence' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m1074[0m         confidence: this.mapSTIXConfidence(
+[7m    [0m [91m                         ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1072[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type '"email" | "url" | "domain" | "file" | "hash" | "behavior" | "ip" | "vulnerability"'.
+
+[7m1072[0m         type: indicatorType,
+[7m    [0m [91m        ~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m988[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m988[0m           indicators = await this.processXMLData(rawData, feed)
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m985[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m985[0m           indicators = await this.processCSVData(rawData, feed)
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m832[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'updateFeedStatus' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m832[0m       await this.updateFeedStatus(feedId, 'error')
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m774[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'updateFeedAfterSync' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m774[0m       await this.updateFeedAfterSync(feedId, result)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m735[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'meetsQualityThresholds' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m735[0m       if (!this.meetsQualityThresholds(qualityMetrics)) {
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m711[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'updateFeedStatus' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m711[0m       await this.updateFeedStatus(feedId, 'active')
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m701[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'createSkippedResult' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m701[0m         return this.createSkippedResult(resultId, feedId, startTime)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m674[0m:[93m58[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m674[0m       logger.error('Failed to add threat feed', { error: error.message })
+[7m   [0m [91m                                                         ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m609[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'updateFeedStatus' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m609[0m     this.updateFeedStatus(feedId, 'error').catch((err: unknown) => {
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m510[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.
+
+[7m510[0m     return token
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m507[0m:[93m56[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | null' is not assignable to parameter of type 'string | number | Buffer<ArrayBufferLike>'.
+  Type 'null' is not assignable to type 'string | number | Buffer<ArrayBufferLike>'.
+
+[7m507[0m       await this.redis.setex(tokenKey, expiresIn - 60, token) // Refresh 1 minute early
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m507[0m:[93m40[0m - [91merror[0m[90m ts(18048): [0m'expiresIn' is possibly 'undefined'.
+
+[7m507[0m       await this.redis.setex(tokenKey, expiresIn - 60, token) // Refresh 1 minute early
+[7m   [0m [91m                                       ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m450[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'string'.
+
+[7m450[0m           password: auth.credentials.password,
+[7m   [0m [91m          ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m449[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'string'.
+
+[7m449[0m           username: auth.credentials.username,
+[7m   [0m [91m          ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m441[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'AxiosHeaderValue | undefined'.
+
+[7m441[0m         client.defaults.headers.common['X-API-Key'] = auth.credentials.api_key
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m362[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'updateFeedStatus' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m362[0m           await this.updateFeedStatus(statusData.feed_id, statusData.status)
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m361[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m361[0m           const statusData = JSON.parse(message)
+[7m   [0m [91m                                        ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m348[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m348[0m           const syncData = JSON.parse(message)
+[7m   [0m [91m                                      ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m272[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'startSyncProcessing' does not exist on type 'ExternalThreatFeedIntegration'.
+
+[7m272[0m       this.startSyncProcessing()
+[7m   [0m [91m           ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m224[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m224[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m223[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'syncResultsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m223[0m   private syncResultsCollection: Collection<FeedSyncResult>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m222[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'indicatorsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m222[0m   private indicatorsCollection: Collection<ThreatIndicator>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m221[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'feedsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m221[0m   private feedsCollection: Collection<ThreatFeed>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m220[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m220[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m219[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m219[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m1390[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m1390[0m     data: string,
+[7m    [0m [93m    ~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m547[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'_requestsThisDay' is declared but its value is never read.
+
+[7m547[0m     let _requestsThisDay = 0
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m546[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'_requestsThisHour' is declared but its value is never read.
+
+[7m546[0m     let _requestsThisHour = 0
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m545[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'_requestsThisMinute' is declared but its value is never read.
+
+[7m545[0m     let _requestsThisMinute = 0
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m229[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'activeSyncs' is declared but its value is never read.
+
+[7m229[0m   private activeSyncs = new Map<string, Promise<void>>()
+[7m   [0m [93m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m228[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'isProcessing' is declared but its value is never read.
+
+[7m228[0m   private isProcessing = false
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts[0m:[93m227[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'syncQueue' is declared but its value is never read.
+
+[7m227[0m   private syncQueue: string[] = []
+[7m   [0m [93m          ~~~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m807[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m807[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m772[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m772[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m753[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m753[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m713[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m713[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m701[0m:[93m42[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m701[0m       this.emit('health:error', { error: error.message, region: this.region })
+[7m   [0m [91m                                         ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m698[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m698[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m650[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m650[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m609[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m609[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m574[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m574[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m549[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m549[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m501[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m501[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m482[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m482[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m416[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m416[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m407[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'created_at' does not exist in type 'OptionalId<ThreatIntelligence>'.
+
+[7m407[0m           created_at: new Date(),
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m294[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m294[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m237[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m237[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m228[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m228[0m               this.handleIncomingThreat(message)
+[7m   [0m [91m                                        ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m219[0m:[93m35[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m219[0m         this.handleIncomingThreat(message)
+[7m   [0m [91m                                  ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m202[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m202[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m164[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m164[0m         `Failed to initialize threat intelligence network: ${error.message}`,
+[7m   [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m160[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m160[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m122[0m:[93m24[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 8, '(path: string, options: RedisOptions): Redis', gave the following error.
+  Overload 2 of 8, '(port: number, options: RedisOptions): Redis', gave the following error.
+  Overload 3 of 8, '(port: number, host: string): Redis', gave the following error.
+
+[7m122[0m       this.redis = new Redis(this.config.redis.url, {
+[7m   [0m [91m                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m98[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'sharingCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m98[0m   private sharingCollection: Collection<any>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m97[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'threatsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m97[0m   private threatsCollection: Collection<ThreatIntelligence>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m96[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m96[0m   private db: Db
+[7m  [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m95[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m95[0m   private mongoClient: MongoClient
+[7m  [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m94[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m94[0m   private redis: Redis
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m14[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../audit-logging' or its corresponding type declarations.
+
+[7m14[0m import { auditLog } from '../audit-logging'
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/GlobalThreatIntelligenceNetwork.ts[0m:[93m13[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../encryption' or its corresponding type declarations.
+
+[7m13[0m import { encrypt, decrypt } from '../encryption'
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1504[0m:[93m54[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1504[0m       logger.error('Error during shutdown', { error: error.message })
+[7m    [0m [91m                                                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1479[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1479[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1422[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1422[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1376[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1376[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1356[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1356[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1350[0m:[93m17[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 3, '(filter: Filter<ThreatCorrelation>, options?: (FindOptions<Document> & Abortable) | undefined): FindCursor<WithId<ThreatCorrelation>>', gave the following error.
+  Overload 2 of 3, '(filter: Filter<ThreatCorrelation>, options?: (FindOptions<Document> & Abortable) | undefined): FindCursor<Document>', gave the following error.
+
+[7m1350[0m         .find({ correlation_type: type })
+[7m    [0m [91m                ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1334[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1334[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1308[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'created_at' does not exist in type 'OptionalId<ThreatCorrelation>'.
+
+[7m1308[0m         created_at: new Date(),
+[7m    [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1146[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1146[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1058[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1058[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1006[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1006[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m821[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m821[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m769[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m769[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m599[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m599[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m548[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m548[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m544[0m:[93m9[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'time_span'. Either declare one or provide an initializer.
+
+[7m544[0m         time_span,
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m421[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m421[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m372[0m:[93m63[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m372[0m       logger.error('Failed to analyze correlations', { error: error.message })
+[7m   [0m [91m                                                              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m314[0m:[93m61[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m314[0m       logger.error('Failed to get threats by IDs', { error: error.message })
+[7m   [0m [91m                                                            ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m298[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m298[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m249[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m249[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m224[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m224[0m       logger.error('Failed to setup Redis pub/sub', { error: error.message })
+[7m   [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m217[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m217[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m213[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m213[0m           const threatData = JSON.parse(message)
+[7m   [0m [91m                                        ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m196[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m196[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m166[0m:[93m60[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m166[0m         `Failed to initialize threat correlation engine: ${error.message}`,
+[7m   [0m [91m                                                           ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m163[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m163[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m113[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m113[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m112[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'correlationsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m112[0m   private correlationsCollection: Collection<ThreatCorrelation>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m111[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'threatsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m111[0m   private threatsCollection: Collection<any>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m110[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m110[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m109[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m109[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m13[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../audit-logging' or its corresponding type declarations.
+
+[7m13[0m import { auditLog } from '../audit-logging'
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1462[0m:[93m12[0m - [93mwarning[0m[90m ts(6385): [0m'(options?: CountOptions | undefined): Promise<number>' is deprecated.
+
+[7m1462[0m           .count(),
+[7m    [0m [93m           ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1290[0m:[93m46[0m - [93mwarning[0m[90m ts(6133): [0m'correlation' is declared but its value is never read.
+
+[7m1290[0m   private generateAttributionRecommendations(correlation: any): string[] {
+[7m    [0m [93m                                             ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1281[0m:[93m45[0m - [93mwarning[0m[90m ts(6133): [0m'correlation' is declared but its value is never read.
+
+[7m1281[0m   private generateBehavioralRecommendations(correlation: any): string[] {
+[7m    [0m [93m                                            ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1272[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'correlation' is declared but its value is never read.
+
+[7m1272[0m   private generateSpatialRecommendations(correlation: any): string[] {
+[7m    [0m [93m                                         ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1263[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'correlation' is declared but its value is never read.
+
+[7m1263[0m   private generateTemporalRecommendations(correlation: any): string[] {
+[7m    [0m [93m                                          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m1041[0m:[93m41[0m - [93mwarning[0m[90m ts(7044): [0mParameter 't' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m1041[0m             threats: group.threats.map((t) => this.mapToCorrelatedThreat(t)),
+[7m    [0m [93m                                        ~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m804[0m:[93m41[0m - [93mwarning[0m[90m ts(7044): [0mParameter 't' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m804[0m             threats: group.threats.map((t) => this.mapToCorrelatedThreat(t)),
+[7m   [0m [93m                                        ~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m682[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'maxDistance' is declared but its value is never read.
+
+[7m682[0m     maxDistance: number,
+[7m   [0m [93m    ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m583[0m:[93m41[0m - [93mwarning[0m[90m ts(7044): [0mParameter 't' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m583[0m             threats: group.threats.map((t) => this.mapToCorrelatedThreat(t)),
+[7m   [0m [93m                                        ~[0m
+[96msrc/lib/security/threat-intelligence/ThreatCorrelationEngine.ts[0m:[93m405[0m:[93m41[0m - [93mwarning[0m[90m ts(7044): [0mParameter 't' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m405[0m             threats: group.threats.map((t) => this.mapToCorrelatedThreat(t)),
+[7m   [0m [93m                                        ~[0m
+
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1551[0m:[93m7[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m1551[0m   get config(): ThreatHuntingSystemConfig {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1536[0m:[93m54[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1536[0m       logger.error('Error during shutdown', { error: error.message })
+[7m    [0m [91m                                                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1493[0m:[93m65[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1493[0m       logger.error('Failed to get hunting statistics', { error: error.message })
+[7m    [0m [91m                                                                ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1441[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1441[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1419[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1419[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1404[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1404[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1373[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1373[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1349[0m:[93m61[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1349[0m       logger.error('Failed to process hunt queue', { error: error.message })
+[7m    [0m [91m                                                            ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1340[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1340[0m             error: error.message,
+[7m    [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1298[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1298[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1261[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1261[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1234[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1234[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m825[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '"file"' is not assignable to type '"process" | "file_hash" | "log_entry" | "network_connection" | "registry_key" | "user_activity"'.
+
+[7m825[0m               type: 'file',
+[7m   [0m [91m              ~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m552[0m:[93m48[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m552[0m             message: `Hunt execution failed: ${error.message}`,
+[7m   [0m [91m                                               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m537[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m537[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m406[0m:[93m61[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m406[0m       logger.error('Failed to create threat hunt', { error: error.message })
+[7m   [0m [91m                                                            ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m347[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m347[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m310[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m310[0m       logger.error('Failed to setup Redis pub/sub', { error: error.message })
+[7m   [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m303[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m303[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m299[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m299[0m           const dataInfo = JSON.parse(message)
+[7m   [0m [91m                                      ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m291[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m291[0m             error: error.message,
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m287[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m287[0m           const huntData = JSON.parse(message)
+[7m   [0m [91m                                      ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m270[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m270[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m235[0m:[93m56[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m235[0m         `Failed to initialize threat hunting system: ${error.message}`,
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m232[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m232[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m184[0m:[93m23[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m184[0m   constructor(private config: ThreatHuntingSystemConfig) {
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m178[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m178[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m177[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'falsePositivesCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m177[0m   private falsePositivesCollection: Collection<FalsePositive>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m176[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'resultsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m176[0m   private resultsCollection: Collection<HuntResult>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m175[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'huntsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m175[0m   private huntsCollection: Collection<ThreatHunt>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m174[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m174[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m173[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m173[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1165[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'executionLog' is declared but its value is never read.
+
+[7m1165[0m     executionLog: ExecutionLogEntry[],
+[7m    [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1119[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'finding' is declared but its value is never read.
+
+[7m1119[0m   private async simulateAIAnalysis(finding: HuntFinding): Promise<any> {
+[7m    [0m [93m                                   ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1025[0m:[93m47[0m - [93mwarning[0m[90m ts(6133): [0m'query' is declared but its value is never read.
+
+[7m1025[0m   private analyzeLateralMovement(data: any[], query: HuntQuery): any[] {
+[7m    [0m [93m                                              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1020[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'query' is declared but its value is never read.
+
+[7m1020[0m   private analyzeMalwareIndicators(data: any[], query: HuntQuery): any[] {
+[7m    [0m [93m                                                ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1015[0m:[93m44[0m - [93mwarning[0m[90m ts(6133): [0m'query' is declared but its value is never read.
+
+[7m1015[0m   private analyzeUserBehavior(data: any[], query: HuntQuery): any[] {
+[7m    [0m [93m                                           ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1010[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'query' is declared but its value is never read.
+
+[7m1010[0m   private analyzeProcesses(data: any[], query: HuntQuery): any[] {
+[7m    [0m [93m                                        ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m1005[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'query' is declared but its value is never read.
+
+[7m1005[0m   private analyzeNetworkConnections(data: any[], query: HuntQuery): any[] {
+[7m    [0m [93m                                                 ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m989[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'scope' is declared but its value is never read.
+
+[7m989[0m   private async collectAuthenticationData(scope: HuntScope): Promise<any[]> {
+[7m   [0m [93m                                          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m976[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'scope' is declared but its value is never read.
+
+[7m976[0m   private async collectFileData(scope: HuntScope): Promise<any[]> {
+[7m   [0m [93m                                ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m963[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'scope' is declared but its value is never read.
+
+[7m963[0m   private async collectUserActivityData(scope: HuntScope): Promise<any[]> {
+[7m   [0m [93m                                        ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m949[0m:[93m37[0m - [93mwarning[0m[90m ts(6133): [0m'scope' is declared but its value is never read.
+
+[7m949[0m   private async collectEndpointData(scope: HuntScope): Promise<any[]> {
+[7m   [0m [93m                                    ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatHuntingSystem.ts[0m:[93m935[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'scope' is declared but its value is never read.
+
+[7m935[0m   private async collectNetworkData(scope: HuntScope): Promise<any[]> {
+[7m   [0m [93m                                   ~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1330[0m:[93m7[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m1330[0m   get config(): ThreatIntelligenceDatabaseConfig {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1315[0m:[93m54[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1315[0m       logger.error('Error during shutdown', { error: error.message })
+[7m    [0m [91m                                                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1291[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1291[0m       logger.error('Failed to import STIX objects', { error: error.message })
+[7m    [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1250[0m:[93m62[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1250[0m       logger.error('Failed to export STIX objects', { error: error.message })
+[7m    [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1193[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1193[0m         error: error.message,
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1143[0m:[93m59[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1143[0m       logger.error('Failed to perform indexing', { error: error.message })
+[7m    [0m [91m                                                          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1117[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1117[0m               error: error.message,
+[7m    [0m [91m                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1059[0m:[93m58[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1059[0m       logger.error('Failed to process malware', { error: error.message })
+[7m    [0m [91m                                                         ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m1021[0m:[93m60[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m1021[0m       logger.error('Failed to process indicator', { error: error.message })
+[7m    [0m [91m                                                           ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m979[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m979[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m881[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m881[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m811[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m811[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m802[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'collection_id' does not exist in type 'WithoutId<TAXIIManifestEntry>'.
+
+[7m802[0m           collection_id: collectionId,
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m783[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m783[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m711[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m711[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m689[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m689[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m657[0m:[93m64[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m657[0m       logger.error('Failed to get TAXII collections', { error: error.message })
+[7m   [0m [91m                                                               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m629[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m629[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m557[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m557[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m428[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m428[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m309[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m309[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m267[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m267[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m224[0m:[93m63[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m224[0m         `Failed to initialize threat intelligence database: ${error.message}`,
+[7m   [0m [91m                                                              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m221[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m221[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m172[0m:[93m23[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m172[0m   constructor(private config: ThreatIntelligenceDatabaseConfig) {
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m168[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m168[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m167[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'manifestCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m167[0m   private manifestCollection: Collection<TAXIIManifestEntry>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m166[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'collectionsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m166[0m   private collectionsCollection: Collection<DatabaseCollection>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m165[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'stixCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m165[0m   private stixCollection: Collection<DatabaseThreatIntelligence>
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m164[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m164[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m163[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m163[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m14[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../encryption' or its corresponding type declarations.
+
+[7m14[0m import { encrypt, decrypt } from '../encryption'
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m13[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../audit-logging' or its corresponding type declarations.
+
+[7m13[0m import { auditLog } from '../audit-logging'
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatIntelligenceDatabase.ts[0m:[93m752[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'total' is declared but its value is never read.
+
+[7m752[0m       const [objects, total] = await Promise.all([
+[7m   [0m [93m                      ~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1918[0m:[93m7[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m1918[0m   get config(): ThreatValidationSystemConfig {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m715[0m:[93m20[0m - [91merror[0m[90m ts(2551): [0mProperty 'validation_types' does not exist on type 'ThreatValidation'. Did you mean 'validation_type'?
+
+[7m715[0m     if (validation.validation_types.includes('compliance')) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m703[0m:[93m20[0m - [91merror[0m[90m ts(2551): [0mProperty 'validation_types' does not exist on type 'ThreatValidation'. Did you mean 'validation_type'?
+
+[7m703[0m     if (validation.validation_types.includes('reliability')) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m691[0m:[93m20[0m - [91merror[0m[90m ts(2551): [0mProperty 'validation_types' does not exist on type 'ThreatValidation'. Did you mean 'validation_type'?
+
+[7m691[0m     if (validation.validation_types.includes('timeliness')) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m679[0m:[93m20[0m - [91merror[0m[90m ts(2551): [0mProperty 'validation_types' does not exist on type 'ThreatValidation'. Did you mean 'validation_type'?
+
+[7m679[0m     if (validation.validation_types.includes('completeness')) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m667[0m:[93m20[0m - [91merror[0m[90m ts(2551): [0mProperty 'validation_types' does not exist on type 'ThreatValidation'. Did you mean 'validation_type'?
+
+[7m667[0m     if (validation.validation_types.includes('accuracy')) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m500[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type '"accuracy" | "completeness" | "timeliness" | "reliability" | "compliance"'.
+
+[7m500[0m         validation_type: queueItem.validation_types[0] || 'accuracy',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m308[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m308[0m           const completionData = JSON.parse(message)
+[7m   [0m [91m                                            ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m293[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Error | null | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m293[0m           const validationData = JSON.parse(message)
+[7m   [0m [91m                                            ~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m184[0m:[93m23[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'config'.
+
+[7m184[0m   constructor(private config: ThreatValidationSystemConfig) {
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m178[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m178[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m177[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'validationHistoryCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m177[0m   private validationHistoryCollection: Collection<ValidationHistoryEntry>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m176[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'threatDataCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m176[0m   private threatDataCollection: Collection<ThreatData>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m175[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'queueCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m175[0m   private queueCollection: Collection<ValidationQueueItem>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m174[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'validationsCollection' has no initializer and is not definitely assigned in the constructor.
+
+[7m174[0m   private validationsCollection: Collection<ThreatValidation>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m173[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'db' has no initializer and is not definitely assigned in the constructor.
+
+[7m173[0m   private db: Db
+[7m   [0m [91m          ~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m172[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m172[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1577[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'gate' is declared but its value is never read.
+
+[7m1577[0m     gate: QualityGate,
+[7m    [0m [93m    ~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1404[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'standard' is declared but its value is never read.
+
+[7m1404[0m     standard: string,
+[7m    [0m [93m    ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1403[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1403[0m     threatData: ThreatData,
+[7m    [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1391[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'source' is declared but its value is never read.
+
+[7m1391[0m   private async checkHistoricalAccuracy(source: string): Promise<{
+[7m    [0m [93m                                        ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1380[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1380[0m   private async checkCorroboratingSources(threatData: ThreatData): Promise<{
+[7m    [0m [93m                                          ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1369[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'source' is declared but its value is never read.
+
+[7m1369[0m   private async assessSourceReliability(source: string): Promise<{
+[7m    [0m [93m                                        ~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1358[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1358[0m   private async checkForRecentData(threatData: ThreatData): Promise<{
+[7m    [0m [93m                                   ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1347[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1347[0m   private async validateAgainstPatterns(threatData: ThreatData): Promise<{
+[7m    [0m [93m                                        ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1336[0m:[93m47[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1336[0m   private async crossReferenceExternalSources(threatData: ThreatData): Promise<{
+[7m    [0m [93m                                              ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1325[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1325[0m   private async checkDataConsistency(threatData: ThreatData): Promise<{
+[7m    [0m [93m                                     ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1298[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m1298[0m   private async simulateAIAnalysis(threatData: ThreatData): Promise<any> {
+[7m    [0m [93m                                   ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1241[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'existingFindings' is declared but its value is never read.
+
+[7m1241[0m     existingFindings: ValidationFinding[],
+[7m    [0m [93m    ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m1072[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'criteria' is declared but its value is never read.
+
+[7m1072[0m     criteria: ValidationCriteria,
+[7m    [0m [93m    ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m756[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'criteria' is declared but its value is never read.
+
+[7m756[0m     criteria: ValidationCriteria,
+[7m   [0m [93m    ~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/ThreatValidationSystem.ts[0m:[93m628[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'validationTypes' is declared but its value is never read.
+
+[7m628[0m   private getValidationCriteria(validationTypes: string[]): ValidationCriteria {
+[7m   [0m [93m                                ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m635[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'stix_taxii' does not exist on type 'ThreatIntelligenceDatabaseConfig'.
+
+[7m635[0m     !threatIntelDatabaseConfig.stix_taxii.taxii_username
+[7m   [0m [91m                               ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m634[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'stix_taxii' does not exist on type 'ThreatIntelligenceDatabaseConfig'.
+
+[7m634[0m     threatIntelDatabaseConfig.stix_taxii.enabled &&
+[7m   [0m [91m                              ~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m456[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'limit' does not exist in type 'FeedFilters'.
+
+[7m456[0m           limit: 1000,
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m420[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'published' does not exist in type 'FeedFilters'.
+
+[7m420[0m           published: true,
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m66[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'algorithm' does not exist in type '{ enabled: boolean; key: string; }'.
+
+[7m66[0m     algorithm: 'aes-256-gcm',
+[7m  [0m [91m    ~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m10[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"./AutomatedThreatResponseOrchestrator"' has no exported member named 'AutomatedThreatResponseOrchestratorConfig'. Did you mean 'AutomatedThreatResponseOrchestrator'?
+
+[7m10[0m import { AutomatedThreatResponseOrchestratorConfig } from './AutomatedThreatResponseOrchestrator'
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m9[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"./ThreatCorrelationEngine"' has no exported member named 'ThreatCorrelationEngineConfig'. Did you mean 'CorrelationEngineConfig'?
+
+[7m9[0m import { ThreatCorrelationEngineConfig } from './ThreatCorrelationEngine'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m8[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"./EdgeThreatDetectionSystem"' has no exported member named 'EdgeThreatDetectionSystemConfig'. Did you mean 'EdgeThreatDetectionSystem'?
+
+[7m8[0m import { EdgeThreatDetectionSystemConfig } from './EdgeThreatDetectionSystem'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m7[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"./GlobalThreatIntelligenceNetwork"' has no exported member named 'GlobalThreatIntelligenceNetworkConfig'. Did you mean 'GlobalThreatIntelligenceNetwork'?
+
+[7m7[0m import { GlobalThreatIntelligenceNetworkConfig } from './GlobalThreatIntelligenceNetwork'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/config.ts[0m:[93m128[0m:[93m58[0m - [93mwarning[0m[90m ts(6133): [0m'location' is declared but its value is never read.
+
+[7m128[0m   edge_locations: baseConfig.regions.edge_locations.map((location, index) => ({
+[7m   [0m [93m                                                         ~~~~~~~~[0m
+
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m941[0m:[93m1[0m - [91merror[0m[90m ts(2308): [0mModule './GlobalThreatIntelligenceNetwork' has already exported a member named 'ThreatIndicator'. Consider explicitly re-exporting to resolve the ambiguity.
+
+[7m941[0m export * from './ExternalThreatFeedIntegration'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m940[0m:[93m1[0m - [91merror[0m[90m ts(2308): [0mModule './GlobalThreatIntelligenceNetwork' has already exported a member named 'ThreatIndicator'. Consider explicitly re-exporting to resolve the ambiguity.
+
+[7m940[0m export * from './ThreatHuntingSystem'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m940[0m:[93m1[0m - [91merror[0m[90m ts(2308): [0mModule './AutomatedThreatResponseOrchestrator' has already exported a member named 'ExecutionLogEntry'. Consider explicitly re-exporting to resolve the ambiguity.
+
+[7m940[0m export * from './ThreatHuntingSystem'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m937[0m:[93m1[0m - [91merror[0m[90m ts(2308): [0mModule './GlobalThreatIntelligenceNetwork' has already exported a member named 'ThreatIndicator'. Consider explicitly re-exporting to resolve the ambiguity.
+
+[7m937[0m export * from './ThreatCorrelationEngine'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m936[0m:[93m1[0m - [91merror[0m[90m ts(2308): [0mModule './GlobalThreatIntelligenceNetwork' has already exported a member named 'ThreatIndicator'. Consider explicitly re-exporting to resolve the ambiguity.
+
+[7m936[0m export * from './EdgeThreatDetectionSystem'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m198[0m:[93m29[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m198[0m       const edgeDetection = new EdgeThreatDetectionSystem(
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m199[0m         this.networkConfig.edge,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m200[0m       )
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m28[0m:[93m8[0m - [91merror[0m[90m ts(2613): [0mModule '"/home/vivi/pixelated/src/lib/security/threat-intelligence/ExternalThreatFeedIntegration"' has no default export. Did you mean to use 'import { ExternalThreatFeedIntegration } from "/home/vivi/pixelated/src/lib/security/threat-intelligence/ExternalThreatFeedIntegration"' instead?
+
+[7m28[0m import ExternalThreatFeedIntegration, {
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./AutomatedThreatResponseOrchestrator"' has no exported member named 'AutomatedThreatResponseOrchestratorConfig'. Did you mean 'AutomatedThreatResponseOrchestrator'?
+
+[7m23[0m   AutomatedThreatResponseOrchestratorConfig,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./ThreatCorrelationEngine"' has no exported member named 'ThreatCorrelationEngineConfig'. Did you mean 'CorrelationEngineConfig'?
+
+[7m17[0m   ThreatCorrelationEngineConfig,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./EdgeThreatDetectionSystem"' has no exported member named 'EdgeThreatDetectionSystemConfig'. Did you mean 'EdgeThreatDetectionSystem'?
+
+[7m14[0m   EdgeThreatDetectionSystemConfig,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./GlobalThreatIntelligenceNetwork"' has no exported member named 'GlobalThreatIntelligenceNetworkConfig'. Did you mean 'GlobalThreatIntelligenceNetwork'?
+
+[7m11[0m   GlobalThreatIntelligenceNetworkConfig,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m376[0m:[93m58[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m376[0m     responseOrchestrator.on('response:triggered', async (event) => {
+[7m   [0m [93m                                                         ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m371[0m:[93m47[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m371[0m     huntingSystem.on('hunt:completed', async (event) => {
+[7m   [0m [93m                                              ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m366[0m:[93m56[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m366[0m     validationSystem.on('validation:completed', async (event) => {
+[7m   [0m [93m                                                       ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m361[0m:[93m54[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m361[0m     feedIntegration.on('feed:sync_completed', async (event) => {
+[7m   [0m [93m                                                     ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m356[0m:[93m48[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m356[0m     edgeDetection.on('threat:detected', async (event) => {
+[7m   [0m [93m                                               ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m351[0m:[93m50[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m351[0m     globalNetwork.on('threat:correlated', async (event) => {
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/lib/security/threat-intelligence/index.ts[0m:[93m347[0m:[93m48[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m347[0m     globalNetwork.on('threat:detected', async (event) => {
+[7m   [0m [93m                                               ~~~~~[0m
+
+[96msrc/lib/server-only/MentalLLaMAPythonBridge.ts[0m:[93m10[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'baseLogger'.
+
+[7m10[0m const logger = baseLogger
+[7m  [0m [91m               ~~~~~~~~~~[0m
+[96msrc/lib/server-only/MentalLLaMAPythonBridge.ts[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../types/index.ts' or its corresponding type declarations.
+
+[7m6[0m } from '../types/index.ts'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/ComponentIntegrationService.ts[0m:[93m31[0m:[93m47[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ type: "line" | "bar" | "pie" | "scatter"; category?: "progress" | "sessions" | "emotions" | "outcomes" | undefined; timeRange?: number | undefined; clientId?: string | undefined; sessionId?: string | undefined; dataPoints?: number | undefined; }' to type 'Record<string, string>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'timeRange' is incompatible with index signature.
+
+[7m31[0m       const queryParams = new URLSearchParams(params as Record<string, string>)
+[7m  [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/bias-detection-optimized.ts[0m:[93m481[0m:[93m9[0m - [91merror[0m[90m ts(2740): [0mType '{}' is missing the following properties from type '{ total_analyses: number; avg_bias_score: number; high_alerts: number; low_alerts: number; last_analysis: string | null; trend: "stable" | "improving" | "worsening"; }': total_analyses, avg_bias_score, high_alerts, low_alerts, and 2 more.
+
+[7m481[0m         return cached
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/lib/services/bias-detection-optimized.ts[0m:[93m12[0m:[93m26[0m - [91merror[0m[90m ts(2559): [0mType '"bias-detection"' has no properties in common with type 'LoggerOptions'.
+
+[7m12[0m const logger = getLogger('bias-detection')
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/bias-detection-optimized.ts[0m:[93m563[0m:[93m52[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m563[0m       const batchPromises = batch.map(async (text, index) => {
+[7m   [0m [93m                                                   ~~~~~[0m
+[96msrc/lib/services/bias-detection-optimized.ts[0m:[93m537[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'options' is declared but its value is never read.
+
+[7m537[0m     options: {
+[7m   [0m [93m    ~~~~~~~[0m
+
+[96msrc/lib/services/cdn-optimizer.ts[0m:[93m293[0m:[93m40[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ width?: number | undefined; height?: number | undefined; quality?: number | undefined; format?: string | undefined; } | undefined' is not assignable to parameter of type '{ width?: number | undefined; height?: number | undefined; quality?: number | undefined; format?: "png" | "jpeg" | "webp" | "avif" | undefined; } | undefined'.
+  Type '{ width?: number | undefined; height?: number | undefined; quality?: number | undefined; format?: string | undefined; }' is not assignable to type '{ width?: number | undefined; height?: number | undefined; quality?: number | undefined; format?: "png" | "jpeg" | "webp" | "avif" | undefined; }'.
+
+[7m293[0m         this.optimizeImage(asset.path, asset.options),
+[7m   [0m [91m                                       ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/cdn-optimizer.ts[0m:[93m9[0m:[93m26[0m - [91merror[0m[90m ts(2559): [0mType '"cdn-optimizer"' has no properties in common with type 'LoggerOptions'.
+
+[7m9[0m const logger = getLogger('cdn-optimizer')
+[7m [0m [91m                         ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/emotion-tracking-types.ts[0m:[93m41[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m41[0m   timestamp: z.string().datetime(),
+[7m  [0m [93m                        ~~~~~~~~[0m
+[96msrc/lib/services/emotion-tracking-types.ts[0m:[93m25[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m25[0m   timestamp: z.string().datetime(),
+[7m  [0m [93m                        ~~~~~~~~[0m
+
+[96msrc/lib/services/health-monitor.ts[0m:[93m224[0m:[93m52[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m224[0m         message: _error instanceof Error ? _String(error) : 'Disk check failed',
+[7m   [0m [91m                                                   ~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m224[0m:[93m44[0m - [91merror[0m[90m ts(2304): [0mCannot find name '_String'.
+
+[7m224[0m         message: _error instanceof Error ? _String(error) : 'Disk check failed',
+[7m   [0m [91m                                           ~~~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m189[0m:[93m45[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m189[0m           _error instanceof Error ? _String(error) : 'Memory check failed',
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m189[0m:[93m37[0m - [91merror[0m[90m ts(2304): [0mCannot find name '_String'.
+
+[7m189[0m           _error instanceof Error ? _String(error) : 'Memory check failed',
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m149[0m:[93m45[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m149[0m           _error instanceof Error ? _String(error) : 'System check failed',
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m149[0m:[93m37[0m - [91merror[0m[90m ts(2304): [0mCannot find name '_String'.
+
+[7m149[0m           _error instanceof Error ? _String(error) : 'System check failed',
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m77[0m:[93m56[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m77[0m             message: _error instanceof Error ? _String(error) : 'Unknown error',
+[7m  [0m [91m                                                       ~~~~~[0m
+[96msrc/lib/services/health-monitor.ts[0m:[93m77[0m:[93m48[0m - [91merror[0m[90m ts(2304): [0mCannot find name '_String'.
+
+[7m77[0m             message: _error instanceof Error ? _String(error) : 'Unknown error',
+[7m  [0m [91m                                               ~~~~~~~[0m
+
+[96msrc/lib/services/integration-test.ts[0m:[93m290[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'biasScore' does not exist on type 'AnalysisResult'.
+
+[7m290[0m         biasResult?.biasScore !== undefined
+[7m   [0m [91m                    ~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m265[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'messages' does not exist in type 'TherapeuticSession'.
+
+[7m265[0m         messages: [{ content: sessionText, role: 'user' }],
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m242[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeText' does not exist on type 'MultidimensionalEmotionMapper'.
+
+[7m242[0m       const emotionResult = await this.emotionMapper.analyzeText(sessionText)
+[7m   [0m [91m                                                     ~~~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m216[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeText' does not exist on type 'MultidimensionalEmotionMapper'.
+
+[7m216[0m       const result = await this.emotionMapper.analyzeText(testText, {
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m202[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'biasScore' does not exist on type 'AnalysisResult'.
+
+[7m202[0m         typeof result.biasScore === 'number'
+[7m   [0m [91m                      ~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m200[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'biasScore' does not exist on type 'AnalysisResult'.
+
+[7m200[0m         result.biasScore !== undefined &&
+[7m   [0m [91m               ~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m197[0m:[93m59[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ messages: { content: string; role: string; }[]; sessionId: string; timestamp: number; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ messages: { content: string; role: string; }[]; sessionId: string; timestamp: number; }' is missing the following properties from type 'TherapeuticSession': sessionDate, participantDemographics, scenario, content, and 5 more.
+
+[7m197[0m       const result = await this.biasEngine.analyzeSession(sessionData)
+[7m   [0m [91m                                                          ~~~~~~~~~~~[0m
+[96msrc/lib/services/integration-test.ts[0m:[93m164[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"medium"' is not assignable to type '"tc128" | "tc192" | "tc256"'.
+
+[7m164[0m         securityLevel: 'medium',
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m474[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'EventType'.
+
+[7m474[0m               type: 'concurrency_test' as unknown as string,
+[7m   [0m [91m              ~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m317[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'emotionResult' is of type 'unknown'.
+
+[7m317[0m         emotionResult['primary'] !== undefined &&
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m304[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"medium"' is not assignable to type '"tc128" | "tc192" | "tc256"'.
+
+[7m304[0m         securityLevel: 'medium',
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m292[0m:[93m40[0m - [91merror[0m[90m ts(2551): [0mProperty 'sendNotification' does not exist on type 'NotificationService'. Did you mean 'getNotifications'?
+
+[7m292[0m         await this.notificationService.sendNotification({
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m285[0m:[93m27[0m - [91merror[0m[90m ts(18046): [0m'emotionResult' is of type 'unknown'.
+
+[7m285[0m           emotionPrimary: emotionResult['primary'],
+[7m   [0m [91m                          ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m280[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'event' does not exist in type '{ type: EventType; priority: EventPriority; timestamp: number; properties: Record<string | number | symbol, unknown>; metadata: Record<string | number | symbol, unknown>; userId?: string | undefined; sessionId?: string | undefined; }'.
+
+[7m280[0m         event: 'cross_service_test',
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m259[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'messages' does not exist in type 'TherapeuticSession'.
+
+[7m259[0m         messages: [{ content: sessionText, role: 'user' }],
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m200[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'healthCheck' does not exist on type 'EmailService'.
+
+[7m200[0m         this.emailService.healthCheck?.() || Promise.resolve(true),
+[7m   [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m199[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'healthCheck' does not exist on type 'ContactService'.
+
+[7m199[0m         this.contactService.healthCheck?.() || Promise.resolve(true),
+[7m   [0m [91m                            ~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m198[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'healthCheck' does not exist on type 'NotificationService'.
+
+[7m198[0m         this.notificationService.healthCheck?.() || Promise.resolve(true),
+[7m   [0m [91m                                 ~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m197[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'healthCheck' does not exist on type 'AnalyticsService'.
+
+[7m197[0m         this.analyticsService.healthCheck?.() || Promise.resolve(true),
+[7m   [0m [91m                              ~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m195[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'healthCheck' does not exist on type 'MemoryService'.
+
+[7m195[0m         this.memoryService.healthCheck?.() || Promise.resolve(true),
+[7m   [0m [91m                           ~~~~~~~~~~~[0m
+[96msrc/lib/services/phase3-integration-test.ts[0m:[93m62[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'retryAttempts' does not exist in type 'RedisServiceConfig'.
+
+[7m62[0m       retryAttempts: 3,
+[7m  [0m [91m      ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/analytics/AnalyticsService.mock.ts[0m:[93m13[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'options' is declared but its value is never read.
+
+[7m13[0m   private options: AnalyticsServiceOptions
+[7m  [0m [93m          ~~~~~~~[0m
+
+[96msrc/lib/services/analytics/AnalyticsService.ts[0m:[93m232[0m:[93m50[0m - [91merror[0m[90m ts(2554): [0mExpected 6 arguments, but got 3.
+
+[7m232[0m       const metricJsons = await this.redisClient.zrangebyscore(
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/analytics/AnalyticsService.ts[0m:[93m193[0m:[93m45[0m - [91merror[0m[90m ts(2554): [0mExpected 6 arguments, but got 3.
+
+[7m193[0m         eventJsons = await this.redisClient.zrangebyscore(
+[7m   [0m [91m                                            ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/analytics/AnalyticsService.ts[0m:[93m135[0m:[93m31[0m - [91merror[0m[90m ts(18046): [0m'events' is of type 'unknown'.
+
+[7m135[0m       for (const eventJson of events) {
+[7m   [0m [91m                              ~~~~~~[0m
+[96msrc/lib/services/analytics/AnalyticsService.ts[0m:[93m130[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'events' is of type 'unknown'.
+
+[7m130[0m       if (events.length === 0) {
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/services/analytics/AnalyticsService.ts[0m:[93m30[0m:[93m60[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m30[0m   return `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m  [0m [93m                                                           ~~~~~~[0m
+
+[96msrc/lib/services/analytics/analytics-types.ts[0m:[93m47[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m47[0m   tags: z.record(z.string()).default({}),
+[7m  [0m [91m          ~~~~~~[0m
+[96msrc/lib/services/analytics/analytics-types.ts[0m:[93m30[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m30[0m   metadata: z.record(z.unknown()).default({}),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/services/analytics/analytics-types.ts[0m:[93m29[0m:[93m17[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m29[0m   properties: z.record(z.unknown()).default({}),
+[7m  [0m [91m                ~~~~~~[0m
+[96msrc/lib/services/analytics/analytics-types.ts[0m:[93m25[0m:[93m15[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(entries: typeof EventPriority, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>' of 'z.nativeEnum' is deprecated.
+
+[7m25[0m   priority: z.nativeEnum(EventPriority).default(EventPriority.NORMAL),
+[7m  [0m [93m              ~~~~~~~~~~[0m
+[96msrc/lib/services/analytics/analytics-types.ts[0m:[93m24[0m:[93m11[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(entries: typeof EventType, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>' of 'z.nativeEnum' is deprecated.
+
+[7m24[0m   type: z.nativeEnum(EventType),
+[7m  [0m [93m          ~~~~~~~~~~[0m
+
+[96msrc/lib/services/analytics/__tests__/AnalyticsService.test.ts[0m:[93m69[0m:[93m29[0m - [91merror[0m[90m ts(1093): [0mType annotation cannot appear on a constructor declaration.
+
+[7m69[0m   constructor(url: string): void {
+[7m  [0m [91m                            ~~~~[0m
+
+[96msrc/lib/services/backup/index.ts[0m:[93m47[0m:[93m41[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m47[0m     emailRecipients: z.array(z.string().email()).optional(),
+[7m  [0m [93m                                        ~~~~~[0m
+
+[96msrc/lib/services/contact/ContactService.ts[0m:[93m193[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<unknown>'.
+
+[7m193[0m         const validationError = error.errors[0]
+[7m   [0m [91m                                      ~~~~~~[0m
+[96msrc/lib/services/contact/ContactService.ts[0m:[93m19[0m:[93m6[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m19[0m     .email('Invalid email format')
+[7m  [0m [93m     ~~~~~[0m
+
+[96msrc/lib/services/contact/__tests__/ContactService.test.ts[0m:[93m33[0m:[93m55[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m33[0m const MockedEmailService = EmailService as unknown as vi.MockedClass<
+[7m  [0m [91m                                                      ~~[0m
+
+[96msrc/lib/services/email/EmailService.ts[0m:[93m38[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m38[0m   metadata: z.record(z.string()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/services/email/EmailService.ts[0m:[93m28[0m:[93m20[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m28[0m   templateModel: z.record(z.unknown()),
+[7m  [0m [91m                   ~~~~~~[0m
+[96msrc/lib/services/email/EmailService.ts[0m:[93m26[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m26[0m   to: z.string().email(),
+[7m  [0m [93m                 ~~~~~[0m
+[96msrc/lib/services/email/EmailService.ts[0m:[93m19[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m19[0m   replyTo: z.string().email().optional(),
+[7m  [0m [93m                      ~~~~~[0m
+[96msrc/lib/services/email/EmailService.ts[0m:[93m18[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m18[0m   from: z.string().email(),
+[7m  [0m [93m                   ~~~~~[0m
+
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m544[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'subscriptionKey' does not exist on type 'NotificationService'.
+
+[7m544[0m       this.subscriptionKey,
+[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m543[0m:[93m53[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m543[0m     const subscription = await (redis as unknown as RedisCommands).hget(
+[7m   [0m [91m                                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m533[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'subscriptionKey' does not exist on type 'NotificationService'.
+
+[7m533[0m     await (redis as unknown as RedisCommands).hdel(this.subscriptionKey, userId)
+[7m   [0m [91m                                                        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m533[0m:[93m32[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m533[0m     await (redis as unknown as RedisCommands).hdel(this.subscriptionKey, userId)
+[7m   [0m [91m                               ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m522[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'subscriptionKey' does not exist on type 'NotificationService'.
+
+[7m522[0m       this.subscriptionKey,
+[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m521[0m:[93m32[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m521[0m     await (redis as unknown as RedisCommands).hset(
+[7m   [0m [91m                               ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m481[0m:[93m54[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m481[0m     const notifications = await (redis as unknown as RedisCommands).hgetall(
+[7m   [0m [91m                                                     ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m460[0m:[93m54[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m460[0m     const notifications = await (redis as unknown as RedisCommands).hgetall(
+[7m   [0m [91m                                                     ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m431[0m:[93m53[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m431[0m     const notification = await (redis as unknown as RedisCommands).hget(
+[7m   [0m [91m                                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m411[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'processingKey' does not exist on type 'NotificationService'.
+
+[7m411[0m           this.processingKey,
+[7m   [0m [91m               ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m410[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m410[0m         await (redis as unknown as RedisCommands).lrem(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m403[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m403[0m         await (redis as unknown as RedisCommands).hset(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m385[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'processingKey' does not exist on type 'NotificationService'.
+
+[7m385[0m           this.processingKey,
+[7m   [0m [91m               ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m384[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m384[0m         await (redis as unknown as RedisCommands).lrem(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m377[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
