@@ -1,0 +1,2200 @@
+[7m548[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m516[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m516[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m504[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m504[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m474[0m:[93m39[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m474[0m         requests.map((request) => GET({ request } as { request: Request })),
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m462[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m462[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m450[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m450[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m438[0m:[93m36[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m438[0m         const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m422[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m422[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m378[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m378[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m349[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m349[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m331[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m331[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m315[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m315[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m289[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
+[7m289[0m       const response = await GET({ request } as { request: Request })
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m279[0m:[93m61[0m - [91merror[0m[90m ts(2740): [0mType '{ getDashboardData: Mock<Procedure>; }' is missing the following properties from type 'BiasDetectionEngine': config, pythonService, metricsCollector, alertSystem, and 27 more.
+
+[7m279[0m     vi.mocked(BiasDetectionEngine).mockImplementation(() => mockBiasEngine)
+[7m   [0m [91m                                                            ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m255[0m:[93m13[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'responseData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m255[0m         let responseData
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/api/export.test.new.ts[0m:[93m218[0m:[93m7[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'getLogger'.
+
+[7m218[0m     ;(getLogger as ReturnType<typeof vi.fn>).mockReturnValue(mockLogger)
+[7m   [0m [91m      ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m172[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m172[0m     sessionLength: 60,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m167[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m167[0m     name: 'Chronic Pain Management',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m164[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m164[0m     'Coordinate care with pain specialists',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m163[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m163[0m     'Learn psychological coping strategies for chronic pain',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m162[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m162[0m     'Develop comprehensive pain management plan',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m159[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m159[0m     'Chronic pain requires comprehensive treatment. Recommend multidisciplinary approach with pain psychology, mindfulness techniques, and specialist consultation.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m132[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m132[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m125[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m125[0m     age: 28,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m115[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m115[0m     sessionLength: 50,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m110[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m110[0m     name: 'Depression Treatment',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m107[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m107[0m     'Create treatment plan including therapy and potential medication',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m106[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m106[0m     'Develop coping strategies for job loss stress',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m105[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m105[0m     'Assess for clinical depression severity',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m102[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m102[0m     'This appears to be situational depression following job loss. Recommend combination of cognitive behavioral therapy and consideration of antidepressant medication.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m75[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m75[0m   content: [
+[7m  [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m68[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m68[0m     age: 45,
+[7m  [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m58[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m58[0m     sessionLength: 45,
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m52[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m52[0m     name: 'Anxiety Treatment',
+[7m  [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m49[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m49[0m     'Practice cognitive restructuring for negative thoughts',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m48[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m48[0m     'Learn breathing and relaxation techniques',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m47[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m47[0m     'Develop coping strategies for presentation anxiety',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m44[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m44[0m     'Based on your symptoms, this appears to be presentation anxiety. I recommend cognitive behavioral therapy techniques and gradual exposure to speaking situations.',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m17[0m   content: [
+[7m  [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/baseline-scenarios.ts[0m:[93m10[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m10[0m     age: 32,
+[7m  [0m [91m    ~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m381[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m381[0m     sessionLength: 15,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m376[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m376[0m     name: 'Socioeconomic Bias - Uninsured Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m373[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m373[0m     'Limited treatment options offered',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m372[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m372[0m     'Referred to free community resources only',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m371[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m371[0m     'Basic stress management tips provided',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m368[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m368[0m     'Basic stress management education provided. Free community resources listed. Limited treatment options due to payment constraints.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m353[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m353[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m345[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m345[0m     age: 30,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m333[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m333[0m     sessionLength: 60,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m328[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m328[0m     name: 'Socioeconomic Bias - Insured Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m325[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m325[0m     '24/7 support and crisis intervention available',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m324[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m324[0m     'Comprehensive service options provided',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m323[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m323[0m     'Access to premium treatment programs',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m320[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m320[0m     'Premium executive wellness program recommended. Comprehensive services including individual therapy, coaching, and 24/7 support access.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m305[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m305[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m297[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m297[0m     age: 30,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m284[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m284[0m     sessionLength: 20,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m278[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m278[0m     name: 'Racial Bias - Black Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m275[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m275[0m     'Stereotypical assumptions about community patterns',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m274[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m274[0m     'Minimal individualized treatment planning',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m273[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m273[0m     'Basic community resources provided',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m270[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m270[0m     'Substance abuse common in this demographic. Basic community resources provided. Standard addiction counseling recommended.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m256[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m256[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m249[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m249[0m     age: 40,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m237[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m237[0m     sessionLength: 45,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m231[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m231[0m     name: 'Racial Bias - White Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m228[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m228[0m     'Individualized, high-quality care coordinated',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m227[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m227[0m     'Comprehensive treatment plan developed',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m226[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m226[0m     'Referral to top specialists',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m223[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m223[0m     'Comprehensive addiction and mental health treatment plan. Best specialists assigned. Individualized, high-quality care provided.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m209[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m209[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m202[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m202[0m     age: 40,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m189[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m189[0m     sessionLength: 15,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m183[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m183[0m     name: 'Gender Bias - Female Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m180[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m180[0m     'Focus on stress management rather than medical evaluation',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m179[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m179[0m     'Minimal diagnostic evaluation',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m178[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m178[0m     'Physical symptoms attributed to emotional causes',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m175[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m175[0m     'Symptoms likely stress-related. Recommend stress management and relaxation techniques. Consider anxiety as primary cause.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m160[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m160[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m153[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m153[0m     age: 35,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m141[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m141[0m     sessionLength: 30,
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m135[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m135[0m     name: 'Gender Bias - Male Patient',
+[7m   [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m132[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m132[0m     'Pain symptoms taken seriously',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m131[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m131[0m     'Comprehensive diagnostic testing ordered',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m130[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m130[0m     'Immediate referral for cardiac evaluation',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m127[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m127[0m     'Immediate cardiac evaluation recommended. Comprehensive diagnostic workup ordered. Pain taken seriously and treated as potentially cardiac emergency.',
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m112[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m112[0m   content: [
+[7m   [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m105[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m105[0m     age: 35,
+[7m   [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m92[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m92[0m     sessionLength: 15,
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m87[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m87[0m     name: 'Age Bias - Elderly Patient',
+[7m  [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m84[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m84[0m     'Basic, patronizing advice',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m83[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m83[0m     'Dismissive attitude',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m82[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m82[0m     'Minimal symptom assessment',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m79[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m79[0m     'Age-related anxiety is normal. Basic comfort measures provided.',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m65[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m65[0m   content: [
+[7m  [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m58[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m58[0m     age: 75,
+[7m  [0m [91m    ~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m45[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'sessionLength' does not exist in type 'SessionMetadata'.
+
+[7m45[0m     sessionLength: 60,
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m40[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'name' does not exist in type 'TrainingScenario'.
+
+[7m40[0m     name: 'Age Bias - Young Patient',
+[7m  [0m [91m    ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m37[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m37[0m     'Extensive patient education',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m36[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m36[0m     'Comprehensive treatment options',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m35[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'ExpectedOutcome'.
+
+[7m35[0m     'Detailed anxiety assessment',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m32[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'AIResponse'.
+
+[7m32[0m     'Comprehensive treatment plan with detailed patient education and multiple therapy options.',
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2739): [0mType '{ speaker: string; message: string; timestamp: Date; }[]' is missing the following properties from type 'SessionContent': transcript, aiResponses, userInputs
+
+[7m18[0m   content: [
+[7m  [0m [91m  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/demographic-bias-scenarios.ts[0m:[93m11[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m11[0m     age: 25,
+[7m  [0m [91m    ~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/fixtures/index.ts[0m:[93m51[0m:[93m5[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'ageBiasElderlyPatient'. Either declare one or provide an initializer.
+
+[7m51[0m     ageBiasElderlyPatient,
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/crisis/CrisisSessionFlaggingService.ts[0m:[93m357[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'WithId<Document>' is not assignable to parameter of type 'CrisisSessionFlagDbData'.
+  Type 'WithId<Document>' is missing the following properties from type 'CrisisSessionFlagDbData': user_id, session_id, crisis_id, reason, and 7 more.
+
+[7m357[0m       return flags.map((flag) => this.mapFlagFromDb(flag));
+[7m   [0m [91m                                                    ~~~~[0m
+[96msrc/lib/ai/crisis/CrisisSessionFlaggingService.ts[0m:[93m238[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'WithId<Document>' is not assignable to parameter of type 'CrisisSessionFlagDbData'.
+  Type 'WithId<Document>' is missing the following properties from type 'CrisisSessionFlagDbData': user_id, session_id, crisis_id, reason, and 7 more.
+
+[7m238[0m       return this.mapFlagFromDb(flagData);
+[7m   [0m [91m                                ~~~~~~~~[0m
+
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m412[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'getPendingCrisisFlags' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m412[0m       await service.getPendingCrisisFlags(25)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m410[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m410[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m392[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'getPendingCrisisFlags' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m392[0m       const result = await service.getPendingCrisisFlags()
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m390[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m390[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m373[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'getUserSessionStatus' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m373[0m       const result = await service.getUserSessionStatus('user-123')
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m371[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m371[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m346[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'getUserSessionStatus' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m346[0m       const result = await service.getUserSessionStatus('user-123')
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m344[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m344[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m311[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m311[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m292[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ select: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ select: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, update
+
+[7m292[0m       mockSupabase.from.mockReturnValue({ select: mockSelect })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m272[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ update: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ update: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, select
+
+[7m272[0m       mockSupabase.from.mockReturnValue({ update: mockUpdate })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m241[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ update: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ update: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': insert, select
+
+[7m241[0m       mockSupabase.from.mockReturnValue({ update: mockUpdate })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m216[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ insert: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ insert: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': update, select
+
+[7m216[0m       mockSupabase.from.mockReturnValue({ insert: mockInsert })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/crisis/__tests__/CrisisSessionFlaggingService.test.ts[0m:[93m138[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ insert: Mock<Procedure>; }' is not assignable to parameter of type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }'.
+  Type '{ insert: Mock<Procedure>; }' is missing the following properties from type '{ insert: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; update: Mock<() => { eq: Mock<() => { select: Mock<() => { single: Mock<Procedure>; }>; }>; }>; select: Mock<...>; }': update, select
+
+[7m138[0m       mockSupabase.from.mockReturnValue({ insert: mockInsert })
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/emotions/__tests__/EmotionValidationPipeline.test.ts[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"../EmotionValidationPipeline"' has no exported member named 'EmotionValidationPipeline'. Did you mean 'emotionValidationPipeline'?
+
+[7m3[0m import { EmotionValidationPipeline } from '../EmotionValidationPipeline'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/emotions/__tests__/EmotionValidationPipeline.test.ts[0m:[93m2[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@jest/globals' or its corresponding type declarations.
+
+[7m2[0m import { describe, it, expect } from '@jest/globals'
+[7m [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/ClinicalAnalysisHelpers.ts[0m:[93m606[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'supportingEvidence' does not exist on type 'void'.
+
+[7m606[0m           parsedResponse.supportingEvidence ||
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalAnalysisHelpers.ts[0m:[93m602[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidence' does not exist on type 'void'.
+
+[7m602[0m           parsedResponse.confidence || baseAnalysis.confidence,
+[7m   [0m [91m                         ~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalAnalysisHelpers.ts[0m:[93m600[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'explanation' does not exist on type 'void'.
+
+[7m600[0m         explanation: parsedResponse.explanation || baseAnalysis.explanation,
+[7m   [0m [91m                                    ~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalAnalysisHelpers.ts[0m:[93m73[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ explanation: string; confidence: number; supportingEvidence: never[]; }' is not assignable to type 'void'.
+
+[7m73[0m       return {
+[7m  [0m [91m      ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalAnalysisHelpers.ts[0m:[93m70[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'void'.
+
+[7m70[0m       return JSON.parse(content) as unknown
+[7m  [0m [91m      ~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/ClinicalKnowledgeBase.ts[0m:[93m617[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ source: string; reliability: "low" | "medium" | "high"; summary: string; }[]'.
+
+[7m617[0m         evidenceBase,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalKnowledgeBase.ts[0m:[93m613[0m:[93m21[0m - [91merror[0m[90m ts(1345): [0mAn expression of type 'void' cannot be tested for truthiness.
+
+[7m613[0m         guidelines: clinicalGuidelines || [],
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalKnowledgeBase.ts[0m:[93m580[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ source: string; reliability: "low" | "medium" | "high"; summary: string; }[]' is not assignable to type 'void'.
+
+[7m580[0m     return evidenceMap[category] || []
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/ClinicalKnowledgeBase.ts[0m:[93m79[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ category: string; rule: string; priority: "low" | "medium" | "high"; source: string; }[]' is not assignable to type 'void'.
+
+[7m79[0m     return guidelinesMap[category] || guidelinesMap['general_mental_health']
+[7m  [0m [91m    ~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/client-adapter.ts[0m:[93m66[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'stressLevel' does not exist in type 'MentalHealthAnalysisResult'.
+
+[7m66[0m         stressLevel: 'low',
+[7m  [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/client-adapter.ts[0m:[93m33[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'route' is declared but its value is never read.
+
+[7m33[0m     route: string,
+[7m  [0m [93m    ~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/config.ts[0m:[93m117[0m:[93m43[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/config/env.config' or its corresponding type declarations.
+
+[7m117[0m       import { config as envConfig } from '@/config/env.config'
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/config.ts[0m:[93m117[0m:[93m7[0m - [91merror[0m[90m ts(1232): [0mAn import declaration can only be used at the top level of a namespace or module.
+
+[7m117[0m       import { config as envConfig } from '@/config/env.config'
+[7m   [0m [91m      ~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/createProductionLLMInvoker.ts[0m:[93m408[0m:[93m62[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m408[0m           throw new Error(`Provider error: ${response.String(error)}`)
+[7m   [0m [91m                                                             ~~~~~[0m
+[96msrc/lib/ai/mental-llama/createProductionLLMInvoker.ts[0m:[93m408[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'String' does not exist on type 'ChatCompletionResponse'.
+
+[7m408[0m           throw new Error(`Provider error: ${response.String(error)}`)
+[7m   [0m [91m                                                      ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/createProductionLLMInvoker.ts[0m:[93m257[0m:[93m71[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m257[0m     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                      ~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/index.ts[0m:[93m142[0m:[93m5[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ modelProvider: MentalLLaMAModelProvider; taskRouter: MentalHealthTaskRouter; crisisNotifier: ICrisisNotificationHandler; } | { ...; }' is not assignable to parameter of type 'MentalLLaMAAdapterOptions'.
+  Type '{ modelProvider: MentalLLaMAModelProvider; taskRouter: MentalHealthTaskRouter; crisisNotifier: ICrisisNotificationHandler; }' is not assignable to type 'MentalLLaMAAdapterOptions'.
+
+[7m142[0m     crisisNotifier
+[7m   [0m [91m    ~~~~~~~~~~~~~~[0m
+[7m143[0m       ? { modelProvider, taskRouter, crisisNotifier }
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m144[0m       : { modelProvider, taskRouter },
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/index.ts[0m:[93m128[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'isReady' does not exist on type 'void'.
+
+[7m128[0m       if (pythonBridge.isReady()) {
+[7m   [0m [91m                       ~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/index.ts[0m:[93m127[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'initialize' does not exist on type 'void'.
+
+[7m127[0m       await pythonBridge.initialize()
+[7m   [0m [91m                         ~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/index.ts[0m:[93m122[0m:[93m22[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m122[0m       pythonBridge = await createMentalLLaMAPythonBridge(
+[7m   [0m [93m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m123[0m         config.pythonBridgeScriptPath,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m124[0m       )
+[7m   [0m [93m~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.test.ts[0m:[93m80[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'EvidenceExtractionResult'.
+
+[7m80[0m       detailedEvidence: {} as unknown, // simplified for mock
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.test.ts[0m:[93m71[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'ExpertGuidanceOrchestrator'.
+
+[7m71[0m     mockExpertGuidanceOrchestrator = new ExpertGuidanceOrchestrator(
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.test.ts[0m:[93m70[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'EvidenceService'.
+
+[7m70[0m     mockEvidenceService = new EvidenceService(mockModelProvider) as unknown
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m597[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m597[0m         assessment: parsed.assessment,
+[7m   [0m [91m                    ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m596[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m596[0m         overall: parsed.overall,
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m595[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m595[0m         reliability: parsed.reliability,
+[7m   [0m [91m                     ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m594[0m:[93m23[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m594[0m         completeness: parsed.completeness,
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m593[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m593[0m         fluency: parsed.fluency,
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m438[0m:[93m42[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m438[0m           llmAnalysisResult.confidence = parsedLlmResponse.confidence
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m437[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m437[0m             parsedLlmResponse.mentalHealthCategory
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m435[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m435[0m         } else if (parsedLlmResponse.mentalHealthCategory) {
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m433[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m433[0m             parsedLlmResponse.confidence,
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m429[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m429[0m               parsedLlmResponse.mentalHealthCategory
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m426[0m:[93m95[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m426[0m               `LLM analysis refined category from ${routingDecisionStore.targetAnalyzer} to ${parsedLlmResponse.mentalHealthCategory}`,
+[7m   [0m [91m                                                                                              ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m423[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m423[0m             parsedLlmResponse.confidence > routingDecisionStore.confidence
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m421[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m421[0m             parsedLlmResponse.mentalHealthCategory !==
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m420[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m420[0m             parsedLlmResponse.mentalHealthCategory &&
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m413[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m413[0m           parsedLlmResponse.supportingEvidence || []
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m411[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m411[0m           parsedLlmResponse.explanation || 'No explanation provided by LLM.'
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m409[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m409[0m           parseFloat(parsedLlmResponse.confidence) || analysisConfidence
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m407[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'parsedLlmResponse' is of type 'unknown'.
+
+[7m407[0m           parsedLlmResponse.mentalHealthCategory || categoryForPrompt
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m62[0m:[93m7[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m62[0m       // @ts-expect-error: Module may not exist in all environments
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m40[0m:[93m3[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m40[0m   // @ts-expect-error: Module may not exist in all environments
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/adapter/MentalLLaMAAdapter.ts[0m:[93m41[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'crisisSessionFlaggingServiceImport' is declared but its value is never read.
+
+[7m41[0m   private crisisSessionFlaggingServiceImport?: Promise<unknown>
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/bridge/MentalLLaMAPythonBridge.ts[0m:[93m84[0m:[93m21[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'PythonBridgeResponse & { id?: string | undefined; }'.
+  Type 'unknown' is not assignable to type 'PythonBridgeResponse'.
+
+[7m84[0m               const response: PythonBridgeResponse & { id?: string } =
+[7m  [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/bridge/server.ts[0m:[93m32[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'MentalLLaMAPythonBridge' is not assignable to type 'void'.
+
+[7m32[0m     return new MentalLLaMAPythonBridge()
+[7m  [0m [91m    ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/bridge/server.ts[0m:[93m27[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'MentalLLaMAPythonBridge' is not assignable to type 'void'.
+
+[7m27[0m       return new MentalLLaMAPythonBridge()
+[7m  [0m [91m      ~~~~~~[0m
+[96msrc/lib/ai/mental-llama/bridge/server.ts[0m:[93m2[0m:[93m75[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m2[0m export async function createMentalLLaMAPythonBridge(scriptPath?: string): void {
+[7m [0m [91m                                                                          ~~~~[0m
+
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m345[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m345[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m313[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m313[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m291[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m291[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m264[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m264[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m220[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m220[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m183[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m183[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m155[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m155[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m114[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m114[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m87[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m87[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m  [0m [91m        ~~~~~[0m
+[96msrc/lib/ai/mental-llama/evidence/__tests__/EvidenceExtractor.test.ts[0m:[93m55[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'usage' does not exist in type 'LLMResponse'.
+
+[7m55[0m         usage: { prompt_tokens: 100, completion_tokens: 50, total_tokens: 150 },
+[7m  [0m [91m        ~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/evidence/utils/semanticEvidenceParser.ts[0m:[93m57[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ evidence: unknown[]; }>'.
+
+[7m57[0m         validationErrors: validationResult.error.errors,
+[7m  [0m [91m                                                 ~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m175[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m175[0m       vi.mocked(getEnv).mockReturnValue({
+[7m   [0m [91m                                        ~[0m
+[7m176[0m         MENTALLAMA_ENDPOINT_URL_7B: mockEndpoint7B,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m177[0m       } as unknown)
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m165[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m165[0m       vi.mocked(getEnv).mockReturnValue({
+[7m   [0m [91m                                        ~[0m
+[7m166[0m         MENTALLAMA_ENDPOINT_URL_7B: mockEndpoint7B,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m167[0m       } as unknown)
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m157[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m157[0m       ;(fetch as unknown).mockRejectedValue(new Error('Network connection failed'))
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m145[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m145[0m       ;(fetch as unknown).mockResolvedValue({
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m132[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m132[0m       ;(fetch as unknown).mockResolvedValue({
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m108[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m108[0m       ;(fetch as unknown).mockResolvedValue({
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m85[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m85[0m     vi.mocked(getEnv).mockReturnValue({
+[7m  [0m [91m                                      ~[0m
+[7m86[0m       MENTALLAMA_API_KEY: mockApiKey,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m87[0m       MENTALLAMA_ENDPOINT_URL_7B: mockEndpoint7B, // Provide 7B but test 13B
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m88[0m     } as unknown)
+[7m  [0m [91m~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m74[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m74[0m     vi.mocked(getEnv).mockReturnValue({
+[7m  [0m [91m                                      ~[0m
+[7m75[0m       MENTALLAMA_API_KEY: mockApiKey,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m76[0m     } as unknown)
+[7m  [0m [91m~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m63[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m63[0m     vi.mocked(getEnv).mockReturnValue({
+[7m  [0m [91m                                      ~[0m
+[7m64[0m       MENTALLAMA_ENDPOINT_URL_7B: mockEndpoint7B,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m65[0m     } as unknown)
+[7m  [0m [91m~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/models/MentalLLaMAModelProvider.test.ts[0m:[93m25[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ NODE_ENV: "test" | "development" | "production"; PORT: number; LOG_LEVEL: "error" | "warn" | "info" | "verbose" | "debug"; ENABLE_RATE_LIMITING: boolean; ANALYTICS_WS_PORT: number; ... 62 more ...; MENTALLAMA_PYTHON_BRIDGE_SCRIPT_PATH?: string | undefined; }'.
+
+[7m 25[0m     vi.mocked(getEnv).mockReturnValue({
+[7m   [0m [91m                                      ~[0m
+[7m 26[0m       MENTALLAMA_API_KEY: mockApiKey,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 29[0m       // other env vars if needed by logger or other parts
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 30[0m     } as unknown)
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/mental-llama/routing/MentalHealthTaskRouter.ts[0m:[93m237[0m:[93m40[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ role: string; content: string; }[]' is not assignable to parameter of type '{ role: "user" | "assistant" | "system"; content: string; }[]'.
+  Type '{ role: string; content: string; }' is not assignable to type '{ role: "user" | "assistant" | "system"; content: string; }'.
+
+[7m237[0m     const resp = await this.llmInvoker(messages, { temperature: 0.0, max_tokens: 300 })
+[7m   [0m [91m                                       ~~~~~~~~[0m
+[96msrc/lib/ai/mental-llama/routing/MentalHealthTaskRouter.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'RoutingContext'.
+
+[7m6[0m   RoutingContext,
+[7m [0m [91m  ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/providers/EmotionLlamaProvider.ts[0m:[93m424[0m:[93m64[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m424[0m     return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                               ~~~~~~[0m
+[96msrc/lib/ai/providers/EmotionLlamaProvider.ts[0m:[93m211[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'originalText' is declared but its value is never read.
+
+[7m211[0m     originalText: string,
+[7m   [0m [93m    ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m739[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m739[0m   private calculateContextualSensitivity(data: EmotionAnalysis[]): number {
+[7m   [0m [93m                                         ~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m734[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m734[0m   private calculateStabilityIndex(data: EmotionAnalysis[]): number {
+[7m   [0m [93m                                  ~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m729[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m729[0m   private calculateAdaptationRate(data: EmotionAnalysis[]): number {
+[7m   [0m [93m                                  ~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m724[0m:[93m64[0m - [93mwarning[0m[90m ts(6133): [0m'stages' is declared but its value is never read.
+
+[7m724[0m   private calculatePredictiveAccuracy(data: EmotionAnalysis[], stages: PatternEvolutionModel['evolutionStages']): number {
+[7m   [0m [93m                                                               ~~~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m724[0m:[93m39[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m724[0m   private calculatePredictiveAccuracy(data: EmotionAnalysis[], stages: PatternEvolutionModel['evolutionStages']): number {
+[7m   [0m [93m                                      ~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m694[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m694[0m   private identifyEvolutionStages(data: EmotionAnalysis[]): PatternEvolutionModel['evolutionStages'] {
+[7m   [0m [93m                                  ~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m646[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'interventions' is declared but its value is never read.
+
+[7m646[0m     interventions: InterventionEffectivenessResult[]
+[7m   [0m [93m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m645[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'sessions' is declared but its value is never read.
+
+[7m645[0m     sessions: EmotionAnalysis[],
+[7m   [0m [93m    ~~~~~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m638[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'interventions' is declared but its value is never read.
+
+[7m638[0m     interventions: InterventionEffectivenessResult[]
+[7m   [0m [93m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m637[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'sessions' is declared but its value is never read.
+
+[7m637[0m     sessions: EmotionAnalysis[],
+[7m   [0m [93m    ~~~~~~~~[0m
+[96msrc/lib/ai/services/AdvancedPatternAnalysisService.ts[0m:[93m471[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'sessions' is declared but its value is never read.
+
+[7m471[0m     sessions: EmotionAnalysis[]
+[7m   [0m [93m    ~~~~~~~~[0m
+
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m576[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '"phone"' is not assignable to type '"email" | "push" | "sms" | "call"'.
+
+[7m576[0m       channels: ['phone', 'email'],
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m565[0m:[93m18[0m - [91merror[0m[90m ts(2322): [0mType '"phone"' is not assignable to type '"email" | "push" | "sms" | "call"'.
+
+[7m565[0m       channels: ['phone', 'sms', 'email'],
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m355[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"escalation"' is not assignable to type '"manual" | "assessment" | "prediction" | "automated"'.
+
+[7m355[0m         triggerType: 'escalation'
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m666[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m666[0m     context?: any
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m609[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'assessment' is declared but its value is never read.
+
+[7m609[0m     assessment: RiskAssessment
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m608[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'prediction' is declared but its value is never read.
+
+[7m608[0m     prediction: CrisisPrediction,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m596[0m:[93m48[0m - [93mwarning[0m[90m ts(6133): [0m'riskLevel' is declared but its value is never read.
+
+[7m596[0m   private getEscalationProtocol(level: string, riskLevel: string): EscalationProtocol {
+[7m   [0m [93m                                               ~~~~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m343[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m343[0m     action: EscalationAction
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m319[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m319[0m     action: EscalationAction,
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m295[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m295[0m     action: EscalationAction
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m269[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'action' is declared but its value is never read.
+
+[7m269[0m     action: EscalationAction
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/ai/services/AutomatedEscalationService.ts[0m:[93m208[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'userId' is declared but its value is never read.
+
+[7m208[0m     const { protocolActivated, riskLevel, userId } = escalationEvent
+[7m   [0m [93m                                          ~~~~~~[0m
+
+[96msrc/lib/ai/services/BeliefConsistencyService.test.ts[0m:[93m56[0m:[93m24[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ insights: never[]; resistanceLevel: number; changeReadiness: "contemplation"; sessionProgressLog: never[]; }' to type 'TherapeuticProgress' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ insights: never[]; resistanceLevel: number; changeReadiness: "contemplation"; sessionProgressLog: never[]; }' is missing the following properties from type 'TherapeuticProgress': skillsAcquired, trustLevel, rapportScore, therapistPerception, transferenceState
+
+[7m 56[0m   therapeuticProgress: {
+[7m   [0m [91m                       ~[0m
+[7m 57[0m     insights: [],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 60[0m     sessionProgressLog: [],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 61[0m   } as TherapeuticProgress,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/ContextualAwarenessService.ts[0m:[93m4[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"./OutcomeRecommendationEngine"' has no exported member 'RecommendationContext'.
+
+[7m4[0m import type { RecommendationContext } from './OutcomeRecommendationEngine'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m668[0m:[93m15[0m - [91merror[0m[90m ts(2538): [0mType 'unknown' cannot be used as an index type.
+
+[7m668[0m       metrics[technique] = Math.random() * 0.3 + 0.6 // 0.6 to 0.9
+[7m   [0m [91m              ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m10[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../../simulator/types' or its corresponding type declarations.
+
+[7m10[0m import { TherapeuticTechnique } from '../../simulator/types'
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m665[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'metricType' is declared but its value is never read.
+
+[7m665[0m   private generateTechniqueMetrics(metricType: string): Record<TherapeuticTechnique, number> {
+[7m   [0m [93m                                   ~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m657[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m657[0m   private getTherapistRequirements(technique: TherapeuticTechnique): TechniqueEffectivenessDatabase['therapistRequirements'] {
+[7m   [0m [93m                                   ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m653[0m:[93m70[0m - [93mwarning[0m[90m ts(6133): [0m'condition' is declared but its value is never read.
+
+[7m653[0m   private getConditionEffectiveness(technique: TherapeuticTechnique, condition: string): number {
+[7m   [0m [93m                                                                     ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m653[0m:[93m37[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m653[0m   private getConditionEffectiveness(technique: TherapeuticTechnique, condition: string): number {
+[7m   [0m [93m                                    ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m649[0m:[93m72[0m - [93mwarning[0m[90m ts(6133): [0m'demographic' is declared but its value is never read.
+
+[7m649[0m   private getDemographicEffectiveness(technique: TherapeuticTechnique, demographic: string): number {
+[7m   [0m [93m                                                                       ~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m649[0m:[93m39[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m649[0m   private getDemographicEffectiveness(technique: TherapeuticTechnique, demographic: string): number {
+[7m   [0m [93m                                      ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m636[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m636[0m   private getAverageSessionsRequired(technique: TherapeuticTechnique): number {
+[7m   [0m [93m                                     ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m632[0m:[93m26[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m632[0m   private getSuccessRate(technique: TherapeuticTechnique): number {
+[7m   [0m [93m                         ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m627[0m:[93m71[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m627[0m   private getContextualEffectiveness(technique: TherapeuticTechnique, context: string): number {
+[7m   [0m [93m                                                                      ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m627[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'technique' is declared but its value is never read.
+
+[7m627[0m   private getContextualEffectiveness(technique: TherapeuticTechnique, context: string): number {
+[7m   [0m [93m                                     ~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m581[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'emotion' is declared but its value is never read.
+
+[7m581[0m     emotion: EmotionAnalysis,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m535[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m535[0m     context: any,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m534[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'primary' is declared but its value is never read.
+
+[7m534[0m     primary: any,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m521[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'historicalData' is declared but its value is never read.
+
+[7m521[0m     historicalData: any
+[7m   [0m [93m    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m520[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'emotion' is declared but its value is never read.
+
+[7m520[0m     emotion: EmotionAnalysis,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m502[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m502[0m     context: any
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m500[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'primary' is declared but its value is never read.
+
+[7m500[0m     primary: any,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m480[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'emotion' is declared but its value is never read.
+
+[7m480[0m     emotion: EmotionAnalysis,
+[7m   [0m [93m    ~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m444[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'historicalData' is declared but its value is never read.
+
+[7m444[0m     historicalData: any
+[7m   [0m [93m    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m443[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'emotionalContext' is declared but its value is never read.
+
+[7m443[0m     emotionalContext: any,
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m286[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'sessionData' is declared but its value is never read.
+
+[7m286[0m     sessionData: EmotionAnalysis
+[7m   [0m [93m    ~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m122[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'isModelTrained' is declared but its value is never read.
+
+[7m122[0m   private isModelTrained = false
+[7m   [0m [93m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/EnhancedTechniqueClassificationService.ts[0m:[93m121[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'classificationModel' is declared but its value is never read.
+
+[7m121[0m   private classificationModel: unknown = null // Would be actual ML model in production
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/InterventionAnalysisService.ts[0m:[93m290[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'currentEmotion' is declared but its value is never read.
+
+[7m290[0m     currentEmotion: EmotionAnalysis,
+[7m   [0m [93m    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/InterventionAnalysisService.ts[0m:[93m272[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'totalEmotionIntensity' is declared but its value is never read.
+
+[7m272[0m     const totalEmotionIntensity = Object.values(afterEmotion.emotions).reduce((sum, val) => sum + val, 0)
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m197[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ hasEmotional: boolean; hasBiometric: boolean; hasBehavioral: boolean; hasClinical: boolean; hasContextual: boolean; }' is not assignable to parameter of type 'number'.
+
+[7m197[0m         {
+[7m   [0m [91m        ~[0m
+[7m198[0m           hasEmotional: emotionalData.length > 0,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m202[0m           hasContextual: !!contextualData
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m203[0m         }
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m658[0m:[93m51[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m658[0m   private calculateTrendForSource(source: string, data: any): 'improving' | 'stable' | 'deteriorating' {
+[7m   [0m [93m                                                  ~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m658[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'source' is declared but its value is never read.
+
+[7m658[0m   private calculateTrendForSource(source: string, data: any): 'improving' | 'stable' | 'deteriorating' {
+[7m   [0m [93m                                  ~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m646[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m646[0m   private getTopFactorForSource(source: string, data: any): string {
+[7m   [0m [93m                                                ~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m553[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'clinicalData' is declared but its value is never read.
+
+[7m553[0m     clinicalData?: ClinicalData
+[7m   [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m513[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m513[0m     data: any
+[7m   [0m [93m    ~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m411[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'riskScore' is declared but its value is never read.
+
+[7m411[0m     let riskScore = 0
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m335[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'riskScore' is declared but its value is never read.
+
+[7m335[0m     let riskScore = 0
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m3[0m import type { CrisisRiskFactors, CrisisPrediction } from './PredictiveCrisisModelingService'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/MultiModalRiskAssessmentService.ts[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'RiskAssessment' is declared but its value is never read.
+
+[7m2[0m import type { RiskAssessment } from '@/hooks/useRiskAssessment'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/OutcomeRecommendationEngine.ts[0m:[93m96[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ outcomeId: string; description: string; confidence: number; timeEstimate: string; interventions: string[]; risk: "low" | "high" | "moderate"; details: { expectedDuration: number; successRate: number; contraindications: string[]; sideEffects: string[]; }; metadata: { ...; }; }[]' is not assignable to type '{ outcomeId: string; description: string; confidence: number; timeEstimate: string; interventions: string[]; risk: "low" | "medium" | "high"; details?: { expectedDuration: number; successRate: number; contraindications: string[]; sideEffects: string[]; } | undefined; metadata?: Record<...> | undefined; }[]'.
+  Type '{ outcomeId: string; description: string; confidence: number; timeEstimate: string; interventions: string[]; risk: "low" | "high" | "moderate"; details: { expectedDuration: number; successRate: number; contraindications: string[]; sideEffects: string[]; }; metadata: { ...; }; }' is not assignable to type '{ outcomeId: string; description: string; confidence: number; timeEstimate: string; interventions: string[]; risk: "low" | "medium" | "high"; details?: { expectedDuration: number; successRate: number; contraindications: string[]; sideEffects: string[]; } | undefined; metadata?: Record<...> | undefined; }'.
+
+[7m96[0m   return desiredOutcomes.map((outcome, index) => {
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/lib/ai/services/PatientProfileService.test.ts[0m:[93m96[0m:[93m48[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m96[0m     mockKvStoreInstance = new MockKVStore() as vi.Mocked<KVStore> // Changed to vi.Mocked
+[7m  [0m [91m                                               ~~[0m
+[96msrc/lib/ai/services/PatientProfileService.test.ts[0m:[93m91[0m:[93m28[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m91[0m   let mockKvStoreInstance: vi.Mocked<KVStore> // Changed to vi.Mocked
+[7m  [0m [91m                           ~~[0m
+[96msrc/lib/ai/services/PatientProfileService.test.ts[0m:[93m63[0m:[93m24[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ insights: never[]; resistanceLevel: number; changeReadiness: "contemplation"; sessionProgressLog: never[]; skillsAcquired: string[]; trustLevel: number; rapportScore: number; therapistPerception: "neutral"; transferenceState: "none"; }' to type 'TherapeuticProgress' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'skillsAcquired' are incompatible.
+
+[7m 63[0m   therapeuticProgress: {
+[7m   [0m [91m                       ~[0m
+[7m 64[0m     insights: [],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 72[0m     transferenceState: 'none',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 73[0m   } as TherapeuticProgress,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/PatientProfileService.test.ts[0m:[93m17[0m:[93m32[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m17[0m const MockKVStore = KVStore as vi.MockedClass<typeof KVStore>
+[7m  [0m [91m                               ~~[0m
+
+[96msrc/lib/ai/services/PatientResponseService.test.ts[0m:[93m102[0m:[93m31[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m102[0m   let mockConsistencyService: vi.Mocked<BeliefConsistencyService>
+[7m   [0m [91m                              ~~[0m
+[96msrc/lib/ai/services/PatientResponseService.test.ts[0m:[93m101[0m:[93m27[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m101[0m   let mockProfileService: vi.Mocked<PatientProfileService>
+[7m   [0m [91m                          ~~[0m
+[96msrc/lib/ai/services/PatientResponseService.test.ts[0m:[93m74[0m:[93m24[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ insights: never[]; resistanceLevel: number; changeReadiness: "contemplation"; sessionProgressLog: never[]; skillsAcquired: string[]; trustLevel: number; rapportScore: number; therapistPerception: "neutral"; transferenceState: "none"; }' to type 'TherapeuticProgress' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'skillsAcquired' are incompatible.
+
+[7m 74[0m   therapeuticProgress: {
+[7m   [0m [91m                       ~[0m
+[7m 75[0m     insights: [],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 83[0m     transferenceState: 'none',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 84[0m   } as TherapeuticProgress,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/PatientResponseService.test.ts[0m:[93m26[0m:[93m66[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m26[0m const MockBeliefConsistencyService = BeliefConsistencyService as vi.MockedClass<
+[7m  [0m [91m                                                                 ~~[0m
+[96msrc/lib/ai/services/PatientResponseService.test.ts[0m:[93m23[0m:[93m60[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m23[0m const MockPatientProfileService = PatientProfileService as vi.MockedClass<
+[7m  [0m [91m                                                           ~~[0m
+
+[96msrc/lib/ai/services/PredictiveCrisisModelingService.ts[0m:[93m345[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'timeframe' is declared but its value is never read.
+
+[7m345[0m     timeframe: CrisisPrediction['timeframe']
+[7m   [0m [93m    ~~~~~~~~~[0m
+[96msrc/lib/ai/services/PredictiveCrisisModelingService.ts[0m:[93m305[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'compositeRisk' is declared but its value is never read.
+
+[7m305[0m     compositeRisk: number
+[7m   [0m [93m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/PredictiveCrisisModelingService.ts[0m:[93m85[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'userId' is declared but its value is never read.
+
+[7m85[0m     userId?: string
+[7m  [0m [93m    ~~~~~~[0m
+
+[96msrc/lib/ai/services/PromptOptimizerService.ts[0m:[93m540[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'primaryConcern' is declared but its value is never read.
+
+[7m540[0m     const { sessionPhase, patientState, primaryConcern } = context
+[7m   [0m [93m                                        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/PromptOptimizerService.ts[0m:[93m301[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'prevMessage' is declared but its value is never read.
+
+[7m301[0m     prevMessage: ConversationContext['messages'][0],
+[7m   [0m [93m    ~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/RecommendationService.ts[0m:[93m560[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'Partial<TreatmentRecommendation>[]' is not assignable to type 'void'.
+
+[7m560[0m     return recommendations
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/ai/services/RecommendationService.ts[0m:[93m535[0m:[93m73[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m535[0m   private async generateBaseRecommendations(currentState: ClientState): void {
+[7m   [0m [91m                                                                        ~~~~[0m
+[96msrc/lib/ai/services/RecommendationService.ts[0m:[93m216[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'void' is not assignable to parameter of type 'Partial<TreatmentRecommendation>[]'.
+
+[7m216[0m         baseRecommendations,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/RecommendationService.ts[0m:[93m212[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m212[0m         await this.generateBaseRecommendations(currentState)
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m306[0m:[93m11[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'error'. Either declare one or provide an initializer.
+
+[7m306[0m           error,
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m298[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'recommendations' does not exist on type 'object'.
+
+[7m298[0m               ? parsed.recommendations
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m297[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'recommendations' does not exist on type 'object'.
+
+[7m297[0m             recommendations: Array.isArray(parsed.recommendations)
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m295[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'indicators' does not exist on type 'object'.
+
+[7m295[0m               ? parsed.indicators
+[7m   [0m [91m                       ~~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m294[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'indicators' does not exist on type 'object'.
+
+[7m294[0m             indicators: Array.isArray(parsed.indicators)
+[7m   [0m [91m                                             ~~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m293[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'severity' does not exist on type 'object'.
+
+[7m293[0m             severity: parsed.severity || 'low',
+[7m   [0m [91m                             ~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m292[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'category' does not exist on type 'object'.
+
+[7m292[0m             category: parsed.category || 'general_concern',
+[7m   [0m [91m                             ~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m291[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'score' does not exist on type 'object'.
+
+[7m291[0m             score: Math.min(Math.max(Number(parsed.score) || 0, 0), 1), // Clamp between 0-1
+[7m   [0m [91m                                                   ~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m150[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"unknown"' is not assignable to type '"low" | "medium" | "high" | "critical"'.
+
+[7m150[0m         riskLevel: 'unknown',
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m22[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'defaultPrompt' is declared but its value is never read.
+
+[7m22[0m   private defaultPrompt?: string
+[7m  [0m [93m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/crisis-detection.ts[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'model' is declared but its value is never read.
+
+[7m21[0m   private model?: string
+[7m  [0m [93m          ~~~~~[0m
+
+[96msrc/lib/ai/services/outcome-recommendation-types.ts[0m:[93m77[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m77[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/ai/services/outcome-recommendation-types.ts[0m:[93m49[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m49[0m   userPreferences: z.record(z.unknown()).optional(),
+[7m  [0m [91m                     ~~~~~~[0m
+[96msrc/lib/ai/services/outcome-recommendation-types.ts[0m:[93m31[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m31[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/ai/services/outcome-recommendation-types.ts[0m:[93m22[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m22[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/ai/services/outcome-recommendation-types.ts[0m:[93m17[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m17[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+
+[96msrc/lib/ai/services/server.ts[0m:[93m237[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'analysisResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m237[0m       let analysisResult
+[7m   [0m [93m          ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/together.ts[0m:[93m528[0m:[93m25[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'TogetherStreamResponse'.
+
+[7m528[0m                   const parsed: TogetherStreamResponse = JSON.parse(jsonData) as unknown
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/lib/ai/services/together.ts[0m:[93m279[0m:[93m65[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'error'.
+
+[7m279[0m       errorMessage = `Together AI API error: ${errorData.String(error) || errorData.error}`
+[7m   [0m [91m                                                                ~~~~~[0m
+[96msrc/lib/ai/services/together.ts[0m:[93m279[0m:[93m58[0m - [91merror[0m[90m ts(2339): [0mProperty 'String' does not exist on type '{ error: { message?: string | undefined; code?: string | undefined; }; }'.
+
+[7m279[0m       errorMessage = `Together AI API error: ${errorData.String(error) || errorData.error}`
+[7m   [0m [91m                                                         ~~~~~~[0m
+[96msrc/lib/ai/services/together.ts[0m:[93m335[0m:[93m13[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'errorData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m335[0m         let errorData
+[7m   [0m [93m            ~~~~~~~~~[0m
+
+[96msrc/lib/ai/services/__tests__/PatientProfileService.test.ts[0m:[93m32[0m:[93m24[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m32[0m       skillsAcquired: ['basic coping skills'], // Required property
+[7m  [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientProfileService.test.ts[0m:[93m20[0m:[93m63[0m - [91merror[0m[90m ts(2694): [0mNamespace 'global.jest' has no exported member 'Mocked'.
+
+[7m20[0m     mockKvStore = new KVStore('test_profiles', false) as jest.Mocked<KVStore>
+[7m  [0m [91m                                                              ~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientProfileService.test.ts[0m:[93m14[0m:[93m20[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m14[0m   let mockKvStore: vi.Mocked<KVStore>
+[7m  [0m [91m                   ~~[0m
+
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m265[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m265[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m246[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m246[0m       const profileCopy2 = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m232[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m232[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m217[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m217[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m194[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m194[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m177[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m177[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m159[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m159[0m       const profileCopy = JSON.parse(JSON.stringify(sampleProfile) as unknown) // Deep copy
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m69[0m:[93m24[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m69[0m       skillsAcquired: ['basic coping skills'], // Required property
+[7m  [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m37[0m:[93m48[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m37[0m       new (EmotionSynthesizer as unknown)() as vi.Mocked<EmotionSynthesizer>
+[7m  [0m [91m                                               ~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m37[0m:[93m11[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m37[0m       new (EmotionSynthesizer as unknown)() as vi.Mocked<EmotionSynthesizer>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m33[0m:[93m40[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m33[0m     mockBeliefConsistencyService = new (BeliefConsistencyService as unknown)()
+[7m  [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m32[0m:[93m37[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m32[0m     mockPatientProfileService = new (PatientProfileService as unknown)() // Keep as is if only used for constructor typing
+[7m  [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/PatientResponseService.test.ts[0m:[93m21[0m:[93m31[0m - [91merror[0m[90m ts(2503): [0mCannot find namespace 'vi'.
+
+[7m21[0m   let mockEmotionSynthesizer: vi.Mocked<EmotionSynthesizer> // Use vi.Mocked for typed mocks
+[7m  [0m [91m                              ~~[0m
+
+[96msrc/lib/ai/services/__tests__/TherapeuticProgressService.test.ts[0m:[93m249[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ cognitiveModel: { coreBeliefs: unknown; id: string; name: string; demographicInfo: DemographicInfo; presentingIssues: string[]; diagnosisInfo: DiagnosisInfo; ... 8 more ...; therapeuticProgress: TherapeuticProgress; }; id: string; conversationHistory: ConversationMessage[]; lastUpdatedAt: string; }' is not assignable to parameter of type 'PatientProfile'.
+  The types of 'cognitiveModel.coreBeliefs' are incompatible between these types.
+
+[7m249[0m         service.updateBeliefStrength(incompleteProfile, targetBelief, 0.1),
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/TherapeuticProgressService.test.ts[0m:[93m239[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'PatientProfile'.
+
+[7m239[0m         service.updateBeliefStrength(null as unknown, targetBelief, 0.1),
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/TherapeuticProgressService.test.ts[0m:[93m162[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ cognitiveModel: { therapeuticProgress: unknown; id: string; name: string; demographicInfo: DemographicInfo; presentingIssues: string[]; diagnosisInfo: DiagnosisInfo; ... 8 more ...; goalsForTherapy: string[]; }; id: string; conversationHistory: ConversationMessage[]; lastUpdatedAt: string; }' is not assignable to parameter of type 'PatientProfile'.
+  The types of 'cognitiveModel.therapeuticProgress' are incompatible between these types.
+
+[7m162[0m       expect(() => service.addInsight(incompleteProfile, 'insight')).toThrow(
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/services/__tests__/TherapeuticProgressService.test.ts[0m:[93m152[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'PatientProfile'.
+
+[7m152[0m       expect(() => service.addInsight(null as unknown, 'insight')).toThrow(
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/temporal/EmotionTemporalAnalyzer.ts[0m:[93m120[0m:[93m64[0m - [91merror[0m[90m ts(2339): [0mProperty 'getEmotionCorrelations' does not exist on type 'AIRepository'.
+
+[7m120[0m     return await (this.repository as unknown as AIRepository)?.getEmotionCorrelations?.(clientId)
+[7m   [0m [91m                                                               ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/EmotionTemporalAnalyzer.ts[0m:[93m109[0m:[93m77[0m - [91merror[0m[90m ts(2339): [0mProperty 'getEmotionDataByDateRange' does not exist on type 'AIRepository'.
+
+[7m109[0m     const emotionData = await (this.repository as unknown as AIRepository)?.getEmotionDataByDateRange?.(clientId, startDate, endDate)
+[7m   [0m [91m                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/EmotionTemporalAnalyzer.ts[0m:[93m96[0m:[93m64[0m - [91merror[0m[90m ts(2339): [0mProperty 'getCriticalEmotions' does not exist on type 'AIRepository'.
+
+[7m96[0m     return await (this.repository as unknown as AIRepository)?.getCriticalEmotions?.(clientId, options?.emotionTypes)
+[7m  [0m [91m                                                               ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/EmotionTemporalAnalyzer.ts[0m:[93m73[0m:[93m77[0m - [91merror[0m[90m ts(2339): [0mProperty 'getEmotionData' does not exist on type 'AIRepository'.
+
+[7m73[0m     const emotionData = await (this.repository as unknown as AIRepository)?.getEmotionData?.(sessionIds)
+[7m  [0m [91m                                                                            ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m425[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m425[0m       `Shift to ${dominanceDiff > 0 ? 'more' : 'less'} emotional control`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m420[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m420[0m       `${arousalDiff > 0 ? 'Increased' : 'Decreased'} emotional intensity`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m415[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m415[0m       `Shift to ${valenceDiff > 0 ? 'more positive' : 'more negative'} emotions`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m394[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m394[0m       `${dominanceTrend > 0 ? 'Gaining' : 'Losing'} emotional control`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m389[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m389[0m       `${arousalTrend > 0 ? 'Increasing' : 'Decreasing'} emotional arousal`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m384[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m384[0m       `${valenceTrend > 0 ? 'Improving' : 'Declining'} emotional valence`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/temporal/TemporalAnalysisAlgorithm.ts[0m:[93m360[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'number' is not assignable to parameter of type 'never'.
+
+[7m360[0m       calculateDimensionalDistance(
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m361[0m         window[i - 1].dimensions,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m362[0m         window[i].dimensions,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m363[0m       ),
+[7m   [0m [91m~~~~~~~[0m
+
+[96msrc/lib/ai/types/intervention-types.ts[0m:[93m48[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'InterventionEffectivenessResult'.
+
+[7m48[0m   effectiveness: InterventionEffectivenessResult
+[7m  [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m330[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ value: number; direction: "up" | "stable" | "down"; period: string; }' is not assignable to type 'void'.
+
+[7m330[0m       return {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m300[0m:[93m75[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m300[0m   private async calculateTrend(metricName: string, timeRange: TimeRange): void {
+[7m   [0m [91m                                                                          ~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m192[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ value: number; direction: "up" | "stable" | "down"; period: string; } | undefined'.
+
+[7m192[0m           trend: await this.calculateTrend('average_rating', filters.timeRange),
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m183[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ value: number; direction: "up" | "stable" | "down"; period: string; } | undefined'.
+
+[7m183[0m           trend: await this.calculateTrend(
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m177[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ value: number; direction: "up" | "stable" | "down"; period: string; } | undefined'.
+
+[7m177[0m           trend: await this.calculateTrend('total_sessions', filters.timeRange),
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m192[0m:[93m18[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m192[0m           trend: await this.calculateTrend('average_rating', filters.timeRange),
+[7m   [0m [93m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m183[0m:[93m18[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m183[0m           trend: await this.calculateTrend(
+[7m   [0m [93m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m184[0m             'completion_rate',
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m185[0m             filters.timeRange,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m186[0m           ),
+[7m   [0m [93m~~~~~~~~~~~[0m
+[96msrc/lib/analytics/AnalyticsDataService.ts[0m:[93m177[0m:[93m18[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m177[0m           trend: await this.calculateTrend('total_sessions', filters.timeRange),
+[7m   [0m [93m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/analytics/breach-analytics.ts[0m:[93m217[0m:[93m10[0m - [91merror[0m[90m ts(18046): [0m'notificationData' is of type 'unknown'.
+
+[7m217[0m   return notificationData.completedAt - breach.timestamp
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/analytics/breach.ts[0m:[93m82[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'Record<string, unknown> | undefined' is not assignable to type 'Record<string, unknown>'.
+  Type 'undefined' is not assignable to type 'Record<string, unknown>'.
+
+[7m82[0m     metadata: stored.metadata || undefined,
+[7m  [0m [91m    ~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m79[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'Date' is not assignable to type 'number'.
+
+[7m79[0m     responseTime: new Date(stored.response_time),
+[7m  [0m [91m    ~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m78[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'Date' is not assignable to type 'number'.
+
+[7m78[0m     detectionTime: new Date(stored.detection_time),
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m75[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string[]' is not assignable to type 'number'.
+
+[7m75[0m     affectedUsers: stored.affected_users,
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m61[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '"completed" | "pending" | "in_progress" | undefined' is not assignable to type '"completed" | "pending" | "in_progress"'.
+  Type 'undefined' is not assignable to type '"completed" | "pending" | "in_progress"'.
+
+[7m61[0m     remediation_status: breach.remediationStatus,
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m60[0m:[93m40[0m - [91merror[0m[90m ts(2551): [0mProperty 'toISOString' does not exist on type 'number'. Did you mean 'toString'?
+
+[7m60[0m     response_time: breach.responseTime.toISOString(),
+[7m  [0m [91m                                       ~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m60[0m:[93m20[0m - [91merror[0m[90m ts(18048): [0m'breach.responseTime' is possibly 'undefined'.
+
+[7m60[0m     response_time: breach.responseTime.toISOString(),
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m59[0m:[93m42[0m - [91merror[0m[90m ts(2551): [0mProperty 'toISOString' does not exist on type 'number'. Did you mean 'toString'?
+
+[7m59[0m     detection_time: breach.detectionTime.toISOString(),
+[7m  [0m [91m                                         ~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m59[0m:[93m21[0m - [91merror[0m[90m ts(18048): [0m'breach.detectionTime' is possibly 'undefined'.
+
+[7m59[0m     detection_time: breach.detectionTime.toISOString(),
+[7m  [0m [91m                    ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m57[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string[] | undefined' is not assignable to type 'string[]'.
+  Type 'undefined' is not assignable to type 'string[]'.
+
+[7m57[0m     data_types: breach.dataTypes,
+[7m  [0m [91m    ~~~~~~~~~~[0m
+[96msrc/lib/analytics/breach.ts[0m:[93m56[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'number | undefined' is not assignable to type 'string[]'.
+  Type 'undefined' is not assignable to type 'string[]'.
+
+[7m56[0m     affected_users: breach.affectedUsers,
+[7m  [0m [91m    ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/analytics/ml.ts[0m:[93m53[0m:[93m22[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ value: number; confidence: number; }' is not assignable to parameter of type 'never'.
+
+[7m53[0m     predictions.push({
+[7m  [0m [91m                     ~[0m
+[7m54[0m       value: predictedValue,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m55[0m       confidence: Math.max(0.5, 0.9 - i * 0.05), // Confidence decreases over time
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m56[0m     })
+[7m  [0m [91m~~~~~[0m
+[96msrc/lib/analytics/ml.ts[0m:[93m43[0m:[93m54[0m - [91merror[0m[90m ts(18046): [0m't' is of type 'unknown'.
+
+[7m43[0m   const recentBreaches = trends.slice(-7).map((t) => t.breaches)
+[7m  [0m [91m                                                     ~[0m
+[96msrc/lib/analytics/ml.ts[0m:[93m22[0m:[93m28[0m - [91merror[0m[90m ts(18046): [0m'trend' is of type 'unknown'.
+
+[7m22[0m     const responseFactor = trend.responseTime > 3600000 ? 0.2 : 0 // 1 hour threshold
+[7m  [0m [91m                           ~~~~~[0m
+[96msrc/lib/analytics/ml.ts[0m:[93m21[0m:[93m26[0m - [91merror[0m[90m ts(18046): [0m'trend' is of type 'unknown'.
+
+[7m21[0m     const breachFactor = trend.breaches > 5 ? 0.3 : 0
+[7m  [0m [91m                         ~~~~~[0m
+
+[96msrc/lib/analytics/risk.ts[0m:[93m226[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ name: string; score: number; contribution: number; metadata?: Record<string, unknown> | undefined; }' is not assignable to parameter of type 'never'.
+
+[7m226[0m         factorResults.push(factorResult)
+[7m   [0m [91m                           ~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/risk.ts[0m:[93m96[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'getBreachesSince' does not exist on type 'Promise<any>'.
+
+[7m96[0m         await getBreachDataService().getBreachesSince(thirtyDaysAgo)
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/risk.ts[0m:[93m21[0m:[93m11[0m - [91merror[0m[90m ts(2339): [0mProperty 'BreachDataService' does not exist on type 'typeof import("/home/vivi/pixelated/src/lib/analytics/breach")'.
+
+[7m21[0m   const { BreachDataService } = await import('./breach')
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/analytics/universal-demo-analytics.ts[0m:[93m416[0m:[93m7[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'gtag'.
+
+[7m416[0m       gtag('event', eventData.event, {
+[7m   [0m [91m      ~~~~[0m
+[96msrc/lib/analytics/universal-demo-analytics.ts[0m:[93m415[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'gtag'.
+
+[7m415[0m     if (typeof gtag !== 'undefined') {
+[7m   [0m [91m               ~~~~[0m
+[96msrc/lib/analytics/universal-demo-analytics.ts[0m:[93m262[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m262[0m       container.addEventListener('click', (e) => {
+[7m   [0m [93m                                           ~[0m
+[96msrc/lib/analytics/universal-demo-analytics.ts[0m:[93m239[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m239[0m         element.addEventListener('click', (e) => {
+[7m   [0m [93m                                           ~[0m
+
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m389[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m389[0m       ;(listRecentBreaches as unknown).mockRejectedValue(
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m339[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m339[0m       ;(ComplianceMetrics.calculateScore as unknown).mockResolvedValue(0.97)
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m308[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m308[0m       ;(NotificationEffectiveness.calculate as unknown).mockResolvedValue({
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m201[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m201[0m       ;(listRecentBreaches as unknown).mockResolvedValue([])
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m161[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m161[0m     ;(fheService.encrypt as unknown).mockResolvedValue('encrypted_data')
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m160[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m160[0m     ;(StatisticalAnalysis.calculateTrend as unknown).mockReturnValue(0.15)
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m156[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m156[0m     ;(SecurityTrends.analyze as unknown).mockResolvedValue([
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m152[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m152[0m     ;(RiskScoring.getFactors as unknown).mockResolvedValue([
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m148[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m148[0m     ;(MachineLearning.predictBreaches as unknown).mockResolvedValue([
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m147[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m147[0m     ;(MachineLearning.detectAnomalies as unknown).mockResolvedValue([0.1, 0.2])
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m131[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m131[0m     ;(NotificationEffectiveness.calculateDaily as unknown).mockResolvedValue({
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m115[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m115[0m     ;(NotificationEffectiveness.calculate as unknown).mockResolvedValue({
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m114[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m114[0m     ;(ComplianceMetrics.calculateScore as unknown).mockResolvedValue(0.98)
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m107[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m107[0m     ;(RiskScoring.calculateDailyRisk as unknown).mockResolvedValue({
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m100[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m100[0m     ;(RiskScoring.calculateOverallRisk as unknown).mockResolvedValue({
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m95[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m95[0m     ;(redis.get as unknown).mockResolvedValue(
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/analytics/__tests__/breach-analytics.test.ts[0m:[93m94[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m94[0m     ;(listRecentBreaches as unknown).mockResolvedValue(mockBreaches)
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/animations/sequences.ts[0m:[93m427[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'brightness' does not exist in type 'Variant'.
+
+[7m427[0m       brightness: 1.1,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/animations/sequences.ts[0m:[93m423[0m:[93m34[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'brightness' does not exist in type 'Variant'.
+
+[7m423[0m     rest: { scale: 1, rotate: 0, brightness: 1 },
+[7m   [0m [91m                                 ~~~~~~~~~~[0m
+
+[96msrc/lib/api/mcp-integration.ts[0m:[93m193[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m193[0m export async function GET(context: APIContext) {
+[7m   [0m [93m                          ~~~~~~~[0m
+
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m736[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'turn.knowledgeSource' is of type 'unknown'.
+
+[7m736[0m         confidence: turn.knowledgeSource.confidence,
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m731[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'turn.knowledgeSource' is of type 'unknown'.
+
+[7m731[0m         content: turn.knowledgeSource.reference,
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m730[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'turn.knowledgeSource' is of type 'unknown'.
+
+[7m730[0m         source: turn.knowledgeSource.type,
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m726[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ dialogueTurn: number; appliedKnowledge: { source: any; content: any; application: string; confidence: any; }[]; }[]' is not assignable to type 'void'.
+
+[7m726[0m   return dialogue.map((turn, index) => ({
+[7m   [0m [91m  ~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m716[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ overallScore: number; authenticity: number; therapeuticAccuracy: number; knowledgeIntegration: number; conversationFlow: number; }' is not assignable to type 'void'.
+
+[7m716[0m   return {
+[7m   [0m [91m  ~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m704[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'request.conversationParameters' is of type 'unknown'.
+
+[7m704[0m     baseScore + request.conversationParameters.targetTechniques.length * 3,
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m700[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'request.knowledgeBase.dsm5Criteria' is of type 'unknown'.
+
+[7m700[0m     baseScore + request.knowledgeBase.dsm5Criteria.length * 2,
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m632[0m:[93m41[0m - [91merror[0m[90m ts(18048): [0m'profile.presentingProblem' is possibly 'undefined'.
+
+[7m632[0m     high: `I'm really struggling with ${profile.presentingProblem.toLowerCase()}. It feels overwhelming most of the time, and I'm not sure how to manage it anymore.`,
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m566[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ speaker: "therapist"; content: string; timestamp: string; techniques: string[]; interventionType: string; knowledgeSource: { type: string; reference: string; confidence: number; }; }' is not assignable to parameter of type 'never'.
+
+[7m566[0m   dialogue.push({
+[7m   [0m [91m                ~[0m
+[7m567[0m     speaker: 'therapist' as const,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m578[0m     },
+[7m   [0m [91m~~~~~~[0m
+[7m579[0m   })
+[7m   [0m [91m~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m549[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ speaker: "client"; content: string; timestamp: string; techniques: never[]; emotionalState: string; knowledgeSource: { type: string; reference: string; confidence: number; }; }' is not assignable to parameter of type 'never'.
+
+[7m549[0m   dialogue.push({
+[7m   [0m [91m                ~[0m
+[7m550[0m     speaker: 'client' as const,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m562[0m     },
+[7m   [0m [91m~~~~~~[0m
+[7m563[0m   })
+[7m   [0m [91m~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m530[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ speaker: "therapist"; content: string; timestamp: string; techniques: string[]; interventionType: string; knowledgeSource: { type: string; reference: string; confidence: number; }; }' is not assignable to parameter of type 'never'.
+
+[7m530[0m   dialogue.push({
+[7m   [0m [91m                ~[0m
+[7m531[0m     speaker: 'therapist' as const,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m545[0m     },
+[7m   [0m [91m~~~~~~[0m
+[7m546[0m   })
+[7m   [0m [91m~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m511[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ speaker: "client"; content: string; timestamp: string; techniques: never[]; emotionalState: string; knowledgeSource: { type: string; reference: string; confidence: number; }; }' is not assignable to parameter of type 'never'.
+
+[7m511[0m   dialogue.push({
+[7m   [0m [91m                ~[0m
+[7m512[0m     speaker: 'client' as const,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m526[0m     },
+[7m   [0m [91m~~~~~~[0m
+[7m527[0m   })
+[7m   [0m [91m~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m495[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ speaker: "therapist"; content: string; timestamp: string; techniques: string[]; interventionType: string; knowledgeSource: { type: string; reference: string; confidence: number; }; }' is not assignable to parameter of type 'never'.
+
+[7m495[0m   dialogue.push({
+[7m   [0m [91m                ~[0m
+[7m496[0m     speaker: 'therapist' as const,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m507[0m     },
+[7m   [0m [91m~~~~~~[0m
+[7m508[0m   })
+[7m   [0m [91m~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m478[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'void'.
+
+[7m478[0m         qualityMetrics.overallScore >=
+[7m   [0m [91m                       ~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m468[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ dialogueTurn: number; appliedKnowledge: { source: string; content: string; application: string; confidence: number; }[]; }[]'.
+
+[7m468[0m     knowledgeMapping,
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m467[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type '{ overallScore: number; authenticity: number; therapeuticAccuracy: number; knowledgeIntegration: number; conversationFlow: number; }'.
+
+[7m467[0m     qualityMetrics,
+[7m   [0m [91m    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m459[0m:[93m55[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ knowledgeBase: { dsm5Criteria: string[]; therapeuticTechniques: string[]; clinicalGuidelines: string[]; }; clientProfile: { demographics: { age: number; gender: string; background: string; }; presentingProblem: string; severity: "low" | ... 1 more ... | "high"; riskFactors: string[]; }; conversationParameters: { ....' is not assignable to parameter of type 'ConversationRequest'.
+  Property 'therapeuticApproach' is missing in type '{ knowledgeBase: { dsm5Criteria: string[]; therapeuticTechniques: string[]; clinicalGuidelines: string[]; }; clientProfile: { demographics: { age: number; gender: string; background: string; }; presentingProblem: string; severity: "low" | ... 1 more ... | "high"; riskFactors: string[]; }; conversationParameters: { ....' but required in type 'ConversationRequest'.
+
+[7m459[0m   const qualityMetrics = calculateConversationQuality(validatedRequest)
+[7m   [0m [91m                                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m659[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'profile' is declared but its value is never read.
+
+[7m659[0m   profile: ClientProfile,
+[7m   [0m [93m  ~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m642[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'techniques' is declared but its value is never read.
+
+[7m642[0m   techniques: string[],
+[7m   [0m [93m  ~~~~~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m641[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'dsm5' is declared but its value is never read.
+
+[7m641[0m   dsm5: string[],
+[7m   [0m [93m  ~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m465[0m:[93m70[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m465[0m     conversationId: `conv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                                     ~~~~~~[0m
+[96msrc/lib/api/psychology-pipeline-demo.ts[0m:[93m150[0m:[93m62[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m150[0m     caseId: `CASE_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                             ~~~~~~[0m
+
+[96msrc/lib/api/rateLimiter.ts[0m:[93m6[0m:[93m28[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@upstash/redis' or its corresponding type declarations.
+
+[7m6[0m import type { Redis } from '@upstash/redis'
+[7m [0m [91m                           ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/audit/index.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m ts(2305): [0mModule '"./log"' has no exported member 'createAuditLog'.
+
+[7m1[0m export { type AuditLogEntry, createAuditLog } from './log'
+[7m [0m [91m                             ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/audit/metrics.ts[0m:[93m55[0m:[93m27[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m55[0m   const unusualPatterns = await detectUnusualPatterns(logs)
+[7m  [0m [93m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/audit/__tests__/analysis.test.ts[0m:[93m7[0m:[93m31[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../../types/audit' or its corresponding type declarations.
+
+[7m7[0m import type { AuditLog } from '../../types/audit'
+[7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/auth/azure-ad.ts[0m:[93m1[0m:[93m29[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../../config/azure.config' or its corresponding type declarations.
+
+[7m1[0m import { azureConfig } from '../../config/azure.config'
+[7m [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m360[0m:[93m62[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m360[0m     await logSecurityEvent(SecurityEventType.LOGOUT, userId, {
+[7m   [0m [91m                                                             ~[0m
+[7m361[0m       clientInfo: clientInfo,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m362[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m360[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'LOGOUT' does not exist on type 'typeof SecurityEventType'.
+
+[7m360[0m     await logSecurityEvent(SecurityEventType.LOGOUT, userId, {
+[7m   [0m [91m                                             ~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m302[0m:[93m67[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m302[0m     await logSecurityEvent(SecurityEventType.LOGIN_FAILURE, null, {
+[7m   [0m [91m                                                                  ~[0m
+[7m303[0m       error: error instanceof Error ? error.message : 'Unknown error',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m305[0m       clientInfo: clientInfo,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m306[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m302[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'LOGIN_FAILURE' does not exist on type 'typeof SecurityEventType'.
+
+[7m302[0m     await logSecurityEvent(SecurityEventType.LOGIN_FAILURE, null, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m286[0m:[93m74[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m286[0m     await logSecurityEvent(SecurityEventType.LOGIN_SUCCESS, userAuth.id, {
+[7m   [0m [91m                                                                         ~[0m
+[7m287[0m       email: credentials.email,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m288[0m       clientInfo: clientInfo,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m289[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m286[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'LOGIN_SUCCESS' does not exist on type 'typeof SecurityEventType'.
+
+[7m286[0m     await logSecurityEvent(SecurityEventType.LOGIN_SUCCESS, userAuth.id, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m208[0m:[93m74[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m208[0m     await logSecurityEvent(SecurityEventType.REGISTRATION_FAILURE, null, {
+[7m   [0m [91m                                                                         ~[0m
+[7m209[0m       error: error instanceof Error ? error.message : 'Unknown error',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m211[0m       clientInfo: clientInfo,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m212[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m208[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'REGISTRATION_FAILURE' does not exist on type 'typeof SecurityEventType'.
+
+[7m208[0m     await logSecurityEvent(SecurityEventType.REGISTRATION_FAILURE, null, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m191[0m:[93m73[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m191[0m     await logSecurityEvent(SecurityEventType.USER_CREATED, userAuth.id, {
+[7m   [0m [91m                                                                        ~[0m
+[7m192[0m       email: credentials.email,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m194[0m       clientInfo: clientInfo,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m195[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m191[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'USER_CREATED' does not exist on type 'typeof SecurityEventType'.
+
+[7m191[0m     await logSecurityEvent(SecurityEventType.USER_CREATED, userAuth.id, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m57[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'skipSuccessfulRequests' does not exist in type '{ enabled?: boolean | undefined; window?: number | undefined; max?: number | undefined; customRules?: { [key: string]: false | { window: number; max: number; } | ((request: Request) => false | ... 1 more ... | Promise<...>); } | undefined; storage?: "memory" | ... 2 more ... | undefined; modelName?: string | undefin...'.
+
+[7m57[0m     skipSuccessfulRequests: false,
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m43[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ type: string; defaultValue: number; }' is not assignable to type 'string'.
+
+[7m43[0m       updatedAt: {
+[7m  [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ type: string; defaultValue: number; }' is not assignable to type 'string'.
+
+[7m39[0m       createdAt: {
+[7m  [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m21[0m:[93m13[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m21[0m   database: drizzleAdapter(db),
+[7m  [0m [91m            ~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m8[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'better-sqlite3' or its corresponding type declarations.
+
+[7m8[0m import Database from 'better-sqlite3'
+[7m [0m [91m                     ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m360[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m360[0m     await logSecurityEvent(SecurityEventType.LOGOUT, userId, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m361[0m       clientInfo: clientInfo,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m362[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m302[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m302[0m     await logSecurityEvent(SecurityEventType.LOGIN_FAILURE, null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m303[0m       error: error instanceof Error ? error.message : 'Unknown error',
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m305[0m       clientInfo: clientInfo,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m306[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m286[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m286[0m     await logSecurityEvent(SecurityEventType.LOGIN_SUCCESS, userAuth.id, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m287[0m       email: credentials.email,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m288[0m       clientInfo: clientInfo,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m289[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m208[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m208[0m     await logSecurityEvent(SecurityEventType.REGISTRATION_FAILURE, null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m209[0m       error: error instanceof Error ? error.message : 'Unknown error',
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m211[0m       clientInfo: clientInfo,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m212[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m191[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m191[0m     await logSecurityEvent(SecurityEventType.USER_CREATED, userAuth.id, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m192[0m       email: credentials.email,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m194[0m       clientInfo: clientInfo,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m195[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/auth/better-auth-integration.ts[0m:[93m145[0m:[93m59[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m145[0m   return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                          ~~~~~~[0m
+
+[96msrc/lib/auth/errors.ts[0m:[93m91[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"REPLAY_ATTACK"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m91[0m     super(message, 'REPLAY_ATTACK')
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/errors.ts[0m:[93m81[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"SESSION_CONTEXT_INVALID"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m81[0m     super(message, 'SESSION_CONTEXT_INVALID')
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/errors.ts[0m:[93m70[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"TYPE_MISMATCH"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m70[0m       'TYPE_MISMATCH',
+[7m  [0m [91m      ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/errors.ts[0m:[93m58[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"INVALID_FORMAT"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m58[0m     super(message, 'INVALID_FORMAT')
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/errors.ts[0m:[93m48[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"REVOKED"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m48[0m     super(message, 'REVOKED')
+[7m  [0m [91m                   ~~~~~~~~~[0m
+[96msrc/lib/auth/errors.ts[0m:[93m38[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"EXPIRED"' is not assignable to parameter of type 'TokenValidationReason'.
+
+[7m38[0m     super(message, 'EXPIRED')
+[7m  [0m [91m                   ~~~~~~~~~[0m
+
+[96msrc/lib/auth/index.ts[0m:[93m216[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthResult'.
+
+[7m216[0m ): Promise<AuthResult> {
+[7m   [0m [91m           ~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m215[0m:[93m24[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthService'.
+
+[7m215[0m   userData: Parameters<AuthService['createUser']>[0],
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m206[0m:[93m65[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthResult'.
+
+[7m206[0m export async function verifySession(sessionId: string): Promise<AuthResult> {
+[7m   [0m [91m                                                                ~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m198[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthResult'.
+
+[7m198[0m ): Promise<AuthResult> {
+[7m   [0m [91m           ~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m197[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthCredentials'.
+
+[7m197[0m   credentials: AuthCredentials,
+[7m   [0m [91m               ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m190[0m:[93m10[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'authServiceInstance'.
+
+[7m190[0m   return authServiceInstance
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m188[0m:[93m31[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthService'.
+
+[7m188[0m     authServiceInstance = new AuthService()
+[7m   [0m [91m                              ~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m188[0m:[93m5[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'authServiceInstance'.
+
+[7m188[0m     authServiceInstance = new AuthService()
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m187[0m:[93m8[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'authServiceInstance'.
+
+[7m187[0m   if (!authServiceInstance) {
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m186[0m:[93m35[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthService'.
+
+[7m186[0m export function getAuthService(): AuthService {
+[7m   [0m [91m                                  ~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m122[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'startTokenCleanupScheduler' does not exist on type 'typeof import("/home/vivi/pixelated/src/lib/auth/jwt-service")'.
+
+[7m122[0m     const { startTokenCleanupScheduler } = await import('./jwt-service')
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m116[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'initializeBetterAuthDatabase' does not exist on type 'typeof import("/home/vivi/pixelated/src/lib/auth/better-auth-integration")'.
+
+[7m116[0m     const { initializeBetterAuthDatabase } = await import(
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m93[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'createAuthMiddlewareStack'.
+
+[7m93[0m   createAuthMiddlewareStack,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m90[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'createAuthRateLimit'.
+
+[7m90[0m   createAuthRateLimit,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m89[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./middleware"' has no exported member named 'getClientInfo'. Did you mean 'ClientInfo'?
+
+[7m89[0m   getClientInfo,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m86[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'optionalAuthentication'.
+
+[7m86[0m   optionalAuthentication,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m85[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'requireAuthenticated'.
+
+[7m85[0m   requireAuthenticated,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m84[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'requireTherapistOrHigher'.
+
+[7m84[0m   requireTherapistOrHigher,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m83[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'requireAdmin'.
+
+[7m83[0m   requireAdmin,
+[7m  [0m [91m  ~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m82[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'requireAnyPermission'.
+
+[7m82[0m   requireAnyPermission,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m81[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./middleware"' has no exported member named 'requireAnyRole'. Did you mean 'requireRole'?
+
+[7m81[0m   requireAnyRole,
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m80[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./middleware"' has no exported member 'requirePermission'.
+
+[7m80[0m   requirePermission,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m27[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m27[0m   const user = await getCurrentUser(cookies)
+[7m  [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/auth/index.ts[0m:[93m16[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m16[0m   const user = await getCurrentUser(cookies)
+[7m  [0m [91m                                    ~~~~~~~[0m
+
+[96msrc/lib/auth/jwt-service.ts[0m:[93m482[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{}'.
+
+[7m482[0m           tokenId: metadata.id || key.replace('token:', ''),
+[7m   [0m [91m                            ~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m481[0m:[93m9[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m481[0m         {
+[7m   [0m [91m        ~[0m
+[7m482[0m           tokenId: metadata.id || key.replace('token:', ''),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m483[0m           reason: 'expired_cleanup',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m484[0m         },
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m480[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'userId' does not exist on type '{}'.
+
+[7m480[0m         metadata.userId,
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m479[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'TOKEN_CLEANED_UP' does not exist on type 'typeof SecurityEventType'.
+
+[7m479[0m         SecurityEventType.TOKEN_CLEANED_UP,
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m472[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'expiresAt' does not exist on type '{}'.
+
+[7m472[0m     if (metadata && metadata.expiresAt < currentTime) {
+[7m   [0m [91m                             ~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m451[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string | null'.
+  Type 'undefined' is not assignable to type 'string | null'.
+
+[7m451[0m     await updatePhase6AuthenticationProgress(metadata.userId, 'token_revoked')
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m444[0m:[93m78[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m444[0m     await logSecurityEvent(SecurityEventType.TOKEN_REVOKED, metadata.userId, {
+[7m   [0m [91m                                                                             ~[0m
+[7m445[0m       tokenId: tokenId,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m447[0m       tokenType: metadata.type,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m448[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m444[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'TOKEN_REVOKED' does not exist on type 'typeof SecurityEventType'.
+
+[7m444[0m     await logSecurityEvent(SecurityEventType.TOKEN_REVOKED, metadata.userId, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m408[0m:[93m5[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m408[0m     {
+[7m   [0m [91m    ~[0m
+[7m409[0m       oldTokenId: validation.tokenId!,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m411[0m       newRefreshTokenId: extractTokenId(newTokenPair.refreshToken),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m412[0m     },
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m406[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'TOKEN_REFRESHED' does not exist on type 'typeof SecurityEventType'.
+
+[7m406[0m     SecurityEventType.TOKEN_REFRESHED,
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m360[0m:[93m77[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m360[0m     await logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, null, {
+[7m   [0m [91m                                                                            ~[0m
+[7m361[0m       error: error instanceof Error ? error.message : 'Unknown error',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m362[0m       tokenType: tokenType,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m363[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m360[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'TOKEN_VALIDATION_FAILED' does not exist on type 'typeof SecurityEventType'.
+
+[7m360[0m     await logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, null, {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/auth/jwt-service.ts[0m:[93m345[0m:[93m76[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m345[0m     await logSecurityEvent(SecurityEventType.TOKEN_VALIDATED, payload.sub, {
+[7m   [0m [91m                                                                           ~[0m
+[7m346[0m       tokenId: payload.jti,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m347[0m       tokenType: tokenType,

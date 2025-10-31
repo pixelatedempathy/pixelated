@@ -1,0 +1,2200 @@
+
+> pixelated@0.0.1 typecheck /home/vivi/pixelated
+> astro check && tsc --noEmit
+
+11:50:55 [@astrojs/node] Enabling sessions with filesystem storage
+11:50:56 [vite] Re-optimizing dependencies because vite config has changed
+11:50:58 [content] Syncing content
+11:50:58 [content] Synced content
+11:50:58 [types] Generated 1.85s
+11:50:58 [check] Getting diagnostics for Astro files in /home/vivi/pixelated...
+[96msrc/middleware.ts[0m:[93m5[0m:[93m27[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'MiddlewareNext'.
+
+[7m5[0m import type { APIContext, MiddlewareNext } from 'astro';
+[7m [0m [91m                          ~~~~~~~~~~~~~~[0m
+[96msrc/middleware.ts[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m5[0m import type { APIContext, MiddlewareNext } from 'astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/__tests__/AIChat.astro.test.ts[0m:[93m137[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'customProps' is declared but its value is never read.
+
+[7m137[0m     const customProps = {
+[7m   [0m [93m          ~~~~~~~~~~~[0m
+[96msrc/components/__tests__/AIChat.astro.test.ts[0m:[93m99[0m:[93m16[0m - [93mwarning[0m[90m ts(6133): [0m'renderAstroComponent' is declared but its value is never read.
+
+[7m99[0m async function renderAstroComponent(Component: any, props = {}): Promise<{ container: HTMLDivElement }> {
+[7m  [0m [93m               ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m481[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<unknown>' is not assignable to parameter of type 'never'.
+
+[7m481[0m       new Promise((resolve) => {
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m482[0m         render(
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m487[0m         resolve(true)
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m488[0m       }),
+[7m   [0m [91m~~~~~~~~[0m
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m470[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<unknown>' is not assignable to parameter of type 'never'.
+
+[7m470[0m       new Promise((resolve) => {
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m471[0m         render(
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m476[0m         resolve(true)
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m477[0m       }),
+[7m   [0m [91m~~~~~~~~[0m
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m458[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<unknown>' is not assignable to parameter of type 'never'.
+
+[7m458[0m       new Promise((resolve) => {
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m459[0m         render(
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m465[0m         resolve(true)
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m466[0m       }),
+[7m   [0m [91m~~~~~~~~[0m
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m345[0m:[93m7[0m - [91merror[0m[90m ts(18048): [0m'firstActiveSession' is possibly 'undefined'.
+
+[7m345[0m       firstActiveSession.id,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m343[0m:[93m5[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m343[0m     // @ts-expect-error - firstActiveSession is guaranteed to be defined after the assertion above
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/dashboard/__tests__/performance.test.ts[0m:[93m61[0m:[93m19[0m - [93mwarning[0m[90m ts(80008): [0mNumeric literals with absolute values equal to 2^53 or greater are too large to be represented accurately as integers.
+
+[7m61[0m   return random / 0x20000000000000 // 2^53
+[7m  [0m [93m                  ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/monitoring/__tests__/RealUserMonitoring.astro.test.ts[0m:[93m127[0m:[93m61[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  The last overload gave the following error.
+
+[7m127[0m     render(React.createElement(RealUserMonitoringComponent, customProps))
+[7m   [0m [91m                                                            ~~~~~~~~~~~[0m
+
+[96msrc/components/security/__tests__/SecurityDashboard.test.ts[0m:[93m74[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Record<string, any>) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m74[0m     await renderAstro(SecurityDashboard)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/security/__tests__/SecurityDashboard.test.ts[0m:[93m65[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Record<string, any>) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m65[0m     await renderAstro(SecurityDashboard)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/security/__tests__/SecurityDashboard.test.ts[0m:[93m51[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Record<string, any>) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m51[0m     await renderAstro(SecurityDashboard)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/security/__tests__/SecurityDashboard.test.ts[0m:[93m37[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Record<string, any>) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m37[0m     await renderAstro(SecurityDashboard)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/security/__tests__/SecurityDashboard.test.ts[0m:[93m17[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Record<string, any>) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m17[0m     const { container } = await renderAstro(SecurityDashboard)
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m125[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m125[0m     const { container } = await renderAstro(Alert, {
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m114[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m114[0m     const { container } = await renderAstro(Alert, {
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m104[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m104[0m     const { container } = await renderAstro(Alert, {
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m93[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m93[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m81[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m81[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m69[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m69[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m55[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m55[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m38[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m38[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m19[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m19[0m     const { container } = await renderAstro(Alert, {
+[7m  [0m [91m                                            ~~~~~[0m
+[96msrc/components/ui/__tests__/Alert.test.ts[0m:[93m7[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(_props: Props) => any' is not assignable to parameter of type 'AstroComponent'.
+
+[7m7[0m     const { container } = await renderAstro(Alert, {
+[7m [0m [91m                                            ~~~~~[0m
+
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m160[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m160[0m         Card as unknown,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m152[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m152[0m       await renderAstro(CardAction as unknown, {}, 'Card Action')
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m139[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m139[0m       const { astroContainer } = await renderAstro(CardAction as unknown)
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m132[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m132[0m       await renderAstro(CardFooter as unknown, {}, 'Card Footer')
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m120[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m120[0m       const { astroContainer } = await renderAstro(CardFooter as unknown)
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m113[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m113[0m       await renderAstro(CardContent as unknown, {}, 'Card Content')
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m106[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m106[0m       const { astroContainer } = await renderAstro(CardContent as unknown)
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m99[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m99[0m       await renderAstro(CardDescription as unknown, {}, 'Card Description')
+[7m  [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m90[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m90[0m       const { astroContainer } = await renderAstro(CardDescription as unknown)
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m83[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m83[0m       await renderAstro(CardTitle as unknown, {}, 'Card Title')
+[7m  [0m [91m                        ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m76[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m76[0m       const { astroContainer } = await renderAstro(CardTitle as unknown)
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m63[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m63[0m       const { astroContainer } = await renderAstro(CardHeader as unknown, {
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m48[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m48[0m       const { astroContainer } = await renderAstro(CardHeader as unknown)
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m41[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m41[0m       await renderAstro(Card as unknown, {}, 'Card Content')
+[7m  [0m [91m                        ~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m32[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m32[0m       const { astroContainer } = await renderAstro(Card as unknown, {
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/Card.test.ts[0m:[93m14[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m14[0m       const { astroContainer } = await renderAstro(Card as unknown)
+[7m  [0m [91m                                                   ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m134[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m134[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown)
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m115[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m115[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown)
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m103[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m103[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown, {
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m77[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m77[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown)
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m47[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m47[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown)
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/ui/__tests__/ThemeToggle.test.ts[0m:[93m39[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'AstroComponent'.
+
+[7m39[0m     const { astroContainer } = await renderAstro(ThemeToggle as unknown)
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/button/button-types.ts[0m:[93m83[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ 'aria-label': string | undefined; 'aria-description': string | undefined; 'aria-disabled': boolean | undefined; 'aria-busy': boolean | undefined; }' is not assignable to type 'void'.
+
+[7m83[0m   return {
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/config/cdn.ts[0m:[93m42[0m:[93m32[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m42[0m       urls: z.array(z.string().url()),
+[7m  [0m [93m                               ~~~[0m
+[96msrc/config/cdn.ts[0m:[93m11[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m11[0m       url: z.string().url(),
+[7m  [0m [93m                      ~~~[0m
+[96msrc/config/cdn.ts[0m:[93m5[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m5[0m   baseUrl: z.string().url(),
+[7m [0m [93m                      ~~~[0m
+
+[96msrc/config/env.config.ts[0m:[93m115[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+
+[7m115[0m     .default('true'),
+[7m   [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m111[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+
+[7m111[0m     .default('true'),
+[7m   [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m105[0m:[93m62[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m105[0m   RATE_LIMIT_WINDOW_MS: z.string().transform(Number).default('900000'),
+[7m   [0m [91m                                                             ~~~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m104[0m:[93m65[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m104[0m   RATE_LIMIT_MAX_REQUESTS: z.string().transform(Number).default('100'),
+[7m   [0m [91m                                                                ~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m101[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+
+[7m101[0m     .default('true'),
+[7m   [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m97[0m:[93m70[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m97[0m   SECURITY_API_ABUSE_THRESHOLD: z.string().transform(Number).default('100'),
+[7m  [0m [91m                                                                     ~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m96[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m96[0m     .default('1800'),
+[7m  [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m92[0m:[93m69[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m92[0m   SECURITY_MAX_LOGIN_ATTEMPTS: z.string().transform(Number).default('5'),
+[7m  [0m [91m                                                                    ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m91[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+
+[7m91[0m     .default('true'),
+[7m  [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m27[0m:[93m62[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m27[0m   NOTIFICATION_WS_PORT: z.string().transform(Number).default('8082'),
+[7m  [0m [91m                                                             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m24[0m:[93m59[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m24[0m   ANALYTICS_WS_PORT: z.string().transform(Number).default('8083'),
+[7m  [0m [91m                                                          ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m21[0m:[93m14[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => boolean): ZodDefault<ZodPipe<ZodString, ZodTransform<boolean, string>>>', gave the following error.
+
+[7m21[0m     .default('true'),
+[7m  [0m [91m             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m14[0m:[93m46[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(def: number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+  Overload 2 of 2, '(def: () => number): ZodDefault<ZodPipe<ZodString, ZodTransform<number, string>>>', gave the following error.
+
+[7m14[0m   PORT: z.string().transform(Number).default('3000'),
+[7m  [0m [91m                                             ~~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m137[0m:[93m43[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m137[0m   MENTALLAMA_ENDPOINT_URL_13B: z.string().url().optional(),
+[7m   [0m [93m                                          ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m136[0m:[93m42[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m136[0m   MENTALLAMA_ENDPOINT_URL_7B: z.string().url().optional(),
+[7m   [0m [93m                                         ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m132[0m:[93m33[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m132[0m   SLACK_WEBHOOK_URL: z.string().url().optional(),
+[7m   [0m [93m                                ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m124[0m:[93m29[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m124[0m   VAPID_SUBJECT: z.string().url().optional(),
+[7m   [0m [93m                            ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m118[0m:[93m28[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m118[0m   VITE_API_URL: z.string().url().optional(),
+[7m   [0m [93m                           ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m84[0m:[93m26[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m84[0m   EMAIL_FROM: z.string().email().optional(),
+[7m  [0m [93m                         ~~~~~[0m
+[96msrc/config/env.config.ts[0m:[93m77[0m:[93m26[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m77[0m   SENTRY_DSN: z.string().url().optional(),
+[7m  [0m [93m                         ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m61[0m:[93m37[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m61[0m   AZURE_OPENAI_ENDPOINT: z.string().url().optional(),
+[7m  [0m [93m                                    ~~~[0m
+[96msrc/config/env.config.ts[0m:[93m53[0m:[93m31[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m53[0m   OPENAI_BASE_URL: z.string().url().optional(),
+[7m  [0m [93m                              ~~~[0m
+
+[96msrc/data/sample-cognitive-models.ts[0m:[93m1136[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m1136[0m         'Basic emotional regulation',
+[7m    [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m1135[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m1135[0m         'Safety planning',
+[7m    [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m1134[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m1134[0m         'Grounding techniques',
+[7m    [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m1087[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'resistance' does not exist in type 'ConversationalStyle'.
+
+[7m1087[0m       resistance: 6,
+[7m    [0m [91m      ~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m749[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m749[0m         'Basic cognitive restructuring',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m748[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m748[0m         'Progressive muscle relaxation',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m747[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m747[0m         'Deep breathing',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m704[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'resistance' does not exist in type 'ConversationalStyle'.
+
+[7m704[0m       resistance: 7,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m361[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m361[0m         'Mindfulness techniques',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m360[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m360[0m         'Activity scheduling',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m359[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'SkillAcquired'.
+
+[7m359[0m         'Basic thought challenging',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/data/sample-cognitive-models.ts[0m:[93m318[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'resistance' does not exist in type 'ConversationalStyle'.
+
+[7m318[0m       resistance: 6,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m310[0m:[93m15[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m310[0m               ((await request.postData()) as unknown) || '{}',
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m200[0m:[93m15[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m200[0m               ((await request.postData()) as unknown) || '{}',
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m108[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m108[0m               postData: JSON.parse((request.postData() as unknown) || '{}'),
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m64[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'getInstance' does not exist on type 'typeof import("/home/vivi/pixelated/src/adapters/betterAuthMongoAdapter")'.
+
+[7m64[0m     const auth = AuthService.getInstance()
+[7m  [0m [91m                             ~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m55[0m:[93m32[0m - [91merror[0m[90m ts(2709): [0mCannot use namespace 'AuthService' as a type.
+
+[7m55[0m   auth: async (_: {}, use: (a: AuthService) => Promise<void>) => {
+[7m  [0m [91m                               ~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m10[0m:[93m9[0m - [91merror[0m[90m ts(2709): [0mCannot use namespace 'AuthService' as a type.
+
+[7m10[0m   auth: AuthService
+[7m  [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m310[0m:[93m17[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m310[0m               ((await request.postData()) as unknown) || '{}',
+[7m   [0m [93m                ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/e2e/breach-notification.spec.ts[0m:[93m200[0m:[93m17[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m200[0m               ((await request.postData()) as unknown) || '{}',
+[7m   [0m [93m                ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useAuth.ts[0m:[93m300[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m300[0m       const result = await authUpdateProfile(user.id, profile)
+[7m   [0m [91m                                             ~~~~~~~[0m
+[96msrc/hooks/useAuth.ts[0m:[93m274[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type '{ success: boolean; error: unknown; }'.
+
+[7m274[0m         setUser(response.user)
+[7m   [0m [91m                         ~~~~[0m
+[96msrc/hooks/useAuth.ts[0m:[93m273[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type '{ success: boolean; error: unknown; }'.
+
+[7m273[0m       if (response.user) {
+[7m   [0m [91m                   ~~~~[0m
+[96msrc/hooks/useAuth.ts[0m:[93m268[0m:[93m11[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m268[0m           response.error || 'OTP verification failed',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useAuth.ts[0m:[93m243[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'void' is not assignable to type 'boolean'.
+
+[7m243[0m       return await authResetPassword(email, redirectTo)
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/hooks/useAuth.ts[0m:[93m164[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'error' does not exist on type '{ user: AuthUser | null; session: { access_token: any; refresh_token: any; }; }'.
+
+[7m164[0m           result.error || 'Registration failed',
+[7m   [0m [91m                 ~~~~~[0m
+
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m122[0m:[93m46[0m - [91merror[0m[90m ts(2454): [0mVariable 'generateSummary' is used before being assigned.
+
+[7m122[0m     [minConfidence, onDetection, onComplete, generateSummary],
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m122[0m:[93m46[0m - [91merror[0m[90m ts(2448): [0mBlock-scoped variable 'generateSummary' used before its declaration.
+
+[7m122[0m     [minConfidence, onDetection, onComplete, generateSummary],
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m86[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'config' is of type 'unknown'.
+
+[7m86[0m               type: config.type,
+[7m  [0m [91m                    ~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m68[0m:[93m46[0m - [91merror[0m[90m ts(18046): [0m'config' is of type 'unknown'.
+
+[7m68[0m             0.5 + (matchingPatterns.length / config.patterns.length) * 0.5,
+[7m  [0m [91m                                             ~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m61[0m:[93m34[0m - [91merror[0m[90m ts(18046): [0m'config' is of type 'unknown'.
+
+[7m61[0m         const matchingPatterns = config.patterns.filter((pattern) =>
+[7m  [0m [91m                                 ~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m7[0m:[93m44[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../lib/ai/types/CognitiveDistortions' or its corresponding type declarations.
+
+[7m7[0m import { cognitiveDistortionConfigs } from '../lib/ai/types/CognitiveDistortions'
+[7m [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../lib/ai/types/CognitiveDistortions' or its corresponding type declarations.
+
+[7m6[0m } from '../lib/ai/types/CognitiveDistortions'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useCognitiveDistortionDetection.ts[0m:[93m61[0m:[93m58[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pattern' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m61[0m         const matchingPatterns = config.patterns.filter((pattern) =>
+[7m  [0m [93m                                                         ~~~~~~~[0m
+
+[96msrc/hooks/useComparativeProgress.ts[0m:[93m41[0m:[93m17[0m - [93mwarning[0m[90m ts(80004): [0mJSDoc types may be moved to TypeScript types.
+
+[7m41[0m export function useComparativeProgress(
+[7m  [0m [93m                ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useComponentIntegration.ts[0m:[93m427[0m:[93m23[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m427[0m   const intervalRef = useRef<NodeJS.Timeout>()
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/hooks/useComponentIntegration.ts[0m:[93m333[0m:[93m23[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m333[0m   const intervalRef = useRef<NodeJS.Timeout>()
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/hooks/useComponentIntegration.ts[0m:[93m197[0m:[93m13[0m - [91merror[0m[90m ts(7030): [0mNot all code paths return a value.
+
+[7m197[0m   useEffect(() => {
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/hooks/useComponentIntegration.ts[0m:[93m51[0m:[93m23[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m51[0m   const intervalRef = useRef<NodeJS.Timeout>()
+[7m  [0m [91m                      ~~~~~~[0m
+[96msrc/hooks/useComponentIntegration.ts[0m:[93m2[0m:[93m44[0m - [93mwarning[0m[90m ts(6133): [0m'ComponentIntegrationService' is declared but its value is never read.
+
+[7m2[0m import { componentIntegrationService, type ComponentIntegrationService } from '@/lib/services/ComponentIntegrationService'
+[7m [0m [93m                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useConversationMemory.ts[0m:[93m155[0m:[93m22[0m - [91merror[0m[90m ts(2560): [0mValue of type '(prevState: any) => { progressMetrics: any; }' has no properties in common with type 'Partial<ProgressMilestoneState>'. Did you mean to call it?
+
+[7m155[0m     setProgressState((prevState: any) => {
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useConversionTracking.ts[0m:[93m49[0m:[93m29[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 2.
+
+[7m49[0m     trackEvent('page_view', { path })
+[7m  [0m [91m                            ~~~~~~~~[0m
+
+[96msrc/hooks/useEmotionDetection.ts[0m:[93m68[0m:[93m23[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m68[0m           confidence: analysis.confidence || 0.8,
+[7m  [0m [91m                      ~~~~~~~~[0m
+[96msrc/hooks/useEmotionDetection.ts[0m:[93m67[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m67[0m           intensity: analysis.intensity || 0.5,
+[7m  [0m [91m                     ~~~~~~~~[0m
+[96msrc/hooks/useEmotionDetection.ts[0m:[93m66[0m:[93m30[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m66[0m           secondaryEmotions: analysis.secondaryEmotions || [],
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96msrc/hooks/useEmotionDetection.ts[0m:[93m65[0m:[93m27[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m65[0m           primaryEmotion: analysis.primaryEmotion || 'neutral',
+[7m  [0m [91m                          ~~~~~~~~[0m
+
+[96msrc/hooks/useEmotionProgress.ts[0m:[93m206[0m:[93m17[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ date: string; overallImprovement: number; stabilityChange: number; positiveEmotionChange: number; negativeEmotionChange: number; }' is not assignable to parameter of type 'never'.
+
+[7m206[0m     result.push({
+[7m   [0m [91m                ~[0m
+[7m207[0m       date,
+[7m   [0m [91m~~~~~~~~~~~[0m
+[7m...[0m 
+[7m211[0m       negativeEmotionChange: negative,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m212[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/hooks/useEmotionProgress.ts[0m:[93m2[0m:[93m42[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/ai/temporal/types' or its corresponding type declarations.
+
+[7m2[0m import type { ProgressionAnalysis } from '@/lib/ai/temporal/types'
+[7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useOffline.ts[0m:[93m114[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ isOffline: boolean; checkConnection: () => Promise<boolean>; connectionInfo: ConnectionInfo; }' is not assignable to type 'void'.
+
+[7m114[0m   return {
+[7m   [0m [91m  ~~~~~~[0m
+
+[96msrc/hooks/usePatientModel.ts[0m:[93m136[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatePatientPrompt' does not exist on type 'PatientModelService'.
+
+[7m136[0m         const prompt = patientService.generatePatientPrompt(responseContext)
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/usePatientModel.ts[0m:[93m123[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'createResponseContext' does not exist on type 'PatientModelService'.
+
+[7m123[0m         const responseContext = await patientService.createResponseContext(
+[7m   [0m [91m                                                     ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/usePatientModel.ts[0m:[93m69[0m:[93m44[0m - [91merror[0m[90m ts(2551): [0mProperty 'getModelById' does not exist on type 'PatientModelService'. Did you mean 'getModel'?
+
+[7m69[0m         const model = await patientService.getModelById(currentModelId)
+[7m  [0m [91m                                           ~~~~~~~~~~~~[0m
+[96msrc/hooks/usePatientModel.ts[0m:[93m41[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'CognitiveModel[]' is not assignable to parameter of type 'SetStateAction<string[]>'.
+  Type 'CognitiveModel[]' is not assignable to type 'string[]'.
+
+[7m41[0m         setAvailableModels(models)
+[7m  [0m [91m                           ~~~~~~[0m
+
+[96msrc/hooks/usePersistentState.ts[0m:[93m45[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'getFullKey' is private and only accessible within class 'StorageManager'.
+
+[7m45[0m       if (e.key === storageManager.getFullKey(key) && e.newValue) {
+[7m  [0m [91m                                   ~~~~~~~~~~[0m
+[96msrc/hooks/usePersistentState.ts[0m:[93m25[0m:[93m23[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m25[0m   const debounceRef = useRef<NodeJS.Timeout>()
+[7m  [0m [91m                      ~~~~~~[0m
+
+[96msrc/hooks/usePipelineWebSocket.ts[0m:[93m2[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/pipeline' or its corresponding type declarations.
+
+[7m2[0m import { WebSocketMessage } from '@/types/pipeline'
+[7m [0m [91m                                 ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/usePipelineWebSocket.ts[0m:[93m437[0m:[93m57[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m437[0m         id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                        ~~~~~~[0m
+
+[96msrc/hooks/useRiskAssessment.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m53[0m           confidence: analysis.confidence || 0.5,
+[7m  [0m [91m                      ~~~~~~~~[0m
+[96msrc/hooks/useRiskAssessment.ts[0m:[93m52[0m:[93m27[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m52[0m           requiresExpert: analysis.requiresExpert || false,
+[7m  [0m [91m                          ~~~~~~~~[0m
+[96msrc/hooks/useRiskAssessment.ts[0m:[93m51[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m51[0m           factors: analysis.factors || [],
+[7m  [0m [91m                   ~~~~~~~~[0m
+[96msrc/hooks/useRiskAssessment.ts[0m:[93m50[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'analysis' is of type 'unknown'.
+
+[7m50[0m           category: analysis.category || 'low',
+[7m  [0m [91m                    ~~~~~~~~[0m
+[96msrc/hooks/useRiskAssessment.ts[0m:[93m34[0m:[93m13[0m - [91merror[0m[90m ts(2358): [0mThe left-hand side of an 'instanceof' expression must be of type 'any', an object type or a type parameter.
+
+[7m34[0m         if (response instanceof ReadableStream) {
+[7m  [0m [91m            ~~~~~~~~[0m
+
+[96msrc/hooks/useSecurity.ts[0m:[93m23[0m:[93m28[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m23[0m           await fheService.initialize()
+[7m  [0m [91m                           ~~~~~~~~~~[0m
+
+[96msrc/hooks/useSessionTimingMetrics.ts[0m:[93m23[0m:[93m28[0m - [93mwarning[0m[90m ts(6385): [0m'MutableRefObject' is deprecated.
+
+[7m23[0m   lastActiveTimeRef: React.MutableRefObject<number>,
+[7m  [0m [93m                           ~~~~~~~~~~~~~~~~[0m
+[96msrc/hooks/useSessionTimingMetrics.ts[0m:[93m22[0m:[93m30[0m - [93mwarning[0m[90m ts(6385): [0m'MutableRefObject' is deprecated.
+
+[7m22[0m   sessionStartTimeRef: React.MutableRefObject<number>,
+[7m  [0m [93m                             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useSyncedState.ts[0m:[93m35[0m:[93m23[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 0.
+
+[7m35[0m   const debounceRef = useRef<NodeJS.Timeout>()
+[7m  [0m [91m                      ~~~~~~[0m
+
+[96msrc/hooks/useTemporalEmotionAnalysis.ts[0m:[93m125[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'progression' does not exist on type 'TemporalEmotionAnalysis'.
+
+[7m125[0m     TemporalEmotionAnalysis['progression'] | null
+[7m   [0m [91m                            ~~~~~~~~~~~~~[0m
+[96msrc/hooks/useTemporalEmotionAnalysis.ts[0m:[93m119[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'progression' does not exist on type 'TemporalEmotionAnalysis'.
+
+[7m119[0m   progression: TemporalEmotionAnalysis['progression'] | null
+[7m   [0m [91m                                       ~~~~~~~~~~~~~[0m
+
+[96msrc/hooks/useWebSocket.ts[0m:[93m81[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'WebSocketMessage'.
+
+[7m81[0m           const message: WebSocketMessage = JSON.parse(event.data) as unknown
+[7m  [0m [91m                ~~~~~~~[0m
+
+[96msrc/hooks/__tests__/usePatternDetection.test.ts[0m:[93m26[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m26[0m       timestamp: Date.now(),
+[7m  [0m [91m      ~~~~~~~~~[0m
+[96msrc/hooks/__tests__/usePatternDetection.test.ts[0m:[93m19[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m19[0m       timestamp: Date.now() - 1000,
+[7m  [0m [91m      ~~~~~~~~~[0m
+
+[96msrc/hooks/__tests__/vitest.setup.ts[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'typeof TextEncoder' is not assignable to type '{ new (): TextEncoder; prototype: TextEncoder; }'.
+  The types returned by 'prototype.encode(...)' are incompatible between these types.
+
+[7m3[0m   globalThis.TextEncoder = TextEncoder
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/integrations/search.ts[0m:[93m1[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'AstroIntegration'.
+
+[7m1[0m import type { AstroIntegration } from 'astro'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/access-control.ts[0m:[93m150[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m150[0m     const user = await getCurrentUser(cookies)
+[7m   [0m [91m                                      ~~~~~~~[0m
+[96msrc/lib/access-control.ts[0m:[93m136[0m:[93m51[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m136[0m   return hasRole(cookies, ROLES.STAFF) || hasRole(cookies, ROLES.ADMIN)
+[7m   [0m [91m                                                  ~~~~~~~[0m
+[96msrc/lib/access-control.ts[0m:[93m136[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m136[0m   return hasRole(cookies, ROLES.STAFF) || hasRole(cookies, ROLES.ADMIN)
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/access-control.ts[0m:[93m132[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m132[0m   const user = await getCurrentUser(cookies)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/access-control.ts[0m:[93m125[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m125[0m   return hasRole(cookies, ROLES.ADMIN)
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/access-control.ts[0m:[93m91[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies' is not assignable to parameter of type 'CookiesLike'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m91[0m   const user = await getCurrentUser(cookies)
+[7m  [0m [91m                                    ~~~~~~~[0m
+
+[96msrc/lib/analytics.ts[0m:[93m454[0m:[93m58[0m - [93mwarning[0m[90m ts(6385): [0m'platform' is deprecated.
+
+[7m454[0m             typeof navigator !== 'undefined' ? navigator.platform : 'server',
+[7m   [0m [93m                                                         ~~~~~~~~[0m
+
+[96msrc/lib/auth-legacy.ts[0m:[93m70[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'profile' does not exist on type 'User'.
+
+[7m70[0m       metadata: (user.profile as Record<string, unknown>) || {},
+[7m  [0m [91m                      ~~~~~~~[0m
+[96msrc/lib/auth-legacy.ts[0m:[93m57[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'profile' does not exist on type 'User'.
+
+[7m57[0m     const userProfile = user.profile as
+[7m  [0m [91m                             ~~~~~~~[0m
+
+[96msrc/lib/cache.ts[0m:[93m57[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m57[0m       this.store.delete(oldestKey)
+[7m  [0m [91m                        ~~~~~~~~~[0m
+
+[96msrc/lib/email.ts[0m:[93m3[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ prefix: string; }' is not assignable to parameter of type 'string'.
+
+[7m3[0m const logger = createBuildSafeLogger({ prefix: 'EmailService' })
+[7m [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/email.ts[0m:[93m66[0m:[93m73[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m66[0m       const messageId = `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m  [0m [93m                                                                        ~~~~~~[0m
+
+[96msrc/lib/encryption.ts[0m:[93m42[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'import("crypto").webcrypto.CryptoKey' is not assignable to type 'CryptoKey'.
+  Types of property 'usages' are incompatible.
+
+[7m42[0m   return webcrypto.subtle.deriveKey(
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/lib/fhe.ts[0m:[93m278[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'crypto' does not exist on type 'SEALLibrary'.
+
+[7m278[0m       const hashBuffer = await this.seal.crypto.subtle.digest(
+[7m   [0m [91m                                         ~~~~~~[0m
+[96msrc/lib/fhe.ts[0m:[93m278[0m:[93m32[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m278[0m       const hashBuffer = await this.seal.crypto.subtle.digest(
+[7m   [0m [91m                               ~~~~~~~~~[0m
+
+[96msrc/lib/memory.ts[0m:[93m128[0m:[93m20[0m - [91merror[0m[90m ts(18048): [0m'bVal' is possibly 'undefined'.
+
+[7m128[0m         if (aVal > bVal) {
+[7m   [0m [91m                   ~~~~[0m
+[96msrc/lib/memory.ts[0m:[93m128[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'aVal' is possibly 'undefined'.
+
+[7m128[0m         if (aVal > bVal) {
+[7m   [0m [91m            ~~~~[0m
+[96msrc/lib/memory.ts[0m:[93m125[0m:[93m20[0m - [91merror[0m[90m ts(18048): [0m'bVal' is possibly 'undefined'.
+
+[7m125[0m         if (aVal < bVal) {
+[7m   [0m [91m                   ~~~~[0m
+[96msrc/lib/memory.ts[0m:[93m125[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'aVal' is possibly 'undefined'.
+
+[7m125[0m         if (aVal < bVal) {
+[7m   [0m [91m            ~~~~[0m
+[96msrc/lib/memory.ts[0m:[93m45[0m:[93m38[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m45[0m       id: Math.random().toString(36).substr(2, 9),
+[7m  [0m [93m                                     ~~~~~~[0m
+
+[96msrc/lib/redis.ts[0m:[93m237[0m:[93m40[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 4.
+
+[7m237[0m       await redis.set(key, serialized, 'EX', expirationSeconds)
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/redis.ts[0m:[93m118[0m:[93m31[0m - [93mwarning[0m[90m ts(6133): [0m'count' is declared but its value is never read.
+
+[7m118[0m     lrem: async (key: string, count: number, value: string) => {
+[7m   [0m [93m                              ~~~~~[0m
+[96msrc/lib/redis.ts[0m:[93m60[0m:[93m32[0m - [93mwarning[0m[90m ts(6133): [0m'seconds' is declared but its value is never read.
+
+[7m60[0m     setex: async (key: string, seconds: number, value: string) => {
+[7m  [0m [93m                               ~~~~~~~[0m
+[96msrc/lib/redis.ts[0m:[93m56[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'seconds' is declared but its value is never read.
+
+[7m56[0m     expire: async (key: string, seconds: number) =>
+[7m  [0m [93m                                ~~~~~~~[0m
+
+[96msrc/lib/search-browser.ts[0m:[93m265[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 0-2 arguments, but got 3.
+
+[7m265[0m           { cause: docErr },
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security.ts[0m:[93m456[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'Record<string, unknown> | null'.
+
+[7m456[0m     return payload
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/security.ts[0m:[93m452[0m:[93m24[0m - [91merror[0m[90m ts(18046): [0m'payload' is of type 'unknown'.
+
+[7m452[0m     if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) {
+[7m   [0m [91m                       ~~~~~~~[0m
+[96msrc/lib/security.ts[0m:[93m452[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'payload' is of type 'unknown'.
+
+[7m452[0m     if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) {
+[7m   [0m [91m        ~~~~~~~[0m
+
+[96msrc/lib/__tests__/test-utils.ts[0m:[93m208[0m:[93m28[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ getItem: Mock<Procedure>; setItem: Mock<Procedure>; removeItem: Mock<Procedure>; clear: Mock<Procedure>; key: Mock<...>; length: Mock<...>; }' to type 'Storage' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'length' are incompatible.
+
+[7m208[0m   const mocklocalStorage = {
+[7m   [0m [91m                           ~[0m
+[7m209[0m     getItem: mockGetItem,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m216[0m     length: vi.fn().mockImplementation(() => storage.size),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m217[0m   } as Storage
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/PixelatedEmpathyAgent.ts[0m:[93m168[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m168[0m                 const data = JSON.parse(line.slice(6) as unknown);
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m6[0m:[93m64[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/ai' or its corresponding type declarations.
+
+[7m6[0m import type { SessionData, PatientProfile, Intervention } from '@/types/ai'
+[7m [0m [91m                                                               ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m302[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'emotion' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m302[0m     if (recentEmotions.every(emotion => emotion === 'anxious')) {
+[7m   [0m [93m                             ~~~~~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m301[0m:[93m73[0m - [93mwarning[0m[90m ts(7044): [0mParameter 's' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m301[0m     const recentEmotions = patientProfile.sessionHistory?.slice(-3).map(s => s.emotionAnalysis?.dominantEmotion) || []
+[7m   [0m [93m                                                                        ~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m214[0m:[93m45[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m214[0m     const sum = recentSessions.reduce((acc, session) =>
+[7m   [0m [93m                                            ~~~~~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m214[0m:[93m40[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'acc' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m214[0m     const sum = recentSessions.reduce((acc, session) =>
+[7m   [0m [93m                                       ~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m119[0m:[93m60[0m - [93mwarning[0m[90m ts(7044): [0mParameter 's' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m119[0m           const depressedMoodCount = recentSessions.filter(s =>
+[7m   [0m [93m                                                           ~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m113[0m:[93m21[0m - [93mwarning[0m[90m ts(6133): [0m'session' is declared but its value is never read.
+
+[7m113[0m         condition: (session, patient) => {
+[7m   [0m [93m                    ~~~~~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m53[0m:[93m30[0m - [93mwarning[0m[90m ts(6133): [0m'patient' is declared but its value is never read.
+
+[7m53[0m         condition: (session, patient) => {
+[7m  [0m [93m                             ~~~~~~~[0m
+[96msrc/lib/ai/interventionEngine.ts[0m:[93m40[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m40[0m   private context: InterventionContext | null = null
+[7m  [0m [93m          ~~~~~~~[0m
+
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m301[0m:[93m66[0m - [91merror[0m[90m ts(18046): [0m'change' is of type 'unknown'.
+
+[7m301[0m         recommendations.push(`Consider ${metric} degradation: ${(change * 100).toFixed(1)}%`)
+[7m   [0m [91m                                                                 ~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m300[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'change' is of type 'unknown'.
+
+[7m300[0m       } else if (change < -0.1) {
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m299[0m:[93m67[0m - [91merror[0m[90m ts(18046): [0m'change' is of type 'unknown'.
+
+[7m299[0m         recommendations.push(`Great improvement in ${metric}: +${(change * 100).toFixed(1)}%`)
+[7m   [0m [91m                                                                  ~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m298[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'change' is of type 'unknown'.
+
+[7m298[0m       if (change > 0.1) {
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m6[0m:[93m51[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/ai' or its corresponding type declarations.
+
+[7m6[0m import type { ModelMetrics, TrainingConfig } from '@/types/ai'
+[7m [0m [91m                                                  ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m446[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'analysis' is declared but its value is never read.
+
+[7m446[0m     const analysis = await this.analyzePerformance()
+[7m   [0m [93m          ~~~~~~~~[0m
+[96msrc/lib/ai/modelOptimizer.ts[0m:[93m234[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'config' is declared but its value is never read.
+
+[7m234[0m     config?: Partial<TrainingConfig>
+[7m   [0m [93m    ~~~~~~[0m
+
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m6[0m:[93m63[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/ai' or its corresponding type declarations.
+
+[7m6[0m import type { PatientData, ModelUpdate, PrivacyMetrics } from '@/types/ai'
+[7m [0m [91m                                                              ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m456[0m:[93m76[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m456[0m     const verificationKey = `vk_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                           ~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m455[0m:[93m67[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m455[0m     const proof = `zkp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                  ~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m320[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m320[0m       sessionData: patient.sessionData.map(session => ({
+[7m   [0m [93m                                           ~~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m301[0m:[93m67[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'w' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m301[0m     const weightMagnitude = Math.sqrt(update.weights.reduce((sum, w) => sum + w * w, 0))
+[7m   [0m [93m                                                                  ~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m301[0m:[93m62[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sum' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m301[0m     const weightMagnitude = Math.sqrt(update.weights.reduce((sum, w) => sum + w * w, 0))
+[7m   [0m [93m                                                             ~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m265[0m:[93m39[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m265[0m       update.weights.forEach((weight, index) => {
+[7m   [0m [93m                                      ~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m265[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'weight' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m265[0m       update.weights.forEach((weight, index) => {
+[7m   [0m [93m                              ~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m242[0m:[93m39[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m242[0m       update.weights.forEach((weight, index) => {
+[7m   [0m [93m                                      ~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m242[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'weight' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m242[0m       update.weights.forEach((weight, index) => {
+[7m   [0m [93m                              ~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m212[0m:[93m67[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'w' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m212[0m     const updateMagnitude = Math.sqrt(update.weights.reduce((sum, w) => sum + w * w, 0))
+[7m   [0m [93m                                                                  ~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m212[0m:[93m62[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sum' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m212[0m     const updateMagnitude = Math.sqrt(update.weights.reduce((sum, w) => sum + w * w, 0))
+[7m   [0m [93m                                                             ~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m160[0m:[93m56[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m160[0m     const privateWeights = update.weights.map((weight, index) =>
+[7m   [0m [93m                                                       ~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m160[0m:[93m48[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'weight' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m160[0m     const privateWeights = update.weights.map((weight, index) =>
+[7m   [0m [93m                                               ~~~~~~[0m
+[96msrc/lib/ai/privacyEngine.ts[0m:[93m155[0m:[93m22[0m - [93mwarning[0m[90m ts(6133): [0m'delta' is declared but its value is never read.
+
+[7m155[0m     const { epsilon, delta, sensitivity, mechanism } = this.dpConfig
+[7m   [0m [93m                     ~~~~~[0m
+
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m475[0m:[93m11[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'adaptiveController'.
+
+[7m475[0m   private adaptiveController: AdaptiveController
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m468[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType '{ memoryUsage: number; cpuUsage: number; networkUsage: number; }' is missing the following properties from type '{ memory: number; cpu: number; network: number; }': memory, cpu, network
+
+[7m468[0m       resourceUsage: this.getCurrentResourceUsage(),
+[7m   [0m [91m      ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m212[0m:[93m68[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m212[0m   private async handleSessionError(sessionId: string, error: any): void {
+[7m   [0m [91m                                                                   ~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m6[0m:[93m69[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/ai' or its corresponding type declarations.
+
+[7m6[0m import type { SessionData, RealTimeMetrics, ProcessingConfig } from '@/types/ai'
+[7m [0m [91m                                                                    ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m299[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'startTime' is declared but its value is never read.
+
+[7m299[0m       const startTime = Date.now()
+[7m   [0m [93m            ~~~~~~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m129[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'config' is declared but its value is never read.
+
+[7m129[0m   private async createProcessingPipeline(config: Partial<ProcessingConfig>): Promise<ProcessingStage[]> {
+[7m   [0m [93m                                         ~~~~~~[0m
+[96msrc/lib/ai/realTimeProcessor.ts[0m:[93m6[0m:[93m15[0m - [93mwarning[0m[90m ts(6196): [0m'SessionData' is declared but never used.
+
+[7m6[0m import type { SessionData, RealTimeMetrics, ProcessingConfig } from '@/types/ai'
+[7m [0m [93m              ~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/tensorflow-compatibility.ts[0m:[93m68[0m:[93m37[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tensorflow/tfjs-node' or its corresponding type declarations.
+
+[7m68[0m         const tfNode = await import('@tensorflow/tfjs-node');
+[7m  [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m578[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'generatedAt' does not exist in type 'BiasReport'.
+
+[7m578[0m       generatedAt: new Date(),
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m483[0m:[93m5[0m - [91merror[0m[90m ts(2741): [0mProperty 'timestamp' is missing in type 'BiasAnalysisResult' but required in type 'AnalysisResult'.
+
+[7m483[0m     return result
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m456[0m:[93m37[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'UserContext'.
+
+[7m456[0m       const user: import('./types').UserContext = {
+[7m   [0m [91m                                    ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m424[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m424[0m       timestamp: session.timestamp ?? new Date(),
+[7m   [0m [91m                         ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m424[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m424[0m       timestamp: session.timestamp ?? new Date(),
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m246[0m:[93m39[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'EvaluationAnalysisResult'.
+
+[7m246[0m     let evaluation: import('./types').EvaluationAnalysisResult
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m245[0m:[93m40[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'InteractiveAnalysisResult'.
+
+[7m245[0m     let interactive: import('./types').InteractiveAnalysisResult
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m244[0m:[93m39[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'ModelLevelAnalysisResult'.
+
+[7m244[0m     let modelLevel: import('./types').ModelLevelAnalysisResult
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m243[0m:[93m42[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'PreprocessingAnalysisResult'.
+
+[7m243[0m     let preprocessing: import('./types').PreprocessingAnalysisResult
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m137[0m:[93m61[0m - [91merror[0m[90m ts(2339): [0mProperty 'retries' does not exist on type '{ enabled?: boolean | undefined; batchSize?: number | undefined; maxBatchDelayMs?: number | undefined; retryFailedBatches?: boolean | undefined; maxRetryAttempts?: number | undefined; backoffStrategy?: "fixed" | ... 1 more ... | undefined; enableDebug?: boolean | undefined; }'.
+
+[7m137[0m           retryAttempts: this.config.batchProcessingConfig?.retries || 2,
+[7m   [0m [91m                                                            ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m136[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeoutMs' does not exist on type '{ enabled?: boolean | undefined; batchSize?: number | undefined; maxBatchDelayMs?: number | undefined; retryFailedBatches?: boolean | undefined; maxRetryAttempts?: number | undefined; backoffStrategy?: "fixed" | ... 1 more ... | undefined; enableDebug?: boolean | undefined; }'.
+
+[7m136[0m           timeoutMs: this.config.batchProcessingConfig?.timeoutMs || 30000,
+[7m   [0m [91m                                                        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m135[0m:[93m62[0m - [91merror[0m[90m ts(2339): [0mProperty 'concurrency' does not exist on type '{ enabled?: boolean | undefined; batchSize?: number | undefined; maxBatchDelayMs?: number | undefined; retryFailedBatches?: boolean | undefined; maxRetryAttempts?: number | undefined; backoffStrategy?: "fixed" | ... 1 more ... | undefined; enableDebug?: boolean | undefined; }'.
+
+[7m135[0m           maxConcurrency: this.config.batchProcessingConfig?.concurrency || 5,
+[7m   [0m [91m                                                             ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m93[0m:[93m206[0m - [91merror[0m[90m ts(2322): [0mType 'BiasReportConfig | { includeConfidentialityAnalysis: true; includeDemographicBreakdown: true; includeTemporalTrends: true; includeRecommendations: true; reportTemplate: "standard"; exportFormats: string[]; }' is not assignable to type 'BiasReportConfig | undefined'.
+  Object literal may only specify known properties, but 'exportFormats' does not exist in type 'BiasReportConfig'. Did you mean to write 'reportFormats'?
+
+[7m93[0m       reportConfig: cfg['reportConfig'] ?? { includeConfidentialityAnalysis: true, includeDemographicBreakdown: true, includeTemporalTrends: true, includeRecommendations: true, reportTemplate: 'standard', exportFormats: ['json'] },
+[7m  [0m [91m                                                                                                                                                                                                             ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m25[0m:[93m33[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'EvaluationAnalysisResult'.
+
+[7m25[0m   evaluation: import('./types').EvaluationAnalysisResult
+[7m  [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m24[0m:[93m34[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'InteractiveAnalysisResult'.
+
+[7m24[0m   interactive: import('./types').InteractiveAnalysisResult
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m23[0m:[93m33[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'ModelLevelAnalysisResult'.
+
+[7m23[0m   modelLevel: import('./types').ModelLevelAnalysisResult
+[7m  [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/BiasDetectionEngine.ts[0m:[93m22[0m:[93m36[0m - [91merror[0m[90m ts(2694): [0mNamespace '"/home/vivi/pixelated/src/lib/ai/bias-detection/types"' has no exported member 'PreprocessingAnalysisResult'.
+
+[7m22[0m   preprocessing: import('./types').PreprocessingAnalysisResult
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m20[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'UserContext'.
+
+[7m20[0m   UserContext,
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'ConfigurationUpdate'.
+
+[7m19[0m   ConfigurationUpdate,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'EncryptionStatus'.
+
+[7m18[0m   EncryptionStatus,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'RetentionPolicy'.
+
+[7m17[0m   RetentionPolicy,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m16[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'DataRetentionStatus'.
+
+[7m16[0m   DataRetentionStatus,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'ComplianceRecommendation'.
+
+[7m15[0m   ComplianceRecommendation,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'ComplianceViolation'.
+
+[7m14[0m   ComplianceViolation,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'ComplianceReport'.
+
+[7m13[0m   ComplianceReport,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'DataAccessLog'.
+
+[7m12[0m   DataAccessLog,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'AuditAction'.
+
+[7m11[0m   AuditAction,
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'AuditLogEntry'.
+
+[7m10[0m   AuditLogEntry,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m464[0m:[93m62[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m464[0m     return `audit_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                             ~~~~~~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m334[0m:[93m47[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'c' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m334[0m         requiresRestart: update.changes.some((c) => c.requiresRestart),
+[7m   [0m [93m                                              ~[0m
+[96msrc/lib/ai/bias-detection/audit.ts[0m:[93m321[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'c' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m321[0m         (c) => c.impact === 'critical' || c.impact === 'high',
+[7m   [0m [93m         ~[0m
+
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m1191[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'DashboardData'.
+
+[7m1191[0m ): Promise<DashboardData | null> {
+[7m    [0m [91m           ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m1179[0m:[93m9[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'DashboardData'.
+
+[7m1179[0m   data: DashboardData,
+[7m    [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m968[0m:[93m33[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'DashboardData'.
+
+[7m968[0m     return await this.cache.get<DashboardData>(key)
+[7m   [0m [91m                                ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m966[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'DashboardData'.
+
+[7m966[0m   ): Promise<DashboardData | null> {
+[7m   [0m [91m             ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m952[0m:[93m11[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'DashboardData'.
+
+[7m952[0m     data: DashboardData,
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m879[0m:[93m15[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'cacheData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m879[0m           let cacheData
+[7m   [0m [93m              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/cache.ts[0m:[93m533[0m:[93m15[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'cacheData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m533[0m           let cacheData
+[7m   [0m [93m              ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m791[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'huggingFace' does not exist in type '{ aif360: { enabled: boolean; }; fairlearn: { enabled: boolean; }; tensorflow: { enabled: boolean; }; }'.
+
+[7m791[0m         huggingFace: { enabled: this.config['mlToolkitConfig']?.['huggingFace']?.['enabled'] ?? true },
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m774[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'environment' does not exist on type 'BiasDetectionConfig'.
+
+[7m774[0m       environment: this.config.environment,
+[7m   [0m [91m                               ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m747[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m747[0m     if (this.config.loggingConfig?.enableDebug || process.env.LOG_LEVEL === 'debug') {
+[7m   [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m741[0m:[93m85[0m - [91merror[0m[90m ts(2339): [0mProperty 'encryptionKey' does not exist on type 'SecurityConfig'.
+
+[7m741[0m     const encryptionKey = process.env.ENCRYPTION_KEY || this.config.securityConfig?.encryptionKey
+[7m   [0m [91m                                                                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m735[0m:[93m77[0m - [91merror[0m[90m ts(2339): [0mProperty 'jwtSecret' does not exist on type 'SecurityConfig'.
+
+[7m735[0m     const jwtSecret = process.env.JWT_SECRET || this.config.securityConfig?.jwtSecret
+[7m   [0m [91m                                                                            ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m693[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m693[0m       enableStructured: this.config.loggingConfig?.enableStructured ?? true,
+[7m   [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m692[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m692[0m       maxFiles: this.config.loggingConfig?.maxFiles ?? 5,
+[7m   [0m [91m                            ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m691[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m691[0m       maxFileSize: this.config.loggingConfig?.maxFileSize ?? '10MB',
+[7m   [0m [91m                               ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m690[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m690[0m       filePath: this.config.loggingConfig?.filePath ?? './logs/bias-detection.log',
+[7m   [0m [91m                            ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m689[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m689[0m       enableFile: this.config.loggingConfig?.enableFile ?? true,
+[7m   [0m [91m                              ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m688[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m688[0m       enableConsole: this.config.loggingConfig?.enableConsole ?? true,
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m687[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m687[0m       level: this.config.loggingConfig?.level ?? 'info',
+[7m   [0m [91m                         ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m680[0m:[93m45[0m - [91merror[0m[90m ts(2339): [0mProperty 'spacy' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m680[0m         model: this.config.mlToolkitConfig?.spacy?.model ?? 'en_core_web_sm',
+[7m   [0m [91m                                            ~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m679[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'spacy' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m679[0m         fallbackOnError: this.config.mlToolkitConfig?.spacy?.fallbackOnError ?? true,
+[7m   [0m [91m                                                      ~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m678[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'spacy' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m678[0m         enabled: this.config.mlToolkitConfig?.spacy?.enabled ?? true,
+[7m   [0m [91m                                              ~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m675[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'interpretability' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m675[0m         lime: this.config.mlToolkitConfig?.interpretability?.lime ?? { enabled: true },
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m674[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'interpretability' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m674[0m         shap: this.config.mlToolkitConfig?.interpretability?.shap ?? { enabled: true },
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m673[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'interpretability' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m673[0m         fallbackOnError: this.config.mlToolkitConfig?.interpretability?.fallbackOnError ?? true,
+[7m   [0m [91m                                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m672[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'interpretability' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m672[0m         enabled: this.config.mlToolkitConfig?.interpretability?.enabled ?? true,
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m669[0m:[93m45[0m - [91merror[0m[90m ts(2339): [0mProperty 'huggingFace' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m669[0m         model: this.config.mlToolkitConfig?.huggingFace?.model ?? 'unitary/toxic-bert',
+[7m   [0m [91m                                            ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m668[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'huggingFace' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m668[0m         apiKey: this.config.mlToolkitConfig?.huggingFace?.apiKey,
+[7m   [0m [91m                                             ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m667[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'huggingFace' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m667[0m         fallbackOnError: this.config.mlToolkitConfig?.huggingFace?.fallbackOnError ?? true,
+[7m   [0m [91m                                                      ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m666[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'huggingFace' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m666[0m         enabled: this.config.mlToolkitConfig?.huggingFace?.enabled ?? true,
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m663[0m:[93m67[0m - [91merror[0m[90m ts(2339): [0mProperty 'fallbackOnError' does not exist on type '{ enabled?: boolean | undefined; }'.
+
+[7m663[0m         fallbackOnError: this.config.mlToolkitConfig?.tensorflow?.fallbackOnError ?? true,
+[7m   [0m [91m                                                                  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m659[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'fairlearn' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m659[0m         fallbackOnError: this.config.mlToolkitConfig?.fairlearn?.fallbackOnError ?? true,
+[7m   [0m [91m                                                      ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m658[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'fairlearn' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m658[0m         enabled: this.config.mlToolkitConfig?.fairlearn?.enabled ?? true,
+[7m   [0m [91m                                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m655[0m:[93m55[0m - [91merror[0m[90m ts(2339): [0mProperty 'aif360' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m655[0m         fallbackOnError: this.config.mlToolkitConfig?.aif360?.fallbackOnError ?? true,
+[7m   [0m [91m                                                      ~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m654[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'aif360' does not exist on type '{ enabled?: boolean | undefined; framework?: "tensorflow" | "pytorch" | "scikit-learn" | undefined; version?: string | undefined; tensorflow?: { enabled?: boolean | undefined; } | undefined; }'.
+
+[7m654[0m         enabled: this.config.mlToolkitConfig?.aif360?.enabled ?? true,
+[7m   [0m [91m                                              ~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m589[0m:[93m27[0m - [91merror[0m[90m ts(2551): [0mProperty 'pythonServicePort' does not exist on type 'BiasDetectionConfig'. Did you mean 'pythonServiceUrl'?
+
+[7m589[0m         port: this.config.pythonServicePort || 5000,
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m335[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m335[0m     envConfig.loggingConfig = { ...DEFAULT_CONFIG.loggingConfig, ...loggingConfig }
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m335[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'Partial<BiasDetectionConfig>'.
+
+[7m335[0m     envConfig.loggingConfig = { ...DEFAULT_CONFIG.loggingConfig, ...loggingConfig }
+[7m   [0m [91m              ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m330[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'loggingConfig' does not exist on type 'BiasDetectionConfig'.
+
+[7m330[0m   const loggingConfig: Partial<BiasDetectionConfig['loggingConfig']> = {}
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m304[0m:[93m35[0m - [91merror[0m[90m ts(2551): [0mProperty 'pythonServicePort' does not exist on type 'Partial<BiasDetectionConfig>'. Did you mean 'pythonServiceUrl'?
+
+[7m304[0m     if (!isNaN(parsed)) envConfig.pythonServicePort = parsed
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/config.ts[0m:[93m73[0m:[93m5[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'exportFormats' does not exist in type 'BiasReportConfig'. Did you mean to write 'reportFormats'?
+
+[7m73[0m     exportFormats: ['json', 'pdf'],
+[7m  [0m [91m    ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/connection-pool.ts[0m:[93m111[0m:[93m65[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m111[0m     const id = `conn_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                ~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m542[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m542[0m         timestamp: analysis['timestamp'],
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'DemographicBreakdown'.
+
+[7m15[0m   DemographicBreakdown,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'BiasTrendData'.
+
+[7m14[0m   BiasTrendData,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'BiasSummaryStats'.
+
+[7m13[0m   BiasSummaryStats,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./types"' has no exported member named 'BiasDashboardData'. Did you mean 'DashboardData'?
+
+[7m12[0m   BiasDashboardData,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/database-service.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'BiasAlert'.
+
+[7m11[0m   BiasAlert,
+[7m  [0m [91m  ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/index.ts[0m:[93m30[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'DashboardRecommendation'.
+
+[7m30[0m   DashboardRecommendation,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/index.ts[0m:[93m29[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./types"' has no exported member named 'BiasDashboardData'. Did you mean 'DashboardData'?
+
+[7m29[0m   BiasDashboardData,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/index.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'BiasDetectionEvent'.
+
+[7m24[0m   BiasDetectionEvent,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/intelligent-cache.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"./types"' has no exported member named 'BiasDashboardData'. Did you mean 'DashboardData'?
+
+[7m19[0m   BiasDashboardData
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/metrics-collector.ts[0m:[93m320[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'recentAnalyses' does not exist in type 'DashboardMetrics'.
+
+[7m320[0m         recentAnalyses: [],
+[7m   [0m [91m        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/metrics-collector.ts[0m:[93m276[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'recentAnalyses' does not exist in type 'DashboardMetrics'.
+
+[7m276[0m         recentAnalyses: [],
+[7m   [0m [91m        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/metrics-collector.ts[0m:[93m58[0m:[93m58[0m - [91merror[0m[90m ts(2339): [0mProperty 'strictMode' does not exist on type 'BiasDetectionConfig'.
+
+[7m58[0m       if (process.env.NODE_ENV === 'test' || this.config.strictMode) {
+[7m  [0m [91m                                                         ~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/performance-monitor.ts[0m:[93m8[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"./types"' has no exported member 'PerformanceSnapshot'.
+
+[7m8[0m import type { PerformanceSnapshot } from './types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/performance-monitor.ts[0m:[93m125[0m:[93m62[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'm' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m125[0m         `bias_detection_errors_total ${snapshot.metrics.find(m => m.name === 'errors_total')?.value ?? 0}`,
+[7m   [0m [93m                                                             ~[0m
+
+[96msrc/lib/ai/bias-detection/performance-optimizer.ts[0m:[93m524[0m:[93m59[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m524[0m       id: `job_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                          ~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/privacy.ts[0m:[93m19[0m:[93m40[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m19[0m   const anonymizedSession = JSON.parse(JSON.stringify(session) as unknown)
+[7m  [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/python-bridge.ts[0m:[93m144[0m:[93m66[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m144[0m       const id = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                 ~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/redis-pool-manager.ts[0m:[93m261[0m:[93m73[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m261[0m     const id = `${this.name}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                        ~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/server.ts[0m:[93m166[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m166[0m         timestamp: session.timestamp ? new Date(session.timestamp) : new Date(),
+[7m   [0m [91m                                                        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/server.ts[0m:[93m166[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m166[0m         timestamp: session.timestamp ? new Date(session.timestamp) : new Date(),
+[7m   [0m [91m                           ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/server.ts[0m:[93m106[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m106[0m         timestamp: session.timestamp ? new Date(session.timestamp) : new Date(),
+[7m   [0m [91m                                                        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/server.ts[0m:[93m106[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m106[0m         timestamp: session.timestamp ? new Date(session.timestamp) : new Date(),
+[7m   [0m [91m                           ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/server.ts[0m:[93m106[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'TherapeuticSession'.
+
+[7m106[0m         timestamp: session.timestamp ? new Date(session.timestamp) : new Date(),
+[7m   [0m [91m        ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m401[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidenceLevel' does not exist on type 'SessionTranscript'.
+
+[7m401[0m       confidence_level: t.confidenceLevel,
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m400[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'emotionalTone' does not exist on type 'SessionTranscript'.
+
+[7m400[0m       emotional_tone: t.emotionalTone,
+[7m   [0m [91m                        ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m399[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'content' does not exist on type 'SessionTranscript'.
+
+[7m399[0m       content: t.content,
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m397[0m:[93m21[0m - [91merror[0m[90m ts(2551): [0mProperty 'speakerId' does not exist on type 'SessionTranscript'. Did you mean 'speaker'?
+
+[7m397[0m       speaker_id: t.speakerId,
+[7m   [0m [91m                    ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m393[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'modelUsed' does not exist on type 'AIResponse'.
+
+[7m393[0m       model_used: r.modelUsed,
+[7m   [0m [91m                    ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m392[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidence' does not exist on type 'AIResponse'.
+
+[7m392[0m       confidence: r.confidence,
+[7m   [0m [91m                    ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m391[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'content' does not exist on type 'AIResponse'.
+
+[7m391[0m       content: r.content,
+[7m   [0m [91m                 ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m390[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'type' does not exist on type 'AIResponse'.
+
+[7m390[0m       type: r.type,
+[7m   [0m [91m              ~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m375[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m375[0m     timestamp: session.timestamp.toISOString(),
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/utils.ts[0m:[93m46[0m:[93m26[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m46[0m     assessmentResults: z.record(z.unknown()).optional(),
+[7m  [0m [91m                         ~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m382[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'alerts' does not exist on type 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }'.
+  Property 'alerts' does not exist on type 'BiasReport'.
+
+[7m382[0m       expect(report.alerts).toBeDefined()
+[7m   [0m [91m                    ~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m381[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'performance' does not exist on type 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }'.
+  Property 'performance' does not exist on type 'BiasReport'.
+
+[7m381[0m       expect(report.performance).toBeDefined()
+[7m   [0m [91m                    ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m380[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'summary' does not exist on type 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }'.
+  Property 'summary' does not exist on type 'BiasReport'.
+
+[7m380[0m       expect(typeof report.summary.averageBiasScore).toBe('number')
+[7m   [0m [91m                           ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m379[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'summary' does not exist on type 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }'.
+  Property 'summary' does not exist on type 'BiasReport'.
+
+[7m379[0m       expect(report.summary.sessionCount).toBe(sampleSessions.length)
+[7m   [0m [91m                    ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m378[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'summary' does not exist on type 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }'.
+  Property 'summary' does not exist on type 'BiasReport'.
+
+[7m378[0m       expect(report.summary).toBeDefined()
+[7m   [0m [91m                    ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m268[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m268[0m           trainingInstitution: 'Test University',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m253[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m253[0m           patientPresentation: 'Client seeking substance abuse treatment',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m243[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m243[0m           complexity: 'advanced',
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m222[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m222[0m           trainingInstitution: 'Test University',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m209[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m209[0m           patientPresentation: 'Client presents with depressive symptoms',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m199[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m199[0m           complexity: 'advanced',
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m178[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m178[0m           trainingInstitution: 'Test University',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m163[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m163[0m           patientPresentation: 'Client presents with anxiety symptoms',
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m153[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m153[0m           complexity: 'intermediate',
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m125[0m:[93m9[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'exportFormats' does not exist in type 'BiasReportConfig'. Did you mean to write 'reportFormats'?
+
+[7m125[0m         exportFormats: ['json'],
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.integration.test.ts[0m:[93m91[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'warningLevel' does not exist in type 'BiasThresholdsConfig'.
+
+[7m91[0m         warningLevel: 0.3,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.load.test.ts[0m:[93m147[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'warningLevel' does not exist in type 'BiasThresholdsConfig'.
+
+[7m147[0m         warningLevel: 0.3,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m753[0m:[93m55[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; transcripts: { speakerId: string; content: string; timestamp: Date; }[]; aiResponses: { responseId: string; timestamp: Date; type: "intervention"; content: string; confidence: number; modelUsed: string; }[]; ... 6 more ...; metadata: SessionMetadata; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Types of property 'aiResponses' are incompatible.
+
+[7m753[0m           async () => await biasEngine.analyzeSession(complexSessionData),
+[7m   [0m [91m                                                      ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m418[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m418[0m         trainingInstitution: 'Test University',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m412[0m:[93m11[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'speakerId' does not exist in type 'SessionTranscript'. Did you mean to write 'speaker'?
+
+[7m412[0m           speakerId: 'patient',
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m405[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'type' does not exist in type 'ExpectedOutcome'.
+
+[7m405[0m           type: 'therapeutic-alliance',
+[7m   [0m [91m          ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m395[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'type' does not exist in type 'AIResponse'.
+
+[7m395[0m           type: 'intervention',
+[7m   [0m [91m          ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m385[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m385[0m         patientPresentation:
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.performance.test.ts[0m:[93m379[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m379[0m         complexity: 'intermediate',
+[7m   [0m [91m        ~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1645[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'SessionData' is not assignable to parameter of type 'TherapeuticSession'.
+  Type 'SessionData' is missing the following properties from type 'TherapeuticSession': scenario, aiResponses, expectedOutcomes, transcripts, and 2 more.
+
+[7m1645[0m         await biasEngine.analyzeSession(unfavorableScenario)
+[7m    [0m [91m                                        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1643[0m:[93m63[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'SessionData' is not assignable to parameter of type 'TherapeuticSession'.
+  Type 'SessionData' is missing the following properties from type 'TherapeuticSession': scenario, aiResponses, expectedOutcomes, transcripts, and 2 more.
+
+[7m1643[0m       const favorableResult = await biasEngine.analyzeSession(favorableScenario)
+[7m    [0m [91m                                                              ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1602[0m:[93m27[0m - [91merror[0m[90m ts(2352): [0mConversion of type '[TherapeuticSession, TherapeuticSession][]' to type '[SessionData, SessionData][]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '[TherapeuticSession, TherapeuticSession]' is not comparable to type '[SessionData, SessionData]'.
+
+[7m1602[0m         comparativePairs: getComparativeBiasScenarios() as [
+[7m    [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m1603[0m           SessionData,
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m1604[0m           SessionData,
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m1605[0m         ][],
+[7m    [0m [91m~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1601[0m:[93m25[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'TherapeuticSession' to type 'SessionData' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'TherapeuticSession' is missing the following properties from type 'SessionData': sessionDuration, sessionType, sessionNotes, sessionData
+
+[7m1601[0m         elderlyPatient: ageBiasElderlyPatient as SessionData,
+[7m    [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1600[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'TherapeuticSession' to type 'SessionData' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'TherapeuticSession' is missing the following properties from type 'SessionData': sessionDuration, sessionType, sessionNotes, sessionData
+
+[7m1600[0m         youngPatient: ageBiasYoungPatient as SessionData,
+[7m    [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1599[0m:[93m19[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'TherapeuticSession' to type 'SessionData' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'TherapeuticSession' is missing the following properties from type 'SessionData': sessionDuration, sessionType, sessionNotes, sessionData
+
+[7m1599[0m         baseline: baselineAnxietyScenario as SessionData,
+[7m    [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/BiasDetectionEngine.test.ts[0m:[93m1556[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; sessionDate: string; sessionDuration: number; sessionType: string; sessionNotes: string; sessionData: { transcript: string; metadata: { age: string; gender: string; race: string; language: string; }; }; participantDemographics?: ParticipantDemographics; content?: SessionContent; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; sessionDate: string; sessionDuration: number; sessionType: string; sessionNotes: string; sessionData: { transcript: string; metadata: { age: string; gender: string; race: string; language: string; }; }; participantDemographics?: ParticipantDemographics | undefined; content?: SessionContent | und...' is missing the following properties from type 'TherapeuticSession': scenario, aiResponses, expectedOutcomes, transcripts, and 2 more.
+
+[7m1556[0m       const result = await biasEngine.analyzeSession({
+[7m    [0m [91m                                                     ~[0m
+[7m1557[0m         ...mockSessionData,
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m1558[0m         sessionId,
+[7m    [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[7m1559[0m       })
+[7m    [0m [91m~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/alerts-system.test.ts[0m:[93m149[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '"worsening"' is not assignable to type '"stable" | "increasing" | "decreasing"'.
+
+[7m149[0m           trendDirection: 'worsening',
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/alerts-system.test.ts[0m:[93m50[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ term: string; context: string; biasType: string; severity: string; suggestedAlternative: string; }' is not assignable to type 'string'.
+
+[7m 50[0m             {
+[7m   [0m [91m            ~[0m
+[7m 51[0m               term: 'biased term 1',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 55[0m               suggestedAlternative: 'neutral term',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 56[0m             },
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m292[0m:[93m14[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ timestamp: unknown; aiResponses: { timestamp: unknown; }[]; }' to type 'TherapeuticSession' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ timestamp: unknown; aiResponses: { timestamp: unknown; }[]; }' is missing the following properties from type 'TherapeuticSession': sessionId, sessionDate, participantDemographics, scenario, and 5 more.
+
+[7m292[0m       return sessionWithDates as TherapeuticSession
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m154[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m154[0m       trainingInstitution: 'University Hospital',
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m145[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'type' does not exist in type 'AIResponse'.
+
+[7m145[0m         type: 'diagnostic',
+[7m   [0m [91m        ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m136[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m136[0m       patientPresentation: 'Patient presents with anxiety symptoms',
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m130[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m130[0m       complexity: 'intermediate',
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m114[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m114[0m   return JSON.parse(JSON.stringify(obj) as unknown)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m104[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'resetRateLimits' does not exist on type 'typeof import("/home/vivi/pixelated/src/pages/api/bias-detection/analyze")'.
+
+[7m104[0m     resetRateLimits = module.resetRateLimits
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m842[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m842[0m       const responseData = await lastResponse!.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m735[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m735[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m561[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m561[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m516[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m516[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m492[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m492[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m452[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m452[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m422[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'responseData' is declared but its value is never read.
+
+[7m422[0m       const responseData = await response.json()
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/api-analyze.test.ts[0m:[93m235[0m:[93m13[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'responseData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m235[0m         let responseData
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m587[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'demographics' is of type 'unknown'.
+
+[7m587[0m       expect(demographics.region).toBe('REDACTED')
+[7m   [0m [91m             ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m304[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'loggedDemographics' is of type 'unknown'.
+
+[7m304[0m       expect(loggedDemographics.region).toBe('REDACTED') // Should be redacted
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m303[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'loggedDemographics' is of type 'unknown'.
+
+[7m303[0m       expect(loggedDemographics.gender).toBe('female')
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m302[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'loggedDemographics' is of type 'unknown'.
+
+[7m302[0m       expect(loggedDemographics.age).toBe('25-35')
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m231[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'dataAccessLog' is of type 'unknown'.
+
+[7m231[0m       expect(dataAccessLog.approvedBy).toBe('supervisor-456')
+[7m   [0m [91m             ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m230[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'dataAccessLog' is of type 'unknown'.
+
+[7m230[0m       expect(dataAccessLog.dataIds).toEqual(['demo-1', 'demo-2'])
+[7m   [0m [91m             ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m229[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'dataAccessLog' is of type 'unknown'.
+
+[7m229[0m       expect(dataAccessLog.dataType).toBe('demographics')
+[7m   [0m [91m             ~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'RetentionPolicy'.
+
+[7m19[0m   RetentionPolicy,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'ConfigurationUpdate'.
+
+[7m18[0m   ConfigurationUpdate,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m16[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'UserContext'.
+
+[7m16[0m   UserContext,
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'AuditAction'.
+
+[7m15[0m   AuditAction,
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/audit.test.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'AuditLogEntry'.
+
+[7m14[0m   AuditLogEntry,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m931[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m931[0m       expect(retrievedEnd.getTime()).toBe(mockReport.timeRange.end.getTime())
+[7m   [0m [91m                                                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m930[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m930[0m         : retrieved!.timeRange.end
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m929[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m929[0m         ? new Date(retrieved!.timeRange.end)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m928[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m928[0m       const retrievedEnd = typeof retrieved!.timeRange.end === 'string'
+[7m   [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m926[0m:[93m56[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m926[0m       expect(retrievedStart.getTime()).toBe(mockReport.timeRange.start.getTime())
+[7m   [0m [91m                                                       ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m925[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m925[0m         : retrieved!.timeRange.start
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m924[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m924[0m         ? new Date(retrieved!.timeRange.start)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m923[0m:[93m48[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m923[0m       const retrievedStart = typeof retrieved!.timeRange.start === 'string'
+[7m   [0m [91m                                               ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m921[0m:[93m62[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m921[0m       expect(retrievedGeneratedAt.getTime()).toBe(mockReport.generatedAt.getTime())
+[7m   [0m [91m                                                             ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m920[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m920[0m         : retrieved!.generatedAt
+[7m   [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m919[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m919[0m         ? new Date(retrieved!.generatedAt)
+[7m   [0m [91m                              ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m918[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m918[0m       const retrievedGeneratedAt = typeof retrieved!.generatedAt === 'string'
+[7m   [0m [91m                                                     ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m915[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallFairnessScore' does not exist on type 'BiasReport'.
+
+[7m915[0m       expect(retrieved!.overallFairnessScore).toBe(mockReport.overallFairnessScore)
+[7m   [0m [91m                                                              ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m915[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallFairnessScore' does not exist on type 'BiasReport'.
+
+[7m915[0m       expect(retrieved!.overallFairnessScore).toBe(mockReport.overallFairnessScore)
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m898[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'generatedAt' does not exist in type 'BiasReport'.
+
+[7m898[0m         generatedAt: new Date(),
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m849[0m:[93m60[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m849[0m       expect(retrievedTimestamp.getTime()).toBe(mockResult.timestamp.getTime())
+[7m   [0m [91m                                                           ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m848[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m848[0m         : retrieved!.timestamp
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m847[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m847[0m         ? new Date(retrieved!.timestamp)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m846[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m846[0m       const retrievedTimestamp = typeof retrieved!.timestamp === 'string'
+[7m   [0m [91m                                                   ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m830[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'ParticipantDemographics | undefined'.
+
+[7m830[0m         demographics: {} as unknown,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m829[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type '{ preprocessing: Partial<PreprocessingLayerResult>; modelLevel: Partial<ModelLevelLayerResult>; interactive: Partial<...>; evaluation: Partial<...>; }'.
+
+[7m829[0m         layerResults: {} as unknown,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m780[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'ParticipantDemographics | undefined'.
+
+[7m780[0m         demographics: {} as unknown,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m779[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type '{ preprocessing: Partial<PreprocessingLayerResult>; modelLevel: Partial<ModelLevelLayerResult>; interactive: Partial<...>; evaluation: Partial<...>; }'.
+
+[7m779[0m         layerResults: {} as unknown,
+[7m   [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m718[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m718[0m       expect(retrievedEnd.getTime()).toBe(mockReport.timeRange.end.getTime())
+[7m   [0m [91m                                                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m717[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m717[0m         : retrieved!.timeRange.end
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m716[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m716[0m         ? new Date(retrieved!.timeRange.end)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m715[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m715[0m       const retrievedEnd = typeof retrieved!.timeRange.end === 'string'
+[7m   [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m713[0m:[93m56[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m713[0m       expect(retrievedStart.getTime()).toBe(mockReport.timeRange.start.getTime())
+[7m   [0m [91m                                                       ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m712[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m712[0m         : retrieved!.timeRange.start
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m711[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m711[0m         ? new Date(retrieved!.timeRange.start)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m710[0m:[93m48[0m - [91merror[0m[90m ts(2339): [0mProperty 'timeRange' does not exist on type 'BiasReport'.
+
+[7m710[0m       const retrievedStart = typeof retrieved!.timeRange.start === 'string'
+[7m   [0m [91m                                               ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m708[0m:[93m62[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m708[0m       expect(retrievedGeneratedAt.getTime()).toBe(mockReport.generatedAt.getTime())
+[7m   [0m [91m                                                             ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m707[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m707[0m         : retrieved!.generatedAt
+[7m   [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m706[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m706[0m         ? new Date(retrieved!.generatedAt)
+[7m   [0m [91m                              ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m705[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'generatedAt' does not exist on type 'BiasReport'.
+
+[7m705[0m       const retrievedGeneratedAt = typeof retrieved!.generatedAt === 'string'
+[7m   [0m [91m                                                     ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m702[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallFairnessScore' does not exist on type 'BiasReport'.
+
+[7m702[0m       expect(retrieved!.overallFairnessScore).toBe(mockReport.overallFairnessScore)
+[7m   [0m [91m                                                              ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m702[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallFairnessScore' does not exist on type 'BiasReport'.
+
+[7m702[0m       expect(retrieved!.overallFairnessScore).toBe(mockReport.overallFairnessScore)
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m634[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'generatedAt' does not exist in type 'BiasReport'.
+
+[7m634[0m       generatedAt: new Date(),
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m477[0m:[93m61[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m477[0m       expect(retrievedTimestamp.getTime()).toBe(mockSession.timestamp.getTime())
+[7m   [0m [91m                                                            ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m476[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m476[0m         : retrieved!.timestamp
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m475[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m475[0m         ? new Date(retrieved!.timestamp)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m474[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'TherapeuticSession'.
+
+[7m474[0m       const retrievedTimestamp = typeof retrieved!.timestamp === 'string'
+[7m   [0m [91m                                                   ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m454[0m:[93m68[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m454[0m       expect(retrievedTimestamp.getTime()).toBe(mockAnalysisResult.timestamp.getTime())
+[7m   [0m [91m                                                                   ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m453[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m453[0m         : retrieved!.timestamp
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m452[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m452[0m         ? new Date(retrieved!.timestamp)
+[7m   [0m [91m                              ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m451[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'BiasAnalysisResult'.
+
+[7m451[0m       const retrievedTimestamp = typeof retrieved!.timestamp === 'string'
+[7m   [0m [91m                                                   ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m427[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m427[0m         trainingInstitution: 'Test University',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m418[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m418[0m         patientPresentation: 'Patient presents with depressive symptoms',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m412[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m412[0m         complexity: 'intermediate',
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m296[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m296[0m       timestamp: new Date(),
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"../types"' has no exported member named 'BiasDashboardData'. Did you mean 'DashboardData'?
+
+[7m23[0m   BiasDashboardData,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/cache.test.ts[0m:[93m272[0m:[93m23[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m272[0m       const cleaned = await cache.cleanup()
+[7m   [0m [93m                      ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m499[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'environment' does not exist on type 'BiasDetectionConfig & { cache?: any; security?: any; performance?: any; pythonService?: any; }'.
+
+[7m499[0m     expect(config.environment).toBe('development')
+[7m   [0m [91m                  ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m460[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'config.layerWeights' is possibly 'undefined'.
+
+[7m460[0m       expect(config.layerWeights.preprocessing).toBe(0.3)
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m459[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'config.thresholds' is possibly 'undefined'.
+
+[7m459[0m       expect(config.thresholds.warning).toBe(0.35)
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m456[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m456[0m       ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m443[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m443[0m       ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m428[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m428[0m       ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m401[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'reloadedConfig.thresholds' is possibly 'undefined'.
+
+[7m401[0m       expect(reloadedConfig.thresholds.warning).toBe(0.5)
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m393[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'originalConfig.thresholds' is possibly 'undefined'.
+
+[7m393[0m       expect(originalConfig.thresholds.warning).toBe(0.3)
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m343[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m343[0m       ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m327[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m327[0m       ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m299[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'Partial<BiasDetectionConfig>'.
+
+[7m299[0m         configManager.updateConfig(invalidConfig as unknown)
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m272[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'environment' does not exist on type 'BiasDetectionConfig & { cache?: any; security?: any; performance?: any; pythonService?: any; }'.
+
+[7m272[0m       expect(updatedConfig.environment).toBe('staging')
+[7m   [0m [91m                           ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m268[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'environment' does not exist in type 'Partial<BiasDetectionConfig>'.
+
+[7m268[0m         environment: 'staging',
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m261[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'Partial<BiasDetectionConfig>'.
+
+[7m261[0m       expect(() => configManager.updateConfig(invalidUpdates as unknown)).toThrow()
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m115[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'config.thresholds' is possibly 'undefined'.
+
+[7m115[0m       expect(config.thresholds.warning).toBe(0.3)
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m52[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m52[0m     ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/config.test.ts[0m:[93m44[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m44[0m     ;(BiasDetectionConfigManager as unknown).instance = undefined
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/metrics-collector.test.ts[0m:[93m16[0m:[93m3[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m16[0m   timestamp: new Date(),
+[7m  [0m [91m  ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m579[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m579[0m         timestamp: new Date(),
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m468[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m468[0m           timestamp: new Date(),
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m453[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m453[0m           timestamp: new Date(Date.now() - 1800000), // 30 minutes ago
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m438[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m438[0m           timestamp: new Date(Date.now() - 3600000), // 1 hour ago
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m404[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m404[0m         timestamp: new Date(),
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m363[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '"worsening"' is not assignable to type '"stable" | "increasing" | "decreasing"'.
+
+[7m363[0m               trendDirection: 'worsening',
+[7m   [0m [91m              ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m245[0m:[93m29[0m - [91merror[0m[90m ts(2322): [0mType '{ term: string; context: string; biasType: string; severity: string; suggestedAlternative: string; }' is not assignable to type 'string'.
+
+[7m245[0m               biasedTerms: [{
+[7m   [0m [91m                            ~[0m
+[7m246[0m                 term: 'concerning term',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m250[0m                 suggestedAlternative: 'neutral term',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m251[0m               }],
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m208[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m208[0m         timestamp: new Date(),
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/module-integration.test.ts[0m:[93m89[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m89[0m         timestamp: new Date(),
+[7m  [0m [91m        ~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m184[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m184[0m       const mockSession: TherapeuticSession = {
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m170[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m170[0m       const mockSession: TherapeuticSession = {
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m153[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m153[0m       const mockSession: TherapeuticSession = {
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m140[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m140[0m       const mockSession: TherapeuticSession = {
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m134[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'fallbackMode' does not exist on type 'PreprocessingLayerResult'.
+
+[7m134[0m       expect(result.fallbackMode).toBe(true)
+[7m   [0m [91m                    ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m119[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m119[0m       const mockSession: TherapeuticSession = {
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m112[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'serviceError' does not exist on type 'PreprocessingLayerResult'.
+
+[7m112[0m       expect(result.serviceError).toContain('Request failed after')
+[7m   [0m [91m                    ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m111[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'fallbackMode' does not exist on type 'PreprocessingLayerResult'.
+
+[7m111[0m       expect(result.fallbackMode).toBe(true)
+[7m   [0m [91m                    ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m98[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m98[0m       const mockSession: TherapeuticSession = {
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/python-bridge.test.ts[0m:[93m55[0m:[93m24[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticSession'.
+
+[7m55[0m     const mockSession: TherapeuticSession = {
+[7m  [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m884[0m:[93m51[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m884[0m       await pythonBridge.runPreprocessingAnalysis(session)
+[7m   [0m [91m                                                  ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m875[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m875[0m         timestamp: session.timestamp,
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m813[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m813[0m         await pythonBridge.runPreprocessingAnalysis(session)
+[7m   [0m [91m                                                    ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m804[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m804[0m           timestamp: session.timestamp,
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m727[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m727[0m           timestamp: session.timestamp,
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m642[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'BiasAnalysisResult'.
+
+[7m642[0m         timestamp: session.timestamp,
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m637[0m:[93m73[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m637[0m       const evaluationResult = await pythonBridge.runEvaluationAnalysis(session)
+[7m   [0m [91m                                                                        ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m636[0m:[93m75[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m636[0m       const interactiveResult = await pythonBridge.runInteractiveAnalysis(session)
+[7m   [0m [91m                                                                          ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m635[0m:[93m68[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m635[0m       const modelResult = await pythonBridge.runModelLevelAnalysis(session)
+[7m   [0m [91m                                                                   ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m634[0m:[93m79[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "intermediate"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; ...' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m634[0m       const preprocessingResult = await pythonBridge.runPreprocessingAnalysis(session)
+[7m   [0m [91m                                                                              ~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m336[0m:[93m71[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m336[0m       const validResult = await pythonBridge.runPreprocessingAnalysis(validSession)
+[7m   [0m [91m                                                                      ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m279[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m279[0m         await pythonBridge.runPreprocessingAnalysis({
+[7m   [0m [91m                                                    ~[0m
+[7m280[0m           ...session,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m281[0m           sessionId: `pool-test-${i}`,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m282[0m         })
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/refactored-modules-performance.test.ts[0m:[93m218[0m:[93m86[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is not assignable to parameter of type 'TherapeuticSession'.
+  Type '{ sessionId: string; timestamp: Date; participantDemographics: { age: string; gender: string; ethnicity: string; primaryLanguage: string; }; scenario: { scenarioId: string; type: "other"; complexity: "beginner"; tags: never[]; description: string; learningObjectives: never[]; }; ... 4 more ...; metadata: { ...; }; }' is missing the following properties from type 'TherapeuticSession': sessionDate, userInputs
+
+[7m218[0m       const promises = sessions.map(session => pythonBridge.runPreprocessingAnalysis(session))
+[7m   [0m [91m                                                                                     ~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m743[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'ParticipantDemographics | undefined'.
+
+[7m743[0m           demographics: {} as unknown,
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m742[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type '{ preprocessing: Partial<PreprocessingLayerResult>; modelLevel: Partial<ModelLevelLayerResult>; interactive: Partial<...>; evaluation: Partial<...>; }'.
+
+[7m742[0m           layerResults: {} as unknown,
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m733[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'ParticipantDemographics | undefined'.
+
+[7m733[0m           demographics: {} as unknown,
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m732[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type '{ preprocessing: Partial<PreprocessingLayerResult>; modelLevel: Partial<ModelLevelLayerResult>; interactive: Partial<...>; evaluation: Partial<...>; }'.
+
+[7m732[0m           layerResults: {} as unknown,
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m517[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'trainingInstitution' does not exist in type 'SessionMetadata'.
+
+[7m517[0m       trainingInstitution: 'University',
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m509[0m:[93m9[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'speakerId' does not exist in type 'SessionTranscript'. Did you mean to write 'speaker'?
+
+[7m509[0m         speakerId: 'therapist',
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m500[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'type' does not exist in type 'AIResponse'.
+
+[7m500[0m         type: 'diagnostic',
+[7m   [0m [91m        ~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m491[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'patientPresentation' does not exist in type 'SessionContent'.
+
+[7m491[0m       patientPresentation: 'Patient presents with symptoms',
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ai/bias-detection/__tests__/utils.test.ts[0m:[93m485[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'complexity' does not exist in type 'TrainingScenario'.
+
+[7m485[0m       complexity: 'intermediate',
+[7m   [0m [91m      ~~~~~~~~~~[0m
+
+[96msrc/lib/ai/bias-detection/__tests__/api/dashboard.test.ts[0m:[93m548[0m:[93m34[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ request: { url: string; headers: { get: Mock<(key: string) => string | null>; }; }; }' to type '{ request: Request; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'request' are incompatible.
+
