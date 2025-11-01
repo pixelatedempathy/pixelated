@@ -1,0 +1,2200 @@
+
+[7m377[0m         await (redis as unknown as RedisCommands).hset(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m343[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'processingKey' does not exist on type 'NotificationService'.
+
+[7m343[0m         this.processingKey,
+[7m   [0m [91m             ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m342[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'queueKey' does not exist on type 'NotificationService'.
+
+[7m342[0m         this.queueKey,
+[7m   [0m [91m             ~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m341[0m:[93m47[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m341[0m       const item = await (redis as unknown as RedisCommands).rpoplpush(
+[7m   [0m [91m                                              ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m321[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'queueKey' does not exist on type 'NotificationService'.
+
+[7m321[0m       this.queueKey,
+[7m   [0m [91m           ~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m320[0m:[93m32[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RedisCommands'.
+
+[7m320[0m     await (redis as unknown as RedisCommands).lpush(
+[7m   [0m [91m                               ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m172[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m172[0m       fromEmail: config.email.from(),
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m100[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m100[0m   data: z.record(z.unknown()),
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m70[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m70[0m   data: z.record(z.unknown()),
+[7m  [0m [91m          ~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m61[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m61[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/services/notification/NotificationService.ts[0m:[93m13[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ prefix: string; }' is not assignable to parameter of type 'string'.
+
+[7m13[0m const logger = createBuildSafeLogger({ prefix: 'NotificationService' })
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/notification/SlackNotificationService.ts[0m:[93m120[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'elements' does not exist in type 'SlackBlock'.
+
+[7m120[0m       elements: [
+[7m   [0m [91m      ~~~~~~~~[0m
+
+[96msrc/lib/services/notification/smsUtils.ts[0m:[93m34[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'Twilio'.
+
+[7m34[0m export function getTwilioClient(): Twilio | null {
+[7m  [0m [91m                                   ~~~~~~[0m
+
+[96msrc/lib/services/notification/__tests__/WebSocketServer.test.ts[0m:[93m187[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'supabaseAdmin' does not exist on type 'typeof import("/home/vivi/pixelated/src/lib/supabase")'.
+
+[7m187[0m       const { supabaseAdmin } = await import('@/lib/supabase')
+[7m   [0m [91m              ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/notification/__tests__/WebSocketServer.test.ts[0m:[93m1[0m:[93m8[0m - [91merror[0m[90m ts(1192): [0mModule '"/home/vivi/pixelated/src/lib/utils/logger"' has no default export.
+
+[7m1[0m import logger from '@/lib/utils/logger'
+[7m [0m [91m       ~~~~~~[0m
+
+[96msrc/lib/services/patient-rights/dataPortabilityService.ts[0m:[93m35[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ context: string; }' is not assignable to parameter of type 'string'.
+
+[7m35[0m const logger = createBuildSafeLogger({ context: 'data-portability-service' })
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/types.ts[0m:[93m45[0m:[93m5[0m - [91merror[0m[90m ts(4115): [0mThis parameter property must have an 'override' modifier because it overrides a member in base class 'Error'.
+
+[7m45[0m     public cause?: unknown,
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__mocks__/redis.mock.ts[0m:[93m106[0m:[93m1[0m - [91merror[0m[90m ts(2322): [0mType '(received: any, expected: any) => { pass: any; message: () => string; }' is not assignable to type '<T = unknown>(expected: DeeplyAllowMatchers<T>[]) => any'.
+  Target signature provides too few arguments. Expected 2 or more, but got 1.
+
+[7m106[0m expect.arrayContaining = arrayContaining
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__mocks__/redis.mock.ts[0m:[93m97[0m:[93m32[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m97[0m   const pass = expected.every((item) => received.includes(item))
+[7m  [0m [93m                               ~~~~[0m
+[96msrc/lib/services/redis/__mocks__/redis.mock.ts[0m:[93m96[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'expected' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m96[0m const arrayContaining = (received, expected) => {
+[7m  [0m [93m                                   ~~~~~~~~[0m
+[96msrc/lib/services/redis/__mocks__/redis.mock.ts[0m:[93m96[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'received' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m96[0m const arrayContaining = (received, expected) => {
+[7m  [0m [93m                         ~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/Analytics.integration.test.ts[0m:[93m201[0m:[93m27[0m - [91merror[0m[90m ts(2538): [0mType '{}' cannot be used as an index type.
+
+[7m201[0m           acc[key] = (acc[key] || 0) + 1
+[7m   [0m [91m                          ~~~[0m
+[96msrc/lib/services/redis/__tests__/Analytics.integration.test.ts[0m:[93m201[0m:[93m15[0m - [91merror[0m[90m ts(2538): [0mType '{}' cannot be used as an index type.
+
+[7m201[0m           acc[key] = (acc[key] || 0) + 1
+[7m   [0m [91m              ~~~[0m
+
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m96[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '{ description: string; expectedDuration?: number | undefined; minThroughput?: number | undefined; }'.
+
+[7m96[0m       await runConcurrentOperations(operations, {
+[7m  [0m [91m                                                ~[0m
+[7m97[0m         description: 'Concurrent pattern invalidations',
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m98[0m         expectedDuration: 1000,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m99[0m       } as unknown)
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m61[0m:[93m15[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m61[0m         await (expect(key) as unknown)['toExistInRedis']()
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m36[0m:[93m49[0m - [91merror[0m[90m ts(2322): [0mType 'Redis | null' is not assignable to type 'RedisService | Redis'.
+  Type 'null' is not assignable to type 'RedisService | Redis'.
+
+[7m36[0m     cacheInvalidation = new CacheInvalidation({ redis: redis.getClient() })
+[7m  [0m [91m                                                ~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m237[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m237[0m       await expect(key).not.toEqual(expect.objectContaining({ exists: true }))
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m158[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m158[0m         await expect(key).not.toEqual(expect.objectContaining({ exists: true }))
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m152[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m152[0m       await expect(key).toEqual(expect.objectContaining({ exists: true }))
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m138[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m138[0m         await expect(key).not.toEqual(expect.objectContaining({ exists: true }))
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m129[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m129[0m         await expect(key).toEqual(expect.objectContaining({ exists: true }))
+[7m   [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/CacheInvalidation.integration.test.ts[0m:[93m70[0m:[93m9[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m70[0m         await expect(key).not.toEqual(expect.objectContaining({ exists: true }))
+[7m  [0m [93m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m152[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'securityLevel' does not exist in type 'TherapySession'.
+
+[7m152[0m           securityLevel: 'fhe',
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m148[0m:[93m21[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m148[0m           clientId: testId,
+[7m   [0m [91m                    ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m143[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'securityLevel' does not exist in type 'TherapySession'.
+
+[7m143[0m           securityLevel: 'fhe',
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m139[0m:[93m21[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m139[0m           clientId: testId,
+[7m   [0m [91m                    ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m71[0m:[93m7[0m - [91merror[0m[90m ts(2740): [0mType '{ connect: () => Promise<void>; disconnect: () => Promise<void>; get: (_: string) => Promise<null>; set: (_key: string, _value: string, _ttlMs?: number | undefined) => Promise<...>; ... 9 more ...; keys: (_pattern: string) => Promise<...>; }' is missing the following properties from type 'IRedisService': deletePattern, hset, hget, hgetall, and 11 more.
+
+[7m71[0m const mockRedisService: IRedisService = {
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m5[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"@/lib/ai/AIService"' has no exported member 'EmotionAnalysis'.
+
+[7m5[0m import type { EmotionAnalysis, TherapySession } from '@/lib/ai/AIService'
+[7m [0m [91m              ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/PatternRecognition.integration.test.ts[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/ai/services/PatternRecognitionService' or its corresponding type declarations.
+
+[7m4[0m } from '@/lib/ai/services/PatternRecognitionService'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m491[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'toBeRedisError' does not exist on type 'Promisify<Assertion<Promise<string | null>>>'.
+
+[7m491[0m         await expect(retryRedis.get(key)).rejects.toBeRedisError(
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m388[0m:[93m53[0m - [91merror[0m[90m ts(2339): [0mProperty 'toBeRedisError' does not exist on type 'Promisify<Assertion<Promise<void>>>'.
+
+[7m388[0m       await expect(unstableRedis.connect()).rejects.toBeRedisError(
+[7m   [0m [91m                                                    ~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m273[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m273[0m           expect(parsed.confidence).toBeGreaterThanOrEqual(0.8)
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m225[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m225[0m           expect(parsed.type).toBe('success')
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m124[0m:[93m47[0m - [91merror[0m[90m ts(2693): [0m'unknown' only refers to a type, but is being used as a value here.
+
+[7m124[0m         expect(JSON.parse(updatedSession!) as unknown.roles).toContain('admin')
+[7m   [0m [91m                                              ~~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m10[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ message: () => string; pass: boolean; }' is not assignable to type 'void'.
+
+[7m10[0m     return {
+[7m  [0m [91m    ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/RedisService.integration.test.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '(this: MatcherState, received: unknown, code: RedisErrorCode) => void' is not assignable to type 'RawMatcherFn<MatcherState, any[]>'.
+  Type 'void' is not assignable to type 'ExpectationResult'.
+
+[7m7[0m   toBeRedisError(received: unknown, code: RedisErrorCode): void {
+[7m [0m [91m  ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/RedisService.perf.test.ts[0m:[93m164[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'_initialStats' is declared but its value is never read.
+
+[7m164[0m       const _initialStats = await redis.getPoolStats()
+[7m   [0m [93m            ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m268[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ message: () => string; pass: boolean; }' is not assignable to type 'void'.
+
+[7m268[0m       return {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m256[0m:[93m54[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m256[0m   async toHaveTTL(key: string, expectedTTL: number): void {
+[7m   [0m [91m                                                     ~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m242[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ message: () => string; pass: boolean; }' is not assignable to type 'void'.
+
+[7m242[0m       return {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m230[0m:[93m38[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m230[0m   async toExistInRedis(key: string): void {
+[7m   [0m [91m                                     ~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m216[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ message: () => string; pass: boolean; }' is not assignable to type 'void'.
+
+[7m216[0m       return {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m204[0m:[93m59[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m204[0m   async toBeInRedis(key: string, expectedValue: unknown): void {
+[7m   [0m [91m                                                          ~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m197[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ message: () => string; pass: boolean; }' is not assignable to type 'void'.
+
+[7m197[0m     return {
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/services/redis/__tests__/test-utils.ts[0m:[93m161[0m:[93m3[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m161[0m   await redis.disconnect()
+[7m   [0m [93m  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/vitest.global.setup.ts[0m:[93m1[0m:[93m39[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../../logging/build-safe-logger' or its corresponding type declarations.
+
+[7m1[0m import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+[7m [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/redis/__tests__/vitest.setup.ts[0m:[93m5[0m:[93m15[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ toBeRedisError(received: unknown, expectedCode: RedisErrorCode): void; toBeInRedis(key: string, expectedValue: unknown): void; toExistInRedis(key: string): void; toHaveTTL(key: string, expectedTTL: number): void; }' is not assignable to parameter of type 'MatchersObject<MatcherState>'.
+  Type '{ toBeRedisError(received: unknown, expectedCode: RedisErrorCode): void; toBeInRedis(key: string, expectedValue: unknown): void; toExistInRedis(key: string): void; toHaveTTL(key: string, expectedTTL: number): void; }' is not assignable to type 'Record<string, RawMatcherFn<MatcherState, any[]>>'.
+
+[7m5[0m expect.extend(customMatchers)
+[7m [0m [91m              ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'AnalysisCompleteWebSocketEvent'.
+
+[7m19[0m   AnalysisCompleteWebSocketEvent,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'SystemStatusWebSocketEvent'.
+
+[7m18[0m   SystemStatusWebSocketEvent,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'DashboardUpdateWebSocketEvent'.
+
+[7m17[0m   DashboardUpdateWebSocketEvent,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m16[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'BiasAlertWebSocketEvent'.
+
+[7m16[0m   BiasAlertWebSocketEvent,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'WebSocketMessage'.
+
+[7m15[0m   WebSocketMessage,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2724): [0m'"../../ai/bias-detection/types"' has no exported member named 'BiasDashboardData'. Did you mean 'DashboardData'?
+
+[7m14[0m   BiasDashboardData,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/bias-detection/types"' has no exported member 'BiasAlert'.
+
+[7m12[0m   BiasAlert,
+[7m  [0m [91m  ~~~~~~~~~[0m
+[96msrc/lib/services/websocket/BiasWebSocketServer.ts[0m:[93m839[0m:[93m63[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m839[0m     return `client_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                              ~~~~~~[0m
+
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m242[0m:[93m36[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 3, '(getStringStorage: () => AsyncStringStorage, options?: JsonStorageOptions | undefined): AsyncStorage<Value>', gave the following error.
+  Overload 2 of 3, '(getStringStorage: () => SyncStringStorage, options?: JsonStorageOptions | undefined): SyncStorage<Value>', gave the following error.
+
+[7m242[0m     createJSONStorage<Value>(() => storage as unknown),
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m132[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'StoredState<Value>'.
+
+[7m132[0m       const storedState: StoredState<Value> = JSON.parse(decrypted) as unknown
+[7m   [0m [91m            ~~~~~~~~~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m122[0m:[93m29[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m122[0m           decrypted = await decrypt(serialized)
+[7m   [0m [91m                            ~~~~~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m105[0m:[93m28[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m105[0m         serialized = await encrypt(serialized)
+[7m   [0m [91m                           ~~~~~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m61[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+
+[7m61[0m       ttl: options.ttl ?? undefined,
+[7m  [0m [91m      ~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m296[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'syncSubscriptions' is declared but its value is never read.
+
+[7m296[0m   private syncSubscriptions: Map<string, () => void> = new Map()
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/state/jotai-persistence.ts[0m:[93m213[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'key' is declared but its value is never read.
+
+[7m213[0m     key: string,
+[7m   [0m [93m    ~~~[0m
+
+[96msrc/lib/stores/fhe-store.ts[0m:[93m328[0m:[93m19[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'EncryptedData<unknown>'.
+
+[7m328[0m                   encryptedData,
+[7m   [0m [91m                  ~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m316[0m:[93m19[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'EncryptedData<unknown>'.
+
+[7m316[0m                   encryptedData,
+[7m   [0m [91m                  ~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m307[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'isEncryptedData'.
+
+[7m307[0m               : isEncryptedData(encryptedMessage)
+[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m304[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'isEncryptedData'.
+
+[7m304[0m               ? isEncryptedData(JSON.parse(encryptedMessage) as unknown)
+[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m294[0m:[93m11[0m - [91merror[0m[90m ts(2739): [0mType 'FHEOperationResult<string>' is missing the following properties from type 'HomomorphicOperationResult': operationType, timestamp
+
+[7m294[0m           result = await fheService.processEncrypted(
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m238[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'EncryptedData<unknown>'.
+
+[7m238[0m         const decrypted = await fheService.decrypt(encryptedData)
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m233[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'isEncryptedData'.
+
+[7m233[0m             : isEncryptedData(encryptedMessage)
+[7m   [0m [91m              ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m230[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'isEncryptedData'.
+
+[7m230[0m             ? isEncryptedData(JSON.parse(encryptedMessage) as unknown)
+[7m   [0m [91m              ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m443[0m:[93m26[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m443[0m         const newKeyId = await keyRotationService.getActiveKeyId()
+[7m   [0m [93m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/stores/fhe-store.ts[0m:[93m135[0m:[93m23[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m135[0m         const keyId = await keyRotationService.getActiveKeyId()
+[7m   [0m [93m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m503[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'optimizationHistory' does not exist on type 'TestSuiteManager'.
+
+[7m503[0m       lastRun: this.optimizationHistory.length > 0 ? new Date() : undefined,
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m62[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'enableCI' is specified more than once, so this usage will be overwritten.
+
+[7m62[0m       enableCI: true,
+[7m  [0m [91m      ~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m61[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'environments' is specified more than once, so this usage will be overwritten.
+
+[7m61[0m       environments: ['development', 'staging', 'production'],
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m56[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'performance' is specified more than once, so this usage will be overwritten.
+
+[7m 56[0m       performance: {
+[7m   [0m [91m      ~~~~~~~~~~~~~~[0m
+[7m 57[0m         maxResponseTime: 100,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 59[0m         maxCpuUsage: 80, // %
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 60[0m       },
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m50[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'coverage' is specified more than once, so this usage will be overwritten.
+
+[7m 50[0m       coverage: {
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+[7m 51[0m         statements: 90,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 54[0m         lines: 90,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[7m 55[0m       },
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m49[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'layers' is specified more than once, so this usage will be overwritten.
+
+[7m49[0m       layers: ['unit', 'integration', 'e2e', 'performance', 'security'],
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m6[0m:[93m27[0m - [91merror[0m[90m ts(2305): [0mModule '"@/types/testing"' has no exported member 'CoverageReport'.
+
+[7m6[0m import type { TestResult, CoverageReport } from '@/types/testing'
+[7m [0m [91m                          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m6[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"@/types/testing"' has no exported member 'TestResult'.
+
+[7m6[0m import type { TestResult, CoverageReport } from '@/types/testing'
+[7m [0m [91m              ~~~~~~~~~~[0m
+[96msrc/lib/testing/comprehensiveTestSuite.ts[0m:[93m44[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'testResults' is declared but its value is never read.
+
+[7m44[0m   private testResults = new Map<string, TestResult>()
+[7m  [0m [93m          ~~~~~~~~~~~[0m
+
+[96msrc/lib/testing/performance-benchmarks.ts[0m:[93m200[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'responseTime' does not exist on type 'never'.
+
+[7m200[0m             responseTimes.push(result.responseTime)
+[7m   [0m [91m                                      ~~~~~~~~~~~~[0m
+[96msrc/lib/testing/performance-benchmarks.ts[0m:[93m198[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'success' does not exist on type 'never'.
+
+[7m198[0m           if (result.success) {
+[7m   [0m [91m                     ~~~~~~~[0m
+[96msrc/lib/testing/performance-benchmarks.ts[0m:[93m191[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<{ success: boolean; responseTime: number; }>' is not assignable to parameter of type 'never'.
+
+[7m191[0m         batchPromises.push(requestPromise)
+[7m   [0m [91m                           ~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/performance-benchmarks.ts[0m:[93m259[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'scenario' is declared but its value is never read.
+
+[7m259[0m     scenario: any,
+[7m   [0m [93m    ~~~~~~~~[0m
+
+[96msrc/lib/testing/test-helpers.ts[0m:[93m319[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'error' does not exist on type 'never'.
+
+[7m319[0m           error: result.error,
+[7m   [0m [91m                        ~~~~~[0m
+[96msrc/lib/testing/test-helpers.ts[0m:[93m317[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'success' does not exist on type 'never'.
+
+[7m317[0m           success: result.success,
+[7m   [0m [91m                          ~~~~~~~[0m
+[96msrc/lib/testing/test-helpers.ts[0m:[93m298[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<{ result: { success: boolean; error?: undefined; } | { success: boolean; error: unknown; }; executionTime: number; }>' is not assignable to parameter of type 'never'.
+
+[7m298[0m         this.measureExecutionTime(async () => {
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m299[0m           try {
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m304[0m           }
+[7m   [0m [91m~~~~~~~~~~~[0m
+[7m305[0m         }),
+[7m   [0m [91m~~~~~~~~~~[0m
+[96msrc/lib/testing/test-helpers.ts[0m:[93m18[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'SecurityTestResults' is declared but never used.
+
+[7m18[0m interface SecurityTestResults {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/test-helpers.ts[0m:[93m10[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PerformanceResults' is declared but never used.
+
+[7m10[0m interface PerformanceResults {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/testing/test-helpers.ts[0m:[93m4[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'TestResult' is declared but never used.
+
+[7m4[0m interface TestResult {
+[7m [0m [93m          ~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m1162[0m:[93m10[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'AdvancedResponseOrchestrator'.
+
+[7m1162[0m export { AdvancedResponseOrchestrator }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m1162[0m:[93m10[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'AdvancedResponseOrchestrator'.
+
+[7m1162[0m export { AdvancedResponseOrchestrator }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m988[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'prediction' is of type 'unknown'.
+
+[7m988[0m     } else if (prediction.riskLevel >= 1) {
+[7m   [0m [91m               ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m986[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'prediction' is of type 'unknown'.
+
+[7m986[0m     if (prediction.riskLevel >= 2) {
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m978[0m:[93m23[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m978[0m       patternMatches: threatData.patternMatches || [],
+[7m   [0m [91m                      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m977[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m977[0m       anomalyTypes: threatData.anomalyTypes || [],
+[7m   [0m [91m                    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m976[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m976[0m       ip: threatData.sourceIp,
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m975[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m975[0m       userId: threatData.userId,
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m968[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'indexOf' does not exist on type 'TensorContainer'.
+  Property 'indexOf' does not exist on type 'number'.
+
+[7m968[0m       riskLevel: result.indexOf(Math.max(...result)),
+[7m   [0m [91m                        ~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m967[0m:[93m31[0m - [91merror[0m[90m ts(2488): [0mType 'TensorContainer' must have a '[Symbol.iterator]()' method that returns an iterator.
+
+[7m967[0m       confidence: Math.max(...result),
+[7m   [0m [91m                              ~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m959[0m:[93m26[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m959[0m       const prediction = this.model.predict(inputTensor) as tf.Tensor
+[7m   [0m [91m                         ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m957[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type '() => Promise<number[]>' is not assignable to parameter of type 'string | ScopeFn<TensorContainer>'.
+  Type '() => Promise<number[]>' is not assignable to type 'ScopeFn<TensorContainer>'.
+
+[7m957[0m     const result = await tf.tidy(async () => {
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m948[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m948[0m       threatData.patternNovelty || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m947[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m947[0m       threatData.geographicAnomaly || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m946[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m946[0m       threatData.temporalAnomaly || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m945[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m945[0m       threatData.behavioralDeviation || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m944[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m944[0m       threatData.ipRiskScore || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m943[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m943[0m       threatData.userRiskScore || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m942[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m942[0m       threatData.impact || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m941[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m941[0m       threatData.severity || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m940[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m940[0m       threatData.frequency || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m939[0m:[93m7[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m939[0m       threatData.anomalyScore || 0,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m899[0m:[93m19[0m - [91merror[0m[90m ts(18046): [0m'prediction' is of type 'unknown'.
+
+[7m899[0m       confidence: prediction.confidence,
+[7m   [0m [91m                  ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m898[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'prediction' is of type 'unknown'.
+
+[7m898[0m       riskScore: prediction.riskScore,
+[7m   [0m [91m                 ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m690[0m:[93m12[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m690[0m     return mlAnalysis.riskScore * 100 // Scale to 0-100 range
+[7m   [0m [91m           ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m679[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m679[0m     if (mlAnalysis.riskScore > 0.4) {
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m676[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m676[0m     if (mlAnalysis.riskScore > 0.6) {
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m673[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m673[0m     if (mlAnalysis.riskScore > 0.8) {
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m639[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'WithId<Document> | null' is not assignable to type 'ThreatResponse | null'.
+  Type 'WithId<Document>' is not assignable to type 'ThreatResponse | null'.
+
+[7m639[0m     return await collection.findOne({ responseId })
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m607[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'applyRateLimit' does not exist on type '{}'.
+
+[7m607[0m         await this.rateLimitingService.applyRateLimit(
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m373[0m:[93m27[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m373[0m       recommendedActions: mlAnalysis.recommendedActions,
+[7m   [0m [91m                          ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m372[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'mlAnalysis' is of type 'unknown'.
+
+[7m372[0m       riskFactors: mlAnalysis.riskFactors,
+[7m   [0m [91m                   ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m368[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'threatData' is of type 'unknown'.
+
+[7m368[0m       threatId: threatData.threatId,
+[7m   [0m [91m                ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m365[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidence' does not exist on type 'unknown'.
+
+[7m365[0m     const { confidence } = mlAnalysis
+[7m   [0m [91m            ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m308[0m:[93m42[0m - [91merror[0m[90m ts(2551): [0mProperty 'escalateThreatSeverity' does not exist on type 'AdvancedResponseOrchestrator'. Did you mean 'calculateThreatSeverity'?
+
+[7m308[0m       const escalatedThreat = await this.escalateThreatSeverity(
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m302[0m:[93m15[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m302[0m         await this.threatIntelligenceService.getThreat(threatId)
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m161[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'estimatedImpact' does not exist on type 'ThreatAnalysis'.
+
+[7m161[0m         estimatedImpact: threatAnalysis.estimatedImpact,
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m100[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'notificationManager' has no initializer and is not definitely assigned in the constructor.
+
+[7m100[0m   private notificationManager: NotificationManager
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m99[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'integrationManager' has no initializer and is not definitely assigned in the constructor.
+
+[7m99[0m   private integrationManager: IntegrationManager
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m98[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'decisionEngine' has no initializer and is not definitely assigned in the constructor.
+
+[7m98[0m   private decisionEngine: DecisionEngine
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m97[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'responseExecutor' has no initializer and is not definitely assigned in the constructor.
+
+[7m97[0m   private responseExecutor: ResponseExecutor
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m96[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m96[0m   private mongoClient: MongoClient
+[7m  [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m95[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m95[0m   private redis: Redis
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m91[0m:[93m14[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'AdvancedResponseOrchestrator'.
+
+[7m91[0m export class AdvancedResponseOrchestrator
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m957[0m:[93m20[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m957[0m     const result = await tf.tidy(async () => {
+[7m   [0m [93m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m958[0m       const inputTensor = tf.tensor2d([features])
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m962[0m       return Array.from(data) as number[]
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m963[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m799[0m:[93m23[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'config' is declared but its value is never read.
+
+[7m799[0m   constructor(private config: OrchestrationConfig) {
+[7m   [0m [93m                      ~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m686[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m686[0m     threatData: unknown,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/response-orchestration.ts[0m:[93m669[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m669[0m     threatData: unknown,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m282[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'mockClear' does not exist on type '{ (input: URL | RequestInfo, init?: RequestInit | undefined): Promise<Response>; (input: URL | RequestInfo, init?: RequestInit | undefined): Promise<...>; (input: string | ... 1 more ... | URL, init?: RequestInit | undefined): Promise<...>; }'.
+
+[7m282[0m       global.fetch.mockClear()
+[7m   [0m [91m                   ~~~~~~~~~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m4[0m:[93m10[0m - [91merror[0m[90m ts(2305): [0mModule '"../integrations"' has no exported member 'createCompleteThreatDetectionSystem'.
+
+[7m4[0m import { createCompleteThreatDetectionSystem } from '../integrations'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m3[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'ioredis-mock' or its corresponding type declarations.
+
+[7m3[0m import { Redis } from 'ioredis-mock'
+[7m [0m [91m                      ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m2[0m:[93m35[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'mongodb-memory-server' or its corresponding type declarations.
+
+[7m2[0m import { MongoMemoryServer } from 'mongodb-memory-server'
+[7m [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m629[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'm' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m629[0m       expect(metrics.some((m) => m.name === 'recent_metric')).toBe(true)
+[7m   [0m [93m                           ~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m628[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'm' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m628[0m       expect(metrics.some((m) => m.name === 'old_metric')).toBe(false)
+[7m   [0m [93m                           ~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m352[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'inv' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m352[0m         (inv) => inv.threatId === threatData.threatId,
+[7m   [0m [93m         ~~~[0m
+[96msrc/lib/threat-detection/__tests__/phase8-integration.test.ts[0m:[93m346[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'm' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m346[0m       const threatMetric = metrics.find((m) => m.name === 'threats_detected')
+[7m   [0m [93m                                         ~[0m
+
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1655[0m:[93m10[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'AdvancedBehavioralAnalysisService'.
+
+[7m1655[0m export { AdvancedBehavioralAnalysisService }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1655[0m:[93m10[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'AdvancedBehavioralAnalysisService'.
+
+[7m1655[0m export { AdvancedBehavioralAnalysisService }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m957[0m:[93m32[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m957[0m         const reconstruction = this.model.predict(inputTensor) as tf.Tensor
+[7m   [0m [91m                               ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m925[0m:[93m32[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'IsolationForest'.
+
+[7m925[0m     this.isolationForest = new IsolationForest(100, 256)
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m854[0m:[93m28[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'IsolationForest'.
+
+[7m854[0m   private isolationForest: IsolationForest | null = null
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m485[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'removeDuplicateAnomalies' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m485[0m     const uniqueAnomalies = this.removeDuplicateAnomalies(anomalies)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m420[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeNetworkCharacteristics' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m420[0m       networkCharacteristics: this.analyzeNetworkCharacteristics(events),
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m419[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateMobilityPattern' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m419[0m       mobilityPattern: this.calculateMobilityPattern(locations),
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m418[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateGeographicSpread' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m418[0m       geographicSpread: this.calculateGeographicSpread(locations),
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m417[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateIPDiversity' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m417[0m       ipDiversity: this.calculateIPDiversity(ipAddresses),
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m414[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'geolocateIPs' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m414[0m     const locations = await this.geolocateIPs(ipAddresses)
+[7m   [0m [91m                                 ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m406[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateResponseTimePattern' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m406[0m       responseTimePattern: this.calculateResponseTimePattern(events),
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m405[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateSessionRegularity' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m405[0m       sessionRegularity: this.calculateSessionRegularity(intervals),
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m404[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateActivityFrequency' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m404[0m       activityFrequency: this.calculateActivityFrequency(events),
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m403[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateDayOfWeekPattern' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m403[0m       dayOfWeekPattern: this.calculateDayOfWeekPattern(events),
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m402[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTimeOfDayPreference' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m402[0m       timeOfDayPreference: this.calculateTimeOfDayPreference(events),
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m401[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateAverageSessionDuration' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m401[0m       avgSessionDuration: this.calculateAverageSessionDuration(events),
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m398[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTimeIntervals' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m398[0m     const intervals = this.calculateTimeIntervals(timestamps)
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m388[0m:[93m30[0m - [91merror[0m[90m ts(2551): [0mProperty 'extractContextualFeatures' does not exist on type 'AdvancedBehavioralAnalysisService'. Did you mean 'extractTemporalFeatures'?
+
+[7m388[0m       contextual: await this.extractContextualFeatures(events),
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m387[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'extractFrequencyFeatures' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m387[0m       frequency: await this.extractFrequencyFeatures(events),
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m386[0m:[93m30[0m - [91merror[0m[90m ts(2551): [0mProperty 'extractSequentialFeatures' does not exist on type 'AdvancedBehavioralAnalysisService'. Did you mean 'extractSpatialFeatures'?
+
+[7m386[0m       sequential: await this.extractSequentialFeatures(events),
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m305[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculatePatternStability' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m305[0m         await this.calculatePatternStability(classifiedPatterns)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m302[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'classifyPatterns' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m302[0m         await this.classifyPatterns(significantPatterns)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m267[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateRiskTrend' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m267[0m       const trend = await this.calculateRiskTrend(profile.userId, totalRisk)
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m265[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateRiskConfidence' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m265[0m       const confidence = this.calculateRiskConfidence(riskFactors)
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m254[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateHistoricalRiskComponent' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m254[0m       const historicalRisk = await this.calculateHistoricalRiskComponent(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m253[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateContextualRiskComponent' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m253[0m       const contextualRisk = await this.calculateContextualRiskComponent(events)
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m249[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateAnomalyRiskComponent' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m249[0m       const anomalyRisk = await this.calculateAnomalyRiskComponent(
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m245[0m:[93m41[0m - [91merror[0m[90m ts(2551): [0mProperty 'calculateBehavioralRiskComponent' does not exist on type 'AdvancedBehavioralAnalysisService'. Did you mean 'calculateBehavioralRisk'?
+
+[7m245[0m       const behavioralRisk = await this.calculateBehavioralRiskComponent(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m243[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'extractRiskFactors' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m243[0m       const riskFactors = await this.extractRiskFactors(profile, events)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m210[0m:[93m45[0m - [91merror[0m[90m ts(2339): [0mProperty 'detectFrequencyAnomalies' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m210[0m       const frequencyAnomalies = await this.detectFrequencyAnomalies(
+[7m   [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m204[0m:[93m46[0m - [91merror[0m[90m ts(2551): [0mProperty 'detectSequentialAnomalies' does not exist on type 'AdvancedBehavioralAnalysisService'. Did you mean 'detectSpatialAnomalies'?
+
+[7m204[0m       const sequentialAnomalies = await this.detectSequentialAnomalies(
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m156[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateProfileConfidence' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m156[0m       const confidenceScore = this.calculateProfileConfidence(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m151[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'identifyRiskIndicators' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m151[0m       const riskIndicators = await this.identifyRiskIndicators(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m149[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateBaselineMetrics' does not exist on type 'AdvancedBehavioralAnalysisService'.
+
+[7m149[0m       const baselineMetrics = await this.calculateBaselineMetrics(features)
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m103[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'graphAnalyzer' has no initializer and is not definitely assigned in the constructor.
+
+[7m103[0m   private graphAnalyzer: GraphAnalyzer
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m102[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'privacyPreserver' has no initializer and is not definitely assigned in the constructor.
+
+[7m102[0m   private privacyPreserver: PrivacyPreserver
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m101[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'riskCalculator' has no initializer and is not definitely assigned in the constructor.
+
+[7m101[0m   private riskCalculator: RiskCalculator
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m100[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'patternMiner' has no initializer and is not definitely assigned in the constructor.
+
+[7m100[0m   private patternMiner: PatternMiner
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m99[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'anomalyDetector' has no initializer and is not definitely assigned in the constructor.
+
+[7m99[0m   private anomalyDetector: AnomalyDetector
+[7m  [0m [91m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m98[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m98[0m   private mongoClient: MongoClient
+[7m  [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m97[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m97[0m   private redis: Redis
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m93[0m:[93m14[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'AdvancedBehavioralAnalysisService'.
+
+[7m93[0m export class AdvancedBehavioralAnalysisService
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m33[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RiskIndicator'.
+
+[7m33[0m   riskIndicators: RiskIndicator[]
+[7m  [0m [91m                  ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1156[0m:[93m62[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m1156[0m     return `graph_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m    [0m [93m                                                             ~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1155[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'generateGraphId' is declared but its value is never read.
+
+[7m1155[0m   private generateGraphId(): string {
+[7m    [0m [93m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1152[0m:[93m65[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m1152[0m     return `analysis_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m    [0m [93m                                                                ~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1151[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'generateAnalysisId' is declared but its value is never read.
+
+[7m1151[0m   private generateAnalysisId(): string {
+[7m    [0m [93m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1148[0m:[93m64[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m1148[0m     return `anomaly_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m    [0m [93m                                                               ~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m1143[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'generateProfileId' is declared but its value is never read.
+
+[7m1143[0m   private generateProfileId(userId: string): string {
+[7m    [0m [93m          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m856[0m:[93m23[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'modelPath' is declared but its value is never read.
+
+[7m856[0m   constructor(private modelPath: string) {
+[7m   [0m [93m                      ~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m621[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'zScoreNormalize' is declared but its value is never read.
+
+[7m621[0m   private zScoreNormalize(
+[7m   [0m [93m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m605[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'minMaxNormalize' is declared but its value is never read.
+
+[7m605[0m   private minMaxNormalize(
+[7m   [0m [93m          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m487[0m:[93m54[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'b' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m487[0m     const rankedAnomalies = uniqueAnomalies.sort((a, b) => {
+[7m   [0m [93m                                                     ~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m487[0m:[93m51[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m487[0m     const rankedAnomalies = uniqueAnomalies.sort((a, b) => {
+[7m   [0m [93m                                                  ~[0m
+[96msrc/lib/threat-detection/behavioral/behavioral-analysis-service.ts[0m:[93m101[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'riskCalculator' is declared but its value is never read.
+
+[7m101[0m   private riskCalculator: RiskCalculator
+[7m   [0m [93m          ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m832[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeBatchBehavior' does not exist on type 'BehavioralAnalysisService'.
+
+[7m832[0m       const analysis = await service.analyzeBatchBehavior(userId, largeDataset)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m808[0m:[93m17[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m808[0m         service.analyzeBehavior(userId, behaviorData),
+[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m787[0m:[93m38[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m787[0m       const analysis = await service.analyzeBehavior(userId, behaviorData)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m770[0m:[93m38[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m770[0m       const analysis = await service.analyzeBehavior(userId, invalidData)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m756[0m:[93m38[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m756[0m       const analysis = await service.analyzeBehavior(userId, behaviorData)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m737[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name '________'.
+
+[7m737[0m         .slice(________)
+[7m   [0m [91m               ~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m736[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'performRealTimeAnalysis' does not exist on type 'BehavioralAnalysisService'.
+
+[7m736[0m         .performRealTimeAnalysis(userId, realTimeData)
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m716[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'performRealTimeAnalysis' does not exist on type 'BehavioralAnalysisService'.
+
+[7m716[0m       const result = await service.performRealTimeAnalysis(userId, realTimeData)
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m358[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeBatchBehavior' does not exist on type 'BehavioralAnalysisService'.
+
+[7m358[0m       const analysis = await service.analyzeBatchBehavior(userId, batchData)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m322[0m:[93m17[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m322[0m         service.analyzeBehavior(userId, behaviorData),
+[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m305[0m:[93m38[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m305[0m       const analysis = await service.analyzeBehavior(userId, suspiciousBehavior)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m265[0m:[93m38[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeBehavior' does not exist on type 'BehavioralAnalysisService'. Did you mean 'analyzeBehaviorGraph'?
+
+[7m265[0m       const analysis = await service.analyzeBehavior(userId, behaviorData)
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m232[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'deleteProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m232[0m       await expect(service.deleteProfile(userId)).rejects.toThrow('Redis error')
+[7m   [0m [91m                           ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m223[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'deleteProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m223[0m       await service.deleteProfile(userId)
+[7m   [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m214[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'getProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m214[0m       const result = await service.getProfile(userId)
+[7m   [0m [91m                                   ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m204[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'getProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m204[0m       const result = await service.getProfile(userId)
+[7m   [0m [91m                                   ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m188[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'createOrUpdateProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m188[0m         service.createOrUpdateProfile(userId, initialData),
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m170[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'createOrUpdateProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m170[0m       const updatedProfile = await service.createOrUpdateProfile(
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m126[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'createOrUpdateProfile' does not exist on type 'BehavioralAnalysisService'.
+
+[7m126[0m       const profile = await service.createOrUpdateProfile(userId, initialData)
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m93[0m:[93m33[0m - [91merror[0m[90m ts(2693): [0m'BehavioralAnalysisService' only refers to a type, but is being used as a value here.
+
+[7m93[0m       const customService = new BehavioralAnalysisService(
+[7m  [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m67[0m:[93m34[0m - [91merror[0m[90m ts(2693): [0m'BehavioralAnalysisService' only refers to a type, but is being used as a value here.
+
+[7m67[0m       const defaultService = new BehavioralAnalysisService(
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m63[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'anomalyDetector' does not exist on type 'BehavioralAnalysisService'.
+
+[7m63[0m       expect(service.anomalyDetector).toBeDefined()
+[7m  [0m [91m                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m62[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'profiles' does not exist on type 'BehavioralAnalysisService'.
+
+[7m62[0m       expect(service.profiles).toBeDefined()
+[7m  [0m [91m                     ~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m61[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'orchestrator' does not exist on type 'BehavioralAnalysisService'.
+
+[7m61[0m       expect(service.orchestrator).toBe(mockOrchestrator)
+[7m  [0m [91m                     ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m60[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'BehavioralAnalysisService'.
+
+[7m60[0m       expect(service.redis).toBe(mockRedis)
+[7m  [0m [91m                     ~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m59[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'config' does not exist on type 'BehavioralAnalysisService'.
+
+[7m59[0m       expect(service.config).toBeDefined()
+[7m  [0m [91m                     ~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m49[0m:[93m19[0m - [91merror[0m[90m ts(2693): [0m'BehavioralAnalysisService' only refers to a type, but is being used as a value here.
+
+[7m49[0m     service = new BehavioralAnalysisService(mockRedis, mockOrchestrator)
+[7m  [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m17[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../behavioral-utils' or its corresponding type declarations.
+
+[7m17[0m } from '../behavioral-utils'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m814[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'result' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m814[0m       results.forEach((result) => {
+[7m   [0m [93m                       ~~~~~~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m440[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m440[0m       expect(anomalies.some((a) => a.type === 'high_concurrency')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m439[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m439[0m       expect(anomalies.some((a) => a.type === 'long_session')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m417[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m417[0m       expect(anomalies.some((a) => a.type === 'high_frequency')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m416[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m416[0m       expect(anomalies.some((a) => a.type === 'unusual_method')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m415[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m415[0m       expect(anomalies.some((a) => a.type === 'unusual_endpoint')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m391[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m391[0m       expect(anomalies.some((a) => a.type === 'unusual_time')).toBe(true)
+[7m   [0m [93m                             ~[0m
+[96msrc/lib/threat-detection/behavioral/__tests__/behavioral-analysis.test.ts[0m:[93m390[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m390[0m       expect(anomalies.some((a) => a.type === 'unusual_ip')).toBe(true)
+[7m   [0m [93m                             ~[0m
+
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m206[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'session' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m206[0m       context.sessionId = req.session.id
+[7m   [0m [91m                              ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m205[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'session' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m205[0m     if (req.session) {
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m201[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m201[0m       context.userRole = req.user.role
+[7m   [0m [91m                             ~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m200[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m200[0m       context.userId = req.user.id
+[7m   [0m [91m                           ~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m199[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m199[0m     if (req.user) {
+[7m   [0m [91m            ~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m176[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'session' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m176[0m       return `session:${req.session.id}`
+[7m   [0m [91m                            ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m175[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'session' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m175[0m     if (req.session?.id) {
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m172[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m172[0m       return `user:${req.user.id}`
+[7m   [0m [91m                         ~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m171[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m171[0m     if (req.user?.id) {
+[7m   [0m [91m            ~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m132[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'threatDetection' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+
+[7m132[0m         req.threatDetection = {
+[7m   [0m [91m            ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m106[0m:[93m13[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'ThreatDetectionContext' is not assignable to parameter of type '{ userId?: string | undefined; ip?: string | undefined; endpoint?: string | undefined; userAgent?: string | undefined; method?: string | undefined; headers?: Record<string, string> | undefined; }'.
+  Types of property 'headers' are incompatible.
+
+[7m106[0m             context,
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m89[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'slice' does not exist on type 'void'.
+
+[7m89[0m         return next().slice()
+[7m  [0m [91m                      ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m76[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'enabled' is specified more than once, so this usage will be overwritten.
+
+[7m76[0m       enabled: true,
+[7m  [0m [91m      ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m62[0m:[93m16[0m - [91merror[0m[90m ts(2664): [0mInvalid module name in augmentation, module 'express-serve-static-core' cannot be found.
+
+[7m62[0m declare module 'express-serve-static-core' {
+[7m  [0m [91m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/api-middleware.ts[0m:[93m240[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'req' is declared but its value is never read.
+
+[7m240[0m     req: Request,
+[7m   [0m [93m    ~~~[0m
+
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1301[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m1301[0m         await this.redis.quit()
+[7m    [0m [91m                   ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1300[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m1300[0m       if (this.redis) {
+[7m    [0m [91m               ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1211[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m1211[0m           await this.redis.del(key)
+[7m    [0m [91m                     ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1209[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m1209[0m         const ttl = await this.redis.ttl(key)
+[7m    [0m [91m                               ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1207[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m1207[0m       const keys = await this.redis.keys('threat_intel:*')
+[7m    [0m [91m                              ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m1150[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'Document[]' is not assignable to type '{ type: string; count: number; }[]'.
+  Type 'Document' is missing the following properties from type '{ type: string; count: number; }': type, count
+
+[7m1150[0m     return await db
+[7m    [0m [91m    ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m843[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: never[]; totalCount: number; sources: never[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m843[0m       return { intelligence: [], totalCount: 0, sources: [] }
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m837[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'WithId<Document>[]' to type 'ThreatIntelligence[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'WithId<Document>' is missing the following properties from type 'ThreatIntelligence': intelligenceId, feedName, iocType, iocValue, and 8 more.
+
+[7m837[0m         intelligence: intelligence as ThreatIntelligence[],
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m836[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: ThreatIntelligence[]; totalCount: number; sources: any[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m836[0m       return {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m775[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: never[]; totalCount: number; sources: never[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m775[0m       return { intelligence: [], totalCount: 0, sources: [] }
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m772[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: never[]; totalCount: number; sources: never[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m772[0m       return { intelligence: [], totalCount: 0, sources: [] }
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m764[0m:[93m11[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: ThreatIntelligence[]; totalCount: number; sources: string[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m764[0m           return {
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m757[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m757[0m       const cachedData = await this.redis.get(cacheKey)
+[7m   [0m [91m                                    ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m753[0m:[93m9[0m - [91merror[0m[90m ts(2739): [0mType '{ intelligence: never[]; totalCount: number; sources: never[]; }' is missing the following properties from type 'ThreatIntelligenceResult': queryTime, cacheHit
+
+[7m753[0m         return { intelligence: [], totalCount: 0, sources: [] }
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m684[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'redis' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m684[0m       await this.redis.setex(
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m555[0m:[93m28[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+
+[7m555[0m         lastSeen: new Date(data.modified || Date.now()),
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m554[0m:[93m29[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+
+[7m554[0m         firstSeen: new Date(data.created || Date.now()),
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m471[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '{}' is not assignable to type 'string'.
+
+[7m471[0m         source: data.source || feed.name,
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m467[0m:[93m28[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+
+[7m467[0m         lastSeen: new Date(data.last_seen || data.updated || Date.now()),
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m466[0m:[93m29[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+
+[7m466[0m         firstSeen: new Date(data.first_seen || data.created || Date.now()),
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m448[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m448[0m         data.severity || data.confidence || 'medium',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/external-threat-intelligence.ts[0m:[93m90[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m90[0m   private mongoClient: MongoClient
+[7m  [0m [91m          ~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m202[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m202[0m       Object.entries(req.headers).filter(
+[7m   [0m [91m                     ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m200[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m200[0m     sessionId: req.session?.id,
+[7m   [0m [91m               ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m199[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m199[0m     userRole: req.user?.role,
+[7m   [0m [91m              ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m198[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m198[0m     userId: req.user?.id,
+[7m   [0m [91m            ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m196[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m196[0m     userAgent: req.get('User-Agent'),
+[7m   [0m [91m               ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m195[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m195[0m     path: req.path,
+[7m   [0m [91m          ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m194[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m194[0m     method: req.method,
+[7m   [0m [91m            ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m193[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m193[0m     ip: req.ip,
+[7m   [0m [91m        ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m188[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m188[0m       return `ip:${req.ip}`
+[7m   [0m [91m                   ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m187[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m187[0m     if (req.ip) {
+[7m   [0m [91m        ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m185[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m185[0m       return `session:${req.session.id}`
+[7m   [0m [91m                        ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m184[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m184[0m     if (req.session?.id) {
+[7m   [0m [91m        ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m182[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m182[0m       return `user:${req.user.id}`
+[7m   [0m [91m                     ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m181[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'req' is of type 'unknown'.
+
+[7m181[0m     if (req.user?.id) {
+[7m   [0m [91m        ~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m106[0m:[93m44[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'ThreatDetectionConfig'.
+
+[7m106[0m export const defaultThreatDetectionConfig: ThreatDetectionConfig = {
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m80[0m:[93m34[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createThreatDetectionService'.
+
+[7m80[0m   const threatDetectionService = createThreatDetectionService(
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m78[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'ThreatDetectionConfig'.
+
+[7m78[0m   config?: Partial<ThreatDetectionConfig>,
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m69[0m:[93m3[0m - [91merror[0m[90m ts(2459): [0mModule '"../response-orchestration"' declares 'ThreatAnalysis' locally, but it is not exported.
+
+[7m69[0m   ThreatAnalysis,
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m68[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'RateLimitResult'.
+
+[7m68[0m   RateLimitResult,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m67[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'RateLimitRule'.
+
+[7m67[0m   RateLimitRule,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/index.ts[0m:[93m64[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'ThreatData'.
+
+[7m64[0m   ThreatData,
+[7m  [0m [91m  ~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m403[0m:[93m36[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Db' has no call signatures.
+
+[7m403[0m       const db = await mongoClient.db('threat_intelligence')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m403[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'db' is private and only accessible within class 'MongoDB'.
+
+[7m403[0m       const db = await mongoClient.db('threat_intelligence')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m403[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'mongoClient.db' is possibly 'null'.
+
+[7m403[0m       const db = await mongoClient.db('threat_intelligence')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m403[0m:[93m24[0m - [91merror[0m[90m ts(2721): [0mCannot invoke an object which is possibly 'null'.
+
+[7m403[0m       const db = await mongoClient.db('threat_intelligence')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m368[0m:[93m39[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m368[0m       return { success: false, error: error.message }
+[7m   [0m [91m                                      ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m358[0m:[93m36[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Db' has no call signatures.
+
+[7m358[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m358[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'db' is private and only accessible within class 'MongoDB'.
+
+[7m358[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m358[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'mongoClient.db' is possibly 'null'.
+
+[7m358[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m358[0m:[93m24[0m - [91merror[0m[90m ts(2721): [0mCannot invoke an object which is possibly 'null'.
+
+[7m358[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m315[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ type: string; message: string; severity: string; timestamp: Date; }' is not assignable to parameter of type 'never'.
+
+[7m315[0m       insights.push({
+[7m   [0m [91m                    ~[0m
+[7m316[0m         type: 'high_risk_activity',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m319[0m         timestamp: new Date(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m320[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m259[0m:[93m36[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Db' has no call signatures.
+
+[7m259[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m259[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'db' is private and only accessible within class 'MongoDB'.
+
+[7m259[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m259[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'mongoClient.db' is possibly 'null'.
+
+[7m259[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m259[0m:[93m24[0m - [91merror[0m[90m ts(2721): [0mCannot invoke an object which is possibly 'null'.
+
+[7m259[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m228[0m:[93m36[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Db' has no call signatures.
+
+[7m228[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m228[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'db' is private and only accessible within class 'MongoDB'.
+
+[7m228[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m228[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'mongoClient.db' is possibly 'null'.
+
+[7m228[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m228[0m:[93m24[0m - [91merror[0m[90m ts(2721): [0mCannot invoke an object which is possibly 'null'.
+
+[7m228[0m       const db = await mongoClient.db('security_logs')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m98[0m:[93m36[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Db' has no call signatures.
+
+[7m98[0m       const db = await mongoClient.db('threat_intelligence')
+[7m  [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m98[0m:[93m36[0m - [91merror[0m[90m ts(2341): [0mProperty 'db' is private and only accessible within class 'MongoDB'.
+
+[7m98[0m       const db = await mongoClient.db('threat_intelligence')
+[7m  [0m [91m                                   ~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m98[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'mongoClient.db' is possibly 'null'.
+
+[7m98[0m       const db = await mongoClient.db('threat_intelligence')
+[7m  [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m98[0m:[93m24[0m - [91merror[0m[90m ts(2721): [0mCannot invoke an object which is possibly 'null'.
+
+[7m98[0m       const db = await mongoClient.db('threat_intelligence')
+[7m  [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m59[0m:[93m39[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m59[0m       return { success: false, error: error.message, riskScore: 0 }
+[7m  [0m [91m                                      ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m446[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'rateLimiter' is declared but its value is never read.
+
+[7m446[0m   rateLimiter: unknown,
+[7m   [0m [93m  ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/production-system.ts[0m:[93m445[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'orchestrator' is declared but its value is never read.
+
+[7m445[0m   orchestrator: unknown,
+[7m   [0m [93m  ~~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/rate-limiting-bridge.ts[0m:[93m326[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name '________'.
+
+[7m326[0m         .slice(________)
+[7m   [0m [91m               ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/rate-limiting-bridge.ts[0m:[93m326[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'slice' does not exist on type 'boolean'.
+
+[7m326[0m         .slice(________)
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/lib/threat-detection/integrations/rate-limiting-bridge.ts[0m:[93m168[0m:[93m13[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'string'.
+
+[7m168[0m             action.parameters.userId,
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/rate-limiting-bridge.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'RateLimitResult'.
+
+[7m18[0m   RateLimitResult,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/rate-limiting-bridge.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'RateLimitRule'.
+
+[7m17[0m   RateLimitRule,
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m469[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'isHealthy' does not exist on type 'AdvancedResponseOrchestrator'.
+
+[7m469[0m         this.orchestrator.isHealthy(),
+[7m   [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m436[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'recommendations' does not exist in type 'ThreatResponse'.
+
+[7m436[0m       recommendations: [],
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m95[0m:[93m23[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createThreatDetectionMiddleware'.
+
+[7m95[0m     this.middleware = createThreatDetectionMiddleware(this.rateLimitingBridge, {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m88[0m:[93m31[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createRateLimitingBridge'.
+
+[7m88[0m     this.rateLimitingBridge = createRateLimitingBridge(
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2459): [0mModule '"../response-orchestration"' declares 'ThreatAnalysis' locally, but it is not exported.
+
+[7m18[0m   ThreatAnalysis,
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'RateLimitResult'.
+
+[7m17[0m   RateLimitResult,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'ThreatData'.
+
+[7m15[0m   ThreatData,
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m332[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m332[0m     threatData: ThreatData,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m321[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m321[0m     threatData: ThreatData,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m310[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m310[0m     threatData: ThreatData,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m299[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'threatData' is declared but its value is never read.
+
+[7m299[0m     threatData: ThreatData,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/threat-detection-service.ts[0m:[93m73[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'rateLimiter' is declared but its value is never read.
+
+[7m73[0m   private rateLimiter: DistributedRateLimiter
+[7m  [0m [93m          ~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m680[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'timestamp' does not exist in type 'ResponseAction'.
+
+[7m680[0m     timestamp: new Date().toISOString(),
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m441[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'recommendations' does not exist in type 'ThreatResponse'.
+
+[7m441[0m     recommendations: [],
+[7m   [0m [91m    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m421[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'ResponseAction'.
+
+[7m421[0m     message: rateLimitAction.metadata?.message,
+[7m   [0m [91m                             ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m420[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'ResponseAction'.
+
+[7m420[0m     windowMs: rateLimitAction.metadata?.windowMs || 60000,
+[7m   [0m [91m                              ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m419[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'ResponseAction'.
+
+[7m419[0m     maxRequests: rateLimitAction.metadata?.maxRequests || 10,
+[7m   [0m [91m                                 ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m373[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'recommendations' does not exist on type 'ThreatResponse'.
+
+[7m373[0m     recommendations: response.recommendations,
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m371[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type 'ResponseAction'.
+
+[7m371[0m       metadata: action.metadata,
+[7m   [0m [91m                       ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m305[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'initialize' does not exist on type 'ExternalThreatIntelligenceService'.
+
+[7m305[0m     await threatService.initialize()
+[7m   [0m [91m                        ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m300[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'mongoUrl' does not exist in type 'ThreatIntelligenceConfig'.
+
+[7m300[0m       mongoUrl: config.mongoUrl || process.env.MONGODB_URL || 'mongodb://localhost:27017',
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m169[0m:[93m7[0m - [91merror[0m[90m ts(2801): [0mThis condition will always return true since this 'Promise<boolean>' is always defined.
+
+[7m169[0m       isSuspiciousIP(threatData.riskFactors.ip)
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../response-orchestration"' has no exported member 'ThreatData'.
+
+[7m11[0m   ThreatData,
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m596[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'identifier' is declared but its value is never read.
+
+[7m596[0m   identifier: string,
+[7m   [0m [93m  ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m313[0m:[93m12[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(ip: string): boolean' of 'isSuspiciousIPSync' is deprecated.
+
+[7m313[0m     return isSuspiciousIPSync(ip)
+[7m   [0m [93m           ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m295[0m:[93m12[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(ip: string): boolean' of 'isSuspiciousIPSync' is deprecated.
+
+[7m295[0m     return isSuspiciousIPSync(ip)
+[7m   [0m [93m           ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/utils.ts[0m:[93m59[0m:[93m63[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m59[0m   return `${prefix}${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m  [0m [93m                                                              ~~~~~~[0m
+
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m601[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: never[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: never[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m601[0m       const params = extractRateLimitParams(response)
+[7m   [0m [91m                                            ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m583[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; metadata: { maxRequests: number; windowMs: number; message: string; }; }[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; metadata: { maxRequests: number; windowMs: number; message: string; }; }[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m583[0m       const params = extractRateLimitParams(response)
+[7m   [0m [91m                                            ~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m558[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m558[0m       expect(shouldRateLimitRequest(responseWithoutRateLimit)).toBe(false)
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m557[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m557[0m       expect(shouldRateLimitRequest(responseWithRateLimit)).toBe(true)
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m521[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m521[0m       expect(shouldBlockRequest(responseWithoutBlock)).toBe(false)
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m520[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is not assignable to parameter of type 'ThreatResponse'.
+  Type '{ responseId: string; threatId: string; severity: string; confidence: number; actions: { actionType: string; target: string; timestamp: string; }[]; recommendations: never[]; metadata: {}; }' is missing the following properties from type 'ThreatResponse': responseType, estimatedImpact, executionTime, status
+
+[7m520[0m       expect(shouldBlockRequest(responseWithBlock)).toBe(true)
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m407[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ ip: string; method: string; path: string; get: Mock<Procedure>; user: undefined; session: undefined; }' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type '{ ip: string; method: string; path: string; get: Mock<Procedure>; user: undefined; session: undefined; }' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': header, accepts, acceptsCharsets, acceptsEncodings, and 93 more.
+
+[7m407[0m       await middleware.middleware()(mockReq, mockRes, mockNext)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m378[0m:[93m9[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 3.
+
+[7m378[0m         mockRateLimiter,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[7m379[0m         config,
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m364[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ ip: string; method: string; path: string; get: Mock<Procedure>; user: undefined; session: undefined; }' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type '{ ip: string; method: string; path: string; get: Mock<Procedure>; user: undefined; session: undefined; }' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': header, accepts, acceptsCharsets, acceptsEncodings, and 93 more.
+
+[7m364[0m       await middleware.middleware()(mockReq, mockRes, mockNext)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m343[0m:[93m9[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 3.
+
+[7m343[0m         mockRateLimiter,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[7m344[0m         config,
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m328[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ ip: string; method: string; path: string; get: Mock<(_header: string) => string>; user: { id: string; role: string; }; session: { id: string; }; }' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type '{ ip: string; method: string; path: string; get: Mock<(_header: string) => string>; user: { id: string; role: string; }; session: { id: string; }; }' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': header, accepts, acceptsCharsets, acceptsEncodings, and 93 more.
+
+[7m328[0m       await middleware.middleware()(mockReq, mockRes, mockNext)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m301[0m:[93m9[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 3.
+
+[7m301[0m         mockRateLimiter,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[7m302[0m         config,
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m289[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'rateLimiter' does not exist on type 'ThreatDetectionMiddleware'.
+
+[7m289[0m       expect(middleware.rateLimiter).toBe(mockRateLimiter)
+[7m   [0m [91m                        ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m288[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'orchestrator' does not exist on type 'ThreatDetectionMiddleware'.
+
+[7m288[0m       expect(middleware.orchestrator).toBe(mockOrchestrator)
+[7m   [0m [91m                        ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m287[0m:[93m25[0m - [91merror[0m[90m ts(2341): [0mProperty 'config' is private and only accessible within class 'ThreatDetectionMiddleware'.
+
+[7m287[0m       expect(middleware.config).toEqual(config)
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m282[0m:[93m9[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 3.
+
+[7m282[0m         mockRateLimiter,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[7m283[0m         config,
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m263[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'resetCounter' does not exist on type 'RateLimitingBridge'.
+
+[7m263[0m       await bridge.resetCounter(identifier, context)
+[7m   [0m [91m                   ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m262[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 2.
+
+[7m262[0m       const bridge = new RateLimitingBridge(mockOrchestrator, mockRateLimiter)
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m244[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'getRemainingRequests' does not exist on type 'RateLimitingBridge'.
+
+[7m244[0m       const result = await bridge.getRemainingRequests(identifier, context)
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m243[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 2.
+
+[7m243[0m       const bridge = new RateLimitingBridge(mockOrchestrator, mockRateLimiter)
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m225[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'incrementCounter' does not exist on type 'RateLimitingBridge'.
+
+[7m225[0m       await bridge.incrementCounter(identifier, context)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m224[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 2.
+
+[7m224[0m       const bridge = new RateLimitingBridge(mockOrchestrator, mockRateLimiter)
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m201[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 2.
+
+[7m201[0m       const bridge = new RateLimitingBridge(mockOrchestrator, mockRateLimiter)
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m64[0m:[93m37[0m - [91merror[0m[90m ts(2341): [0mProperty 'rateLimiter' is private and only accessible within class 'ThreatDetectionService'.
+
+[7m64[0m       expect(threatDetectionService.rateLimiter).toBe(mockRateLimiter)
+[7m  [0m [91m                                    ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m63[0m:[93m37[0m - [91merror[0m[90m ts(2341): [0mProperty 'orchestrator' is private and only accessible within class 'ThreatDetectionService'.
+
+[7m63[0m       expect(threatDetectionService.orchestrator).toBe(mockOrchestrator)
+[7m  [0m [91m                                    ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/integrations/__tests__/integration.test.ts[0m:[93m62[0m:[93m37[0m - [91merror[0m[90m ts(2341): [0mProperty 'config' is private and only accessible within class 'ThreatDetectionService'.
+
+[7m62[0m       expect(threatDetectionService.config).toBeDefined()
+[7m  [0m [91m                                    ~~~~~~[0m
+
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m748[0m:[93m10[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'ModelServingServer'.
+
+[7m748[0m export { ModelServingServer }
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m748[0m:[93m10[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'ModelServingServer'.
+
+[7m748[0m export { ModelServingServer }
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m636[0m:[93m12[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'WithId<Document>[]' to type 'ModelConfig[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'WithId<Document>' is missing the following properties from type 'ModelConfig': modelId, modelPath, modelType, inputShape, outputShape
+
+[7m636[0m     return (await collection.find().toArray()) as ModelConfig[]
+[7m   [0m [91m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m579[0m:[93m38[0m - [91merror[0m[90m ts(2322): [0mType 'null' is not assignable to type 'FeatureSet'.
+
+[7m579[0m     return data ? JSON.parse(data) : null
+[7m   [0m [91m                                     ~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m551[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'serverStatus' does not exist in type 'ModelHealthReport'.
+
+[7m551[0m       serverStatus: 'healthy',
+[7m   [0m [91m      ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m476[0m:[93m51[0m - [91merror[0m[90m ts(18046): [0m'val' is of type 'unknown'.
+
+[7m476[0m       outputs.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) /
+[7m   [0m [91m                                                  ~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m476[0m:[93m36[0m - [91merror[0m[90m ts(18046): [0m'sum' is of type 'unknown'.
+
+[7m476[0m       outputs.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) /
+[7m   [0m [91m                                   ~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m476[0m:[93m7[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m476[0m       outputs.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) /
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m474[0m:[93m53[0m - [91merror[0m[90m ts(18046): [0m'val' is of type 'unknown'.
+
+[7m474[0m     const mean = outputs.reduce((sum, val) => sum + val, 0) / outputs.length
+[7m   [0m [91m                                                    ~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m474[0m:[93m47[0m - [91merror[0m[90m ts(18046): [0m'sum' is of type 'unknown'.
+
+[7m474[0m     const mean = outputs.reduce((sum, val) => sum + val, 0) / outputs.length
+[7m   [0m [91m                                              ~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m474[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m474[0m     const mean = outputs.reduce((sum, val) => sum + val, 0) / outputs.length
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m446[0m:[93m43[0m - [91merror[0m[90m ts(18046): [0m'b' is of type 'unknown'.
+
+[7m446[0m       return outputs.reduce((a, b) => a + b, 0) / outputs.length
+[7m   [0m [91m                                          ~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m446[0m:[93m39[0m - [91merror[0m[90m ts(18046): [0m'a' is of type 'unknown'.
+
+[7m446[0m       return outputs.reduce((a, b) => a + b, 0) / outputs.length
+[7m   [0m [91m                                      ~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m446[0m:[93m14[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m446[0m       return outputs.reduce((a, b) => a + b, 0) / outputs.length
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m405[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m405[0m             config.parameters.bins,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m403[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'createBinnedFeatures' does not exist on type 'ModelServingServer'.
+
+[7m403[0m           engineered = this.createBinnedFeatures(
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m400[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'createInteractionFeatures' does not exist on type 'ModelServingServer'.
+
+[7m400[0m           engineered = this.createInteractionFeatures(engineered)
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m396[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m396[0m             config.parameters.degree,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m394[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'createPolynomialFeatures' does not exist on type 'ModelServingServer'.
+
+[7m394[0m           engineered = this.createPolynomialFeatures(
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m391[0m:[93m29[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m391[0m     for (const technique of config.techniques) {
+[7m   [0m [91m                            ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m378[0m:[93m43[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m378[0m         return this.robustNormalize(data, config.parameters)
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m378[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'robustNormalize' does not exist on type 'ModelServingServer'.
+
+[7m378[0m         return this.robustNormalize(data, config.parameters)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m376[0m:[93m43[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m376[0m         return this.zScoreNormalize(data, config.parameters)
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m376[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'zScoreNormalize' does not exist on type 'ModelServingServer'.
+
+[7m376[0m         return this.zScoreNormalize(data, config.parameters)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m374[0m:[93m43[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m374[0m         return this.minMaxNormalize(data, config.parameters)
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m374[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'minMaxNormalize' does not exist on type 'ModelServingServer'.
+
+[7m374[0m         return this.minMaxNormalize(data, config.parameters)
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m372[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'config' is possibly 'undefined'.
+
+[7m372[0m     switch (config.method) {
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m359[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'applyConfidenceCalibration' does not exist on type 'ModelServingServer'.
+
+[7m359[0m       processed = await this.applyConfidenceCalibration(
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m351[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'applyEnsembleAggregation' does not exist on type 'ModelServingServer'.
+
+[7m351[0m       processed = this.applyEnsembleAggregation(
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m346[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'applyThresholding' does not exist on type 'ModelServingServer'.
+
+[7m346[0m       processed = this.applyThresholding(processed, config.thresholding)
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m320[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'validateData' does not exist on type 'ModelServingServer'.
+
+[7m320[0m       const validation = await this.validateData(
+[7m   [0m [91m                                    ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m216[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'TensorLike | WebGLData | WebGPUData'.
+
+[7m216[0m         const inputTensor = tf.tensor(processedInput, [1, ...config.inputShape])
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m215[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type '() => Promise<unknown>' is not assignable to parameter of type 'string | ScopeFn<TensorContainer>'.
+  Type '() => Promise<unknown>' is not assignable to type 'ScopeFn<TensorContainer>'.
+
+[7m215[0m       const output = await tf.tidy(async () => {
+[7m   [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m128[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'monitoring' has no initializer and is not definitely assigned in the constructor.
+
+[7m128[0m   private monitoring: ModelMonitoring
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m127[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'modelRegistry' has no initializer and is not definitely assigned in the constructor.
+
+[7m127[0m   private modelRegistry: ModelRegistry
+[7m   [0m [91m          ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m126[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'featureStore' has no initializer and is not definitely assigned in the constructor.
+
+[7m126[0m   private featureStore: FeatureStore
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m125[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m125[0m   private mongoClient: MongoClient
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m124[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m124[0m   private redis: Redis
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m121[0m:[93m14[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'ModelServingServer'.
+
+[7m121[0m export class ModelServingServer extends EventEmitter {
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m664[0m:[93m13[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'redis' is declared but its value is never read.
+
+[7m664[0m     private redis: Redis,
+[7m   [0m [93m            ~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m600[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'featureSetId' is declared but its value is never read.
+
+[7m600[0m     featureSetId: string,
+[7m   [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m532[0m:[93m61[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m532[0m     return `pred_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                            ~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m217[0m:[93m31[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m217[0m         const outputTensor = (await model.predict(inputTensor)) as tf.Tensor
+[7m   [0m [93m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m215[0m:[93m22[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m215[0m       const output = await tf.tidy(async () => {
+[7m   [0m [93m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m216[0m         const inputTensor = tf.tensor(processedInput, [1, ...config.inputShape])
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m219[0m         return arr as unknown
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m220[0m       })
+[7m   [0m [93m~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m179[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m179[0m       await model.predict(warmupInput)
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/ml-model-serving/model-server.ts[0m:[93m126[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'featureStore' is declared but its value is never read.
+
+[7m126[0m   private featureStore: FeatureStore
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m1220[0m:[93m61[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'Alert'.
+
+[7m1220[0m export type { MonitoringConfig, SecurityMetrics, AIInsight, Alert }
+[7m    [0m [91m                                                            ~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m1220[0m:[93m50[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'AIInsight'.
+
+[7m1220[0m export type { MonitoringConfig, SecurityMetrics, AIInsight, Alert }
+[7m    [0m [91m                                                 ~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m1220[0m:[93m33[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'SecurityMetrics'.
+
+[7m1220[0m export type { MonitoringConfig, SecurityMetrics, AIInsight, Alert }
+[7m    [0m [91m                                ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m1220[0m:[93m15[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'MonitoringConfig'.
+
+[7m1220[0m export type { MonitoringConfig, SecurityMetrics, AIInsight, Alert }
+[7m    [0m [91m              ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m1148[0m:[93m14[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'WithId<Document>[]' to type 'SecurityMetrics[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'WithId<Document>' is missing the following properties from type 'SecurityMetrics': timestamp, threatCount, blockedRequests, anomalyScore, and 3 more.
+
+[7m1148[0m       return metrics as SecurityMetrics[]
+[7m    [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m960[0m:[93m14[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'WithId<Document>[]' to type 'AIInsight[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'WithId<Document>' is missing the following properties from type 'AIInsight': insightId, type, severity, title, and 5 more.
+
+[7m960[0m       return insights as AIInsight[]
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m940[0m:[93m14[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'WithId<Document>[]' to type 'Alert[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'WithId<Document>' is missing the following properties from type 'Alert': alertId, type, severity, title, and 7 more.
+
+[7m940[0m       return alerts as Alert[]
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m442[0m:[93m31[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m442[0m         const result = (await this.anomalyDetectionModel.predict(
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m440[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type '() => Promise<number>' is not assignable to parameter of type 'string | ScopeFn<TensorContainer>'.
+  Type '() => Promise<number>' is not assignable to type 'ScopeFn<TensorContainer>'.
+
+[7m440[0m       return await tf.tidy(async () => {
+[7m   [0m [91m                           ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m440[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'TensorContainer' is not assignable to type 'number'.
+  Type 'string' is not assignable to type 'number'.
+
+[7m440[0m       return await tf.tidy(async () => {
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m270[0m:[93m47[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  The last overload gave the following error.
+
+[7m270[0m       const _memory = await this.redis.memory('usage', '*')
+[7m   [0m [91m                                              ~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m89[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'mongoClient' has no initializer and is not definitely assigned in the constructor.
+
+[7m89[0m   private mongoClient: MongoClient
+[7m  [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m88[0m:[93m11[0m - [91merror[0m[90m ts(2564): [0mProperty 'redis' has no initializer and is not definitely assigned in the constructor.
+
+[7m88[0m   private redis: Redis
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m442[0m:[93m25[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m442[0m         const result = (await this.anomalyDetectionModel.predict(
+[7m   [0m [93m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m443[0m           inputTensor,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m444[0m         )) as tf.Tensor
+[7m   [0m [93m~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m440[0m:[93m14[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m440[0m       return await tf.tidy(async () => {
+[7m   [0m [93m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m441[0m         const inputTensor = tf.tensor2d([features])
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m446[0m         return score[0]
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m447[0m       })
+[7m   [0m [93m~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/ai-enhanced-monitoring.ts[0m:[93m270[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'_memory' is declared but its value is never read.
+
+[7m270[0m       const _memory = await this.redis.memory('usage', '*')
+[7m   [0m [93m            ~~~~~~~[0m
+
+[96msrc/lib/threat-detection/monitoring/__tests__/monitoring.test.ts[0m:[93m20[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../metrics-utils' or its corresponding type declarations.
+
+[7m20[0m } from '../metrics-utils'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/__tests__/monitoring.test.ts[0m:[93m15[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../alert-utils' or its corresponding type declarations.
+
+[7m15[0m } from '../alert-utils'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/__tests__/monitoring.test.ts[0m:[93m9[0m:[93m43[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../enhanced-monitoring-service' or its corresponding type declarations.
+
+[7m9[0m import { EnhancedMonitoringService } from '../enhanced-monitoring-service'
+[7m [0m [91m                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/__tests__/monitoring.test.ts[0m:[93m826[0m:[93m32[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m826[0m       results.forEach((result, index) => {
+[7m   [0m [93m                               ~~~~~[0m
+[96msrc/lib/threat-detection/monitoring/__tests__/monitoring.test.ts[0m:[93m826[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'result' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m826[0m       results.forEach((result, index) => {
+[7m   [0m [93m                       ~~~~~~[0m
+
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1556[0m:[93m10[0m - [91merror[0m[90m ts(2484): [0mExport declaration conflicts with exported declaration of 'AdvancedPredictiveThreatIntelligence'.
+
+[7m1556[0m export { AdvancedPredictiveThreatIntelligence }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1556[0m:[93m10[0m - [91merror[0m[90m ts(2323): [0mCannot redeclare exported variable 'AdvancedPredictiveThreatIntelligence'.
+
+[7m1556[0m export { AdvancedPredictiveThreatIntelligence }
+[7m    [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1499[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'PropagationSimulation'.
+
+[7m1499[0m   ): Promise<PropagationSimulation> {
+[7m    [0m [91m             ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1463[0m:[93m48[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'TensorContainer' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+
+[7m1463[0m           probability: Math.max(0, Math.min(1, value)),
+[7m    [0m [91m                                               ~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1461[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'TensorContainer' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+
+[7m1461[0m           value: Math.max(0, Math.min(1, value)), // Clamp between 0 and 1
+[7m    [0m [91m                                         ~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1454[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type '() => Promise<number>' is not assignable to parameter of type 'string | ScopeFn<TensorContainer>'.
+  Type '() => Promise<number>' is not assignable to type 'ScopeFn<TensorContainer>'.
+
+[7m1454[0m         const value = await tf.tidy(async () => {
+[7m    [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1312[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type '() => Promise<ForecastingModel>' is not assignable to parameter of type 'string | ScopeFn<TensorContainer>'.
+  Type '() => Promise<ForecastingModel>' is not assignable to type 'ScopeFn<TensorContainer>'.
+
+[7m1312[0m       return await tf.tidy(() => {
+[7m    [0m [91m                           ~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1312[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'TensorContainer' is not assignable to type 'ForecastingModel'.
+  Type 'string' is not assignable to type 'ForecastingModel'.
+
+[7m1312[0m       return await tf.tidy(() => {
+[7m    [0m [91m      ~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m1268[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'PropagationSimulation'.
+
+[7m1268[0m   ): Promise<PropagationSimulation>
+[7m    [0m [91m             ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m864[0m:[93m9[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'propagationGraph'.
+
+[7m864[0m         propagationGraph,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m862[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateEdgeTransmissionProbability' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m862[0m       const edgeProb = await this.calculateEdgeTransmissionProbability(
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m861[0m:[93m24[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'propagationGraph'.
+
+[7m861[0m     for (const edge of propagationGraph.edges) {
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m856[0m:[93m9[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'propagationGraph'.
+
+[7m856[0m         propagationGraph,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m854[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateNodeInfectionProbability' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m854[0m       const nodeProb = await this.calculateNodeInfectionProbability(
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m853[0m:[93m24[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'propagationGraph'.
+
+[7m853[0m     for (const node of propagationGraph.nodes) {
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m848[0m:[93m7[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'initialThreat'.
+
+[7m848[0m       initialThreat,
+[7m   [0m [91m      ~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m847[0m:[93m7[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'propagationGraph'.
+
+[7m847[0m       propagationGraph,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m846[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateBasicReproductionNumber' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m846[0m     const r0 = await this.calculateBasicReproductionNumber(
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m826[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTransmissionRate' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m826[0m         transmissionRate: this.calculateTransmissionRate(edge),
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m822[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTransmissionProbability' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m822[0m         transmissionProbability: this.calculateTransmissionProbability(
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m820[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'network'.
+
+[7m820[0m       edges: network.edges.map((edge) => ({
+[7m   [0m [91m             ~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m818[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateVulnerabilityScore' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m818[0m         vulnerabilityScore: this.calculateVulnerabilityScore(node),
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m817[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateRecoveryRate' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m817[0m         recoveryRate: this.calculateRecoveryRate(node),
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m813[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateInfectionProbability' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m813[0m         infectionProbability: this.calculateInfectionProbability(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m811[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'network'.
+
+[7m811[0m       nodes: network.nodes.map((node) => ({
+[7m   [0m [91m             ~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m784[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateSimilarityToKnownThreats' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m784[0m       const similarity = await this.calculateSimilarityToKnownThreats(
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m768[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculatePredictionInterval' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m768[0m       const interval = await this.calculatePredictionInterval(prediction)
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m755[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTimeHorizon' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m755[0m         timeHorizon: this.calculateTimeHorizon(timeframe),
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m732[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'trainEnsembleModel' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m732[0m       const ensembleModel = await this.trainEnsembleModel(lstmModel, arimaModel)
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m729[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'trainARIMAModel' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m729[0m       const arimaModel = await this.trainARIMAModel(series, seasonalComponents)
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m726[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'trainLSTMModel' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m726[0m       const lstmModel = await this.trainLSTMModel(series, seasonalComponents)
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m700[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'threats' is of type 'unknown'.
+
+[7m700[0m         dataPoints: threats.map((threat) => ({
+[7m   [0m [91m                    ~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m691[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'groupByThreatType' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m691[0m     const groupedData = this.groupByThreatType(data)
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m686[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'normalizeThreatData' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m686[0m     return await this.normalizeThreatData(imputedData)
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m683[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'imputeMissingValues' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m683[0m     const imputedData = await this.imputeMissingValues(sortedData)
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m675[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'removeDuplicateThreats' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m675[0m     const uniqueData = this.removeDuplicateThreats(data)
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m644[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateValidationMetrics' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m644[0m       const validationMetrics = await this.calculateValidationMetrics(
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m641[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'extractModelParameters' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m641[0m       const modelParameters = await this.extractModelParameters(model)
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m638[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateTimeSeriesConfidenceBands' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m638[0m         await this.calculateTimeSeriesConfidenceBands(predictions)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m622[0m:[93m35[0m - [91merror[0m[90m ts(2551): [0mProperty 'extractTimeSeriesFeatures' does not exist on type 'AdvancedPredictiveThreatIntelligence'. Did you mean 'extractTimeSeries'?
+
+[7m622[0m       const features = await this.extractTimeSeriesFeatures(processedSeries)
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m619[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'preprocessTimeSeries' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m619[0m       const processedSeries = await this.preprocessTimeSeries(series)
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m579[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateRiskConfidence' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m579[0m       const confidenceLevel = this.calculateRiskConfidence(
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m572[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'generateRiskRecommendations' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m572[0m       const recommendations = await this.generateRiskRecommendations(
+[7m   [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m559[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateRiskBreakdown' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m559[0m       const riskBreakdown = await this.calculateRiskBreakdown(
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m546[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateVulnerability' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m546[0m       const vulnerability = await this.calculateVulnerability(
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m545[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateThreatImpact' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m545[0m       const impact = await this.calculateThreatImpact(processedThreats, context)
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m541[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'calculateThreatLikelihood' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m541[0m       const likelihood = await this.calculateThreatLikelihood(
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m538[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'extractRiskFactors' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m538[0m       await this.extractRiskFactors(processedThreats, context)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m535[0m:[93m43[0m - [91merror[0m[90m ts(2551): [0mProperty 'preprocessThreats' does not exist on type 'AdvancedPredictiveThreatIntelligence'. Did you mean 'preprocessThreatData'?
+
+[7m535[0m       const processedThreats = await this.preprocessThreats(threats)
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m505[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeWeeklySeasonality' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m505[0m       const weeklyPattern = await this.analyzeWeeklySeasonality(
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m487[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeDailySeasonality' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m487[0m       const dailyPattern = await this.analyzeDailySeasonality(
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m464[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'validateStatisticalSignificance' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m464[0m         await this.validateStatisticalSignificance(patterns)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m457[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'identifyYearlyPattern' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m457[0m       const yearlyPattern = await this.identifyYearlyPattern(seasonalComponents)
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m451[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'identifyMonthlyPattern' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m451[0m         await this.identifyMonthlyPattern(seasonalComponents)
+[7m   [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m444[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'identifyWeeklyPattern' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
+
+[7m444[0m       const weeklyPattern = await this.identifyWeeklyPattern(seasonalComponents)
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/threat-detection/predictive/predictive-threat-intelligence.ts[0m:[93m438[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'identifyDailyPattern' does not exist on type 'AdvancedPredictiveThreatIntelligence'.
