@@ -22,17 +22,17 @@ jobs:
       BASE_URL: ${{ vars.APP_URL }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@7088e561eb65bb68695d245aa206f005ef30921d
         with:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
@@ -43,7 +43,7 @@ jobs:
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
-        uses: actions/cache@v4.2.3
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
         with:
           path: ${{ steps.get-pnpm-store-path.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -164,7 +164,7 @@ jobs:
 
       - name: Upload test results
         if: always() && steps.health-check.outputs.status == 'passing'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: playwright-test-results-production
           path: playwright-report/
@@ -182,7 +182,7 @@ jobs:
 
       - name: Notify failure
         if: failure() && steps.set-slack-enabled-prod.outputs.slack_enabled == 'true'
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@6c661ce58804a1a20f6dc5fbee7f0381b469e001
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
@@ -215,17 +215,17 @@ jobs:
       BASE_URL: ${{ vars.APP_URL }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@7088e561eb65bb68695d245aa206f005ef30921d
         with:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
@@ -236,7 +236,7 @@ jobs:
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
-        uses: actions/cache@v4.2.3
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
         with:
           path: ${{ steps.get-pnpm-store-path.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -366,7 +366,7 @@ jobs:
 
       - name: Upload test results
         if: always() && (steps.health-check.outputs.status == 'passing' || steps.health-check.outputs.status == 'warning')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: playwright-test-results-staging
           path: playwright-report/
@@ -380,17 +380,17 @@ jobs:
       BASE_URL: ${{ vars.APP_URL }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@7088e561eb65bb68695d245aa206f005ef30921d
         with:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
@@ -401,7 +401,7 @@ jobs:
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
-        uses: actions/cache@v4.2.3
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
         with:
           path: ${{ steps.get-pnpm-store-path.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -538,7 +538,7 @@ jobs:
 
       - name: Upload test results
         if: always() && (steps.health-check.outputs.status == 'passing' || steps.health-check.outputs.status == 'warning')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: playwright-test-results-preview
           path: playwright-report/
@@ -555,7 +555,7 @@ jobs:
       BASE_URL: ${{ vars.APP_URL }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
 
       - name: Resolve APP_URL (Performance)
         id: resolve-perf
@@ -640,7 +640,7 @@ jobs:
 
       - name: Run Lighthouse CI
         id: lhci
-        uses: treosh/lighthouse-ci-action@v12
+        uses: treosh/lighthouse-ci-action@2dd68ab12619d615e69ce5982eb20be9a6883ae0
         if: steps.resolve-perf.outputs.skip_lhci == 'false' && steps.probe-urls.outputs.skip_lhci_urls == 'false'
         with:
           urls: |
@@ -670,7 +670,7 @@ jobs:
 
       - name: Notify performance issues
         if: failure() && steps.set-slack-enabled-perf.outputs.slack_enabled == 'true'
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@6c661ce58804a1a20f6dc5fbee7f0381b469e001
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
