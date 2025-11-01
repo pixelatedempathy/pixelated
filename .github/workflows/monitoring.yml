@@ -109,26 +109,14 @@ jobs:
             return 1
           }
 
-          # Function to perform robust HTTP check with retries
-          MAX_RETRIES=3
-          check_endpoint() {
-            local url="$1"
-            local endpoint_name="$2"
-            local max_retries="$MAX_RETRIES"
-            local timeout=30
-            local retry_delay=10
-            # …existing retry loop using $max_retries…
-          }
-
           # Basic endpoint check with retries
           if check_endpoint "$BASE_URL" "Main Site"; then
-            MAIN_STATUS="passing"
+            echo "status=passing" >> $GITHUB_OUTPUT
           else
-            echo "::error::PRODUCTION site is down or returning errors after ${MAX_RETRIES} attempts"
+            echo "::error::PRODUCTION site is down or returning errors after 3 attempts"
             echo "status=failing" >> $GITHUB_OUTPUT
             exit 1
           fi
-          # API health check with retries (non-blocking)
       - name: Create temporary config
         if: steps.health-check.outputs.status == 'passing'
         run: |
@@ -171,14 +159,6 @@ jobs:
             echo "status=failure" >> $GITHUB_OUTPUT
             exit $TEST_EXIT
           fi
-          echo "Running Playwright tests against PRODUCTION: $BASE_URL"
-
-          # Run tests and store exit code to determine if any tests failed
-          NODE_OPTIONS="--no-warnings --experimental-specifier-resolution=node" BASE_URL="$BASE_URL" \
-            pnpm exec playwright test --config=temp-playwright.config.js || true
-
-          echo "✅ PRODUCTION monitoring tests completed"
-          echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload test results
         if: always() && steps.health-check.outputs.status == 'passing'
@@ -333,10 +313,9 @@ jobs:
 
           # API health check with retries (non-blocking)
           if check_endpoint "$BASE_URL/api/health" "API Health"; then
-            API_STATUS="passing"
+            echo "✅ API health check passed"
           else
             echo "::warning::API health endpoint is not responding after retries"
-            API_STATUS="failing"
           fi
 
           if [[ "$MAIN_STATUS" == "warning" ]]; then
@@ -519,7 +498,7 @@ jobs:
             ],
             reporter: ['html', 'list'],
             timeout: 60000,
-            retries: 2, // More retries for preview builds
+            retries: 2
           };
           EOF
 
@@ -594,7 +573,13 @@ jobs:
           fi
 
       - name: Probe Lighthouse URLs (wait for healthy)
+        id: probe-urls
+        if: steps.resolve-perf.outputs.skip_lhci == 'false'
         run: |
+          # Initialize arrays
+          CANDIDATES=("$BASE_URL")
+          OK_URLS=()
+
           for u in "${CANDIDATES[@]}"; do
             ATTEMPTS=0
             code=000
@@ -613,18 +598,6 @@ jobs:
               echo "::warning::Skipping Lighthouse for $u (HTTP $code)"
             fi
           done
-
-          if [ ${#OK_URLS[@]} -eq 0 ]; then
-            echo "::notice::No URLs are healthy (HTTP 200); skipping Lighthouse performance checks."
-            echo "skip_lhci_urls=true" >> $GITHUB_OUTPUT
-          else
-            {
-              echo "skip_lhci_urls=false"
-              echo "urls<<EOF"
-              printf "%s\n" "${OK_URLS[@]}"
-              echo "EOF"
-            } >> "$GITHUB_OUTPUT"
-          fi
 
           if [ ${#OK_URLS[@]} -eq 0 ]; then
             echo "::notice::No URLs are healthy (HTTP 200); skipping Lighthouse performance checks."
@@ -667,10 +640,10 @@ jobs:
       - name: Run Lighthouse CI
         id: lhci
         uses: treosh/lighthouse-ci-action@v12
-        if: steps.resolve-perf.outputs.skip_lhci == 'false' && steps.build-urls.outputs.skip_lhci_urls == 'false'
+        if: steps.resolve-perf.outputs.skip_lhci == 'false' && steps.probe-urls.outputs.skip_lhci_urls == 'false'
         with:
           urls: |
-            ${{ steps.build-urls.outputs.urls }}
+            ${{ steps.probe-urls.outputs.urls }}
             ${{ steps.add-protected.outputs.extra_urls }}
           configPath: ./.github/lighthouse-config.json
           budgetPath: ./.github/lighthouse-budget.json
@@ -678,7 +651,7 @@ jobs:
           temporaryPublicStorage: true
 
       - name: Check for critical performance issues
-        if: steps.resolve-perf.outputs.skip_lhci == 'false' && steps.build-urls.outputs.skip_lhci_urls == 'false'
+        if: steps.resolve-perf.outputs.skip_lhci == 'false' && steps.probe-urls.outputs.skip_lhci_urls == 'false'
         run: echo "Analyzing performance metrics for PRODUCTION..."
 
       - name: Set Slack enabled output (performance)
@@ -691,7 +664,7 @@ jobs:
           fi
 
       - name: Skip notice
-        if: steps.resolve-perf.outputs.skip_lhci == 'true' || steps.build-urls.outputs.skip_lhci_urls == 'true'
+        if: steps.resolve-perf.outputs.skip_lhci == 'true' || steps.probe-urls.outputs.skip_lhci_urls == 'true'
         run: echo "Skipping Lighthouse run due to missing APP_URL or no healthy URLs. Configure 'APP_URL' and ensure endpoints return HTTP 200 to enable."
 
       - name: Notify performance issues
