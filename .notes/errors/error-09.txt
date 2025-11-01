@@ -1,0 +1,2200 @@
+[7m318[0m export { SECURITY_HEADERS, RATE_LIMITS, REQUEST_LIMITS, CORS_CONFIG }
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m318[0m:[93m28[0m - [91merror[0m[90m ts(2552): [0mCannot find name 'RATE_LIMITS'. Did you mean 'RateLimiter'?
+
+[7m318[0m export { SECURITY_HEADERS, RATE_LIMITS, REQUEST_LIMITS, CORS_CONFIG }
+[7m   [0m [91m                           ~~~~~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m218[0m:[93m45[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RATE_LIMITS'.
+
+[7m218[0m   responseHeaders.set('X-Rate-Limit-Limit', RATE_LIMITS.maxRequests.toString())
+[7m   [0m [91m                                            ~~~~~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m179[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RATE_LIMITS'.
+
+[7m179[0m   const clientIP = RATE_LIMITS.keyGenerator(request)
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m125[0m:[93m39[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RATE_LIMITS'.
+
+[7m125[0m     const { windowMs, maxRequests } = RATE_LIMITS
+[7m   [0m [91m                                      ~~~~~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m177[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'_method' is declared but its value is never read.
+
+[7m177[0m   const _method = request.method
+[7m   [0m [93m        ~~~~~~~[0m
+[96msrc/middleware/security.ts[0m:[93m176[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'_url' is declared but its value is never read.
+
+[7m176[0m   const _url = new URL(request.url)
+[7m   [0m [93m        ~~~~[0m
+
+[96msrc/pages/ai/mental-health/analyze.ts[0m:[93m19[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'chat' does not exist on type 'Promise<{ adapter: MentalLLaMAAdapter; modelProvider: MentalLLaMAModelProvider; }>'.
+
+[7m19[0m     const result = await model.chat(messages)
+[7m  [0m [91m                               ~~~~[0m
+
+[96msrc/pages/api/evaluation.ts[0m:[93m131[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies | undefined' is not assignable to parameter of type 'CookiesLike'.
+  Type 'undefined' is not assignable to type 'CookiesLike'.
+
+[7m131[0m   const user = await getCurrentUser(cookies)
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/pages/api/evaluation.ts[0m:[93m28[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies | undefined' is not assignable to parameter of type 'CookiesLike'.
+  Type 'undefined' is not assignable to type 'CookiesLike'.
+
+[7m28[0m     const user = await getCurrentUser(cookies)
+[7m  [0m [91m                                      ~~~~~~~[0m
+[96msrc/pages/api/evaluation.ts[0m:[93m169[0m:[93m10[0m - [93mwarning[0m[90m ts(6385): [0m'(): ZodObject<{}, $loose>' is deprecated.
+
+[7m169[0m         .passthrough()
+[7m   [0m [93m         ~~~~~~~~~~~[0m
+[96msrc/pages/api/evaluation.ts[0m:[93m100[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m100[0m       const evaluations = result.rows.map((row) => ({
+[7m   [0m [93m                                           ~~~[0m
+[96msrc/pages/api/evaluation.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/techniques.ts[0m:[93m125[0m:[93m29[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m125[0m     const recommendations = await recommend(recommendationRequest)
+[7m   [0m [93m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/techniques.ts[0m:[93m55[0m:[93m50[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'technique' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m55[0m     const responseData = filteredTechniques.map((technique) => ({
+[7m  [0m [93m                                                 ~~~~~~~~~[0m
+[96msrc/pages/api/techniques.ts[0m:[93m50[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'technique' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m50[0m         (technique) => technique.data.evidenceLevel === evidenceFilter,
+[7m  [0m [93m         ~~~~~~~~~[0m
+[96msrc/pages/api/techniques.ts[0m:[93m44[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'technique' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m44[0m         (technique) => technique.data.category === categoryFilter,
+[7m  [0m [93m         ~~~~~~~~~[0m
+
+[96msrc/pages/api/admin/sessions.ts[0m:[93m109[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'getInstance' does not exist on type '{ getActiveSessions(): Promise<never[]>; }'.
+
+[7m109[0m     const adminService = AdminService.getInstance()
+[7m   [0m [91m                                      ~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m83[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'MANAGE_SESSIONS' does not exist on type '{ MANAGE_SECURITY: string; }'.
+
+[7m83[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SESSIONS)(
+[7m  [0m [91m                                                              ~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m83[0m:[93m36[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m83[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SESSIONS)(
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m36[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'getInstance' does not exist on type '{ getActiveSessions(): Promise<never[]>; }'.
+
+[7m36[0m     const adminService = AdminService.getInstance()
+[7m  [0m [91m                                      ~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m15[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'MANAGE_SESSIONS' does not exist on type '{ MANAGE_SECURITY: string; }'.
+
+[7m15[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SESSIONS)(
+[7m  [0m [91m                                                              ~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m15[0m:[93m36[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m15[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SESSIONS)(
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m112[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'result' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m112[0m     let result
+[7m   [0m [93m        ~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m81[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'context' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m81[0m export const POST = async (context) => {
+[7m  [0m [93m                           ~~~~~~~[0m
+[96msrc/pages/api/admin/sessions.ts[0m:[93m13[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'context' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m13[0m export const GET = async (context) => {
+[7m  [0m [93m                          ~~~~~~~[0m
+
+[96msrc/pages/api/admin/test-security-alert.ts[0m:[93m22[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies | undefined' is not assignable to parameter of type 'CookiesLike'.
+  Type 'undefined' is not assignable to type 'CookiesLike'.
+
+[7m22[0m     const user = await getCurrentUser(cookies)
+[7m  [0m [91m                                      ~~~~~~~[0m
+
+[96msrc/pages/api/admin/users.ts[0m:[93m107[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'getInstance' does not exist on type '{ getActiveSessions(): Promise<never[]>; }'.
+
+[7m107[0m     const adminService = AdminService.getInstance()
+[7m   [0m [91m                                      ~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m81[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'UPDATE_USER' does not exist on type '{ MANAGE_SECURITY: string; }'.
+
+[7m81[0m   const middlewareResponse = await adminGuard(AdminPermission.UPDATE_USER)(
+[7m  [0m [91m                                                              ~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m81[0m:[93m36[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m81[0m   const middlewareResponse = await adminGuard(AdminPermission.UPDATE_USER)(
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m34[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'getInstance' does not exist on type '{ getActiveSessions(): Promise<never[]>; }'.
+
+[7m34[0m     const adminService = AdminService.getInstance()
+[7m  [0m [91m                                      ~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m16[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'VIEW_USERS' does not exist on type '{ MANAGE_SECURITY: string; }'.
+
+[7m16[0m   const middlewareResponse = await adminGuard(AdminPermission.VIEW_USERS)(
+[7m  [0m [91m                                                              ~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m16[0m:[93m36[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m16[0m   const middlewareResponse = await adminGuard(AdminPermission.VIEW_USERS)(
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m79[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'context' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m79[0m export const PATCH = async (context) => {
+[7m  [0m [93m                            ~~~~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m39[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'user' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m39[0m       ? usersResult.filter((user) => user.role === role)
+[7m  [0m [93m                            ~~~~[0m
+[96msrc/pages/api/admin/users.ts[0m:[93m14[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'context' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m14[0m export const GET = async (context) => {
+[7m  [0m [93m                          ~~~~~~~[0m
+
+[96msrc/pages/api/admin/backup/recovery-test.ts[0m:[93m166[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'AdminPermission | undefined'.
+
+[7m166[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SECURITY)({
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/admin/backup/recovery-test.ts[0m:[93m166[0m:[93m36[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m166[0m   const middlewareResponse = await adminGuard(AdminPermission.MANAGE_SECURITY)({
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/admin/patient-rights/delete-request.ts[0m:[93m38[0m:[93m15[0m - [91merror[0m[90m ts(2551): [0mProperty 'roles' does not exist on type '{ id: string; role: string; }'. Did you mean 'role'?
+
+[7m38[0m     if (!user.roles?.includes('admin')) {
+[7m  [0m [91m              ~~~~~[0m
+
+[96msrc/pages/api/ai/completion.ts[0m:[93m205[0m:[93m34[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m205[0m         async start(controller): void {
+[7m   [0m [91m                                 ~~~~[0m
+
+[96msrc/pages/api/ai/high-risk-detections.ts[0m:[93m7[0m:[93m7[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m7[0m   let session
+[7m [0m [93m      ~~~~~~~[0m
+
+[96msrc/pages/api/ai/intervention-analysis.ts[0m:[93m12[0m:[93m4[0m - [93mwarning[0m[90m ts(80009): [0mJSDoc typedef may be converted to TypeScript type.
+
+[7m12[0m  * @typedef {import('astro').APIContext} APIContext
+[7m  [0m [93m   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/ai/performance-metrics.ts[0m:[93m4[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m4[0m export const GET = async ({ request }: APIContext) => {
+[7m [0m [91m                                       ~~~~~~~~~~[0m
+
+[96msrc/pages/api/ai/response.ts[0m:[93m304[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'TherapeuticResponse'.
+
+[7m304[0m     let result: TherapeuticResponse
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m280[0m:[93m33[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'ResponseGenerationService'.
+
+[7m280[0m     const responseService = new ResponseGenerationService({
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m216[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIServiceOptions'.
+
+[7m216[0m         options?: AIServiceOptions,
+[7m   [0m [91m                  ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m215[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIMessage'.
+
+[7m215[0m         messages: AIMessage[],
+[7m   [0m [91m                  ~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m201[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIStreamChunk'.
+
+[7m201[0m           } as AIStreamChunk
+[7m   [0m [91m               ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m192[0m:[93m33[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIStreamChunk'.
+
+[7m192[0m       ): Promise<AsyncGenerator<AIStreamChunk, void, void>> => {
+[7m   [0m [91m                                ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m191[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIServiceOptions'.
+
+[7m191[0m         options?: AIServiceOptions,
+[7m   [0m [91m                  ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m190[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIMessage'.
+
+[7m190[0m         _messages: AIMessage[],
+[7m   [0m [91m                   ~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m132[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIServiceOptions'.
+
+[7m132[0m         options?: AIServiceOptions,
+[7m   [0m [91m                  ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m131[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIMessage'.
+
+[7m131[0m         messages: AIMessage[],
+[7m   [0m [91m                  ~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m129[0m:[93m27[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AIService'.
+
+[7m129[0m     const serviceAdapter: AIService = {
+[7m   [0m [91m                          ~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m118[0m:[93m29[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createTogetherAIService'.
+
+[7m118[0m     const togetherService = createTogetherAIService({
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/response.ts[0m:[93m13[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m13[0m export const GET: APIRoute = async ({ request }) => {
+[7m  [0m [91m                  ~~~~~~~~[0m
+
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m91[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 4-6 arguments, but got 1.
+
+[7m91[0m     await createAuditLog({
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m75[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'length' does not exist on type 'AIUsageStats'.
+
+[7m75[0m         statsCount: stats.length,
+[7m  [0m [91m                          ~~~~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m67[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 4-6 arguments, but got 1.
+
+[7m67[0m     await createAuditLog({
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m48[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 4-6 arguments, but got 1.
+
+[7m48[0m     await createAuditLog({
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m44[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m44[0m     const allUsers = url.searchParams.get('allUsers') === 'true'
+[7m  [0m [91m                     ~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m43[0m:[93m20[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m43[0m     const period = url.searchParams.get('period') || 'daily'
+[7m  [0m [91m                   ~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m29[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'AstroCookies | undefined' is not assignable to type 'AstroCookies'.
+  Type 'undefined' is not assignable to type 'AstroCookies'.
+
+[7m29[0m       cookies,
+[7m  [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/ai/usage-stats.ts[0m:[93m12[0m:[93m7[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m12[0m   let session
+[7m  [0m [93m      ~~~~~~~[0m
+
+[96msrc/pages/api/ai/usage.ts[0m:[93m23[0m:[93m7[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m23[0m   let session
+[7m  [0m [93m      ~~~~~~~[0m
+
+[96msrc/pages/api/ai/recommendations/enhanced.ts[0m:[93m152[0m:[93m37[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m152[0m export const GET: APIRoute = (_ctx: APIContext) => {
+[7m   [0m [91m                                    ~~~~~~~~~~[0m
+[96msrc/pages/api/ai/recommendations/enhanced.ts[0m:[93m42[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; version?: "v1" | "v8" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m42[0m   clientId: z.string().uuid({ message: 'Valid client ID is required' }),
+[7m  [0m [93m                       ~~~~[0m
+
+[96msrc/pages/api/ai/validation/results.ts[0m:[93m110[0m:[93m76[0m - [91merror[0m[90m ts(2339): [0mProperty 'runCount' does not exist on type 'ValidationStats'.
+
+[7m110[0m         'ETag': `"validation-${validationResults.length}-${validationStats.runCount}"`,
+[7m   [0m [91m                                                                           ~~~~~~~~[0m
+[96msrc/pages/api/ai/validation/results.ts[0m:[93m50[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'SECURITY_EVENT' does not exist on type 'typeof AuditEventType'.
+
+[7m50[0m         AuditEventType.SECURITY_EVENT,
+[7m  [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/ai/validation/results.ts[0m:[93m21[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'CookiesLike'.
+  Property 'get' is missing in type 'Request' but required in type 'CookiesLike'.
+
+[7m21[0m     const authResult = await isAuthenticated(request)
+[7m  [0m [91m                                             ~~~~~~~[0m
+
+[96msrc/pages/api/ai/validation/run.ts[0m:[93m16[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'CookiesLike'.
+  Property 'get' is missing in type 'Request' but required in type 'CookiesLike'.
+
+[7m16[0m     const authResult = await isAuthenticated(request)
+[7m  [0m [91m                                             ~~~~~~~[0m
+
+[96msrc/pages/api/ai/validation/schedule.ts[0m:[93m15[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'CookiesLike'.
+  Property 'get' is missing in type 'Request' but required in type 'CookiesLike'.
+
+[7m15[0m     const authResult = await isAuthenticated(request)
+[7m  [0m [91m                                             ~~~~~~~[0m
+
+[96msrc/pages/api/ai/validation/start.ts[0m:[93m78[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'email' does not exist on type '{ id: string; role: string; }'.
+
+[7m78[0m         username: user.name || user.email,
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/pages/api/ai/validation/start.ts[0m:[93m78[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'name' does not exist on type '{ id: string; role: string; }'.
+
+[7m78[0m         username: user.name || user.email,
+[7m  [0m [91m                       ~~~~[0m
+[96msrc/pages/api/ai/validation/start.ts[0m:[93m41[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'email' does not exist on type '{ id: string; role: string; }'.
+
+[7m41[0m           email: user.email,
+[7m  [0m [91m                      ~~~~~[0m
+
+[96msrc/pages/api/ai/validation/stop.ts[0m:[93m73[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'email' does not exist on type '{ id: string; role: string; }'.
+
+[7m73[0m         username: user.name || user.email,
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/pages/api/ai/validation/stop.ts[0m:[93m73[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'name' does not exist on type '{ id: string; role: string; }'.
+
+[7m73[0m         username: user.name || user.email,
+[7m  [0m [91m                       ~~~~[0m
+[96msrc/pages/api/ai/validation/stop.ts[0m:[93m41[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'email' does not exist on type '{ id: string; role: string; }'.
+
+[7m41[0m           email: user.email,
+[7m  [0m [91m                      ~~~~~[0m
+
+[96msrc/pages/api/analytics/comparative-progress.ts[0m:[93m68[0m:[93m43[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(): $ZodFormattedError<{ anonymizedUserId: string; metricName: string; cohortId: string; dateRange: { startDate: string; endDate: string; }; }, string>' of 'validationResult.error.format' is deprecated.
+
+[7m68[0m           details: validationResult.error.format(),
+[7m  [0m [93m                                          ~~~~~~[0m
+[96msrc/pages/api/analytics/comparative-progress.ts[0m:[93m60[0m:[93m40[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(): $ZodFormattedError<{ anonymizedUserId: string; metricName: string; cohortId: string; dateRange: { startDate: string; endDate: string; }; }, string>' of 'validationResult.error.format' is deprecated.
+
+[7m60[0m         errors: validationResult.error.format(),
+[7m  [0m [93m                                       ~~~~~~[0m
+
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m261[0m:[93m9[0m - [91merror[0m[90m ts(2783): [0m'page' is specified more than once, so this usage will be overwritten.
+
+[7m261[0m         page: event.page,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m260[0m:[93m9[0m - [91merror[0m[90m ts(2783): [0m'ab_variant' is specified more than once, so this usage will be overwritten.
+
+[7m260[0m         ab_variant: event.ab_variant,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m174[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'message' does not exist in type 'AnalyticsProcessingError'.
+
+[7m174[0m       message: 'Failed to retrieve analytics data',
+[7m   [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m116[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'message' does not exist in type 'AnalyticsProcessingError'.
+
+[7m116[0m       message: 'Failed to process analytics event',
+[7m   [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m98[0m:[93m30[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m98[0m       analyticsPromises.push(sendToCustomAnalytics(enrichedEvent))
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m95[0m:[93m30[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m95[0m       analyticsPromises.push(sendToMixpanel(enrichedEvent))
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m92[0m:[93m30[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m92[0m       analyticsPromises.push(sendToGoogleAnalytics(enrichedEvent))
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/demo-tracking.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'message' does not exist in type 'AnalyticsValidationError'.
+
+[7m43[0m         message: 'Invalid analytics event data',
+[7m  [0m [91m        ~~~~~~~[0m
+
+[96msrc/pages/api/analytics/engagement.ts[0m:[93m130[0m:[93m7[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'message' does not exist in type 'AnalyticsProcessingError'.
+
+[7m130[0m       message: 'Failed to fetch engagement metrics',
+[7m   [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/analytics/engagement.ts[0m:[93m17[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ request: any; cookies: any; }' is not assignable to parameter of type 'ServerAuthOptions'.
+  Property 'requestIp' is missing in type '{ request: any; cookies: any; }' but required in type 'ServerAuthOptions'.
+
+[7m17[0m     await requirePageAuth({ request, cookies })
+[7m  [0m [91m                          ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m59[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ [x: string]: unknown; } | undefined' is not assignable to type 'MentalHealthAnalysis | undefined'.
+  Type '{ [x: string]: unknown; }' is missing the following properties from type 'MentalHealthAnalysis': primaryConcerns, riskLevel
+
+[7m59[0m       mentalHealthAnalysis,
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m56[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ [x: string]: unknown; } | null' is not assignable to type 'EmotionState'.
+  Type 'null' is not assignable to type 'EmotionState'.
+
+[7m56[0m       recentEmotionState,
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m55[0m:[93m7[0m - [91merror[0m[90m ts(2741): [0mProperty 'messages' is missing in type '{ [x: string]: unknown; }' but required in type 'ChatSession'.
+
+[7m55[0m       chatSession,
+[7m  [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m54[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType '{ sessionId: string; clientId: string; therapistId: string; startTime: string; status: string; securityLevel: string; emotionAnalysisEnabled: boolean; endTime?: string | undefined; }' is not assignable to type 'TherapySession'.
+  Types of property 'status' are incompatible.
+
+[7m54[0m       session,
+[7m  [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m36[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ session: { sessionId: string; clientId: string; therapistId: string; startTime: string; status: string; securityLevel: string; emotionAnalysisEnabled: boolean; endTime?: string | undefined; }; ... 6 more ...; maxResults?: number | undefined; }>'.
+
+[7m36[0m           details: parsed.error.errors,
+[7m  [0m [91m                                ~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m21[0m:[93m22[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m21[0m   userPreferences: z.record(z.unknown()).optional(),
+[7m  [0m [91m                     ~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m22[0m:[93m38[0m - [93mwarning[0m[90m ts(6385): [0m'(): ZodObject<{}, $loose>' is deprecated.
+
+[7m22[0m   mentalHealthAnalysis: z.object({}).passthrough().optional(),
+[7m  [0m [93m                                     ~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m19[0m:[93m36[0m - [93mwarning[0m[90m ts(6385): [0m'(): ZodObject<{}, $loose>' is deprecated.
+
+[7m19[0m   recentEmotionState: z.object({}).passthrough().nullable(),
+[7m  [0m [93m                                   ~~~~~~~~~~~[0m
+[96msrc/pages/api/analytics/treatment-forecast.ts[0m:[93m18[0m:[93m29[0m - [93mwarning[0m[90m ts(6385): [0m'(): ZodObject<{}, $loose>' is deprecated.
+
+[7m18[0m   chatSession: z.object({}).passthrough(), // Accept any chat session structure
+[7m  [0m [93m                            ~~~~~~~~~~~[0m
+
+[96msrc/pages/api/analytics/types.ts[0m:[93m1[0m:[93m31[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/types/api' or its corresponding type declarations.
+
+[7m1[0m import type { APIError } from '@/lib/types/api'
+[7m [0m [91m                              ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/auth/callback.ts[0m:[93m70[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type '{}'.
+
+[7m70[0m           provider: user.metadata?.provider || 'oauth',
+[7m  [0m [91m                         ~~~~~~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m69[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'email' does not exist on type '{}'.
+
+[7m69[0m           email: user.email,
+[7m  [0m [91m                      ~~~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m66[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty '_id' does not exist on type '{}'.
+
+[7m66[0m         user._id.toString(),
+[7m  [0m [91m             ~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m56[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'role' does not exist on type '{}'.
+
+[7m56[0m           role: user.role,
+[7m  [0m [91m                     ~~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m55[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type '{}'.
+
+[7m55[0m           avatarUrl: user.metadata?.avatarUrl || null,
+[7m  [0m [91m                          ~~~~~~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m54[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type '{}'.
+
+[7m54[0m           fullName: user.metadata?.fullName || null,
+[7m  [0m [91m                         ~~~~~~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty '_id' does not exist on type '{}'.
+
+[7m53[0m           userId: user._id,
+[7m  [0m [91m                       ~~~[0m
+[96msrc/pages/api/auth/callback.ts[0m:[93m47[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty '_id' does not exist on type '{}'.
+
+[7m47[0m         userId: user._id,
+[7m  [0m [91m                     ~~~[0m
+
+[96msrc/pages/api/auth/login.ts[0m:[93m130[0m:[93m7[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'clientInfo'. Either declare one or provide an initializer.
+
+[7m130[0m       clientInfo,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m129[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m129[0m       error: error.message,
+[7m   [0m [91m             ~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m128[0m:[93m54[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m128[0m     await logSecurityEvent('USER_LOGIN_ERROR', null, {
+[7m   [0m [91m                                                     ~[0m
+[7m129[0m       error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m131[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m132[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m114[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m114[0m           details: error.details || {},
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m113[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m113[0m           error: error.message,
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m107[0m:[93m9[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'clientInfo'. Either declare one or provide an initializer.
+
+[7m107[0m         clientInfo,
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m106[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m106[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m105[0m:[93m57[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m105[0m       await logSecurityEvent('USER_LOGIN_FAILED', null, {
+[7m   [0m [91m                                                        ~[0m
+[7m106[0m         error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m108[0m         timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m109[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m104[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m104[0m     if (error.name === 'AuthenticationError') {
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m92[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'tokenPair' does not exist on type 'AuthenticationResult'.
+
+[7m92[0m         tokenPair: result.tokenPair,
+[7m  [0m [91m                          ~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m90[0m:[93m24[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m90[0m           lastLoginAt: result.user.lastLoginAt,
+[7m  [0m [91m                       ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m89[0m           role: result.user.role,
+[7m  [0m [91m                ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m88[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'lastName' does not exist on type 'UserAuthentication'.
+
+[7m88[0m           lastName: result.user.lastName,
+[7m  [0m [91m                                ~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m88[0m:[93m21[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m88[0m           lastName: result.user.lastName,
+[7m  [0m [91m                    ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m87[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'firstName' does not exist on type 'UserAuthentication'.
+
+[7m87[0m           firstName: result.user.firstName,
+[7m  [0m [91m                                 ~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m87[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m87[0m           firstName: result.user.firstName,
+[7m  [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m86[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m86[0m           email: result.user.email,
+[7m  [0m [91m                 ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m85[0m:[93m15[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m85[0m           id: result.user.id,
+[7m  [0m [91m              ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m76[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m76[0m       role: result.user.role,
+[7m  [0m [91m            ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m75[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m75[0m       email: result.user.email,
+[7m  [0m [91m             ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m74[0m:[93m66[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 74[0m     await logSecurityEvent('USER_LOGIN_SUCCESS', result.user.id, {
+[7m   [0m [91m                                                                 ~[0m
+[7m 75[0m       email: result.user.email,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 78[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 79[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m74[0m:[93m50[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m74[0m     await logSecurityEvent('USER_LOGIN_SUCCESS', result.user.id, {
+[7m  [0m [91m                                                 ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m34[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m34[0m       request,
+[7m  [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m27[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m27[0m     const csrfResult = await csrfProtection(request)
+[7m  [0m [91m                                            ~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m128[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m128[0m     await logSecurityEvent('USER_LOGIN_ERROR', null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m129[0m       error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m131[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m132[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m105[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m105[0m       await logSecurityEvent('USER_LOGIN_FAILED', null, {
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m106[0m         error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m108[0m         timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m109[0m       })
+[7m   [0m [93m~~~~~~~~[0m
+[96msrc/pages/api/auth/login.ts[0m:[93m74[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 74[0m     await logSecurityEvent('USER_LOGIN_SUCCESS', result.user.id, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 75[0m       email: result.user.email,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 78[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 79[0m     })
+[7m   [0m [93m~~~~~~[0m
+
+[96msrc/pages/api/auth/logout.ts[0m:[93m87[0m:[93m7[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'clientInfo'. Either declare one or provide an initializer.
+
+[7m87[0m       clientInfo,
+[7m  [0m [91m      ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m86[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m86[0m       error: error.message,
+[7m  [0m [91m             ~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m85[0m:[93m55[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 85[0m     await logSecurityEvent('USER_LOGOUT_ERROR', null, {
+[7m   [0m [91m                                                      ~[0m
+[7m 86[0m       error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 88[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 89[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m60[0m:[93m51[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 60[0m     await logSecurityEvent('USER_LOGOUT', userId, {
+[7m   [0m [91m                                                  ~[0m
+[7m 61[0m       sessionId,
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 63[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 64[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m24[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m24[0m     const authResult = await authenticateRequest(request)
+[7m  [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m85[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 85[0m     await logSecurityEvent('USER_LOGOUT_ERROR', null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 86[0m       error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 88[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 89[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/pages/api/auth/logout.ts[0m:[93m60[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 60[0m     await logSecurityEvent('USER_LOGOUT', userId, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 61[0m       sessionId,
+[7m   [0m [93m~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 63[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 64[0m     })
+[7m   [0m [93m~~~~~~[0m
+
+[96msrc/pages/api/auth/profile.ts[0m:[93m54[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+
+[7m54[0m     const user = (await adapter.getUserById(userId)) as unknown as {
+[7m  [0m [91m                                            ~~~~~~[0m
+
+[96msrc/pages/api/auth/refresh.ts[0m:[93m95[0m:[93m57[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 95[0m     await logSecurityEvent('TOKEN_REFRESH_ERROR', null, {
+[7m   [0m [91m                                                        ~[0m
+[7m 96[0m       error: error.message || String(err),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 98[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 99[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m77[0m:[93m60[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 77[0m       await logSecurityEvent('TOKEN_REFRESH_FAILED', null, {
+[7m   [0m [91m                                                           ~[0m
+[7m 78[0m         error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 80[0m         timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 81[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m56[0m:[93m53[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m56[0m     await logSecurityEvent('TOKEN_REFRESHED', null, {
+[7m  [0m [91m                                                    ~[0m
+[7m57[0m       clientInfo,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m58[0m       timestamp: Date.now(),
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m59[0m     })
+[7m  [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m24[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m24[0m       request,
+[7m  [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m95[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 95[0m     await logSecurityEvent('TOKEN_REFRESH_ERROR', null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 96[0m       error: error.message || String(err),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 98[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 99[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m77[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 77[0m       await logSecurityEvent('TOKEN_REFRESH_FAILED', null, {
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 78[0m         error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 80[0m         timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 81[0m       })
+[7m   [0m [93m~~~~~~~~[0m
+[96msrc/pages/api/auth/refresh.ts[0m:[93m56[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m56[0m     await logSecurityEvent('TOKEN_REFRESHED', null, {
+[7m  [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m57[0m       clientInfo,
+[7m  [0m [93m~~~~~~~~~~~~~~~~~[0m
+[7m58[0m       timestamp: Date.now(),
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m59[0m     })
+[7m  [0m [93m~~~~~~[0m
+
+[96msrc/pages/api/auth/register.ts[0m:[93m131[0m:[93m7[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'clientInfo'. Either declare one or provide an initializer.
+
+[7m131[0m       clientInfo,
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m130[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m130[0m       error: error.message,
+[7m   [0m [91m             ~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m129[0m:[93m61[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m129[0m     await logSecurityEvent('USER_REGISTRATION_ERROR', null, {
+[7m   [0m [91m                                                            ~[0m
+[7m130[0m       error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m132[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m133[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m115[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m115[0m           details: error.details || {},
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m114[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m114[0m           error: error.message,
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m108[0m:[93m9[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'clientInfo'. Either declare one or provide an initializer.
+
+[7m108[0m         clientInfo,
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m107[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m107[0m         error: error.message,
+[7m   [0m [91m               ~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m106[0m:[93m64[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m106[0m       await logSecurityEvent('USER_REGISTRATION_FAILED', null, {
+[7m   [0m [91m                                                               ~[0m
+[7m107[0m         error: error.message,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m109[0m         timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m105[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m105[0m     if (error.name === 'AuthenticationError') {
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m93[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'tokenPair' does not exist on type 'AuthenticationResult'.
+
+[7m93[0m         tokenPair: result.tokenPair,
+[7m  [0m [91m                          ~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m91[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m91[0m           createdAt: result.user.createdAt,
+[7m  [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m90[0m:[93m17[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m90[0m           role: result.user.role,
+[7m  [0m [91m                ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m89[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'lastName' does not exist on type 'UserAuthentication'.
+
+[7m89[0m           lastName: result.user.lastName,
+[7m  [0m [91m                                ~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m89[0m:[93m21[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m89[0m           lastName: result.user.lastName,
+[7m  [0m [91m                    ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m88[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'firstName' does not exist on type 'UserAuthentication'.
+
+[7m88[0m           firstName: result.user.firstName,
+[7m  [0m [91m                                 ~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m88[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m88[0m           firstName: result.user.firstName,
+[7m  [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m87[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m87[0m           email: result.user.email,
+[7m  [0m [91m                 ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m86[0m:[93m15[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m86[0m           id: result.user.id,
+[7m  [0m [91m              ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m80[0m:[93m46[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m80[0m     await updatePhase6AuthenticationProgress(result.user.id, 'user_registered')
+[7m  [0m [91m                                             ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m74[0m:[93m13[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m74[0m       role: result.user.role,
+[7m  [0m [91m            ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m73[0m:[93m14[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m73[0m       email: result.user.email,
+[7m  [0m [91m             ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m72[0m:[93m63[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 3.
+
+[7m 72[0m     await logSecurityEvent('USER_REGISTERED', result.user.id, {
+[7m   [0m [91m                                                              ~[0m
+[7m 73[0m       email: result.user.email,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 76[0m       timestamp: Date.now(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 77[0m     })
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m72[0m:[93m47[0m - [91merror[0m[90m ts(18048): [0m'result.user' is possibly 'undefined'.
+
+[7m72[0m     await logSecurityEvent('USER_REGISTERED', result.user.id, {
+[7m  [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m69[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ email: string; password: any; firstName: string; lastName: string; role: string; phone: string | undefined; dateOfBirth: string | undefined; }' is not assignable to parameter of type 'RegisterCredentials'.
+  Types of property 'role' are incompatible.
+
+[7m69[0m     const result = await registerWithBetterAuth(sanitizedData, clientInfo)
+[7m  [0m [91m                                                ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m26[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m26[0m       request,
+[7m  [0m [91m      ~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m129[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m129[0m     await logSecurityEvent('USER_REGISTRATION_ERROR', null, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m130[0m       error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m132[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m133[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m106[0m:[93m7[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m106[0m       await logSecurityEvent('USER_REGISTRATION_FAILED', null, {
+[7m   [0m [93m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m107[0m         error: error.message,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m109[0m         timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m       })
+[7m   [0m [93m~~~~~~~~[0m
+[96msrc/pages/api/auth/register.ts[0m:[93m72[0m:[93m5[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m 72[0m     await logSecurityEvent('USER_REGISTERED', result.user.id, {
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 73[0m       email: result.user.email,
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 76[0m       timestamp: Date.now(),
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 77[0m     })
+[7m   [0m [93m~~~~~~[0m
+
+[96msrc/pages/api/auth/reset-password.ts[0m:[93m11[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m11[0m export const POST = async ({ request }: APIContext) => {
+[7m  [0m [91m                                        ~~~~~~~~~~[0m
+[96msrc/pages/api/auth/reset-password.ts[0m:[93m8[0m:[93m21[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m8[0m   email: z.string().email(),
+[7m [0m [93m                    ~~~~~[0m
+
+[96msrc/pages/api/auth/signin.ts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m35[0m           emailVerified: user.emailVerified,
+[7m  [0m [91m                         ~~~~[0m
+[96msrc/pages/api/auth/signin.ts[0m:[93m34[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m34[0m           profile: user.profile,
+[7m  [0m [91m                   ~~~~[0m
+[96msrc/pages/api/auth/signin.ts[0m:[93m33[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m33[0m           role: user.role,
+[7m  [0m [91m                ~~~~[0m
+[96msrc/pages/api/auth/signin.ts[0m:[93m32[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m32[0m           email: user.email,
+[7m  [0m [91m                 ~~~~[0m
+[96msrc/pages/api/auth/signin.ts[0m:[93m31[0m:[93m39[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m31[0m           id: user._id?.toString() || user.id,
+[7m  [0m [91m                                      ~~~~[0m
+[96msrc/pages/api/auth/signin.ts[0m:[93m31[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'user' is of type 'unknown'.
+
+[7m31[0m           id: user._id?.toString() || user.id,
+[7m  [0m [91m              ~~~~[0m
+
+[96msrc/pages/api/auth/update-password.ts[0m:[93m32[0m:[93m11[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 1.
+
+[7m32[0m     await updatePassword(password)
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/auth/verify.ts[0m:[93m61[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type 'never'.
+
+[7m61[0m         resourceId: result.data.user.id,
+[7m  [0m [91m                                     ~~[0m
+[96msrc/pages/api/auth/verify.ts[0m:[93m59[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'AUTH_VERIFY' does not exist on type 'typeof AuditEventType'.
+
+[7m59[0m         action: AuditEventType.AUTH_VERIFY,
+[7m  [0m [91m                               ~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/verify.ts[0m:[93m58[0m:[93m34[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type 'never'.
+
+[7m58[0m         userId: result.data.user.id,
+[7m  [0m [91m                                 ~~[0m
+[96msrc/pages/api/auth/verify.ts[0m:[93m57[0m:[93m13[0m - [91merror[0m[90m ts(2554): [0mExpected 4-6 arguments, but got 1.
+
+[7m57[0m       await createAuditLog({
+[7m  [0m [91m            ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/auth/verify.ts[0m:[93m6[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m6[0m export const GET = async ({ request }: APIContext) => {
+[7m [0m [91m                                       ~~~~~~~~~~[0m
+
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m454[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<unknown>'.
+
+[7m454[0m               details: error.errors.map((e) => ({
+[7m   [0m [91m                             ~~~~~~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m156[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<unknown>'.
+
+[7m156[0m               details: error.errors.map((e) => ({
+[7m   [0m [91m                             ~~~~~~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m13[0m:[93m26[0m - [91merror[0m[90m ts(2559): [0mType '"bias-analysis-api"' has no properties in common with type 'LoggerOptions'.
+
+[7m13[0m const logger = getLogger('bias-analysis-api')
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m454[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m454[0m               details: error.errors.map((e) => ({
+[7m   [0m [93m                                         ~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m422[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'securityStart' is declared but its value is never read.
+
+[7m422[0m     const securityStart = Date.now()
+[7m   [0m [93m          ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m156[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m156[0m               details: error.errors.map((e) => ({
+[7m   [0m [93m                                         ~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m30[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; version?: "v1" | "v8" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m30[0m   clientId: z.string().uuid().optional(),
+[7m  [0m [93m                       ~~~~[0m
+[96msrc/pages/api/bias-analysis/analyze-optimized.ts[0m:[93m29[0m:[93m27[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; version?: "v1" | "v8" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m29[0m   therapistId: z.string().uuid().optional(),
+[7m  [0m [93m                          ~~~~[0m
+
+[96msrc/pages/api/bias-analysis/analyze.ts[0m:[93m3[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m3[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/bias-detection/analyze.ts[0m:[93m36[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'body' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m36[0m     let body
+[7m  [0m [93m        ~~~~[0m
+
+[96msrc/pages/api/bias-detection/dashboard.ts[0m:[93m5[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'request' is declared but its value is never read.
+
+[7m5[0m export const GET = async ({
+[7m [0m [93m                          ~[0m
+[7m6[0m   request,
+[7m [0m [93m~~~~~~~~~~[0m
+[7m7[0m }: {
+[7m [0m [93m~[0m
+
+[96msrc/pages/api/bias-detection/metrics.ts[0m:[93m37[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ format: "json" | "prometheus"; aggregation: "summary" | "raw"; timeRange?: number | undefined; metrics?: string | undefined; }>'.
+
+[7m37[0m           details: queryResult.error.errors,
+[7m  [0m [91m                                     ~~~~~~[0m
+[96msrc/pages/api/bias-detection/metrics.ts[0m:[93m29[0m:[93m44[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m29[0m     const queryParams = Object.fromEntries(url.searchParams.entries())
+[7m  [0m [91m                                           ~~~[0m
+
+[96msrc/pages/api/bias-detection/submit-batch-job.ts[0m:[93m8[0m:[93m3[0m - [91merror[0m[90m ts(2554): [0mExpected 0 arguments, but got 1.
+
+[7m  8[0m   async (sessions, update) => {
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m  9[0m     // Use batchAnalyzeSessions with progress callback
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 14[0m     })
+[7m   [0m [91m~~~~~~[0m
+[7m 15[0m   },
+[7m   [0m [91m~~~[0m
+[96msrc/pages/api/bias-detection/submit-batch-job.ts[0m:[93m4[0m:[93m15[0m - [91merror[0m[90m ts(2724): [0m'"../../../lib/ai/bias-detection/types"' has no exported member named 'BatchAnalysisResult'. Did you mean 'BiasAnalysisResult'?
+
+[7m4[0m import type { BatchAnalysisResult } from '../../../lib/ai/bias-detection/types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/bias-detection/submit-batch-job.ts[0m:[93m8[0m:[93m20[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'update' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m8[0m   async (sessions, update) => {
+[7m [0m [93m                   ~~~~~~[0m
+[96msrc/pages/api/bias-detection/submit-batch-job.ts[0m:[93m8[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sessions' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m8[0m   async (sessions, update) => {
+[7m [0m [93m         ~~~~~~~~[0m
+
+[96msrc/pages/api/bias-detection/test-notification.ts[0m:[93m68[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'sendTestNotification' does not exist on type 'BiasDetectionEngine'.
+
+[7m68[0m     const result = await biasDetectionEngine.sendTestNotification(
+[7m  [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/bias-detection/test-notification.ts[0m:[93m8[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const POST = async ({ request }: APIContext) => {
+[7m [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m144[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'issues' does not exist on type 'never'.
+
+[7m144[0m           (report) => report.issues && report.issues.length > 0,
+[7m   [0m [91m                                              ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m144[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'issues' does not exist on type 'never'.
+
+[7m144[0m           (report) => report.issues && report.issues.length > 0,
+[7m   [0m [91m                             ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m142[0m:[93m49[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'never'.
+
+[7m142[0m         latest: reports.length > 0 ? reports[0].timestamp : null,
+[7m   [0m [91m                                                ~~~~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m133[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m133[0m         screenshots: report.screenshots || [],
+[7m   [0m [91m                     ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m132[0m:[93m16[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m132[0m         tests: report.tests || [],
+[7m   [0m [91m               ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m131[0m:[93m19[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m131[0m         browsers: report.browsers || {},
+[7m   [0m [91m                  ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m130[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m130[0m         issues: report.issues || [],
+[7m   [0m [91m                ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m129[0m:[93m18[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m129[0m         summary: report.summary,
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m128[0m:[93m20[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m128[0m         timestamp: report.timestamp,
+[7m   [0m [91m                   ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m127[0m:[93m20[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ timestamp: any; summary: any; issues: any; browsers: any; tests: any; screenshots: any; }' is not assignable to parameter of type 'never'.
+
+[7m127[0m       reports.push({
+[7m   [0m [91m                   ~[0m
+[7m128[0m         timestamp: report.timestamp,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m133[0m         screenshots: report.screenshots || [],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m134[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m116[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m116[0m         report.issues = report.issues.filter(
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m116[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m116[0m         report.issues = report.issues.filter(
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m115[0m:[93m24[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m115[0m       if (sinceDate && report.issues) {
+[7m   [0m [91m                       ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m108[0m:[93m26[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m108[0m           report.tests = report.tests.filter((test: { browser: string }) =>
+[7m   [0m [91m                         ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m108[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m108[0m           report.tests = report.tests.filter((test: { browser: string }) =>
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m107[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m107[0m         if (report.tests) {
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m102[0m:[93m27[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m102[0m           report.issues = report.issues.filter((issue: { browser: string }) =>
+[7m   [0m [91m                          ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m102[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m102[0m           report.issues = report.issues.filter((issue: { browser: string }) =>
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m101[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m101[0m         if (report.issues) {
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m99[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m99[0m         report.browsers = filteredBrowsers
+[7m  [0m [91m        ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m94[0m:[93m26[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m94[0m           Object.entries(report.browsers || {}).filter(([key]) =>
+[7m  [0m [91m                         ~~~~~~[0m
+[96msrc/pages/api/browser-compatibility/data.ts[0m:[93m85[0m:[93m35[0m - [91merror[0m[90m ts(18046): [0m'report' is of type 'unknown'.
+
+[7m85[0m       const reportDate = new Date(report.timestamp)
+[7m  [0m [91m                                  ~~~~~~[0m
+
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m283[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ x: number; y: number; }[]' is not assignable to type 'number[]'.
+  Type '{ x: number; y: number; }' is not assignable to type 'number'.
+
+[7m283[0m             data: scatterData,
+[7m   [0m [91m            ~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m46[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m46[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m46[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m46[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m             ~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m348[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'type' is declared but its value is never read.
+
+[7m348[0m   const { type, dataPoints } = params
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m308[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'type' is declared but its value is never read.
+
+[7m308[0m   const { type } = params
+[7m   [0m [93m        ~~~~~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m174[0m:[93m39[0m - [93mwarning[0m[90m ts(6133): [0m'sessionId' is declared but its value is never read.
+
+[7m174[0m   const { type, repository, clientId, sessionId, startDate, endDate, dataPoints } = params
+[7m   [0m [93m                                      ~~~~~~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m174[0m:[93m29[0m - [93mwarning[0m[90m ts(6133): [0m'clientId' is declared but its value is never read.
+
+[7m174[0m   const { type, repository, clientId, sessionId, startDate, endDate, dataPoints } = params
+[7m   [0m [93m                            ~~~~~~~~[0m
+[96msrc/pages/api/components/analytics/charts.ts[0m:[93m174[0m:[93m17[0m - [93mwarning[0m[90m ts(6133): [0m'repository' is declared but its value is never read.
+
+[7m174[0m   const { type, repository, clientId, sessionId, startDate, endDate, dataPoints } = params
+[7m   [0m [93m                ~~~~~~~~~~[0m
+
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m221[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m221[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m221[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m221[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m137[0m:[93m29[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidence' does not exist on type 'never'.
+
+[7m137[0m         confidence: emotion.confidence || 0.7,
+[7m   [0m [91m                            ~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m136[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'sessionId' does not exist on type 'never'.
+
+[7m136[0m         sessionId: emotion.sessionId,
+[7m   [0m [91m                           ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m135[0m:[93m67[0m - [91merror[0m[90m ts(2339): [0mProperty 'intensity' does not exist on type 'never'.
+
+[7m135[0m         intensity: normalizeToRange(emotion.confidence || emotion.intensity || 0.5, 0, 1),
+[7m   [0m [91m                                                                  ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m135[0m:[93m45[0m - [91merror[0m[90m ts(2339): [0mProperty 'confidence' does not exist on type 'never'.
+
+[7m135[0m         intensity: normalizeToRange(emotion.confidence || emotion.intensity || 0.5, 0, 1),
+[7m   [0m [91m                                            ~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m134[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'timestamp' does not exist on type 'never'.
+
+[7m134[0m         timestamp: emotion.timestamp || new Date().toISOString(),
+[7m   [0m [91m                           ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m133[0m:[93m52[0m - [91merror[0m[90m ts(2339): [0mProperty 'emotion' does not exist on type 'never'.
+
+[7m133[0m         emotion: emotion.primaryEmotion || emotion.emotion || 'neutral',
+[7m   [0m [91m                                                   ~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m133[0m:[93m26[0m - [91merror[0m[90m ts(2339): [0mProperty 'primaryEmotion' does not exist on type 'never'.
+
+[7m133[0m         emotion: emotion.primaryEmotion || emotion.emotion || 'neutral',
+[7m   [0m [91m                         ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m132[0m:[93m48[0m - [91merror[0m[90m ts(2339): [0mProperty 'dominance' does not exist on type 'DimensionalMap'.
+
+[7m132[0m         dominance: normalizeToRange(dimensions.dominance || 0, -1, 1),
+[7m   [0m [91m                                               ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m131[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'arousal' does not exist on type 'DimensionalMap'.
+
+[7m131[0m         arousal: normalizeToRange(dimensions.arousal || 0, -1, 1),
+[7m   [0m [91m                                             ~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m130[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'valence' does not exist on type 'DimensionalMap'.
+
+[7m130[0m         valence: normalizeToRange(dimensions.valence || 0, -1, 1),
+[7m   [0m [91m                                             ~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m129[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type 'never'.
+
+[7m129[0m         id: `emotion-${emotion.id || index}`,
+[7m   [0m [91m                               ~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m111[0m:[93m84[0m - [91merror[0m[90m ts(2339): [0mProperty 'sessionId' does not exist on type 'never'.
+
+[7m111[0m           emotionData.push(...sessionEmotions.map(e => ({ ...e, sessionId: session.sessionId })))
+[7m   [0m [91m                                                                                   ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m111[0m:[93m28[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ sessionId: any; id: string; timestamp: string; emotions: EmotionVector; dimensions: EmotionDimensions; confidence: number; metadata?: EmotionMetadata; }' is not assignable to parameter of type 'never'.
+
+[7m111[0m           emotionData.push(...sessionEmotions.map(e => ({ ...e, sessionId: session.sessionId })))
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m110[0m:[93m82[0m - [91merror[0m[90m ts(2339): [0mProperty 'sessionId' does not exist on type 'never'.
+
+[7m110[0m           const sessionEmotions = await repository.getEmotionsForSession(session.sessionId)
+[7m   [0m [91m                                                                                 ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m109[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'sessionId' does not exist on type 'never'.
+
+[7m109[0m         if (session.sessionId) {
+[7m   [0m [91m                    ~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m102[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'TherapySession[]' is not assignable to type 'never[]'.
+  Type 'TherapySession' is not assignable to type 'never'.
+
+[7m102[0m       sessions = await repository.getSessions({
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m99[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ sessionId: string; }' is not assignable to type 'never'.
+
+[7m99[0m       sessions = [{ sessionId }]
+[7m  [0m [91m                  ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m98[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'EmotionAnalysis[]' is not assignable to type 'never[]'.
+  Type 'EmotionAnalysis' is not assignable to type 'never'.
+
+[7m98[0m       emotionData = await repository.getEmotionsForSession(sessionId)
+[7m  [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m51[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m51[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/emotions/3d-visualization.ts[0m:[93m51[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m51[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m             ~~~[0m
+
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m391[0m:[93m21[0m - [91merror[0m[90m ts(18046): [0m'percentage' is of type 'unknown'.
+
+[7m391[0m       cumulative += percentage
+[7m   [0m [91m                    ~~~~~~~~~~[0m
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m179[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m179[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m179[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m179[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~~[0m
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m122[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'string | null' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+
+[7m122[0m       sessionId,
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m72[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m72[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/particles/emotion-system.ts[0m:[93m72[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m72[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m             ~~~[0m
+
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m465[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m465[0m export const PATCH: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m465[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m465[0m export const PATCH: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m387[0m:[93m43[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ clientName: string; therapistName: string; clientId: string; therapistId: string; duration: number; status: "draft" | "active" | "completed" | "paused"; goals: { id: string; title: string; ... 7 more ...; metrics?: { ...; } | undefined; }[]; ... 4 more ...; metadata?: { ...; } | undefined; }>'.
+
+[7m387[0m           details: validationResult.error.errors,
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m364[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m364[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m364[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m364[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m122[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m122[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m122[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m122[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m58[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m58[0m       date: z.string().datetime(),
+[7m  [0m [93m                       ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m55[0m:[93m33[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m55[0m     nextSessionDate: z.string().datetime().optional(),
+[7m  [0m [93m                                ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m46[0m:[93m28[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m46[0m   lastModified: z.string().datetime().optional(),
+[7m  [0m [93m                           ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m45[0m:[93m27[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m45[0m   createdDate: z.string().datetime().optional(),
+[7m  [0m [93m                          ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m35[0m:[93m34[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m35[0m     lastActivityDate: z.string().datetime().optional(),
+[7m  [0m [93m                                 ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m25[0m:[93m26[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m25[0m   targetDate: z.string().datetime(),
+[7m  [0m [93m                         ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m18[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m18[0m   dueDate: z.string().datetime().optional(),
+[7m  [0m [93m                      ~~~~~~~~[0m
+[96msrc/pages/api/components/treatment-plans/enhanced.ts[0m:[93m16[0m:[93m29[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; local?: boolean | undefined; offset?: boolean | undefined; precision?: number | null | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m16[0m   completedDate: z.string().datetime().optional(),
+[7m  [0m [93m                            ~~~~~~~~[0m
+
+[96msrc/pages/api/components/ui/carousel-content.ts[0m:[93m139[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m139[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/ui/carousel-content.ts[0m:[93m139[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m139[0m export const POST: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m   [0m [91m             ~~~~[0m
+[96msrc/pages/api/components/ui/carousel-content.ts[0m:[93m58[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m58[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/components/ui/carousel-content.ts[0m:[93m58[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m58[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m             ~~~[0m
+
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m226[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'user_metadata' does not exist on type 'User'.
+
+[7m226[0m     const userRole = sessionData.user.user_metadata?.['role']
+[7m   [0m [91m                                      ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m214[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m214[0m export const PUT = async ({ request }: APIContext) => {
+[7m   [0m [91m                                       ~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m118[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'user_metadata' does not exist on type 'User'.
+
+[7m118[0m     const userRole = sessionData.user.user_metadata?.['role']
+[7m   [0m [91m                                      ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m106[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m106[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m80[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'getUserSessionStatus' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m80[0m     const status = await flaggingService.getUserSessionStatus(
+[7m  [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m67[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'getUserSessionStatus' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m67[0m       const status = await flaggingService.getUserSessionStatus(userId)
+[7m  [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m39[0m:[93m43[0m - [91merror[0m[90m ts(2339): [0mProperty 'getPendingCrisisFlags' does not exist on type 'CrisisSessionFlaggingService'.
+
+[7m39[0m       const flags = await flaggingService.getPendingCrisisFlags()
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/crisis/session-flags.ts[0m:[93m8[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const GET = async ({ request }: APIContext) => {
+[7m [0m [91m                                       ~~~~~~~~~~[0m
+
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m10[0m:[93m13[0m - [91merror[0m[90m ts(2339): [0mProperty 'searchParams' does not exist on type 'URL | undefined'.
+
+[7m10[0m     const { searchParams } = url
+[7m  [0m [91m            ~~~~~~~~~~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m173[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m173[0m       patterns: patternsResult.rows.map((row) => ({
+[7m   [0m [93m                                         ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m169[0m:[93m50[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m169[0m       distribution: distributionResult.rows.map((row) => ({
+[7m   [0m [93m                                                 ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m162[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m162[0m       demographics: demographicResult.rows.map((row) => ({
+[7m   [0m [93m                                                ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m154[0m:[93m46[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m154[0m       historical: historicalResult.rows.map((row) => ({
+[7m   [0m [93m                                             ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m130[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m130[0m       patterns: patternsResult.rows.map((row) => ({
+[7m   [0m [93m                                         ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m126[0m:[93m50[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m126[0m       distribution: distributionResult.rows.map((row) => ({
+[7m   [0m [93m                                                 ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m119[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m119[0m       demographics: demographicResult.rows.map((row) => ({
+[7m   [0m [93m                                                ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/analytics.ts[0m:[93m111[0m:[93m46[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m111[0m       historical: historicalResult.rows.map((row) => ({
+[7m   [0m [93m                                             ~~~[0m
+
+[96msrc/pages/api/dashboard/bias-detection/summary.ts[0m:[93m82[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m82[0m       activeAlerts: alertsResult.rows.map((row) => ({
+[7m  [0m [93m                                           ~~~[0m
+[96msrc/pages/api/dashboard/bias-detection/summary.ts[0m:[93m75[0m:[93m54[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m75[0m       recentAnalyses: recentAnalysesResult.rows.map((row) => ({
+[7m  [0m [93m                                                     ~~~[0m
+
+[96msrc/pages/api/demos/bias-detection/analyze.ts[0m:[93m198[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m198[0m export const GET: APIRoute = async () => {
+[7m   [0m [91m                  ~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/analyze.ts[0m:[93m81[0m:[93m7[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 2.
+
+[7m81[0m       biasFactors,
+[7m  [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/analyze.ts[0m:[93m16[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m16[0m export const POST: APIRoute = async ({ request }) => {
+[7m  [0m [91m                   ~~~~~~~~[0m
+
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m281[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m281[0m export const GET: APIRoute = async () => {
+[7m   [0m [91m                  ~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m261[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'scenario.expectedBiasReduction' is of type 'unknown'.
+
+[7m261[0m       content += `   Expected Reduction: ${(scenario.expectedBiasReduction * 100).toFixed(1)}%\n`
+[7m   [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m256[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'CounterfactualScenario[]' to type 'Record<string, unknown>[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'CounterfactualScenario' is not comparable to type 'Record<string, unknown>'.
+
+[7m256[0m     const scenarios = exportData.counterfactualScenarios as Array<
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m257[0m       Record<string, unknown>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m258[0m     >
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m215[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m215[0m     csvRows.push(`Historical,7-Day Trend,${historical.sevenDayTrend},`)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m214[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m214[0m     csvRows.push(`Historical,Percentile Rank,${historical.percentileRank},`)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m213[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m213[0m     csvRows.push(`Historical,30-Day Average,${historical.thirtyDayAverage},`)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m205[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m205[0m         `Counterfactual,Likelihood ${index + 1},${scenario.likelihood},${scenario.description}`,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m202[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m202[0m         `Counterfactual,Scenario ${index + 1},${scenario.expectedBiasReduction},${scenario.change}`,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m197[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'CounterfactualScenario[]' to type 'Record<string, unknown>[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'CounterfactualScenario' is not comparable to type 'Record<string, unknown>'.
+
+[7m197[0m     const scenarios = exportData.counterfactualScenarios as Array<
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m198[0m       Record<string, unknown>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m199[0m     >
+[7m   [0m [91m~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m191[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m191[0m       `Interactive,Consistency Score,${layers.interactive.counterfactualAnalysis.consistencyScore},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m188[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m188[0m       `Interactive,Bias Detected,${layers.interactive.counterfactualAnalysis.biasDetected},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m185[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m185[0m       `Interactive,Scenarios Analyzed,${layers.interactive.counterfactualAnalysis.scenariosAnalyzed},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m181[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m181[0m       `Model,Calibration,${layers.modelLevel.fairnessMetrics.calibration},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m178[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m178[0m       `Model,Equalized Odds,${layers.modelLevel.fairnessMetrics.equalizedOdds},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m175[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m175[0m       `Model,Demographic Parity,${layers.modelLevel.fairnessMetrics.demographicParity},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m171[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m171[0m       `Preprocessing,Cultural Bias,${layers.preprocessing.linguisticBias.culturalBiasScore},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m168[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m168[0m       `Preprocessing,Age Bias,${layers.preprocessing.linguisticBias.ageBiasScore},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m165[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m165[0m       `Preprocessing,Racial Bias,${layers.preprocessing.linguisticBias.racialBiasScore},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m162[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m162[0m       `Preprocessing,Gender Bias,${layers.preprocessing.linguisticBias.genderBiasScore},`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m157[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m157[0m     csvRows.push(`Analysis,Session ID,${analysis.sessionId},`)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m156[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m156[0m     csvRows.push(`Analysis,Confidence,${analysis.confidence},`)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m154[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m154[0m       `Analysis,Overall Bias Score,${analysis.overallBiasScore},${analysis.alertLevel}`,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m148[0m:[93m16[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"Category,Metric,Value,Details"' is not assignable to parameter of type 'never'.
+
+[7m148[0m   csvRows.push('Category,Metric,Value,Details')
+[7m   [0m [91m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m105[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ analysis: BiasAnalysisResults | undefined; counterfactualScenarios: CounterfactualScenario[] | undefined; historicalComparison: HistoricalComparison | undefined; metadata: { ...; }; timestamp: string; sessionId: string; }' is not assignable to parameter of type 'ExportData'.
+  Types of property 'analysis' are incompatible.
+
+[7m105[0m         const txtData = convertToText(filteredExportData)
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m94[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ analysis: BiasAnalysisResults | undefined; counterfactualScenarios: CounterfactualScenario[] | undefined; historicalComparison: HistoricalComparison | undefined; metadata: { ...; }; timestamp: string; sessionId: string; }' is not assignable to parameter of type 'ExportData'.
+  Types of property 'analysis' are incompatible.
+
+[7m94[0m         const csvData = convertToCSV(filteredExportData)
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/export.ts[0m:[93m61[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'HistoricalComparison | null' is not assignable to parameter of type 'HistoricalComparison'.
+  Type 'null' is not assignable to type 'HistoricalComparison'.
+
+[7m61[0m       historicalComparison as HistoricalComparison | null,
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/demos/bias-detection/websocket.ts[0m:[93m135[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m135[0m export const POST: APIRoute = async ({ request }) => {
+[7m   [0m [91m                   ~~~~~~~~[0m
+[96msrc/pages/api/demos/bias-detection/websocket.ts[0m:[93m148[0m:[93m76[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m148[0m               connectionId: `ws_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                                           ~~~~~~[0m
+
+[96msrc/pages/api/documentation/generate.ts[0m:[93m131[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'generateDocumentation' does not exist on type 'DocumentationService'.
+
+[7m131[0m     const result = await documentationService.generateDocumentation(
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/documentation/generate.ts[0m:[93m66[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m66[0m export const POST = async ({ request }: APIContext) => {
+[7m  [0m [91m                                        ~~~~~~~~~~[0m
+[96msrc/pages/api/documentation/generate.ts[0m:[93m64[0m:[93m55[0m - [91merror[0m[90m ts(2554): [0mExpected 0 arguments, but got 2.
+
+[7m64[0m const documentationService = new DocumentationService(repository, aiService)
+[7m  [0m [91m                                                      ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/emotions/dimensional.ts[0m:[93m5[0m:[93m15[0m - [91merror[0m[90m ts(2724): [0m'"../../../lib/ai/emotions/dimensionalTypes"' has no exported member named 'DimensionalEmotionMap'. Did you mean 'DimensionalEmotion'?
+
+[7m5[0m import type { DimensionalEmotionMap } from '../../../lib/ai/emotions/dimensionalTypes'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/emotions/multidimensional-map.ts[0m:[93m25[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(context: AuthAPIContext) => Promise<Response>' is not assignable to parameter of type '(context: { params: Record<string, string | undefined>; request: Request; locals: { user: AuthUser; }; }) => Response | Promise<Response>'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m25[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/emotions/multidimensional-map.ts[0m:[93m25[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m25[0m export const GET: APIRoute = protectRoute()(async (context: AuthAPIContext) => {
+[7m  [0m [91m             ~~~[0m
+
+[96msrc/pages/api/emotions/real-time-analysis.ts[0m:[93m76[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'analyzeText' does not exist on type 'MultidimensionalEmotionMapper'.
+
+[7m76[0m     const emotionResult = await emotionMapper.analyzeText(text, {
+[7m  [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/pages/api/emotions/real-time-analysis.ts[0m:[93m39[0m:[93m27[0m - [91merror[0m[90m ts(18048): [0m'cookies' is possibly 'undefined'.
+
+[7m39[0m     const sessionCookie = cookies.get('session')
+[7m  [0m [91m                          ~~~~~~~[0m
+
+[96msrc/pages/api/emotions/session-analysis.ts[0m:[93m21[0m:[93m14[0m - [91merror[0m[90m ts(2322): [0mType '(context: { params: Record<string, string | undefined>; request: Request; locals: Record<string, unknown>; }) => Promise<Response>' is not assignable to type 'APIRoute'.
+  Types of parameters 'context' and 'context' are incompatible.
+
+[7m21[0m export const GET: APIRoute = protectRoute()(async ({ locals, request }) => {
+[7m  [0m [91m             ~~~[0m
+
+[96msrc/pages/api/examples/profiling-demo.ts[0m:[93m20[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter '_' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m20[0m export const GET = async (_) => {
+[7m  [0m [93m                          ~[0m
+
+[96msrc/pages/api/export/conversation.ts[0m:[93m238[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'JSON' does not exist on type 'typeof ExportFormat | typeof ExportFormat'.
+  Property 'JSON' does not exist on type 'typeof ExportFormat'.
+
+[7m238[0m       return ExportFormat.JSON
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/pages/api/export/conversation.ts[0m:[93m229[0m:[93m43[0m - [91merror[0m[90m ts(2749): [0m'ExportFormat' refers to a value, but is being used as a type here. Did you mean 'typeof ExportFormat'?
+
+[7m229[0m function mapExportFormat(format: string): ExportFormat {
+[7m   [0m [91m                                          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/export/conversation.ts[0m:[93m218[0m:[93m11[0m - [91merror[0m[90m ts(2749): [0m'ExportFormat' refers to a value, but is being used as a type here. Did you mean 'typeof ExportFormat'?
+
+[7m218[0m   format: ExportFormat,
+[7m   [0m [91m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/export/conversation.ts[0m:[93m114[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'RealFHEService' is not assignable to parameter of type 'FHEServiceInterface'.
+  Property 'encryptData' is missing in type 'RealFHEService' but required in type 'FHEServiceInterface'.
+
+[7m114[0m     const exportService = ExportService.getInstance(fheService)
+[7m   [0m [91m                                                    ~~~~~~~~~~[0m
+[96msrc/pages/api/export/conversation.ts[0m:[93m70[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m70[0m export const POST: APIRoute = async ({ request }) => {
+[7m  [0m [91m                   ~~~~~~~~[0m
+[96msrc/pages/api/export/conversation.ts[0m:[93m14[0m:[93m19[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIRoute'.
+
+[7m14[0m export const GET: APIRoute = async ({ request }) => {
+[7m  [0m [91m                  ~~~~~~~~[0m
+
+[96msrc/pages/api/fhe/process.ts[0m:[93m66[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"high"' is not assignable to type '"tc128" | "tc192" | "tc256"'.
+
+[7m66[0m         securityLevel: 'high',
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/process.ts[0m:[93m63[0m:[93m21[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Boolean' has no call signatures.
+
+[7m63[0m     if (!fheService.isInitialized()) {
+[7m  [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/process.ts[0m:[93m63[0m:[93m21[0m - [91merror[0m[90m ts(2341): [0mProperty 'isInitialized' is private and only accessible within class 'RealFHEService'.
+
+[7m63[0m     if (!fheService.isInitialized()) {
+[7m  [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/process.ts[0m:[93m17[0m:[93m29[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m17[0m     const rateLimitResult = await rateLimit.check(clientIp, 'anonymous')
+[7m  [0m [93m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/fhe/rotate-keys.ts[0m:[93m58[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '"high"' is not assignable to type '"tc128" | "tc192" | "tc256"'.
+
+[7m58[0m         securityLevel: 'high',
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/rotate-keys.ts[0m:[93m55[0m:[93m21[0m - [91merror[0m[90m ts(2349): [0mThis expression is not callable.
+  Type 'Boolean' has no call signatures.
+
+[7m55[0m     if (!fheService.isInitialized()) {
+[7m  [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/rotate-keys.ts[0m:[93m55[0m:[93m21[0m - [91merror[0m[90m ts(2341): [0mProperty 'isInitialized' is private and only accessible within class 'RealFHEService'.
+
+[7m55[0m     if (!fheService.isInitialized()) {
+[7m  [0m [91m                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/fhe/rotate-keys.ts[0m:[93m43[0m:[93m26[0m - [91merror[0m[90m ts(18048): [0m'cookies' is possibly 'undefined'.
+
+[7m43[0m     const sessionToken = cookies.get('session')
+[7m  [0m [91m                         ~~~~~~~[0m
+[96msrc/pages/api/fhe/rotate-keys.ts[0m:[93m17[0m:[93m29[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m17[0m     const rateLimitResult = await rateLimit.check(
+[7m  [0m [93m                            ~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m18[0m       request.headers.get('x-forwarded-for') || 'anonymous',
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m19[0m       'key-rotation',
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m20[0m     )
+[7m  [0m [93m~~~~~[0m
+
+[96msrc/pages/api/goals/[id].ts[0m:[93m49[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ title: string; description: string; category: GoalCategory; status: GoalStatus; progress: number; checkpoints: { id: string; description: string; isCompleted: boolean; completedAt?: number | undefined; notes?: string | undefined; }[]; ... 4 more ...; notes?: string | undefined; }>'.
+
+[7m49[0m           details: parsed.error.errors,
+[7m  [0m [91m                                ~~~~~~[0m
+
+[96msrc/pages/api/goals/index.ts[0m:[93m59[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ title: string; description: string; category: GoalCategory; status: GoalStatus; progress: number; checkpoints: { id: string; description: string; isCompleted: boolean; completedAt?: number | undefined; notes?: string | undefined; }[]; ... 4 more ...; notes?: string | undefined; }>'.
+
+[7m59[0m           details: parsed.error.errors,
+[7m  [0m [91m                                ~~~~~~[0m
+[96msrc/pages/api/goals/index.ts[0m:[93m33[0m:[93m13[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(entries: typeof GoalStatus, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>' of 'z.nativeEnum' is deprecated.
+
+[7m33[0m   status: z.nativeEnum(GoalStatus),
+[7m  [0m [93m            ~~~~~~~~~~[0m
+[96msrc/pages/api/goals/index.ts[0m:[93m32[0m:[93m15[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(entries: typeof GoalCategory, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>' of 'z.nativeEnum' is deprecated.
+
+[7m32[0m   category: z.nativeEnum(GoalCategory),
+[7m  [0m [93m              ~~~~~~~~~~[0m
+
+[96msrc/pages/api/memory/list.ts[0m:[93m33[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'keyof Memory | undefined'.
+
+[7m33[0m       sortBy: sortBy as string,
+[7m  [0m [91m      ~~~~~~[0m
+[96msrc/pages/api/memory/list.ts[0m:[93m20[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'userId' does not exist on type 'unknown'.
+
+[7m20[0m     const {userId} = session
+[7m  [0m [91m           ~~~~~~[0m
+
+[96msrc/pages/api/mental-health/chat.ts[0m:[93m555[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m555[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/mental-health/crisis-detection.ts[0m:[93m599[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m599[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/notifications/preferences.ts[0m:[93m119[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m119[0m     const result = await service.updatePreferences?.(userId, preferences)
+[7m   [0m [91m                                                     ~~~~~~[0m
+[96msrc/pages/api/notifications/preferences.ts[0m:[93m61[0m:[93m46[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'CookiesLike'.
+  Property 'get' is missing in type 'Request' but required in type 'CookiesLike'.
+
+[7m61[0m     const authResult = await isAuthenticated(request)
+[7m  [0m [91m                                             ~~~~~~~[0m
+[96msrc/pages/api/notifications/preferences.ts[0m:[93m28[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'getPreferences' does not exist on type 'NotificationService'.
+
+[7m28[0m     const preferences = await notificationService.getPreferences(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/notifications/preferences.ts[0m:[93m8[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const GET = async ({ request }: APIContext) => {
+[7m [0m [91m                                       ~~~~~~~~~~[0m
+
+[96msrc/pages/api/notifications/register.ts[0m:[93m48[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'boolean'.
+
+[7m48[0m       authResult.user?.id,
+[7m  [0m [91m                 ~~~~[0m
+[96msrc/pages/api/notifications/register.ts[0m:[93m12[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'authenticated' does not exist on type 'boolean'.
+
+[7m12[0m     if (!authResult?.authenticated) {
+[7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/notifications/register.ts[0m:[93m8[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const POST = async ({ request }: APIContext) => {
+[7m [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/notifications/send-test.ts[0m:[93m28[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'boolean'.
+
+[7m28[0m     if (!authResult.user?.isAdmin) {
+[7m  [0m [91m                    ~~~~[0m
+[96msrc/pages/api/notifications/send-test.ts[0m:[93m12[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'authenticated' does not exist on type 'boolean'.
+
+[7m12[0m     if (!authResult?.authenticated) {
+[7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/notifications/send-test.ts[0m:[93m8[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const POST = async ({ request }: APIContext) => {
+[7m [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/notifications/unregister.ts[0m:[93m28[0m:[93m65[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type 'boolean'.
+
+[7m28[0m     await notificationService.removePushSubscription(authResult.user?.id)
+[7m  [0m [91m                                                                ~~~~[0m
+[96msrc/pages/api/notifications/unregister.ts[0m:[93m12[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'authenticated' does not exist on type 'boolean'.
+
+[7m12[0m     if (!authResult?.authenticated) {
+[7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/notifications/unregister.ts[0m:[93m8[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m8[0m export const POST = async ({ request }: APIContext) => {
+[7m [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/patient-rights/cancel-export.ts[0m:[93m24[0m:[93m39[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(): $ZodFlattenedError<{ exportId: string; reason?: string | undefined; }, string>' of 'validation.error.flatten' is deprecated.
+
+[7m24[0m       const errors = validation.error.flatten()
+[7m  [0m [93m                                      ~~~~~~~[0m
+
+[96msrc/pages/api/patient-rights/create-export.ts[0m:[93m60[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; dataFormat: "json" | "csv" | "fhir" | "ccd" | "hl7"; dataSections: string[]; recipientType: "patient" | "provider" | "research"; recipientName: string; recipientEmail: string; includeEncryptionKey: boolean; notes?: string | undefined; }>'.
+
+[7m60[0m           errors: validationResult.error.errors,
+[7m  [0m [91m                                         ~~~~~~[0m
+[96msrc/pages/api/patient-rights/create-export.ts[0m:[93m52[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; dataFormat: "json" | "csv" | "fhir" | "ccd" | "hl7"; dataSections: string[]; recipientType: "patient" | "provider" | "research"; recipientName: string; recipientEmail: string; includeEncryptionKey: boolean; notes?: string | undefined; }>'.
+
+[7m52[0m         errors: validationResult.error.errors,
+[7m  [0m [91m                                       ~~~~~~[0m
+[96msrc/pages/api/patient-rights/create-export.ts[0m:[93m36[0m:[93m31[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'AuthUser'.
+
+[7m36[0m       !(session as unknown as AuthUser).permissions?.includes(
+[7m  [0m [91m                              ~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/create-export.ts[0m:[93m26[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'verifySession' does not exist on type '{ isAuthenticated: (cookies: CookiesLike) => Promise<boolean>; getCurrentUser: (cookies: CookiesLike) => Promise<{ id: string; role: string; } | null>; hasRole: (cookies: CookiesLike, role: Role) => Promise<...>; }'.
+
+[7m26[0m     const session = await auth.verifySession(request)
+[7m  [0m [91m                               ~~~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/create-export.ts[0m:[93m18[0m:[93m30[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m18[0m   recipientEmail: z.string().email('Valid email address is required'),
+[7m  [0m [93m                             ~~~~~[0m
+
+[96msrc/pages/api/patient-rights/download-export.ts[0m:[93m37[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; token: string; }>'.
+
+[7m37[0m           errors: validationResult.error.errors,
+[7m  [0m [91m                                         ~~~~~~[0m
+[96msrc/pages/api/patient-rights/download-export.ts[0m:[93m30[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; token: string; }>'.
+
+[7m30[0m         errors: validationResult.error.errors,
+[7m  [0m [91m                                       ~~~~~~[0m
+
+[96msrc/pages/api/patient-rights/export-request.ts[0m:[93m57[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; format: "json" | "csv" | "pdf" | "xml"; includeCategories?: string[] | undefined; dateRange?: { start?: string | undefined; end?: string | undefined; } | undefined; }>'.
+
+[7m57[0m       const errorMessage = validationResult.error.errors
+[7m  [0m [91m                                                  ~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-request.ts[0m:[93m12[0m:[93m13[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 2, '(values: readonly ["json", "csv", "xml", "pdf"], params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+  Overload 2 of 2, '(entries: Readonly<Record<string, EnumValue>>, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+
+[7m12[0m   format: z.enum(['json', 'csv', 'xml', 'pdf'], {
+[7m  [0m [91m            ~~~~[0m
+[96msrc/pages/api/patient-rights/export-request.ts[0m:[93m58[0m:[93m15[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m58[0m         .map((e) => e.message)
+[7m  [0m [93m              ~[0m
+[96msrc/pages/api/patient-rights/export-request.ts[0m:[93m27[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'requestBody' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m27[0m     let requestBody
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-request.ts[0m:[93m11[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; version?: "v1" | "v8" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m11[0m   patientId: z.string().uuid({ message: 'Patient ID must be a valid UUID' }),
+[7m  [0m [93m                        ~~~~[0m
+
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m63[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m63[0m         permissions: user.permissions,
+[7m  [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m57[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m57[0m       user.permissions?.includes('admin:patient-rights')
+[7m  [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m56[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m56[0m       user.permissions?.includes('data:export:read') ||
+[7m  [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m38[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; }>'.
+
+[7m38[0m           errors: validationResult.error.errors,
+[7m  [0m [91m                                         ~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m31[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; }>'.
+
+[7m31[0m         errors: validationResult.error.errors,
+[7m  [0m [91m                                       ~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m81[0m:[93m52[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'downloadUrl' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m81[0m     let status, progress, estimatedCompletionTime, downloadUrl
+[7m  [0m [93m                                                   ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m81[0m:[93m27[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'estimatedCompletionTime' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m81[0m     let status, progress, estimatedCompletionTime, downloadUrl
+[7m  [0m [93m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m81[0m:[93m17[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'progress' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m81[0m     let status, progress, estimatedCompletionTime, downloadUrl
+[7m  [0m [93m                ~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/export-status.ts[0m:[93m81[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'status' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m81[0m     let status, progress, estimatedCompletionTime, downloadUrl
+[7m  [0m [93m        ~~~~~~[0m
+
+[96msrc/pages/api/patient-rights/get-export-status.ts[0m:[93m38[0m:[93m39[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(): $ZodFlattenedError<{ exportId: string; }, string>' of 'validation.error.flatten' is deprecated.
+
+[7m38[0m       const errors = validation.error.flatten()
+[7m  [0m [93m                                      ~~~~~~~[0m
+
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m83[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; dataFormats: ("json" | "csv" | "pdf" | "xml")[]; dataSections: string[]; recipientType: "patient" | "provider" | "third-party"; recipientDetails: { name: string; email: string; organization?: string | undefined; phone?: string | undefined; }; encryptionRequested: boolean; urgencyLevel: ...'.
+
+[7m83[0m           errors: validationResult.error.errors,
+[7m  [0m [91m                                         ~~~~~~[0m
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m76[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; dataFormats: ("json" | "csv" | "pdf" | "xml")[]; dataSections: string[]; recipientType: "patient" | "provider" | "third-party"; recipientDetails: { name: string; email: string; organization?: string | undefined; phone?: string | undefined; }; encryptionRequested: boolean; urgencyLevel: ...'.
+
+[7m76[0m         errors: validationResult.error.errors,
+[7m  [0m [91m                                       ~~~~~~[0m
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m56[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m56[0m         permissions: user.permissions,
+[7m  [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m51[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m51[0m       user.permissions?.includes('admin:patient-rights')
+[7m  [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m50[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'permissions' does not exist on type '{ id: string; role: string; }'.
+
+[7m50[0m       user.permissions?.includes('data:export:create') ||
+[7m  [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/initiate-export.ts[0m:[93m27[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m27[0m     email: z.string().email('Valid email is required'),
+[7m  [0m [93m                      ~~~~~[0m
+
+[96msrc/pages/api/patient-rights/request-export.ts[0m:[93m49[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ patientId: string; formats: ("json" | "csv" | "pdf")[]; dataTypes: string[]; reason: string; priority: "high" | "normal"; }>'.
+
+[7m49[0m       const { errors } = parseResult.error
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/pages/api/patient-rights/request-export.ts[0m:[93m25[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'requestBody' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m25[0m     let requestBody
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/request-export.ts[0m:[93m10[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { abort?: boolean | undefined; version?: "v1" | "v8" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | undefined; error?: string | $ZodErrorMap<$ZodIssueInvalidStringFormat> | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m10[0m   patientId: z.string().uuid('Patient ID must be a valid UUID'),
+[7m  [0m [93m                        ~~~~[0m
+
+[96msrc/pages/api/patient-rights/update-export.ts[0m:[93m66[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; status: "completed" | "cancelled" | "failed" | "pending" | "processing" | "delivered"; notes?: string | undefined; completionDetails?: { downloadUrl?: string | undefined; expiresAt?: string | undefined; encryptionKeyUrl?: string | undefined; fileSize?: number | undefined; fileChecksum?: ...'.
+
+[7m66[0m           errors: validationResult.error.errors,
+[7m  [0m [91m                                         ~~~~~~[0m
+[96msrc/pages/api/patient-rights/update-export.ts[0m:[93m58[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<{ exportId: string; status: "completed" | "cancelled" | "failed" | "pending" | "processing" | "delivered"; notes?: string | undefined; completionDetails?: { downloadUrl?: string | undefined; expiresAt?: string | undefined; encryptionKeyUrl?: string | undefined; fileSize?: number | undefined; fileChecksum?: ...'.
+
+[7m58[0m         errors: validationResult.error.errors,
+[7m  [0m [91m                                       ~~~~~~[0m
+[96msrc/pages/api/patient-rights/update-export.ts[0m:[93m45[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'app_metadata' does not exist on type 'User'.
+
+[7m45[0m     if (!user.app_metadata?.permissions?.includes('update:data_exports')) {
+[7m  [0m [91m              ~~~~~~~~~~~~[0m
+[96msrc/pages/api/patient-rights/update-export.ts[0m:[93m24[0m:[93m36[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m24[0m       encryptionKeyUrl: z.string().url().optional(),
+[7m  [0m [93m                                   ~~~[0m
+[96msrc/pages/api/patient-rights/update-export.ts[0m:[93m22[0m:[93m31[0m - [93mwarning[0m[90m ts(6385): [0m'(params?: string | { pattern?: RegExp | undefined; abort?: boolean | undefined; normalize?: boolean | undefined; hostname?: RegExp | undefined; protocol?: RegExp | undefined; error?: string | ... 1 more ... | undefined; message?: string | undefined; } | undefined): ZodString' is deprecated.
+
+[7m22[0m       downloadUrl: z.string().url().optional(),
+[7m  [0m [93m                              ~~~[0m
+
+[96msrc/pages/api/pattern-analysis/cross-session.ts[0m:[93m35[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'requestBody' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m35[0m     let requestBody
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/pages/api/pattern-analysis/risk-correlations.ts[0m:[93m30[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'requestBody' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m30[0m     let requestBody
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/pages/api/psychology/analyze.ts[0m:[93m551[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m551[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/psychology/frameworks.ts[0m:[93m741[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m741[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/psychology/generate-scenario.ts[0m:[93m479[0m:[93m209[0m - [91merror[0m[90m ts(2339): [0mProperty 'challenges' does not exist on type '{ name: string; age: number; gender: string; background: string; presentingConcern: string; history: string; currentSituation: string; }'.
+
+[7m479[0m         currentSituation: `Client presents for session ${sessionContext.sessionNumber} with ongoing concerns about ${body.context}. ${clientProfile.challenges ? 'Current challenges include: ' + clientProfile.challenges.join(', ') + '.' : ''}`,
+[7m   [0m [91m                                                                                                                                                                                                                ~~~~~~~~~~[0m
+[96msrc/pages/api/psychology/generate-scenario.ts[0m:[93m479[0m:[93m149[0m - [91merror[0m[90m ts(2339): [0mProperty 'challenges' does not exist on type '{ name: string; age: number; gender: string; background: string; presentingConcern: string; history: string; currentSituation: string; }'.
+
+[7m479[0m         currentSituation: `Client presents for session ${sessionContext.sessionNumber} with ongoing concerns about ${body.context}. ${clientProfile.challenges ? 'Current challenges include: ' + clientProfile.challenges.join(', ') + '.' : ''}`,
+[7m   [0m [91m                                                                                                                                                    ~~~~~~~~~~[0m
+[96msrc/pages/api/psychology/generate-scenario.ts[0m:[93m425[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m425[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+[96msrc/pages/api/psychology/generate-scenario.ts[0m:[93m263[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ age: number; gender: string; background: string; presenting_concern?: string | undefined; name: string; presentingConcern: string; history: string; challenges: string[]; } | { age: number; gender: string; ... 5 more ...; challenges: string[]; } | { ...; }' is not assignable to type '{ name: string; age: number; gender: string; background: string; presentingConcern: string; history: string; currentSituation: string; }'.
+  Property 'currentSituation' is missing in type '{ age: number; gender: string; background: string; presenting_concern?: string; name: string; presentingConcern: string; history: string; challenges: string[]; }' but required in type '{ name: string; age: number; gender: string; background: string; presentingConcern: string; history: string; currentSituation: string; }'.
+
+[7m263[0m   return {
+[7m   [0m [91m  ~~~~~~[0m
+[96msrc/pages/api/psychology/generate-scenario.ts[0m:[93m251[0m:[93m63[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m251[0m   return `scenario_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                              ~~~~~~[0m
+
+[96msrc/pages/api/psychology/parse.ts[0m:[93m309[0m:[93m41[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'APIContext'.
+
+[7m309[0m export const POST = async ({ request }: APIContext) => {
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+
+[96msrc/pages/api/session/analytics.ts[0m:[93m215[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m215[0m       result.rows.forEach((row) => {
+[7m   [0m [93m                           ~~~[0m
+[96msrc/pages/api/session/analytics.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/session/comparison.ts[0m:[93m153[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'row' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m153[0m       const comparisons = result.rows.map((row) => ({
+[7m   [0m [93m                                           ~~~[0m
+[96msrc/pages/api/session/comparison.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/session/progress.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/session/skills.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/session/snapshots.ts[0m:[93m48[0m:[93m28[0m - [91merror[0m[90m ts(2448): [0mBlock-scoped variable 'client' used before its declaration.
+
+[7m48[0m       const result = await client.query(query, [
+[7m  [0m [91m                           ~~~~~~[0m
+[96msrc/pages/api/session/snapshots.ts[0m:[93m1[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'pg'. '/home/vivi/pixelated/node_modules/.pnpm/pg@8.16.3/node_modules/pg/esm/index.mjs' implicitly has an 'any' type.
+  If the 'pg' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg'
+
+[7m1[0m import { Pool } from 'pg'
+[7m [0m [93m                     ~~~~[0m
+
+[96msrc/pages/api/sessions/index.ts[0m:[93m153[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'import("/home/vivi/pixelated/src/lib/ai/models/ai-types").TherapySession[]' is not assignable to type 'import("/home/vivi/pixelated/src/lib/ai/interfaces/therapy").TherapySession[]'.
+  Type 'TherapySession' is missing the following properties from type 'TherapySession': securityLevel, emotionAnalysisEnabled
+
+[7m153[0m     const sessions: TherapySession[] = await repository.getSessions(filter)
+[7m   [0m [91m          ~~~~~~~~[0m
+
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m328[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'intelligenceService' does not exist on type '{ threatDetection: ProductionThreatDetectionService; monitoring: ProductionMonitoringService; hunting: ProductionHuntingService; intelligence: ProductionIntelligenceService; processRequest(request: unknown): Promise<...>; getSystemHealth(): Promise<...>; getSystemStatistics(): Promise<...>; }'.
+
+[7m328[0m     await threatDetectionSystem.intelligenceService.updateConfiguration({
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m273[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'user' does not exist on type '{ success: boolean; request?: AuthenticatedRequest | undefined; response?: Response | undefined; error?: string | undefined; }'.
+
+[7m273[0m     if (!authResult.success || !authResult.user?.isAdmin) {
+[7m   [0m [91m                                           ~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m272[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m272[0m     const authResult = await authenticateRequest(request)
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m218[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'intelligenceService' does not exist on type '{ threatDetection: ProductionThreatDetectionService; monitoring: ProductionMonitoringService; hunting: ProductionHuntingService; intelligence: ProductionIntelligenceService; processRequest(request: unknown): Promise<...>; getSystemHealth(): Promise<...>; getSystemStatistics(): Promise<...>; }'.
+
+[7m218[0m             await threatDetectionSystem.intelligenceService.lookupIOC(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m130[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m130[0m     const authResult = await authenticateRequest(request)
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m93[0m:[93m49[0m - [91merror[0m[90m ts(2339): [0mProperty 'intelligenceService' does not exist on type '{ threatDetection: ProductionThreatDetectionService; monitoring: ProductionMonitoringService; hunting: ProductionHuntingService; intelligence: ProductionIntelligenceService; processRequest(request: unknown): Promise<...>; getSystemHealth(): Promise<...>; getSystemStatistics(): Promise<...>; }'.
+
+[7m93[0m     const results = await threatDetectionSystem.intelligenceService.lookupIOC(
+[7m  [0m [91m                                                ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m33[0m:[93m21[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m33[0m     const refresh = url.searchParams.get('refresh') === 'true'
+[7m  [0m [91m                    ~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m28[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m28[0m     const type = url.searchParams.get('type') as
+[7m  [0m [91m                 ~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m27[0m:[93m23[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m27[0m     const indicator = url.searchParams.get('indicator')
+[7m  [0m [91m                      ~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m18[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m18[0m     const authResult = await authenticateRequest(request)
+[7m  [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m301[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_redisClient' is declared but its value is never read.
+
+[7m301[0m     const _redisClient = redis
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m300[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_mongoClient' is declared but its value is never read.
+
+[7m300[0m     const _mongoClient = mongoClient
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m183[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_redisClient' is declared but its value is never read.
+
+[7m183[0m     const _redisClient = redis
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m182[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_mongoClient' is declared but its value is never read.
+
+[7m182[0m     const _mongoClient = mongoClient
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m68[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_redisClient' is declared but its value is never read.
+
+[7m68[0m     const _redisClient = redis
+[7m  [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/intelligence.ts[0m:[93m67[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_mongoClient' is declared but its value is never read.
+
+[7m67[0m     const _mongoClient = mongoClient
+[7m  [0m [93m          ~~~~~~~~~~~~[0m
+
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m162[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'huntingService' does not exist on type '{ threatDetection: ProductionThreatDetectionService; monitoring: ProductionMonitoringService; hunting: ProductionHuntingService; intelligence: ProductionIntelligenceService; processRequest(request: unknown): Promise<...>; getSystemHealth(): Promise<...>; getSystemStatistics(): Promise<...>; }'.
+
+[7m162[0m       await threatDetectionSystem.huntingService.getInvestigationResult(
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m123[0m:[93m29[0m - [91merror[0m[90m ts(18048): [0m'url' is possibly 'undefined'.
+
+[7m123[0m     const investigationId = url.searchParams.get('id')
+[7m   [0m [91m                            ~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m115[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m115[0m     const authResult = await authenticateRequest(request)
+[7m   [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m70[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'huntingService' does not exist on type '{ threatDetection: ProductionThreatDetectionService; monitoring: ProductionMonitoringService; hunting: ProductionHuntingService; intelligence: ProductionIntelligenceService; processRequest(request: unknown): Promise<...>; getSystemHealth(): Promise<...>; getSystemStatistics(): Promise<...>; }'.
+
+[7m70[0m       await threatDetectionSystem.huntingService.startInvestigation({
+[7m  [0m [91m                                  ~~~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m11[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m11[0m     const authResult = await authenticateRequest(request)
+[7m  [0m [91m                                                 ~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m138[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_redisClient' is declared but its value is never read.
+
+[7m138[0m     const _redisClient = redis
+[7m   [0m [93m          ~~~~~~~~~~~~[0m
+[96msrc/pages/api/threat-detection/phase8/investigate.ts[0m:[93m137[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_mongoClient' is declared but its value is never read.
+
