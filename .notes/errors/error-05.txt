@@ -1,0 +1,2200 @@
+[7m211[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m210[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m210[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m197[0m:[93m76[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m197[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                           ~[0m
+[7m198[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m199[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m197[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m197[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m158[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m158[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m157[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m157[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m144[0m:[93m76[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m144[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                           ~[0m
+[7m145[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m146[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m144[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m144[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m140[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m140[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m139[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m139[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m130[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'false' is not assignable to parameter of type 'never'.
+
+[7m130[0m       ).mockResolvedValue(false)
+[7m   [0m [91m                          ~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m129[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m129[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m112[0m:[93m76[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m112[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                           ~[0m
+[7m113[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m114[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m112[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m112[0m       vi.spyOn(allscriptsProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m80[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'undefined' is not assignable to parameter of type 'never'.
+
+[7m80[0m       ).mockResolvedValue(undefined)
+[7m  [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m79[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"verifyAllscriptsEndpoints"' is not assignable to parameter of type 'never'.
+
+[7m79[0m         'verifyAllscriptsEndpoints',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m74[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m74[0m       ).mockResolvedValue(true)
+[7m  [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m73[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m73[0m         'validateEndpoint',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/allscripts.test.ts[0m:[93m23[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m23[0m     clientId: testId || 'example-client-id',
+[7m  [0m [91m              ~~~~~~[0m
+
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m248[0m:[93m78[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m248[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                             ~[0m
+[7m249[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m250[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m248[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m248[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m231[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'undefined' is not assignable to parameter of type 'never'.
+
+[7m231[0m       ).mockResolvedValue(undefined)
+[7m   [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m230[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"verifyAthenahealthEndpoints"' is not assignable to parameter of type 'never'.
+
+[7m230[0m         'verifyAthenahealthEndpoints',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m225[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m225[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m224[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m224[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m211[0m:[93m78[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m211[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                             ~[0m
+[7m212[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m213[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m211[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m211[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m195[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'undefined' is not assignable to parameter of type 'never'.
+
+[7m195[0m       ).mockResolvedValue(undefined)
+[7m   [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m194[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"verifyAthenahealthEndpoints"' is not assignable to parameter of type 'never'.
+
+[7m194[0m         'verifyAthenahealthEndpoints',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m189[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m189[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m188[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m188[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m175[0m:[93m78[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m175[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                             ~[0m
+[7m176[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m177[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m175[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m175[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m136[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m136[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m135[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m135[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m122[0m:[93m78[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m122[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                             ~[0m
+[7m123[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m124[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m122[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m122[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m118[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m118[0m       ).mockResolvedValue(true)
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m117[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m117[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m106[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'false' is not assignable to parameter of type 'never'.
+
+[7m106[0m       ).mockResolvedValue(false)
+[7m   [0m [91m                          ~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m105[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m105[0m         'validateEndpoint',
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m88[0m:[93m78[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m88[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                                                             ~[0m
+[7m89[0m         searchResources: mockSearchResources,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m90[0m       })
+[7m  [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m88[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m88[0m       vi.spyOn(athenahealthProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                                ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m56[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'undefined' is not assignable to parameter of type 'never'.
+
+[7m56[0m       ).mockResolvedValue(undefined)
+[7m  [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m55[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"verifyAthenahealthEndpoints"' is not assignable to parameter of type 'never'.
+
+[7m55[0m         'verifyAthenahealthEndpoints',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m50[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m50[0m       ).mockResolvedValue(true)
+[7m  [0m [91m                          ~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m49[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m49[0m         'validateEndpoint',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/athenahealth.test.ts[0m:[93m14[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m14[0m     clientId: testId || 'example-client-id',
+[7m  [0m [91m              ~~~~~~[0m
+
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m112[0m:[93m72[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m112[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                                                       ~[0m
+[7m113[0m         searchResources: mockSearchResources,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m114[0m       })
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m112[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m112[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m   [0m [91m                                          ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m98[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m98[0m         true,
+[7m  [0m [91m        ~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m97[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m97[0m       vi.spyOn(cernerProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m86[0m:[93m72[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m86[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                                                       ~[0m
+[7m87[0m         searchResources: mockSearchResources,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m88[0m       })
+[7m  [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m86[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m86[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                          ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m81[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m81[0m         true,
+[7m  [0m [91m        ~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m80[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m80[0m       vi.spyOn(cernerProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m72[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'false' is not assignable to parameter of type 'never'.
+
+[7m72[0m         false,
+[7m  [0m [91m        ~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m71[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m71[0m       vi.spyOn(cernerProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m56[0m:[93m72[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; }' is not assignable to parameter of type 'never'.
+
+[7m56[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                                                       ~[0m
+[7m57[0m         searchResources: mockSearchResources,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m58[0m       })
+[7m  [0m [91m~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m56[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m56[0m       vi.spyOn(cernerProvider as unknown, 'getClient').mockReturnValue({
+[7m  [0m [91m                                          ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m50[0m:[93m27[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'undefined' is not assignable to parameter of type 'never'.
+
+[7m50[0m       ).mockResolvedValue(undefined)
+[7m  [0m [91m                          ~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m49[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"verifyCernerEndpoints"' is not assignable to parameter of type 'never'.
+
+[7m49[0m         'verifyCernerEndpoints',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m43[0m         true,
+[7m  [0m [91m        ~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m42[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m42[0m       vi.spyOn(cernerProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/cerner.test.ts[0m:[93m15[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m15[0m     clientId: testId || 'example-client-id',
+[7m  [0m [91m              ~~~~~~[0m
+
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m219[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'false' is not assignable to parameter of type 'never'.
+
+[7m219[0m         false,
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m218[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m218[0m       vi.spyOn(epicProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m201[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ searchResources: Mock<Procedure>; read: Mock<Procedure>; create: Mock<Procedure>; update: Mock<Procedure>; delete: Mock<...>; }' is not assignable to parameter of type 'never'.
+
+[7m201[0m         mockFhirClient,
+[7m   [0m [91m        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m200[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"getClient"' is not assignable to parameter of type 'never'.
+
+[7m200[0m       vi.spyOn(epicProvider as unknown, 'getClient').mockReturnValue(
+[7m   [0m [91m                                        ~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m137[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'true' is not assignable to parameter of type 'never'.
+
+[7m137[0m         true,
+[7m   [0m [91m        ~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m136[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"validateEndpoint"' is not assignable to parameter of type 'never'.
+
+[7m136[0m       vi.spyOn(epicProvider as unknown, 'validateEndpoint').mockResolvedValue(
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m109[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m109[0m     clientId: testId || 'example-client-id',
+[7m   [0m [91m              ~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m87[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m87[0m       await ehrService.configureProvider(mockProvider)
+[7m  [0m [91m                                         ~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m78[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m78[0m       await ehrService.configureProvider(mockProvider)
+[7m  [0m [91m                                         ~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m67[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m67[0m       await ehrService.configureProvider(mockProvider)
+[7m  [0m [91m                                         ~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m53[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m53[0m       await ehrService.configureProvider(mockProvider)
+[7m  [0m [91m                                         ~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m46[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ vendor: string; id: string; name: string; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ vendor: string; id: string; name: string; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m46[0m         ehrService.configureProvider(invalidProvider),
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m36[0m:[93m38[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is not assignable to parameter of type 'EHRProvider'.
+  Type '{ id: string; name: string; vendor: "epic"; baseUrl: string; clientId: any; clientSecret: string; scopes: string[]; }' is missing the following properties from type 'EHRProvider': initialize, cleanup
+
+[7m36[0m         ehrService.configureProvider(mockProvider),
+[7m  [0m [91m                                     ~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/__tests__/ehr.test.ts[0m:[93m17[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'testId'.
+
+[7m17[0m     clientId: testId || 'example-client-id',
+[7m  [0m [91m              ~~~~~~[0m
+
+[96msrc/lib/ehr/providers/allscripts.provider.ts[0m:[93m161[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m161[0m   async cleanup(): Promise<void> {
+[7m   [0m [91m        ~~~~~~~[0m
+[96msrc/lib/ehr/providers/allscripts.provider.ts[0m:[93m131[0m:[93m22[0m - [91merror[0m[90m ts(18046): [0m'capabilityStatement' is of type 'unknown'.
+
+[7m131[0m     const security = capabilityStatement.rest[0]?.security
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/providers/allscripts.provider.ts[0m:[93m123[0m:[93m12[0m - [91merror[0m[90m ts(18046): [0m'capabilityStatement' is of type 'unknown'.
+
+[7m123[0m       if (!capabilityStatement[feature]) {
+[7m   [0m [91m           ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/ehr/providers/allscripts.provider.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m31[0m   async initialize(): Promise<void> {
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+[96msrc/lib/ehr/providers/athenahealth.provider.ts[0m:[93m186[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m186[0m   async cleanup(): Promise<void> {
+[7m   [0m [91m        ~~~~~~~[0m
+[96msrc/lib/ehr/providers/athenahealth.provider.ts[0m:[93m57[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m57[0m   async initialize(): Promise<void> {
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+[96msrc/lib/ehr/providers/cerner.provider.ts[0m:[93m111[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m111[0m   async cleanup(): Promise<void> {
+[7m   [0m [91m        ~~~~~~~[0m
+[96msrc/lib/ehr/providers/cerner.provider.ts[0m:[93m29[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m29[0m   async initialize(): Promise<void> {
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+[96msrc/lib/ehr/providers/epic.provider.ts[0m:[93m69[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m69[0m   async cleanup(): Promise<void> {
+[7m  [0m [91m        ~~~~~~~[0m
+[96msrc/lib/ehr/providers/epic.provider.ts[0m:[93m24[0m:[93m9[0m - [91merror[0m[90m ts(4114): [0mThis member must have an 'override' modifier because it overrides a member in the base class 'BaseEHRProvider'.
+
+[7m24[0m   async initialize(): Promise<void> {
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+[96msrc/lib/ehr/services/oauth2.service.ts[0m:[93m48[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'access_token' does not exist on type 'string'.
+
+[7m48[0m     return newToken.access_token
+[7m  [0m [91m                    ~~~~~~~~~~~~[0m
+
+[96msrc/lib/ehr/services/redis.storage.ts[0m:[93m13[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'err' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m13[0m     this.client.on('error', (err) => {
+[7m  [0m [93m                             ~~~[0m
+[96msrc/lib/ehr/services/redis.storage.ts[0m:[93m5[0m:[93m11[0m - [93mwarning[0m[90m ts(7045): [0mMember 'client' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m5[0m   private client
+[7m [0m [93m          ~~~~~~[0m
+
+[96msrc/lib/export/index.browser.ts[0m:[93m210[0m:[93m49[0m - [91merror[0m[90m ts(2339): [0mProperty 'JSON_FORMAT' does not exist on type 'typeof ExportFormat'.
+
+[7m210[0m       if (exportOptions.format === ExportFormat.JSON_FORMAT) {
+[7m   [0m [91m                                                ~~~~~~~~~~~[0m
+
+[96msrc/lib/export/index.node.ts[0m:[93m16[0m:[93m25[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'pdfkit' or its corresponding type declarations.
+
+[7m16[0m import PDFDocument from 'pdfkit'
+[7m  [0m [91m                        ~~~~~~~~[0m
+[96msrc/lib/export/index.node.ts[0m:[93m17[0m:[93m22[0m - [93mwarning[0m[90m ts(7016): [0mCould not find a declaration file for module 'archiver'. '/home/vivi/pixelated/node_modules/.pnpm/archiver@7.0.1/node_modules/archiver/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/archiver` if it exists or add a new declaration (.d.ts) file containing `declare module 'archiver';`
+
+[7m17[0m import archiver from 'archiver'
+[7m  [0m [93m                     ~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/enhanced-service.ts[0m:[93m128[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '(encryptedData: string, operation: FHEOperation | string, params?: Record<string, unknown>) => Promise<unknown>' is not assignable to type '(encryptedData: string, operation: string, params?: Record<string, unknown> | undefined) => Promise<FHEOperationResult<string>>'.
+  Type 'Promise<unknown>' is not assignable to type 'Promise<FHEOperationResult<string>>'.
+
+[7m128[0m     enhancedService.processEncrypted = async (
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/exports.ts[0m:[93m81[0m:[93m10[0m - [91merror[0m[90m ts(2614): [0mModule '"./index"' has no exported member 'FHEService'. Did you mean to use 'import FHEService from "./index"' instead?
+
+[7m81[0m export { FHEService } from './index'
+[7m  [0m [91m         ~~~~~~~~~~[0m
+[96msrc/lib/fhe/exports.ts[0m:[93m69[0m:[93m11[0m - [91merror[0m[90m ts(2339): [0mProperty 'fheService' does not exist on type 'typeof import("/home/vivi/pixelated/src/lib/fhe/index")'.
+
+[7m69[0m   const { fheService } = await import('./index')
+[7m  [0m [91m          ~~~~~~~~~~[0m
+[96msrc/lib/fhe/exports.ts[0m:[93m28[0m:[93m10[0m - [91merror[0m[90m ts(2614): [0mModule '"./index"' has no exported member 'fheService'. Did you mean to use 'import fheService from "./index"' instead?
+
+[7m28[0m export { fheService } from './index'
+[7m  [0m [91m         ~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m331[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m331[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m325[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'SealCipherText'.
+  Type '{}' is missing the following properties from type 'SealCipherText': copy, delete
+
+[7m325[0m       const result = await sealOperations.rotate(ciphertext, steps)
+[7m   [0m [91m                                                 ~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m305[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m305[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m299[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'SealCipherText'.
+  Type '{}' is missing the following properties from type 'SealCipherText': copy, delete
+
+[7m299[0m       const result = await sealOperations.polynomial(ciphertext, coefficients)
+[7m   [0m [91m                                                     ~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m279[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m279[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m273[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'SealCipherText'.
+  Type '{}' is missing the following properties from type 'SealCipherText': copy, delete
+
+[7m273[0m       const result = await sealOperations.negate(ciphertext)
+[7m   [0m [91m                                                 ~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m256[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m256[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m248[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m248[0m         aCiphertext as string,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m222[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m222[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m214[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m214[0m         aCiphertext as string,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m188[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m188[0m       return createEncryptedData(result.result)
+[7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m180[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m180[0m         aCiphertext as string,
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m154[0m:[93m41[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'SealCipherText'.
+  Type '{}' is missing the following properties from type 'SealCipherText': copy, delete
+
+[7m154[0m       return (await sealService.decrypt(ciphertext)) as T
+[7m   [0m [91m                                        ~~~~~~~~~~[0m
+[96msrc/lib/fhe/fhe-factory.ts[0m:[93m133[0m:[93m34[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'SealCipherText' is not assignable to parameter of type 'string'.
+
+[7m133[0m       return createEncryptedData(encrypted, data as number[])
+[7m   [0m [91m                                 ~~~~~~~~~[0m
+
+[96msrc/lib/fhe/hipaa-monitoring.ts[0m:[93m1664[0m:[93m34[0m - [91merror[0m[90m ts(2551): [0mProperty 'MAX_KEY_AGE_DAYS' does not exist on type '{ readonly KEY_ROTATION_PERIOD_DAYS: 7; readonly MAX_KEY_AGE_MS: number; readonly KEY_DERIVATION_ITERATIONS: 100000; readonly SECURE_RANDOM_BYTES: 32; readonly LOCK_TIMEOUT_MS: number; ... 14 more ...; readonly REQUIRED_ENV_VARS: readonly [...]; }'. Did you mean 'MAX_KEY_AGE_MS'?
+
+[7m1664[0m       if (!HIPAA_SECURITY_CONFIG.MAX_KEY_AGE_DAYS) {
+[7m    [0m [91m                                 ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/hipaa-monitoring.ts[0m:[93m1420[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'actor' does not exist in type 'AuditEvent'.
+
+[7m1420[0m           actor: 'system',
+[7m    [0m [91m          ~~~~~[0m
+[96msrc/lib/fhe/hipaa-monitoring.ts[0m:[93m1248[0m:[93m11[0m - [91merror[0m[90m ts(2367): [0mThis comparison appears to be unintentional because the types '2555' and '0' have no overlap.
+
+[7m1248[0m       if (auditRetentionDays === 0) {
+[7m    [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/hipaa-monitoring.ts[0m:[93m1060[0m:[93m47[0m - [91merror[0m[90m ts(2551): [0mProperty 'MAX_KEY_AGE_DAYS' does not exist on type '{ readonly KEY_ROTATION_PERIOD_DAYS: 7; readonly MAX_KEY_AGE_MS: number; readonly KEY_DERIVATION_ITERATIONS: 100000; readonly SECURE_RANDOM_BYTES: 32; readonly LOCK_TIMEOUT_MS: number; ... 14 more ...; readonly REQUIRED_ENV_VARS: readonly [...]; }'. Did you mean 'MAX_KEY_AGE_MS'?
+
+[7m1060[0m       const maxKeyAge = HIPAA_SECURITY_CONFIG.MAX_KEY_AGE_DAYS || 90
+[7m    [0m [91m                                              ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/hipaa-monitoring.ts[0m:[93m1009[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'actor' does not exist in type 'AuditEvent'.
+
+[7m1009[0m           actor: 'system',
+[7m    [0m [91m          ~~~~~[0m
+
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m436[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m436[0m           decodedData = parsed.data
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m435[0m:[93m35[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m435[0m         if (parsed.data && typeof parsed.data === 'string') {
+[7m   [0m [91m                                  ~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m435[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m435[0m         if (parsed.data && typeof parsed.data === 'string') {
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m395[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m395[0m         rotResult = await this.sealOps.rotate(serializedCiphertext, steps)
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m387[0m:[93m11[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m387[0m           serializedCiphertext,
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m380[0m:[93m47[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m380[0m         negResult = await this.sealOps.negate(serializedCiphertext)
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m373[0m:[93m11[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m373[0m           serializedCiphertext,
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m364[0m:[93m11[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m364[0m           serializedCiphertext,
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m357[0m:[93m44[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'SealCipherText'.
+
+[7m357[0m         addResult = await this.sealOps.add(serializedCiphertext, addend)
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m417[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'tokens' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m417[0m     let tokens
+[7m   [0m [93m        ~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m351[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'rotResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m351[0m     let rotResult
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m350[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'steps' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m350[0m     let steps
+[7m   [0m [93m        ~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m349[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'polyResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m349[0m     let polyResult
+[7m   [0m [93m        ~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m348[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'coefficients' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m348[0m     let coefficients
+[7m   [0m [93m        ~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m347[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'negResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m347[0m     let negResult
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m346[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'multResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m346[0m     let multResult
+[7m   [0m [93m        ~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m345[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'multiplier' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m345[0m     let multiplier
+[7m   [0m [93m        ~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m344[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'subResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m344[0m     let subResult
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m343[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'subtrahend' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m343[0m     let subtrahend
+[7m   [0m [93m        ~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m342[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'addResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m342[0m     let addResult
+[7m   [0m [93m        ~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m341[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'addend' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m341[0m     let addend
+[7m   [0m [93m        ~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m221[0m:[93m13[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'parsedData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m221[0m         let parsedData
+[7m   [0m [93m            ~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m213[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'opResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m213[0m       let opResult
+[7m   [0m [93m          ~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m212[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'categoryResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m212[0m       let categoryResult
+[7m   [0m [93m          ~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/homomorphic-ops.ts[0m:[93m211[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'sentimentResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m211[0m       let sentimentResult
+[7m   [0m [93m          ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/index.ts[0m:[93m68[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m68[0m       data: string,
+[7m  [0m [93m      ~~~~[0m
+
+[96msrc/lib/fhe/parameter-optimizer.ts[0m:[93m788[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'determineSecurityLevel' is declared but its value is never read.
+
+[7m788[0m   private determineSecurityLevel(complexity: number): SecurityLevel {
+[7m   [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/parameter-optimizer.ts[0m:[93m548[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'basePreset' is declared but its value is never read.
+
+[7m548[0m     basePreset: string,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/fhe/parameter-optimizer.ts[0m:[93m474[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'basePreset' is declared but its value is never read.
+
+[7m474[0m     basePreset: string,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/fhe/parameter-optimizer.ts[0m:[93m442[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'basePreset' is declared but its value is never read.
+
+[7m442[0m     basePreset: string,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/pattern-recognition-factory.ts[0m:[93m107[0m:[93m7[0m - [91merror[0m[90m ts(2741): [0mProperty 'severityScore' is missing in type '{ id: string; riskFactor: string; correlatedFactors: { factor: string; strength: number; }[]; confidence: number; significance: string; }' but required in type 'RiskCorrelation'.
+
+[7m107[0m       {
+[7m   [0m [91m      ~[0m
+[7m108[0m         id: nanoid(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m112[0m         significance: 'Strong correlation detected',
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m113[0m       },
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/lib/fhe/pattern-recognition-factory.ts[0m:[93m83[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'number'.
+
+[7m83[0m         significance: 'Medium significance',
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/seal-context.ts[0m:[93m197[0m:[93m9[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'schemeType' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m197[0m     let schemeType
+[7m   [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/test-seal-integration.ts[0m:[93m94[0m:[93m51[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'SealCipherText'.
+
+[7m94[0m       const decryptedMult = await service.decrypt(multResult.result)
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/test-seal-integration.ts[0m:[93m78[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'SealCipherText'.
+
+[7m78[0m       const decryptedAdd = await service.decrypt(addResult.result)
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/__tests__/key-rotation.test.ts[0m:[93m20[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m20[0m     ;(KeyRotationService as unknown).instance = undefined
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/fhe/__tests__/multi-tenant-isolation.test.ts[0m:[93m15[0m:[93m31[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../tenant-manager' or its corresponding type declarations.
+
+[7m15[0m import { tenantManager } from '../tenant-manager'
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/fhe/__tests__/multi-tenant-isolation.test.ts[0m:[93m14[0m:[93m10[0m - [91merror[0m[90m ts(2614): [0mModule '"../index"' has no exported member 'fheService'. Did you mean to use 'import fheService from "../index"' instead?
+
+[7m14[0m import { fheService } from '../index'
+[7m  [0m [91m         ~~~~~~~~~~[0m
+
+[96msrc/lib/hooks/useMultidimensionalEmotions.ts[0m:[93m3[0m:[93m46[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/ai/temporal/types' or its corresponding type declarations.
+
+[7m3[0m import type { MultidimensionalPattern } from '@/lib/ai/temporal/types'
+[7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/hooks/useMultidimensionalEmotions.ts[0m:[93m2[0m:[93m15[0m - [91merror[0m[90m ts(2724): [0m'"@/lib/ai/emotions/dimensionalTypes"' has no exported member named 'DimensionalEmotionMap'. Did you mean 'DimensionalEmotion'?
+
+[7m2[0m import type { DimensionalEmotionMap } from '@/lib/ai/emotions/dimensionalTypes'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/jobs/queue.ts[0m:[93m280[0m:[93m58[0m - [91merror[0m[90m ts(2693): [0m'unknown' only refers to a type, but is being used as a value here.
+
+[7m280[0m           .map((jobStr: string) => JSON.parse(jobStr) as unknown.id)
+[7m   [0m [91m                                                         ~~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m278[0m:[93m38[0m - [91merror[0m[90m ts(2693): [0m'unknown' only refers to a type, but is being used as a value here.
+
+[7m278[0m               (JSON.parse(jobStr) as unknown.status) === JobStatus.CANCELLED,
+[7m   [0m [91m                                     ~~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m247[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'unknown[]' is not assignable to type 'Job<unknown>[]'.
+  Type 'unknown' is not assignable to type 'Job<unknown>'.
+
+[7m247[0m     return jobStrings.map((jobString) => JSON.parse(jobString) as unknown)
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m241[0m:[93m36[0m - [91merror[0m[90m ts(2693): [0m'unknown' only refers to a type, but is being used as a value here.
+
+[7m241[0m             (JSON.parse(jobStr) as unknown.status) === JobStatus.CANCELLED,
+[7m   [0m [91m                                   ~~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m202[0m:[93m25[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'Job<unknown> | null'.
+
+[7m202[0m     return jobString ? (JSON.parse(jobString) as unknown) : null
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m145[0m:[93m9[0m - [91merror[0m[90m ts(2698): [0mSpread types may only be created from object types.
+
+[7m145[0m         ...(JSON.parse(currentJobString) as unknown),
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m117[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'Job<unknown>'.
+
+[7m117[0m     const job: Job = JSON.parse(jobString[0].value) as unknown
+[7m   [0m [91m          ~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m258[0m:[93m35[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'jobStr' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m258[0m         jobIds = pendingJobs.map((jobStr) => {
+[7m   [0m [93m                                  ~~~~~~[0m
+[96msrc/lib/jobs/queue.ts[0m:[93m219[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m219[0m         jobStrings = pendingJobsWithScores.map((item) => {
+[7m   [0m [93m                                                ~~~~[0m
+
+[96msrc/lib/jobs/worker.ts[0m:[93m180[0m:[93m13[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ format: "json" | "csv" | "pdf" | undefined; includeDetails: boolean; groupBy?: string; filters?: Record<string, unknown>; }' is not assignable to parameter of type '{ format?: "json" | "csv" | undefined; }'.
+  Types of property 'format' are incompatible.
+
+[7m180[0m             safeOptions,
+[7m   [0m [91m            ~~~~~~~~~~~[0m
+[96msrc/lib/jobs/worker.ts[0m:[93m174[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType 'BiasReport | { summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }' is not assignable to type 'BiasReport | undefined'.
+  Type '{ summary: { sessionCount: number; averageBiasScore: number; }; performance: Record<string, unknown>; alerts: Record<string, number>; }' is missing the following properties from type 'BiasReport': reportId, title, description, createdAt, data
+
+[7m174[0m           report = await biasDetectionEngine.generateBiasReport(
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/jobs/worker.ts[0m:[93m142[0m:[93m47[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyzeSessionsBatch' does not exist on type 'BiasDetectionEngine'. Did you mean 'analyzeSession'?
+
+[7m142[0m           results = await biasDetectionEngine.analyzeSessionsBatch(
+[7m   [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/logging/performance-logger.ts[0m:[93m127[0m:[93m45[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m127[0m   public async cleanup(retentionDays = 30): void {
+[7m   [0m [91m                                            ~~~~[0m
+[96msrc/lib/logging/performance-logger.ts[0m:[93m116[0m:[93m24[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'PerformanceMetrics'.
+
+[7m116[0m           metrics.push(...fileMetrics)
+[7m   [0m [91m                       ~~~~~~~~~~~~~~[0m
+[96msrc/lib/logging/performance-logger.ts[0m:[93m41[0m:[93m55[0m - [91merror[0m[90m ts(1064): [0mThe return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+
+[7m41[0m   public async logMetric(metric: PerformanceMetrics): void {
+[7m  [0m [91m                                                      ~~~~[0m
+
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m667[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'to' does not exist on type '{}'.
+
+[7m667[0m     expect(result.contextDetectionResult.metadata.transition?.to).toBe(
+[7m   [0m [91m                                                              ~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m664[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'from' does not exist on type '{}'.
+
+[7m664[0m     expect(result.contextDetectionResult.metadata.transition?.from).toBe(
+[7m   [0m [91m                                                              ~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m518[0m:[93m25[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m518[0m           expect(typeof (result as unknown).explanation).toBe('string')
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m517[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m517[0m           expect((result as unknown).explanation).toBeTruthy()
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m516[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m516[0m           expect((result as unknown).confidence).toBeLessThanOrEqual(1)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m515[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m515[0m           expect((result as unknown).confidence).toBeGreaterThanOrEqual(0)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m514[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m514[0m           expect((result as unknown).score).toBeLessThanOrEqual(1)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m513[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m513[0m           expect((result as unknown).score).toBeGreaterThanOrEqual(0)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m512[0m:[93m18[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m512[0m           expect((result as unknown).objectiveId).toBe(objectiveId)
+[7m   [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m408[0m:[93m9[0m - [91merror[0m[90m ts(2739): [0mType 'AIService' is missing the following properties from type 'AIService': createStreamingChatCompletion, dispose
+
+[7m408[0m         aiService: failingAIService,
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m267[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'import("/home/vivi/pixelated/src/lib/ai/models/types").AIService' is not assignable to parameter of type 'import("/home/vivi/pixelated/src/lib/ai/models/ai-types").AIService'.
+  Type 'AIService' is missing the following properties from type 'AIService': createStreamingChatCompletion, dispose
+
+[7m267[0m         baseAIService,
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m261[0m:[93m14[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m261[0m       expect((response as unknown).choices?.[0]?.message?.content).toBeDefined()
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m260[0m:[93m14[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m260[0m       expect((response as unknown).content).toBeDefined()
+[7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m238[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'import("/home/vivi/pixelated/src/lib/ai/models/types").AIService' is not assignable to parameter of type 'import("/home/vivi/pixelated/src/lib/ai/models/ai-types").AIService'.
+  Type 'AIService' is missing the following properties from type 'AIService': createStreamingChatCompletion, dispose
+
+[7m238[0m         baseAIService,
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m72[0m:[93m7[0m - [91merror[0m[90m ts(2739): [0mType 'AIService' is missing the following properties from type 'AIService': createStreamingChatCompletion, dispose
+
+[7m72[0m       aiService: mockAIService,
+[7m  [0m [91m      ~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m50[0m:[93m5[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'createStreamingChatCompletion' does not exist in type 'Partial<AIService>'. Did you mean to write 'createChatCompletion'?
+
+[7m50[0m     createStreamingChatCompletion: vi.fn(),
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m17[0m:[93m1[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m17[0m // @ts-expect-error: Type declarations may be missing for test context
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m15[0m:[93m1[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m15[0m // @ts-expect-error: Type declarations may be missing for test context
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m6[0m:[93m37[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/models/types"' has no exported member 'AICompletion'.
+
+[7m6[0m import type { AIMessage, AIService, AICompletion } from '../../ai/models/types'
+[7m [0m [91m                                    ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/__tests__/integration.test.ts[0m:[93m6[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"../../ai/models/types"' has no exported member 'AIMessage'.
+
+[7m6[0m import type { AIMessage, AIService, AICompletion } from '../../ai/models/types'
+[7m [0m [91m              ~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/api/unified-api.ts[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../core/objective-interfaces"' has no exported member 'AlignmentMetrics'.
+
+[7m10[0m   AlignmentMetrics,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/batch/batch-processor.ts[0m:[93m77[0m:[93m30[0m - [91merror[0m[90m ts(2532): [0mObject is possibly 'undefined'.
+
+[7m77[0m     if (this.queue.length >= this.config.batchSize) {
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/batch/batch-processor.ts[0m:[93m52[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'api' is declared but its value is never read.
+
+[7m52[0m   private api: IUnifiedMetaAlignerAPI
+[7m  [0m [93m          ~~~[0m
+
+[96msrc/lib/metaaligner/context/context-injector.ts[0m:[93m47[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'detectedContext' does not exist in type 'UnifiedContext'.
+
+[7m47[0m         detectedContext,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/context/context-injector.ts[0m:[93m52[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'context' is declared but its value is never read.
+
+[7m52[0m   private validateContext(context: ContextType): boolean {
+[7m  [0m [93m                          ~~~~~~~[0m
+
+[96msrc/lib/metaaligner/core/objective-metrics.test.ts[0m:[93m305[0m:[93m26[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ timestamp: Date; objectiveResults: { correctness: { score: number; objectiveId: string; criteriaScores: Record<string, number>; confidence: number; explanation?: string; metadata: EvaluationMetadata; }; }; ... 4 more ...; evaluationContext: AlignmentContext; }' is not assignable to parameter of type 'never'.
+
+[7m305[0m         evaluations.push(evaluation)
+[7m   [0m [91m                         ~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/core/objective-weighting.ts[0m:[93m218[0m:[93m10[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'ContextualObjectiveWeights' to type 'Record<string, number>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Index signature for type 'string' is missing in type 'ContextualObjectiveWeights'.
+
+[7m218[0m         (contextual as Record<string, number>)[objectiveId] ?? base
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/enhancement/enhancement-processor.ts[0m:[93m63[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'content' is declared but its value is never read.
+
+[7m63[0m   private scoreResponse(content: string): number {
+[7m  [0m [93m                        ~~~~~~~[0m
+
+[96msrc/lib/metaaligner/error-handling/circuit-breaker.ts[0m:[93m34[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'lastError' is declared but its value is never read.
+
+[7m34[0m   private lastError: Error | null = null
+[7m  [0m [93m          ~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/formats/conversion.ts[0m:[93m37[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ enhancedResponse: string; originalResponse: string; alignment: { evaluation: Record<string | number | symbol, unknown>; metrics: Record<string | number | symbol, unknown>; enhanced: boolean; enhancementAttempts: number; }; errors?: { ...; }[] | undefined; version?: string | undefined; }' is not assignable to type 'UnifiedProcessingResponse'.
+  The types of 'alignment.evaluation' are incompatible between these types.
+
+[7m37[0m   return validateData(UnifiedProcessingResponseSchema, data)
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/lib/metaaligner/formats/schemas.ts[0m:[93m44[0m:[93m16[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m44[0m     metrics: z.record(z.unknown()), // This could be more specific if AlignmentMetrics has a Zod schema
+[7m  [0m [91m               ~~~~~~[0m
+[96msrc/lib/metaaligner/formats/schemas.ts[0m:[93m43[0m:[93m19[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m43[0m     evaluation: z.record(z.unknown()), // This could be more specific if AlignmentEvaluationResult has a Zod schema
+[7m  [0m [91m                  ~~~~~~[0m
+[96msrc/lib/metaaligner/formats/schemas.ts[0m:[93m14[0m:[93m15[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m14[0m   metadata: z.record(z.unknown()).optional(),
+[7m  [0m [91m              ~~~~~~[0m
+[96msrc/lib/metaaligner/formats/schemas.ts[0m:[93m13[0m:[93m35[0m - [91merror[0m[90m ts(2554): [0mExpected 2-3 arguments, but got 1.
+
+[7m13[0m   content: z.union([z.string(), z.record(z.unknown())]),
+[7m  [0m [91m                                  ~~~~~~[0m
+
+[96msrc/lib/metaaligner/formats/validation.ts[0m:[93m24[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'errors' does not exist on type 'ZodError<unknown>'.
+
+[7m24[0m         `Validation failed: ${error.errors.map((e) => e.message).join(', ')}`,
+[7m  [0m [91m                                    ~~~~~~[0m
+[96msrc/lib/metaaligner/formats/validation.ts[0m:[93m24[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m24[0m         `Validation failed: ${error.errors.map((e) => e.message).join(', ')}`,
+[7m  [0m [93m                                                ~[0m
+
+[96msrc/lib/metaaligner/objectives/objective-injector.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'objectives' does not exist in type 'UnifiedContext'.
+
+[7m40[0m         objectives: resolvedObjectives,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/objectives/objective-injector.ts[0m:[93m7[0m:[93m47[0m - [91merror[0m[90m ts(2307): [0mCannot find module './objectives' or its corresponding type declarations.
+
+[7m7[0m import { CORE_MENTAL_HEALTH_OBJECTIVES } from './objectives'
+[7m [0m [91m                                              ~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/objectives/objective-injector.ts[0m:[93m52[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'request' is declared but its value is never read.
+
+[7m52[0m     request: UnifiedProcessingRequest,
+[7m  [0m [93m    ~~~~~~~[0m
+[96msrc/lib/metaaligner/objectives/objective-injector.ts[0m:[93m45[0m:[93m30[0m - [93mwarning[0m[90m ts(6133): [0m'objectives' is declared but its value is never read.
+
+[7m45[0m   private validateObjectives(objectives: ObjectiveDefinition[]): boolean {
+[7m  [0m [93m                             ~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m286[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m286[0m             ? parsed.metadata.relatedTopics
+[7m   [0m [91m              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m285[0m:[93m40[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m285[0m           relatedTopics: Array.isArray(parsed.metadata?.relatedTopics)
+[7m   [0m [91m                                       ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m283[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m283[0m             ? parsed.metadata.practicalApplications
+[7m   [0m [91m              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m281[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m281[0m             parsed.metadata?.practicalApplications,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m278[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m278[0m             Math.min(1, parsed.metadata?.conceptualDepth || 0.5),
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m273[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m273[0m           ? parsed.priorKnowledgeRequired
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m272[0m:[93m47[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m272[0m         priorKnowledgeRequired: Array.isArray(parsed.priorKnowledgeRequired)
+[7m   [0m [91m                                              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m270[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m270[0m           parsed.recommendedResources,
+[7m   [0m [91m          ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m267[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m267[0m           ? parsed.learningObjectives
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m266[0m:[93m43[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m266[0m         learningObjectives: Array.isArray(parsed.learningObjectives)
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m264[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m264[0m         complexity: this.validateComplexity(parsed.complexity),
+[7m   [0m [91m                                            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m262[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m262[0m         confidence: Math.max(0, Math.min(1, parsed.confidence || 0.8)),
+[7m   [0m [91m                                            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m261[0m:[93m32[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m261[0m         isEducational: Boolean(parsed.isEducational),
+[7m   [0m [91m                               ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/EducationalContextRecognizer.ts[0m:[93m246[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'createChatCompletion' does not exist on type '{}'.
+
+[7m246[0m     const response = await this.config.aiService.createChatCompletion(
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/adaptive-selector.test.ts[0m:[93m364[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'to' does not exist on type '{}'.
+
+[7m364[0m     expect(result.contextDetectionResult.metadata.transition?.to).toBe(
+[7m   [0m [91m                                                              ~~[0m
+[96msrc/lib/metaaligner/prioritization/adaptive-selector.test.ts[0m:[93m361[0m:[93m63[0m - [91merror[0m[90m ts(2339): [0mProperty 'from' does not exist on type '{}'.
+
+[7m361[0m     expect(result.contextDetectionResult.metadata.transition?.from).toBe(
+[7m   [0m [91m                                                              ~~~~[0m
+[96msrc/lib/metaaligner/prioritization/adaptive-selector.test.ts[0m:[93m29[0m:[93m3[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'createStreamingChatCompletion' does not exist in type 'AIService'. Did you mean to write 'createChatCompletion'?
+
+[7m29[0m   createStreamingChatCompletion: vi.fn(),
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/adaptive-selector.ts[0m:[93m120[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ objectives: Record<string, number>; contextualWeights: {}; globalSettings: { enableDynamicWeighting: boolean; enableContextualAdjustment: boolean; minObjectiveScore: number; maxObjectiveScore: number; normalizationMethod: number; aggregationMethod: number; }; }' is not assignable to parameter of type 'ObjectiveConfiguration'.
+  The types of 'globalSettings.normalizationMethod' are incompatible between these types.
+
+[7m120[0m       objectiveConfig,
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/context-detector.test.ts[0m:[93m26[0m:[93m3[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'createStreamingChatCompletion' does not exist in type 'AIService'. Did you mean to write 'createChatCompletion'?
+
+[7m26[0m   createStreamingChatCompletion: vi.fn(),
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m648[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m648[0m             parsed.metadata?.ageAppropriateness,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m645[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m645[0m             ? parsed.metadata.relatedTopics
+[7m   [0m [91m              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m644[0m:[93m40[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m644[0m           relatedTopics: Array.isArray(parsed.metadata?.relatedTopics)
+[7m   [0m [91m                                       ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m642[0m:[93m15[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m642[0m             ? parsed.metadata.practicalApplications
+[7m   [0m [91m              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m640[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m640[0m             parsed.metadata?.practicalApplications,
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m637[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m637[0m             Math.min(1, parsed.metadata?.conceptualDepth || 0.5),
+[7m   [0m [91m                        ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m632[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m632[0m           ? parsed.priorKnowledgeRequired
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m631[0m:[93m47[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m631[0m         priorKnowledgeRequired: Array.isArray(parsed.priorKnowledgeRequired)
+[7m   [0m [91m                                              ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m627[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m627[0m           ? parsed.recommendedResources
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m626[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m626[0m         recommendedResources: Array.isArray(parsed.recommendedResources)
+[7m   [0m [91m                                            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m624[0m:[93m13[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m624[0m           ? parsed.learningObjectives
+[7m   [0m [91m            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m623[0m:[93m43[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m623[0m         learningObjectives: Array.isArray(parsed.learningObjectives)
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m622[0m:[93m43[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m622[0m         topicArea: this.validateTopicArea(parsed.topicArea),
+[7m   [0m [91m                                          ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m621[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m621[0m         complexity: this.validateComplexity(parsed.complexity),
+[7m   [0m [91m                                            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m620[0m:[93m55[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m620[0m         educationalType: this.validateEducationalType(parsed.educationalType),
+[7m   [0m [91m                                                      ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m619[0m:[93m45[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m619[0m         confidence: Math.max(0, Math.min(1, parsed.confidence || 0.5)),
+[7m   [0m [91m                                            ~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/educational-context-recognizer.ts[0m:[93m618[0m:[93m32[0m - [91merror[0m[90m ts(18046): [0m'parsed' is of type 'unknown'.
+
+[7m618[0m         isEducational: Boolean(parsed.isEducational),
+[7m   [0m [91m                               ~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/objective-switcher.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"./context-objective-mapping"' has no exported member 'getContextObjectives'.
+
+[7m6[0m   getContextObjectives,
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/prioritization/objective-switcher.ts[0m:[93m14[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'lastContext' is declared but its value is never read.
+
+[7m14[0m   private lastContext?: ContextEvent
+[7m  [0m [93m          ~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/prioritization/objective-weighting-strategy.ts[0m:[93m48[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'params.customFactors' is possibly 'undefined'.
+
+[7m48[0m       obj.key in params.customFactors
+[7m  [0m [91m                 ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m349[0m:[93m87[0m - [91merror[0m[90m ts(18046): [0m'enhancedResult' is of type 'unknown'.
+
+[7m349[0m             explanation: `Score improved from ${originalResult.score.toFixed(3)} to ${enhancedResult.score.toFixed(3)}`,
+[7m   [0m [91m                                                                                      ~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m340[0m:[93m34[0m - [91merror[0m[90m ts(18046): [0m'enhancedResult' is of type 'unknown'.
+
+[7m340[0m         const scoreImprovement = enhancedResult.score - originalResult.score
+[7m   [0m [91m                                 ~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m164[0m:[93m60[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m164[0m           finalEvaluation.overallScore - initialEvaluation.overallScore
+[7m   [0m [91m                                                           ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m164[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m164[0m           finalEvaluation.overallScore - initialEvaluation.overallScore
+[7m   [0m [91m                          ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m162[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m162[0m         enhancedScore: finalEvaluation.overallScore.toFixed(3),
+[7m   [0m [91m                                       ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m161[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m161[0m         originalScore: initialEvaluation.overallScore.toFixed(3),
+[7m   [0m [91m                                         ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m118[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m118[0m           score: initialEvaluation.overallScore,
+[7m   [0m [91m                                   ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m113[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'overallScore' does not exist on type 'EvaluationResponse'.
+
+[7m113[0m         initialEvaluation.overallScore <
+[7m   [0m [91m                          ~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../core/objectives"' has no exported member 'AlignmentMetrics'.
+
+[7m9[0m   AlignmentMetrics,
+[7m [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/metaaligner/processing/enhancement-pipeline.ts[0m:[93m8[0m:[93m3[0m - [91merror[0m[90m ts(2305): [0mModule '"../core/objectives"' has no exported member 'AlignmentEvaluationResult'.
+
+[7m8[0m   AlignmentEvaluationResult,
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/quality/quality-metrics.ts[0m:[93m23[0m:[93m26[0m - [93mwarning[0m[90m ts(6133): [0m'response' is declared but its value is never read.
+
+[7m23[0m   public async calculate(response: string): Promise<Record<string, number>> {
+[7m  [0m [93m                         ~~~~~~~~[0m
+
+[96msrc/lib/metaaligner/streaming/streaming-handler.ts[0m:[93m42[0m:[93m16[0m - [91merror[0m[90m ts(2416): [0mProperty 'processStream' in type 'StreamingHandler' is not assignable to the same property in base type 'IStreamingHandler'.
+  Type '(request: UnifiedProcessingRequest, onChunk: (chunk: UnifiedProcessingResponse) => void, onError: (error: Error) => void) => Promise<...>' is not assignable to type '(request: UnifiedProcessingRequest, onChunk: (chunk: UnifiedProcessingResponse) => void) => Promise<void>'.
+
+[7m42[0m   public async processStream(
+[7m  [0m [91m               ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m265[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type 'AuthUser'.
+
+[7m265[0m         user.id,
+[7m   [0m [91m             ~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m246[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '(request: Request, context: Record<string, unknown>) => Promise<Response | undefined>' is not assignable to type 'void'.
+
+[7m246[0m   return async (
+[7m   [0m [91m  ~~~~~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m81[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies | undefined' is not assignable to parameter of type 'CookiesLike'.
+  Type 'undefined' is not assignable to type 'CookiesLike'.
+
+[7m81[0m     const user = await getCurrentUser(context.cookies)
+[7m  [0m [91m                                      ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m80[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '(context: APIContext) => Promise<Response | undefined>' is not assignable to type 'void'.
+
+[7m80[0m   return async (context: APIContext): Promise<Response | undefined> => {
+[7m  [0m [91m  ~~~~~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m31[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroCookies | undefined' is not assignable to parameter of type 'CookiesLike'.
+  Type 'undefined' is not assignable to type 'CookiesLike'.
+
+[7m31[0m   const user = await getCurrentUser(context.cookies)
+[7m  [0m [91m                                    ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m16[0m:[93m11[0m - [91merror[0m[90m ts(2430): [0mInterface 'APIContextWithUser' incorrectly extends interface 'APIContext'.
+  Types of property 'locals' are incompatible.
+
+[7m16[0m interface APIContextWithUser extends APIContext {
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/auth.middleware.ts[0m:[93m7[0m:[93m10[0m - [91merror[0m[90m ts(2305): [0mModule '"../audit/log"' has no exported member 'createResourceAuditLog'.
+
+[7m7[0m import { createResourceAuditLog } from '../audit/log'
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/middleware/csrf.ts[0m:[93m154[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'import("/home/vivi/pixelated/node_modules/.pnpm/astro@5.15.1_@azure+storage-blob@12.28.0_@types+node@24.7.2_@upstash+redis@1.35.5_@verc_689c0c127708268dd190515c64a92522/node_modules/astro/dist/core/cookies/cookies").AstroCookies' is not assignable to parameter of type 'import("astro").AstroCookies'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m154[0m         setCSRFCookie(cookies, csrfToken, config)
+[7m   [0m [91m                      ~~~~~~~[0m
+[96msrc/lib/middleware/csrf.ts[0m:[93m79[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '"strict" | "none" | "lax"' is not assignable to type 'boolean | "None" | "Lax" | "Strict" | undefined'.
+  Type '"strict"' is not assignable to type 'boolean | "None" | "Lax" | "Strict" | undefined'. Did you mean '"Strict"'?
+
+[7m79[0m     sameSite: config.cookieSameSite,
+[7m  [0m [91m    ~~~~~~~~[0m
+
+[96msrc/lib/middleware/index.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'contentTypeMiddleware'.
+
+[7m15[0m   contentTypeMiddleware,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'securityHeadersMiddleware'.
+
+[7m14[0m   securityHeadersMiddleware,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'csrfMiddleware'.
+
+[7m13[0m   csrfMiddleware,
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'corsMiddleware'.
+
+[7m12[0m   corsMiddleware,
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'loggingMiddleware'.
+
+[7m11[0m   loggingMiddleware,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m10[0m:[93m35[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'sequence'.
+
+[7m10[0m export const middlewareSequence = sequence(
+[7m  [0m [91m                                  ~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m1[0m:[93m46[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'MiddlewareNext'.
+
+[7m1[0m import type { APIContext, MiddlewareHandler, MiddlewareNext } from 'astro'
+[7m [0m [91m                                             ~~~~~~~~~~~~~~[0m
+[96msrc/lib/middleware/index.ts[0m:[93m1[0m:[93m27[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'MiddlewareHandler'.
+
+[7m1[0m import type { APIContext, MiddlewareHandler, MiddlewareNext } from 'astro'
+[7m [0m [91m                          ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/middleware/rate-limit.ts[0m:[93m58[0m:[93m20[0m - [93mwarning[0m[90m ts(6133): [0m'userLimits' is declared but its value is never read.
+
+[7m58[0m   private readonly userLimits: Record<string, number>
+[7m  [0m [93m                   ~~~~~~~~~~[0m
+[96msrc/lib/middleware/rate-limit.ts[0m:[93m57[0m:[93m20[0m - [93mwarning[0m[90m ts(6133): [0m'windowMs' is declared but its value is never read.
+
+[7m57[0m   private readonly windowMs: number
+[7m  [0m [93m                   ~~~~~~~~[0m
+[96msrc/lib/middleware/rate-limit.ts[0m:[93m56[0m:[93m20[0m - [93mwarning[0m[90m ts(6133): [0m'defaultLimit' is declared but its value is never read.
+
+[7m56[0m   private readonly defaultLimit: number
+[7m  [0m [93m                   ~~~~~~~~~~~~[0m
+
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m399[0m:[93m26[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m399[0m       notifications.push(this.sendWebhookNotification(alert))
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m395[0m:[93m26[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m395[0m       notifications.push(this.sendEmailNotification(alert))
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m391[0m:[93m26[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Promise<void>' is not assignable to parameter of type 'never'.
+
+[7m391[0m       notifications.push(this.sendSlackNotification(alert))
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'openai' or its corresponding type declarations.
+
+[7m2[0m import { OpenAI } from 'openai'
+[7m [0m [91m                       ~~~~~~~~[0m
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m238[0m:[93m63[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m238[0m       id: `pattern_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                              ~~~~~~[0m
+[96msrc/lib/monitoring/ai-monitoring-service.ts[0m:[93m217[0m:[93m63[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m217[0m       id: `anomaly_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+[7m   [0m [93m                                                              ~~~~~~[0m
+
+[96msrc/lib/monitoring/azure-insights.ts[0m:[93m19[0m:[93m35[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../../config/azure.config' or its corresponding type declarations.
+
+[7m19[0m       const module = await import('../../config/azure.config')
+[7m  [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/monitoring/performanceMonitor.ts[0m:[93m552[0m:[93m31[0m - [91merror[0m[90m ts(2683): [0m'this' implicitly has type 'any' because it does not have a type annotation.
+
+[7m552[0m     trends: ReturnType<typeof this.getPerformanceTrends>
+[7m   [0m [91m                              ~~~~[0m
+[96msrc/lib/monitoring/performanceMonitor.ts[0m:[93m9[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/monitoring' or its corresponding type declarations.
+
+[7m9[0m } from '@/types/monitoring'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/performanceMonitor.ts[0m:[93m359[0m:[93m61[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m359[0m       id: `alert_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+[7m   [0m [93m                                                            ~~~~~~[0m
+
+[96msrc/lib/monitoring/service.ts[0m:[93m214[0m:[93m31[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(resource: PerformanceResourceTiming) => void' is not assignable to parameter of type '(value: PerformanceEntry, index: number, array: PerformanceEntry[]) => void'.
+  Types of parameters 'resource' and 'value' are incompatible.
+
+[7m214[0m     metrics.resources.forEach((resource: PerformanceResourceTiming) => {
+[7m   [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/service.ts[0m:[93m156[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entry' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m156[0m         entries.forEach((entry) => {
+[7m   [0m [93m                         ~~~~~[0m
+[96msrc/lib/monitoring/service.ts[0m:[93m154[0m:[93m32[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entryList' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m154[0m       new PerformanceObserver((entryList) => {
+[7m   [0m [93m                               ~~~~~~~~~[0m
+[96msrc/lib/monitoring/service.ts[0m:[93m148[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entry' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m148[0m         entries.forEach((entry) => {
+[7m   [0m [93m                         ~~~~~[0m
+[96msrc/lib/monitoring/service.ts[0m:[93m146[0m:[93m32[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entryList' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m146[0m       new PerformanceObserver((entryList) => {
+[7m   [0m [93m                               ~~~~~~~~~[0m
+[96msrc/lib/monitoring/service.ts[0m:[93m139[0m:[93m32[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entryList' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m139[0m       new PerformanceObserver((entryList) => {
+[7m   [0m [93m                               ~~~~~~~~~[0m
+
+[96msrc/lib/monitoring/setup.ts[0m:[93m3[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/analytics/service' or its corresponding type declarations.
+
+[7m3[0m import { AnalyticsService } from '@/lib/analytics/service'
+[7m [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/monitoring/setup.ts[0m:[93m78[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entry' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m78[0m         list.getEntries().forEach((entry) => {
+[7m  [0m [93m                                   ~~~~~[0m
+[96msrc/lib/monitoring/setup.ts[0m:[93m77[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'list' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m77[0m       const observer = new PerformanceObserver((list) => {
+[7m  [0m [93m                                                ~~~~[0m
+[96msrc/lib/monitoring/setup.ts[0m:[93m26[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'redis' is declared but its value is never read.
+
+[7m26[0m   private redis: RedisService
+[7m  [0m [93m          ~~~~~[0m
+
+[96msrc/lib/patient/patientManager.ts[0m:[93m315[0m:[93m11[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'therapistId' does not exist in type 'PatientUpdateData'.
+
+[7m315[0m         { therapistId: toTherapistId },
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[96msrc/lib/patient/patientManager.ts[0m:[93m10[0m:[93m8[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/patient' or its corresponding type declarations.
+
+[7m10[0m } from '@/types/patient'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/patient/patientManager.ts[0m:[93m352[0m:[93m73[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m352[0m     const reportId = `report_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`
+[7m   [0m [93m                                                                        ~~~~~~[0m
+[96msrc/lib/patient/patientManager.ts[0m:[93m178[0m:[93m35[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pDiag' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m178[0m           patient.diagnosis.some((pDiag) =>
+[7m   [0m [93m                                  ~~~~~[0m
+[96msrc/lib/patient/patientManager.ts[0m:[93m111[0m:[93m56[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m111[0m     return `P${Date.now()}${Math.random().toString(36).substr(2, 5).toUpperCase()}`
+[7m   [0m [93m                                                       ~~~~~~[0m
+
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m347[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'boolean' is not assignable to type 'void'.
+
+[7m347[0m       return true
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m344[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'boolean' is not assignable to type 'void'.
+
+[7m344[0m         return false
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m324[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'void'.
+
+[7m324[0m       return destination
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m320[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'boolean' is not assignable to type 'void'.
+
+[7m320[0m       return true
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m311[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'boolean' is not assignable to type 'void'.
+
+[7m311[0m       return true
+[7m   [0m [91m      ~~~~~~[0m
+[96msrc/lib/polyfills/browser-polyfills.ts[0m:[93m300[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'void'.
+
+[7m300[0m       return destination
+[7m   [0m [91m      ~~~~~~[0m
+
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m537[0m:[93m25[0m - [91merror[0m[90m ts(2556): [0mA spread argument must either have a tuple type or be passed to a rest parameter.
+
+[7m537[0m         await redis.del(...keysToDelete)
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m425[0m:[93m27[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'defaultRuleSets'.
+
+[7m425[0m     for (const ruleSet of defaultRuleSets) {
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m354[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'alert.details.errorRate' is of type 'unknown'.
+
+[7m354[0m           alert.details.errorRate > thresholds.errorRate
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m349[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'alert.details.blockPercentage' is of type 'unknown'.
+
+[7m349[0m           alert.details.blockPercentage > thresholds.blockedPercentage
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m343[0m:[93m35[0m - [91merror[0m[90m ts(18046): [0m'alert.details.blockedRate' is of type 'unknown'.
+
+[7m343[0m         return !thresholds.rps || alert.details.blockedRate > thresholds.rps
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m145[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ hour: number; totalRequests: number; blockedRequests: number; attackDetections: number; errors: number; }' is not assignable to parameter of type 'never'.
+
+[7m145[0m         hourlyData.push({
+[7m   [0m [91m                        ~[0m
+[7m146[0m           hour,
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m150[0m           errors: parseInt(data.error_total || '0'),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m151[0m         })
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m110[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'hourlyData' does not exist on type 'RateLimitAnalytics'.
+
+[7m110[0m             analyticsEntry.hourlyData = hourlyData
+[7m   [0m [91m                           ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m60[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m60[0m       pipeline.expire(hourlyKey, 86400 * 7)
+[7m  [0m [91m               ~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m59[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m59[0m       pipeline.expire(analyticsKey, 86400 * 30)
+[7m  [0m [91m               ~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m56[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m56[0m       pipeline.hset(hourlyKey, 'last_updated', timestamp)
+[7m  [0m [91m               ~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m51[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m51[0m       pipeline.hset(analyticsKey, 'last_updated', timestamp)
+[7m  [0m [91m               ~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m20[0m:[93m14[0m - [91merror[0m[90m ts(2395): [0mIndividual declarations in merged declaration 'RateLimitAnalytics' must be all exported or all local.
+
+[7m20[0m export class RateLimitAnalytics {
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'RateLimitAnalytics'.
+
+[7m9[0m   RateLimitAnalytics,
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/analytics.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m ts(2395): [0mIndividual declarations in merged declaration 'RateLimitAnalytics' must be all exported or all local.
+
+[7m9[0m   RateLimitAnalytics,
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/rate-limiting/config.ts[0m:[93m309[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ enableAnalytics: boolean; enabled?: boolean | undefined; defaultWindowMs?: number | undefined; enableAttackDetection?: boolean | undefined; }' is not assignable to type '{ enabled: boolean; defaultWindowMs: number; enableAttackDetection: boolean; enableAnalytics: boolean; }'.
+  Types of property 'enabled' are incompatible.
+
+[7m309[0m     config.global = {
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/config.ts[0m:[93m302[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ enableAttackDetection: boolean; enabled?: boolean | undefined; defaultWindowMs?: number | undefined; enableAnalytics?: boolean | undefined; }' is not assignable to type '{ enabled: boolean; defaultWindowMs: number; enableAttackDetection: boolean; enableAnalytics: boolean; }'.
+  Types of property 'enabled' are incompatible.
+
+[7m302[0m     config.global = {
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/config.ts[0m:[93m295[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ defaultWindowMs: number; enabled?: boolean | undefined; enableAttackDetection?: boolean | undefined; enableAnalytics?: boolean | undefined; }' is not assignable to type '{ enabled: boolean; defaultWindowMs: number; enableAttackDetection: boolean; enableAnalytics: boolean; }'.
+  Types of property 'enabled' are incompatible.
+
+[7m295[0m     config.global = {
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/config.ts[0m:[93m288[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ enabled: boolean; defaultWindowMs?: number | undefined; enableAttackDetection?: boolean | undefined; enableAnalytics?: boolean | undefined; }' is not assignable to type '{ enabled: boolean; defaultWindowMs: number; enableAttackDetection: boolean; enableAnalytics: boolean; }'.
+  Types of property 'defaultWindowMs' are incompatible.
+
+[7m288[0m     config.global = {
+[7m   [0m [91m    ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/rate-limiting/index.ts[0m:[93m200[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'getMergedConfig'. Either declare one or provide an initializer.
+
+[7m200[0m   getMergedConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m199[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'getConfigFromEnv'. Either declare one or provide an initializer.
+
+[7m199[0m   getConfigFromEnv,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m198[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'getEnvironmentConfig'. Either declare one or provide an initializer.
+
+[7m198[0m   getEnvironmentConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m197[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultWebSocketConfig'. Either declare one or provide an initializer.
+
+[7m197[0m   defaultWebSocketConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m196[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultBetterAuthConfig'. Either declare one or provide an initializer.
+
+[7m196[0m   defaultBetterAuthConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m195[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultDDoSConfig'. Either declare one or provide an initializer.
+
+[7m195[0m   defaultDDoSConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m194[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultBypassRules'. Either declare one or provide an initializer.
+
+[7m194[0m   defaultBypassRules,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m193[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultRuleSets'. Either declare one or provide an initializer.
+
+[7m193[0m   defaultRuleSets,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m192[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'defaultRateLimitConfig'. Either declare one or provide an initializer.
+
+[7m192[0m   defaultRateLimitConfig,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m189[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'createComprehensiveRateLimitMiddleware'. Either declare one or provide an initializer.
+
+[7m189[0m   createComprehensiveRateLimitMiddleware,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m188[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'createBetterAuthRateLimitMiddleware'. Either declare one or provide an initializer.
+
+[7m188[0m   createBetterAuthRateLimitMiddleware,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m187[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'createRateLimitMiddleware'. Either declare one or provide an initializer.
+
+[7m187[0m   createRateLimitMiddleware,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m185[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'rateLimitAnalytics'. Either declare one or provide an initializer.
+
+[7m185[0m   rateLimitAnalytics,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m184[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'RateLimitAnalytics'. Either declare one or provide an initializer.
+
+[7m184[0m   RateLimitAnalytics,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m183[0m:[93m3[0m - [91merror[0m[90m ts(18004): [0mNo value exists in scope for the shorthand property 'DistributedRateLimiter'. Either declare one or provide an initializer.
+
+[7m183[0m   DistributedRateLimiter,
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m173[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m173[0m     recentAlerts: (await rateLimitAnalytics.getRecentAlerts(10)).length,
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m172[0m:[93m16[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m172[0m     monitors: (rateLimitAnalytics as unknown).monitors?.length || 0,
+[7m   [0m [91m               ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m172[0m:[93m15[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m172[0m     monitors: (rateLimitAnalytics as unknown).monitors?.length || 0,
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m171[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'defaultRuleSets'.
+
+[7m171[0m     rules: defaultRuleSets.reduce((total, set) => total + set.rules.length, 0),
+[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m170[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'getMergedConfig'.
+
+[7m170[0m     enabled: getMergedConfig().global.enabled,
+[7m   [0m [91m             ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m165[0m:[93m5[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m165[0m     rateLimitAnalytics.getRealTimeMetrics(),
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m161[0m:[93m40[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m161[0m   analytics: Awaited<ReturnType<typeof rateLimitAnalytics.getRealTimeMetrics>>
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m122[0m:[93m32[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m122[0m     const recentAlerts = await rateLimitAnalytics.getRecentAlerts(10)
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m119[0m:[93m8[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m119[0m       (rateLimitAnalytics as unknown as { monitors?: unknown[] }).monitors
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m116[0m:[93m30[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'rateLimitAnalytics'.
+
+[7m116[0m     const analyticsHealthy = rateLimitAnalytics !== undefined
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m114[0m:[93m33[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'redis'.
+
+[7m114[0m     const redisHealthy = (await redis.ping()) === 'PONG'
+[7m   [0m [91m                                ~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m95[0m:[93m10[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createRateLimitMiddleware'.
+
+[7m95[0m   return createRateLimitMiddleware({
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m92[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createBetterAuthRateLimitMiddleware'.
+
+[7m92[0m     return createBetterAuthRateLimitMiddleware(betterAuthConfig)
+[7m  [0m [91m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m82[0m:[93m12[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'createComprehensiveRateLimitMiddleware'.
+
+[7m82[0m     return createComprehensiveRateLimitMiddleware({
+[7m  [0m [91m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m41[0m:[93m3[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'RateLimitAnalytics'.
+
+[7m41[0m   RateLimitAnalytics,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m14[0m:[93m10[0m - [91merror[0m[90m ts(2300): [0mDuplicate identifier 'RateLimitAnalytics'.
+
+[7m14[0m export { RateLimitAnalytics, rateLimitAnalytics } from './analytics'
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m171[0m:[93m43[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'set' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m171[0m     rules: defaultRuleSets.reduce((total, set) => total + set.rules.length, 0),
+[7m   [0m [93m                                          ~~~[0m
+[96msrc/lib/rate-limiting/index.ts[0m:[93m171[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'total' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m171[0m     rules: defaultRuleSets.reduce((total, set) => total + set.rules.length, 0),
+[7m   [0m [93m                                   ~~~~~[0m
+
+[96msrc/lib/rate-limiting/middleware.ts[0m:[93m424[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'RateLimitBypassRule'.
+
+[7m424[0m   const authBypassRules: RateLimitBypassRule[] = []
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/middleware.ts[0m:[93m25[0m:[93m3[0m - [91merror[0m[90m ts(2741): [0mProperty 'ruleSets' is missing in type '{}' but required in type 'RateLimitMiddlewareConfig'.
+
+[7m25[0m   config: RateLimitMiddlewareConfig = {},
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/middleware.ts[0m:[93m431[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'context' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m431[0m         custom: async (context) => {
+[7m   [0m [93m                       ~~~~~~~[0m
+
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m254[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m254[0m     pipeline.expire(analyticsKey, 86400 * 30) // Keep for 30 days
+[7m   [0m [91m             ~~~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m253[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'hset' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m253[0m     pipeline.hset(analyticsKey, 'last_request', Date.now())
+[7m   [0m [91m             ~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m149[0m:[93m22[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'number' is not assignable to parameter of type 'never'.
+
+[7m149[0m       intervals.push(timestamps[i] - timestamps[i - 1])
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m58[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'expire' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m58[0m       pipeline.expire(windowKey, Math.ceil(rule.windowMs / 1000))
+[7m  [0m [91m               ~~~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m57[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'incr' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; } | ChainableCommander'.
+  Property 'incr' does not exist on type '{ setex: (key: string, seconds: number, value: string) => { setex: (string | number)[]; }; hincrby: (key: string, field: string, increment: number) => { hincrby: (string | number)[]; }; exec: () => Promise<...>; }'.
+
+[7m57[0m       pipeline.incr(windowKey)
+[7m  [0m [91m               ~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m245[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'currentCount' is declared but its value is never read.
+
+[7m245[0m     currentCount: number,
+[7m   [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m243[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'identifier' is declared but its value is never read.
+
+[7m243[0m     identifier: string,
+[7m   [0m [93m    ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m98[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'rule' is declared but its value is never read.
+
+[7m98[0m     rule: RateLimitRule,
+[7m  [0m [93m    ~~~~[0m
+[96msrc/lib/rate-limiting/rate-limiter.ts[0m:[93m25[0m:[93m23[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'config' is declared but its value is never read.
+
+[7m25[0m   constructor(private config: RateLimitConfig) {}
+[7m  [0m [93m                      ~~~~~~[0m
+
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m204[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../redis' or its corresponding type declarations.
+
+[7m204[0m     const { redis } = await import('../redis')
+[7m   [0m [91m                                   ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m201[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'number' is not assignable to parameter of type 'never'.
+
+[7m201[0m       timestamps.push(Date.now() + i * 100) // 100ms intervals
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m169[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../redis' or its corresponding type declarations.
+
+[7m169[0m       const { redis } = await import('../redis')
+[7m   [0m [91m                                     ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m159[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../redis' or its corresponding type declarations.
+
+[7m159[0m       const { redis } = await import('../redis')
+[7m   [0m [91m                                     ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m146[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../redis' or its corresponding type declarations.
+
+[7m146[0m       const { redis } = await import('../redis')
+[7m   [0m [91m                                     ~~~~~~~~~~[0m
+[96msrc/lib/rate-limiting/__tests__/rate-limiter.test.ts[0m:[93m112[0m:[93m38[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../redis' or its corresponding type declarations.
+
+[7m112[0m       const { redis } = await import('../redis')
+[7m   [0m [91m                                     ~~~~~~~~~~[0m
+
+[96msrc/lib/repositories/emotionsRepository.ts[0m:[93m1[0m:[93m15[0m - [91merror[0m[90m ts(2724): [0m'"../ai/emotions/dimensionalTypes"' has no exported member named 'DimensionalEmotionMap'. Did you mean 'DimensionalEmotion'?
+
+[7m1[0m import type { DimensionalEmotionMap } from '../ai/emotions/dimensionalTypes'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/research/services/AnonymizationPipelineService.ts[0m:[93m148[0m:[93m48[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m148[0m       throw new Error(`Anonymization failed: ${error.message}`)
+[7m   [0m [91m                                               ~~~~~[0m
+[96msrc/lib/research/services/AnonymizationPipelineService.ts[0m:[93m473[0m:[93m29[0m - [93mwarning[0m[90m ts(6133): [0m'originalValue' is declared but its value is never read.
+
+[7m473[0m   private getRandomCategory(originalValue: string): string {
+[7m   [0m [93m                            ~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/AnonymizationPipelineService.ts[0m:[93m453[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'quasiIdentifiers' is declared but its value is never read.
+
+[7m453[0m     quasiIdentifiers: string[]
+[7m   [0m [93m    ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/AnonymizationPipelineService.ts[0m:[93m429[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'k' is declared but its value is never read.
+
+[7m429[0m     k: number,
+[7m   [0m [93m    ~[0m
+
+[96msrc/lib/research/services/ConsentManagementService.ts[0m:[93m1[0m:[93m27[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/logging/logger' or its corresponding type declarations.
+
+[7m1[0m import { getLogger } from '@/lib/logging/logger'
+[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/research/services/EvidenceGenerationService.ts[0m:[93m40[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'queryEngine' is declared but its value is never read.
+
+[7m40[0m   private queryEngine: ResearchQueryEngine
+[7m  [0m [93m          ~~~~~~~~~~~[0m
+[96msrc/lib/research/services/EvidenceGenerationService.ts[0m:[93m39[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'patternService' is declared but its value is never read.
+
+[7m39[0m   private patternService: PatternDiscoveryService
+[7m  [0m [93m          ~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m473[0m:[93m51[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m473[0m       results.errors.push(`Key rotation failed: ${error.message}`)
+[7m   [0m [91m                                                  ~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m417[0m:[93m57[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m417[0m       results.errors.push(`Policy application failed: ${error.message}`)
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m403[0m:[93m69[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m403[0m             results.errors.push(`Deletion failed for ${dataType}: ${error.message}`)
+[7m   [0m [91m                                                                    ~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m392[0m:[93m74[0m - [91merror[0m[90m ts(18046): [0m'error' is of type 'unknown'.
+
+[7m392[0m             results.errors.push(`Anonymization failed for ${dataType}: ${error.message}`)
+[7m   [0m [91m                                                                         ~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m201[0m:[93m9[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'clientId' does not exist in type 'AuditLog'. Did you mean to write 'clientIds'?
+
+[7m201[0m         clientId,
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m186[0m:[93m31[0m - [91merror[0m[90m ts(2551): [0mProperty 'createDecipher' does not exist on type 'typeof import("crypto")'. Did you mean 'createDecipheriv'?
+
+[7m186[0m       const decipher = crypto.createDecipher(metadataObj.algorithm, key)
+[7m   [0m [91m                              ~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m160[0m:[93m9[0m - [91merror[0m[90m ts(2561): [0mObject literal may only specify known properties, but 'clientId' does not exist in type 'AuditLog'. Did you mean to write 'clientIds'?
+
+[7m160[0m         clientId,
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m141[0m:[93m29[0m - [91merror[0m[90m ts(2551): [0mProperty 'createCipher' does not exist on type 'typeof import("crypto")'. Did you mean 'createCipheriv'?
+
+[7m141[0m       const cipher = crypto.createCipher(this.config.encryptionAlgorithm, key)
+[7m   [0m [91m                            ~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m1[0m:[93m27[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/lib/logging/logger' or its corresponding type declarations.
+
+[7m1[0m import { getLogger } from '@/lib/logging/logger'
+[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/HIPAADataService.ts[0m:[93m184[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'_iv' is declared but its value is never read.
+
+[7m184[0m       const _iv = Buffer.from(metadataObj.iv, 'hex')
+[7m   [0m [93m            ~~~[0m
+
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m521[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '{ clusterId: string; centroid: { [k: string]: number; }; members: string[]; size: number; characteristics: Record<string, { mean: number; stdDev: number; min: number; max: number; }>; }[]' is not assignable to type 'ClusterPattern[]'.
+  Type '{ clusterId: string; centroid: { [k: string]: number; }; members: string[]; size: number; characteristics: Record<string, { mean: number; stdDev: number; min: number; max: number; }>; }' is not assignable to type 'ClusterPattern'.
+
+[7m521[0m     return clusters.map((cluster, index) => ({
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m220[0m:[93m35[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'Record<string, unknown>[]'.
+  Type '{}' is missing the following properties from type 'Record<string, unknown>[]': length, pop, push, concat, and 35 more.
+
+[7m220[0m     return this.performClustering(result.data, features)
+[7m   [0m [91m                                  ~~~~~~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m192[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'Record<string, unknown>[]'.
+  Type '{}' is missing the following properties from type 'Record<string, unknown>[]': length, pop, push, concat, and 35 more.
+
+[7m192[0m         const metricAnomalies = this.detectAnomalies(result.data, metric)
+[7m   [0m [91m                                                     ~~~~~~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m162[0m:[93m43[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'Record<string, unknown>[]'.
+  Type '{}' is missing the following properties from type 'Record<string, unknown>[]': length, pop, push, concat, and 35 more.
+
+[7m162[0m         const trend = this.calculateTrend(result.data, metric)
+[7m   [0m [91m                                          ~~~~~~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m161[0m:[93m38[0m - [91merror[0m[90m ts(2339): [0mProperty 'length' does not exist on type '{}'.
+
+[7m161[0m       if (result.data && result.data.length > 0) {
+[7m   [0m [91m                                     ~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m133[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'map' does not exist on type '{}'.
+
+[7m133[0m     return result.data.map((row: Record<string, unknown>) => ({
+[7m   [0m [91m                       ~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m86[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '{ id: string; description: string; confidence: number; statisticalSignificance: number; supportingData: CorrelationPattern | TrendPattern | AnomalyPattern | ClusterPattern; }[]' is not assignable to type '{ id: string; description: string; confidence: number; statisticalSignificance: number; supportingData: Record<string, unknown>; visualization?: { type: "line" | "bar" | "scatter" | "heatmap" | "boxplot"; data: Record<...>[]; config: Record<...>; } | undefined; }[]'.
+  Type '{ id: string; description: string; confidence: number; statisticalSignificance: number; supportingData: CorrelationPattern | TrendPattern | AnomalyPattern | ClusterPattern; }' is not assignable to type '{ id: string; description: string; confidence: number; statisticalSignificance: number; supportingData: Record<string, unknown>; visualization?: { type: "line" | "bar" | "scatter" | "heatmap" | "boxplot"; data: Record<...>[]; config: Record<...>; } | undefined; }'.
+
+[7m86[0m         patterns: sortedPatterns.map((p, index) => ({
+[7m  [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/research/services/PatternDiscoveryService.ts[0m:[93m543[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m543[0m       let index
+[7m   [0m [93m          ~~~~~[0m
+
+[96msrc/lib/research/services/ResearchQueryEngine.ts[0m:[93m633[0m:[93m9[0m - [91merror[0m[90m ts(2739): [0mType 'AnonymizationAuditLog[]' is missing the following properties from type '{ kAnonymity: number; differentialPrivacyEpsilon: number; noiseLevel: number; suppressionRate: number; }': kAnonymity, differentialPrivacyEpsilon, noiseLevel, suppressionRate
+
+[7m633[0m         anonymizationAudit: anonymizedData.auditLog
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngine.ts[0m:[93m623[0m:[93m7[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{}' is not assignable to parameter of type 'ResearchDataPoint[]'.
+  Type '{}' is missing the following properties from type 'ResearchDataPoint[]': length, pop, push, concat, and 35 more.
+
+[7m623[0m       result.data,
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngine.ts[0m:[93m120[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'length' does not exist on type '{}'.
+
+[7m120[0m         resultSize: anonymizedResult.data?.length || 0,
+[7m   [0m [91m                                           ~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngine.ts[0m:[93m453[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'userId' is declared but its value is never read.
+
+[7m453[0m     userId: string,
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngine.ts[0m:[93m35[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'hipaaService' is declared but its value is never read.
+
+[7m35[0m   private hipaaService: HIPAADataService
+[7m  [0m [93m          ~~~~~~~~~~~~[0m
+
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m569[0m:[93m24[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"Break down complex queries into smaller, more focused analyses"' is not assignable to parameter of type 'never'.
+
+[7m569[0m       suggestions.push('Break down complex queries into smaller, more focused analyses')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m564[0m:[93m24[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"Similar queries detected. Consider reusing previous results when appropriate"' is not assignable to parameter of type 'never'.
+
+[7m564[0m       suggestions.push('Similar queries detected. Consider reusing previous results when appropriate')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m560[0m:[93m24[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"Consider adding more specific filters to reduce query execution time"' is not assignable to parameter of type 'never'.
+
+[7m560[0m       suggestions.push('Consider adding more specific filters to reduce query execution time')
+[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m550[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"High information loss due to anonymization. Results may be less precise."' is not assignable to parameter of type 'never'.
+
+[7m550[0m       warnings.push('High information loss due to anonymization. Results may be less precise.')
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m545[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"Query may take longer than expected to execute."' is not assignable to parameter of type 'never'.
+
+[7m545[0m       warnings.push('Query may take longer than expected to execute.')
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m541[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"No results found for query. Consider broadening search criteria."' is not assignable to parameter of type 'never'.
+
+[7m541[0m       warnings.push('No results found for query. Consider broadening search criteria.')
+[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m507[0m:[93m51[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"outcome_data_access"' is not assignable to parameter of type 'never'.
+
+[7m507[0m     if (sql.includes('outcome')) permissions.push('outcome_data_access')
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m506[0m:[93m49[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"user_data_access"' is not assignable to parameter of type 'never'.
+
+[7m506[0m     if (sql.includes('user_')) permissions.push('user_data_access')
+[7m   [0m [91m                                                ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m505[0m:[93m52[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"session_data_access"' is not assignable to parameter of type 'never'.
+
+[7m505[0m     if (sql.includes('session_')) permissions.push('session_data_access')
+[7m   [0m [91m                                                   ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m504[0m:[93m61[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"emotional_data_access"' is not assignable to parameter of type 'never'.
+
+[7m504[0m     if (sql.includes('emotional_metrics')) permissions.push('emotional_data_access')
+[7m   [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m460[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'anonymizeSessionData' does not exist on type 'AnonymizationPipelineService'.
+
+[7m460[0m       const result = await anonymizationPipelineService.anonymizeSessionData(
+[7m   [0m [91m                                                        ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m398[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m398[0m       conditions.push(`session_date BETWEEN '${researchContext.timeRange.start}' AND '${researchContext.timeRange.end}'`)
+[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m392[0m:[93m25[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m392[0m         conditions.push(`primary_condition = '${entity.value}'`)
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m361[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ type: string; value: string; }' is not assignable to parameter of type 'never'.
+
+[7m361[0m     if (query.includes('session')) entities.push({ type: 'data_type', value: 'therapeutic_session' })
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m360[0m:[93m53[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ type: string; value: string; }' is not assignable to parameter of type 'never'.
+
+[7m360[0m     if (query.includes('depression')) entities.push({ type: 'condition', value: 'depression' })
+[7m   [0m [91m                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m359[0m:[93m50[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ type: string; value: string; }' is not assignable to parameter of type 'never'.
+
+[7m359[0m     if (query.includes('anxiety')) entities.push({ type: 'condition', value: 'anxiety' })
+[7m   [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m12[0m:[93m10[0m - [91merror[0m[90m ts(2724): [0m'"./ConsentManagementService"' has no exported member named 'consentManagementService'. Did you mean 'ConsentManagementService'?
+
+[7m12[0m import { consentManagementService } from './ConsentManagementService'
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m512[0m:[93m54[0m - [93mwarning[0m[90m ts(6133): [0m'dataScope' is declared but its value is never read.
+
+[7m512[0m   private async classifyDataSensitivity(sql: string, dataScope: string[]): Promise<'public' | 'internal' | 'confidential' | 'restricted'> {
+[7m   [0m [93m                                                     ~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m501[0m:[93m57[0m - [93mwarning[0m[90m ts(6133): [0m'dataScope' is declared but its value is never read.
+
+[7m501[0m   private async analyzeRequiredPermissions(sql: string, dataScope: string[]): Promise<string[]> {
+[7m   [0m [93m                                                        ~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m496[0m:[93m57[0m - [93mwarning[0m[90m ts(6133): [0m'requiredPermissions' is declared but its value is never read.
+
+[7m496[0m   private async validateUserPermissions(userId: string, requiredPermissions: string[]): Promise<boolean> {
+[7m   [0m [93m                                                        ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m496[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'userId' is declared but its value is never read.
+
+[7m496[0m   private async validateUserPermissions(userId: string, requiredPermissions: string[]): Promise<boolean> {
+[7m   [0m [93m                                        ~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m436[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'userId' is declared but its value is never read.
+
+[7m436[0m     userId: string
+[7m   [0m [93m    ~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m413[0m:[93m46[0m - [93mwarning[0m[90m ts(6133): [0m'parameters' is declared but its value is never read.
+
+[7m413[0m   private async executeSQLQuery(sql: string, parameters: Record<string, any>): Promise<any[]> {
+[7m   [0m [93m                                             ~~~~~~~~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m413[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'sql' is declared but its value is never read.
+
+[7m413[0m   private async executeSQLQuery(sql: string, parameters: Record<string, any>): Promise<any[]> {
+[7m   [0m [93m                                ~~~[0m
+[96msrc/lib/research/services/ResearchQueryEngineService.ts[0m:[93m390[0m:[93m22[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'entity' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m390[0m     entities.forEach(entity => {
+[7m   [0m [93m                     ~~~~~~[0m
+
+[96msrc/lib/security/breach-notification.ts[0m:[93m481[0m:[93m7[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 4.
+
+[7m481[0m       'EX',
+[7m   [0m [91m      ~~~~~[0m
+[7m482[0m       DOCUMENTATION_RETENTION,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/breach-notification.ts[0m:[93m417[0m:[93m17[0m - [91merror[0m[90m ts(2554): [0mExpected 3 arguments, but got 2.
+
+[7m417[0m     await redis.hset(monthKey, {
+[7m   [0m [91m                ~~~~[0m
+[96msrc/lib/security/breach-notification.ts[0m:[93m396[0m:[93m5[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 4.
+
+[7m396[0m     'EX',
+[7m   [0m [91m    ~~~~~[0m
+[7m397[0m     DOCUMENTATION_RETENTION,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/breach-notification.ts[0m:[93m104[0m:[93m7[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 4.
+
+[7m104[0m       'EX',
+[7m   [0m [91m      ~~~~~[0m
+[7m105[0m       60 * 60 * 24 * 30, // 30 days retention
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/dlp-integration.ts[0m:[93m150[0m:[93m35[0m - [91merror[0m[90m ts(18048): [0m'ctx.request' is possibly 'undefined'.
+
+[7m150[0m               action: `download ${ctx.request.url}`,
+[7m   [0m [91m                                  ~~~~~~~~~~~[0m
+[96msrc/lib/security/dlp-integration.ts[0m:[93m130[0m:[93m9[0m - [91merror[0m[90m ts(18048): [0m'ctx.request' is possibly 'undefined'.
+
+[7m130[0m         ctx.request.headers.get('content-disposition')?.includes('attachment')
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/security/dlp-integration.ts[0m:[93m129[0m:[93m9[0m - [91merror[0m[90m ts(18048): [0m'ctx.request' is possibly 'undefined'.
+
+[7m129[0m         ctx.request.url.includes('/export/') ||
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[96msrc/lib/security/dlp-integration.ts[0m:[93m125[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{}'.
+
+[7m125[0m       const userId = ctx.locals?.user?.id || 'unknown'
+[7m   [0m [91m                                       ~~[0m
+
+[96msrc/lib/security/encryptionManager.ts[0m:[93m289[0m:[93m37[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Uint8Array<ArrayBuffer>' is not assignable to parameter of type 'ArrayBuffer'.
+  Type 'Uint8Array<ArrayBuffer>' is missing the following properties from type 'ArrayBuffer': maxByteLength, resizable, resize, detached, and 2 more.
+
+[7m289[0m     return this.arrayBufferToBase64(tag)
+[7m   [0m [91m                                    ~~~[0m
+[96msrc/lib/security/encryptionManager.ts[0m:[93m243[0m:[93m65[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'ArrayBuffer | Uint8Array<ArrayBuffer>' is not assignable to parameter of type 'ArrayBuffer'.
+  Type 'Uint8Array<ArrayBuffer>' is missing the following properties from type 'ArrayBuffer': maxByteLength, resizable, resize, detached, and 2 more.
+
+[7m243[0m       const combined = this.combineCiphertextAndTag(ciphertext, tag)
+[7m   [0m [91m                                                                ~~~[0m
+[96msrc/lib/security/encryptionManager.ts[0m:[93m200[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Uint8Array<ArrayBuffer>' is not assignable to parameter of type 'ArrayBuffer'.
+  Type 'Uint8Array<ArrayBuffer>' is missing the following properties from type 'ArrayBuffer': maxByteLength, resizable, resize, detached, and 2 more.
+
+[7m200[0m       iv: this.arrayBufferToBase64(iv),
+[7m   [0m [91m                                   ~~[0m
+[96msrc/lib/security/encryptionManager.ts[0m:[93m50[0m:[93m7[0m - [91merror[0m[90m ts(2783): [0m'keyRotationDays' is specified more than once, so this usage will be overwritten.
+
+[7m50[0m       keyRotationDays: 90,
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/encryptionManager.ts[0m:[93m6[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@/types/crypto' or its corresponding type declarations.
+
+[7m6[0m import type { CryptoKeyPair } from '@/types/crypto'
+[7m [0m [91m                                   ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/encryptionManager.ts[0m:[93m109[0m:[93m67[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m109[0m     const keyId = `key_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+[7m   [0m [93m                                                                  ~~~~~~[0m
+
+[96msrc/lib/security/phiDetection.ts[0m:[93m469[0m:[93m48[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'PHIEntity[]'.
+
+[7m469[0m     return detector['fallbackRedaction'](text, entities)
+[7m   [0m [91m                                               ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m465[0m:[93m9[0m - [91merror[0m[90m ts(18046): [0m'entities' is of type 'unknown'.
+
+[7m465[0m     if (entities.length === 0) {
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m313[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(text: string) => PHIEntity[]' is not assignable to parameter of type '(...args: unknown[]) => unknown'.
+  Types of parameters 'text' and 'args' are incompatible.
+
+[7m313[0m   private fallbackDetection = memoize((text: string): PHIEntity[] => {
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m265[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'PHIEntity[]'.
+
+[7m265[0m         entities,
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m252[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'PHIEntity[]'.
+
+[7m252[0m           redactedText = await this.redactText(text, entities)
+[7m   [0m [91m                                                     ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m247[0m:[93m30[0m - [91merror[0m[90m ts(18046): [0m'entities' is of type 'unknown'.
+
+[7m247[0m       const hasDetectedPHI = entities.length > 0
+[7m   [0m [91m                             ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m213[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'unknown' is not assignable to type 'PHIEntity[]'.
+
+[7m213[0m         entities = this.fallbackDetection(text)
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/lib/security/phiDetection.ts[0m:[93m388[0m:[93m11[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'match' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m388[0m       let match
+[7m   [0m [93m          ~~~~~[0m
+
+[96msrc/lib/security/secrets-manager.ts[0m:[93m11[0m:[93m26[0m - [91merror[0m[90m ts(2559): [0mType '"secrets-manager"' has no properties in common with type 'LoggerOptions'.
+
+[7m11[0m const logger = getLogger('secrets-manager')
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/token.encryption.ts[0m:[93m105[0m:[93m46[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(start?: number | undefined, end?: number | undefined): Buffer<ArrayBuffer>' of 'encryptedData.slice' is deprecated.
+
+[7m105[0m       const encryptedContent = encryptedData.slice(0, -16)
+[7m   [0m [93m                                             ~~~~~[0m
+[96msrc/lib/security/token.encryption.ts[0m:[93m104[0m:[93m37[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(start?: number | undefined, end?: number | undefined): Buffer<ArrayBuffer>' of 'encryptedData.slice' is deprecated.
+
+[7m104[0m       const authTag = encryptedData.slice(-16)
+[7m   [0m [93m                                    ~~~~~[0m
+
+[96msrc/lib/security/verification.ts[0m:[93m46[0m:[93m32[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m46[0m     const decoded = JSON.parse(atob(token) as unknown)
+[7m  [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/verification.ts[0m:[93m23[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m23[0m       ...JSON.parse(JSON.stringify(payload) as unknown),
+[7m  [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/__tests__/audit.logging.test.ts[0m:[93m76[0m:[93m30[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m76[0m       const sanitizedEntry = (auditLoggingService as unknown).sanitizeEntry({
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/audit.logging.test.ts[0m:[93m74[0m:[93m64[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"hashValue"' is not assignable to parameter of type 'never'.
+
+[7m74[0m       const hashSpy = vi.spyOn(auditLoggingService as unknown, 'hashValue')
+[7m  [0m [91m                                                               ~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/audit.logging.test.ts[0m:[93m63[0m:[93m9[0m - [91merror[0m[90m ts(2345): [0mArgument of type '"storeLogEntry"' is not assignable to parameter of type 'never'.
+
+[7m63[0m         'storeLogEntry',
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/audit.logging.test.ts[0m:[93m57[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'loggedEntry' is of type 'unknown'.
+
+[7m57[0m       expect(loggedEntry.details.password).toBe('[REDACTED]')
+[7m  [0m [91m             ~~~~~~~~~~~[0m
+
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m305[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m305[0m       ;(redis.get as unknown)
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m301[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m301[0m       ;(redis.keys as unknown).mockResolvedValue([
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m288[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m288[0m       ;(redis.keys as unknown).mockRejectedValue(new Error('Redis error'))
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m276[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m276[0m       ;(redis.get as unknown)
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m272[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m272[0m       ;(redis.keys as unknown).mockResolvedValue([
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m242[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m242[0m       ;(redis.get as unknown).mockRejectedValue(new Error('Redis error'))
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m233[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m233[0m       ;(redis.get as unknown).mockResolvedValue(null)
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m221[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m221[0m       ;(redis.get as unknown).mockResolvedValue(
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m154[0m:[93m51[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ affectedUsers: unknown[]; type: "unauthorized_access"; severity: "high"; description: string; affectedData: string[]; detectionMethod: string; remediation: string; }' is not assignable to parameter of type 'Omit<BreachDetails, "id" | "timestamp" | "notificationStatus">'.
+  Types of property 'affectedUsers' are incompatible.
+
+[7m154[0m       await BreachNotificationSystem.reportBreach(largeBreachDetails)
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m136[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m136[0m       ;(sendEmail as unknown).mockRejectedValue(new Error('Email error'))
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m128[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m128[0m       ;(auth['getUserById'] as unknown).mockResolvedValue({ id: 'user1' }) // User without email
+[7m   [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m97[0m:[93m8[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m97[0m       ;(redis['set'] as unknown).mockRejectedValue(new Error('Redis error'))
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m67[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m67[0m     ;(sendEmail as unknown).mockResolvedValue(undefined)
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m66[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m66[0m     ;(FHE['encrypt'] as unknown).mockResolvedValue('encrypted_data')
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m65[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m65[0m     ;(auth['getUserById'] as unknown).mockResolvedValue(mockUser)
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m64[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m64[0m     ;(redis['keys'] as unknown).mockResolvedValue([])
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m63[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m63[0m     ;(redis['get'] as unknown).mockResolvedValue(null)
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m62[0m:[93m6[0m - [91merror[0m[90m ts(2571): [0mObject is of type 'unknown'.
+
+[7m62[0m     ;(redis['set'] as unknown).mockResolvedValue('OK')
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/__tests__/breach-notification.test.ts[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m ts(2305): [0mModule '"@/lib/fhe"' has no exported member 'FHE'.
+
+[7m3[0m import { FHE } from '@/lib/fhe'
+[7m [0m [91m         ~~~[0m
+
+[96msrc/lib/security/__tests__/security-scanning.test.ts[0m:[93m34[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'baseline' is of type 'unknown'.
+
+[7m34[0m       expect(baseline.baseline.security_policies).toBeDefined()
+[7m  [0m [91m             ~~~~~~~~[0m
+[96msrc/lib/security/__tests__/security-scanning.test.ts[0m:[93m33[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'baseline' is of type 'unknown'.
+
+[7m33[0m       expect(baseline.baseline).toBeDefined()
+[7m  [0m [91m             ~~~~~~~~[0m
+[96msrc/lib/security/__tests__/security-scanning.test.ts[0m:[93m32[0m:[93m14[0m - [91merror[0m[90m ts(18046): [0m'baseline' is of type 'unknown'.
+
+[7m32[0m       expect(baseline.version).toBeDefined()
+[7m  [0m [91m             ~~~~~~~~[0m
+
+[96msrc/lib/security/baa/BaaDocumentGenerator.ts[0m:[93m30[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'BaaStatus'.
+
+[7m30[0m       status: BaaStatus.DRAFT,
+[7m  [0m [91m              ~~~~~~~~~[0m
+
+[96msrc/lib/security/baa/BaaTemplateService.ts[0m:[93m529[0m:[93m57[0m - [91merror[0m[90m ts(2322): [0mType '"TELEMEDICINE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m529[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                                        ~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/BaaTemplateService.ts[0m:[93m529[0m:[93m39[0m - [91merror[0m[90m ts(2322): [0mType '"DATA_ANALYTICS"' is not assignable to type 'BusinessAssociateType'.
+
+[7m529[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/BaaTemplateService.ts[0m:[93m529[0m:[93m22[0m - [91merror[0m[90m ts(2322): [0mType '"CLOUD_SERVICE"' is not assignable to type 'BusinessAssociateType'.
+
+[7m529[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/BaaTemplateService.ts[0m:[93m529[0m:[93m8[0m - [91merror[0m[90m ts(2322): [0mType '"EHR_VENDOR"' is not assignable to type 'BusinessAssociateType'.
+
+[7m529[0m       ['EHR_VENDOR', 'CLOUD_SERVICE', 'DATA_ANALYTICS', 'TELEMEDICINE'],
+[7m   [0m [91m       ~~~~~~~~~~~~[0m
+[96msrc/lib/security/baa/BaaTemplateService.ts[0m:[93m503[0m:[93m28[0m - [91merror[0m[90m ts(18048): [0m'template.tags' is possibly 'undefined'.
+
+[7m503[0m       if (criteria.tag && !template.tags.includes(criteria.tag)) {
+[7m   [0m [91m                           ~~~~~~~~~~~~~[0m
+
+[96msrc/lib/security/baa/ComplianceVerificationService.ts[0m:[93m562[0m:[93m30[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ SELF_ATTESTATION: number; DOCUMENTATION_REVIEW: number; THIRD_PARTY_AUDIT: number; ONSITE_ASSESSMENT: number; }' to type 'Record<VerificationMethod, number>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ SELF_ATTESTATION: number; DOCUMENTATION_REVIEW: number; THIRD_PARTY_AUDIT: number; ONSITE_ASSESSMENT: number; }' is missing the following properties from type 'Record<VerificationMethod, number>': self_assessment, documentation_review, third_party_audit, certification_validation, and 2 more.
+
+[7m562[0m       verificationsByMethod: {
+[7m   [0m [91m                             ~[0m
