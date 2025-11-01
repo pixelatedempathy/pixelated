@@ -1,0 +1,2197 @@
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'cognitive_behavioral' does not exist in type 'Record<TherapeuticDomain, string>'.
+
+[7m11[0m   cognitive_behavioral: 'Cognitive Behavioral Therapy',
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m2[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"../types"' has no exported member 'SimulationScenario'.
+
+[7m2[0m import type { SimulationScenario, TherapeuticDomain } from '../types'
+[7m [0m [91m              ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m134[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'word' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m134[0m                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+[7m   [0m [93m                          ~~~~[0m
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m127[0m:[93m43[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'skill' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m127[0m               {scenario.targetSkills.map((skill) => (
+[7m   [0m [93m                                          ~~~~~[0m
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m117[0m:[93m52[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'approach' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m117[0m                 {scenario.suggestedApproaches.map((approach) => (
+[7m   [0m [93m                                                   ~~~~~~~~[0m
+[96msrc/simulator/components/ScenarioInfo.tsx[0m:[93m105[0m:[93m47[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'issue' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m105[0m               {scenario.presentingIssues.map((issue) => (
+[7m   [0m [93m                                              ~~~~~[0m
+
+[96msrc/simulator/components/ScenarioSelector.tsx[0m:[93m1[0m:[93m8[0m - [93mwarning[0m[90m ts(6133): [0m'React' is declared but its value is never read.
+
+[7m1[0m import React, { useState, useMemo } from 'react'
+[7m [0m [93m       ~~~~~[0m
+
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m304[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type '{}'.
+
+[7m304[0m         <h2>{currentScenario?.title || 'Therapeutic Simulation'}</h2>
+[7m   [0m [91m                              ~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m236[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m236[0m             : [...prev, latestFeedback.suggestedTechnique!],
+[7m   [0m [91m                        ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m234[0m:[93m25[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m234[0m           prev.includes(latestFeedback.suggestedTechnique!)
+[7m   [0m [91m                        ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m232[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m232[0m       if (latestFeedback.suggestedTechnique) {
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m225[0m:[93m26[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m225[0m               timestamp: latestFeedback.timestamp,
+[7m   [0m [91m                         ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m223[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m223[0m                 latestFeedback.suggestion ||
+[7m   [0m [91m                ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m222[0m:[93m17[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m222[0m                 latestFeedback.content ||
+[7m   [0m [91m                ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m211[0m:[93m36[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m211[0m                 item.timestamp === latestFeedback.timestamp,
+[7m   [0m [91m                                   ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m204[0m:[93m37[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m204[0m       if (latestFeedback.content || latestFeedback.suggestion) {
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m204[0m:[93m11[0m - [91merror[0m[90m ts(18046): [0m'latestFeedback' is of type 'unknown'.
+
+[7m204[0m       if (latestFeedback.content || latestFeedback.suggestion) {
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m201[0m:[93m30[0m - [91merror[0m[90m ts(18048): [0m'realtimeFeedback' is possibly 'undefined'.
+
+[7m201[0m       const latestFeedback = realtimeFeedback[0]
+[7m   [0m [91m                             ~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m200[0m:[93m9[0m - [91merror[0m[90m ts(18048): [0m'realtimeFeedback' is possibly 'undefined'.
+
+[7m200[0m     if (realtimeFeedback.length > 0) {
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m157[0m:[93m7[0m - [91merror[0m[90m ts(2722): [0mCannot invoke an object which is possibly 'undefined'.
+
+[7m157[0m       endSimulation().catch((err) =>
+[7m   [0m [91m      ~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationContainer.tsx[0m:[93m143[0m:[93m7[0m - [91merror[0m[90m ts(2722): [0mCannot invoke an object which is possibly 'undefined'.
+
+[7m143[0m       startSimulation(scenarioId)
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+
+[96msrc/simulator/components/SimulationControls.tsx[0m:[93m115[0m:[93m17[0m - [91merror[0m[90m ts(2722): [0mCannot invoke an object which is possibly 'undefined'.
+
+[7m115[0m                 toggleEnhancedModels(e.target?.['checked'] || false)
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SimulationControls.tsx[0m:[93m97[0m:[93m31[0m - [91merror[0m[90m ts(2722): [0mCannot invoke an object which is possibly 'undefined'.
+
+[7m97[0m               onChange={() => toggleSpeechRecognition()}
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/simulator/components/SpeechPatternDisplay.tsx[0m:[93m5[0m:[93m11[0m - [91merror[0m[90m ts(2339): [0mProperty 'speechPatterns' does not exist on type '{ state: SimulatorState; dispatch: Dispatch<SimulatorAction>; }'.
+
+[7m5[0m   const { speechPatterns } = useSimulator()
+[7m [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/SpeechPatternDisplay.tsx[0m:[93m22[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pattern' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m22[0m         {speechPatterns.map((pattern) => (
+[7m  [0m [93m                             ~~~~~~~[0m
+
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m246[0m:[93m13[0m - [91merror[0m[90m ts(7030): [0mNot all code paths return a value.
+
+[7m246[0m   useEffect(() => {
+[7m   [0m [91m            ~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m194[0m:[93m34[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'useCallback'.
+
+[7m194[0m   const handleSignalingMessage = useCallback(
+[7m   [0m [91m                                 ~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m177[0m:[93m30[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'useCallback'.
+
+[7m177[0m   const createAndSendOffer = useCallback(async () => {
+[7m   [0m [91m                             ~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m173[0m:[93m5[0m - [91merror[0m[90m ts(2448): [0mBlock-scoped variable 'createAndSendOffer' used before its declaration.
+
+[7m173[0m     createAndSendOffer,
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m147[0m:[93m35[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'useCallback'.
+
+[7m147[0m   const handleConnectionFailure = useCallback(async () => {
+[7m   [0m [91m                                  ~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m112[0m:[93m28[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'useCallback'.
+
+[7m112[0m   const setupMediaStream = useCallback(async () => {
+[7m   [0m [91m                           ~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m109[0m:[93m51[0m - [91merror[0m[90m ts(2448): [0mBlock-scoped variable 'handleConnectionFailure' used before its declaration.
+
+[7m109[0m   }, [sessionId, userId, onConnectionStateChange, handleConnectionFailure])
+[7m   [0m [91m                                                  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/VideoDisplay.tsx[0m:[93m58[0m:[93m36[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'useCallback'.
+
+[7m58[0m   const initializePeerConnection = useCallback(() => {
+[7m  [0m [91m                                   ~~~~~~~~~~~[0m
+
+[96msrc/simulator/components/__tests__/TechniqueDisplay.test.tsx[0m:[93m38[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ name: string; confidence: number; }[]' is not assignable to parameter of type 'null | undefined'.
+
+[7m38[0m     renderWithContext(mockTechniques)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/__tests__/TechniqueDisplay.test.tsx[0m:[93m28[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ name: string; confidence: number; }[]' is not assignable to parameter of type 'null | undefined'.
+
+[7m28[0m     renderWithContext(mockTechniques)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~[0m
+[96msrc/simulator/components/__tests__/TechniqueDisplay.test.tsx[0m:[93m13[0m:[93m40[0m - [91merror[0m[90m ts(2322): [0mType 'null' is not assignable to type 'DetectedTechnique[] | undefined'.
+
+[7m13[0m     <SimulatorProvider initialState={{ detectedTechniques: techniques }}>
+[7m  [0m [91m                                       ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/tests/components/demo/ScenarioGenerationDemo.test.tsx[0m:[93m2[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../components/demo/ScenarioGenerationDemo' or its corresponding type declarations.
+
+[7m2[0m import ScenarioGenerationDemo from '../components/demo/ScenarioGenerationDemo'
+[7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/tests/components/ui/ProgressBar.test.tsx[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../components/ui/progress-bar' or its corresponding type declarations.
+
+[7m2[0m import ProgressBar from '../components/ui/progress-bar'
+[7m [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/TodoComponent.astro[0m:[93m2[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module './Todo' or its corresponding type declarations.
+
+[7m2[0m import { Todo } from './Todo'
+[7m [0m [91m                     ~~~~~~~~[0m
+
+[96msrc/components/TodoPreactIsland.astro[0m:[93m2[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module './Todo' or its corresponding type declarations.
+
+[7m2[0m import { Todo } from './Todo'
+[7m [0m [91m                     ~~~~~~~~[0m
+
+[96msrc/components/admin/DLPRulesManager.astro[0m:[93m153[0m:[93m45[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m153[0m     document.addEventListener('dlp:error', (e) => {
+[7m   [0m [93m                                            ~[0m
+[96msrc/components/admin/DLPRulesManager.astro[0m:[93m145[0m:[93m50[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m145[0m     document.addEventListener('dlp:rule-saved', (e) => {
+[7m   [0m [93m                                                 ~[0m
+[96msrc/components/admin/DLPRulesManager.astro[0m:[93m137[0m:[93m52[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m137[0m     document.addEventListener('dlp:rule-updated', (e) => {
+[7m   [0m [93m                                                   ~[0m
+
+[96msrc/components/analytics/AdvancedFilteringComponent.astro[0m:[93m822[0m:[93m46[0m - [93mwarning[0m[90m ts(7044): [0mParameter '_event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m822[0m       applyButton.addEventListener('click', (_event) => {
+[7m   [0m [93m                                             ~~~~~~[0m
+[96msrc/components/analytics/AdvancedFilteringComponent.astro[0m:[93m779[0m:[93m46[0m - [93mwarning[0m[90m ts(7044): [0mParameter '_event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m779[0m       resetButton.addEventListener('click', (_event) => {
+[7m   [0m [93m                                             ~~~~~~[0m
+
+[96msrc/components/base/Backdrop.astro[0m:[93m14[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/animation' or its corresponding type declarations.
+
+[7m14[0m   import { toggleFadeEffect } from '~/utils/animation'
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/base/Categorizer.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/config' or its corresponding type declarations.
+
+[7m3[0m import { UI } from '~/config'
+[7m [0m [91m                   ~~~~~~~~~~[0m
+[96msrc/components/base/Categorizer.astro[0m:[93m2[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m2[0m import { slug } from '~/utils/common'
+[7m [0m [91m                     ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/media/BackgroundImage.astro[0m:[93m3[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'ImageMetadata'.
+
+[7m3[0m import type { ImageMetadata } from 'astro'
+[7m [0m [91m              ~~~~~~~~~~~~~[0m
+
+[96msrc/components/media/OptimizedImage.astro[0m:[93m3[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'ImageMetadata'.
+
+[7m3[0m import type { ImageMetadata } from 'astro'
+[7m [0m [91m              ~~~~~~~~~~~~~[0m
+
+[96msrc/components/media/ResponsiveImage.astro[0m:[93m3[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'ImageMetadata'.
+
+[7m3[0m import type { ImageMetadata } from 'astro'
+[7m [0m [91m              ~~~~~~~~~~~~~[0m
+
+[96msrc/components/monitoring/WebPerformanceDashboard.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'getPerformanceIndicator' is declared but its value is never read.
+
+[7m3[0m import { getPerformanceIndicator } from '@/lib/monitoring/hooks'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/monitoring/WebPerformanceDashboard.astro[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'getMonitoringConfig' is declared but its value is never read.
+
+[7m2[0m import { getMonitoringConfig } from '@/lib/monitoring/config'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/security/FHEDemo.astro[0m:[93m10[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'CardFooter' is declared but its value is never read.
+
+[7m10[0m import CardFooter from '@/components/ui/CardFooter.astro'
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/security/FHEDemo.astro[0m:[93m270[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'encrypted' is declared but its value is never read.
+
+[7m270[0m     encrypted: string,
+[7m   [0m [93m    ~~~~~~~~~[0m
+
+[96msrc/components/security/SecurityDashboard.astro[0m:[93m231[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'mockStats' is declared but its value is never read.
+
+[7m231[0m   const mockStats: SecurityStats = {
+[7m   [0m [93m        ~~~~~~~~~[0m
+
+[96msrc/components/session/SessionList.astro[0m:[93m41[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'session' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m41[0m         {sessions.map((session) => (
+[7m  [0m [93m                       ~~~~~~~[0m
+
+[96msrc/components/tailus/AppHeader.astro[0m:[93m4[0m:[93m53[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-button' or its corresponding type declarations.
+
+[7m4[0m import { button, ghostButton, outlinedButton } from '@tailus/themer-button'
+[7m [0m [91m                                                    ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tailus/BentoGrid.astro[0m:[93m4[0m:[93m45[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-card' or its corresponding type declarations.
+
+[7m4[0m import { softGradientVariant as card } from '@tailus/themer-card'
+[7m [0m [91m                                            ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tailus/CallToAction.astro[0m:[93m5[0m:[93m40[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-button' or its corresponding type declarations.
+
+[7m5[0m import { button, outlinedButton } from '@tailus/themer-button'
+[7m [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tailus/HeroSection.astro[0m:[93m4[0m:[93m40[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-button' or its corresponding type declarations.
+
+[7m4[0m import { button, outlinedButton } from '@tailus/themer-button'
+[7m [0m [91m                                       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tailus/SpeedSection.astro[0m:[93m4[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-progress' or its corresponding type declarations.
+
+[7m4[0m import { progress } from '@tailus/themer-progress'
+[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tailus/Testimonials.astro[0m:[93m3[0m:[93m37[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@tailus/themer-card' or its corresponding type declarations.
+
+[7m3[0m import { softVariant as card } from '@tailus/themer-card'
+[7m [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/toc/Toc.astro[0m:[93m10[0m:[93m35[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/types' or its corresponding type declarations.
+
+[7m10[0m import type { HeadingLevel } from '~/types'
+[7m  [0m [91m                                  ~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m9[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro"' has no exported member 'MarkdownHeading'.
+
+[7m9[0m import type { MarkdownHeading } from 'astro'
+[7m [0m [91m              ~~~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m7[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/config' or its corresponding type declarations.
+
+[7m7[0m import { FEATURES } from '~/config'
+[7m [0m [91m                         ~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m6[0m:[93m29[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/toc' or its corresponding type declarations.
+
+[7m6[0m import { generateToc } from '~/utils/toc'
+[7m [0m [91m                            ~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m5[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m5[0m import { slug } from '~/utils/common'
+[7m [0m [91m                     ~~~~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m4[0m:[93m21[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/toc/TocItem.astro' or its corresponding type declarations.
+
+[7m4[0m import TocItem from '~/components/toc/TocItem.astro'
+[7m [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m3[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/toc/TocButton.astro' or its corresponding type declarations.
+
+[7m3[0m import TocButton from '~/components/toc/TocButton.astro'
+[7m [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m113[0m:[93m22[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m113[0m           years.map((item) => (
+[7m   [0m [93m                     ~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m103[0m:[93m25[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m103[0m           category.map((item) => (
+[7m   [0m [93m                        ~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m99[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'heading' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m99[0m           specHeadings.map((heading) => <TocItem {heading} />)
+[7m  [0m [93m                            ~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m85[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m85[0m             years.map((item) => (
+[7m  [0m [93m                       ~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m75[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m75[0m             category.map((item) => (
+[7m  [0m [93m                          ~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m71[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'heading' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m71[0m             specHeadings.map((heading) => <TocItem {heading} />)
+[7m  [0m [93m                              ~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m238[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m238[0m           : levelSelectors.push(`h${i}`)
+[7m   [0m [91m                                ~~~~~~~[0m
+[96msrc/components/toc/Toc.astro[0m:[93m237[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type 'never'.
+
+[7m237[0m           ? levelSelectors.push(`${baseSelector} h${i}`)
+[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/toc/TocButton.astro[0m:[93m59[0m:[93m26[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Event' is not assignable to parameter of type 'MouseEvent'.
+  Type 'Event' is missing the following properties from type 'MouseEvent': altKey, button, buttons, clientX, and 23 more.
+
+[7m59[0m       handleClickToClose(event),
+[7m  [0m [91m                         ~~~~~[0m
+[96msrc/components/toc/TocButton.astro[0m:[93m47[0m:[93m28[0m - [91merror[0m[90m ts(2551): [0mProperty 'targe' does not exist on type 'MouseEvent'. Did you mean 'target'?
+
+[7m47[0m       const target = event.targe
+[7m  [0m [91m                           ~~~~~[0m
+[96msrc/components/toc/TocButton.astro[0m:[93m33[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/animation' or its corresponding type declarations.
+
+[7m33[0m   import { toggleFadeEffect } from '~/utils/animation'
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/toc/TocItem.astro[0m:[93m24[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'subheading' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m24[0m         {children.map((subheading) => (
+[7m  [0m [93m                       ~~~~~~~~~~[0m
+
+[96msrc/components/transitions/PageTransitions.astro[0m:[93m177[0m:[93m31[0m - [91merror[0m[90m ts(2339): [0mProperty 'newDocument' does not exist on type 'Event'.
+
+[7m177[0m     const newDocument = event.newDocument
+[7m   [0m [91m                              ~~~~~~~~~~~[0m
+[96msrc/components/transitions/PageTransitions.astro[0m:[93m177[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'newDocument' is declared but its value is never read.
+
+[7m177[0m     const newDocument = event.newDocument
+[7m   [0m [93m          ~~~~~~~~~~~[0m
+
+[96msrc/components/ui/Alert.astro[0m:[93m102[0m:[93m49[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m102[0m       button.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                ~~~~~[0m
+[96msrc/components/ui/Alert.astro[0m:[93m100[0m:[93m58[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m100[0m   document.addEventListener('DOMContentLoaded', (_event: Event) => {
+[7m   [0m [91m                                                         ~~~~~[0m
+
+[96msrc/components/ui/Card.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardAction.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardContent.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardDescription.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardFooter.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardHeader.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/CardTitle.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/utils' or its corresponding type declarations.
+
+[7m3[0m import { cn } from '~/lib/utils'
+[7m [0m [91m                   ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/PageHeader.astro[0m:[93m18[0m:[93m21[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'a' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m18[0m       {actions.map((a) => (
+[7m  [0m [93m                    ~[0m
+
+[96msrc/components/ui/Surface.astro[0m:[93m2[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'Props' is declared but never used.
+
+[7m2[0m interface Props {
+[7m [0m [93m          ~~~~~[0m
+
+[96msrc/components/views/GithubItem.astro[0m:[93m4[0m:[93m31[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/data' or its corresponding type declarations.
+
+[7m4[0m import { VERSION_COLOR } from '~/utils/data'
+[7m [0m [91m                              ~~~~~~~~~~~~~~[0m
+[96msrc/components/views/GithubItem.astro[0m:[93m3[0m:[93m28[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/datetime' or its corresponding type declarations.
+
+[7m3[0m import { formatDate } from '~/utils/datetime'
+[7m [0m [91m                           ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/GithubItem.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/views/GroupItem.astro[0m:[93m4[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/content/schema' or its corresponding type declarations.
+
+[7m4[0m import type { ProjectSchema } from '~/content/schema'
+[7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/GroupItem.astro[0m:[93m3[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/config' or its corresponding type declarations.
+
+[7m3[0m import { UI } from '~/config'
+[7m [0m [91m                   ~~~~~~~~~~[0m
+[96msrc/components/views/GroupItem.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/views/GroupView.astro[0m:[93m6[0m:[93m30[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/config' or its corresponding type declarations.
+
+[7m6[0m import { FEATURES, UI } from '~/config'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+[96msrc/components/views/GroupView.astro[0m:[93m5[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/views/GroupItem.astro' or its corresponding type declarations.
+
+[7m5[0m import GroupItem from '~/components/views/GroupItem.astro'
+[7m [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/GroupView.astro[0m:[93m4[0m:[93m25[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Categorizer.astro' or its corresponding type declarations.
+
+[7m4[0m import Categorizer from '~/components/base/Categorizer.astro'
+[7m [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/GroupView.astro[0m:[93m3[0m:[93m17[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/toc/Toc.astro' or its corresponding type declarations.
+
+[7m3[0m import Toc from '~/components/toc/Toc.astro'
+[7m [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/views/ListItem.astro[0m:[93m4[0m:[93m28[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/datetime' or its corresponding type declarations.
+
+[7m4[0m import { formatDate } from '~/utils/datetime'
+[7m [0m [91m                           ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/ListItem.astro[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m3[0m import { getUrl } from '~/utils/common'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/components/views/ListItem.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/views/RenderPage.astro[0m:[93m14[0m:[93m5[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'tocComponent' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m14[0m let tocComponent
+[7m  [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/components/views/RenderPage.astro[0m:[93m13[0m:[93m5[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'contentResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m13[0m let contentResult
+[7m  [0m [93m    ~~~~~~~~~~~~~[0m
+
+[96msrc/components/views/RenderPost.astro[0m:[93m14[0m:[93m5[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'tocComponent' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m14[0m let tocComponent
+[7m  [0m [93m    ~~~~~~~~~~~~[0m
+[96msrc/components/views/RenderPost.astro[0m:[93m13[0m:[93m5[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'contentResult' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m13[0m let contentResult
+[7m  [0m [93m    ~~~~~~~~~~~~~[0m
+
+[96msrc/components/widgets/LogoButton.astro[0m:[93m4[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/config' or its corresponding type declarations.
+
+[7m4[0m import { SITE } from '~/config'
+[7m [0m [91m                     ~~~~~~~~~~[0m
+[96msrc/components/widgets/LogoButton.astro[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m3[0m import { getUrl } from '~/utils/common'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/components/widgets/LogoButton.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/widgets/NavSwitch.astro[0m:[93m32[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/animation' or its corresponding type declarations.
+
+[7m32[0m   import { toggleFadeEffect } from '~/utils/animation'
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/widgets/RssLink.astro[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m3[0m import { getUrl } from '~/utils/common'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/components/widgets/RssLink.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/widgets/SearchSwitch.astro[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/common' or its corresponding type declarations.
+
+[7m2[0m import { getUrl } from '~/utils/common'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/components/widgets/SearchSwitch.astro[0m:[93m54[0m:[93m36[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/utils/animation' or its corresponding type declarations.
+
+[7m54[0m   import { toggleFadeEffect } from '~/utils/animation'
+[7m  [0m [91m                                   ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/widgets/ShareLink.astro[0m:[93m289[0m:[93m54[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type '[boolean, (string | undefined)?] | undefined'.
+
+[7m289[0m           href={linkConfig.formatUrl(initialPostUrl, provider.cfg)}
+[7m   [0m [91m                                                     ~~~~~~~~~~~~[0m
+[96msrc/components/widgets/ShareLink.astro[0m:[93m3[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/types' or its corresponding type declarations.
+
+[7m3[0m import type { ShareConfig } from '~/types'
+[7m [0m [91m                                 ~~~~~~~~~[0m
+[96msrc/components/widgets/ShareLink.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/base/Link.astro' or its corresponding type declarations.
+
+[7m2[0m import Link from '~/components/base/Link.astro'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/widgets/ShareLink.astro[0m:[93m121[0m:[93m15[0m - [93mwarning[0m[90m ts(6196): [0m'_ShareLink' is declared but never used.
+
+[7m121[0m     interface _ShareLink {
+[7m   [0m [93m              ~~~~~~~~~~[0m
+
+[96msrc/components/widgets/SwiperCarousel.astro[0m:[93m3[0m:[93m15[0m - [91merror[0m[90m ts(2305): [0mModule '"astro:assets"' has no exported member 'ImageMetadata'.
+
+[7m3[0m import type { ImageMetadata } from 'astro:assets'
+[7m [0m [91m              ~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/AuthLayout.astro[0m:[93m23[0m:[93m49[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any; title: any; description: any; bgType: "dot"; transitionMode: any; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'transitionMode' does not exist on type 'IntrinsicAttributes & Props'. Did you mean ''transition:name''?
+
+[7m23[0m <BaseLayout {title} {description} bgType="dot" {transitionMode}>
+[7m  [0m [91m                                                ~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/BaseLayout.astro[0m:[93m48[0m:[93m20[0m - [93mwarning[0m[90m ts(6133): [0m'media' is declared but its value is never read.
+
+[7m48[0m       onload="this.media='all'"
+[7m  [0m [93m                   ~~~~~[0m
+[96msrc/layouts/BaseLayout.astro[0m:[93m85[0m:[93m7[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m85[0m       src="https://js.sentry-cdn.com/ef4ca2c0d2530a95efb0ef55c168b661.min.js"
+[7m  [0m [93m      ~~~[0m
+[96msrc/layouts/BaseLayout.astro[0m:[93m79[0m:[93m7[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m79[0m       src="https://cdn.peasy.so/peasy.js"
+[7m  [0m [93m      ~~~[0m
+
+[96msrc/layouts/BlogLayout.astro[0m:[93m110[0m:[93m16[0m - [93mwarning[0m[90m ts(6133): [0m'speedInsightsBeforeSend' is declared but its value is never read.
+
+[7m110[0m       function speedInsightsBeforeSend(data) {
+[7m   [0m [93m               ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/DashboardLayout.astro[0m:[93m146[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m146[0m         .addEventListener('change', (event) => {
+[7m   [0m [93m                                     ~~~~~[0m
+
+[96msrc/layouts/DocumentationLayout.astro[0m:[93m367[0m:[93m16[0m - [93mwarning[0m[90m ts(6133): [0m'speedInsightsBeforeSend' is declared but its value is never read.
+
+[7m367[0m       function speedInsightsBeforeSend(data) {
+[7m   [0m [93m               ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/Layout.astro[0m:[93m166[0m:[93m16[0m - [93mwarning[0m[90m ts(6133): [0m'speedInsightsBeforeSend' is declared but its value is never read.
+
+[7m166[0m       function speedInsightsBeforeSend(data) {
+[7m   [0m [93m               ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/TailusLayout.astro[0m:[93m4[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@components/tailus/AppHeader.astro' or its corresponding type declarations.
+
+[7m4[0m import AppHeader from '@components/tailus/AppHeader.astro'
+[7m [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/layouts/TailusLayout.astro[0m:[93m3[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@components/tailus/AppFooter.astro' or its corresponding type declarations.
+
+[7m3[0m import AppFooter from '@components/tailus/AppFooter.astro'
+[7m [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/layouts/TailusLayout.astro[0m:[93m2[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@components/tailus/BaseHead.astro' or its corresponding type declarations.
+
+[7m2[0m import BaseHead from '@components/tailus/BaseHead.astro'
+[7m [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/layouts/TailusLayout.astro[0m:[93m44[0m:[93m16[0m - [93mwarning[0m[90m ts(6133): [0m'speedInsightsBeforeSend' is declared but its value is never read.
+
+[7m44[0m       function speedInsightsBeforeSend(data) {
+[7m  [0m [93m               ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin-test.astro[0m:[93m5[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'mockUser' is declared but its value is never read.
+
+[7m5[0m const mockUser = {
+[7m [0m [93m      ~~~~~~~~[0m
+
+[96msrc/pages/book.astro[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'false' is not assignable to type 'BgType | undefined'.
+
+[7m10[0m   bgType={false}
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/company.astro[0m:[93m11[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any; seo: { title: string; description: string; canonical: string; }; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'seo' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m11[0m <BaseLayout seo={seo}>
+[7m  [0m [91m            ~~~[0m
+
+[96msrc/pages/contact.astro[0m:[93m557[0m:[93m51[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m557[0m           messageInput?.addEventListener('blur', (event: Event) => {
+[7m   [0m [93m                                                  ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m548[0m:[93m51[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m548[0m           subjectInput?.addEventListener('blur', (event: Event) => {
+[7m   [0m [93m                                                  ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m539[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m539[0m           emailInput?.addEventListener('blur', (event: Event) => {
+[7m   [0m [93m                                                ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m530[0m:[93m48[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m530[0m           nameInput?.addEventListener('blur', (event: Event) => {
+[7m   [0m [93m                                               ~~~~~[0m
+[96msrc/pages/contact.astro[0m:[93m340[0m:[93m52[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m340[0m           messageInput?.addEventListener('input', (event: Event) => {
+[7m   [0m [93m                                                   ~~~~~[0m
+
+[96msrc/pages/feeds.astro[0m:[93m4[0m:[93m22[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/components/views/ListView.astro' or its corresponding type declarations.
+
+[7m4[0m import ListView from '~/components/views/ListView.astro'
+[7m [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/feeds.astro[0m:[93m3[0m:[93m26[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/layouts/TabbedLayout.astro' or its corresponding type declarations.
+
+[7m3[0m import TabbedLayout from '~/layouts/TabbedLayout.astro'
+[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/feeds.astro[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/layouts/BaseLayout.astro' or its corresponding type declarations.
+
+[7m2[0m import BaseLayout from '~/layouts/BaseLayout.astro'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/highlights.astro[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'BgType | undefined'.
+
+[7m18[0m   bgType={frontmatter.bgType}
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/mental-health-demo.astro[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '{ title: string; description: string; showSettingsPanel: boolean; showAnalysisPanel: boolean; initialTab: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'showSettingsPanel' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m36[0m         showSettingsPanel={true}
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/mind-mirror-demo.astro[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'MindMirrorDemo'.
+
+[7m3[0m import { MindMirrorDemo } from '../components/MindMirrorDemo'
+[7m [0m [91m         ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/projects.astro[0m:[93m20[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'BgType | undefined'.
+
+[7m20[0m   bgType={frontmatter.bgType}
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/prs.astro[0m:[93m21[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'BgType | undefined'.
+
+[7m21[0m   bgType={frontmatter.bgType}
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/register.astro[0m:[93m18[0m:[93m15[0m - [91merror[0m[90m ts(18048): [0m'astro.url' is possibly 'undefined'.
+
+[7m18[0m const error = astro.url.searchParams.get('error')
+[7m  [0m [91m              ~~~~~~~~~[0m
+[96msrc/pages/register.astro[0m:[93m13[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'cookies' does not exist on type 'AstroGlobal'.
+
+[7m13[0m if (await isAuthenticated(astro.cookies)) {
+[7m  [0m [91m                                ~~~~~~~[0m
+[96msrc/pages/register.astro[0m:[93m10[0m:[93m15[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>' to type 'AstroGlobal' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'locals' are incompatible.
+
+[7m10[0m const astro = Astro as AstroGlobal
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/search-demo.astro[0m:[93m3[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'SearchDemo'.
+
+[7m3[0m import SearchDemo from '@/components/SearchDemo.astro'
+[7m [0m [91m       ~~~~~~~~~~[0m
+
+[96msrc/pages/signin.astro[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '"default"' is not assignable to type 'BgType | undefined'.
+
+[7m17[0m   bgType="default"
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/signup.astro[0m:[93m14[0m:[93m58[0m - [91merror[0m[90m ts(2339): [0mProperty 'cookies' does not exist on type 'AstroGlobal'.
+
+[7m14[0m const alreadyAuthenticated = await isAuthenticated(astro.cookies)
+[7m  [0m [91m                                                         ~~~~~~~[0m
+[96msrc/pages/signup.astro[0m:[93m13[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'astro.url' is possibly 'undefined'.
+
+[7m13[0m const redirect = astro.url.searchParams.get('redirect') || '/dashboard'
+[7m  [0m [91m                 ~~~~~~~~~[0m
+[96msrc/pages/signup.astro[0m:[93m10[0m:[93m15[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>' to type 'AstroGlobal' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'locals' are incompatible.
+
+[7m10[0m const astro = Astro as AstroGlobal
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/team.astro[0m:[93m65[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'linkedin' does not exist on type '{ name: string; role: string; bio: string; expertise: string; image: string; }'.
+
+[7m65[0m                   href={member.linkedin}
+[7m  [0m [91m                               ~~~~~~~~[0m
+[96msrc/pages/team.astro[0m:[93m63[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'linkedin' does not exist on type '{ name: string; role: string; bio: string; expertise: string; image: string; }'.
+
+[7m63[0m               {member.linkedin && (
+[7m  [0m [91m                      ~~~~~~~~[0m
+[96msrc/pages/team.astro[0m:[93m23[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any; seo: { title: string; description: string; canonical: string; }; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'seo' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m23[0m <BaseLayout seo={seo}>
+[7m  [0m [91m            ~~~[0m
+
+[96msrc/pages/therapists.astro[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '"default"' is not assignable to type 'BgType | undefined'.
+
+[7m10[0m   bgType="default"
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/training-session.astro[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '"default"' is not assignable to type 'BgType | undefined'.
+
+[7m11[0m   bgType="default"
+[7m  [0m [91m  ~~~~~~[0m
+
+[96msrc/pages/admin/ai-performance.astro[0m:[93m18[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'operationTypes' is declared but its value is never read.
+
+[7m18[0m const operationTypes: AIOperationType[] = [
+[7m  [0m [93m      ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/all-demos-analytics.astro[0m:[93m510[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "outline"; class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m510[0m             class="border-purple-500/50 text-purple-300 hover:bg-purple-500/10 px-6 py-3"
+[7m   [0m [91m            ~~~~~[0m
+[96msrc/pages/admin/all-demos-analytics.astro[0m:[93m504[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "outline"; class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m504[0m             class="border-purple-500/50 text-purple-300 hover:bg-purple-500/10 px-6 py-3"
+[7m   [0m [91m            ~~~~~[0m
+[96msrc/pages/admin/all-demos-analytics.astro[0m:[93m498[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m498[0m             class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3"
+[7m   [0m [91m            ~~~~~[0m
+[96msrc/pages/admin/all-demos-analytics.astro[0m:[93m796[0m:[93m52[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m796[0m     document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m   [0m [93m                                                   ~~~~~[0m
+[96msrc/pages/admin/all-demos-analytics.astro[0m:[93m796[0m:[93m59[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m796[0m     document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m   [0m [91m                                                          ~~~~~[0m
+
+[96msrc/pages/admin/bias-detection.astro[0m:[93m34[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; title: string; description: string; activeItem: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'activeItem' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m34[0m   activeItem="bias-detection"
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/pages/admin/bias-detection.astro[0m:[93m22[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m22[0m const response = await verifyAdmin(Astro.request, context)
+[7m  [0m [91m                                   ~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/bias-detection.astro[0m:[93m17[0m:[93m5[0m - [91merror[0m[90m ts(2353): [0mObject literal may only specify known properties, and 'isCompliant' does not exist in type 'HIPAAComplianceInfo'.
+
+[7m17[0m     isCompliant: true,
+[7m  [0m [91m    ~~~~~~~~~~~[0m
+[96msrc/pages/admin/bias-detection.astro[0m:[93m14[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type '{ timestamp: number; verificationHash: string; }'.
+
+[7m14[0m     details: 'Default compliance status',
+[7m  [0m [91m    ~~~~~~~[0m
+[96msrc/pages/admin/bias-detection.astro[0m:[93m67[0m:[93m52[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m67[0m     document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m  [0m [93m                                                   ~~~~~[0m
+
+[96msrc/pages/admin/compatibility-dashboard.astro[0m:[93m90[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any; title: string; description: string; showNavBar: boolean; showFooter: boolean; centered: boolean; contentClass: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'showNavBar' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m90[0m   showNavBar={true}
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/pages/admin/compatibility-dashboard.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Chart' is declared but its value is never read.
+
+[7m4[0m import { Chart } from 'chart.js/auto'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/compatibility-dashboard.astro[0m:[93m186[0m:[93m17[0m - [93mwarning[0m[90m ts(6196): [0m'ChartConfiguration' is declared but never used.
+
+[7m186[0m   import type { ChartConfiguration, TooltipItem } from 'chart.js'
+[7m   [0m [93m                ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m549[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m549[0m         document.getElementById('recommendation').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m547[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m547[0m         document.getElementById('confidence-level').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m545[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m545[0m         document.getElementById('test-status').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m540[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m540[0m         document.getElementById('recommendation').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m538[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m538[0m         document.getElementById('confidence-level').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m536[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m536[0m         document.getElementById('test-status').textContent =
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m510[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'timeline' is possibly 'null'.
+
+[7m510[0m       timeline.innerHTML = recentEvents
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m505[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'timeline' is possibly 'null'.
+
+[7m505[0m         timeline.innerHTML =
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m496[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m496[0m       document.getElementById('funnel-cta-clicks-bar').style.width =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m494[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m494[0m       document.getElementById('funnel-demo-interactions-bar').style.width =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m491[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m491[0m       document.getElementById('funnel-cta-clicks-pct').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m489[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m489[0m       document.getElementById('funnel-demo-interactions-pct').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m482[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m482[0m       document.getElementById('funnel-cta-clicks').textContent = ctaClicks
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m480[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m480[0m       document.getElementById('funnel-demo-interactions').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m479[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m479[0m       document.getElementById('funnel-page-views').textContent = pageViews
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m468[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m468[0m         document.getElementById(
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m469[0m           `variant-${variant.toLowerCase()}-rate`,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m470[0m         ).textContent = rate + '%'
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m465[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m465[0m         document.getElementById(
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m466[0m           `variant-${variant.toLowerCase()}-conversions`,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m467[0m         ).textContent = conversions
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m462[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType 'number' is not assignable to type 'string'.
+
+[7m462[0m         document.getElementById(
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m463[0m           `variant-${variant.toLowerCase()}-sessions`,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m464[0m         ).textContent = sessions
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m462[0m:[93m9[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m462[0m         document.getElementById(
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m463[0m           `variant-${variant.toLowerCase()}-sessions`,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m464[0m         ).textContent = sessions
+[7m   [0m [91m~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m432[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m432[0m       document.getElementById('avg-scroll-depth').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m430[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m430[0m       document.getElementById('avg-time-cta').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m428[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m428[0m       document.getElementById('conversion-rate').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m426[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m426[0m       document.getElementById('total-sessions').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m383[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'data' does not exist on type 'DemoAnalyticsDashboard'.
+
+[7m383[0m       this.data = {
+[7m   [0m [91m           ~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m382[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'eventSource' does not exist on type 'DemoAnalyticsDashboard'.
+
+[7m382[0m       this.eventSource = null
+[7m   [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m570[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m570[0m   document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m563[0m:[93m21[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'variant' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m563[0m     getVariantColor(variant) {
+[7m   [0m [93m                    ~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m554[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m554[0m     calculateSignificance(data) {
+[7m   [0m [93m                          ~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m554[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'data' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m554[0m     calculateSignificance(data) {
+[7m   [0m [93m                          ~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m533[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'totalSessions' is declared but its value is never read.
+
+[7m533[0m       const totalSessions = data.summary.unique_sessions
+[7m   [0m [93m            ~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m531[0m:[93m35[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'data' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m531[0m     updateStatisticalSignificance(data) {
+[7m   [0m [93m                                  ~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m511[0m:[93m15[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m511[0m         .map((event) => {
+[7m   [0m [93m              ~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m500[0m:[93m25[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'events' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m500[0m     updateEventTimeline(events) {
+[7m   [0m [93m                        ~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m474[0m:[93m18[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'funnelData' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m474[0m     updateFunnel(funnelData) {
+[7m   [0m [93m                 ~~~~~~~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m457[0m:[93m12[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m457[0m           (e) => e.event === 'demo_cta_click',
+[7m   [0m [93m           ~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m455[0m:[93m53[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m455[0m         const sessions = new Set(variantEvents.map((e) => e.session_id)).size
+[7m   [0m [93m                                                    ~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m453[0m:[93m12[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m453[0m           (e) => e.ab_variant === variant,
+[7m   [0m [93m           ~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m448[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'data' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m448[0m     updateVariantStats(data) {
+[7m   [0m [93m                       ~~~~[0m
+[96msrc/pages/admin/demo-analytics.astro[0m:[93m424[0m:[93m21[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'data' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m424[0m     updateDashboard(data) {
+[7m   [0m [93m                    ~~~~[0m
+
+[96msrc/pages/admin/dlp.astro[0m:[93m64[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m64[0m   document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m  [0m [93m                                                 ~~~~~[0m
+
+[96msrc/pages/admin/fhe-dashboard.astro[0m:[93m13[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m13[0m const response = await verifyAdmin(Astro.request, context)
+[7m  [0m [91m                                   ~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/flagged-messages.astro[0m:[93m91[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{ _id: string; conversation_id: string; role: string; content: string; created_at?: string | undefined; }'.
+
+[7m91[0m                         value={message.id}
+[7m  [0m [91m                                       ~~[0m
+[96msrc/pages/admin/flagged-messages.astro[0m:[93m81[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{ _id: string; conversation_id: string; role: string; content: string; created_at?: string | undefined; }'.
+
+[7m81[0m                         value={message.id}
+[7m  [0m [91m                                       ~~[0m
+[96msrc/pages/admin/flagged-messages.astro[0m:[93m75[0m:[93m46[0m - [91merror[0m[90m ts(2339): [0mProperty 'metadata' does not exist on type '{ _id: string; conversation_id: string; role: string; content: string; created_at?: string | undefined; }'.
+
+[7m75[0m                   <td>{getFlagReason(message.metadata)}</td>
+[7m  [0m [91m                                             ~~~~~~~~[0m
+[96msrc/pages/admin/flagged-messages.astro[0m:[93m68[0m:[93m33[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+
+[7m68[0m                   <td>{new Date(message.created_at).toLocaleString()}</td>
+[7m  [0m [91m                                ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/flagged-messages.astro[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'import("/home/vivi/pixelated/node_modules/.pnpm/astro@5.15.1_@azure+storage-blob@12.28.0_@types+node@24.7.2_@upstash+redis@1.35.5_@verc_689c0c127708268dd190515c64a92522/node_modules/astro/dist/core/cookies/cookies").AstroCookies' is not assignable to type 'import("astro").AstroCookies'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m10[0m   cookies: Astro.cookies,
+[7m  [0m [91m  ~~~~~~~[0m
+
+[96msrc/pages/admin/patient-rights.astro[0m:[93m259[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m259[0m       tab.addEventListener('click', (event: Event) => {
+[7m   [0m [93m                                     ~~~~~[0m
+[96msrc/pages/admin/patient-rights.astro[0m:[93m253[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m253[0m   document.addEventListener('DOMContentLoaded', (event: Event) => {
+[7m   [0m [93m                                                 ~~~~~[0m
+
+[96msrc/pages/admin/performance-dashboard.astro[0m:[93m7[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'config' is declared but its value is never read.
+
+[7m7[0m const config = getMonitoringConfig()
+[7m [0m [93m      ~~~~~~[0m
+
+[96msrc/pages/admin/real-user-monitoring.astro[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m ts(2322): [0mType '{ title: string; description: string; refreshInterval: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'refreshInterval' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m25[0m         refreshInterval={30000}
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/security-settings.astro[0m:[93m10[0m:[93m51[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 2.
+
+[7m10[0m const authResponse = await requirePageAuth(Astro, 'admin')
+[7m  [0m [91m                                                  ~~~~~~~[0m
+
+[96msrc/pages/admin/ai/model-performance.astro[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType 'import("/home/vivi/pixelated/node_modules/.pnpm/astro@5.15.1_@azure+storage-blob@12.28.0_@types+node@24.7.2_@upstash+redis@1.35.5_@verc_689c0c127708268dd190515c64a92522/node_modules/astro/dist/core/cookies/cookies").AstroCookies' is not assignable to type 'import("astro").AstroCookies'.
+  The types returned by 'get(...)' are incompatible between these types.
+
+[7m9[0m   cookies: Astro.cookies,
+[7m [0m [91m  ~~~~~~~[0m
+[96msrc/pages/admin/ai/model-performance.astro[0m:[93m4[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/layouts/BaseLayout.astro' or its corresponding type declarations.
+
+[7m4[0m import BaseLayout from '~/layouts/BaseLayout.astro'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/ai/performance.astro[0m:[93m15[0m:[93m36[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Request' is not assignable to parameter of type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+  Type 'Request' is missing the following properties from type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>': get, header, accepts, acceptsCharsets, and 93 more.
+
+[7m15[0m const response = await verifyAdmin(Astro.request, context)
+[7m  [0m [91m                                   ~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/ai/usage.astro[0m:[93m4[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/layouts/BaseLayout.astro' or its corresponding type declarations.
+
+[7m4[0m import BaseLayout from '~/layouts/BaseLayout.astro'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/ai/usage.astro[0m:[93m3[0m:[93m35[0m - [91merror[0m[90m ts(2307): [0mCannot find module '~/lib/access-control' or its corresponding type declarations.
+
+[7m3[0m import { requirePermission } from '~/lib/access-control'
+[7m [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/ai/validation-pipeline.astro[0m:[93m23[0m:[93m17[0m - [91merror[0m[90m ts(2352): [0mConversion of type '{ initialised: boolean; historyCount: number; }' to type 'RunnerState' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'isScheduled' is missing in type '{ initialised: boolean; historyCount: number; }' but required in type 'RunnerState'.
+
+[7m23[0m   runnerState = validationRunner.getState() as RunnerState
+[7m  [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/backups/index.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'BackupRecoveryTab' is declared but its value is never read.
+
+[7m4[0m import BackupRecoveryTab from '../../../components/admin/backup/BackupRecoveryTab'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/consent/index.astro[0m:[93m9[0m:[93m30[0m - [91merror[0m[90m ts(2554): [0mExpected 1 arguments, but got 2.
+
+[7m9[0m await requirePageAuth(Astro, 'admin')
+[7m [0m [91m                             ~~~~~~~[0m
+
+[96msrc/pages/admin/security/index.astro[0m:[93m53[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'level' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m53[0m function getAlertLevelClass(level) {
+[7m  [0m [93m                            ~~~~~[0m
+[96msrc/pages/admin/security/index.astro[0m:[93m42[0m:[93m21[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'date' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m42[0m function formatDate(date) {
+[7m  [0m [93m                    ~~~~[0m
+
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m14[0m:[93m22[0m - [91merror[0m[90m ts(2339): [0mProperty 'searchQuery' does not exist on type 'URLSearchParams'.
+
+[7m14[0m const { status = '', searchQuery = '' } = Astro.url.searchParams
+[7m  [0m [91m                     ~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m ts(2339): [0mProperty 'status' does not exist on type 'URLSearchParams'.
+
+[7m14[0m const { status = '', searchQuery = '' } = Astro.url.searchParams
+[7m  [0m [91m        ~~~~~~[0m
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m6[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'BusinessAssociateType' is declared but its value is never read.
+
+[7m6[0m   BusinessAssociateType,
+[7m [0m [93m  ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m5[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'BaaStatus' is declared but its value is never read.
+
+[7m5[0m   BaaStatus,
+[7m [0m [93m  ~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m540[0m:[93m18[0m - [91merror[0m[90m ts(2551): [0mProperty 'submit' does not exist on type 'HTMLElement'. Did you mean 'onsubmit'?
+
+[7m540[0m       searchForm.submit()
+[7m   [0m [91m                 ~~~~~~[0m
+[96msrc/pages/admin/security/baa/management.astro[0m:[93m533[0m:[93m47[0m - [91merror[0m[90m ts(2551): [0mProperty 'submit' does not exist on type 'HTMLElement'. Did you mean 'onsubmit'?
+
+[7m533[0m       document.getElementById('search-form')?.submit()
+[7m   [0m [91m                                              ~~~~~~[0m
+
+[96msrc/pages/admin/security/baa/templates.astro[0m:[93m8[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m 8[0m import {
+[7m  [0m [93m~~~~~~~~[0m
+[7m 9[0m   BusinessAssociateType,
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m10[0m   ServiceCategory,
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~[0m
+[7m11[0m } from '../../../../lib/security/baa/types'
+[7m  [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/templates.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m4[0m import {
+[7m [0m [93m~~~~~~~~[0m
+[7m5[0m   standardSections,
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~[0m
+[7m6[0m   standardPlaceholders,
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m7[0m } from '../../../../lib/security/baa/templates/hipaa-standard'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/templates.astro[0m:[93m227[0m:[93m44[0m - [91merror[0m[90m ts(2339): [0mProperty 'getAttribute' does not exist on type 'EventTarget'.
+
+[7m227[0m         const templateId = e.currentTarget.getAttribute('data-template-id')
+[7m   [0m [91m                                           ~~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/baa/templates.astro[0m:[93m227[0m:[93m28[0m - [91merror[0m[90m ts(18047): [0m'e.currentTarget' is possibly 'null'.
+
+[7m227[0m         const templateId = e.currentTarget.getAttribute('data-template-id')
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/security/baa/vendors.astro[0m:[93m65[0m:[93m3[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | undefined' is not assignable to parameter of type 'BusinessAssociateType | undefined'.
+  Type 'string' is not assignable to type 'BusinessAssociateType | undefined'.
+
+[7m65[0m   type || undefined,
+[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m582[0m:[93m49[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m582[0m     templateForm.addEventListener('submit', (e: Event) => {
+[7m   [0m [91m                                                ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m568[0m:[93m67[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m568[0m     useStandardPlaceholdersBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                                  ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m556[0m:[93m63[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m556[0m     useStandardSectionsBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                              ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m544[0m:[93m58[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m544[0m     addPlaceholderBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                         ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m531[0m:[93m54[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m531[0m     addSectionBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m522[0m:[93m57[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m522[0m         requiredCheckbox.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m518[0m:[93m53[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m518[0m         defaultInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                    ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m514[0m:[93m57[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m514[0m         descriptionInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m510[0m:[93m51[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m510[0m         labelInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                  ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m505[0m:[93m49[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m505[0m         keyInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m500[0m:[93m54[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m500[0m         removeBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m402[0m:[93m57[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m402[0m         requiredCheckbox.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m398[0m:[93m56[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m398[0m         contentTextarea.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m394[0m:[93m57[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m394[0m         descriptionInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m390[0m:[93m51[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m390[0m         titleInput.addEventListener('change', (e: Event) => {
+[7m   [0m [91m                                                  ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m385[0m:[93m54[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m385[0m         removeBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m375[0m:[93m56[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m375[0m         moveDownBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                       ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m365[0m:[93m54[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m365[0m         moveUpBtn.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/pages/admin/security/baa/templates/new.astro[0m:[93m265[0m:[93m58[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m265[0m   document.addEventListener('DOMContentLoaded', (_event: Event) => {
+[7m   [0m [91m                                                         ~~~~~[0m
+
+[96msrc/pages/admin/security/disaster-recovery/index.astro[0m:[93m289[0m:[93m45[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type '"verified" | "needs-testing" | "needs-update" | "in-development"'.
+
+[7m289[0m                       {getStatusDisplayText(plan.status)}
+[7m   [0m [91m                                            ~~~~~~~~~~~[0m
+[96msrc/pages/admin/security/disaster-recovery/index.astro[0m:[93m287[0m:[93m125[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string' is not assignable to parameter of type '"verified" | "needs-testing" | "needs-update" | "in-development"'.
+
+[7m287[0m                       class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(plan.status)}`}
+[7m   [0m [91m                                                                                                                            ~~~~~~~~~~~[0m
+
+[96msrc/pages/analytics/conversions.astro[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>' to type 'AstroGlobal' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'locals' are incompatible.
+
+[7m11[0m await requirePageAuth(Astro as AstroGlobal)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/analytics/conversions.astro[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroGlobal' is not assignable to parameter of type 'ServerAuthOptions'.
+  Type 'AstroGlobal' is missing the following properties from type 'ServerAuthOptions': cookies, requestIp
+
+[7m11[0m await requirePageAuth(Astro as AstroGlobal)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/analytics/index.astro[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>' to type 'AstroGlobal' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'locals' are incompatible.
+
+[7m11[0m await requirePageAuth(Astro as AstroGlobal)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/analytics/index.astro[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroGlobal' is not assignable to parameter of type 'ServerAuthOptions'.
+  Type 'AstroGlobal' is missing the following properties from type 'ServerAuthOptions': cookies, requestIp
+
+[7m11[0m await requirePageAuth(Astro as AstroGlobal)
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/blog/[...slug].astro[0m:[93m306[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; class: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m306[0m                   class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-300"
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/blog/[...slug].astro[0m:[93m201[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "outline"; class: string; "data-blog-link": string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m201[0m                   class="border-green-500/50 text-green-300 hover:bg-green-500/10 px-6 py-3 rounded-full"
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/blog/[...slug].astro[0m:[93m194[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; class: string; "data-demo-link": string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m194[0m                   class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white px-6 py-3 rounded-full"
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/blog/[...slug].astro[0m:[93m86[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "outline"; size: "sm"; class: string; "data-back-button": string; }' is not assignable to type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & Omit<ButtonProps, "ref"> & RefAttributes<HTMLAnchorElement | HTMLButtonElement>'. Did you mean ''className''?
+
+[7m86[0m             class="border-green-500/50 text-green-300 hover:bg-green-500/10"
+[7m  [0m [91m            ~~~~~[0m
+
+[96msrc/pages/blog/index.astro[0m:[93m39[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'tag' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m39[0m   ;(post.data.tags || []).forEach((tag) => {
+[7m  [0m [93m                                   ~~~[0m
+[96msrc/pages/blog/index.astro[0m:[93m38[0m:[93m19[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'post' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m38[0m allPosts.forEach((post) => {
+[7m  [0m [93m                  ~~~~[0m
+
+[96msrc/pages/blog/page/[...page].astro[0m:[93m19[0m:[93m18[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ params: { page: string; }; props: { page: { data: any[]; currentPage: number; lastPage: number; size: number; total: number; url: { current: string; prev: string | undefined; next: string | undefined; }; }; }; }' is not assignable to parameter of type 'never'.
+
+[7m 19[0m       pages.push({
+[7m   [0m [91m                 ~[0m
+[7m 20[0m         params: { page: (i + 1).toString() },
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 34[0m         },
+[7m   [0m [91m~~~~~~~~~~[0m
+[7m 35[0m       })
+[7m   [0m [91m~~~~~~~[0m
+
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m536[0m:[93m3[0m - [93mwarning[0m[90m ts(7027): [0mUnreachable code detected.
+
+[7m536[0m   document
+[7m   [0m [93m  ~~~~~~~~[0m
+[7m537[0m     .getElementById('refresh-data')
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m539[0m       window.location.reload()
+[7m   [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m540[0m     })
+[7m   [0m [93m~~~~~~[0m
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m568[0m:[93m40[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m568[0m   modal?.addEventListener('click', (e: Event) => {
+[7m   [0m [91m                                       ~~~~~[0m
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m563[0m:[93m53[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m563[0m   closeModalBtn?.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                    ~~~~~[0m
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m551[0m:[93m44[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m551[0m   document.addEventListener('keydown', (e: Event) => {
+[7m   [0m [91m                                           ~~~~~[0m
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m538[0m:[93m42[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m538[0m     ?.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                         ~~~~~[0m
+[96msrc/pages/browser-compatibility/visual-regression.astro[0m:[93m534[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m534[0m <script define:vars={{ visualData, placeholderThumbnail }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m108[0m:[93m13[0m - [91merror[0m[90m ts(2741): [0mProperty 'emotions' is missing in type '{ trendlines: {}; volatility: {}; transitions: never[]; patterns: never[]; criticalPoints: never[]; progression: { overallImprovement: number; stabilityChange: number; positiveEmotionChange: number; negativeEmotionChange: number; }; dimensionalRelationships: never[]; }' but required in type 'TemporalEmotionAnalysis'.
+
+[7m108[0m             data={placeholderData}
+[7m   [0m [91m            ~~~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m77[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{}'.
+
+[7m77[0m   userId: user.id,
+[7m  [0m [91m               ~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m53[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{}'.
+
+[7m53[0m   therapistId: user.id,
+[7m  [0m [91m                    ~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m44[0m:[93m21[0m - [91merror[0m[90m ts(2339): [0mProperty 'id' does not exist on type '{}'.
+
+[7m44[0m   therapistId: user.id,
+[7m  [0m [91m                    ~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m24[0m:[93m42[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'AstroGlobal' is not assignable to parameter of type 'ServerAuthOptions'.
+  Type 'AstroGlobal' is missing the following properties from type 'ServerAuthOptions': cookies, requestIp
+
+[7m24[0m const authResult = await requirePageAuth(astro)
+[7m  [0m [91m                                         ~~~~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m18[0m:[93m9[0m - [91merror[0m[90m ts(2339): [0mProperty 'clientId' does not exist on type 'Record<string, string | undefined> | undefined'.
+
+[7m18[0m const { clientId } = astro.params
+[7m  [0m [91m        ~~~~~~~~[0m
+[96msrc/pages/client/[clientId]/temporal-analysis.astro[0m:[93m15[0m:[93m15[0m - [91merror[0m[90m ts(2352): [0mConversion of type 'Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>' to type 'AstroGlobal' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'locals' are incompatible.
+
+[7m15[0m const astro = Astro as AstroGlobal
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/components/analytics-dashboard.astro[0m:[93m78[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "scatter"; title: string; class: string; data: { category: string; timeRange: number; dataPoints: number; useBackendData: boolean; }; }' is not assignable to type 'IntrinsicAttributes & ChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ChartComponentProps'. Did you mean 'className'?
+
+[7m78[0m             class="mb-4"
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/components/analytics-dashboard.astro[0m:[93m62[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "pie"; title: string; class: string; data: { category: string; timeRange: number; useBackendData: boolean; }; }' is not assignable to type 'IntrinsicAttributes & ChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ChartComponentProps'. Did you mean 'className'?
+
+[7m62[0m             class="mb-4"
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/components/analytics-dashboard.astro[0m:[93m46[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "bar"; title: string; class: string; data: { category: string; timeRange: number; useBackendData: boolean; }; }' is not assignable to type 'IntrinsicAttributes & ChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ChartComponentProps'. Did you mean 'className'?
+
+[7m46[0m             class="mb-4"
+[7m  [0m [91m            ~~~~~[0m
+[96msrc/pages/components/analytics-dashboard.astro[0m:[93m27[0m:[93m13[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "line"; title: string; class: string; data: { category: string; timeRange: number; dataPoints: number; useBackendData: boolean; autoRefresh: boolean; refreshInterval: number; }; }' is not assignable to type 'IntrinsicAttributes & ChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ChartComponentProps'. Did you mean 'className'?
+
+[7m27[0m             class="mb-4"
+[7m  [0m [91m            ~~~~~[0m
+
+[96msrc/pages/components/emotion-visualization.astro[0m:[93m49[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; particleCount: number; emotion: "neutral"; interactive: true; autoAnimate: true; enableMouse: true; showTrails: false; class: string; }' is not assignable to type 'IntrinsicAttributes & ParticleSystemProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ParticleSystemProps'. Did you mean 'className'?
+
+[7m49[0m           class="mb-4"
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/pages/components/emotion-visualization.astro[0m:[93m30[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; showTrails: true; showAxes: true; class: string; }' is not assignable to type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'. Did you mean 'className'?
+
+[7m30[0m           class="mb-4"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/pages/components/index.astro[0m:[93m30[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; effect: "coverflow"; autoplay: { delay: number; disableOnInteraction: false; }; navigation: true; pagination: { clickable: true; dynamicBullets: true; }; loop: true; slidesPerView: number; ... 4 more ...; items: { ...; }[]; }' is not assignable to type 'IntrinsicAttributes & SwiperCarouselProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & SwiperCarouselProps'. Did you mean 'className'?
+
+[7m30[0m           class="mb-8"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/pages/components/security-demo.astro[0m:[93m42[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; class: string; showAdvanced: true; enableBenchmarks: true; }' is not assignable to type 'IntrinsicAttributes & FHEDemoProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & FHEDemoProps'. Did you mean 'className'?
+
+[7m42[0m           class="w-full"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/pages/components/treatment-plans.astro[0m:[93m22[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; class: string; readOnly: false; }' is not assignable to type 'IntrinsicAttributes & TreatmentPlanManagerProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & TreatmentPlanManagerProps'. Did you mean 'className'?
+
+[7m22[0m           class="w-full"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/pages/components/ui-showcase.astro[0m:[93m106[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; effect: "fade"; autoplay: { delay: number; }; navigation: false; pagination: { clickable: true; }; loop: true; slidesPerView: number; height: string; class: string; items: { id: string; content: string; }[]; }' is not assignable to type 'IntrinsicAttributes & SwiperCarouselProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & SwiperCarouselProps'. Did you mean 'className'?
+
+[7m106[0m           class="mb-4"
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/pages/components/ui-showcase.astro[0m:[93m55[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; effect: "coverflow"; autoplay: false; navigation: true; pagination: { clickable: true; }; loop: true; slidesPerView: number; spaceBetween: number; centeredSlides: true; height: string; class: string; items: { ...; }[]; }' is not assignable to type 'IntrinsicAttributes & SwiperCarouselProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & SwiperCarouselProps'. Did you mean 'className'?
+
+[7m55[0m           class="mb-4"
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/pages/components/ui-showcase.astro[0m:[93m34[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; effect: "slide"; autoplay: { delay: number; disableOnInteraction: false; }; navigation: true; pagination: { clickable: true; dynamicBullets: true; }; loop: true; slidesPerView: number; spaceBetween: number; height: string; class: string; }' is not assignable to type 'IntrinsicAttributes & SwiperCarouselProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & SwiperCarouselProps'. Did you mean 'className'?
+
+[7m34[0m           class="mb-4"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m490[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "bar"; title: string; data: { category: "sessions"; timeRange: number; clientId: any; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m490[0m                 class="h-48"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m472[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "pie"; title: string; data: { category: "emotions"; timeRange: number; clientId: any; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m472[0m                 class="h-48"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m454[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "line"; title: string; data: { category: "progress"; timeRange: number; clientId: any; dataPoints: number; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m454[0m                 class="h-48"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m432[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; particleCount: number; emotion: "neutral"; interactive: true; autoAnimate: true; enableMouse: true; showTrails: true; class: string; }' is not assignable to type 'IntrinsicAttributes & ParticleSystemProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & ParticleSystemProps'. Did you mean 'className'?
+
+[7m432[0m                 class="h-96"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m416[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; showTrails: true; showAxes: true; class: string; }' is not assignable to type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'. Did you mean 'className'?
+
+[7m416[0m                 class="h-96"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m344[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; class: string; showAdvanced: true; enableBenchmarks: true; }' is not assignable to type 'IntrinsicAttributes & FHEDemoProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & FHEDemoProps'. Did you mean 'className'?
+
+[7m344[0m                 class="w-full"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m329[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "scatter"; title: string; data: { category: "sessions"; timeRange: number; clientId: any; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m329[0m                 class="h-64"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m311[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "line"; title: string; data: { category: "outcomes"; timeRange: number; clientId: any; useBackendData: true; autoRefresh: true; refreshInterval: number; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m311[0m                 class="h-64"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m288[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; class: string; readOnly: false; }' is not assignable to type 'IntrinsicAttributes & TreatmentPlanManagerProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & TreatmentPlanManagerProps'. Did you mean 'className'?
+
+[7m288[0m               class="w-full"
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m223[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "pie"; title: string; data: { category: "emotions"; timeRange: number; clientId: any; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m223[0m                   class="h-96"
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m208[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; showTrails: true; showAxes: true; class: string; }' is not assignable to type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & MultidimensionalEmotionChartProps'. Did you mean 'className'?
+
+[7m208[0m                   class="h-96"
+[7m   [0m [91m                  ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m188[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; type: "bar"; title: string; data: { category: "sessions"; timeRange: number; clientId: any; useBackendData: true; }; class: string; }' is not assignable to type 'IntrinsicAttributes & EnhancedChartComponentProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & EnhancedChartComponentProps'. Did you mean 'className'?
+
+[7m188[0m                 class="h-64"
+[7m   [0m [91m                ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m161[0m:[93m19[0m - [91merror[0m[90m ts(2322): [0mType 'string | null' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+
+[7m161[0m                   sessionId: sessionId,
+[7m   [0m [91m                  ~~~~~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m140[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ "client:load": true; effect: "slide"; autoplay: { delay: number; disableOnInteraction: false; }; navigation: true; pagination: { clickable: true; dynamicBullets: true; }; loop: true; slidesPerView: number; spaceBetween: number; height: string; class: string; }' is not assignable to type 'IntrinsicAttributes & SwiperCarouselProps'.
+  Property 'class' does not exist on type 'IntrinsicAttributes & SwiperCarouselProps'. Did you mean 'className'?
+
+[7m140[0m               class="rounded-lg"
+[7m   [0m [91m              ~~~~~[0m
+[96msrc/pages/dashboard/enhanced.astro[0m:[93m13[0m:[93m1[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m13[0m // @ts-expect-error Astro.props is injected at runtime
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/dashboard/index.astro[0m:[93m9[0m:[93m1[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m9[0m // @ts-expect-error Astro.props is injected at runtime
+[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m264[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; href: string; variant: "secondary"; size: "sm"; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m264[0m               id="schedule-reports"
+[7m   [0m [91m              ~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m246[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; href: string; variant: "secondary"; size: "sm"; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m246[0m               id="export-excel"
+[7m   [0m [91m              ~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m227[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; href: string; variant: "secondary"; size: "sm"; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m227[0m               id="export-pdf"
+[7m   [0m [91m              ~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m642[0m:[93m33[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m642[0m       const { patterns } = this.analyticsData
+[7m   [0m [91m                                ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m640[0m:[93m31[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m640[0m       if (!container || !this.analyticsData.patterns) return
+[7m   [0m [91m                              ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m615[0m:[93m37[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m615[0m       const { demographics } = this.analyticsData
+[7m   [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m613[0m:[93m31[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m613[0m       if (!container || !this.analyticsData.demographics) return
+[7m   [0m [91m                              ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m578[0m:[93m37[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m578[0m       const { distribution } = this.analyticsData
+[7m   [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m576[0m:[93m31[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m576[0m       if (!container || !this.analyticsData.distribution) return
+[7m   [0m [91m                              ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m482[0m:[93m35[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m482[0m       const { historical } = this.analyticsData
+[7m   [0m [91m                                  ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m463[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m463[0m       document.getElementById('demo-trend').textContent = '3 new groups'
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m462[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m462[0m       document.getElementById('alert-trend').textContent = '+8% this period'
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m461[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m461[0m       document.getElementById('bias-trend').textContent = '-5% improvement'
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m459[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m459[0m       document.getElementById('analysis-trend').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m455[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m455[0m       document.getElementById('unique-demographics').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m454[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m454[0m       document.getElementById('high-alerts').textContent = highAlerts.toString()
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m453[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m453[0m       document.getElementById('avg-bias-score').textContent = avgBiasScore + '%'
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m451[0m:[93m7[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m451[0m       document.getElementById('total-analyses').textContent =
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m429[0m:[93m49[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m429[0m       const { historical, demographics } = this.analyticsData
+[7m   [0m [91m                                                ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m419[0m:[93m17[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m419[0m       if (!this.analyticsData) return
+[7m   [0m [91m                ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m411[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'currentDays' does not exist on type 'AdvancedAnalyticsDashboard'.
+
+[7m411[0m           this.currentDays = days
+[7m   [0m [91m               ~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m390[0m:[93m16[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m390[0m           this.analyticsData = await response.json()
+[7m   [0m [91m               ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m387[0m:[93m64[0m - [91merror[0m[90m ts(2339): [0mProperty 'currentDays' does not exist on type 'AdvancedAnalyticsDashboard'.
+
+[7m387[0m           `/api/dashboard/bias-detection/analytics?days=${this.currentDays}`,
+[7m   [0m [91m                                                               ~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m374[0m:[93m12[0m - [91merror[0m[90m ts(2551): [0mProperty 'analyticsData' does not exist on type 'AdvancedAnalyticsDashboard'. Did you mean 'loadAnalyticsData'?
+
+[7m374[0m       this.analyticsData = null
+[7m   [0m [91m           ~~~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m373[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'currentDays' does not exist on type 'AdvancedAnalyticsDashboard'.
+
+[7m373[0m       this.currentDays = 30
+[7m   [0m [91m           ~~~~~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m646[0m:[93m12[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pattern' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m646[0m           (pattern) => `
+[7m   [0m [93m           ~~~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m620[0m:[93m12[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m620[0m           (item) => `
+[7m   [0m [93m           ~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m583[0m:[93m12[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'item' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m583[0m           (item) => `
+[7m   [0m [93m           ~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m579[0m:[93m54[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'd' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m579[0m       const maxCount = Math.max(...distribution.map((d) => d.count))
+[7m   [0m [93m                                                     ~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m561[0m:[93m41[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'd' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m561[0m             Math.max(...historical.map((d) => d.alertCount), 1)
+[7m   [0m [93m                                        ~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m555[0m:[93m34[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m555[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                                 ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m555[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'point' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m555[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                          ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m543[0m:[93m39[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'd' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m543[0m           Math.max(...historical.map((d) => d.sessionCount))
+[7m   [0m [93m                                      ~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m536[0m:[93m34[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m536[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                                 ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m536[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'point' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m536[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                          ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m519[0m:[93m34[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m519[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                                 ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m519[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'point' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m519[0m       historical.forEach((point, index) => {
+[7m   [0m [93m                          ~~~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m445[0m:[93m15[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'day' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m445[0m         (sum, day) => sum + day.alertCount,
+[7m   [0m [93m              ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m445[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sum' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m445[0m         (sum, day) => sum + day.alertCount,
+[7m   [0m [93m         ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m439[0m:[93m40[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'day' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m439[0m               (historical.reduce((sum, day) => sum + day.biasScore, 0) /
+[7m   [0m [93m                                       ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m439[0m:[93m35[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sum' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m439[0m               (historical.reduce((sum, day) => sum + day.biasScore, 0) /
+[7m   [0m [93m                                  ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m433[0m:[93m15[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'day' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m433[0m         (sum, day) => sum + day.sessionCount,
+[7m   [0m [93m              ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m433[0m:[93m10[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'sum' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m433[0m         (sum, day) => sum + day.sessionCount,
+[7m   [0m [93m         ~~~[0m
+[96msrc/pages/dashboard/bias-detection/analytics.astro[0m:[93m402[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'e' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m402[0m         button.addEventListener('click', async (e) => {
+[7m   [0m [93m                                                ~[0m
+
+[96msrc/pages/dashboard/emotions/dimensional-analysis.astro[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ request: Request; cookies: AstroCookies; redirect: (path: string) => Response; locals: Record<string, unknown>; }' is not assignable to parameter of type 'ServerAuthOptions'.
+  Property 'requestIp' is missing in type '{ request: Request; cookies: AstroCookies; redirect: (path: string) => Response; locals: Record<string, unknown>; }' but required in type 'ServerAuthOptions'.
+
+[7m 12[0m   Astro as unknown as {
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 13[0m     request: Request
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 16[0m     locals: Record<string, unknown>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 17[0m   },
+[7m   [0m [91m~~~[0m
+
+[96msrc/pages/demo/bias-detection.astro[0m:[93m503[0m:[93m67[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m503[0m           'demo_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+[7m   [0m [93m                                                                  ~~~~~~[0m
+
+[96msrc/pages/demo/chat.astro[0m:[93m173[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "outline"; class: string; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m173[0m                 id="sample-crisis"
+[7m   [0m [91m                ~~[0m
+[96msrc/pages/demo/chat.astro[0m:[93m166[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "secondary"; class: string; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m166[0m                 id="sample-depression"
+[7m   [0m [91m                ~~[0m
+[96msrc/pages/demo/chat.astro[0m:[93m159[0m:[93m17[0m - [91merror[0m[90m ts(2322): [0mType '{ children: string; variant: "primary"; class: string; id: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'id' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m159[0m                 id="sample-anxiety"
+[7m   [0m [91m                ~~[0m
+[96msrc/pages/demo/chat.astro[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'BrutalistBadge' is declared but its value is never read.
+
+[7m5[0m import BrutalistBadge from '@/components/ui/BrutalistBadge.astro'
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/demo/chat.astro[0m:[93m503[0m:[93m11[0m - [93mwarning[0m[90m ts(6133): [0m'_chatDemo' is declared but its value is never read.
+
+[7m503[0m     const _chatDemo = new ChatDemoInterface()
+[7m   [0m [93m          ~~~~~~~~~[0m
+
+[96msrc/pages/demo/clinical-vault-trainer.astro[0m:[93m519[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m519[0m               document.querySelector('[data-variant]')?.dataset?.['variant'] ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/clinical-vault-trainer.astro[0m:[93m462[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m462[0m               document.querySelector('[data-variant]')?.dataset?.variant ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/clinical-vault-trainer.astro[0m:[93m446[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m446[0m               document.querySelector('[data-variant]')?.dataset.variant ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/clinical-vault-trainer.astro[0m:[93m426[0m:[93m53[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m426[0m           document.querySelector('[data-variant]')?.dataset?.variant ||
+[7m   [0m [91m                                                    ~~~~~~~[0m
+[96msrc/pages/demo/clinical-vault-trainer.astro[0m:[93m408[0m:[93m7[0m - [91merror[0m[90m ts(2717): [0mSubsequent property declarations must have the same type.  Property 'gtag' must be of type '((command: string, event: string, params: Record<string, unknown>) => void) | undefined', but here has type '((command: "event", action: string, params: { [key: string]: any; }) => void) | undefined'.
+
+[7m408[0m       gtag?: (
+[7m   [0m [91m      ~~~~[0m
+
+[96msrc/pages/demo/enhanced-bias-detection.astro[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; title: string; description: string; keywords: string; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'keywords' does not exist on type 'IntrinsicAttributes & Props'.
+
+[7m10[0m   keywords="bias detection, AI therapy, mental health, therapeutic training, bias analysis, cultural competency"
+[7m  [0m [91m  ~~~~~~~~[0m
+
+[96msrc/pages/demo/psychology-pipeline-processor.astro[0m:[93m691[0m:[93m7[0m - [91merror[0m[90m ts(2717): [0mSubsequent property declarations must have the same type.  Property 'gtag' must be of type '((command: string, event: string, params: Record<string, unknown>) => void) | undefined', but here has type '((command: "event", action: string, params: { [key: string]: any; }) => void) | undefined'.
+
+[7m691[0m       gtag?: (
+[7m   [0m [91m      ~~~~[0m
+
+[96msrc/pages/demo/security-bias-detection-engine.astro[0m:[93m668[0m:[93m7[0m - [91merror[0m[90m ts(2717): [0mSubsequent property declarations must have the same type.  Property 'gtag' must be of type '((command: string, event: string, params: Record<string, unknown>) => void) | undefined', but here has type '((command: "event", action: string, params: { [key: string]: any; }) => void) | undefined'.
+
+[7m668[0m       gtag?: (
+[7m   [0m [91m      ~~~~[0m
+
+[96msrc/pages/demo/synthetic-training-generator.astro[0m:[93m786[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m786[0m               document.querySelector('[data-variant]')?.dataset?.['variant'] ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/synthetic-training-generator.astro[0m:[93m729[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m729[0m               document.querySelector('[data-variant]')?.dataset.variant ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/synthetic-training-generator.astro[0m:[93m713[0m:[93m57[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m713[0m               document.querySelector('[data-variant]')?.dataset?.variant ||
+[7m   [0m [91m                                                        ~~~~~~~[0m
+[96msrc/pages/demo/synthetic-training-generator.astro[0m:[93m693[0m:[93m53[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m693[0m           document.querySelector('[data-variant]')?.dataset.variant ||
+[7m   [0m [91m                                                    ~~~~~~~[0m
+[96msrc/pages/demo/synthetic-training-generator.astro[0m:[93m675[0m:[93m7[0m - [91merror[0m[90m ts(2717): [0mSubsequent property declarations must have the same type.  Property 'gtag' must be of type '((command: string, event: string, params: Record<string, unknown>) => void) | undefined', but here has type '((command: "event", action: string, params: { [key: string]: any; }) => void) | undefined'.
+
+[7m675[0m       gtag?: (
+[7m   [0m [91m      ~~~~[0m
+
+[96msrc/pages/dev/accessibility-test.astro[0m:[93m14[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'LoadingIndicatorProps' is declared but never used.
+
+[7m14[0m interface LoadingIndicatorProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m77[0m:[93m53[0m - [91merror[0m[90m ts(2339): [0mProperty 'showModelSelector' does not exist on type '{}'.
+
+[7m77[0m                   showModelSelector={section.props?.showModelSelector}
+[7m  [0m [91m                                                    ~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m76[0m:[93m47[0m - [91merror[0m[90m ts(2339): [0mProperty 'description' does not exist on type '{}'.
+
+[7m76[0m                   description={section.props?.description}
+[7m  [0m [91m                                              ~~~~~~~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m75[0m:[93m41[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type '{}'.
+
+[7m75[0m                   title={section.props?.title}
+[7m  [0m [91m                                        ~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m15[0m:[93m5[0m - [91merror[0m[90m ts(2322): [0mType '(_props: Props) => any' is not assignable to type 'ComponentType<unknown> | undefined'.
+  Type '(_props: Props) => any' is not assignable to type 'FunctionComponent<unknown>'.
+
+[7m15[0m     component: AIChat,
+[7m  [0m [91m    ~~~~~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m6[0m:[93m15[0m - [93mwarning[0m[90m ts(6196): [0m'CompatibilityIssue' is declared but never used.
+
+[7m6[0m import type { CompatibilityIssue, TestSections } from '../../types/testing'
+[7m [0m [93m              ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m5[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'SEVERITY_STYLES' is declared but its value is never read.
+
+[7m5[0m import { LOADING_SIZES, SEVERITY_STYLES } from '../../constants/testing'
+[7m [0m [93m                        ~~~~~~~~~~~~~~~[0m
+[96msrc/pages/dev/browser-compatibility-test.astro[0m:[93m375[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'removeIssue' is declared but its value is never read.
+
+[7m375[0m     removeIssue,
+[7m   [0m [93m    ~~~~~~~~~~~[0m
+
+[96msrc/pages/dev/live-region-demo.astro[0m:[93m171[0m:[93m57[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m171[0m       progressButton.addEventListener('click', (_event: Event) => {
+[7m   [0m [91m                                                        ~~~~~[0m
+[96msrc/pages/dev/live-region-demo.astro[0m:[93m163[0m:[93m58[0m - [91merror[0m[90m ts(8010): [0mType annotations can only be used in TypeScript files.
+
+[7m163[0m   document.addEventListener('DOMContentLoaded', (_event: Event) => {
+[7m   [0m [91m                                                         ~~~~~[0m
+
+[96msrc/pages/profile/index.astro[0m:[93m36[0m:[93m1[0m - [91merror[0m[90m ts(2578): [0mUnused '@ts-expect-error' directive.
+
+[7m36[0m // @ts-expect-error Astro.props is injected at runtime
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/profile/index.astro[0m:[93m25[0m:[93m16[0m - [91merror[0m[90m ts(18048): [0m'context.locals' is possibly 'undefined'.
+
+[7m25[0m   const user = context.locals.user as User
+[7m  [0m [91m               ~~~~~~~~~~~~~~[0m
+[96msrc/pages/profile/index.astro[0m:[93m13[0m:[93m30[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m13[0m   const authRedirect = await requireAuth({
+[7m  [0m [91m                             ~~~~~~~~~~~[0m
+[96msrc/pages/profile/index.astro[0m:[93m25[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'user' is declared but its value is never read.
+
+[7m25[0m   const user = context.locals.user as User
+[7m  [0m [93m        ~~~~[0m
+
+[96msrc/pages/settings/ai-preferences.astro[0m:[93m9[0m:[93m28[0m - [91merror[0m[90m ts(2554): [0mExpected 2 arguments, but got 1.
+
+[7m9[0m const authResponse = await requireAuth({
+[7m [0m [91m                           ~~~~~~~~~~~[0m
+
+[96msrc/pages/training/session/[sessionId].astro[0m:[93m420[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m420[0m   <script type="application/json" id="user-data">
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/training/session/[sessionId].astro[0m:[93m416[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m416[0m   <script type="application/json" id="session-data">
+[7m   [0m [93m          ~~~~[0m
+
+[96muno.config.ts[0m:[93m5[0m:[93m5[0m - [93mwarning[0m[90m ts(6385): [0m'presetUno' is deprecated.
+
+[7m5[0m     presetUno(),
+[7m [0m [93m    ~~~~~~~~~[0m
+[96muno.config.ts[0m:[93m1[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'presetUno' is deprecated.
+
+[7m1[0m import { defineConfig, presetUno, presetAttributify, presetIcons } from 'unocss'
+[7m [0m [93m                       ~~~~~~~~~[0m
+
+[96mvitest.setup.ts[0m:[93m429[0m:[93m25[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m429[0m   const _brpop = async (key) => {
+[7m   [0m [93m                        ~~~[0m
+[96mvitest.setup.ts[0m:[93m423[0m:[93m38[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'stop' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m423[0m   const _lrange = async (key, start, stop) => {
+[7m   [0m [93m                                     ~~~~[0m
+[96mvitest.setup.ts[0m:[93m423[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'start' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m423[0m   const _lrange = async (key, start, stop) => {
+[7m   [0m [93m                              ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m423[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m423[0m   const _lrange = async (key, start, stop) => {
+[7m   [0m [93m                         ~~~[0m
+[96mvitest.setup.ts[0m:[93m417[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m417[0m   const _llen = async (key) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m412[0m:[93m34[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'v' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m412[0m     const filtered = arr.filter((v) => v !== value)
+[7m   [0m [93m                                 ~[0m
+[96mvitest.setup.ts[0m:[93m409[0m:[93m37[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'value' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m409[0m   const _lrem = async (key, _count, value) => {
+[7m   [0m [93m                                    ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m409[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter '_count' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m409[0m   const _lrem = async (key, _count, value) => {
+[7m   [0m [93m                            ~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m409[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m409[0m   const _lrem = async (key, _count, value) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m394[0m:[93m34[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'dest' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m394[0m   const _rpoplpush = async (src, dest) => {
+[7m   [0m [93m                                 ~~~~[0m
+[96mvitest.setup.ts[0m:[93m394[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'src' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m394[0m   const _rpoplpush = async (src, dest) => {
+[7m   [0m [93m                            ~~~[0m
+[96mvitest.setup.ts[0m:[93m383[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'value' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m383[0m   const _lpush = async (key, value) => {
+[7m   [0m [93m                             ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m383[0m:[93m25[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m383[0m   const _lpush = async (key, value) => {
+[7m   [0m [93m                        ~~~[0m
+[96mvitest.setup.ts[0m:[93m261[0m:[93m33[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pattern' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m261[0m   const _deletePattern = async (pattern) => {
+[7m   [0m [93m                                ~~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m255[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'by' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m255[0m   const _decrby = async (key, by) => {
+[7m   [0m [93m                              ~~[0m
+[96mvitest.setup.ts[0m:[93m255[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m255[0m   const _decrby = async (key, by) => {
+[7m   [0m [93m                         ~~~[0m
+[96mvitest.setup.ts[0m:[93m248[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'by' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m248[0m   const _incrby = async (key, by) => {
+[7m   [0m [93m                              ~~[0m
+[96mvitest.setup.ts[0m:[93m248[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m248[0m   const _incrby = async (key, by) => {
+[7m   [0m [93m                         ~~~[0m
+[96mvitest.setup.ts[0m:[93m233[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'ttlSeconds' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m233[0m   const _expire = async (key, ttlSeconds) => {
+[7m   [0m [93m                              ~~~~~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m233[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m233[0m   const _expire = async (key, ttlSeconds) => {
+[7m   [0m [93m                         ~~~[0m
+[96mvitest.setup.ts[0m:[93m227[0m:[93m42[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'value' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m227[0m   const _setex = async (key, ttlSeconds, value) => {
+[7m   [0m [93m                                         ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m227[0m:[93m30[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'ttlSeconds' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m227[0m   const _setex = async (key, ttlSeconds, value) => {
+[7m   [0m [93m                             ~~~~~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m227[0m:[93m25[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m227[0m   const _setex = async (key, ttlSeconds, value) => {
+[7m   [0m [93m                        ~~~[0m
+[96mvitest.setup.ts[0m:[93m215[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m215[0m   const _pttl = async (key) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m203[0m:[93m23[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m203[0m   const _ttl = async (key) => {
+[7m   [0m [93m                      ~~~[0m
+[96mvitest.setup.ts[0m:[93m196[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m196[0m   const _decr = async (key) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m189[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m189[0m   const _incr = async (key) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m175[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m175[0m   const _zpopmin = async (key) => {
+[7m   [0m [93m                          ~~~[0m
+[96mvitest.setup.ts[0m:[93m158[0m:[93m44[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'withScores' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m158[0m   const _zrange = async (key, start, stop, withScores) => {
+[7m   [0m [93m                                           ~~~~~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m158[0m:[93m38[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'stop' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m158[0m   const _zrange = async (key, start, stop, withScores) => {
+[7m   [0m [93m                                     ~~~~[0m
+[96mvitest.setup.ts[0m:[93m158[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'start' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m158[0m   const _zrange = async (key, start, stop, withScores) => {
+[7m   [0m [93m                              ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m158[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m158[0m   const _zrange = async (key, start, stop, withScores) => {
+[7m   [0m [93m                         ~~~[0m
+[96mvitest.setup.ts[0m:[93m150[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'member' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m150[0m   const _zrem = async (key, member) => {
+[7m   [0m [93m                            ~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m150[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m150[0m   const _zrem = async (key, member) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m140[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'member' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m140[0m   const _zadd = async (key, score, member) => {
+[7m   [0m [93m                                   ~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m140[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'score' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m140[0m   const _zadd = async (key, score, member) => {
+[7m   [0m [93m                            ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m140[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m140[0m   const _zadd = async (key, score, member) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m138[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m138[0m   const _smembers = async (key) =>
+[7m   [0m [93m                           ~~~[0m
+[96mvitest.setup.ts[0m:[93m131[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'member' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m131[0m   const _srem = async (key, member) => {
+[7m   [0m [93m                            ~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m131[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m131[0m   const _srem = async (key, member) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m121[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'member' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m121[0m   const _sadd = async (key, member) => {
+[7m   [0m [93m                            ~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m121[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m121[0m   const _sadd = async (key, member) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m114[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'field' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m114[0m   const _hdel = async (key, field) => {
+[7m   [0m [93m                            ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m114[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m114[0m   const _hdel = async (key, field) => {
+[7m   [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m104[0m:[93m27[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m104[0m   const _hgetall = async (key) => {
+[7m   [0m [93m                          ~~~[0m
+[96mvitest.setup.ts[0m:[93m99[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'field' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m99[0m   const _hget = async (key, field) => {
+[7m  [0m [93m                            ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m99[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m99[0m   const _hget = async (key, field) => {
+[7m  [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m89[0m:[93m36[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'value' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m89[0m   const _hset = async (key, field, value) => {
+[7m  [0m [93m                                   ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m89[0m:[93m29[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'field' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m89[0m   const _hset = async (key, field, value) => {
+[7m  [0m [93m                            ~~~~~[0m
+[96mvitest.setup.ts[0m:[93m89[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'key' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m89[0m   const _hset = async (key, field, value) => {
+[7m  [0m [93m                       ~~~[0m
+[96mvitest.setup.ts[0m:[93m74[0m:[93m24[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'pattern' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m74[0m   const _keys = async (pattern) => {
+[7m  [0m [93m                       ~~~~~~~[0m
+[96mvitest.setup.ts[0m:[93m73[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'k' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m73[0m   const _exists = async (k) => store.has(k)
+[7m  [0m [93m                         ~[0m
+[96mvitest.setup.ts[0m:[93m55[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'v' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m55[0m   const _set = async (k, v) => {
+[7m  [0m [93m                         ~[0m
+[96mvitest.setup.ts[0m:[93m55[0m:[93m23[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'k' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m55[0m   const _set = async (k, v) => {
+[7m  [0m [93m                      ~[0m
+[96mvitest.setup.ts[0m:[93m44[0m:[93m23[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'k' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m44[0m   const _get = async (k) => {
+[7m  [0m [93m                      ~[0m
+
+[96mplugins/index.ts[0m:[93m16[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'unist-util-visit' or its corresponding type declarations.
+
+[7m16[0m import { visit } from 'unist-util-visit'
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~[0m
+[96mplugins/index.ts[0m:[93m7[0m:[93m34[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@astrojs/markdown-remark' or its corresponding type declarations.
+
+[7m7[0m import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+[7m [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96mplugins/index.ts[0m:[93m137[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'textNode' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m137[0m         visit(el, 'text', (textNode) => {
+[7m   [0m [93m                           ~~~~~~~~[0m
+[96mplugins/index.ts[0m:[93m85[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'childNode' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m85[0m         visit(el, 'element', (childNode) => {
+[7m  [0m [93m                              ~~~~~~~~~[0m
+[96mplugins/index.ts[0m:[93m63[0m:[93m31[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'childNode' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m63[0m         visit(el, 'element', (childNode) => {
+[7m  [0m [93m                              ~~~~~~~~~[0m
+
+[96mplugins/remark-directive-sugar.ts[0m:[93m10[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'unist-util-visit' or its corresponding type declarations.
+
+[7m10[0m import { visit } from 'unist-util-visit'
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~[0m
+[96mplugins/remark-directive-sugar.ts[0m:[93m7[0m:[93m27[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'mdast' or its corresponding type declarations.
+
+[7m7[0m import type { Root } from 'mdast'
+[7m [0m [91m                          ~~~~~~~[0m
+[96mplugins/remark-directive-sugar.ts[0m:[93m175[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'_isOrg' is declared but its value is never read.
+
+[7m175[0m           let _isOrg = false
+[7m   [0m [93m              ~~~~~~[0m
+[96mplugins/remark-directive-sugar.ts[0m:[93m174[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'_resolvedTab' is declared but its value is never read.
+
+[7m174[0m           let _resolvedTab = ''
+[7m   [0m [93m              ~~~~~~~~~~~~[0m
+[96mplugins/remark-directive-sugar.ts[0m:[93m80[0m:[93m18[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'node' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m80[0m     visit(tree, (node) => {
+[7m  [0m [93m                 ~~~~[0m
+
+[96mplugins/remark-generate-og-image.ts[0m:[93m6[0m:[93m19[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'chalk' or its corresponding type declarations.
+
+[7m6[0m import chalk from 'chalk'
+[7m [0m [91m                  ~~~~~~~[0m
+
+[96mplugins/remark-image-container.ts[0m:[93m10[0m:[93m23[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'unist-util-visit' or its corresponding type declarations.
+
+[7m10[0m import { visit } from 'unist-util-visit'
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~[0m
+[96mplugins/remark-image-container.ts[0m:[93m7[0m:[93m55[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'mdast' or its corresponding type declarations.
+
+[7m7[0m import type { Paragraph, PhrasingContent, Root } from 'mdast'
+[7m [0m [91m                                                      ~~~~~~~[0m
+[96mplugins/remark-image-container.ts[0m:[93m38[0m:[93m18[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'node' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m38[0m     visit(tree, (node) => {
+[7m  [0m [93m                 ~~~~[0m
+
+[96mplugins/remark-reading-time.ts[0m:[93m3[0m:[93m27[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'mdast' or its corresponding type declarations.
+
+[7m3[0m import type { Root } from 'mdast'
+[7m [0m [91m                          ~~~~~~~[0m
+
+Result (1718 files): 
+- 4209 errors
+- 0 warnings
+- 1130 hints
+
+ ELIFECYCLE  Command failed with exit code 1.
