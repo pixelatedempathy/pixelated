@@ -5,7 +5,9 @@ on:
     - cron: "0 12 * * *"
   workflow_dispatch:
 
-permissions: read-all
+permissions:
+  contents: read
+  actions: read
 
 env:
   NODE_VERSION: 24.8.0
@@ -469,14 +471,12 @@ jobs:
 
           # Basic endpoint check with retries
           if check_endpoint "$BASE_URL" "Main Site"; then
-            MAIN_STATUS="passing"
             echo "status=passing" >> $GITHUB_OUTPUT
           else
             echo "::warning::Preview site is down or returning errors after retries"
             echo "::notice::This is a PREVIEW environment failure, not affecting production"
             echo "::notice::Preview deployments may be restarting or temporarily unavailable"
             echo "status=warning" >> $GITHUB_OUTPUT
-            MAIN_STATUS="warning"
           fi
 
       - name: Create temporary config
@@ -486,7 +486,7 @@ jobs:
           module.exports = {
             testDir: './tests/monitoring',
             use: {
-              baseURL: process.env.BASE_URL,
+              baseURL: process.env.BASE_URL || 'https://pixelatedempathy.com',
             },
             projects: [
               {
