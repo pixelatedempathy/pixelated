@@ -20,25 +20,25 @@ Usage:
 This script avoids heavy third-party dependencies so it can run in minimal environments.
 """
 
-from pathlib import Path
 import argparse
-import re
 import math
+import re
 import sys
+from pathlib import Path
 
 STOPWORDS = {
-    'the','and','a','an','in','on','of','to','is','are','it','that','this','for','with','as','was','were','be','by','at','from','or','we','you','i','they','he','she','but','not','have','has','had'
+    "the","and","a","an","in","on","of","to","is","are","it","that","this","for","with","as","was","were","be","by","at","from","or","we","you","i","they","he","she","but","not","have","has","had"
 }
 
 def read_file(path: Path) -> str:
-    return path.read_text(encoding='utf-8', errors='ignore')
+    return path.read_text(encoding="utf-8", errors="ignore")
 
 def write_file(path: Path, text: str):
-    path.write_text(text, encoding='utf-8')
+    path.write_text(text, encoding="utf-8")
 
 def split_paragraphs(text: str):
     # Normalize newlines
-    text = text.replace('\r\n', '\n').replace('\r', '\n')
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
     # Collapse repeated blank lines into exactly two newlines for clear paragraph boundaries
     text = re.sub(r"\n{3,}", "\n\n", text)
     # Split on two or more newlines
@@ -50,7 +50,7 @@ def split_paragraphs(text: str):
 def tokenize(s: str):
     s = s.lower()
     # remove punctuation except unicode word characters
-    s = re.sub(r"[^\w\u00C0-\u017F']+", ' ', s)
+    s = re.sub(r"[^\w\u00C0-\u017F']+", " ", s)
     toks = [t for t in s.split() if len(t) > 1 and t not in STOPWORDS]
     return toks
 
@@ -160,18 +160,18 @@ def best_4_splits(vecs):
 
 def infer_heading(paragraph):
     # Use first sentence up to 8 words as a short inferred heading
-    s = paragraph.strip().split('\n',1)[0]
+    s = paragraph.strip().split("\n",1)[0]
     # extract first sentence by punctuation
-    m = re.split(r'[\.\?!。？！]', s, 1)[0]
+    m = re.split(r"[\.\?!。？！]", s, 1)[0]
     words = m.split()
-    heading = ' '.join(words[:8]).strip()
+    heading = " ".join(words[:8]).strip()
     return heading if heading else None
 
 def process_file(path: Path, do_apply: bool):
     text = read_file(path)
     paragraphs = split_paragraphs(text)
     if not paragraphs:
-        return (0, 'empty')
+        return (0, "empty")
     vecs = compute_paragraph_vectors(paragraphs)
     if len(paragraphs) < 4:
         # fallback: group contiguous paragraphs to make 4 parts as evenly as possible
@@ -191,29 +191,29 @@ def process_file(path: Path, do_apply: bool):
     out_lines = []
     title = None
     # If file starts with a top-level markdown title, preserve
-    if paragraphs and paragraphs[0].startswith('#'):
+    if paragraphs and paragraphs[0].startswith("#"):
         title = paragraphs[0]
     if title:
         out_lines.append(title)
-        out_lines.append('')
+        out_lines.append("")
 
     for idx, seg in enumerate(parts, start=1):
         # infer heading
         heading = infer_heading(seg[0]) if seg else None
         if heading:
-            out_lines.append(f'## Part {idx}/4 — {heading}')
+            out_lines.append(f"## Part {idx}/4 — {heading}")
         else:
-            out_lines.append(f'## Part {idx}/4')
-        out_lines.append('')
+            out_lines.append(f"## Part {idx}/4")
+        out_lines.append("")
         # write paragraphs verbatim with a blank line between each
         for p in seg:
             out_lines.append(p)
-            out_lines.append('')
+            out_lines.append("")
 
-    output = '\n'.join(out_lines).rstrip() + '\n'
+    output = "\n".join(out_lines).rstrip() + "\n"
 
     if do_apply:
-        bak = path.with_suffix(path.suffix + '.orig')
+        bak = path.with_suffix(path.suffix + ".orig")
         if not bak.exists():
             path.replace(bak)
             # write new content to original path
@@ -221,15 +221,14 @@ def process_file(path: Path, do_apply: bool):
         else:
             # backup exists; overwrite path directly but keep backup intact
             write_file(path, output)
-        return (1, 'processed')
-    else:
-        return (1, 'dry-run')
+        return (1, "processed")
+    return (1, "dry-run")
 
 def walk_and_process(root: Path, do_apply: bool):
     processed = 0
     skipped = 0
-    for p in sorted(root.rglob('*')):
-        if p.is_file() and p.suffix.lower() in ('.md', '.txt') and p.name.endswith('.orig') is False:
+    for p in sorted(root.rglob("*")):
+        if p.is_file() and p.suffix.lower() in (".md", ".txt") and p.name.endswith(".orig") is False:
             try:
                 res, reason = process_file(p, do_apply)
                 if res:
@@ -237,23 +236,23 @@ def walk_and_process(root: Path, do_apply: bool):
                 else:
                     skipped += 1
             except Exception as e:
-                print(f'Error processing {p}: {e}', file=sys.stderr)
+                print(f"Error processing {p}: {e}", file=sys.stderr)
     return processed, skipped
 
 def main():
-    parser = argparse.ArgumentParser(description='Split transcripts into 4 topic-based parts')
-    parser.add_argument('--path', type=str, default='.', help='root path to process')
-    parser.add_argument('--apply', action='store_true', help='apply changes (default is dry-run)')
+    parser = argparse.ArgumentParser(description="Split transcripts into 4 topic-based parts")
+    parser.add_argument("--path", type=str, default=".", help="root path to process")
+    parser.add_argument("--apply", action="store_true", help="apply changes (default is dry-run)")
     args = parser.parse_args()
     root = Path(args.path)
     if not root.exists():
-        print('Path does not exist:', root)
+        print("Path does not exist:", root)
         sys.exit(2)
     do_apply = args.apply
     if not do_apply:
-        print('Dry-run: will report files that would be processed (use --apply to make changes)\n')
+        print("Dry-run: will report files that would be processed (use --apply to make changes)\n")
     processed, skipped = walk_and_process(root, do_apply)
-    print(f'Processed: {processed}, Skipped: {skipped}')
+    print(f"Processed: {processed}, Skipped: {skipped}")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
