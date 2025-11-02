@@ -26,6 +26,9 @@ test('login form shows validation errors', async ({ page }) => {
   // Submit empty form to trigger validation
   await page.click('button[type="submit"]')
 
+  // Wait for React to process the form submission and update state
+  await page.waitForTimeout(500)
+
   // Check for validation errors - the actual form uses specific IDs
   const emailError = page.locator('#email-error')
   const passwordError = page.locator('#password-error')
@@ -97,6 +100,9 @@ test('login page has proper transitions', async ({ page }) => {
   await expect(page.locator('button[type="submit"]').filter({ hasText: 'Send Reset Link' })).toBeVisible({
     timeout: 10000,
   })
+
+  // Also verify password field is hidden in reset mode
+  await expect(page.locator('input[type="password"]')).not.toBeVisible()
 })
 
 // Visual regression test for login page

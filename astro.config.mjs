@@ -57,9 +57,8 @@ export default defineConfig({
           '@react-three/drei',
           'mongodb',
           'recharts',
-          'chart.js'
-
-        ],
+          'chart.js',
+          ],
         onwarn(warning, warn) {
           if (
             warning.code === "SOURCEMAP_ERROR" ||
@@ -126,8 +125,7 @@ export default defineConfig({
         '@react-three/drei',
         'mongodb',
         'recharts',
-        'chart.js'
-
+        'chart.js',
       ],
     },
     optimizeDeps: {
@@ -156,8 +154,7 @@ export default defineConfig({
         '@react-three/drei',
         'mongodb',
         'recharts',
-        'chart.js'
-
+        'chart.js',
       ],
     },
   },
@@ -189,10 +186,9 @@ export default defineConfig({
     }),
     ...(process.env.SENTRY_DSN ? [
       sentry({
-        sourceMapsUploadOptions: {
-          project: "pixel-astro",
-          authToken: process.env.SENTRY_AUTH_TOKEN,
-        },
+        org: process.env.SENTRY_ORG || 'pixelated-empathy-dq',
+        project: process.env.SENTRY_PROJECT || "pixel-astro",
+        authToken: process.env.SENTRY_AUTH_TOKEN,
       }),
       ...(process.env.NODE_ENV === 'development' && process.env.SENTRY_SPOTLIGHT === '1'
         ? [spotlightjs()]
