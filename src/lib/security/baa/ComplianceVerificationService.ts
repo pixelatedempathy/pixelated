@@ -2,6 +2,8 @@ import type {
   ComplianceDocument,
   ComplianceVerification,
   ComplianceRequirement,
+} from './types'
+import {
   ComplianceLevel,
   VerificationMethod,
   BusinessAssociateType,
