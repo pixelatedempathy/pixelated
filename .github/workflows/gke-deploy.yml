@@ -16,19 +16,10 @@ on:
         description: "Deployment strategy (rolling, blue-green, canary)"
         required: false
         default: "rolling"
-        type: choice
-        options:
-          - rolling
-          - blue-green
-          - canary
       environment:
         description: "Target environment"
         required: false
         default: "production"
-        type: choice
-        options:
-          - production
-          - staging
 
 env:
   NODE_VERSION: "24"
@@ -47,10 +38,10 @@ jobs:
         validation_type: [dependencies, lint, typecheck]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -117,14 +108,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: [validate]
     outputs:
-      image-tag: ${{ steps.build.outputs.image-tag }}
-      image-digest: ${{ steps.build.outputs.image-digest }}
+      image-tag: ${{ steps.out.outputs.image-tag }}
+      image-digest: ${{ steps.out.outputs.image-digest }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -236,7 +227,7 @@ jobs:
 
       - name: Build and push Docker image
         id: build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
@@ -251,6 +242,7 @@ jobs:
             PUBLIC_SENTRY_DSN=${{ env.PUBLIC_SENTRY_DSN || secrets.PUBLIC_SENTRY_DSN }}
 
       - name: Output image info
+        id: out
         run: |
           # Extract first tag from multi-line tags output
           FIRST_TAG=$(echo "${{ steps.meta.outputs.tags }}" | head -n 1)
@@ -268,7 +260,7 @@ jobs:
       packages: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -283,28 +275,43 @@ jobs:
       - name: Determine image tag
         id: image_tag
         run: |
-          # Try to use the first tag from build step, or fallback to SHA-based tag
-          if [ -n "${{ needs.build.outputs.image-tag }}" ]; then
-            IMAGE_TAG="${{ needs.build.outputs.image-tag }}"
-          else
-            # Fallback: construct tag from registry, image name, and SHA
-            IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          # Use immutable image digest produced by the build job
+          IMAGE_DIGEST="${{ needs.build.outputs.image-digest }}"
+          if [ -z "$IMAGE_DIGEST" ]; then
+            echo "❌ Missing image digest from build outputs"
+            exit 1
           fi
-          echo "image_ref=${IMAGE_TAG}" >> $GITHUB_OUTPUT
-          echo "🔍 Using image: ${IMAGE_TAG}"
+          IMAGE_REF="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${IMAGE_DIGEST}"
+          echo "image_ref=${IMAGE_REF}" >> $GITHUB_OUTPUT
+          echo "🔍 Using image: ${IMAGE_REF}"
 
       - name: Pull Docker image for scanning
         run: |
           docker pull "${{ steps.image_tag.outputs.image_ref }}"
           echo "✅ Image pulled successfully"
 
+      - name: Configure Trivy temp and cache directories
+        run: |
+          echo "TMPDIR=$RUNNER_TEMP" >> $GITHUB_ENV
+          echo "XDG_CACHE_HOME=$RUNNER_TEMP/.cache" >> $GITHUB_ENV
+          echo "TRIVY_CACHE_DIR=$RUNNER_TEMP/.cache/trivy" >> $GITHUB_ENV
+          mkdir -p "$RUNNER_TEMP/.cache/trivy"
+          echo "✅ Trivy will use $RUNNER_TEMP for temp and cache"
+
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.33.1
         continue-on-error: true
         with:
           image-ref: ${{ steps.image_tag.outputs.image_ref }}
           format: "sarif"
           output: "trivy-results.sarif"
+          cache-dir: ${{ env.TRIVY_CACHE_DIR }}
+          # Limit scanning to vulnerabilities to reduce temp usage and speed
+          security-checks: vuln
+          # Keep SARIF focused and smaller
+          severity: CRITICAL,HIGH
+          limit-severities-for-sarif: true
+          timeout: 10m
 
       - name: Check for Trivy SARIF file
         id: trivy_sarif
@@ -318,7 +325,7 @@ jobs:
           fi
 
       - name: Upload Trivy scan results
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: ${{ always() && steps.trivy_sarif.outputs.found == 'true' }}
         continue-on-error: true
         with:
@@ -356,10 +363,10 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -424,7 +431,7 @@ jobs:
       deployment-strategy: ${{ steps.deploy.outputs.strategy }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Load GCP environment
         run: |
@@ -540,7 +547,7 @@ jobs:
           echo "📚 Full troubleshooting: docs/workload-identity-troubleshooting.md"
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
@@ -554,7 +561,29 @@ jobs:
           id_token_include_email: false
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: "Preflight: verify GKE API access permissions"
+        run: |
+          PROJECT_ID="${{ env.GCP_PROJECT_ID || secrets.GCP_PROJECT_ID }}"
+          CLUSTER_NAME="${{ env.GKE_CLUSTER_NAME || secrets.GKE_CLUSTER_NAME }}"
+          ZONE="${{ env.GKE_ZONE || secrets.GKE_ZONE }}"
+
+          echo "🔐 Authenticated as:"
+          gcloud auth list --filter=status:ACTIVE --format='table(account)'
+
+          echo "🔎 Verifying permission to access cluster metadata (container.clusters.get) ..."
+          # This lightweight call will fail with the same 403 if the SA lacks container.clusters.get
+          if ! gcloud container clusters describe "$CLUSTER_NAME" --zone "$ZONE" --project "$PROJECT_ID" --format='value(name)' >/dev/null 2>&1; then
+            echo "❌ Missing required permission: container.clusters.get for $PROJECT_ID/$ZONE/$CLUSTER_NAME"
+            echo "💡 Grant the GitHub Actions service account the IAM role: roles/container.clusterViewer (Project-level)"
+            echo "   gcloud projects add-iam-policy-binding $PROJECT_ID \\";
+            echo "     --member=serviceAccount:${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }} \\";
+            echo "     --role=roles/container.clusterViewer"
+            echo "📚 After granting, re-run the workflow."
+            exit 1
+          fi
+          echo "✅ GKE API permission check passed"
 
       - name: Get GKE credentials
         run: |
@@ -698,7 +727,7 @@ jobs:
     if: always() && needs.deploy-gke.result == 'success'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Load GCP environment
         run: |
@@ -733,7 +762,7 @@ jobs:
           fi
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
@@ -747,7 +776,7 @@ jobs:
           id_token_include_email: false
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
@@ -810,10 +839,10 @@ jobs:
     name: Cleanup
     runs-on: ubuntu-latest
     needs: [deploy-gke, health-check-gke]
-    if: always()
+    if: always() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Load GCP environment
         run: |
@@ -840,7 +869,7 @@ jobs:
           fi
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
@@ -854,7 +883,7 @@ jobs:
           id_token_include_email: false
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       - name: Log in to Container Registry
         uses: docker/login-action@v3

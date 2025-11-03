@@ -242,7 +242,7 @@ verbose/coverage/
 *.flac
 *.aac
 
-ai/
+/ai/
 .clinerules/
 .kilocode/
 .roo/
@@ -268,6 +268,23 @@ terraform/*.tfstate
 terraform/*.tfstate.backup
 terraform/*.tfplan
 terraform/plan.tfplan
+
+
+# Removed Windows wrapper files per user request
+hive-mind-prompt-*.txt
+
+
+# Removed Windows wrapper files per user request
+hive-mind-prompt-*.txt
+.oracle_deployment
+.clinerules/byterover-rules.md
+.kilocode/rules/byterover-rules.md
+.roo/rules/byterover-rules.md
+.windsurf/rules/byterover-rules.md
+.cursor/rules/byterover-rules.mdc
+.kiro/steering/byterover-rules.md
+.qoder/rules/byterover-rules.md
+.augment/rules/byterover-rules.md
 
 
 # Removed Windows wrapper files per user request
@@ -299,12 +316,3 @@ coordination/orchestration/*
 claude-flow
 # Removed Windows wrapper files per user request
 hive-mind-prompt-*.txt
-.oracle_deployment
-.clinerules/byterover-rules.md
-.kilocode/rules/byterover-rules.md
-.roo/rules/byterover-rules.md
-.windsurf/rules/byterover-rules.md
-.cursor/rules/byterover-rules.mdc
-.kiro/steering/byterover-rules.md
-.qoder/rules/byterover-rules.md
-.augment/rules/byterover-rules.md

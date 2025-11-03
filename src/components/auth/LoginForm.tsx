@@ -344,7 +344,11 @@ export function LoginForm({
         {mode === 'login' && renderPasswordField()}
         {mode === 'login' && renderRememberMe()}
 
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isLoading}
+        >
           {isLoading ? (
             <span className="flex items-center justify-center gap-2">
               <span className="loading-spinner"></span>
