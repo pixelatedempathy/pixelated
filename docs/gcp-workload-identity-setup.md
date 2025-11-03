@@ -67,6 +67,8 @@ After successful deployment, add these secrets to your GitHub repository:
 | `GCP_SERVICE_ACCOUNT_EMAIL` | `github-actions-sa@PROJECT_ID.iam.gserviceaccount.com` | Service account email |
 | `GCP_PROJECT_ID` | `your-project-id` | Google Cloud Project ID |
 
+> **Important**: Do NOT use `GCP_SERVICE_ACCOUNT_KEY` with Workload Identity. This legacy method is incompatible and should be removed from `.env` files.
+
 ### 4. Update GitHub Actions Workflows
 
 Use the correct authentication configuration in your workflows:
@@ -75,10 +77,14 @@ Use the correct authentication configuration in your workflows:
 - name: Authenticate to Google Cloud
   uses: google-github-actions/auth@v2
   with:
-    workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER || 'projects/751556915102/locations/global/workloadIdentityPools/github-pool/providers/github-provider' }}
-    service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL || 'github-actions-sa@pixelated-463209-e5.iam.gserviceaccount.com' }}
+    workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+    service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
     create_credentials_file: true
     export_environment_variables: true
+    cleanup_credentials: true
+    access_token_lifetime: 3600s
+    access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+    id_token_include_email: false
 ```
 
 ## Configuration Details
@@ -138,6 +144,15 @@ A custom role with minimal permissions for monitoring:
 - `logging.logs.list` - List logs
 - `resourcemanager.projects.get` - Get project information
 
+## Verification
+
+To verify the configuration is working:
+
+1. Trigger the workflow manually
+2. Check the logs for the "Authenticate to Google Cloud" step
+3. Look for successful token generation and credential creation
+4. Confirm subsequent `gcloud` and `kubectl` commands execute without authentication errors
+
 ## Troubleshooting
 
 ### Common Issues
@@ -146,10 +161,11 @@ A custom role with minimal permissions for monitoring:
 
 **Error**: `{"error":"invalid_target","error_description":"The target service indicated by the \"audience\" parameters is invalid."}`
 
-**Solution**: 
+**Solution**:
 - Verify the `workload_identity_provider` value matches exactly
 - Check that the workload identity pool and provider exist
 - Ensure the provider is not disabled
+- Verify it matches the full resource name format: `projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}/providers/{PROVIDER_ID}`
 
 #### 2. Permission Denied
 
@@ -159,6 +175,7 @@ A custom role with minimal permissions for monitoring:
 - Verify the service account has the necessary IAM roles
 - Check that the workload identity user binding is correct
 - Ensure the repository name in the binding matches exactly
+- The service account must have the `roles/iam.workloadIdentityUser` role on the Workload Identity Provider
 
 #### 3. Provider Not Found
 
@@ -199,6 +216,13 @@ A custom role with minimal permissions for monitoring:
    gcloud auth application-default print-access-token
    ```
 
+### Debugging Steps
+
+1. Verify the Workload Identity Provider exists in the Google Cloud Console
+2. Confirm the service account email is correct and exists
+3. Check the IAM policy binding on the service account
+4. Ensure the GitHub repository owner matches the policy binding
+
 ## Security Considerations
 
 ### Best Practices
@@ -207,6 +231,9 @@ A custom role with minimal permissions for monitoring:
 2. **Repository Restrictions**: Use attribute conditions to restrict access to specific repositories
 3. **Regular Auditing**: Regularly review and audit IAM permissions
 4. **Monitoring**: Enable logging and monitoring for authentication events
+5. Use separate service accounts for different workflows (e.g., one for deployment, one for monitoring)
+6. Regularly review and rotate service accounts
+7. Use the `cleanup_credentials: true` option to automatically clean up temporary credentials
 
 ### Attribute Conditions
 
@@ -246,6 +273,7 @@ If you're currently using service account JSON keys, follow these steps to migra
 - [Google Cloud Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)
 - [GitHub Actions OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-cloud-providers)
 - [Terraform Google Provider](https://registry.terraform.io/providers/hashicorp/google/latest)
+- [google-github-actions/auth GitHub Repository](https://github.com/google-github-actions/auth)
 
 ### Community
 - Google Cloud Community

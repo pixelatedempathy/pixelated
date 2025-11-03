@@ -4,6 +4,7 @@
  */
 
 import type { Request } from 'express'
+import { ROLE_DEFINITIONS, type UserRole } from './roles'
 
 export interface ClientInfo {
   ip?: string
@@ -23,14 +24,24 @@ export function extractTokenFromRequest(req: Request): string | null {
   }
 
   // Check query parameters for WebSocket connections
-  const tokenParam = req.query.token as string
-
-  if (tokenParam) {
-    return tokenParam
+  // Note: Request type doesn't have query property, access via URL
+  try {
+    const url = new URL(req.url)
+    const tokenParam = url.searchParams.get('token')
+    if (tokenParam) {
+      return tokenParam
+    }
+  } catch {
+    // URL parsing failed, try direct access if extended request
+    const extendedReq = req as Request & { query?: { token?: string } }
+    if (extendedReq.query?.token) {
+      return extendedReq.query.token
+    }
   }
 
   // Check cookie for fallback
-  const tokenCookie = req.cookies?.auth_token
+  const extendedReq = req as Request & { cookies?: { auth_token?: string } }
+  const tokenCookie = extendedReq.cookies?.auth_token
 
   if (tokenCookie) {
     return tokenCookie
@@ -166,6 +177,12 @@ export async function securityHeaders(
 ): Promise<Response> {
   const headers = new Headers(response.headers)
 
+  // Remove sensitive headers that leak server information
+  headers.delete('X-Powered-By')
+  headers.delete('Server')
+  headers.delete('X-AspNet-Version')
+  headers.delete('X-AspNetMvc-Version')
+
   headers.set('X-Content-Type-Options', 'nosniff')
   headers.set('X-Frame-Options', 'DENY')
   headers.set('X-XSS-Protection', '1; mode=block')
@@ -176,11 +193,37 @@ export async function securityHeaders(
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+    "default-src 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'",
   )
   headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, private')
+  headers.delete('X-Powered-By')
+  headers.delete('Server')
   headers.set('Pragma', 'no-cache')
   headers.set('Expires', '0')
+
+  // Add CORS headers for API requests
+  const origin = request.headers.origin
+  if (origin) {
+    headers.set('Access-Control-Allow-Origin', 'https://app.example.com')
+    headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONS',
+    )
+    headers.set(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Authorization, X-CSRF-Token',
+    )
+    headers.set('Access-Control-Max-Age', '86400')
+    headers.set('Vary', 'Origin')
+  }
+
+  // Handle preflight OPTIONS requests
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers,
+    })
+  }
 
   return new Response(response.body, {
     status: response.status,
@@ -259,7 +302,40 @@ export async function requireRole(
     }
   }
 
-  if (!roles.includes(request.user.role)) {
+  // Check direct role match first
+  if (roles.includes(request.user.role)) {
+    return { success: true, request }
+  }
+
+  // Check hierarchical role access
+  const userRole = request.user.role as UserRole
+
+  // Check if user's role has hierarchy level to access any of the required roles
+  const hasAccess = roles.some((requiredRole) => {
+    const requiredRoleDef = ROLE_DEFINITIONS[requiredRole as UserRole]
+    if (!requiredRoleDef) return false
+
+    // User's role hierarchy level must be >= required role's hierarchy level
+    const userRoleDef = ROLE_DEFINITIONS[userRole]
+    if (!userRoleDef) return false
+
+    return userRoleDef.hierarchyLevel >= requiredRoleDef.hierarchyLevel
+  })
+
+  if (!hasAccess) {
+    // Log authorization failure
+    try {
+      const { logSecurityEvent } = await import('../security')
+      const { SecurityEventType } = await import('../security')
+      logSecurityEvent(
+        SecurityEventType.AUTHORIZATION_FAILED,
+        request.user.id,
+        `User ${request.user.id} with role ${request.user.role} attempted to access resource requiring roles: ${roles.join(', ')}`,
+      )
+    } catch {
+      // Security module not available in test environment
+    }
+
     return {
       success: false,
       response: new Response(

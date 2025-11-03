@@ -90,6 +90,56 @@ cache: &global_cache
       elif [ -n "$GCP_SERVICE_ACCOUNT_KEY_B64" ]; then
         echo "$GCP_SERVICE_ACCOUNT_KEY_B64" | base64 -d > /tmp/gcp-key.json
       else
+<<<<<<< HEAD
+        echo "⚠️ Push attempt $i failed, retrying..."
+        sleep 10
+      fi
+    done
+
+    echo "📦 Image: $CONTAINER_IMAGE"
+  artifacts:
+    expire_in: 1 hour
+  rules:
+  - if: $CI_COMMIT_BRANCH == "master"
+  - if: $CI_COMMIT_BRANCH == "main"
+  - if: $CI_MERGE_REQUEST_ID
+  timeout: 20m
+
+# Parallel testing stage
+test-container:
+  stage: test
+  image: docker:27.3.1
+  <<: [ *docker_service, *registry_login ]
+  needs: [ "build-frontend" ]
+  script:
+  - echo "🧪 Testing container health..."
+  - docker pull $CONTAINER_IMAGE
+  - |
+    # Run container with health check
+    docker run -d \
+      --name test-container \
+      --health-cmd="node -e \"require('http').get('http://localhost:4321/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))\"" \
+      --health-interval=10s \
+      --health-timeout=5s \
+      --health-retries=3 \
+      -e BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
+      $CONTAINER_IMAGE
+
+    # Wait for healthy status
+    for i in {1..30}; do
+      STATUS=$(docker inspect --format='{{.State.Health.Status}}' test-container 2>/dev/null || echo "starting")
+      if [ "$STATUS" = "healthy" ]; then
+        echo "✅ Container health check passed"
+        break
+      elif [ "$STATUS" = "unhealthy" ]; then
+        echo "❌ Container health check failed"
+        docker logs test-container
+        exit 1
+      fi
+      echo "⏳ Waiting for health check... ($i/30) Status: $STATUS"
+      sleep 2
+    done
+=======
         echo "❌ No GCP credentials configured"
         exit 1
       fi
@@ -103,6 +153,7 @@ cache: &global_cache
       chmod 600 /tmp/gcp-key.json
       gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
       gcloud config set project $GCP_PROJECT_ID
+>>>>>>> master
 
       # Install gke-gcloud-auth-plugin for kubectl authentication
       echo "🔧 Installing gke-gcloud-auth-plugin..."
@@ -293,7 +344,7 @@ build:
       # Enhanced pnpm install with git fetch retry wrapper
       corepack enable pnpm
       pnpm config set store-dir $PNPM_CACHE_FOLDER
-      
+
       # Retry pnpm install with exponential backoff
       for i in {1..3}; do
         echo "🔄 Install attempt $i of 3..."
@@ -303,12 +354,12 @@ build:
         else
           echo "⚠️ Install attempt $i failed, checking git status..."
           git status || echo "Git status check completed"
-          
+
           if [ $i -lt 3 ]; then
             DELAY=$((5 * i))
             echo "⏳ Retrying in $DELAY seconds..."
             sleep $DELAY
-            
+
             # Try to clean up any partial state
             echo "🧹 Cleaning up partial installation state..."
             rm -rf node_modules/.pnpm || true
@@ -429,7 +480,7 @@ security:
           # Container security configuration check
           docker pull $CONTAINER_IMAGE
           echo "🔍 Checking container security configuration..."
-          
+
           # Check user configuration
           USER_ID=$(docker inspect $CONTAINER_IMAGE --format='{{.Config.User}}' 2>/dev/null || echo "")
           if [ -z "$USER_ID" ] || [ "$USER_ID" = "root" ] || [ "$USER_ID" = "0" ]; then
@@ -444,7 +495,7 @@ security:
           else
             echo "✅ Container configured with non-root user: $USER_ID"
           fi
-          
+
           # Check exposed ports
           EXPOSED_PORTS=$(docker inspect $CONTAINER_IMAGE --format='{{range $p, $conf := .Config.ExposedPorts}}{{$p}} {{end}}' 2>/dev/null || echo "")
           echo "ℹ️ Exposed ports: ${EXPOSED_PORTS:-none}"
@@ -629,7 +680,7 @@ deploy-gke:
       fi
 
       echo "✅ GKE deployment completed successfully"
-      echo "🌐 Application URL: ${GKE_ENVIRONMENT_URL:-http://35.243.226.27}"
+      echo "🌐 Application URL: ${GKE_ENVIRONMENT_URL}"
       echo "📊 Deployment strategy: $DEPLOYMENT_STRATEGY"
 
       # Store deployment metadata
@@ -699,14 +750,14 @@ rollback-gke:
       # Rollback to previous revision
       if kubectl rollout undo deployment/$GKE_DEPLOYMENT_NAME; then
         echo "✅ Rollback initiated"
-        
+
         # Wait for rollback to complete
         kubectl rollout status deployment/$GKE_DEPLOYMENT_NAME --timeout=300s
-        
+
         # Verify rollback
         kubectl get deployment $GKE_DEPLOYMENT_NAME
         kubectl get pods -l app=pixelated
-        
+
         echo "✅ GKE rollback completed successfully"
       else
         echo "❌ Rollback failed"
@@ -848,10 +899,10 @@ cleanup:
           grep $CI_REGISTRY_IMAGE | \
           head -20 | \
           sort -k2 -r)
-        
+
         IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
         echo "📊 Found $IMAGE_COUNT images for $CI_REGISTRY_IMAGE"
-        
+
         if [ $IMAGE_COUNT -gt $KEEP_IMAGES ]; then
           # Remove images beyond the keep threshold - process in smaller batches
           IMAGES_TO_REMOVE=$(echo "$IMAGES" | tail -n +$((KEEP_IMAGES + 1)) | awk '{print $1}')
@@ -959,6 +1010,11 @@ container_scanning:
     - job: build
       optional: true
   rules:
+<<<<<<< HEAD
+  - if: $CI_COMMIT_BRANCH == "master"
+  - if: $CI_COMMIT_BRANCH == "main"
+  - if: $CI_MERGE_REQUEST_ID
+=======
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
     - if: $CI_MERGE_REQUEST_ID
@@ -986,3 +1042,4 @@ secret_detection:
   script:
     - echo "🔍 Secret detection completed (configuration only)"
     - exit 0
+>>>>>>> master
