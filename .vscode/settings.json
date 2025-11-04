@@ -172,5 +172,6 @@
             "path": "/usr/bin/bash",
             "args": []
         }
-    }
+    },
+    "python.languageServer": "None"
 }
