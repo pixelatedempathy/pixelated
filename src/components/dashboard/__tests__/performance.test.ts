@@ -58,7 +58,7 @@ function secureRandomFloat(): number {
   for (let i = 0; i < 7; i++) {
     random = (random << 8) + buffer[i]!
   }
-  return random / 0x20000000000000 // 2^53
+  return random / Math.pow(2, 53) // 2^53
 }
 
 describe('Dashboard Performance Tests', () => {
@@ -340,11 +340,12 @@ describe('Dashboard Performance Tests', () => {
     expect(firstActiveSession).toBeDefined()
 
     // Extract the ID safely after confirming it exists
-    // @ts-expect-error - firstActiveSession is guaranteed to be defined after the assertion above
-    expect(mockOnSessionControl).toHaveBeenCalledWith(
-      firstActiveSession.id,
-      'pause',
-    )
+    if (firstActiveSession) {
+      expect(mockOnSessionControl).toHaveBeenCalledWith(
+        firstActiveSession.id,
+        'pause',
+      )
+    }
   })
 
   it('maintains performance with frequent re-renders', () => {
@@ -449,7 +450,7 @@ describe('Dashboard Performance Tests', () => {
   })
 
   it('handles concurrent operations efficiently', async () => {
-    const promises = []
+    const promises: Promise<boolean>[] = []
 
     const startTime = performance.now()
 

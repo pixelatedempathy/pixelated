@@ -95,16 +95,6 @@ vi.mock('../AIChatReact', () => {
   return { default: mockFn }
 })
 
-// Helper function to render Astro components in tests
-async function renderAstroComponent(Component: any, props = {}): Promise<{ container: HTMLDivElement }> {
-  const { default: defaultExport } = Component
-  const html = await defaultExport.render(props)
-  const container = document.createElement('div')
-  container.innerHTML = html.html
-  document.body.appendChild(container)
-  return { container }
-}
-
 describe('AIChat.astro', () => {
   beforeEach(() => {
     document.body.innerHTML = ''
@@ -134,17 +124,15 @@ describe('AIChat.astro', () => {
   })
 
   it.skip('renders with custom props', async () => {
-    const customProps = {
-      availableModels: [
-        { id: 'openai/gpt-4', name: 'GPT-4' },
-        { id: 'anthropic/claude-3', name: 'Claude 3' },
-      ],
-      showModelSelector: false,
-      title: 'Custom AI Assistant',
-      description: 'Specialized AI chat for technical support',
-    }
-
-    // const { container } = await renderAstroComponent(AIChat, customProps)
+    // const { container } = await renderAstroComponent(AIChat, {
+    //   availableModels: [
+    //     { id: 'openai/gpt-4', name: 'GPT-4' },
+    //     { id: 'anthropic/claude-3', name: 'Claude 3' },
+    //   ],
+    //   showModelSelector: false,
+    //   title: 'Custom AI Assistant',
+    //   description: 'Specialized AI chat for technical support',
+    // })
 
     // Check if the custom title and description are rendered
     // const h2Element = container.querySelector('h2')
