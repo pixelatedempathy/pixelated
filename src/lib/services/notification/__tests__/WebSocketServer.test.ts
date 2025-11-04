@@ -1,4 +1,4 @@
-import logger from '@/lib/utils/logger'
+import { createBuildSafeLogger } from '@/lib/utils/logger'
 import { WebSocket, WebSocketServer as WSServer } from 'ws'
 import { NotificationService } from '../NotificationService'
 import type { IncomingMessage } from 'http'
@@ -41,7 +41,7 @@ vi.mock('@/lib/supabase', () => {
   const mockSession = { user_id: 'test-user' }
 
   return {
-    supabaseAdmin: {
+    mongoClient: {
       auth: {
         getUser: vi.fn().mockResolvedValue({
           data: { user: mockUser },
@@ -184,8 +184,8 @@ describe('WebSocketServer', () => {
 
     it('should handle authentication failure', async () => {
       // Mock failed authentication
-      const { supabaseAdmin } = await import('@/lib/supabase')
-      vi.mocked(supabaseAdmin.auth.getUser).mockResolvedValueOnce({
+      const { mongoClient } = await import('@/lib/supabase')
+      vi.mocked(mongoClient.auth.getUser).mockResolvedValueOnce({
         data: { user: null },
         error: { message: 'Invalid token', status: 401 },
       })
