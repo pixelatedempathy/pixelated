@@ -13,8 +13,8 @@ export const POST = async ({ request }: { request: Request }): Promise<Response>
 
   try {
     // Authenticate the request
-    const authResult = await isAuthenticated(request)
-    if (!authResult['authenticated']) {
+    const authResult = await isAuthenticated(request as any)
+    if (!authResult || !authResult['authenticated']) {
       return new Response(
         JSON.stringify({
           error: 'Unauthorized',

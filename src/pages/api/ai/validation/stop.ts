@@ -12,6 +12,20 @@ export const POST = async ({ cookies }: { cookies: { get(name: string): { value:
 
   try {
     // Authenticate the request
+    if (!cookies) {
+      return new Response(
+        JSON.stringify({
+          error: 'Unauthorized',
+          message: 'You must be authenticated to access this endpoint',
+        }),
+        {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
     const user = await getCurrentUser(cookies)
     if (!user) {
       return new Response(
@@ -38,7 +52,6 @@ export const POST = async ({ cookies }: { cookies: { get(name: string): { value:
         'validation-api',
         {
           userId: user.id,
-          email: user.email,
           role: user.role,
         },
         AuditEventStatus.FAILURE,
@@ -70,7 +83,6 @@ export const POST = async ({ cookies }: { cookies: { get(name: string): { value:
       'validation-api',
       {
         userId: user.id,
-        username: user.name || user.email,
       },
       AuditEventStatus.SUCCESS,
     )
