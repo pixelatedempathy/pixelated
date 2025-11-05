@@ -14,7 +14,7 @@ env:
   NODE_VERSION: 24.8.0
   PNPM_VERSION: 10.20.0
   NODE_ENV: test
-  DISABLE_AUTH: "true"
+  DISABLE_AUTH: 'true'
   BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
 
 jobs:
@@ -24,7 +24,8 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -75,7 +76,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v5.0.0
         with:
           name: browser-test-results-${{ github.run_id }}
           path: |
@@ -92,7 +93,8 @@ jobs:
     if: always()
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v5
 
       - name: Download all test artifacts
         uses: actions/download-artifact@v6
@@ -202,7 +204,7 @@ jobs:
           echo "passed_tests=$PASSED_TESTS" >> $GITHUB_OUTPUT
 
       - name: Upload consolidated report
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v5.0.0
         with:
           name: browser-compatibility-report-${{ github.run_id }}
           path: report.html

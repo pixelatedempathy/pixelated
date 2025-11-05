@@ -1,17 +1,31 @@
 import { emotionValidationPipeline } from '@/lib/ai/emotions/EmotionValidationPipeline'
 import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
 import { getCurrentUser } from '@/lib/auth'
-import {
-  createAuditLog,
-  AuditEventType,
-  AuditEventStatus,
-} from '@/lib/audit'
+import { createAuditLog, AuditEventType, AuditEventStatus } from '@/lib/audit'
 
-export const POST = async ({ cookies }: { cookies: { get(name: string): { value: string } | undefined } }): Promise<Response> => {
+export const POST = async ({
+  cookies,
+}: {
+  cookies: { get(name: string): { value: string } | undefined }
+}): Promise<Response> => {
   const logger = createBuildSafeLogger('validation-api')
 
   try {
     // Authenticate the request and get user
+    if (!cookies) {
+      return new Response(
+        JSON.stringify({
+          error: 'Unauthorized',
+          message: 'You must be authenticated to access this endpoint',
+        }),
+        {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
     const user = await getCurrentUser(cookies)
     if (!user) {
       return new Response(
@@ -38,7 +52,6 @@ export const POST = async ({ cookies }: { cookies: { get(name: string): { value:
         'validation-api',
         {
           userId: user.id,
-          email: user.email,
         },
         AuditEventStatus.FAILURE,
       )
@@ -75,7 +88,6 @@ export const POST = async ({ cookies }: { cookies: { get(name: string): { value:
       'validation-api',
       {
         userId: user.id,
-        username: user.name || user.email,
       },
       AuditEventStatus.SUCCESS,
     )

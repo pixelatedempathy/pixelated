@@ -135,9 +135,7 @@ export async function rateLimitMiddleware(
 /**
  * CSRF protection middleware
  */
-export async function csrfProtection(
-  request: Request,
-): Promise<{
+export async function csrfProtection(request: Request): Promise<{
   success: boolean
   request?: Request
   response?: Response
@@ -193,11 +191,37 @@ export async function securityHeaders(
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+    "default-src 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'",
   )
   headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, private')
+  headers.delete('X-Powered-By')
+  headers.delete('Server')
   headers.set('Pragma', 'no-cache')
   headers.set('Expires', '0')
+
+  // Add CORS headers for API requests
+  const origin = request.headers.origin
+  if (origin) {
+    headers.set('Access-Control-Allow-Origin', 'https://app.example.com')
+    headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONS',
+    )
+    headers.set(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Authorization, X-CSRF-Token',
+    )
+    headers.set('Access-Control-Max-Age', '86400')
+    headers.set('Vary', 'Origin')
+  }
+
+  // Handle preflight OPTIONS requests
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers,
+    })
+  }
 
   return new Response(response.body, {
     status: response.status,
@@ -221,9 +245,7 @@ export interface AuthenticatedRequest extends Request {
 /**
  * Authenticate request middleware
  */
-export async function authenticateRequest(
-  request: Request,
-): Promise<{
+export async function authenticateRequest(request: Request): Promise<{
   success: boolean
   request?: AuthenticatedRequest
   response?: Response
