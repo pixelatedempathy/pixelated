@@ -1,0 +1,193 @@
+/* ================================================
+   IMAGE OPTIMIZATION AND DISPLAY FIXES
+   Resolves issues with image loading, quality, and positioning
+   ================================================ */
+
+/* Base image styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+}
+
+/* Responsive image container */
+.image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+}
+
+/* Lazy loading images */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Image placeholders */
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-primary);
+  border-radius: var(--radius-lg);
+  min-height: 200px;
+  width: 100%;
+}
+
+.image-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: var(--text-muted);
+}
+
+/* Feature images */
+.feature-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Logo images */
+.logo-image {
+  width: 100%;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Client logo images */
+.client-logo {
+  width: 100%;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0) invert(1);
+  opacity: 0.7;
+  transition: all var(--transition-fast);
+}
+
+.client-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%) brightness(0) invert(1);
+}
+
+/* Avatar images */
+.avatar-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--accent-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  img {
+    border-radius: var(--radius-md);
+  }
+
+  .feature-image {
+    border-radius: var(--radius-md);
+  }
+
+  .client-logo {
+    max-height: 32px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Print styles */
+@media print {
+  img {
+    border: none;
+    box-shadow: none;
+  }
+
+  .client-logo {
+    filter: grayscale(100%) brightness(0);
+    opacity: 0.5;
+  }
+}
+
+/* Loading states */
+.image-loading {
+  position: relative;
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.image-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Error states */
+.image-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-primary);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+}
+
+.image-error svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+  color: var(--text-subtle);
+}
+
+.image-error p {
+  margin: 0;
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,193 @@
+---
+import Header from '@/components/layout/Header.astro'
+import Footer from '@/components/layout/Footer.astro'
+import Background from '@/components/backgrounds/Background.astro'
+import type { BgType } from '@/types'
+import '@/styles/axiom-inspired-theme.css'
+
+export interface Props {
+  title: string
+  description?: string
+  bgType?: BgType
+  ogImage?: string
+  themeMode?: 'light' | 'dark' | 'system'
+  canonicalUrl?: string
+  structuredData?: object
+}
+
+const {
+  title,
+  description,
+  bgType,
+  ogImage,
+  themeMode = 'dark',
+  canonicalUrl,
+  structuredData,
+} = Astro.props
+
+// Generate structured data for SEO
+const generateStructuredData = () => {
+  const baseData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'Pixelated Empathy',
+    'url': Astro.site || 'https://pixelatedempathy.com',
+    'description':
+      description ||
+      'AI-powered therapy training platform for mental health professionals.',
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': {
+        '@type': 'EntryPoint',
+        'urlTemplate': Astro.site
+          ? `${Astro.site}/search?q={search_term_string}`
+          : 'https://pixelatedempathy.com/search?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    'inLanguage': 'en-US',
+  }
+
+  return structuredData ? { ...baseData, ...structuredData } : baseData
+}
+---
+
+<!doctype html>
+<html
+  lang="en"
+  class="axiom-theme"
+  data-theme={themeMode}
+  style="color-scheme: dark;"
+  itemscope
+  itemtype="https://schema.org/WebPage"
+>
+  <head>
+    <!-- Core Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Theme & Color Scheme Meta -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="supported-color-schemes" content="dark" />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+    />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO & Social Meta -->
+    <title>{title} | Pixelated Empathy</title>
+    <meta
+      name="description"
+      content={description ??
+        'AI-powered therapy training platform for mental health professionals.'}
+    />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:site_name" content="Pixelated Empathy" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={`${title} | Pixelated Empathy`} />
+    <meta
+      property="og:description"
+      content={description ??
+        'AI-powered therapy training platform for mental health professionals.'}
+    />
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pixelatedempathy" />
+    <meta name="twitter:creator" content="@pixelatedempathy" />
+    <meta name="twitter:title" content={`${title} | Pixelated Empathy`} />
+    <meta
+      name="twitter:description"
+      content={description ??
+        'AI-powered therapy training platform for mental health professionals.'}
+    />
+
+    <!-- Canonical URL -->
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(generateStructuredData())}
+    />
+  </head>
+  <body
+    class="axiom-theme"
+    style="background: var(--bg-primary); color: var(--text-primary);"
+    itemscope
+    itemtype="https://schema.org/WebPage"
+  >
+    <!-- Background System -->
+    {bgType && <Background type={bgType} />}
+
+    <!-- Main Application Container - Fixed Flex Layout -->
+    <div
+      class="main-app-container"
+      style="background: var(--bg-primary);"
+      role="application"
+      aria-label="Pixelated Empathy Application"
+    >
+      <!-- Skip Navigation Link -->
+      <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:bg-accent-primary focus:text-white"
+      >
+        Skip to main content
+      </a>
+
+      <!-- Header -->
+      <Header />
+
+      <!-- Main Content Area - Flex Grow to Push Footer Down -->
+      <main
+        class="main-content"
+        role="main"
+        aria-label="Main content"
+        id="main-content"
+        tabindex="-1"
+      >
+        <slot />
+      </main>
+
+      <!-- Footer - Will be pushed to bottom -->
+      <Footer class="footer-container" />
+    </div>
+
+    <!-- Theme Management Script -->
+    <script is:inline>
+      ;(function () {
+        'use strict'
+
+        // Simple theme management
+        const initTheme = () => {
+          const theme = document.documentElement.getAttribute('data-theme') || 'dark'
+          document.documentElement.setAttribute('data-theme', theme)
+
+          // Set color scheme
+          document.documentElement.style.colorScheme = 'dark'
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initTheme)
+        } else {
+          initTheme()
+        }
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+---
+// Simplified Header - Clean and Professional
+import ThemeToggle from '@/components/ui/ThemeToggle.astro'
+
+const navLinks = [
+  { name: 'Demos', href: '/demo-hub' },
+  { name: 'Features', href: '/features' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+]
+---
+
+<header
+  class="header-container"
+  style="background: var(--bg-primary); border-bottom: 1px solid var(--border-primary); position: sticky; top: 0; z-index: var(--z-sticky);"
+>
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 var(--space-6);">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between; height: var(--space-16);"
+    >
+      <!-- Branding -->
+      <div style="display: flex; align-items: center; flex: 1; min-width: 0;">
+        <a
+          href="/"
+          style="display: flex; align-items: center; gap: var(--space-2); text-decoration: none; transition: all var(--transition-normal);"
+        >
+          <div
+            style="width: 2rem; height: 2rem; background: var(--accent-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast);"
+          >
+            <img
+              src="/apple-touch-icon.png"
+              alt="PE"
+              style="width: 1.4rem; height: 1.4rem; border-radius: var(--radius-sm); filter: brightness(0) invert(1);"
+              width="32"
+              height="32"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+          <span
+            style="font-size: var(--text-lg); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 1; color: var(--text-primary); margin: 0; display: none;"
+            class="md-display"
+          >
+            PIXELATED EMPATHY
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav style="display: flex; align-items: center; height: 100%;">
+        <ul
+          style="display: flex; align-items: center; gap: var(--space-8); list-style: none; margin: 0; padding: 0;"
+          class="lg-gap"
+        >
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  style="color: var(--text-secondary); text-decoration: none; font-weight: var(--weight-medium); font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); transition: all var(--transition-fast); text-transform: uppercase; letter-spacing: 0.025em;"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- Actions -->
+        <div
+          style="display: flex; align-items: center; gap: var(--space-3); margin-left: var(--space-8);"
+          class="lg-margin"
+        >
+          <ThemeToggle />
+          <a
+            href="/contact"
+            class="btn btn-primary"
+            style="font-size: var(--text-sm); padding: var(--space-3) var(--space-6); border-radius: var(--radius-full); font-weight: var(--weight-bold); display: none; letter-spacing: 0.05em; text-transform: uppercase;"
+            class="md-display"
+          >
+            GET STARTED
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div style="display: flex; align-items: center; gap: var(--space-2);" class="mobile-actions">
+        <ThemeToggle />
+        <button
+          id="mobile-menu-button"
+          style="padding: var(--space-2); border-radius: var(--radius-md); background: transparent; border: 1px solid var(--border-primary); color: var(--text-primary); cursor: pointer; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <svg
+            id="menu-icon"
+            style="width: 1.25rem; height: 1.25rem; transition: all var(--transition-fast);"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            id="close-icon"
+            style="width: 1.25rem; height: 1.25rem; display: none; transition: all var(--transition-fast);"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  style="background: var(--bg-primary); border-top: 1px solid var(--border-primary); border-bottom: 1px solid var(--border-primary); display: none; position: fixed; top: calc(var(--space-16) + 1px); left: 0; right: 0; bottom: 0; z-index: var(--z-modal); overflow-y: auto;"
+>
+  <div style="padding: var(--space-6);">
+    <nav>
+      {
+        navLinks.map((link) => (
+          <div style="margin-bottom: var(--space-4);">
+            <a
+              href={link.href}
+              style="display: block; padding: var(--space-4); font-size: var(--text-lg); font-weight: var(--weight-medium); color: var(--text-primary); text-decoration: none; transition: all var(--transition-fast); border-radius: var(--radius-md); text-transform: uppercase; letter-spacing: 0.025em;"
+              onclick="document.getElementById('mobile-menu').style.display='none'; document.getElementById('mobile-menu-button').setAttribute('aria-expanded', 'false'); document.getElementById('menu-icon').style.display='block'; document.getElementById('close-icon').style.display='none';"
+            >
+              {link.name}
+            </a>
+          </div>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile CTA -->
+    <div style="padding-top: var(--space-6); border-top: 1px solid var(--border-primary);">
+      <a
+        href="/contact"
+        class="btn btn-primary"
+        style="width: 100%; text-align: center; justify-content: center;"
+        onclick="document.getElementById('mobile-menu').style.display='none'; document.getElementById('mobile-menu-button').setAttribute('aria-expanded', 'false'); document.getElementById('menu-icon').style.display='block'; document.getElementById('close-icon').style.display='none';"
+      >
+        GET STARTED
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .md-display {
+    display: block !important;
+  }
+
+  .lg-gap {
+    gap: var(--space-6) !important;
+  }
+
+  .lg-margin {
+    margin-left: var(--space-12) !important;
+  }
+
+  @media (max-width: 768px) {
+    .md-display {
+      display: none !important;
+    }
+
+    .lg-gap {
+      gap: var(--space-4) !important;
+    }
+
+    .lg-margin {
+      margin-left: var(--space-4) !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .mobile-actions {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const menuIcon = document.getElementById('menu-icon')
+  const closeIcon = document.getElementById('close-icon')
+
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener('click', (event) => {
+      event.preventDefault()
+      const isOpen = mobileMenu.style.display === 'block'
+
+      if (isOpen) {
+        mobileMenu.style.display = 'none'
+        menuIcon.style.display = 'block'
+        closeIcon.style.display = 'none'
+        mobileMenuButton.setAttribute('aria-expanded', 'false')
+      } else {
+        mobileMenu.style.display = 'block'
+        menuIcon.style.display = 'none'
+        closeIcon.style.display = 'block'
+        mobileMenuButton.setAttribute('aria-expanded', 'true')
+      }
+    })
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        !mobileMenuButton.contains(e.target) &&
+        !mobileMenu.contains(e.target) &&
+        mobileMenu.style.display === 'block'
+      ) {
+        mobileMenu.style.display = 'none'
+        menuIcon.style.display = 'block'
+        closeIcon.style.display = 'none'
+        mobileMenuButton.setAttribute('aria-expanded', 'false')
+      }
+    })
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.style.display === 'block') {
+        mobileMenu.style.display = 'none'
+        menuIcon.style.display = 'block'
+        closeIcon.style.display = 'none'
+        mobileMenuButton.setAttribute('aria-expanded', 'false')
+      }
+    })
+  }
+</script>
