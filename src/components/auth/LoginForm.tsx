@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { flushSync } from 'react-dom'
 import { useAuth } from '../../hooks/useAuth'
 import '@/styles/login-form-responsive.css'
 
@@ -120,11 +121,12 @@ export function LoginForm({
       }
     }
 
-    // Set errors immediately - React will batch this but we ensure it's set
-    setErrors(newErrors)
+    // Set errors immediately using flushSync to ensure synchronous update
+    // This is critical for tests and ensures React processes the state update
+    flushSync(() => {
+      setErrors(newErrors)
+    })
 
-    // Force a synchronous state update check by using flushSync if available
-    // Otherwise rely on React's normal batching
     return Object.keys(newErrors).length === 0
   }
 
@@ -185,19 +187,22 @@ export function LoginForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    e.stopPropagation()
 
-    // Validate form first - this will set errors state
-    // Ensure validation always runs and errors are set before checking validity
-    const isValid = validateForm()
+    // Validate form - this will set errors state using flushSync
+    // to ensure React processes the state update synchronously
+    let isValid: boolean
+    flushSync(() => {
+      isValid = validateForm()
+    })
 
-    if (!isValid) {
-      // Errors have been set, notify user but let React render errors
+    if (!isValid!) {
+      // Errors have been set by validateForm() using flushSync
+      // Notify user about validation errors
       setToastMessage({
         type: 'error',
         message: 'Please correct the form errors',
       })
-      // Force re-render to ensure errors are visible to tests
-      await new Promise((resolve) => setTimeout(resolve, 100))
       return
     }
 
@@ -308,7 +313,10 @@ export function LoginForm({
   const renderMainForm = () => (
     <div className="auth-form-container text-center form-container responsive-auth-container">
       {mode === 'reset' && (
-        <h2 className="text-gradient text-responsive--heading">
+        <h2
+          className="text-gradient text-responsive--heading"
+          data-testid="reset-password-heading"
+        >
           Reset Password
         </h2>
       )}
@@ -465,8 +473,17 @@ export function LoginForm({
       {mode === 'login' && showResetPassword && (
         <button
           type="button"
-          onClick={() => setMode('reset')}
+          onClick={() => {
+            // Use flushSync to ensure state update is processed synchronously
+            // This fixes timing issues in tests
+            flushSync(() => {
+              setMode('reset')
+              // Clear errors when switching modes
+              setErrors({})
+            })
+          }}
           className="text-gray-400 text-responsive--small hover:text-gray-300 underline touch-focus"
+          data-testid="forgot-password-button"
         >
           Forgot your password?
         </button>
