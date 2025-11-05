@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+- pixelated-kustomization.yaml
+- flux-namespace-secret-role.yaml
+- image-automation.yaml
+patchesStrategicMerge:
+- flux-clusterrole-secrets-patch.yaml
+- flux-clusterrolebinding-patch.yaml

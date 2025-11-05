@@ -8,13 +8,17 @@ import {
   AuditEventStatus,
 } from '../../../../lib/audit'
 
-export const POST = async ({ request }: { request: Request }): Promise<Response> => {
+export const POST = async ({
+  request,
+}: {
+  request: Request
+}): Promise<Response> => {
   const logger = createBuildSafeLogger('validation-api')
 
   try {
     // Authenticate the request
-    const authResult = await isAuthenticated(request)
-    if (!authResult['authenticated']) {
+    const authResult = await isAuthenticated(request as any)
+    if (!authResult || !authResult['authenticated']) {
       return new Response(
         JSON.stringify({
           error: 'Unauthorized',
@@ -65,18 +69,25 @@ export const POST = async ({ request }: { request: Request }): Promise<Response>
 
     // Run validation
     logger.info('Starting validation run')
-    const results = await (emotionValidationPipeline as unknown as { runValidation?: () => Promise<unknown[]> })?.runValidation?.()
+    const results = await (
+      emotionValidationPipeline as unknown as {
+        runValidation?: () => Promise<unknown[]>
+      }
+    )?.runValidation?.()
 
     // Create audit log for successful run
     await createAuditLog(
       AuditEventType.AI_OPERATION,
       'validation-pipeline-run',
-      (authResult as unknown as { user?: { id?: string } })?.user?.id || 'system',
+      (authResult as unknown as { user?: { id?: string } })?.user?.id ||
+        'system',
       'validation-api',
       {
         userId: (authResult as unknown as { user?: { id?: string } })?.user?.id,
         resultsCount: results?.length || 0,
-        passedCount: results?.filter?.((r: unknown) => (r as { passed?: boolean })?.passed)?.length || 0,
+        passedCount:
+          results?.filter?.((r: unknown) => (r as { passed?: boolean })?.passed)
+            ?.length || 0,
       },
       AuditEventStatus.SUCCESS,
     )

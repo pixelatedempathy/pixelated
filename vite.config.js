@@ -46,6 +46,15 @@ export default defineConfig({
         pollInterval: 100,
       },
       ignored: [
+        // Hard guard first: function ignore for node_modules anywhere (prevents file watcher limit issues)
+        (p) =>
+          typeof p === 'string' &&
+          (p.includes('/node_modules/') ||
+            p.includes('\\node_modules\\') ||
+            p.includes('/.venv/') ||
+            p.includes('\\.venv\\') ||
+            p.includes('/ai/') ||
+            p.includes('\\ai\\')),
         // Ensure AI workspace and its virtualenv are fully ignored
         'ai/**',
         '**/ai/**',
@@ -114,14 +123,7 @@ export default defineConfig({
         path.resolve('./public'),
         path.resolve('./.astro'),
       ],
-      deny: [
-        'ai',
-        '/ai',
-        '**/ai/**',
-        '.venv',
-        '/.venv',
-        '**/.venv/**',
-      ],
+      deny: ['ai', '/ai', '**/ai/**', '.venv', '/.venv', '**/.venv/**'],
     },
   },
   plugins: (() => {
@@ -136,7 +138,10 @@ export default defineConfig({
             console.log('[vite] resolved.root =', resolved.root)
             console.log('[vite] server.fs.allow =', resolved.server?.fs?.allow)
             console.log('[vite] server.fs.deny =', resolved.server?.fs?.deny)
-            console.log('[vite] server.watch.ignored =', resolved.server?.watch?.ignored)
+            console.log(
+              '[vite] server.watch.ignored =',
+              resolved.server?.watch?.ignored,
+            )
           } catch {}
         },
       },
@@ -145,11 +150,24 @@ export default defineConfig({
     return [
       ...minimal,
       {
-        name: 'force-unwatch-ai-venv',
+        name: 'force-unwatch-node-modules',
         apply: 'serve',
         configureServer(server) {
           try {
+            const path = require('path')
+            const rootPath = path.resolve(process.cwd())
+            const nodeModulesPath = path.join(rootPath, 'node_modules')
+
+            // Unwatch node_modules immediately and aggressively
             const patternsToUnwatch = [
+              'node_modules',
+              'node_modules/',
+              'node_modules/**',
+              '**/node_modules/**',
+              '/node_modules/**',
+              './node_modules/**',
+              nodeModulesPath,
+              path.join(nodeModulesPath, '**'),
               'ai/',
               'ai/**',
               '**/ai/**',
@@ -167,8 +185,29 @@ export default defineConfig({
 
             // Unwatch all patterns
             server.watcher.unwatch(patternsToUnwatch)
+
+            // Also try to close any existing watchers on node_modules
+            if (server.watcher && server.watcher.getWatched) {
+              const watched = server.watcher.getWatched()
+              Object.keys(watched).forEach((dir) => {
+                if (dir.includes('node_modules')) {
+                  try {
+                    server.watcher.unwatch(dir)
+                  } catch {
+                    // Ignore errors - node_modules may already be unwatched
+                  }
+                }
+              })
+            }
+
+            console.log(
+              '[vite] Aggressively unwatched node_modules to prevent file watcher limit issues',
+            )
           } catch (error) {
-            console.warn('[vite] force-unwatch-ai-venv: Failed to unwatch ai/.venv:', error.message)
+            console.warn(
+              '[vite] force-unwatch-node-modules: Failed to unwatch node_modules:',
+              error.message,
+            )
           }
         },
       },
@@ -176,7 +215,13 @@ export default defineConfig({
         name: 'cdn-asset-replacer',
         transform(code, id) {
           try {
-            if (id.endsWith('.astro') || id.endsWith('.tsx') || id.endsWith('.jsx') || id.endsWith('.ts') || id.endsWith('.js')) {
+            if (
+              id.endsWith('.astro') ||
+              id.endsWith('.tsx') ||
+              id.endsWith('.jsx') ||
+              id.endsWith('.ts') ||
+              id.endsWith('.js')
+            ) {
               Object.entries(cdnAssetMap).forEach(([localPath, cdnUrl]) => {
                 const quotedLocalPath1 = `"${localPath}"`
                 const quotedLocalPath2 = `'${localPath}'`
@@ -186,7 +231,10 @@ export default defineConfig({
             }
             return code
           } catch (error) {
-            console.warn(`CDN asset replacement failed for ${id}:`, error.message)
+            console.warn(
+              `CDN asset replacement failed for ${id}:`,
+              error.message,
+            )
             return code
           }
         },
@@ -199,18 +247,25 @@ export default defineConfig({
       {
         name: 'exclude-server-only',
         resolveId(id) {
-          if (id.includes('/server-only/') || id.includes('MentalLLaMAPythonBridge') || id === 'mongodb' || id.includes('mongodb')) {
+          if (
+            id.includes('/server-only/') ||
+            id.includes('MentalLLaMAPythonBridge') ||
+            id === 'mongodb' ||
+            id.includes('mongodb')
+          ) {
             return false
           }
         },
       },
-      ...(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_DSN ? [
-        sentryVitePlugin({
-          org: process.env.SENTRY_ORG || 'pixelated-empathy-dq',
-          project: process.env.SENTRY_PROJECT || 'pixel-astro',
-          authToken: process.env.SENTRY_AUTH_TOKEN,
-        }),
-      ] : []),
+      ...(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_DSN
+        ? [
+            sentryVitePlugin({
+              org: process.env.SENTRY_ORG || 'pixelated-empathy-dq',
+              project: process.env.SENTRY_PROJECT || 'pixel-astro',
+              authToken: process.env.SENTRY_AUTH_TOKEN,
+            }),
+          ]
+        : []),
     ]
   })(),
   base:
@@ -412,10 +467,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    entries: [
-      'src/**/*.{ts,tsx,js,jsx,astro}',
-      'src/**/*.mjs',
-    ],
+    entries: ['src/**/*.{ts,tsx,js,jsx,astro}', 'src/**/*.mjs'],
     esbuildOptions: {
       platform: 'node',
       target: 'node24',
