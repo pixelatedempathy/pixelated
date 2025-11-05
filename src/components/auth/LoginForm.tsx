@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import { flushSync } from 'react-dom'
 import { useAuth } from '../../hooks/useAuth'
+import '@/styles/login-form-responsive.css'
 
 interface LoginFormProps {
   readonly redirectTo?: string
@@ -119,7 +121,12 @@ export function LoginForm({
       }
     }
 
-    setErrors(newErrors)
+    // Set errors immediately using flushSync to ensure synchronous update
+    // This is critical for tests and ensures React processes the state update
+    flushSync(() => {
+      setErrors(newErrors)
+    })
+
     return Object.keys(newErrors).length === 0
   }
 
@@ -151,8 +158,7 @@ export function LoginForm({
         type: 'error',
         message:
           typeof response.error === 'object' && response.error !== null
-            ? (response.error as { message?: string }).message ||
-              'Login failed'
+            ? (response.error as { message?: string }).message || 'Login failed'
             : 'Login failed',
       })
       return
@@ -181,9 +187,18 @@ export function LoginForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    e.stopPropagation()
 
-    const isValid = validateForm()
-    if (!isValid) {
+    // Validate form - this will set errors state using flushSync
+    // to ensure React processes the state update synchronously
+    let isValid: boolean
+    flushSync(() => {
+      isValid = validateForm()
+    })
+
+    if (!isValid!) {
+      // Errors have been set by validateForm() using flushSync
+      // Notify user about validation errors
       setToastMessage({
         type: 'error',
         message: 'Please correct the form errors',
@@ -275,9 +290,11 @@ export function LoginForm({
   }
 
   const renderResetSuccess = () => (
-    <div className="text-center">
-      <h2 className="text-gradient">Password Reset Email Sent</h2>
-      <p>
+    <div className="text-center space-y-4">
+      <h2 className="text-gradient text-responsive--heading">
+        Password Reset Email Sent
+      </h2>
+      <p className="text-responsive--body">
         Check your email for a link to reset your password. If it doesn&apos;t
         appear within a few minutes, check your spam folder.
       </p>
@@ -286,21 +303,34 @@ export function LoginForm({
           setMode('login')
           setResetEmailSent(false)
         }}
-        className="btn btn-primary mt-4"
+        className="btn btn-primary btn-responsive touch-focus"
       >
-        Return to Login
+        <span className="text-responsive--small">Return to Login</span>
       </button>
     </div>
   )
 
   const renderMainForm = () => (
-    <div className="auth-form-container text-center form-container">
-      <h2 className={`text-gradient ${mode === 'reset' ? 'block' : 'hidden'}`}>Reset Password</h2>
-      <h2 className={`text-gradient ${mode === 'login' ? 'block' : 'hidden'}`}>Sign In</h2>
+    <div className="auth-form-container text-center form-container responsive-auth-container">
+      {mode === 'reset' && (
+        <h2
+          className="text-gradient text-responsive--heading"
+          data-testid="reset-password-heading"
+        >
+          Reset Password
+        </h2>
+      )}
+      {mode === 'login' && (
+        <h2 className="text-gradient text-responsive--heading">Sign In</h2>
+      )}
 
-      <form noValidate onSubmit={handleSubmit} className="auth-form">
-        <div className="form-group">
-          <label htmlFor="email" className="form-label">
+      <form
+        noValidate
+        onSubmit={handleSubmit}
+        className="auth-form form-responsive"
+      >
+        <div className="form-group form-group-responsive">
+          <label htmlFor="email" className="form-label text-responsive--small">
             Email
           </label>
           <div
@@ -313,10 +343,9 @@ export function LoginForm({
               onChange={handleEmailChange}
               onFocus={() => setFocusedInput('email')}
               onBlur={handleEmailBlur}
-              required
               disabled={isLoading}
               placeholder="your@email.com"
-              className="form-input"
+              className="form-input input-responsive"
               aria-invalid={errors.email ? 'true' : 'false'}
               aria-describedby="email-error"
               autoComplete="email"
@@ -324,9 +353,12 @@ export function LoginForm({
           </div>
           <div
             id="email-error"
-            className={`error-message text-sm mt-1 ${errors.email ? 'block' : 'hidden'}`}
+            className="error-message text-responsive--caption mt-1"
             role="alert"
             aria-live="polite"
+            style={{
+              display: errors.email ? ('block' as const) : ('none' as const),
+            }}
           >
             {errors.email || ''}
           </div>
@@ -335,14 +367,22 @@ export function LoginForm({
         {mode === 'login' && renderPasswordField()}
         {mode === 'login' && renderRememberMe()}
 
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        <button
+          type="submit"
+          className="btn btn-primary btn-responsive"
+          disabled={isLoading}
+        >
           {isLoading ? (
             <span className="flex items-center justify-center gap-2">
               <span className="loading-spinner"></span>
-              <span>{mode === 'login' ? 'Signing in...' : 'Sending...'}</span>
+              <span className="text-responsive--small">
+                {mode === 'login' ? 'Signing in...' : 'Sending...'}
+              </span>
             </span>
           ) : (
-            <span>{mode === 'login' ? 'Sign In' : 'Send Reset Link'}</span>
+            <span className="text-responsive--small">
+              {mode === 'login' ? 'Sign In' : 'Send Reset Link'}
+            </span>
           )}
         </button>
       </form>
@@ -353,8 +393,8 @@ export function LoginForm({
   )
 
   const renderPasswordField = () => (
-    <div className="form-group">
-      <label htmlFor="password" className="form-label">
+    <div className="form-group form-group-responsive">
+      <label htmlFor="password" className="form-label text-responsive--small">
         Password
       </label>
       <div
@@ -367,10 +407,9 @@ export function LoginForm({
           onChange={handlePasswordChange}
           onFocus={() => setFocusedInput('password')}
           onBlur={handlePasswordBlur}
-          required
           disabled={isLoading}
           placeholder="••••••••"
-          className="form-input"
+          className="form-input input-responsive"
           aria-invalid={errors.password ? 'true' : 'false'}
           aria-describedby="password-error"
           autoComplete="current-password"
@@ -378,9 +417,12 @@ export function LoginForm({
       </div>
       <div
         id="password-error"
-        className={`error-message text-sm mt-1 ${errors.password ? 'block' : 'hidden'}`}
+        className="error-message text-responsive--caption mt-1"
         role="alert"
         aria-live="polite"
+        style={{
+          display: errors.password ? ('block' as const) : ('none' as const),
+        }}
       >
         {errors.password || ''}
       </div>
@@ -388,8 +430,11 @@ export function LoginForm({
   )
 
   const renderRememberMe = () => (
-    <div className="form-group remember-me">
-      <label htmlFor="rememberMeCheckbox" className="checkbox-container">
+    <div className="form-group remember-me form-group-responsive">
+      <label
+        htmlFor="rememberMeCheckbox"
+        className="checkbox-container touch-target"
+      >
         <input
           id="rememberMeCheckbox"
           type="checkbox"
@@ -399,7 +444,9 @@ export function LoginForm({
           className="remember-checkbox"
         />
 
-        <span className="checkbox-label">Remember me</span>
+        <span className="checkbox-label text-responsive--small">
+          Remember me
+        </span>
       </label>
     </div>
   )
@@ -412,22 +459,31 @@ export function LoginForm({
 
       <button
         onClick={handleGoogleSignIn}
-        className="btn btn-outline"
+        className="btn btn-outline btn-responsive"
         disabled={isLoading}
         aria-label="Sign in with Google"
       >
-        Continue with Google
+        <span className="text-responsive--small">Continue with Google</span>
       </button>
     </>
   )
 
   const renderAuthLinks = () => (
-    <div className="auth-links">
+    <div className="auth-links space-y-2">
       {mode === 'login' && showResetPassword && (
         <button
           type="button"
-          onClick={() => setMode('reset')}
-          className="text-gray-400 text-sm hover:text-gray-300 underline"
+          onClick={() => {
+            // Use flushSync to ensure state update is processed synchronously
+            // This fixes timing issues in tests
+            flushSync(() => {
+              setMode('reset')
+              // Clear errors when switching modes
+              setErrors({})
+            })
+          }}
+          className="text-gray-400 text-responsive--small hover:text-gray-300 underline touch-focus"
+          data-testid="forgot-password-button"
         >
           Forgot your password?
         </button>
@@ -437,7 +493,7 @@ export function LoginForm({
         <button
           type="button"
           onClick={() => setMode('login')}
-          className="text-gray-400 text-sm hover:text-gray-300 underline"
+          className="text-gray-400 text-responsive--small hover:text-gray-300 underline touch-focus"
         >
           Back to Login
         </button>
@@ -446,7 +502,7 @@ export function LoginForm({
       {mode === 'login' && showSignup && (
         <button
           onClick={() => (globalThis.location.href = '/signup')}
-          className="text-gray-400 text-sm hover:text-gray-300 underline mt-2"
+          className="text-gray-400 text-responsive--small hover:text-gray-300 underline mt-2 touch-focus"
         >
           Don&apos;t have an account? Sign up
         </button>
