@@ -359,7 +359,7 @@ export class ImageOptimizer {
   }
 
   /**
-   * Generate responsive image HTML
+   * Generate responsive image HTML with optimized loading
    */
   generateResponsiveImage(result: OptimizationResult): string {
     const alt =
@@ -369,7 +369,7 @@ export class ImageOptimizer {
         ?.replace(/\.[^/.]+$/, '') || 'image'
 
     let html = `<!-- Responsive image: ${alt} -->\n`
-    html += `<picture>\n`
+    html += `<picture class="image-container">\n`
 
     // AVIF for modern browsers (smallest file size)
     if (result.avifPath) {
@@ -381,9 +381,9 @@ export class ImageOptimizer {
       html += `  <source srcset="${result.webpPath}" type="image/webp">\n`
     }
 
-    // Original format as fallback
+    // Original format as fallback with optimized attributes
     const fallbackPath = result.optimizedPath || result.originalPath
-    html += `  <img src="${fallbackPath}" alt="${alt}" loading="lazy">\n`
+    html += `  <img src="${fallbackPath}" alt="${alt}" loading="lazy" decoding="async" class="feature-image" onload="this.classList.add('loaded'); this.parentNode.classList.remove('image-loading');">\n`
     html += `</picture>`
 
     return html

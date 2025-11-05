@@ -3,20 +3,8 @@
 @import '@unocss/reset/tailwind.css';
 @import './fonts.css';
 
-/* Import mobile fixes */
-@import './mobile-fixes.css';
-
-/* Import mobile form validation styles */
-@import './mobile-form-validation.css';
-
-/* Import enhanced responsive utilities */
-@import './responsive-utilities.css';
-
-/* Import advanced animation sequences */
-@import './advanced-animations.css';
-
-/* Import Mind Mirror UI enhancements */
-@import './mind-mirror.css';
+/* Import consolidated global styles */
+@import './consolidated-global.css';
 
 /* Import image fixes */
 @import './image-fixes.css';

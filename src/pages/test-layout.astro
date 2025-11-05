@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayoutFixed.astro'
+---
+
+<BaseLayout
+  title="Layout Test"
+  description="Testing responsive layout fixes"
+>
+  <div style="padding: var(--space-8);">
+    <h1>Layout Test Page</h1>
+    <p>This page tests the responsive layout fixes across different screen sizes.</p>
+
+    <div style="margin: var(--space-8) 0;">
+      <h2>Image Display Test</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); margin: var(--space-6) 0;">
+        <div class="card">
+          <div class="image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p>Image Placeholder</p>
+          </div>
+          <h3>Test Image 1</h3>
+          <p>This tests image display and responsiveness.</p>
+        </div>
+
+        <div class="card">
+          <div class="image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p>Image Placeholder</p>
+          </div>
+          <h3>Test Image 2</h3>
+          <p>This tests image display and responsiveness.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin: var(--space-8) 0;">
+      <h2>Layout Structure Test</h2>
+      <div class="card">
+        <h3>Main Content Area</h3>
+        <p>This content should be properly positioned with the header at the top and footer at the bottom.</p>
+        <p>The layout should be responsive and adapt to different screen sizes.</p>
+      </div>
+    </div>
+
+    <div style="margin: var(--space-8) 0;">
+      <h2>Button Test</h2>
+      <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
