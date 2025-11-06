@@ -1,4 +1,3 @@
-import { createBuildSafeLogger } from '@/lib/utils/logger'
 import { WebSocket, WebSocketServer as WSServer } from 'ws'
 import { NotificationService } from '../NotificationService'
 import type { IncomingMessage } from 'http'
