@@ -17,7 +17,7 @@ jobs:
       NODE_OPTIONS: "--max-old-space-size=4096"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -25,7 +25,7 @@ jobs:
           version: 10.20.0
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
 
@@ -109,6 +109,8 @@ jobs:
 
       - name: Push Docker images
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "📤 Pushing Docker images..."
 
@@ -118,7 +120,7 @@ jobs:
             echo "✅ Already authenticated with GHCR"
           else
             echo "⚠️ Not authenticated with GHCR, attempting login..."
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             if [ $? -eq 0 ]; then
               echo "✅ Successfully logged in to GHCR"
             else
@@ -168,6 +170,60 @@ jobs:
             "sentry_release": "${{ github.sha }}"
           }
           EOF
+
+      - name: Check Docker Hub credentials
+        id: check_dockerhub_creds
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PAT: ${{ secrets.DOCKER_PAT }}
+        run: |
+          if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_TOKEN" ]; then
+            echo "has_creds=true" >> $GITHUB_OUTPUT
+            echo "docker_username=$DOCKERHUB_USERNAME" >> $GITHUB_OUTPUT
+            echo "docker_password=$DOCKERHUB_TOKEN" >> $GITHUB_OUTPUT
+          elif [ -n "$DOCKER_USER" ] && [ -n "$DOCKER_PAT" ]; then
+            echo "has_creds=true" >> $GITHUB_OUTPUT
+            echo "docker_username=$DOCKER_USER" >> $GITHUB_OUTPUT
+            echo "docker_password=$DOCKER_PAT" >> $GITHUB_OUTPUT
+          else
+            echo "has_creds=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Login to Docker Hub (optional)
+        if: steps.check_dockerhub_creds.outputs.has_creds == 'true'
+        id: dockerhub_login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ steps.check_dockerhub_creds.outputs.docker_username }}
+          password: ${{ steps.check_dockerhub_creds.outputs.docker_password }}
+          logout: true
+
+      - name: Push Docker images to Docker Hub (optional)
+        if: ${{ steps.dockerhub_login.outcome == 'success' }}
+        run: |
+          echo "📤 Pushing Docker images to Docker Hub..."
+
+          DOCKERHUB_SHA=pixelatedempathy/pixelated-empathy:${{ github.sha }}
+          DOCKERHUB_BRANCH=pixelatedempathy/pixelated-empathy:${{ github.ref_name }}-${{ github.sha }}
+          DOCKERHUB_LATEST=pixelatedempathy/pixelated-empathy:latest
+
+          # Retag GHCR-built image to Docker Hub tags
+          docker tag $IMAGE_TAG_SHA $DOCKERHUB_SHA
+          docker tag $IMAGE_TAG_SHA $DOCKERHUB_BRANCH
+          docker tag $IMAGE_TAG_SHA $DOCKERHUB_LATEST
+
+          # Push with individual error handling
+          echo "📦 Pushing $DOCKERHUB_SHA..."
+          if docker push $DOCKERHUB_SHA; then echo "✅ Pushed $DOCKERHUB_SHA"; else echo "❌ Failed to push $DOCKERHUB_SHA"; exit 1; fi
+
+          echo "📦 Pushing $DOCKERHUB_BRANCH..."
+          if docker push $DOCKERHUB_BRANCH; then echo "✅ Pushed $DOCKERHUB_BRANCH"; else echo "❌ Failed to push $DOCKERHUB_BRANCH"; exit 1; fi
+
+          echo "📦 Pushing $DOCKERHUB_LATEST..."
+          if docker push $DOCKERHUB_LATEST; then echo "✅ Pushed $DOCKERHUB_LATEST"; else echo "❌ Failed to push $DOCKERHUB_LATEST"; exit 1; fi
 
       - name: Create deployment notification
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}

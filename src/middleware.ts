@@ -2,6 +2,7 @@ import { generateCspNonce } from './lib/middleware/csp'
 import { securityHeaders } from './lib/middleware/securityHeaders'
 import { sequence, defineMiddleware } from 'astro:middleware'
 import { getSession } from './lib/auth/session'
+import type { APIContext } from 'astro'
 
 // Simple route matcher for protected API routes
 const protectedRoutePatterns: RegExp[] = [/\/api\/protected(.*)/]

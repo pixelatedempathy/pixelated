@@ -5,11 +5,9 @@ metadata:
   name: pixelated-ingress
   namespace: pixelated
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: traefik
   tls:
     - hosts:
         - pixelatedempathy.com
@@ -25,7 +23,7 @@ spec:
               service:
                 name: pixelated-service
                 port:
-                  number: 4321
+                  number: 80
     - host: www.pixelatedempathy.com
       http:
         paths:
@@ -35,4 +33,4 @@ spec:
               service:
                 name: pixelated-service
                 port:
-                  number: 4321
+                  number: 80

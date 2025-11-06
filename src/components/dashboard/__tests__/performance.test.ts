@@ -450,42 +450,42 @@ describe('Dashboard Performance Tests', () => {
   })
 
   it('handles concurrent operations efficiently', async () => {
-    const promises: Promise<boolean>[] = []
+    const promises: Promise<unknown>[] = []
 
     const startTime = performance.now()
 
     // Render multiple components concurrently
     promises.push(
-      new Promise((resolve) => {
+      new Promise<void>((resolve) => {
         render(
           React.createElement(SessionControls, {
             sessions: mockSessions,
             onSessionControl: mockOnSessionControl,
           }),
         )
-        resolve(true)
+        resolve()
       }),
     )
 
     promises.push(
-      new Promise((resolve) => {
+      new Promise<void>((resolve) => {
         render(
           React.createElement(TherapistProgressTracker, {
             session: mockSessions[0]!,
           }),
         )
-        resolve(true)
+        resolve()
       }),
     )
 
     promises.push(
-      new Promise((resolve) => {
+      new Promise<void>((resolve) => {
         render(
           React.createElement(TherapyProgressCharts, {
             data: mockAnalyticsData,
           }),
         )
-        resolve(true)
+        resolve()
       }),
     )
 

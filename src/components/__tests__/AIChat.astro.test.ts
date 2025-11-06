@@ -61,32 +61,32 @@ vi.mock('../AIChatReact', () => {
           },
           props.showModelSelector
             ? {
-                type: 'div',
-                props: {
-                  className: 'model-selector',
-                  children: [
-                    {
-                      type: 'label',
-                      props: {
-                        children: 'Select AI Model',
-                      },
+              type: 'div',
+              props: {
+                className: 'model-selector',
+                children: [
+                  {
+                    type: 'label',
+                    props: {
+                      children: 'Select AI Model',
                     },
-                    {
-                      type: 'select',
-                      props: {
-                        children: props.availableModels?.map((model) => ({
-                          type: 'option',
-                          props: {
-                            key: model.id,
-                            value: model.id,
-                            children: model.name,
-                          },
-                        })),
-                      },
+                  },
+                  {
+                    type: 'select',
+                    props: {
+                      children: props.availableModels?.map((model) => ({
+                        type: 'option',
+                        props: {
+                          key: model.id,
+                          value: model.id,
+                          children: model.name,
+                        },
+                      })),
                     },
-                  ],
-                },
-              }
+                  },
+                ],
+              },
+            }
             : null,
         ].filter(Boolean),
       },
@@ -94,6 +94,21 @@ vi.mock('../AIChatReact', () => {
   })
   return { default: mockFn }
 })
+
+// Helper function to render Astro components in tests
+// Note: Currently unused but kept for future test implementation
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function renderAstroComponent(
+  Component: any,
+  props = {},
+): Promise<{ container: HTMLDivElement }> {
+  const { default: defaultExport } = Component
+  const html = await defaultExport.render(props)
+  const container = document.createElement('div')
+  container.innerHTML = html.html
+  document.body.appendChild(container)
+  return { container }
+}
 
 describe('AIChat.astro', () => {
   beforeEach(() => {
