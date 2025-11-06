@@ -1,0 +1,66 @@
+# Chrome Debugging Instructions for Cursor Composer
+
+## Quick Start
+
+### Using pnpm scripts (recommended):
+```bash
+# Monitor a URL with network monitoring
+pnpm run chrome:monitor http://localhost:3000 --network
+
+# Monitor with all options
+pnpm run chrome:monitor http://localhost:3000 --network --exit-on-error
+```
+
+### Direct usage:
+```bash
+cd tools/chrome-composer
+node BaseMonitor.js [URL] [options]
+```
+
+## Available Options
+
+- `--network, -n`        : Monitor network requests
+- `--no-clear, --nc`    : Don't clear console on page reload
+- `--exit-on-error`      : Exit on encountering errors (good for iterative debugging)
+- `--break-network, --bn`: Treat network errors as breaking errors
+
+## Examples
+
+```bash
+# Basic monitoring
+pnpm run chrome:monitor http://localhost:3000
+
+# With network monitoring
+pnpm run chrome:monitor http://localhost:3000 --network
+
+# Exit on errors (good for debugging)
+pnpm run chrome:monitor http://localhost:3000 --exit-on-error
+
+# Full monitoring with network and error handling
+pnpm run chrome:monitor http://localhost:3000 --network --exit-on-error --break-network
+```
+
+## Usage with Cursor Composer
+
+1. Run the monitor in a **separate terminal** (not in Composer chat as embedded terminal)
+2. The monitor will open Chrome with remote debugging enabled on port 9222
+3. Chrome console logs and network requests will be streamed to your terminal
+4. Keep the terminal open to maintain context across Composer sessions
+
+## Important Notes
+
+- Playwright will automatically handle Chrome instance creation and setup
+- Chrome will open in non-headless mode for visual debugging
+- Remote debugging is enabled on port 9222
+- The monitor keeps running until you press Ctrl+C
+
+## Output Examples
+
+```
+[log] NODE_ENV: development
+[warning] Logging in because its an existing user
+[Request] GET http://localhost:3000/api/customers
+[Response] 200 http://localhost:3000/api/customers
+[Worker Started] http://localhost:3000/worker.js
+[Dialog] alert: Please confirm your action
+```

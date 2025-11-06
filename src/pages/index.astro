@@ -419,13 +419,28 @@ import CTAButton from '@/components/ui/CTAButton.astro'
 </section>
 
 <style>
-  /* Mizu-inspired Clean Stats Section */
+  /* Mizu-inspired Clean Stats Section - Enhanced */
   .stats-section {
-    padding: var(--space-24) 0;
+    padding: var(--space-32) 0;
     background: var(--bg-primary);
-
+    position: relative;
+  }
+  
+  .stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.02;
+    background-image: radial-gradient(circle at 50% 50%, var(--accent-primary-subtle) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
   .stats-container {
+    position: relative;
+    z-index: 1;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 var(--space-6);
@@ -453,20 +468,20 @@ import CTAButton from '@/components/ui/CTAButton.astro'
   }
 
   .stats-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: var(--weight-black);
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--tracking-tight, -0.025em);
     color: var(--text-primary);
-    margin: 0 0 var(--space-6) 0;
+    margin: 0 0 var(--space-4) 0;
   }
 
   .stats-description {
-    font-size: var(--text-xl);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     color: var(--text-secondary);
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: var(--leading-relaxed, 1.75);
   }
 
   .stats-grid {
@@ -488,18 +503,39 @@ import CTAButton from '@/components/ui/CTAButton.astro'
   }
 
   .stat-card {
-    background: var(--bg-card);
+    background: var(--bg-level-1);
     border: 1px solid var(--border-primary);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: var(--space-8);
     text-align: center;
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
   }
 
   .stat-card:hover {
+    background: var(--bg-level-2);
     border-color: var(--accent-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 32px rgba(0, 0, 0, 0.4),
+      0 0 0 1px var(--accent-primary-subtle);
+  }
+  
+  .stat-card:hover::before {
+    opacity: 1;
   }
 
   .stat-icon {
@@ -531,10 +567,13 @@ import CTAButton from '@/components/ui/CTAButton.astro'
   }
 
   .stat-number {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 4rem);
     font-weight: var(--weight-black);
     line-height: 1;
-    color: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-2);
   }
 
@@ -543,7 +582,7 @@ import CTAButton from '@/components/ui/CTAButton.astro'
     font-weight: var(--weight-semibold);
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: var(--tracking-wider, 0.05em);
   }
 
   /* Global overflow prevention */

@@ -176,9 +176,23 @@ const socialLinks = [
   .footer-unified {
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-level-1));
     border-top: 1px solid var(--border-primary);
-    margin-top: var(--space-20);
+    margin-top: var(--space-32);
     position: relative;
     overflow: hidden;
+    width: 100%;
+  }
+  
+  /* Subtle background pattern */
+  .footer-unified::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.02;
+    background-image: radial-gradient(circle at 50% 0%, var(--accent-primary-subtle) 0%, transparent 50%);
+    pointer-events: none;
   }
 
   .footer-unified::before {

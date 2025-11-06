@@ -58,7 +58,7 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
   --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
   
-  /* Spacing System - Consistent Scale */
+  /* Spacing System - Consistent Scale (Enhanced) */
   --space-px: 1px;
   --space-0: 0;
   --space-1: 0.25rem;
@@ -73,6 +73,8 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
   
   /* Border Radius System */
   --radius-none: 0;
@@ -256,16 +258,23 @@
 }
 
 /* === ENHANCED CONTAINERS === */
+/* Consolidated container system - use design-system-enhanced.css for full system */
 .container-refined {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 clamp(var(--space-4), 4vw, var(--space-12));
 }
 
 @media (max-width: 768px) {
   .container-refined {
     padding: 0 var(--space-4);
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-refined {
+    max-width: 1400px;
   }
 }
 

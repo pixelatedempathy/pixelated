@@ -1,0 +1,17 @@
+{
+  "name": "chrome-composer",
+  "version": "1.0.0",
+  "description": "Chrome debugging monitor for Cursor Composer",
+  "main": "BaseMonitor.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node BaseMonitor.js",
+    "monitor": "node BaseMonitor.js",
+    "composer": "node cursor-composer.js"
+  },
+  "dependencies": {
+    "playwright": "^1.50.1"
+  },
+  "keywords": ["chrome", "debugging", "monitoring", "playwright", "cursor"],
+  "license": "MIT"
+}

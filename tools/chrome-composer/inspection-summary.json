@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-11-06T21:55:02.692Z",
+  "sites": [
+    {
+      "name": "current",
+      "url": "https://pixelatedempathy.com",
+      "headerHeight": 114,
+      "heroHeight": 70,
+      "footerHeight": 418,
+      "hasHeaderContent": true
+    },
+    {
+      "name": "mizu",
+      "url": "https://mizu-theme.netlify.app/",
+      "headerHeight": 100,
+      "heroHeight": 0,
+      "footerHeight": 492,
+      "hasHeaderContent": true
+    },
+    {
+      "name": "flabbergasted",
+      "url": "https://lexingtonthemes.com/viewports/flabbergasted",
+      "headerHeight": 0,
+      "heroHeight": 0,
+      "footerHeight": 0,
+      "hasHeaderContent": false
+    },
+    {
+      "name": "antfustyle",
+      "url": "https://astro-antfustyle-theme.vercel.app/",
+      "headerHeight": 92,
+      "heroHeight": 0,
+      "footerHeight": 0,
+      "hasHeaderContent": true
+    },
+    {
+      "name": "astromaxx",
+      "url": "https://astromaxx.netlify.app/",
+      "headerHeight": 0,
+      "heroHeight": 0,
+      "footerHeight": 129,
+      "hasHeaderContent": false
+    }
+  ]
+}
