@@ -151,7 +151,8 @@ class EmotionValidationPipeline {
     } catch (error: unknown) {
       this.logger.error('Failed to initialize pipeline', { error })
       throw new Error(
-        `Pipeline initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        `Pipeline initialization failed: ${error instanceof Error ? error.message : String(error)}`,
+        { cause: error },
       )
     }
   }
@@ -276,8 +277,9 @@ class EmotionValidationPipeline {
         try {
           const therapeuticSession =
             this.convertToTherapeuticSession(emotionData)
-          biasAnalysis =
-            await this.biasDetectionEngine.analyzeSession(therapeuticSession) as BiasAnalysisResult
+          biasAnalysis = (await this.biasDetectionEngine.analyzeSession(
+            therapeuticSession,
+          )) as BiasAnalysisResult
         } catch (error: unknown) {
           this.logger.warn('Bias detection failed for emotion validation', {
             sessionId: emotionData.sessionId,
@@ -368,7 +370,7 @@ class EmotionValidationPipeline {
 
       if (biasMitigated) {
         result.recommendations.push(
-          "Response text mitigated for bias patterns. See '[BIAS-MITIGATED]' tokens."
+          "Response text mitigated for bias patterns. See '[BIAS-MITIGATED]' tokens.",
         )
       }
       // Add additional trace for authenticity scoring
@@ -547,7 +549,7 @@ class EmotionValidationPipeline {
       if (
         biasPattern.pattern.test(responseText) &&
         demographics.gender?.toLowerCase() ===
-          biasPattern.demographic.toLowerCase()
+        biasPattern.demographic.toLowerCase()
       ) {
         detectedPatterns.push(biasPattern.bias)
         severity += 0.3
@@ -760,16 +762,12 @@ class EmotionValidationPipeline {
       content: {
         transcript: emotionData.context,
         aiResponses: [],
-        userInputs: emotionData.responseText
-          ? [emotionData.responseText]
-          : [],
+        userInputs: emotionData.responseText ? [emotionData.responseText] : [],
       },
       aiResponses: [],
       expectedOutcomes: [],
       transcripts: [],
-      userInputs: emotionData.responseText
-          ? [emotionData.responseText]
-          : [],
+      userInputs: emotionData.responseText ? [emotionData.responseText] : [],
       metadata: {
         sessionStartTime: emotionData.timestamp || new Date(),
         sessionEndTime: new Date(),
@@ -857,6 +855,9 @@ class EmotionValidationPipeline {
     }
   }
 }
+
+// Export class for testing
+export { EmotionValidationPipeline }
 
 // Export singleton instance
 export const emotionValidationPipeline = new EmotionValidationPipeline()

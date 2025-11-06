@@ -23,13 +23,85 @@ export default defineConfig({
   trailingSlash: 'ignore',
   build: {
     format: 'directory',
-    sourcemap: process.env.NODE_ENV === 'development' ? true : 'hidden',
+    sourcemap: process.env.NODE_ENV !== 'production',
+    copy: [
+      {
+        from: 'templates/email',
+        to: 'templates/email'
+      }
+    ],
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for better caching
+        manualChunks: (id) => {
+          // React ecosystem
+          if (id.includes('react') || id.includes('react-dom')) {
+            return 'react-vendor';
+          }
+          // UI libraries
+          if (id.includes('framer-motion') || id.includes('lucide-react')) {
+            return 'ui-vendor';
+          }
+          // Utility libraries
+          if (id.includes('clsx') || id.includes('date-fns') || id.includes('axios')) {
+            return 'utils-vendor';
+          }
+          // Chart libraries
+          if (id.includes('recharts') || id.includes('chart.js')) {
+            return 'charts-vendor';
+          }
+          // 3D libraries
+          if (id.includes('three') || id.includes('@react-three')) {
+            return 'three-vendor';
+          }
+          // Node modules (keep separate for better caching)
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+        // Optimized chunk naming for better caching
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
+    }
   },
   vite: {
+    server: {
+      watch: {
+        ignored: [
+          // Aggressive node_modules exclusion at Vite level
+          (p) => typeof p === 'string' && (
+            p.includes('/node_modules/') ||
+            p.includes('\\node_modules\\') ||
+            p.includes('/.venv/') ||
+            p.includes('\\.venv\\') ||
+            p.includes('/ai/') ||
+            p.includes('\\ai\\')
+          ),
+          '**/node_modules/**',
+          '/node_modules/**',
+          'node_modules/**',
+          './node_modules/**',
+        ],
+      },
+    },
     build: {
-      sourcemap: process.env.NODE_ENV === 'development' ? true : 'hidden',
-      target: 'node22',
-      chunkSizeWarningLimit: 1500,
+      sourcemap: process.env.NODE_ENV === 'production' ? false : 'hidden',
+      target: 'node24',
+      chunkSizeWarningLimit: process.env.NODE_ENV === 'production' ? 500 : 1500,
+      // Enable minification in production
+      minify: process.env.NODE_ENV === 'production' ? 'terser' : false,
+      terserOptions: process.env.NODE_ENV === 'production' ? {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log', 'console.info', 'console.debug']
+        },
+        mangle: {
+          safari10: true
+        }
+      } : {},
       rollupOptions: {
         external: [
           '@google-cloud/storage',
@@ -57,8 +129,7 @@ export default defineConfig({
           '@react-three/drei',
           'mongodb',
           'recharts',
-          'chart.js'
-
+          'chart.js',
         ],
         onwarn(warning, warn) {
           if (
@@ -79,7 +150,15 @@ export default defineConfig({
         }
       }
     },
-    plugins: [visualizer()],
+    plugins: [
+      // Bundle analyzer for production builds
+      ...(process.env.ANALYZE_BUNDLE === '1' ? [visualizer({
+        filename: 'dist/bundle-analysis.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true
+      })] : [])
+    ],
     resolve: {
       alias: {
         '~': path.resolve('./src'),
@@ -126,11 +205,14 @@ export default defineConfig({
         '@react-three/drei',
         'mongodb',
         'recharts',
-        'chart.js'
-
+        'chart.js',
       ],
     },
     optimizeDeps: {
+      entries: [
+        'src/**/*.{ts,tsx,js,jsx,astro}',
+        'src/**/*.mjs',
+      ],
       exclude: [
         '@aws-sdk/client-s3',
         '@aws-sdk/client-kms',
@@ -156,49 +238,48 @@ export default defineConfig({
         '@react-three/drei',
         'mongodb',
         'recharts',
-        'chart.js'
-
+        'chart.js',
       ],
     },
   },
-  integrations: [
-    react({
-      include: ['**/react/*', '**/components/**/*'],
-      experimentalReactChildren: true,
-    }),
-
-    UnoCSS({
-      injectReset: true,
-    }),
-    icon({
-      include: {
-        lucide: [
-          'calendar',
-          'user',
-          'settings',
-          'heart',
-          'brain',
-          'shield-check',
-          'info',
-          'arrow-left',
-          'shield',
-          'user-plus'
-        ]
-      },
-      svgdir: './src/icons',
-    }),
-    ...(process.env.SENTRY_DSN ? [
-      sentry({
-        sourceMapsUploadOptions: {
-          project: "pixel-astro",
-          authToken: process.env.SENTRY_AUTH_TOKEN,
+  integrations: (() => {
+    const MIN_DEV = process.env.MIN_DEV === '1'
+    const base = [
+      react({
+        include: ['**/react/*', '**/components/**/*'],
+        experimentalReactChildren: true,
+      })
+    ]
+    if (MIN_DEV) return base
+    return [
+      ...base,
+      UnoCSS({ injectReset: true }),
+      icon({
+        include: {
+          lucide: [
+            'calendar', 'user', 'settings', 'heart', 'brain', 'shield-check', 'info', 'arrow-left', 'shield', 'user-plus'
+          ]
         },
+        svgdir: './src/icons',
       }),
-      ...(process.env.NODE_ENV === 'development' && process.env.SENTRY_SPOTLIGHT === '1'
-        ? [spotlightjs()]
-        : [])
-    ] : []),
-  ],
+      ...(process.env.SENTRY_DSN ? [
+        sentry({
+          sourceMapsUploadOptions: {
+            org: process.env.SENTRY_ORG || 'pixelated-empathy-dq',
+            project: process.env.SENTRY_PROJECT || 'pixel-astro',
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+            telemetry: false,
+            sourcemaps: {
+              assets: ['./.astro/dist/**/*.js', './.astro/dist/**/*.mjs', './dist/**/*.js', './dist/**/*.mjs'],
+              ignore: ['**/node_modules/**'],
+              filesToDeleteAfterUpload: ['**/*.map', '**/*.js.map'],
+            },
+          },
+        }),
+        ...(process.env.NODE_ENV === 'development' && process.env.SENTRY_SPOTLIGHT === '1' ? [spotlightjs()] : [])
+      ] : []),
+    ]
+  })(),
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
@@ -212,34 +293,112 @@ export default defineConfig({
     port: 4321,
     host: '0.0.0.0',
     watch: {
+      followSymlinks: false,
       ignored: [
+        // Hard guard first: function ignore for node_modules and .venv anywhere
+        (p) => typeof p === 'string' && (
+          p.includes('/node_modules/') ||
+          p.includes('\\node_modules\\') ||
+          p.includes('/.venv/') ||
+          p.includes('\\.venv\\') ||
+          p.includes('/ai/') ||
+          p.includes('\\ai\\')
+        ),
+        // Python virtual environments and cache
+        '**/.venv/**',
+        '.venv/**',
+        '**/.uv/**',
+        '.uv/**',
+        '**/.python/**',
+        '.python/**',
+        '**/site-packages/**',
+        '**/venv/**',
+        'venv/**',
+        '**/__pycache__/**',
+        '__pycache__/**',
+        '**/*.py',
+        '**/*.pyc',
+        '**/*.pyo',
+        '**/*.pyd',
+        '**/.ruff_cache/**',
+        '.ruff_cache/**',
+        '**/.pytest_cache/**',
+        '.pytest_cache/**',
+        // AI and data directories
         '/ai/**',
+        '**/ai/**',
         '**/dataset/**',
         '**/MER2025/**',
         '**/VideoChat2/**',
-        '*.py',
-        '*.pyc',
-        '/__pycache__/**',
-        '__pycache__/**',
-        '/venv/**',
-        '/env/**',
+        // Build and cache directories
         '/logs/**',
+        'logs/**',
         '/tmp/**',
+        'tmp/**',
         '/temp/**',
+        'temp/**',
         '/coverage/**',
-        '/mcp_server/**',
-        '**/.venv/**',
-        '**/.venv/*',
-        '/.venv/**',
+        'coverage/**',
+        // Node modules (should already be ignored but being explicit)
         '**/node_modules/**',
-        '**/node_modules/*',
         '/node_modules/**',
         'node_modules/**',
+        // pnpm and Vite caches inside node_modules
+        '**/node_modules/.pnpm/**',
+        'node_modules/.pnpm/**',
+        '**/node_modules/.vite/**',
+        'node_modules/.vite/**',
+        '**/node_modules/.cache/**',
+        'node_modules/.cache/**',
+        // miscellaneous caches
+        '**/.pnpm/**',
+        '.pnpm/**',
+        '**/.vite/**',
+        '.vite/**',
+        '**/.cache/**',
+        '.cache/**',
+        // MCP server
+        '/mcp_server/**',
         'mcp_server/**',
-        '/mcp_server/**'
-      ]
-    }
+        '**/mcp_server/**',
+        // Other ignored paths
+        '/env/**',
+        'env/**',
+        '**/.git/**',
+        '**/.DS_Store',
+        '**/dist/**',
+        '**/.astro/**',
+        // Final guard: regex-based ignore for ai/.venv on any platform
+        /\/ai\/\.venv\//,
+        // Guard for any .venv path (root or nested)
+        /\/.venv\//,
+        /\.venv\//,
+      ],
+      usePolling: false,
+    },
+    fs: {
+      strict: true,
+      allow: [
+        path.resolve('./src'),
+        path.resolve('./public'),
+        path.resolve('./.astro'),
+      ],
+      deny: [
+        'node_modules',
+        '/node_modules',
+        '**/node_modules/**',
+        './node_modules',
+        './node_modules/**',
+        'ai',
+        '/ai',
+        '**/ai/**',
+        '.venv',
+        '/.venv',
+        '**/.venv/**',
+      ],
+    },
   },
+
   preview: {
     port: 4322,
     host: '0.0.0.0',
