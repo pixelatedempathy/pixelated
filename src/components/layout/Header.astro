@@ -11,7 +11,106 @@ const navLinks = [
 ---
 
 <style>
-  @import url('/src/styles/header-responsive.css');
+  /* Modern Header Styles */
+  .header-brand {
+    flex: 0 0 auto;
+  }
+  
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981, #0891b2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+  
+  .brand-tagline {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .header-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 150ms ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-link--active {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+  }
+  
+  .nav-badge {
+    background: #10b981;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    .header-nav {
+      display: none;
+    }
+    
+    .brand-text {
+      display: none;
+    }
+  }
 </style>
 
 <header
@@ -19,17 +118,7 @@ const navLinks = [
   style="background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-primary);"
 >
   <div class="container-refined header-container">
-    <div
-      class="flex items-center justify-between header-content"
-      style="height: var(--space-16);"
-      class:list={['md:height-20']}
-      <!--
-      Brutalist
-      Branding
-      with
-      Enterprise
-      Clarity
-      --
+    <div class="flex items-center justify-between header-content" style="height: 64px;"
     >
       <div class="flex items-center flex-1 min-w-0">
         <a
@@ -82,35 +171,17 @@ const navLinks = [
         </a>
       </div>
 
-      <!-- Enterprise Navigation with Minimalist Approach -->
-      <nav class="nav-responsive items-center enterprise-nav">
-        <ul
-          class="nav-minimal"
-          style="gap: var(--space-8);"
-          class:list={['md:gap-6', 'lg:gap-8']}
-        >
-          {
-            navLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class:list={[
-                    'nav-link-enterprise text-responsive--small',
-                    link.highlight ? 'nav-link--highlighted' : '',
-                    'touch-focus',
-                  ]}
-                  style="position: relative; display: flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-medium); text-transform: uppercase; letter-spacing: 0.025em;"
-                >
-                  {link.highlight && (
-                    <span class="corporate-badge text-responsive--caption">
-                      NEW
-                    </span>
-                  )}
-                  <span class="text-responsive--small">{link.name}</span>
-                </a>
-              </li>
-            ))
-          }
+      <!-- Clean Navigation -->
+      <nav class="header-nav">
+        <ul class="nav-list">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class={`nav-link ${link.highlight ? 'nav-link--active' : ''}`}>
+                {link.highlight && <span class="nav-badge">NEW</span>}
+                {link.name}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <!-- Enterprise CTA with Minimalist Approach -->
