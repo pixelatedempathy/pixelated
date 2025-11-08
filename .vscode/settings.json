@@ -173,5 +173,9 @@
             "args": []
         }
     },
-    "python.languageServer": "None"
+    "python.languageServer": "None",
+    "sonarlint.connectedMode.project": {
+        "connectionId": "pixelatedempathy",
+        "projectKey": "pixelatedempathy_pixelated"
+    }
 }
