@@ -1628,3 +1628,4 @@ export class AutomatedThreatResponseOrchestratorCore
     }
   }
 }
+export const AutomatedThreatResponseOrchestrator = AutomatedThreatResponseOrchestratorCore

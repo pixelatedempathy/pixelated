@@ -1,79 +1,83 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import PageHeader from '@/components/ui/PageHeader.astro'
-import Surface from '@/components/ui/Surface.astro'
+import Layout from '@/layouts/Layout.astro'
+import PageHero from '@/components/ui/PageHero.astro'
+import ContentSection from '@/components/ui/ContentSection.astro'
+import FeatureCard from '@/components/ui/FeatureCard.astro'
 ---
 
-<BaseLayout title="About Us - Pixelated Empathy">
-  <section class="brutalist-section pt-20 md:pt-24 pb-16">
-    <div class="brutalist-container">
-      <PageHeader
-        eyebrow="About"
-        title="About Pixelated Empathy"
-        lede="We build safe AI simulation for therapists to practice the hardest sessions before they happen in real life."
-      />
+<Layout title="About Us - Pixelated Empathy">
+  <PageHero
+    badge="Our Story"
+    title="About Pixelated Empathy"
+    subtitle="We're building the future of mental health training through advanced AI simulation and empathy engineering."
+  />
 
-      <div class="divider my-12"></div>
+  <ContentSection>
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-invert prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-white mb-6">Our Mission</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          At Pixelated Empathy, we believe that the hardest conversations are the ones you can't practice with real people. 
+          That's why we've built an AI-powered training environment where mental health professionals can practice the 
+          conversations that matter most—without risk, without boundaries, without consequence.
+        </p>
+        
+        <p class="text-gray-300 leading-relaxed mb-12">
+          Our platform doesn't just simulate conversations; it embodies them. Through our proprietary Emotional Intelligence 
+          Engine, we create AI personas that don't just act like real clients—they feel like them.
+        </p>
+      </div>
+    </div>
+  </ContentSection>
 
-      <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <Surface class="p-6">
-          <h2 class="text-2xl md:text-3xl font-semibold text-white">
-            What we built
-          </h2>
-          <p class="mt-4 text-gray-300 leading-relaxed">
-            An enterprise‑grade training simulator that lets programs run
-            unlimited high‑stakes role‑plays with adversarial AI clients,
-            real‑time bias cues, and post‑session coaching. Practice escalations
-            safely. Build measurable competence. Reduce risk.
-          </p>
-        </Surface>
-        <Surface class="p-6">
-          <h2 class="text-2xl md:text-3xl font-semibold text-white">
-            Why it matters
-          </h2>
-          <p class="mt-4 text-gray-300 leading-relaxed">
-            Students see a handful of curated cases. Real practice isn’t
-            curated. We give universities, clinics, and practitioners a way to
-            train for the edge‑cases that actually break sessions—without
-            putting patients at risk.
-          </p>
-        </Surface>
+  <ContentSection diagonal>
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6">
+          <span class="text-sm font-medium text-cyan-400">Our Values</span>
+        </div>
+        <h2 class="text-4xl font-bold text-white mb-4">What Drives Us</h2>
       </div>
 
-      <div class="divider my-12"></div>
-
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div class="brutalist-caption mb-2 text-teal-400">Founded</div>
-          <p class="text-white font-medium">2025</p>
-          <p class="text-gray-400 text-sm mt-1">
-            Built deliberately, production‑ready
-          </p>
-        </div>
-        <div>
-          <div class="brutalist-caption mb-2 text-teal-400">Approach</div>
-          <p class="text-white font-medium">Privacy‑first, zero‑retention</p>
-          <p class="text-gray-400 text-sm mt-1">
-            Security and auditability by design
-          </p>
-        </div>
-        <div>
-          <div class="brutalist-caption mb-2 text-teal-400">Who we serve</div>
-          <p class="text-white font-medium">
-            Universities, clinics, practitioners
-          </p>
-          <p class="text-gray-400 text-sm mt-1">Competency you can measure</p>
-        </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <FeatureCard
+          title="Empathy First"
+          description="We believe technology should bring us closer, not further apart. Every feature is designed to enhance human connection."
+          color="emerald"
+          offset="up"
+        />
+        
+        <FeatureCard
+          title="Evidence-Based"
+          description="Our AI is trained on decades of therapeutic research and validated by mental health professionals."
+          color="blue"
+          offset="down"
+        />
+        
+        <FeatureCard
+          title="Privacy & Security"
+          description="HIPAA-compliant infrastructure ensures all training data remains confidential and secure."
+          color="purple"
+          offset="up"
+        />
       </div>
+    </div>
+  </ContentSection>
 
-      <div class="mt-16 text-center">
-        <a
-          href="/contact"
-          class="brutalist-button brutalist-button--primary px-8 py-4 font-semibold"
-        >
-          Partner with us
+  <ContentSection>
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Join Our Mission</h2>
+      <p class="text-xl text-gray-300 mb-8">
+        We're always looking for passionate individuals who want to transform mental health training.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/careers" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all duration-300">
+          View Careers
+        </a>
+        <a href="/contact" class="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300">
+          Contact Us
         </a>
       </div>
     </div>
-  </section>
-</BaseLayout>
+  </ContentSection>
+</Layout>

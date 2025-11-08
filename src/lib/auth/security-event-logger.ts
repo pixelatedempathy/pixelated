@@ -5,7 +5,6 @@
  */
 
 import { logger } from '../logger'
-import { randomUUID } from 'crypto'
 import { getRedisClient } from '../redis'
 
 export interface SecurityEvent {
@@ -151,7 +150,7 @@ export class SecurityEventLogger {
   ): Promise<void> {
     try {
       const event: SecurityEvent = {
-        id: randomUUID(),
+        id: crypto.randomUUID(),
         eventType,
         userId,
         ipAddress: context.ipAddress || 'unknown',
@@ -164,7 +163,7 @@ export class SecurityEventLogger {
         encrypted: this.config.enableEncryption,
         timestamp: new Date().toISOString(),
         sessionId: context.sessionId,
-        correlationId: context.correlationId || randomUUID(),
+        correlationId: context.correlationId || crypto.randomUUID(),
       }
 
       // Buffer the event for batch processing
@@ -934,4 +933,14 @@ export class SecurityEventLogger {
       timestamp: event.timestamp,
     })
   }
+}
+
+// Export singleton instance and helper function
+const securityLogger = new SecurityEventLogger()
+
+export async function logSecurityEvent(
+  eventType: SecurityEventType,
+  details: Partial<SecurityEvent>
+): Promise<void> {
+  await securityLogger.logEvent(eventType, details)
 }

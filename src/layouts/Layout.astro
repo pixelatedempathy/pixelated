@@ -1,7 +1,8 @@
 ---
-import "@/styles/modern-enterprise-theme.css";
-import ModernHeader from "@/components/layout/ModernHeader.astro";
-import ModernFooter from "@/components/layout/ModernFooter.astro";
+import "@/styles/unified-design-system.css"
+import Header from "@/components/layout/Header.astro"
+import Footer from "@/components/layout/Footer.astro"
+import ScrollAnimations from "@/components/ui/ScrollAnimations.astro"
 
 interface Props {
   title: string
@@ -10,16 +11,16 @@ interface Props {
 
 const {
   title,
-  description = 'Pixelated Empathy - AI-powered Mental Health Training',
+  description = 'Pixelated Empathy - AI-powered Mental Health Training Platform',
 } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Pixelated Empathy</title>
@@ -40,21 +41,48 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-gray-950 text-white">
+  <body class="min-h-screen bg-gray-950 text-white antialiased">
     <!-- Skip to content link for accessibility -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 rounded-md focus:shadow-lg transition-transform bg-emerald-600 text-white"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 rounded-lg focus:shadow-xl transition-all bg-emerald-600 text-white font-semibold"
     >
-      Skip to content
+      Skip to main content
     </a>
 
-    <ModernHeader />
+    <Header />
     
     <main id="main-content" class="pt-16">
       <slot />
     </main>
     
-    <ModernFooter />
+    <Footer />
+    <ScrollAnimations />
   </body>
 </html>
+
+<style is:global>
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .sr-only:focus {
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.5rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+</style>

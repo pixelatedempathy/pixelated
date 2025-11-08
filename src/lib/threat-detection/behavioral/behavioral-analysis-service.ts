@@ -1651,3 +1651,6 @@ class BehavioralGraphAnalyzer extends GraphAnalyzer {
     return []
   }
 }
+
+// Export singleton instance
+export const BehavioralAnalysisService = new AdvancedBehavioralAnalysisService()

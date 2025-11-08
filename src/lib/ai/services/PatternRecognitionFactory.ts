@@ -13,6 +13,9 @@ import {
   ProcessingError,
 } from './pattern-recognition-types'
 
+// Re-export the type for external use
+export type { PatternRecognitionService } from './pattern-recognition-types'
+
 const logger = createBuildSafeLogger('pattern-recognition')
 
 /**

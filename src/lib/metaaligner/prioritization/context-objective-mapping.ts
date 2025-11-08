@@ -73,3 +73,6 @@ export function getPrioritizedObjectivesForContext(
     contextObjectiveMap[context] ?? contextObjectiveMap[ContextType.GENERAL]
   )
 }
+
+// Alias for backward compatibility
+export const getContextObjectives = getPrioritizedObjectivesForContext

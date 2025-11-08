@@ -439,3 +439,6 @@ export class ConsentManagementService {
     logger.info('Client data purged', { clientId })
   }
 }
+
+// Export singleton instance
+export const consentManagementService = new ConsentManagementService()

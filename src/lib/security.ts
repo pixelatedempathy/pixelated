@@ -6,6 +6,7 @@
  */
 
 import type { FHEOperation, HomomorphicOperationResult } from './fhe/types'
+export { SecurityEventType, logSecurityEvent } from './auth/security-event-logger'
 // Use isomorphic approach for process
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
@@ -269,18 +270,7 @@ export type SecurityEventType =
   | 'token_revoked'
   | 'token_cleaned_up'
 
-/**
- * Generate audit log entry for HIPAA compliance
- */
-export function logSecurityEvent(
-  eventType: SecurityEventType,
-  details: Record<string, string | number | boolean | null | undefined>,
-): void {
-  // Log to console in dev mode
-  if (process.env['NODE_ENV'] === 'development') {
-    logger.debug(`[SECURITY EVENT] ${eventType.toUpperCase()}:`, details)
-  }
-}
+// Note: logSecurityEvent is imported and re-exported from security-event-logger above
 
 /**
  * Validate that the security meets HIPAA requirements

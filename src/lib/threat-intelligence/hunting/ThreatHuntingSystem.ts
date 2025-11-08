@@ -2753,3 +2753,4 @@ export class ThreatHuntingSystemCore
     }
   }
 }
+export const ThreatHuntingSystem = ThreatHuntingSystemCore

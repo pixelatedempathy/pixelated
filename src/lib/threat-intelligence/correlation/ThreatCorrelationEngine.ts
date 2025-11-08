@@ -1586,3 +1586,4 @@ interface PatternInfo {
   regions: string[]
   indicators: string[]
 }
+export const ThreatCorrelationEngine = ThreatCorrelationEngineCore

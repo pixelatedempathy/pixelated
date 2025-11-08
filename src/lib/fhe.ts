@@ -365,3 +365,6 @@ export class RealFHEService implements FHEService {
 
 // Export a singleton instance of the FHE service
 export const fheService = new RealFHEService()
+
+// Alias for backward compatibility
+export const FHE = fheService

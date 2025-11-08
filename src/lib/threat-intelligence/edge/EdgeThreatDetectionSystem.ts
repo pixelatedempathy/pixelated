@@ -1173,3 +1173,4 @@ interface RegionStatus {
   activeNodes: number
   healthScore: number
 }
+export const EdgeThreatDetectionSystem = EdgeThreatDetectionSystemCore

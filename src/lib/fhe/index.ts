@@ -84,4 +84,7 @@ export function createFHESystem(options: FHEOptions = {}): FHESystem {
   }
 }
 
-export default { createFHESystem }
+// Create default instance
+export const fheService = createFHESystem()
+
+export default { createFHESystem, fheService }

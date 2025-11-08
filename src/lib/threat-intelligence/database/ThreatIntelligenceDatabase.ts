@@ -1216,3 +1216,4 @@ export class ThreatIntelligenceDatabaseCore
     }
   }
 }
+export const ThreatIntelligenceDatabase = ThreatIntelligenceDatabaseCore

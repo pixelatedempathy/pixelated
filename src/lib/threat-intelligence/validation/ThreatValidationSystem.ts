@@ -1577,3 +1577,4 @@ export class ThreatValidationSystemCore
     }
   }
 }
+export const ThreatValidationSystem = ThreatValidationSystemCore
