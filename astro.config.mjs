@@ -9,7 +9,7 @@ import icon from 'astro-icon';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
-import node from '@astrojs/node'
+import cloudflare from '@astrojs/cloudflare';
 
 import { visualizer } from 'rollup-plugin-visualizer';
 
@@ -17,8 +17,17 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
-  adapter: node({
-    mode: 'standalone',
+  adapter: cloudflare({
+    mode: 'directory',
+    runtime: {
+      mode: 'local',
+      type: 'pages',
+    },
+    routes: {
+      extend: {
+        exclude: [{ pattern: '/api/export/*' }],
+      },
+    },
   }),
   trailingSlash: 'ignore',
   build: {
