@@ -14,7 +14,7 @@ compatibility_flags = ["nodejs_compat"]
 command = "pnpm build"
 
 [assets]
-directory = "dist/client"
+directory = "dist"
 
 # Node.js compatibility
 node_compat = true

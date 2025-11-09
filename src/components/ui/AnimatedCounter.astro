@@ -1,0 +1,128 @@
+---
+export interface Props {
+  value: number
+  suffix?: string
+  prefix?: string
+  duration?: number
+  className?: string
+}
+
+const { value, suffix = '', prefix = '', duration = 2000, className = '' } = Astro.props
+---
+
+<span 
+  class={`animated-counter ${className}`}
+  data-target={value}
+  data-suffix={suffix}
+  data-prefix={prefix}
+  data-duration={duration}
+>
+  {prefix}0{suffix}
+</span>
+
+<script>
+  class AnimatedCounter {
+    private element: HTMLElement
+    private target: number
+    private suffix: string
+    private prefix: string
+    private duration: number
+    private observer: IntersectionObserver
+    private hasAnimated: boolean = false
+
+    constructor(element: HTMLElement) {
+      this.element = element
+      this.target = parseInt(element.dataset.target || '0')
+      this.suffix = element.dataset.suffix || ''
+      this.prefix = element.dataset.prefix || ''
+      this.duration = parseInt(element.dataset.duration || '2000')
+
+      this.setupObserver()
+    }
+
+    private setupObserver() {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !this.hasAnimated) {
+              this.animate()
+              this.hasAnimated = true
+            }
+          })
+        },
+        {
+          threshold: 0.5,
+          rootMargin: '0px 0px -100px 0px'
+        }
+      )
+
+      this.observer.observe(this.element)
+    }
+
+    private animate() {
+      const startTime = performance.now()
+      const startValue = 0
+
+      const updateCounter = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / this.duration, 1)
+
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+        const currentValue = Math.floor(startValue + (this.target - startValue) * easeOutQuart)
+
+        this.element.textContent = `${this.prefix}${this.formatNumber(currentValue)}${this.suffix}`
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter)
+        } else {
+          // Ensure we end with the exact target value
+          this.element.textContent = `${this.prefix}${this.formatNumber(this.target)}${this.suffix}`
+        }
+      }
+
+      requestAnimationFrame(updateCounter)
+    }
+
+    private formatNumber(num: number): string {
+      // Add commas for thousands
+      if (num >= 1000) {
+        return num.toLocaleString()
+      }
+      return num.toString()
+    }
+
+    public destroy() {
+      this.observer.disconnect()
+    }
+  }
+
+  // Initialize all animated counters
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.animated-counter')
+    counters.forEach((counter) => {
+      new AnimatedCounter(counter as HTMLElement)
+    })
+  })
+
+  // Handle dynamic content (if counters are added after page load)
+  const initializeNewCounters = () => {
+    const counters = document.querySelectorAll('.animated-counter:not([data-initialized])')
+    counters.forEach((counter) => {
+      const element = counter as HTMLElement
+      element.setAttribute('data-initialized', 'true')
+      new AnimatedCounter(element)
+    })
+  }
+
+  // Export for external use
+  ;(window as any).initializeAnimatedCounters = initializeNewCounters
+</script>
+
+<style>
+  .animated-counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+</style>

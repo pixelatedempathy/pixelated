@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Demos - Pixelated Empathy">
+  <main class="min-h-screen bg-black text-white">
+    <!-- Hero Section -->
+    <section class="relative py-32 px-6">
+      <!-- Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto text-center">
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+          <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+            See It In Action
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          Experience the power of AI-driven mental health training. Watch our demos to see how Pixelated Empathy transforms professional development.
+        </p>
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-mono">
+          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          Live AI Simulation • Real-time Feedback
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Platform Overview
+            </span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Watch a 3-minute overview of our AI training platform
+          </p>
+        </div>
+
+        <!-- Video Player Placeholder -->
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-4 mx-auto cursor-pointer hover:scale-110 transition-transform duration-200">
+                  <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Platform Demo Video</h3>
+                <p class="text-gray-400">Click to watch our comprehensive platform overview</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo Scenarios -->
+    <section class="py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              Try Our Training Scenarios
+            </span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Experience different types of training scenarios our platform offers
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Crisis Intervention Demo -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Crisis Intervention</h3>
+                  <p class="text-gray-400">High-stakes scenario training</p>
+                </div>
+              </div>
+              
+              <p class="text-gray-300 mb-6">
+                Practice handling crisis situations with AI patients showing signs of severe distress. Learn de-escalation techniques and emergency protocols.
+              </p>
+              
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                  <span>Suicidal ideation scenarios</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <span>Real-time risk assessment</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <span>Emergency protocol guidance</span>
+                </div>
+              </div>
+              
+              <button class="w-full py-3 px-6 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                Try Crisis Demo
+              </button>
+            </div>
+          </div>
+
+          <!-- Trauma Response Demo -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Trauma Response</h3>
+                  <p class="text-gray-400">Sensitive care scenarios</p>
+                </div>
+              </div>
+              
+              <p class="text-gray-300 mb-6">
+                Learn to work with trauma survivors using evidence-based approaches. Practice creating safe spaces and building therapeutic rapport.
+              </p>
+              
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <span>PTSD treatment scenarios</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-pink-400 rounded-full"></div>
+                  <span>Trauma-informed care</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                  <span>Safety and stabilization</span>
+                </div>
+              </div>
+              
+              <button class="w-full py-3 px-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                Try Trauma Demo
+              </button>
+            </div>
+          </div>
+
+          <!-- Adolescent Therapy Demo -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Adolescent Therapy</h3>
+                  <p class="text-gray-400">Youth-focused interventions</p>
+                </div>
+              </div>
+              
+              <p class="text-gray-300 mb-6">
+                Master the unique challenges of working with teenagers. Practice age-appropriate communication and engagement strategies.
+              </p>
+              
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                  <span>Teen communication styles</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
+                  <span>Family dynamics</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Behavioral interventions</span>
+                </div>
+              </div>
+              
+              <button class="w-full py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                Try Adolescent Demo
+              </button>
+            </div>
+          </div>
+
+          <!-- Group Therapy Demo -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m3 5.197V9a3 3 0 00-6 0v2.5l-2 2V21h8z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Group Therapy</h3>
+                  <p class="text-gray-400">Multi-client dynamics</p>
+                </div>
+              </div>
+              
+              <p class="text-gray-300 mb-6">
+                Navigate complex group dynamics with multiple AI participants. Learn facilitation skills and conflict resolution techniques.
+              </p>
+              
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Group facilitation</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                  <span>Conflict mediation</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                  <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <span>Peer support dynamics</span>
+                </div>
+              </div>
+              
+              <button class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                Try Group Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials from Demo Participants -->
+    <section class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              What Professionals Say
+            </span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Feedback from mental health professionals who've tried our demos
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold">
+                DR
+              </div>
+              <div>
+                <h4 class="font-bold text-white">Dr. Sarah Chen</h4>
+                <p class="text-gray-400 text-sm">Clinical Psychologist</p>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "The crisis intervention demo was incredibly realistic. I felt like I was actually in session with a real patient. The AI responses were nuanced and challenging."
+            </p>
+          </div>
+
+          <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                MJ
+              </div>
+              <div>
+                <h4 class="font-bold text-white">Michael Johnson</h4>
+                <p class="text-gray-400 text-sm">Licensed Therapist</p>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "As someone who works with trauma survivors, the trauma response demo helped me practice techniques in a safe environment. The feedback was invaluable."
+            </p>
+          </div>
+
+          <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">
+                LP
+              </div>
+              <div>
+                <h4 class="font-bold text-white">Lisa Park</h4>
+                <p class="text-gray-400 text-sm">Training Director</p>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "We're implementing this for our entire training program. The ability to practice difficult scenarios without risk to real patients is game-changing."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Live Demo CTA -->
+    <section class="py-20 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-black/40 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-12 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+              <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                Ready for a Personal Demo?
+              </span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+              Schedule a live demo with our team to see how Pixelated Empathy can transform your training program.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                Schedule Live Demo
+              </button>
+              <button class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium rounded-lg transition-all duration-200">
+                Start Free Trial
+              </button>
+            </div>
+            <p class="text-sm text-gray-400 mt-4">
+              30-minute personalized session • No commitment required
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

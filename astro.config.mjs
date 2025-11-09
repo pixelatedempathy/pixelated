@@ -10,7 +10,6 @@ import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
 import cloudflare from '@astrojs/cloudflare';
-
 import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://astro.build/config
@@ -18,16 +17,9 @@ export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
   adapter: cloudflare({
-    mode: 'directory',
-    runtime: {
-      mode: 'local',
-      type: 'pages',
-    },
-    routes: {
-      extend: {
-        exclude: [{ pattern: '/api/export/*' }],
-      },
-    },
+    platformProxy: {
+      enabled: true
+    }
   }),
   trailingSlash: 'ignore',
   build: {
