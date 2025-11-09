@@ -81,82 +81,101 @@ def segment_cohesion(vecs, i, j):
             count += 1
     return total / count if count else 0.0
 
-def best_4_splits(vecs):
-    # dynamic programming to split contiguous paragraphs into 4 segments maximizing cohesion sum
-    n = len(vecs)
-    K = 4
-    if n == 0:
-        return []
-    if n <= K:
-        # trivial: each paragraph is its own segment; return split indices after each paragraph
-        cuts = []
-        idx = 1
-        while idx < n and len(cuts) < K-1:
-            cuts.append(idx)
-            idx += 1
-        return cuts
-
-    # precompute cohesion for all segments
+def _compute_cohesion_matrix(vecs, n):
+    """Precompute cohesion for all segments"""
     cohesion = [[0.0]*n for _ in range(n)]
     for i in range(n):
         for j in range(i, n):
             cohesion[i][j] = segment_cohesion(vecs, i, j)
+    return cohesion
 
-    # dp[k][i] = best score to split first i paragraphs (0..i-1) into k segments
+def _trivial_splits(n, K):
+    """Handle trivial case where n <= K"""
+    if n == 0:
+        return []
+    cuts = []
+    idx = 1
+    while idx < n and len(cuts) < K-1:
+        cuts.append(idx)
+        idx += 1
+    return cuts
+
+def _compute_dp_table(vecs, n, K, cohesion):
+    """Compute dynamic programming table for optimal splits"""
     dp = [[-1e9]*(n+1) for _ in range(K+1)]
     parent = [[-1]*(n+1) for _ in range(K+1)]
     dp[0][0] = 0.0
+
     for k in range(1, K+1):
         for i in range(1, n+1):
-            # try last segment starting at t (1..i)
-            best = -1e9
-            best_t = -1
-            for t in range(k-1, i):
-                # segment t..i-1
-                score = dp[k-1][t]
-                if score < -1e8:
-                    continue
-                seg_score = cohesion[t][i-1]
-                val = score + seg_score
-                if val > best:
-                    best = val
-                    best_t = t
+            best, best_t = _find_best_split(k, i, dp, cohesion, n)
             dp[k][i] = best
             parent[k][i] = best_t
 
-    # reconstruct cuts for K=4, n paragraphs
-    cuts = []
+    return dp, parent
+
+def _find_best_split(k, i, dp, cohesion, n):
+    """Find best split position for segment k ending at i"""
+    best = -1e9
+    best_t = -1
+    for t in range(k-1, i):
+        score = dp[k-1][t]
+        if score < -1e8:
+            continue
+        seg_score = cohesion[t][i-1]
+        val = score + seg_score
+        if val > best:
+            best = val
+            best_t = t
+    return best, best_t
+
+def _reconstruct_cuts(parent, K, n):
+    """Reconstruct cut points from DP parent pointers"""
+    boundaries = []
     k = K
     i = n
-    boundaries = []
+
     while k > 0:
         t = parent[k][i]
         if t is None or t < 0:
-            # fallback to equal splits
-            boundaries = []
-            break
+            return []
         boundaries.append(t)
         i = t
         k -= 1
-    # boundaries has starting indices for segments backward; we want cut points (after index)
+
     boundaries = list(reversed(boundaries))
-    # boundaries contains start indexes of each segment; drop the very first 0
     cuts = [b for b in boundaries if b != 0]
-    # we need exactly K-1 cuts; if fewer, fill evenly
+    return cuts
+
+def _normalize_cuts(cuts, n, K):
+    """Normalize cuts to ensure valid, strictly increasing values"""
     if len(cuts) < K-1:
-        # evenly spaced
-        cuts = [math.floor(n*(i+1)/K) for i in range(K-1)]
-    # ensure cuts are strictly increasing and within range
+        return [math.floor(n*(i+1)/K) for i in range(K-1)]
+
     final = []
     last = 0
     for c in cuts:
         c = max(last+1, min(n-1, c))
         final.append(c)
         last = c
-    # if we somehow have too many or duplicates, make evenly spaced
+
     if len(set(final)) != K-1:
-        final = [math.floor(n*(i+1)/K) for i in range(K-1)]
+        return [math.floor(n*(i+1)/K) for i in range(K-1)]
+
     return final
+
+def best_4_splits(vecs):
+    """Split paragraphs into 4 segments maximizing cohesion"""
+    n = len(vecs)
+    K = 4
+
+    if n <= K:
+        return _trivial_splits(n, K)
+
+    cohesion = _compute_cohesion_matrix(vecs, n)
+    dp, parent = _compute_dp_table(vecs, n, K, cohesion)
+    cuts = _reconstruct_cuts(parent, K, n)
+    return _normalize_cuts(cuts, n, K)
 
 def infer_heading(paragraph):
     # Use first sentence up to 8 words as a short inferred heading
@@ -167,62 +186,72 @@ def infer_heading(paragraph):
     heading = " ".join(words[:8]).strip()
     return heading if heading else None
 
-def process_file(path: Path, do_apply: bool):
-    text = read_file(path)
-    paragraphs = split_paragraphs(text)
-    if not paragraphs:
-        return (0, "empty")
-    vecs = compute_paragraph_vectors(paragraphs)
+def _calculate_cuts(paragraphs, vecs):
+    """Calculate split cuts for paragraphs"""
     if len(paragraphs) < 4:
-        # fallback: group contiguous paragraphs to make 4 parts as evenly as possible
-        cuts = [math.floor(len(paragraphs)*(i+1)/4) for i in range(3)]
-    else:
-        cuts = best_4_splits(vecs)
+        return [math.floor(len(paragraphs)*(i+1)/4) for i in range(3)]
+    return best_4_splits(vecs)
 
-    # Build output
+def _split_into_parts(paragraphs, cuts):
+    """Split paragraphs into parts based on cuts"""
     parts = []
     start = 0
     for cut in cuts + [len(paragraphs)]:
         seg = paragraphs[start:cut]
         parts.append(seg)
         start = cut
+    return parts
 
-    # Compose output text
-    out_lines = []
-    title = None
-    # If file starts with a top-level markdown title, preserve
+def _extract_title(paragraphs):
+    """Extract title from paragraphs if present"""
     if paragraphs and paragraphs[0].startswith("#"):
-        title = paragraphs[0]
+        return paragraphs[0]
+    return None
+
+def _build_output_lines(parts, title):
+    """Build output lines with title and part headings"""
+    out_lines = []
     if title:
         out_lines.append(title)
         out_lines.append("")
 
     for idx, seg in enumerate(parts, start=1):
-        # infer heading
         heading = infer_heading(seg[0]) if seg else None
-        if heading:
-            out_lines.append(f"## Part {idx}/4 — {heading}")
-        else:
-            out_lines.append(f"## Part {idx}/4")
+        part_header = f"## Part {idx}/4 — {heading}" if heading else f"## Part {idx}/4"
+        out_lines.append(part_header)
         out_lines.append("")
-        # write paragraphs verbatim with a blank line between each
         for p in seg:
             out_lines.append(p)
             out_lines.append("")
 
+    return out_lines
+
+def _write_output_file(path, output, do_apply):
+    """Write output to file if do_apply is True"""
+    if not do_apply:
+        return (len(output.split("\n")), "preview")
+
+    bak = path.with_suffix(path.suffix + ".orig")
+    if not bak.exists():
+        path.replace(bak)
+    write_file(path, output)
+    return (1, "processed")
+
+def process_file(path: Path, do_apply: bool):
+    """Process a file by splitting it into 4 parts"""
+    text = read_file(path)
+    paragraphs = split_paragraphs(text)
+    if not paragraphs:
+        return (0, "empty")
+
+    vecs = compute_paragraph_vectors(paragraphs)
+    cuts = _calculate_cuts(paragraphs, vecs)
+    parts = _split_into_parts(paragraphs, cuts)
+    title = _extract_title(paragraphs)
+    out_lines = _build_output_lines(parts, title)
     output = "\n".join(out_lines).rstrip() + "\n"
 
-    if do_apply:
-        bak = path.with_suffix(path.suffix + ".orig")
-        if not bak.exists():
-            path.replace(bak)
-            # write new content to original path
-            write_file(path, output)
-        else:
-            # backup exists; overwrite path directly but keep backup intact
-            write_file(path, output)
-        return (1, "processed")
-    return (1, "dry-run")
+    return _write_output_file(path, output, do_apply)
 
 def walk_and_process(root: Path, do_apply: bool):
     processed = 0
