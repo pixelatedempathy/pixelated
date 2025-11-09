@@ -244,10 +244,16 @@ def process_file(path: Path, do_apply: bool):
     if not paragraphs:
         return (0, "empty")
 
+    # Extract title and remove it from paragraphs to avoid duplication
+    title = _extract_title(paragraphs)
+    if title:
+        paragraphs = paragraphs[1:]  # Remove title paragraph from processing
+        if not paragraphs:
+            return (0, "empty")
+
     vecs = compute_paragraph_vectors(paragraphs)
     cuts = _calculate_cuts(paragraphs, vecs)
     parts = _split_into_parts(paragraphs, cuts)
-    title = _extract_title(paragraphs)
     out_lines = _build_output_lines(parts, title)
     output = "\n".join(out_lines).rstrip() + "\n"
 
