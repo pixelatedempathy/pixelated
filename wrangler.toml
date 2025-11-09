@@ -148,10 +148,6 @@ routes = [
   { pattern = "www.pixelatedempathy.com/*", custom_domain = true }
 ]
 
-# Site configuration (for Pages)
-[site]
-bucket = "./dist/client"
-
 # Placement (for regional deployment)
 # [placement]
 # mode = "smart" # Options: "smart" or specific regions
