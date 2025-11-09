@@ -233,7 +233,6 @@
     "twilio": "^5.10.4",
     "ultrahtml": "^1.6.0",
     "uuid": "^13.0.0",
-    "wrangler": "^4.45.3",
     "ws": "^8.18.3",
     "zod": "^4.1.12",
     "zustand": "^5.0.8"
@@ -350,7 +349,8 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.5",
     "vue": "^3.5.22",
-    "wait-on": "^9.0.1"
+    "wait-on": "^9.0.1",
+    "wrangler": "^4.46.0"
   },
   "pnpm": {
     "overrides": {
@@ -414,7 +414,8 @@
       "tree-sitter-rust",
       "tree-sitter-scala",
       "tree-sitter-typescript",
-      "unrs-resolver"
+      "unrs-resolver",
+      "workerd"
     ],
     "ignoredBuiltDependencies": [
       "libpg-query"
