@@ -177,5 +177,6 @@
     "sonarlint.connectedMode.project": {
         "connectionId": "pixelatedempathy",
         "projectKey": "pixelatedempathy_pixelated"
-    }
+    },
+    "oxc.enable": false
 }
