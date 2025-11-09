@@ -12,13 +12,6 @@ compatibility_flags = ["nodejs_compat"]
 
 [build]
 command = "pnpm build"
-cwd = "."
-watch_dirs = ["src"]
-
-[build.upload]
-format = "modules"
-dir = "dist"
-main = "./server/entry.mjs"
 
 [assets]
 directory = "dist/client"
@@ -31,16 +24,16 @@ node_compat = true
 NODE_ENV = "production"
 PUBLIC_SITE_URL = "https://pixelatedempathy.com"
 
-# KV Namespaces for caching and sessions
-[[kv_namespaces]]
-binding = "CACHE"
-id = "" # Set this after creating KV namespace
-preview_id = "" # Set this for preview environment
+# KV Namespaces for caching and sessions (uncomment and set IDs after creating)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-cache-kv-id"
+# preview_id = "your-cache-preview-id"
 
-[[kv_namespaces]]
-binding = "SESSIONS"
-id = "" # Set this after creating KV namespace
-preview_id = "" # Set this for preview environment
+# [[kv_namespaces]]
+# binding = "SESSIONS"
+# id = "your-sessions-kv-id"
+# preview_id = "your-sessions-preview-id"
 
 # Durable Objects (if needed for real-time features)
 # [[durable_objects.bindings]]
@@ -66,8 +59,8 @@ preview_bucket_name = "pixelated-uploads-preview"
 # database_id = "" # Set after creating D1 database
 # preview_database_id = "" # Set for preview
 
-# Analytics Engine
-[analytics_engine_datasets]
+# Analytics Engine (uncomment when needed)
+# [[analytics_engine_datasets]]
 # binding = "ANALYTICS"
 
 # Observability
@@ -76,7 +69,9 @@ enabled = true
 head_sampling_rate = 1.0
 
 # Limits and Performance
-limits = { cpu_ms = 50000 }
+[limits]
+cpu_ms = 50000
+
 logpush = false
 
 # Routes and Custom Domains
@@ -133,13 +128,6 @@ binding = "AI"
 # bindings = [
 #   { name = "CUSTOM_BINDING", type = "plain_text", text = "value" }
 # ]
-
-# Miniflare configuration for local development
-[miniflare]
-kv_persist = true
-cache_persist = true
-d1_persist = true
-r2_persist = true
 
 # Development environment
 [env.development]
