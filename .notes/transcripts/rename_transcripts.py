@@ -18,6 +18,7 @@ import os
 import re
 import sys
 from pathlib import Path
+from typing import Optional
 
 
 def normalize_name(name: str) -> str:
@@ -49,31 +50,41 @@ def unique_target(path: Path) -> Path:
     return candidate
 
 
+def _should_skip_rename(p: Path, new_path: Path) -> bool:
+    """Check if rename should be skipped"""
+    if new_path == p:
+        return True
+    if not new_path.exists():
+        return False
+    try:
+        if os.path.samefile(p, new_path):
+            return True
+    except FileNotFoundError:
+        pass
+    return False
+
+def _process_file_rename(p: Path) -> Optional[tuple[Path, Path]]:
+    """Process a single file for renaming"""
+    new_name = normalize_name(p.name)
+    new_path = p.with_name(new_name)
+
+    if _should_skip_rename(p, new_path):
+        return None
+
+    if new_path.exists():
+        unique_path = unique_target(new_path)
+        return (p, unique_path)
+
+    return (p, new_path)
+
 def plan_renames(root: Path):
-    plans = []  # tuples of (oldpath, newpath)
+    """Plan file renames"""
+    plans = []
     for p in root.rglob("*"):
         if p.is_file():
-            new_name = normalize_name(p.name)
-            if new_name == p.name.lower() or new_name == p.name:
-                # Even if lowercasing changed case, we still may want to rename
-                # But we will compare normalized final paths
-                pass
-            new_path = p.with_name(new_name)
-            # If the file already has the same resolved name, skip
-            if new_path == p:
-                continue
-            # If new_path exists and is a different file, make unique
-            if new_path.exists():
-                # If it's the same inode (same file), skip
-                try:
-                    if os.path.samefile(p, new_path):
-                        continue
-                except FileNotFoundError:
-                    pass
-                uniq = unique_target(new_path)
-                plans.append((p, uniq))
-            else:
-                plans.append((p, new_path))
+            rename_plan = _process_file_rename(p)
+            if rename_plan:
+                plans.append(rename_plan)
     return plans
 
 
