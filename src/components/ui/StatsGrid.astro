@@ -1,0 +1,50 @@
+---
+import AnimatedCounter from './AnimatedCounter.astro'
+
+export interface Stat {
+  value: string
+  label: string
+  suffix?: string
+  color?: 'emerald' | 'cyan' | 'purple' | 'blue'
+  icon?: string
+}
+
+interface Props {
+  stats: Stat[]
+  columns?: 2 | 3 | 4
+}
+
+const { stats, columns = 4 } = Astro.props
+
+const gridCols = {
+  2: 'grid-cols-1 md:grid-cols-2',
+  3: 'grid-cols-1 md:grid-cols-3',
+  4: 'grid-cols-2 lg:grid-cols-4'
+}
+
+const colorClasses = {
+  emerald: 'text-emerald-400',
+  cyan: 'text-cyan-400',
+  purple: 'text-purple-400',
+  blue: 'text-blue-400'
+}
+---
+
+<div class={`grid ${gridCols[columns]} gap-8`}>
+  {stats.map((stat) => (
+    <div class="text-center group">
+      {stat.icon && (
+        <div class="flex justify-center mb-4">
+          <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color === 'emerald' ? 'from-emerald-500/20 to-emerald-500/10' : stat.color === 'cyan' ? 'from-cyan-500/20 to-cyan-500/10' : stat.color === 'purple' ? 'from-purple-500/20 to-purple-500/10' : 'from-blue-500/20 to-blue-500/10'} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+            <Fragment set:html={stat.icon} />
+          </div>
+        </div>
+      )}
+      <AnimatedCounter 
+        value={stat.value} 
+        label={stat.label}
+        suffix={stat.suffix}
+      />
+    </div>
+  ))}
+</div>
