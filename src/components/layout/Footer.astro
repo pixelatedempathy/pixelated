@@ -1,5 +1,7 @@
 ---
 // Antfu-inspired minimal footer
+import NewsletterSignup from '../ui/NewsletterSignup.astro'
+
 const currentYear = new Date().getFullYear()
 
 const footerSections = [
@@ -41,6 +43,11 @@ const socialLinks = [
 
 <footer class="bg-black border-t border-white/5">
   <div class="container mx-auto py-16 px-6">
+    
+    <!-- Newsletter Section -->
+    <div class="mb-16 pb-16 border-b border-white/5">
+      <NewsletterSignup />
+    </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
       

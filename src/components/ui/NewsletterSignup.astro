@@ -1,0 +1,63 @@
+---
+interface Props {
+  variant?: 'inline' | 'modal'
+}
+
+const { variant = 'inline' } = Astro.props
+---
+
+<div class={`newsletter-signup ${variant === 'modal' ? 'p-6' : ''}`}>
+  <div class="max-w-md mx-auto">
+    <h3 class="text-xl font-bold text-white mb-2">Stay Updated</h3>
+    <p class="text-gray-400 text-sm mb-4">Get the latest insights on mental health AI training.</p>
+    
+    <form class="space-y-3" data-newsletter-form>
+      <div class="flex gap-2">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          class="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        />
+        <button
+          type="submit"
+          class="px-6 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+        >
+          Subscribe
+        </button>
+      </div>
+      
+      <label class="flex items-start gap-2 text-xs text-gray-500">
+        <input type="checkbox" name="consent" required class="mt-0.5" />
+        <span>I agree to receive emails and accept the <a href="/privacy" class="text-cyan-400 hover:underline">Privacy Policy</a></span>
+      </label>
+      
+      <div class="hidden text-sm" data-success-message>
+        <p class="text-emerald-400">✓ Thanks for subscribing!</p>
+      </div>
+      <div class="hidden text-sm" data-error-message>
+        <p class="text-red-400">Something went wrong. Please try again.</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-newsletter-form]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const formData = new FormData(e.target as HTMLFormElement)
+      const email = formData.get('email')
+      
+      // Placeholder - integrate with email service
+      console.log('Newsletter signup:', email)
+      
+      const success = form.querySelector('[data-success-message]')
+      success?.classList.remove('hidden')
+      ;(e.target as HTMLFormElement).reset()
+      
+      setTimeout(() => success?.classList.add('hidden'), 5000)
+    })
+  })
+</script>

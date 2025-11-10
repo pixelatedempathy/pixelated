@@ -1,0 +1,121 @@
+---
+const steps = [
+  {
+    title: 'Welcome to Pixelated Empathy',
+    description: 'Experience AI-powered mental health training',
+    target: 'hero'
+  },
+  {
+    title: 'Realistic Scenarios',
+    description: 'Practice with 1000+ AI-generated patient scenarios',
+    target: 'features'
+  },
+  {
+    title: 'Instant Feedback',
+    description: 'Get real-time analysis of your responses',
+    target: 'feedback'
+  },
+  {
+    title: 'Track Progress',
+    description: 'Monitor your growth with detailed analytics',
+    target: 'analytics'
+  }
+]
+---
+
+<div data-product-tour class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+    <div class="bg-gray-900 border border-white/10 rounded-xl p-6 shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          {steps.map((_, i) => (
+            <div class={`h-1 w-8 rounded-full ${i === 0 ? 'bg-emerald-500' : 'bg-white/20'}`} data-progress-bar={i}></div>
+          ))}
+        </div>
+        <button data-tour-close class="text-gray-400 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div data-tour-content>
+        <h3 class="text-xl font-bold text-white mb-2" data-tour-title>{steps[0].title}</h3>
+        <p class="text-gray-400 mb-6" data-tour-description>{steps[0].description}</p>
+      </div>
+      
+      <div class="flex items-center justify-between">
+        <button data-tour-prev class="px-4 py-2 text-gray-400 hover:text-white disabled:opacity-50" disabled>
+          Previous
+        </button>
+        <span class="text-sm text-gray-500" data-tour-counter>1 / {steps.length}</span>
+        <button data-tour-next class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  data-tour-trigger
+  class="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all flex items-center justify-center z-40"
+  aria-label="Start product tour"
+>
+  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+</button>
+
+<script define:vars={{ steps }}>
+  let currentStep = 0
+  const tour = document.querySelector('[data-product-tour]')
+  const trigger = document.querySelector('[data-tour-trigger]')
+  const close = document.querySelector('[data-tour-close]')
+  const prev = document.querySelector('[data-tour-prev]')
+  const next = document.querySelector('[data-tour-next]')
+  const title = document.querySelector('[data-tour-title]')
+  const description = document.querySelector('[data-tour-description]')
+  const counter = document.querySelector('[data-tour-counter]')
+
+  function updateTour() {
+    const step = steps[currentStep]
+    if (title) title.textContent = step.title
+    if (description) description.textContent = step.description
+    if (counter) counter.textContent = `${currentStep + 1} / ${steps.length}`
+    
+    // Update progress bars
+    document.querySelectorAll('[data-progress-bar]').forEach((bar, i) => {
+      bar.classList.toggle('bg-emerald-500', i <= currentStep)
+      bar.classList.toggle('bg-white/20', i > currentStep)
+    })
+    
+    // Update buttons
+    if (prev) prev.disabled = currentStep === 0
+    if (next) next.textContent = currentStep === steps.length - 1 ? 'Finish' : 'Next'
+  }
+
+  trigger?.addEventListener('click', () => {
+    tour?.classList.remove('hidden')
+    currentStep = 0
+    updateTour()
+  })
+
+  close?.addEventListener('click', () => tour?.classList.add('hidden'))
+  
+  prev?.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--
+      updateTour()
+    }
+  })
+
+  next?.addEventListener('click', () => {
+    if (currentStep < steps.length - 1) {
+      currentStep++
+      updateTour()
+    } else {
+      tour?.classList.add('hidden')
+    }
+  })
+</script>

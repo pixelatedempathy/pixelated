@@ -1,0 +1,61 @@
+---
+interface Props {
+  src: string
+  poster?: string
+  title?: string
+}
+
+const { src, poster = '/video-thumbnail.jpg', title = 'Product Demo' } = Astro.props
+---
+
+<div class="video-player-container relative rounded-xl overflow-hidden bg-black">
+  <video
+    class="w-full aspect-video"
+    controls
+    poster={poster}
+    preload="metadata"
+  >
+    <source src={src} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none video-overlay">
+    <button
+      class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all pointer-events-auto"
+      aria-label="Play video"
+      data-play-button
+    >
+      <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-play-button]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const video = btn.closest('.video-player-container')?.querySelector('video')
+      const overlay = btn.closest('.video-overlay')
+      if (video) {
+        video.play()
+        overlay?.classList.add('hidden')
+      }
+    })
+  })
+  
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', () => {
+      video.closest('.video-player-container')?.querySelector('.video-overlay')?.classList.add('hidden')
+    })
+    video.addEventListener('pause', () => {
+      video.closest('.video-player-container')?.querySelector('.video-overlay')?.classList.remove('hidden')
+    })
+  })
+</script>
+
+<style>
+  video::-webkit-media-controls-panel {
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+  }
+</style>
