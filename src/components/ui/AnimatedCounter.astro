@@ -7,13 +7,17 @@ export interface Props {
 }
 
 const { value, label, duration = 2000, suffix = '' } = Astro.props
-const numericValue = parseInt(value.replace(/[^\d]/g, ''))
+
+// Handle placeholder values that shouldn't animate
+const isPlaceholder = value === '--' || !value.match(/\d/)
+const displayValue = isPlaceholder ? value : value
+const numericValue = isPlaceholder ? 0 : parseInt(value.replace(/[^\d]/g, ''))
 const hasPlus = value.includes('+')
 const hasPercent = value.includes('%')
 ---
 
-<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent}>
-  <div class="text-3xl font-bold text-white counter-value">0{hasPlus ? '+' : ''}{hasPercent ? '%' : ''}{suffix}</div>
+<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent} data-is-placeholder={isPlaceholder} data-display-value={displayValue}>
+  <div class="text-3xl font-bold text-white counter-value">{displayValue}</div>
   <div class="text-sm text-gray-400">{label}</div>
 </div>
 
@@ -25,6 +29,8 @@ const hasPercent = value.includes('%')
     private suffix: string
     private hasPlus: boolean
     private hasPercent: boolean
+    private isPlaceholder: boolean
+    private displayValue: string
     private observer: IntersectionObserver
     private hasAnimated: boolean = false
 
@@ -35,8 +41,13 @@ const hasPercent = value.includes('%')
       this.suffix = element.dataset.suffix || ''
       this.hasPlus = element.dataset.hasPlus === 'true'
       this.hasPercent = element.dataset.hasPercent === 'true'
+      this.isPlaceholder = element.dataset.isPlaceholder === 'true'
+      this.displayValue = element.dataset.displayValue || ''
 
-      this.setupIntersectionObserver()
+      // Skip animation for placeholders
+      if (!this.isPlaceholder) {
+        this.setupIntersectionObserver()
+      }
     }
 
     private setupIntersectionObserver() {
@@ -89,7 +100,9 @@ const hasPercent = value.includes('%')
     }
 
     public destroy() {
-      this.observer.disconnect()
+      if (this.observer) {
+        this.observer.disconnect()
+      }
     }
   }
 
