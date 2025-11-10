@@ -1,0 +1,93 @@
+---
+interface Tab {
+  id: string
+  label: string
+  icon?: string
+}
+
+interface Props {
+  tabs: Tab[]
+  activeTab?: string
+}
+
+const { tabs, activeTab = tabs[0]?.id } = Astro.props
+---
+
+<div class="tabs-container">
+  <div class="flex border-b border-white/10" role="tablist">
+    {tabs.map((tab) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={tab.id === activeTab}
+        aria-controls={`panel-${tab.id}`}
+        id={`tab-${tab.id}`}
+        data-tab={tab.id}
+        class={`relative px-6 py-3 text-sm font-medium transition-all ${tab.id === activeTab ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+      >
+        <div class="flex items-center gap-2">
+          {tab.icon && (
+            <Fragment set:html={tab.icon} />
+          )}
+          <span>{tab.label}</span>
+        </div>
+        
+        {tab.id === activeTab && (
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 tab-indicator" />
+        )}
+      </button>
+    ))}
+  </div>
+  
+  <div class="tab-panels mt-6">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-tab]').forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab')
+      const container = button.closest('.tabs-container')
+      
+      // Update active states
+      container?.querySelectorAll('[data-tab]').forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId
+        btn.setAttribute('aria-selected', isActive.toString())
+        btn.classList.toggle('text-white', isActive)
+        btn.classList.toggle('text-gray-400', !isActive)
+        
+        // Remove old indicator
+        btn.querySelector('.tab-indicator')?.remove()
+        
+        // Add new indicator
+        if (isActive) {
+          const indicator = document.createElement('div')
+          indicator.className = 'absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 tab-indicator'
+          btn.appendChild(indicator)
+        }
+      })
+      
+      // Show/hide panels
+      container?.querySelectorAll('[role="tabpanel"]').forEach(panel => {
+        const panelId = panel.getAttribute('id')?.replace('panel-', '')
+        panel.classList.toggle('hidden', panelId !== tabId)
+      })
+    })
+  })
+</script>
+
+<style>
+  .tab-indicator {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>

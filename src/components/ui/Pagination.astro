@@ -1,0 +1,62 @@
+---
+interface Props {
+  currentPage: number
+  totalPages: number
+  baseUrl: string
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props
+
+const getPageUrl = (page: number) => {
+  return page === 1 ? baseUrl : `${baseUrl}?page=${page}`
+}
+
+const showEllipsis = totalPages > 7
+const pages: (number | 'ellipsis')[] = []
+
+if (showEllipsis) {
+  if (currentPage <= 3) {
+    pages.push(1, 2, 3, 4, 'ellipsis', totalPages)
+  } else if (currentPage >= totalPages - 2) {
+    pages.push(1, 'ellipsis', totalPages - 3, totalPages - 2, totalPages - 1, totalPages)
+  } else {
+    pages.push(1, 'ellipsis', currentPage - 1, currentPage, currentPage + 1, 'ellipsis', totalPages)
+  }
+} else {
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i)
+  }
+}
+---
+
+<nav aria-label="Pagination" class="flex items-center justify-center gap-2">
+  <a
+    href={currentPage > 1 ? getPageUrl(currentPage - 1) : undefined}
+    class={`px-4 py-2 rounded-lg border transition-all ${currentPage === 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-white/10 text-white hover:border-white/20 hover:bg-white/5'}`}
+    aria-disabled={currentPage === 1}
+  >
+    Previous
+  </a>
+  
+  {pages.map((page) => (
+    page === 'ellipsis' ? (
+      <span class="px-3 text-gray-600">...</span>
+    ) : (
+      <a
+        href={getPageUrl(page)}
+        class={`px-4 py-2 rounded-lg border transition-all ${page === currentPage ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 border-transparent text-white' : 'border-white/10 text-white hover:border-white/20 hover:bg-white/5'}`}
+        aria-current={page === currentPage ? 'page' : undefined}
+      >
+        {page}
+      </a>
+    )
+  ))}
+  
+  <a
+    href={currentPage < totalPages ? getPageUrl(currentPage + 1) : undefined}
+    class={`px-4 py-2 rounded-lg border transition-all ${currentPage === totalPages ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-white/10 text-white hover:border-white/20 hover:bg-white/5'}`}
+    aria-disabled={currentPage === totalPages}
+  >
+    Next
+  </a>
+</nav>
