@@ -314,7 +314,7 @@ export default defineConfig({
       react({
         include: ['**/react/*', '**/components/**/*'],
         experimentalReactChildren: true,
-      })
+      }),
     ]
     if (MIN_DEV) return base
     return [

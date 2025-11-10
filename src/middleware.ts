@@ -1,8 +1,15 @@
-// Polyfill MessageChannel for Cloudflare Workers
+// Polyfill MessageChannel for Cloudflare Workers (must be first)
 if (typeof MessageChannel === 'undefined') {
+  class MessagePortPolyfill {
+    onmessage = null
+    postMessage() {}
+    start() {}
+    close() {}
+  }
+  
   globalThis.MessageChannel = class MessageChannel {
-    port1 = { postMessage: () => {}, onmessage: null }
-    port2 = { postMessage: () => {}, onmessage: null }
+    port1 = new MessagePortPolyfill()
+    port2 = new MessagePortPolyfill()
   } as any
 }
 
