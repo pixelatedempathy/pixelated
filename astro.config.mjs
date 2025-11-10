@@ -1,5 +1,9 @@
 import path from 'node:path';
 import process from 'node:process';
+import { config } from 'dotenv';
+
+// Load .env file for build-time configuration
+config();
 
 import react from '@astrojs/react';
 import UnoCSS from '@unocss/astro';
@@ -9,17 +13,15 @@ import icon from 'astro-icon';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
-import cloudflare from '@astrojs/cloudflare';
+import node from '@astrojs/node';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://astro.build/config
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true
-    }
+  adapter: node({
+    mode: 'standalone'
   }),
   trailingSlash: 'ignore',
   build: {

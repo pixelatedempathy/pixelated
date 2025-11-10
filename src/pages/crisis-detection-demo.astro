@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Crisis Detection Demo - Pixelated Empathy">
+  <main class="min-h-screen bg-black text-white pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">
+          <span class="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+            Crisis Detection Demo
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300">
+          Experience our AI-powered crisis intervention training system
+        </p>
+      </div>
+      
+      <div id="crisis-demo-container"></div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import CrisisDetectionDemo from '../components/demo/CrisisDetectionDemo'
+  import { createRoot } from 'react-dom/client'
+  import { createElement } from 'react'
+
+  const container = document.getElementById('crisis-demo-container')
+  if (container) {
+    const root = createRoot(container)
+    root.render(createElement(CrisisDetectionDemo))
+  }
+</script>
