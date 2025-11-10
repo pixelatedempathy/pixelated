@@ -1,19 +1,37 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { cn } from '~/lib/utils'
+interface Props {
+  variant?: 'default' | 'elevated' | 'flat' | 'outlined'
+  padding?: 'none' | 'sm' | 'md' | 'lg'
+  hover?: boolean
+  class?: string
+}
 
-type Props = HTMLAttributes<'div'>
+const { 
+  variant = 'default', 
+  padding = 'md',
+  hover = true,
+  class: className = ''
+} = Astro.props
 
-const { class: className, ...props } = Astro.props
+const variantClasses = {
+  default: 'bg-black/40 backdrop-blur-xl border border-white/10',
+  elevated: 'bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl',
+  flat: 'bg-white/5 border-0',
+  outlined: 'bg-transparent border-2 border-white/20'
+}
+
+const paddingClasses = {
+  none: '',
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8'
+}
+
+const hoverClass = hover ? 'hover:border-emerald-500/30 transition-all duration-300' : ''
+
+const classes = `${variantClasses[variant]} ${paddingClasses[padding]} ${hoverClass} rounded-xl ${className}`
 ---
 
-<div
-  data-slot="card"
-  class={cn(
-    'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
-    className,
-  )}
-  {...props}
->
+<div class={classes}>
   <slot />
 </div>

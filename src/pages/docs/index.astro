@@ -1,57 +1,42 @@
+---
 export const prerender = true
 
----
 import { getCollection } from 'astro:content'
-import BaseLayout from '@/layouts/BaseLayout.astro'
+import Layout from '@/layouts/Layout.astro'
+import PageHero from '@/components/ui/PageHero.astro'
+import ContentSection from '@/components/ui/ContentSection.astro'
 
-// Define types for use in the template
 type DocPage = {
   data: {
     draft: boolean
     pubDate: Date
     category?: string
-    tags?: string[]
-    featured?: boolean
-    image?: { url: string; alt: string }
     title: string
     description: string
-    slug: string
-    readingTime?: number
     order?: number
   }
   id: string
   slug: string
 }
 
-// Get all docs and sort by order, then by date
 const docs = await getCollection('docs', ({ data }: DocPage) => {
   return import.meta.env.PROD ? !data.draft : true
 })
 
 const sortedDocs = docs.sort((a: DocPage, b: DocPage) => {
-  // Sort by order first (if available), then by date
   if (a.data.order !== undefined && b.data.order !== undefined) {
     return a.data.order - b.data.order
   }
-  if (a.data.order !== undefined) return -1
-  if (b.data.order !== undefined) return 1
   return b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 })
 
-// Group docs by category
-const docsByCategory = sortedDocs.reduce(
-  (acc: Record<string, DocPage[]>, doc: DocPage) => {
-    const category = doc.data.category || 'General'
-    if (!acc[category]) {
-      acc[category] = []
-    }
-    acc[category].push(doc)
-    return acc
-  },
-  {},
-)
+const docsByCategory = sortedDocs.reduce((acc: Record<string, DocPage[]>, doc: DocPage) => {
+  const category = doc.data.category || 'General'
+  if (!acc[category]) acc[category] = []
+  acc[category].push(doc)
+  return acc
+}, {})
 
-// Get categories in a logical order
 const categoryOrder = ['Getting Started', 'API', 'Guides', 'General']
 const categories = Object.keys(docsByCategory).sort((a, b) => {
   const aIndex = categoryOrder.indexOf(a)
@@ -61,153 +46,60 @@ const categories = Object.keys(docsByCategory).sort((a, b) => {
   if (bIndex === -1) return -1
   return aIndex - bIndex
 })
-
-// Format date like: Oct 4 · 4 min
-function formatDocDate(date: Date, readingTime?: number): string {
-  const monthDay = date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-  })
-  return readingTime ? `${monthDay} · ${readingTime} min` : monthDay
-}
-
-const title = 'Documentation'
-const description = 'Comprehensive documentation for Pixelated Empathy platform'
-const bgType = 'dot'
 ---
 
-<BaseLayout {title} {description} {bgType}>
-  <div class="max-w-prose mx-auto">
-    <h1 class="text-4xl font-bold mb-8">{title}</h1>
-    
-    <!-- Search -->
-    <div class="mb-8">
-      <div class="relative">
-        <input 
-          type="search" 
-          id="docs-search"
-          placeholder="Search documentation..." 
-          class="w-full px-4 py-3 pl-12 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500/50 transition-colors"
-        />
-        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-      </div>
-    </div>
+<Layout title="Documentation - Pixelated Empathy" description="Comprehensive platform documentation">
+  <PageHero
+    badge="Documentation"
+    title="Platform Documentation"
+    subtitle="Everything you need to know about using Pixelated Empathy"
+    gradient={true}
+  />
 
-    <div class="prose dark:prose-invert">
-      <!-- Docs by Category -->
-      {
-        categories.map((category) => (
-          <div class="mb-8">
-            <h2 class="text-2xl mb-4" data-category-header data-category={category}>{category}</h2>
-            <ul class="space-y-3 list-none pl-0">
-              {docsByCategory[category].map((doc: DocPage) => (
-                <li class="flex justify-between items-baseline mb-2 leading-relaxed" data-doc-item data-category={category}>
-                  <a
-                    href={`/docs/${doc.slug}`}
-                    class="flex-1 text-primary hover:underline text-lg"
-                    transition:name={`doc-title-${doc.slug}`}
-                  >
-                    {doc.data.title}
+  <ContentSection>
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Sidebar -->
+        <div class="md:col-span-1">
+          <div class="sticky top-8 space-y-6">
+            <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-white mb-4">Categories</h3>
+              <nav class="space-y-2">
+                {categories.map((category) => (
+                  <a href={`#${category.toLowerCase().replace(/\s+/g, '-')}`} class="block text-gray-400 hover:text-emerald-400 transition-colors">
+                    {category}
                   </a>
-                  <span class="text-sm text-gray-500 dark:text-gray-400 op-80 ml-4">
-                    {formatDocDate(doc.data.pubDate, doc.data.readingTime)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </nav>
+            </div>
+            
+            <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-white mb-2">Need Help?</h3>
+              <p class="text-sm text-gray-400 mb-4">Can't find what you're looking for?</p>
+              <a href="/support" class="text-emerald-400 hover:text-emerald-300 text-sm font-medium">
+                Contact Support →
+              </a>
+            </div>
           </div>
-        ))
-      }
+        </div>
 
-      <!-- Navigation Section -->
-      <div class="mt-16">
-        <div class="flex justify-between items-center">
-          <div class="flex gap-2">
-            <a
-              href="/docs"
-              class="text-sm px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              all docs
-            </a>
-            <a
-              href="/api-docs"
-              class="text-sm px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              API docs
-            </a>
-          </div>
-          <a
-            href="/docs/getting-started"
-            class="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-          >
-            Get Started
-          </a>
+        <!-- Content -->
+        <div class="md:col-span-3 space-y-12">
+          {categories.map((category) => (
+            <div id={category.toLowerCase().replace(/\s+/g, '-')}>
+              <h2 class="text-3xl font-bold text-white mb-6">{category}</h2>
+              <div class="space-y-4">
+                {docsByCategory[category].map((doc) => (
+                  <a href={`/docs/${doc.slug}`} class="block bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-white mb-2">{doc.data.title}</h3>
+                    <p class="text-gray-400">{doc.data.description}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  </div>
-</BaseLayout>
-
-<script>
-  // Search functionality
-  document.addEventListener('astro:page-load', () => {
-    const searchInput = document.getElementById('docs-search') as HTMLInputElement
-    const docItems = document.querySelectorAll('[data-doc-item]')
-    const categoryHeaders = document.querySelectorAll('[data-category-header]')
-    
-    if (!searchInput) return
-
-    searchInput.addEventListener('input', (e) => {
-      const query = (e.target as HTMLInputElement).value.toLowerCase().trim()
-      
-      if (!query) {
-        // Show all items
-        docItems.forEach(item => item.classList.remove('hidden'))
-        categoryHeaders.forEach(header => header.classList.remove('hidden'))
-        return
-      }
-
-      let hasVisibleItems = false
-      const visibleCategories = new Set<string>()
-
-      docItems.forEach(item => {
-        const title = item.querySelector('h3')?.textContent?.toLowerCase() || ''
-        const description = item.querySelector('p')?.textContent?.toLowerCase() || ''
-        const category = item.getAttribute('data-category') || ''
-        
-        const matches = title.includes(query) || description.includes(query)
-        
-        if (matches) {
-          item.classList.remove('hidden')
-          visibleCategories.add(category)
-          hasVisibleItems = true
-        } else {
-          item.classList.add('hidden')
-        }
-      })
-
-      // Show/hide category headers based on visible items
-      categoryHeaders.forEach(header => {
-        const category = header.getAttribute('data-category') || ''
-        if (visibleCategories.has(category)) {
-          header.classList.remove('hidden')
-        } else {
-          header.classList.add('hidden')
-        }
-      })
-    })
-  })
-</script>
-
-<style>
-  /* Use UnoCSS compatible styling */
-  li {
-    transition: transform 0.2s ease;
-  }
-
-  li:hover {
-    transform: translateX(4px);
-  }
-</style>
+  </ContentSection>
+</Layout>

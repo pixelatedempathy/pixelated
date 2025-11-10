@@ -1,7 +1,12 @@
+---
 export const prerender = true
 
----
 import Layout from '@/layouts/Layout.astro'
+import PageHero from '@/components/ui/PageHero.astro'
+import ContentSection from '@/components/ui/ContentSection.astro'
+import FormInput from '@/components/ui/FormInput.astro'
+import FormTextarea from '@/components/ui/FormTextarea.astro'
+import FormSelect from '@/components/ui/FormSelect.astro'
 
 const faqs = [
   {
@@ -29,222 +34,158 @@ const faqs = [
     answer: "Use the support ticket form below or email support@pixelatedempathy.com. Include details about the issue and steps to reproduce it."
   }
 ]
+
+const contactOptions = [
+  {
+    icon: "📧",
+    title: "Email Support",
+    description: "support@pixelatedempathy.com",
+    link: "mailto:support@pixelatedempathy.com"
+  },
+  {
+    icon: "💬",
+    title: "Live Chat",
+    description: "Available 24/7",
+    link: "#"
+  },
+  {
+    icon: "📚",
+    title: "Documentation",
+    description: "Browse our guides",
+    link: "/docs"
+  }
+]
 ---
 
 <Layout title="Support - Pixelated Empathy">
-  <main class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
-    <div class="container mx-auto px-6 py-24 relative z-10">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-mono mb-6">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-          </span>
-          24/7 Support
-        </div>
-        <h1 class="text-5xl font-bold text-white mb-6">How Can We Help?</h1>
-        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-          Get the support you need to make the most of our platform. Browse our FAQ or submit a support ticket.
-        </p>
-      </div>
+  <PageHero
+    badge="24/7 Support"
+    title="How Can We Help?"
+    subtitle="Get the support you need to make the most of our platform. Browse our FAQ or submit a support ticket."
+    gradient={true}
+  />
 
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- FAQ Section -->
-        <div>
-          <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
-          <div class="space-y-4">
-            {faqs.map((faq, index) => (
-              <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
-                <button 
-                  class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
-                  data-target={`faq-${index}`}
-                >
-                  <h3 class="text-lg font-semibold text-white pr-4">{faq.question}</h3>
-                  <svg class="w-5 h-5 text-gray-400 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <div id={`faq-${index}`} class="faq-content hidden px-6 pb-4">
-                  <p class="text-gray-300 leading-relaxed">{faq.answer}</p>
-                </div>
-              </div>
-            ))}
+  <!-- FAQ Section -->
+  <ContentSection>
+    <h2 class="text-4xl font-bold text-center mb-12">
+      <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+        Frequently Asked Questions
+      </span>
+    </h2>
+    
+    <div class="space-y-4 max-w-4xl mx-auto">
+      {faqs.map((faq, index) => (
+        <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300">
+          <button 
+            class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+            data-target={`faq-${index}`}
+          >
+            <h3 class="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id={`faq-${index}`} class="faq-content hidden px-6 pb-4">
+            <p class="text-gray-300 leading-relaxed">{faq.answer}</p>
           </div>
         </div>
+      ))}
+    </div>
+  </ContentSection>
 
-        <!-- Support Ticket Form -->
-        <div>
-          <h2 class="text-3xl font-bold text-white mb-8">Submit Support Ticket</h2>
-          <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-            <form id="support-form" class="space-y-6">
-              <div>
-                <label for="ticket-email" class="block text-sm font-medium text-gray-300 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="ticket-email"
-                  name="email"
-                  required
-                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label for="ticket-subject" class="block text-sm font-medium text-gray-300 mb-2">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  id="ticket-subject"
-                  name="subject"
-                  required
-                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
-                  placeholder="Brief description of your issue"
-                />
-              </div>
-
-              <div>
-                <label for="ticket-priority" class="block text-sm font-medium text-gray-300 mb-2">
-                  Priority
-                </label>
-                <select
-                  id="ticket-priority"
-                  name="priority"
-                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500/50 transition-colors"
-                >
-                  <option value="low">Low - General question</option>
-                  <option value="medium" selected>Medium - Issue affecting work</option>
-                  <option value="high">High - Urgent issue</option>
-                  <option value="critical">Critical - System down</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="ticket-message" class="block text-sm font-medium text-gray-300 mb-2">
-                  Description *
-                </label>
-                <textarea
-                  id="ticket-message"
-                  name="message"
-                  rows="6"
-                  required
-                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
-                  placeholder="Please describe your issue in detail, including steps to reproduce if applicable..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                id="support-submit"
-                class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105"
-              >
-                Submit Ticket
-              </button>
-
-              <div id="support-status" class="hidden"></div>
-            </form>
-          </div>
-
-          <!-- Contact Info -->
-          <div class="mt-8 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-            <h3 class="text-lg font-semibold text-white mb-4">Other Ways to Reach Us</h3>
-            <div class="space-y-3 text-gray-300">
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                </svg>
-                <span>Contact form above</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
-                </svg>
-                <span>Response time varies</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Support Ticket Form -->
+  <ContentSection diagonal={true}>
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">
+        <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Submit Support Ticket
+        </span>
+      </h2>
+      
+      <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+        <form id="support-form" class="space-y-6">
+          <FormInput
+            label="Name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required={true}
+          />
+          
+          <FormInput
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="your@email.com"
+            required={true}
+          />
+          
+          <FormSelect
+            label="Issue Type"
+            name="issue-type"
+            options={[
+              { value: "", label: "Select issue type" },
+              { value: "technical", label: "Technical Issue" },
+              { value: "billing", label: "Billing Question" },
+              { value: "feature", label: "Feature Request" },
+              { value: "other", label: "Other" }
+            ]}
+            required={true}
+          />
+          
+          <FormTextarea
+            label="Description"
+            name="description"
+            placeholder="Please describe your issue in detail..."
+            rows={6}
+            required={true}
+          />
+          
+          <button 
+            type="submit"
+            class="w-full py-3 px-6 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg transition-all duration-200 transform hover:scale-105"
+          >
+            Submit Ticket
+          </button>
+        </form>
       </div>
     </div>
-  </main>
+  </ContentSection>
+
+  <!-- Contact Options -->
+  <ContentSection>
+    <h2 class="text-4xl font-bold text-center mb-12">
+      <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+        Other Ways to Reach Us
+      </span>
+    </h2>
+    
+    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {contactOptions.map((option) => (
+        <a 
+          href={option.link}
+          class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 text-center"
+        >
+          <div class="text-4xl mb-4">{option.icon}</div>
+          <h3 class="text-xl font-bold text-white mb-2">{option.title}</h3>
+          <p class="text-gray-300">{option.description}</p>
+        </a>
+      ))}
+    </div>
+  </ContentSection>
 </Layout>
 
 <script>
-  // FAQ Toggle functionality
-  document.addEventListener('astro:page-load', () => {
-    const faqToggles = document.querySelectorAll('.faq-toggle')
-    
-    faqToggles.forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const targetId = toggle.getAttribute('data-target')
-        const content = document.getElementById(targetId!)
-        const icon = toggle.querySelector('.faq-icon')
-        
-        if (content && icon) {
-          const isHidden = content.classList.contains('hidden')
-          
-          if (isHidden) {
-            content.classList.remove('hidden')
-            icon.style.transform = 'rotate(180deg)'
-          } else {
-            content.classList.add('hidden')
-            icon.style.transform = 'rotate(0deg)'
-          }
-        }
-      })
+  document.querySelectorAll('.faq-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target')
+      const content = document.getElementById(targetId)
+      const icon = button.querySelector('.faq-icon')
+      
+      if (content && icon) {
+        content.classList.toggle('hidden')
+        icon.classList.toggle('rotate-180')
+      }
     })
-
-    // Support form submission
-    const supportForm = document.getElementById('support-form') as HTMLFormElement
-    const submitButton = document.getElementById('support-submit') as HTMLButtonElement
-    const statusDiv = document.getElementById('support-status') as HTMLDivElement
-
-    if (supportForm) {
-      supportForm.addEventListener('submit', async (e) => {
-        e.preventDefault()
-        
-        submitButton.disabled = true
-        submitButton.textContent = 'Submitting...'
-        
-        const formData = new FormData(supportForm)
-        const data = {
-          email: formData.get('email'),
-          subject: formData.get('subject'),
-          priority: formData.get('priority'),
-          message: formData.get('message')
-        }
-
-        try {
-          const response = await fetch('/api/support/ticket', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          })
-
-          const result = await response.json()
-
-          if (response.ok) {
-            statusDiv.className = 'p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400'
-            statusDiv.textContent = 'Support ticket submitted successfully! We\'ll get back to you soon.'
-            statusDiv.classList.remove('hidden')
-            supportForm.reset()
-          } else {
-            throw new Error(result.message || 'Failed to submit ticket')
-          }
-        } catch (error) {
-          statusDiv.className = 'p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400'
-          statusDiv.textContent = 'Failed to submit ticket. Please try again or email us directly.'
-          statusDiv.classList.remove('hidden')
-        } finally {
-          submitButton.disabled = false
-          submitButton.textContent = 'Submit Ticket'
-        }
-      })
-    }
   })
 </script>
-</Layout>

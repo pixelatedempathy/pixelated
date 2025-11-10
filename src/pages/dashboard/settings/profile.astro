@@ -1,0 +1,23 @@
+---
+export const prerender = false
+
+import DashboardLayout from '../../../layouts/DashboardLayout.astro'
+import DashboardCard from '@/components/ui/DashboardCard.astro'
+import FormInput from '@/components/ui/FormInput.astro'
+---
+
+<DashboardLayout title="Profile Settings - Pixelated Empathy">
+  <div class="space-y-8">
+    <h1 class="text-3xl font-bold text-white">Profile Settings</h1>
+
+    <DashboardCard title="Personal Information">
+      <form class="space-y-6">
+        <FormInput label="Full Name" name="name" type="text" placeholder="Your name" />
+        <FormInput label="Email" name="email" type="email" placeholder="your@email.com" />
+        <button type="submit" class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg transition-all duration-200">
+          Save Changes
+        </button>
+      </form>
+    </DashboardCard>
+  </div>
+</DashboardLayout>

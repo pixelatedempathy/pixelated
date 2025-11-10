@@ -1,0 +1,284 @@
+---
+export const prerender = true
+
+import Layout from '../layouts/Layout.astro'
+import PageHero from '../components/ui/PageHero.astro'
+import ContentSection from '../components/ui/ContentSection.astro'
+import DashboardCard from '../components/ui/DashboardCard.astro'
+import StatsGrid from '../components/ui/StatsGrid.astro'
+import PricingCard from '../components/ui/PricingCard.astro'
+import BlogCard from '../components/ui/BlogCard.astro'
+import FormField from '../components/ui/FormField.astro'
+import Loading from '../components/ui/Loading.astro'
+import EmptyState from '../components/ui/EmptyState.astro'
+import Search from '../components/ui/Search.astro'
+import Pagination from '../components/ui/Pagination.astro'
+import Tabs from '../components/ui/Tabs.astro'
+import Button from '../components/ui/Button.astro'
+import Card from '../components/ui/Card.astro'
+import ThemeToggle from '../components/ui/ThemeToggle.astro'
+import MobileNav from '../components/ui/MobileNav.astro'
+import Animate from '../components/ui/Animate.astro'
+
+const stats = [
+  { label: 'Total Users', value: '1,234', color: 'emerald' },
+  { label: 'Active Sessions', value: '567', color: 'cyan' },
+  { label: 'Completion Rate', value: '89%', color: 'purple' }
+]
+
+const tabs = [
+  { label: 'Overview', active: true },
+  { label: 'Components', active: false },
+  { label: 'Examples', active: false }
+]
+
+const navItems = [
+  { label: 'Home', href: '/', icon: '🏠' },
+  { label: 'About', href: '/about', icon: 'ℹ️' },
+  { label: 'Contact', href: '/contact', icon: '📧' }
+]
+---
+
+<Layout title="Component Storybook - Pixelated Empathy">
+  <PageHero
+    badge="Design System"
+    title="Component Storybook"
+    subtitle="Interactive showcase of all design system components"
+    gradient={true}
+  />
+
+  <!-- Theme Toggle -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Theme Toggle</h2>
+    <div class="flex items-center gap-4">
+      <ThemeToggle />
+      <p class="text-gray-400">Toggle between dark and light mode</p>
+    </div>
+  </ContentSection>
+
+  <!-- Button Variants -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Button Variants & Sizes</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Variants</h3>
+        <div class="flex flex-wrap gap-4">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Sizes</h3>
+        <div class="flex flex-wrap items-center gap-4">
+          <Button size="xs">Extra Small</Button>
+          <Button size="sm">Small</Button>
+          <Button size="md">Medium</Button>
+          <Button size="lg">Large</Button>
+          <Button size="xl">Extra Large</Button>
+        </div>
+      </div>
+    </div>
+  </ContentSection>
+
+  <!-- Card Variants -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Card Variants</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card variant="default">
+        <h3 class="font-bold text-white mb-2">Default</h3>
+        <p class="text-gray-400 text-sm">Standard glassmorphism</p>
+      </Card>
+      <Card variant="elevated">
+        <h3 class="font-bold text-white mb-2">Elevated</h3>
+        <p class="text-gray-400 text-sm">Enhanced shadow</p>
+      </Card>
+      <Card variant="flat">
+        <h3 class="font-bold text-white mb-2">Flat</h3>
+        <p class="text-gray-400 text-sm">Minimal style</p>
+      </Card>
+      <Card variant="outlined">
+        <h3 class="font-bold text-white mb-2">Outlined</h3>
+        <p class="text-gray-400 text-sm">Border emphasis</p>
+      </Card>
+    </div>
+  </ContentSection>
+
+  <!-- Animations -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Animations</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <Animate type="fade">
+        <Card><p class="text-white">Fade In</p></Card>
+      </Animate>
+      <Animate type="slide-up" delay={100}>
+        <Card><p class="text-white">Slide Up</p></Card>
+      </Animate>
+      <Animate type="scale" delay={200}>
+        <Card><p class="text-white">Scale</p></Card>
+      </Animate>
+    </div>
+  </ContentSection>
+
+  <!-- Mobile Navigation -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Mobile Navigation</h2>
+    <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+      <p class="text-gray-400 mb-4">Resize window to mobile view or click button:</p>
+      <MobileNav items={navItems} />
+    </div>
+  </ContentSection>
+
+  <!-- Search -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Search Component</h2>
+    <div class="max-w-2xl">
+      <Search placeholder="Search components..." />
+    </div>
+  </ContentSection>
+
+  <!-- Loading States -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Loading States</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <DashboardCard title="Spinner">
+        <Loading variant="spinner" size="md" text="Loading..." />
+      </DashboardCard>
+      <DashboardCard title="Dots">
+        <Loading variant="dots" />
+      </DashboardCard>
+      <DashboardCard title="Skeleton">
+        <Loading variant="skeleton" />
+      </DashboardCard>
+    </div>
+  </ContentSection>
+
+  <!-- Empty States -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Empty States</h2>
+    <DashboardCard title="No Data">
+      <EmptyState
+        icon="📭"
+        title="No items found"
+        description="Get started by creating your first item"
+        actionLabel="Create Item"
+        actionHref="#"
+      />
+    </DashboardCard>
+  </ContentSection>
+
+  <!-- Form Validation -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Form Validation</h2>
+    <div class="max-w-2xl mx-auto bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+      <form class="space-y-6">
+        <FormField
+          label="Email"
+          name="email"
+          type="email"
+          required={true}
+          hint="We'll never share your email"
+        />
+        <FormField
+          label="Password"
+          name="password"
+          type="password"
+          required={true}
+          error="Password must be at least 8 characters"
+        />
+        <FormField
+          label="Username"
+          name="username"
+          type="text"
+          success="Username is available"
+        />
+      </form>
+    </div>
+  </ContentSection>
+
+  <!-- Stats Grid -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Stats Grid</h2>
+    <StatsGrid stats={stats} columns={3} />
+  </ContentSection>
+
+  <!-- Cards -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Card Components</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <PricingCard
+        name="Professional"
+        price="$99"
+        period="/month"
+        description="For individual practitioners"
+        features={['Unlimited scenarios', 'Advanced analytics', 'Priority support']}
+        cta="Get Started"
+        ctaHref="#"
+        popular={true}
+      />
+      <BlogCard
+        title="Getting Started Guide"
+        description="Learn how to use the platform effectively"
+        category="Tutorial"
+        readTime="5 min read"
+        date="Nov 10, 2024"
+        href="#"
+      />
+    </div>
+  </ContentSection>
+
+  <!-- Navigation -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Navigation Components</h2>
+    <div class="space-y-8">
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Tabs</h3>
+        <Tabs tabs={tabs} />
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4">Pagination</h3>
+        <Pagination currentPage={2} totalPages={10} baseUrl="/storybook" />
+      </div>
+    </div>
+  </ContentSection>
+
+  <!-- Color Palette -->
+  <ContentSection diagonal={true}>
+    <h2 class="text-3xl font-bold text-white mb-8">Color Palette</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="space-y-2">
+        <div class="h-20 bg-emerald-500 rounded-lg"></div>
+        <p class="text-sm text-gray-400">Emerald (Primary)</p>
+      </div>
+      <div class="space-y-2">
+        <div class="h-20 bg-cyan-500 rounded-lg"></div>
+        <p class="text-sm text-gray-400">Cyan (Secondary)</p>
+      </div>
+      <div class="space-y-2">
+        <div class="h-20 bg-purple-500 rounded-lg"></div>
+        <p class="text-sm text-gray-400">Purple (Accent)</p>
+      </div>
+      <div class="space-y-2">
+        <div class="h-20 bg-pink-500 rounded-lg"></div>
+        <p class="text-sm text-gray-400">Pink (Accent)</p>
+      </div>
+    </div>
+  </ContentSection>
+
+  <!-- Typography -->
+  <ContentSection>
+    <h2 class="text-3xl font-bold text-white mb-8">Typography Scale</h2>
+    <div class="space-y-4">
+      <p class="text-6xl font-bold text-white">Heading 1</p>
+      <p class="text-5xl font-bold text-white">Heading 2</p>
+      <p class="text-4xl font-bold text-white">Heading 3</p>
+      <p class="text-3xl font-bold text-white">Heading 4</p>
+      <p class="text-2xl font-bold text-white">Heading 5</p>
+      <p class="text-xl text-gray-300">Body Large</p>
+      <p class="text-base text-gray-300">Body Regular</p>
+      <p class="text-sm text-gray-400">Body Small</p>
+      <p class="text-xs text-gray-400">Caption</p>
+    </div>
+  </ContentSection>
+</Layout>

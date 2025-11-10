@@ -1,0 +1,32 @@
+---
+export const prerender = false
+
+import DashboardLayout from '../../../layouts/DashboardLayout.astro'
+import DashboardCard from '@/components/ui/DashboardCard.astro'
+import StatsGrid from '@/components/ui/StatsGrid.astro'
+
+const { id } = Astro.params
+
+const stats = [
+  { label: 'Duration', value: '--', color: 'emerald' },
+  { label: 'Score', value: '--', color: 'cyan' },
+  { label: 'Accuracy', value: '--', color: 'purple' }
+]
+---
+
+<DashboardLayout title="Session Details - Pixelated Empathy">
+  <div class="space-y-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <a href="/dashboard/training" class="text-gray-400 hover:text-white text-sm mb-2 inline-block">← Back to Sessions</a>
+        <h1 class="text-3xl font-bold text-white">Training Session #{id}</h1>
+      </div>
+    </div>
+
+    <StatsGrid stats={stats} columns={3} />
+
+    <DashboardCard title="Session Feedback">
+      <p class="text-gray-300">Detailed feedback and analysis will appear here.</p>
+    </DashboardCard>
+  </div>
+</DashboardLayout>

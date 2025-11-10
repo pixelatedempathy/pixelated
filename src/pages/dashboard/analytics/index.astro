@@ -1,0 +1,28 @@
+---
+export const prerender = false
+
+import DashboardLayout from '../../../layouts/DashboardLayout.astro'
+import DashboardCard from '@/components/ui/DashboardCard.astro'
+import StatsGrid from '@/components/ui/StatsGrid.astro'
+
+const stats = [
+  { label: 'Total Sessions', value: '--', color: 'emerald' },
+  { label: 'Avg Score', value: '--', color: 'cyan' },
+  { label: 'Completion Rate', value: '--', color: 'purple' },
+  { label: 'Time Spent', value: '--', color: 'pink' }
+]
+---
+
+<DashboardLayout title="Analytics - Pixelated Empathy">
+  <div class="space-y-8">
+    <h1 class="text-3xl font-bold text-white">Analytics Overview</h1>
+
+    <StatsGrid stats={stats} columns={4} />
+
+    <DashboardCard title="Performance Trends">
+      <div class="h-64 flex items-center justify-center text-gray-400">
+        Chart placeholder
+      </div>
+    </DashboardCard>
+  </div>
+</DashboardLayout>

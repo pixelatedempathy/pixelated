@@ -1,0 +1,79 @@
+---
+interface Props {
+  type?: 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'scale' | 'bounce'
+  delay?: number
+  duration?: number
+  class?: string
+}
+
+const { 
+  type = 'fade', 
+  delay = 0, 
+  duration = 800,
+  class: className = ''
+} = Astro.props
+
+const animations = {
+  fade: 'animate-fade-in',
+  'slide-up': 'animate-slide-up',
+  'slide-down': 'animate-slide-down',
+  'slide-left': 'animate-slide-left',
+  'slide-right': 'animate-slide-right',
+  scale: 'animate-scale',
+  bounce: 'animate-bounce-in'
+}
+---
+
+<div 
+  class={`${animations[type]} ${className}`}
+  style={`animation-delay: ${delay}ms; animation-duration: ${duration}ms;`}
+>
+  <slot />
+</div>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-left {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slide-right {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes scale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes bounce-in {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+  }
+  
+  .animate-fade-in { animation: fade-in ease-out; }
+  .animate-slide-up { animation: slide-up ease-out; }
+  .animate-slide-down { animation: slide-down ease-out; }
+  .animate-slide-left { animation: slide-left ease-out; }
+  .animate-slide-right { animation: slide-right ease-out; }
+  .animate-scale { animation: scale ease-out; }
+  .animate-bounce-in { animation: bounce-in ease-out; }
+</style>
