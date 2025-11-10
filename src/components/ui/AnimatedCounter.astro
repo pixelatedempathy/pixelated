@@ -8,12 +8,13 @@ export interface Props {
 
 const { value, label, duration = 2000, suffix = '' } = Astro.props
 
-// Handle placeholder values that shouldn't animate
-const isPlaceholder = value === '--' || !value.match(/\d/)
-const displayValue = isPlaceholder ? value : value
-const numericValue = isPlaceholder ? 0 : parseInt(value.replace(/[^\d]/g, ''))
-const hasPlus = value.includes('+')
-const hasPercent = value.includes('%')
+// Ensure value is a string and handle placeholder values
+const valueStr = String(value || '--')
+const isPlaceholder = valueStr === '--' || !/\d/.test(valueStr)
+const displayValue = valueStr
+const numericValue = isPlaceholder ? 0 : parseInt(valueStr.replace(/[^\d]/g, '') || '0')
+const hasPlus = valueStr.includes('+')
+const hasPercent = valueStr.includes('%')
 ---
 
 <div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent} data-is-placeholder={isPlaceholder} data-display-value={displayValue}>
