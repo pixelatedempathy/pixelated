@@ -177,6 +177,16 @@ export default defineConfig({
       }
     },
     plugins: [
+      // Inject MessageChannel polyfill for Cloudflare Workers
+      {
+        name: 'inject-message-channel-polyfill',
+        enforce: 'pre',
+        transform(code, id) {
+          if (id.includes('@astro-renderers') || id.includes('react-dom/server')) {
+            return `if(typeof MessageChannel==='undefined'){globalThis.MessageChannel=class{constructor(){this.port1={postMessage:()=>{},onmessage:null,start:()=>{},close:()=>{},addEventListener:()=>{},removeEventListener:()=>{}};this.port2={postMessage:()=>{},onmessage:null,start:()=>{},close:()=>{},addEventListener:()=>{},removeEventListener:()=>{}}}}};\n${code}`
+          }
+        }
+      },
       // Bundle analyzer for production builds
       ...(process.env.ANALYZE_BUNDLE === '1' ? [visualizer({
         filename: 'dist/bundle-analysis.html',
