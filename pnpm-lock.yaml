@@ -240,8 +240,6 @@ importers:
       resend:
         specifier: ^6.3.0
         version: 6.4.0
-        specifier: ^1.0.20
-        version: 1.0.20
       simple-git:
         specifier: ^3.29.0
         version: 3.29.0
@@ -8694,10 +8692,6 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
-
-    resolution: {integrity: sha512-IKf4qPxG4AN+ZBHUkOlGjTHzX6lM4kYBXcBXPXWskqqanup0n5t6/9TJkmb3L/sheMQKQFQLVJlEqZrrdE1R2Q==}
-    engines: {node: '>=18.20.8'}
-    hasBin: true
 
   rxjs@7.8.2:
     resolution: {integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==}
@@ -20472,14 +20466,6 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
-
-    dependencies:
-      better-sqlite3: 11.10.0
-      uuid: 9.0.1
-      ws: 8.18.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   rxjs@7.8.2:
     dependencies:
