@@ -36,6 +36,21 @@ const {
     <meta name="twitter:title" content={`${title} | Pixelated Empathy`} />
     <meta name="twitter:description" content={description} />
     
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Pixelated Empathy",
+      "url": "https://pixelatedempathy.com",
+      "logo": "https://pixelatedempathy.com/android-chrome-512x512.png",
+      "description": "AI-powered training platform for mental health professionals",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "url": "https://pixelatedempathy.com/contact"
+      }
+    })} />
+    
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
