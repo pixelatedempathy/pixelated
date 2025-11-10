@@ -21,8 +21,7 @@ export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
   adapter: cloudflare({
-    mode: 'advanced',
-    functionPerRoute: false
+    mode: 'directory'
   }),
   trailingSlash: 'ignore',
   build: {
