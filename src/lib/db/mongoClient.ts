@@ -1,11 +1,20 @@
 // Thin MongoDB client adapter (renamed from src/lib/supabase.ts)
 // Purpose: provide a consistent export for the shared MongoDB client and related auth service.
 
-import mongodb from '../../config/mongodb.config'
 import { mongoAuthService } from '../../services/mongoAuth.service'
 
+// Lazy-load mongodb to avoid static/dynamic import conflict
+let mongodb: any = null
+async function getMongoDBInstance() {
+  if (!mongodb) {
+    const mod = await import('../../config/mongodb.config')
+    mongodb = mod.default
+  }
+  return mongodb
+}
+
 // MongoDB client type (re-export for convenience)
-export type MongoDBClient = typeof mongodb
+export type MongoDBClient = Awaited<ReturnType<typeof getMongoDBInstance>>
 
 // Environment variable helpers (kept minimal and local)
 interface ProcessEnv {
@@ -49,6 +58,7 @@ export function getJWTSecret(): string {
 
 export async function initializeDatabase() {
   try {
+    const mongodb = await getMongoDBInstance()
     await mongodb.connect()
     console.log('✅ MongoDB connected successfully')
     return true
@@ -60,6 +70,7 @@ export async function initializeDatabase() {
 
 export async function getDatabaseHealth() {
   try {
+    const mongodb = await getMongoDBInstance()
     const isHealthy = await mongodb.healthCheck()
     return {
       status: isHealthy ? 'healthy' : 'unhealthy',
@@ -75,10 +86,10 @@ export async function getDatabaseHealth() {
   }
 }
 
-export const mongoClient = mongodb
+export const mongoClient = getMongoDBInstance()
 // Prefer adapter-based auth exports for application code
 export { default as authAdapter } from '@/adapters/betterAuthMongoAdapter'
 export const authService = mongoAuthService // legacy export; prefer `authAdapter`
-export { mongodb as default, mongoAuthService }
+export { getMongoDBInstance as mongodb, mongoAuthService }
 
 console.log('📦 MongoDB library initialized (src/lib/db/mongoClient.ts)')

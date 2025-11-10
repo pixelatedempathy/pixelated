@@ -39,6 +39,10 @@ export default defineConfig({
       output: {
         // Manual chunk splitting for better caching
         manualChunks: (id) => {
+          // node-seal WASM (large bundle)
+          if (id.includes('node-seal')) {
+            return 'seal-vendor';
+          }
           // React ecosystem
           if (id.includes('react') || id.includes('react-dom')) {
             return 'react-vendor';
@@ -215,7 +219,45 @@ export default defineConfig({
         'mongodb',
         'recharts',
         'chart.js',
+        'node:events',
+        'node:diagnostics_channel',
+        'node:fs',
+        'node:path',
+        'node:readline',
+        'node:util',
+        'node:http',
+        'node:https',
+        'node:stream',
+        'node:zlib',
+        'node:net',
+        'node:worker_threads',
+        'node:inspector',
+        'node:child_process',
+        'node:os',
+        'node:perf_hooks',
+        'node:buffer',
+        'node:crypto',
+        'node:tls',
+        'node:module',
+        'node:fs/promises',
+        'node:process',
+        'crypto',
+        'fs',
+        'path',
+        'os',
+        'net',
+        'tls',
+        'https',
+        'assert',
+        'worker_threads',
+        'diagnostics_channel',
+        'async_hooks',
+        'module',
+        'perf_hooks',
+        'zlib',
+        'fs/promises',
       ],
+      noExternal: [],
     },
     optimizeDeps: {
       entries: [

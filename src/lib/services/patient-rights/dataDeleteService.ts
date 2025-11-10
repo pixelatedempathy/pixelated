@@ -1,5 +1,5 @@
 import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
-import mongoClient from '../../db/mongoClient'
+import { mongoClient } from '../../db/mongoClient'
 import type { DataDeletionRequest as DeletionRequest } from './dataDeleteService'
 import { getAuditLogger } from '../../ai/bias-detection/audit'
 

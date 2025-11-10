@@ -23,6 +23,7 @@
     "dev:all-services": "concurrently \"pnpm dev\" \"pnpm dev:bias-detection\" \"pnpm dev:ai-service\" \"pnpm dev:analytics\" \"pnpm dev:worker\"",
     "setup:dev": "./scripts/setup-dev.sh",
     "build": "astro build",
+    "postbuild": "echo '_worker.js' > dist/.assetsignore",
     "build:analyze": "astro build && pnpm run analyze:bundle",
     "analyze:bundle": "npx astro-bundle-analyzer dist",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro,json}\"",
