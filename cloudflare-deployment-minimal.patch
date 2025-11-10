@@ -1,0 +1,148 @@
+diff --git a/astro.config.mjs b/astro.config.mjs
+index c26c8fb4..026ad71f 100644
+--- a/astro.config.mjs
++++ b/astro.config.mjs
+@@ -21,10 +21,8 @@ export default defineConfig({
+   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
+   output: 'server',
+   adapter: cloudflare({
+-    mode: 'directory',
+-    platformProxy: {
+-      enabled: true
+-    }
++    mode: 'advanced',
++    functionPerRoute: false
+   }),
+   trailingSlash: 'ignore',
+   build: {
+@@ -179,6 +177,16 @@ export default defineConfig({
+       }
+     },
+     plugins: [
++      // Inject MessageChannel polyfill for Cloudflare Workers
++      {
++        name: 'inject-message-channel-polyfill',
++        enforce: 'pre',
++        transform(code, id) {
++          if (id.includes('@astro-renderers') || id.includes('react-dom/server')) {
++            return `if(typeof MessageChannel==='undefined'){globalThis.MessageChannel=class{constructor(){this.port1={postMessage:()=>{},onmessage:null,start:()=>{},close:()=>{},addEventListener:()=>{},removeEventListener:()=>{}};this.port2={postMessage:()=>{},onmessage:null,start:()=>{},close:()=>{},addEventListener:()=>{},removeEventListener:()=>{}}}}};\n${code}`
++          }
++        }
++      },
+       // Bundle analyzer for production builds
+       ...(process.env.ANALYZE_BUNDLE === '1' ? [visualizer({
+         filename: 'dist/bundle-analysis.html',
+@@ -314,7 +322,7 @@ export default defineConfig({
+       react({
+         include: ['**/react/*', '**/components/**/*'],
+         experimentalReactChildren: true,
+-      })
++      }),
+     ]
+     if (MIN_DEV) return base
+     return [
+diff --git a/functions/_middleware.js b/functions/_middleware.js
+new file mode 100644
+index 00000000..ff5b2f01
+--- /dev/null
++++ b/functions/_middleware.js
+@@ -0,0 +1,13 @@
++// Polyfill MessageChannel for Cloudflare Workers - MUST BE FIRST
++if (typeof MessageChannel === 'undefined') {
++  globalThis.MessageChannel = class MessageChannel {
++    constructor() {
++      this.port1 = { postMessage: () => {}, onmessage: null, start: () => {}, close: () => {}, addEventListener: () => {}, removeEventListener: () => {} }
++      this.port2 = { postMessage: () => {}, onmessage: null, start: () => {}, close: () => {}, addEventListener: () => {}, removeEventListener: () => {} }
++    }
++  }
++}
++
++export async function onRequest(context) {
++  return await context.next()
++}
+diff --git a/src/components/ui/AnimatedCounter.astro b/src/components/ui/AnimatedCounter.astro
+index 05da26ab..ac009825 100644
+--- a/src/components/ui/AnimatedCounter.astro
++++ b/src/components/ui/AnimatedCounter.astro
+@@ -7,13 +7,18 @@ export interface Props {
+ }
+ 
+ const { value, label, duration = 2000, suffix = '' } = Astro.props
+-const numericValue = parseInt(value.replace(/[^\d]/g, ''))
+-const hasPlus = value.includes('+')
+-const hasPercent = value.includes('%')
++
++// Ensure value is a string and handle placeholder values
++const valueStr = String(value || '--')
++const isPlaceholder = valueStr === '--' || !/\d/.test(valueStr)
++const displayValue = valueStr
++const numericValue = isPlaceholder ? 0 : parseInt(valueStr.replace(/[^\d]/g, '') || '0')
++const hasPlus = valueStr.includes('+')
++const hasPercent = valueStr.includes('%')
+ ---
+ 
+-<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent}>
+-  <div class="text-3xl font-bold text-white counter-value">0{hasPlus ? '+' : ''}{hasPercent ? '%' : ''}{suffix}</div>
++<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent} data-is-placeholder={isPlaceholder} data-display-value={displayValue}>
++  <div class="text-3xl font-bold text-white counter-value">{displayValue}</div>
+   <div class="text-sm text-gray-400">{label}</div>
+ </div>
+ 
+@@ -25,6 +30,8 @@ const hasPercent = value.includes('%')
+     private suffix: string
+     private hasPlus: boolean
+     private hasPercent: boolean
++    private isPlaceholder: boolean
++    private displayValue: string
+     private observer: IntersectionObserver
+     private hasAnimated: boolean = false
+ 
+@@ -35,8 +42,13 @@ const hasPercent = value.includes('%')
+       this.suffix = element.dataset.suffix || ''
+       this.hasPlus = element.dataset.hasPlus === 'true'
+       this.hasPercent = element.dataset.hasPercent === 'true'
++      this.isPlaceholder = element.dataset.isPlaceholder === 'true'
++      this.displayValue = element.dataset.displayValue || ''
+ 
+-      this.setupIntersectionObserver()
++      // Skip animation for placeholders
++      if (!this.isPlaceholder) {
++        this.setupIntersectionObserver()
++      }
+     }
+ 
+     private setupIntersectionObserver() {
+@@ -89,7 +101,9 @@ const hasPercent = value.includes('%')
+     }
+ 
+     public destroy() {
+-      this.observer.disconnect()
++      if (this.observer) {
++        this.observer.disconnect()
++      }
+     }
+   }
+ 
+diff --git a/src/middleware.ts b/src/middleware.ts
+index cc30ffe8..78ce6d76 100644
+--- a/src/middleware.ts
++++ b/src/middleware.ts
+@@ -1,8 +1,15 @@
+-// Polyfill MessageChannel for Cloudflare Workers
++// Polyfill MessageChannel for Cloudflare Workers (must be first)
+ if (typeof MessageChannel === 'undefined') {
++  class MessagePortPolyfill {
++    onmessage = null
++    postMessage() {}
++    start() {}
++    close() {}
++  }
++  
+   globalThis.MessageChannel = class MessageChannel {
+-    port1 = { postMessage: () => {}, onmessage: null }
+-    port2 = { postMessage: () => {}, onmessage: null }
++    port1 = new MessagePortPolyfill()
++    port2 = new MessagePortPolyfill()
+   } as any
+ }
+ 
