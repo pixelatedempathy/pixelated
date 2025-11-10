@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 # Load .env variables for build processes
-if [ -f .env ]; then
+if [ -f ".env" ]; then
     set -a
-    source .env
+    . "./.env"
     set +a
 fi

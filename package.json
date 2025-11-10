@@ -22,7 +22,7 @@
     "dev:worker": "tsx src/lib/jobs/worker.ts",
     "dev:all-services": "concurrently \"pnpm dev\" \"pnpm dev:bias-detection\" \"pnpm dev:ai-service\" \"pnpm dev:analytics\" \"pnpm dev:worker\"",
     "setup:dev": "./scripts/setup-dev.sh",
-    "build": "source ./load-env.sh && astro build",
+    "build": "astro build",
     "build:analyze": "astro build && pnpm run analyze:bundle",
     "analyze:bundle": "npx astro-bundle-analyzer dist",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro,json}\"",
