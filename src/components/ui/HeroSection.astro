@@ -6,6 +6,7 @@
  * AstroMaxx: Glassmorphism, smooth animations
  * Antfu: Clean typography, minimal aesthetic
  */
+import AnimatedCounter from './AnimatedCounter.astro'
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
@@ -64,18 +65,9 @@
 
         <!-- Mizu: Stats with Generous Spacing -->
         <div class="grid grid-cols-3 gap-6 pt-8 fade-in-up" style="animation-delay: 400ms;">
-          <div>
-            <div class="text-3xl font-bold text-white">10K+</div>
-            <div class="text-sm text-gray-400">Training Sessions</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-white">95%</div>
-            <div class="text-sm text-gray-400">Accuracy Rate</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-white">24/7</div>
-            <div class="text-sm text-gray-400">Availability</div>
-          </div>
+          <AnimatedCounter value="10K+" label="Training Sessions" />
+          <AnimatedCounter value="95%" label="Accuracy Rate" />
+          <AnimatedCounter value="24" label="Availability" suffix="/7" />
         </div>
 
         <!-- Trust Indicators -->
@@ -107,7 +99,7 @@
         <div class="relative">
           <!-- Flabbergasted: Rotated Container -->
           <div class="lg:rotate-3 lg:translate-x-4">
-            <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl">
+            <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.05)]">
               
               <!-- Header -->
               <div class="flex items-center justify-between mb-6">
@@ -116,7 +108,7 @@
                   <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full">
+                <div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full animate-pulse-subtle">
                   <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -136,17 +128,34 @@
                     </svg>
                   </div>
                   <div class="flex-1 bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-4">
-                    <p class="text-sm text-gray-300">"How are you feeling today? I notice you seem a bit stressed..."</p>
+                    <p class="text-sm text-gray-200 font-medium" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">"How are you feeling today? I notice you seem a bit stressed..."</p>
                   </div>
                 </div>
 
                 <!-- User Response -->
                 <div class="flex gap-3 justify-end">
                   <div class="flex-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-none p-4">
-                    <p class="text-sm text-gray-200">"I've been having trouble sleeping and feeling anxious about work..."</p>
+                    <p class="text-sm text-white font-medium" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">"I've been having trouble sleeping and feeling anxious about work..."</p>
                   </div>
                   <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
                     <span class="text-white text-xs font-bold">U</span>
+                  </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="flex gap-3 typing-indicator">
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                      <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-4">
+                    <div class="flex items-center gap-1">
+                      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+                      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+                      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -204,5 +213,25 @@
   .fade-in-up {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
+  }
+
+  /* Custom animations for enhanced chat simulation */
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  .typing-indicator {
+    animation: fadeInUp 0.5s ease-out 2s both;
   }
 </style>

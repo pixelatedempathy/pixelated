@@ -1,0 +1,86 @@
+---
+import Testimonial from './Testimonial.astro'
+
+const testimonials = [
+  {
+    quote: "This platform has transformed our training approach. The AI simulations provide realistic practice scenarios that have improved our team's intervention skills.",
+    name: "Dr. [Name]",
+    title: "Director of Clinical Training",
+    institution: "[Healthcare Institution]"
+  },
+  {
+    quote: "The technology allows our residents to practice difficult conversations in a safe environment before working with patients.",
+    name: "Dr. [Name]",
+    title: "Chief of Psychiatry", 
+    institution: "[Medical Center]"
+  },
+  {
+    quote: "We've seen significant improvement in therapeutic communication skills. The real-time feedback helps staff identify areas for improvement.",
+    name: "Dr. [Name]",
+    title: "Training Coordinator",
+    institution: "[Healthcare Network]"
+  },
+  {
+    quote: "The platform's training modules have been valuable for serving diverse populations with greater confidence.",
+    name: "Dr. [Name]",
+    title: "Clinical Director",
+    institution: "[Mental Health Center]"
+  }
+]
+---
+
+<section class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-cyan-500/5"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-mono mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        Trusted by Professionals
+      </div>
+      <h2 class="text-4xl font-bold text-white mb-4">What Mental Health Leaders Say</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Healthcare professionals worldwide trust our platform to enhance their training and improve patient outcomes.
+      </p>
+    </div>
+
+    <div class="testimonials-carousel relative">
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        {testimonials.slice(0, 2).map((testimonial) => (
+          <Testimonial {...testimonial} />
+        ))}
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.slice(2, 4).map((testimonial) => (
+          <Testimonial {...testimonial} />
+        ))}
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <div class="flex items-center justify-center gap-8 text-gray-400">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-sm">500+ Institutions</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-sm">135K+ Professionals</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-sm">98% Satisfaction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

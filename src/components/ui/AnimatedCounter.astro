@@ -1,46 +1,45 @@
 ---
 export interface Props {
-  value: number
-  suffix?: string
-  prefix?: string
+  value: string
+  label: string
   duration?: number
-  className?: string
+  suffix?: string
 }
 
-const { value, suffix = '', prefix = '', duration = 2000, className = '' } = Astro.props
+const { value, label, duration = 2000, suffix = '' } = Astro.props
+const numericValue = parseInt(value.replace(/[^\d]/g, ''))
+const hasPlus = value.includes('+')
+const hasPercent = value.includes('%')
 ---
 
-<span 
-  class={`animated-counter ${className}`}
-  data-target={value}
-  data-suffix={suffix}
-  data-prefix={prefix}
-  data-duration={duration}
->
-  {prefix}0{suffix}
-</span>
+<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent}>
+  <div class="text-3xl font-bold text-white counter-value">0{hasPlus ? '+' : ''}{hasPercent ? '%' : ''}{suffix}</div>
+  <div class="text-sm text-gray-400">{label}</div>
+</div>
 
 <script>
   class AnimatedCounter {
     private element: HTMLElement
     private target: number
-    private suffix: string
-    private prefix: string
     private duration: number
+    private suffix: string
+    private hasPlus: boolean
+    private hasPercent: boolean
     private observer: IntersectionObserver
     private hasAnimated: boolean = false
 
     constructor(element: HTMLElement) {
       this.element = element
       this.target = parseInt(element.dataset.target || '0')
-      this.suffix = element.dataset.suffix || ''
-      this.prefix = element.dataset.prefix || ''
       this.duration = parseInt(element.dataset.duration || '2000')
+      this.suffix = element.dataset.suffix || ''
+      this.hasPlus = element.dataset.hasPlus === 'true'
+      this.hasPercent = element.dataset.hasPercent === 'true'
 
-      this.setupObserver()
+      this.setupIntersectionObserver()
     }
 
-    private setupObserver() {
+    private setupIntersectionObserver() {
       this.observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -60,36 +59,33 @@ const { value, suffix = '', prefix = '', duration = 2000, className = '' } = Ast
     }
 
     private animate() {
+      const counterElement = this.element.querySelector('.counter-value') as HTMLElement
+      if (!counterElement) return
+
       const startTime = performance.now()
       const startValue = 0
 
       const updateCounter = (currentTime: number) => {
         const elapsed = currentTime - startTime
         const progress = Math.min(elapsed / this.duration, 1)
+        
+        // Easing function (ease-out cubic)
+        const easeOut = 1 - Math.pow(1 - progress, 3)
+        const currentValue = Math.floor(startValue + (this.target - startValue) * easeOut)
 
-        // Easing function for smooth animation
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-        const currentValue = Math.floor(startValue + (this.target - startValue) * easeOutQuart)
+        let displayValue = currentValue.toString()
+        if (this.hasPlus) displayValue += '+'
+        if (this.hasPercent) displayValue += '%'
+        if (this.suffix) displayValue += this.suffix
 
-        this.element.textContent = `${this.prefix}${this.formatNumber(currentValue)}${this.suffix}`
+        counterElement.textContent = displayValue
 
         if (progress < 1) {
           requestAnimationFrame(updateCounter)
-        } else {
-          // Ensure we end with the exact target value
-          this.element.textContent = `${this.prefix}${this.formatNumber(this.target)}${this.suffix}`
         }
       }
 
       requestAnimationFrame(updateCounter)
-    }
-
-    private formatNumber(num: number): string {
-      // Add commas for thousands
-      if (num >= 1000) {
-        return num.toLocaleString()
-      }
-      return num.toString()
     }
 
     public destroy() {
@@ -97,31 +93,25 @@ const { value, suffix = '', prefix = '', duration = 2000, className = '' } = Ast
     }
   }
 
-  // Initialize all animated counters
-  document.addEventListener('DOMContentLoaded', () => {
+  // Initialize counters when page loads
+  document.addEventListener('astro:page-load', () => {
     const counters = document.querySelectorAll('.animated-counter')
     counters.forEach((counter) => {
       new AnimatedCounter(counter as HTMLElement)
     })
   })
-
-  // Handle dynamic content (if counters are added after page load)
-  const initializeNewCounters = () => {
-    const counters = document.querySelectorAll('.animated-counter:not([data-initialized])')
-    counters.forEach((counter) => {
-      const element = counter as HTMLElement
-      element.setAttribute('data-initialized', 'true')
-      new AnimatedCounter(element)
-    })
-  }
-
-  // Export for external use
-  ;(window as any).initializeAnimatedCounters = initializeNewCounters
 </script>
 
 <style>
   .animated-counter {
-    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .animated-counter:hover {
+    transform: translateY(-2px);
+  }
+
+  .counter-value {
     font-variant-numeric: tabular-nums;
     font-feature-settings: 'tnum';
   }

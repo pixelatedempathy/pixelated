@@ -1,0 +1,175 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const jobListings = [
+  {
+    title: "AI Engineer",
+    department: "Engineering",
+    location: "Remote",
+    type: "Full-time",
+    description: "Work on AI models and training simulation systems.",
+    requirements: ["Machine learning experience", "Programming skills", "Healthcare interest preferred"]
+  },
+  {
+    title: "Clinical Consultant",
+    department: "Clinical",
+    location: "Remote",
+    type: "Full-time", 
+    description: "Design and validate therapeutic training scenarios and frameworks.",
+    requirements: ["Clinical psychology background", "Licensed practitioner", "Training experience"]
+  },
+  {
+    title: "Product Designer",
+    department: "Design",
+    location: "Remote",
+    type: "Full-time",
+    description: "Create user interfaces for training and assessment tools.",
+    requirements: ["UX/UI design experience", "Healthcare/EdTech background helpful", "Design tool proficiency"]
+  },
+  {
+    title: "Platform Engineer",
+    department: "Engineering",
+    location: "Remote",
+    type: "Full-time",
+    description: "Build and maintain secure, scalable infrastructure for healthcare applications.",
+    requirements: ["Cloud platform experience", "Container technologies", "Security compliance knowledge"]
+  },
+  {
+    title: "Customer Success Specialist",
+    department: "Customer Success",
+    location: "Remote",
+    type: "Full-time",
+    description: "Help healthcare institutions implement and adopt training platforms.",
+    requirements: ["Customer success experience", "Healthcare industry knowledge", "Communication skills"]
+  }
+]
+
+const benefits = [
+  {
+    icon: "🏥",
+    title: "Healthcare Impact",
+    description: "Work on technology that directly improves mental healthcare outcomes"
+  },
+  {
+    icon: "🌍",
+    title: "Remote-First",
+    description: "Work from anywhere with flexible hours and quarterly team retreats"
+  },
+  {
+    icon: "💰",
+    title: "Competitive Package",
+    description: "Top-tier salary, equity, and comprehensive health benefits"
+  },
+  {
+    icon: "📚",
+    title: "Learning Budget",
+    description: "Annual budget for conferences, courses, and professional development"
+  },
+  {
+    icon: "🎯",
+    title: "Mission-Driven",
+    description: "Join a team passionate about transforming mental health training"
+  },
+  {
+    icon: "⚖️",
+    title: "Work-Life Balance",
+    description: "Unlimited PTO, mental health days, and sabbatical opportunities"
+  }
+]
+---
+
+<Layout title="Careers - Pixelated Empathy">
+  <main class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <!-- Background Elements -->
+    <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto px-6 py-24 relative z-10">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-mono mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          Join Our Mission
+        </div>
+        <h1 class="text-5xl font-bold text-white mb-6">Build the Future of Mental Health Training</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          We're looking for passionate individuals who want to revolutionize how mental health professionals are trained. Join us in creating technology that saves lives.
+        </p>
+      </div>
+
+      <!-- Company Culture -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">Why Work With Us</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit) => (
+            <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div class="text-4xl mb-4">{benefit.icon}</div>
+              <h3 class="text-xl font-bold text-white mb-2">{benefit.title}</h3>
+              <p class="text-gray-300">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Job Listings -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">Open Positions</h2>
+        <div class="space-y-6">
+          {jobListings.map((job) => (
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-4 mb-2">
+                      <h3 class="text-2xl font-bold text-white">{job.title}</h3>
+                      <span class="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-400 text-sm">
+                        {job.department}
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-400 text-sm mb-4">
+                      <span>📍 {job.location}</span>
+                      <span>⏰ {job.type}</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">{job.description}</p>
+                    <div class="flex flex-wrap gap-2">
+                      {job.requirements.map((req) => (
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">
+                          {req}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Application CTA -->
+      <div class="text-center">
+        <div class="group relative inline-block">
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-black/40 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Don't See Your Role?</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+              We're always looking for exceptional talent. Send us your resume and tell us how you'd like to contribute to our mission.
+            </p>
+            <a href="mailto:careers@pixelatedempathy.com" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg transition-all duration-200 transform hover:scale-105">
+              Send Us Your Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import PageHero from '@/components/ui/PageHero.astro'
 import ContentSection from '@/components/ui/ContentSection.astro'
 import FeatureCard from '@/components/ui/FeatureCard.astro'
+import AnimatedCounter from '@/components/ui/AnimatedCounter.astro'
 ---
 
 <Layout title="Features - Pixelated Empathy">
@@ -81,22 +82,10 @@ import FeatureCard from '@/components/ui/FeatureCard.astro'
         Leading healthcare institutions trust our platform for training excellence.
       </p>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">500+</div>
-          <div class="text-sm text-gray-400">Healthcare Institutions</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">135K+</div>
-          <div class="text-sm text-gray-400">Trained Professionals</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">98%</div>
-          <div class="text-sm text-gray-400">Satisfaction Rate</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">24/7</div>
-          <div class="text-sm text-gray-400">Platform Availability</div>
-        </div>
+        <AnimatedCounter value="500+" label="Healthcare Institutions" />
+        <AnimatedCounter value="135K+" label="Trained Professionals" />
+        <AnimatedCounter value="98%" label="Satisfaction Rate" />
+        <AnimatedCounter value="24" label="Platform Availability" suffix="/7" />
       </div>
     </div>
   </ContentSection>

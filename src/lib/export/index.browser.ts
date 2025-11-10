@@ -207,13 +207,13 @@ export class ExportService {
       let mimeType: string
       let filename: string
 
-      if (exportOptions.format === ExportFormat.JSON_FORMAT) {
+      if (exportOptions.format === ExportFormat.JSON) {
         exportData = await this.createJSONExport(messages, exportOptions)
         mimeType = 'application/json'
         filename = `therapy-conversation-${exportId}.json`
       } else if (exportOptions.format === ExportFormat.PDF) {
         throw new Error('PDF export is not supported in browser environments')
-      } else if (exportOptions.format === ExportFormat.ARCHIVE) {
+      } else if (exportOptions.format === ExportFormat.ARCHIVE || exportOptions.format === ExportFormat.ENCRYPTED_ARCHIVE) {
         throw new Error(
           'Encrypted archive export is not supported in browser environments',
         )

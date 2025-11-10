@@ -1,0 +1,35 @@
+---
+export interface Props {
+  quote: string
+  name: string
+  title: string
+  institution: string
+  image?: string
+}
+
+const { quote, name, title, institution, image } = Astro.props
+---
+
+<div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300">
+  <div class="flex items-start gap-4">
+    <div class="flex-shrink-0">
+      {image ? (
+        <img src={image} alt={name} class="w-16 h-16 rounded-full object-cover" />
+      ) : (
+        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+          {name.charAt(0)}
+        </div>
+      )}
+    </div>
+    <div class="flex-1">
+      <blockquote class="text-gray-300 text-lg leading-relaxed mb-4">
+        "{quote}"
+      </blockquote>
+      <div>
+        <div class="text-white font-semibold">{name}</div>
+        <div class="text-emerald-400 text-sm">{title}</div>
+        <div class="text-gray-400 text-sm">{institution}</div>
+      </div>
+    </div>
+  </div>
+</div>

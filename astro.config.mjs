@@ -13,20 +13,22 @@ import icon from 'astro-icon';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://astro.build/config
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
-  adapter: node({
-    mode: 'standalone'
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true
+    }
   }),
   trailingSlash: 'ignore',
   build: {
     format: 'directory',
-    sourcemap: process.env.NODE_ENV !== 'production',
+    sourcemap: true, // Enable sourcemaps for debugging
     copy: [
       {
         from: 'templates/email',
@@ -90,12 +92,11 @@ export default defineConfig({
       },
     },
     build: {
-      sourcemap: process.env.NODE_ENV === 'production' ? false : 'hidden',
-      target: 'node24',
-      chunkSizeWarningLimit: process.env.NODE_ENV === 'production' ? 500 : 1500,
-      // Enable minification in production
-      minify: process.env.NODE_ENV === 'production' ? 'terser' : false,
-      terserOptions: process.env.NODE_ENV === 'production' ? {
+      sourcemap: true, // Enable sourcemaps for debugging
+      target: 'esnext', // Use esnext for Cloudflare Workers
+      chunkSizeWarningLimit: 1000,
+      minify: 'terser',
+      terserOptions: {
         compress: {
           drop_console: true,
           drop_debugger: true,
@@ -104,7 +105,7 @@ export default defineConfig({
         mangle: {
           safari10: true
         }
-      } : {},
+      },
       rollupOptions: {
         external: [
           '@google-cloud/storage',
@@ -135,18 +136,23 @@ export default defineConfig({
           'chart.js',
         ],
         onwarn(warning, warn) {
+          // Suppress sourcemap warnings
           if (
             warning.code === "SOURCEMAP_ERROR" ||
-            (warning.message && warning.message.includes("didn't generate a sourcemap"))
+            warning.code === "MISSING_EXPORT" ||
+            warning.code === "CIRCULAR_DEPENDENCY" ||
+            (warning.message && (
+              warning.message.includes("didn't generate a sourcemap") ||
+              warning.message.includes("externalized for browser compatibility") ||
+              warning.message.includes('icon "-"') ||
+              warning.message.includes('failed to load icon \'-\'') ||
+              warning.message.includes('Rollup failed to resolve import') ||
+              warning.message.includes('could not determine a source map reference') ||
+              warning.message.includes('no sourcemap found') ||
+              warning.message.includes('Duplicate member') ||
+              warning.message.includes('CommonJS "module" variable')
+            ))
           ) {
-            return
-          }
-          if (warning.message && (
-            warning.message.includes('externalized for browser compatibility') ||
-            warning.message.includes('icon "-"') ||
-            warning.message.includes('failed to load icon \'-\'') ||
-            warning.message.includes('Rollup failed to resolve import')
-          )) {
             return
           }
           warn(warning)
