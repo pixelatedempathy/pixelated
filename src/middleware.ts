@@ -1,3 +1,18 @@
+// Polyfill MessageChannel for Cloudflare Workers (must be first)
+if (typeof MessageChannel === 'undefined') {
+  class MessagePortPolyfill {
+    onmessage = null
+    postMessage() {}
+    start() {}
+    close() {}
+  }
+  
+  globalThis.MessageChannel = class MessageChannel {
+    port1 = new MessagePortPolyfill()
+    port2 = new MessagePortPolyfill()
+  } as any
+}
+
 import { generateCspNonce } from './lib/middleware/csp'
 import { securityHeaders } from './lib/middleware/securityHeaders'
 import { sequence, defineMiddleware } from 'astro:middleware'
