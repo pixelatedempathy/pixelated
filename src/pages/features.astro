@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import Layout from '@/layouts/Layout.astro'
 import PageHero from '@/components/ui/PageHero.astro'
 import ContentSection from '@/components/ui/ContentSection.astro'
@@ -78,15 +80,15 @@ import Button from '@/components/ui/Button.astro'
       <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6">
         <span class="text-sm font-medium text-emerald-400">Trusted by Professionals</span>
       </div>
-      <h2 class="text-4xl font-bold text-white mb-4">Join 135K+ Mental Health Professionals</h2>
+      <h2 class="text-4xl font-bold text-white mb-4">Trusted by Mental Health Professionals</h2>
       <p class="text-xl text-gray-300 mb-8">
         Leading healthcare institutions trust our platform for training excellence.
       </p>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-        <AnimatedCounter value="500+" label="Healthcare Institutions" />
-        <AnimatedCounter value="135K+" label="Trained Professionals" />
-        <AnimatedCounter value="98%" label="Satisfaction Rate" />
-        <AnimatedCounter value="24" label="Platform Availability" suffix="/7" />
+        <AnimatedCounter value="--" label="Healthcare Institutions" />
+        <AnimatedCounter value="--" label="Trained Professionals" />
+        <AnimatedCounter value="--" label="Satisfaction Rate" />
+        <AnimatedCounter value="24/7" label="Platform Availability" />
       </div>
     </div>
   </ContentSection>
