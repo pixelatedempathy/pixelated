@@ -21,10 +21,10 @@ export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
   adapter: cloudflare({
+    mode: 'directory',
     platformProxy: {
       enabled: true
-    },
-    mode: 'directory'
+    }
   }),
   trailingSlash: 'ignore',
   build: {
