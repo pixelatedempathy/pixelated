@@ -1,22 +1,10 @@
-# Wrangler Configuration for Pixelated Empathy (Pages)
-# https://developers.cloudflare.com/pages/
-
-name = "pixelated"
-pages_build_output_dir = "dist"
-compatibility_date = "2024-10-31"
-
-# Node.js compatibility for Pages Functions
+name = "pixelated-empathy"
+compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
 
-# Environment Variables
-[vars]
-NODE_ENV = "staging"
-PUBLIC_SITE_URL = "https://pixelatedempathy.com"
+[build]
+command = "pnpm build"
 
-# Preview environment
-[env.preview]
-vars = { NODE_ENV = "staging", PUBLIC_SITE_URL = "https://pixelatedempathy.tech" }
-
-# Production environment
 [env.production]
-vars = { NODE_ENV = "production", PUBLIC_SITE_URL = "https://pixelatedempathy.com" }
+vars = { NODE_ENV = "production" }

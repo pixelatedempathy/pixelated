@@ -19,11 +19,15 @@ import { visualizer } from 'rollup-plugin-visualizer';
 // https://astro.build/config
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
-  output: 'server',
+  output: 'hybrid',
   adapter: cloudflare({
     mode: 'directory',
     platformProxy: {
       enabled: true
+    },
+    imageService: 'passthrough',
+    routes: {
+      strategy: 'auto'
     }
   }),
   trailingSlash: 'ignore',
