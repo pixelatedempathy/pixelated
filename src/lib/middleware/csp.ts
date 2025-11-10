@@ -1,4 +1,3 @@
-import { randomBytes } from 'crypto'
 import type { APIContext } from 'astro'
 
 /**
@@ -7,8 +6,11 @@ import type { APIContext } from 'astro'
  */
 export async function generateCspNonce(context: APIContext, next: any) {
   const { locals } = context
-  // Generate a random nonce for this request
-  const nonce = randomBytes(16).toString('base64')
+  
+  // Use Web Crypto API for Cloudflare Workers compatibility
+  const array = new Uint8Array(16)
+  crypto.getRandomValues(array)
+  const nonce = btoa(String.fromCharCode(...array))
 
   // Store the nonce in locals so it can be accessed by other middleware and components
   ;(locals as any).cspNonce = nonce

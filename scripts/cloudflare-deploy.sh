@@ -128,16 +128,17 @@ create_r2_buckets() {
 
 deploy() {
     local ENV=${1:-production}
-    log_info "Deploying to environment: $ENV"
+    log_info "Deploying to Cloudflare Pages environment: $ENV"
     
     cd "$PROJECT_ROOT"
     
-    # Deploy using wrangler
-    if [ "$ENV" = "production" ]; then
-        pnpm wrangler deploy --env production
-    else
-        pnpm wrangler deploy --env "$ENV"
+    # Deploy using wrangler pages
+    local BRANCH="main"
+    if [ "$ENV" != "production" ]; then
+        BRANCH="$ENV"
     fi
+    
+    pnpm wrangler pages deploy dist --project-name=pixelated-empathy --branch="$BRANCH"
     
     log_info "Deployment completed successfully!"
 }

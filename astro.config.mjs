@@ -23,12 +23,13 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: {
       enabled: true
-    }
+    },
+    mode: 'directory'
   }),
   trailingSlash: 'ignore',
   build: {
     format: 'directory',
-    sourcemap: true, // Enable sourcemaps for debugging
+    sourcemap: true,
     copy: [
       {
         from: 'templates/email',
@@ -39,31 +40,41 @@ export default defineConfig({
       output: {
         // Manual chunk splitting for better caching
         manualChunks: (id) => {
-          // node-seal WASM (large bundle)
+          // Core framework - keep minimal
+          if (id.includes('astro/dist')) {
+            return 'astro-core';
+          }
+          // node-seal WASM (large bundle) - separate
           if (id.includes('node-seal')) {
             return 'seal-vendor';
           }
-          // React ecosystem
-          if (id.includes('react') || id.includes('react-dom')) {
-            return 'react-vendor';
+          // React ecosystem - split into smaller chunks
+          if (id.includes('react-dom')) {
+            return 'react-dom';
           }
-          // UI libraries
-          if (id.includes('framer-motion') || id.includes('lucide-react')) {
-            return 'ui-vendor';
+          if (id.includes('react') && !id.includes('react-dom')) {
+            return 'react';
           }
-          // Utility libraries
-          if (id.includes('clsx') || id.includes('date-fns') || id.includes('axios')) {
-            return 'utils-vendor';
+          // UI libraries - split by library
+          if (id.includes('framer-motion')) {
+            return 'framer';
           }
-          // Chart libraries
+          if (id.includes('lucide-react')) {
+            return 'icons';
+          }
+          // Utility libraries - keep together
+          if (id.includes('clsx') || id.includes('date-fns')) {
+            return 'utils';
+          }
+          // Chart libraries - lazy load
           if (id.includes('recharts') || id.includes('chart.js')) {
-            return 'charts-vendor';
+            return 'charts';
           }
-          // 3D libraries
+          // 3D libraries - lazy load
           if (id.includes('three') || id.includes('@react-three')) {
-            return 'three-vendor';
+            return 'three';
           }
-          // Node modules (keep separate for better caching)
+          // Everything else from node_modules
           if (id.includes('node_modules')) {
             return 'vendor';
           }
@@ -96,8 +107,8 @@ export default defineConfig({
       },
     },
     build: {
-      sourcemap: true, // Enable sourcemaps for debugging
-      target: 'esnext', // Use esnext for Cloudflare Workers
+      sourcemap: true,
+      target: 'esnext',
       chunkSizeWarningLimit: 1000,
       minify: 'terser',
       terserOptions: {
@@ -138,6 +149,10 @@ export default defineConfig({
           'mongodb',
           'recharts',
           'chart.js',
+          'framer-motion',
+          'lucide-react',
+          '@sentry/astro',
+          '@sentry/node',
         ],
         onwarn(warning, warn) {
           // Suppress sourcemap warnings
