@@ -1,0 +1,1114 @@
+/* ================================================
+   MIZU THEME - Brutalist, Blocked, Geometric
+   Inspired by https://mizu-theme.netlify.app/
+   ================================================ */
+
+:root {
+  /* Mizu Color Palette */
+  --mizu-bg-primary: #0a0a0a;
+  --mizu-bg-secondary: #111111;
+  --mizu-bg-elevated: #1a1a1a;
+  --mizu-bg-pattern: #0f0f0f;
+  
+  --mizu-text-primary: #ffffff;
+  --mizu-text-secondary: #a0a0a0;
+  --mizu-text-muted: #666666;
+  
+  --mizu-accent: #10b981;
+  --mizu-accent-hover: #34d399;
+  
+  --mizu-border: rgba(255, 255, 255, 0.1);
+  --mizu-border-dashed: rgba(68, 64, 59, 1); /* #44403b for dark mode */
+  
+  /* Compact Spacing */
+  --mizu-space-xs: 0.25rem;
+  --mizu-space-sm: 0.5rem;
+  --mizu-space-md: 1rem;
+  --mizu-space-lg: 1.5rem;
+  --mizu-space-xl: 2rem;
+  --mizu-space-2xl: 3rem;
+}
+
+/* ================================================
+   MIZU DECORATIVE BORDERS - Dashed Pattern
+   ================================================ */
+
+.mizu-decoration-border {
+  position: relative;
+}
+
+.mizu-decoration-border__top,
+.mizu-decoration-border__right,
+.mizu-decoration-border__bottom,
+.mizu-decoration-border__left {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mizu-decoration-border--solid .mizu-decoration-border__top,
+.mizu-decoration-border--solid .mizu-decoration-border__bottom {
+  background-color: var(--mizu-border);
+  height: 1px;
+  left: 0;
+  right: 0;
+}
+
+.mizu-decoration-border--solid .mizu-decoration-border__left,
+.mizu-decoration-border--solid .mizu-decoration-border__right {
+  background-color: var(--mizu-border);
+  width: 1px;
+  top: 0;
+  bottom: 0;
+}
+
+.mizu-decoration-border--dashed .mizu-decoration-border__top,
+.mizu-decoration-border--dashed .mizu-decoration-border__bottom {
+  background-image: repeating-linear-gradient(90deg, var(--mizu-border-dashed) 0 4px, transparent 4px 8px);
+  height: 1px;
+  left: 0;
+  right: 0;
+}
+
+.mizu-decoration-border--dashed .mizu-decoration-border__left,
+.mizu-decoration-border--dashed .mizu-decoration-border__right {
+  background-image: repeating-linear-gradient(0deg, var(--mizu-border-dashed) 0 4px, transparent 4px 8px);
+  width: 1px;
+  top: 0;
+  bottom: 0;
+}
+
+.mizu-decoration-border__top {
+  top: 0;
+}
+
+.mizu-decoration-border__right {
+  right: 0;
+}
+
+.mizu-decoration-border__bottom {
+  bottom: 0;
+}
+
+.mizu-decoration-border__left {
+  left: 0;
+}
+
+/* ================================================
+   MIZU DOT PATTERN TEXTURE
+   ================================================ */
+
+.mizu-dot-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 18px 18px;
+  background-attachment: fixed;
+}
+
+/* ================================================
+   MIZU HERO SECTION - Two Pane Layout
+   ================================================ */
+
+.mizu-hero {
+  position: relative;
+  background: var(--mizu-bg-primary);
+  overflow: hidden;
+  padding: var(--mizu-space-2xl) 0;
+}
+
+/* AntfuStyle-inspired subtle background pattern */
+.mizu-hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--mizu-accent) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.5) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mizu-section-spacer {
+  padding: var(--mizu-space-xl) 0;
+  background: var(--mizu-bg-primary);
+}
+
+.mizu-section-spacer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  height: 40px;
+}
+
+.mizu-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--mizu-border);
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .mizu-hero-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mizu-hero-left {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--mizu-border);
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .mizu-hero-left {
+    padding: 6rem 0;
+    border-bottom: none;
+    border-right: 1px solid var(--mizu-border);
+  }
+}
+
+.mizu-hero-right {
+  padding: 0;
+  background: var(--mizu-bg-pattern);
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.mizu-hero-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mizu-hero-visual-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mizu-hero-dot-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.mizu-hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 18px 18px;
+  background-attachment: fixed;
+  pointer-events: none;
+}
+
+.mizu-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mizu-space-xs);
+  padding: var(--mizu-space-xs) var(--mizu-space-md);
+  border: 1px solid var(--mizu-border);
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: var(--mizu-space-lg);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--mizu-text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.mizu-hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--mizu-text-primary);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.mizu-hero-title-text {
+  display: block;
+}
+
+.mizu-hero-title .mizu-decoration-border {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.mizu-hero-title-gradient {
+  color: var(--mizu-accent);
+  /* No gradient - solid color for brutalist look */
+}
+
+.mizu-hero-subtitle {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  padding: var(--mizu-space-xs) var(--mizu-space-md);
+}
+
+.mizu-hero-content {
+  padding: 1.5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mizu-hero-content {
+    padding: 3rem 2rem;
+  }
+}
+
+.mizu-hero-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-xl) 0;
+  max-width: 500px;
+}
+
+.mizu-hero-cta {
+  display: flex;
+  gap: var(--mizu-space-md);
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.mizu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mizu-space-sm);
+  padding: var(--mizu-space-md) var(--mizu-space-lg);
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--mizu-border);
+  background: transparent;
+  color: var(--mizu-text-primary);
+}
+
+.mizu-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mizu-btn-primary {
+  background: var(--mizu-accent);
+  color: #000000;
+  border-color: var(--mizu-accent);
+}
+
+.mizu-btn-primary:hover {
+  background: var(--mizu-accent-hover);
+  border-color: var(--mizu-accent-hover);
+  transform: translateY(-1px);
+}
+
+.mizu-btn-primary:hover svg {
+  transform: translateX(2px);
+}
+
+.mizu-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--mizu-accent);
+  color: var(--mizu-accent);
+}
+
+/* ================================================
+   MIZU FEATURES SECTION - Blocked Grid
+   ================================================ */
+
+.mizu-features {
+  padding: var(--mizu-space-2xl) var(--mizu-space-xl);
+  background: var(--mizu-bg-secondary);
+  border-top: 1px solid var(--mizu-border);
+  position: relative;
+}
+
+.mizu-features-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.mizu-features-header {
+  text-align: center;
+  margin-bottom: var(--mizu-space-xl);
+  padding-bottom: var(--mizu-space-lg);
+  position: relative;
+}
+
+.mizu-features-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: repeating-linear-gradient(90deg, var(--mizu-border-dashed) 0 4px, transparent 4px 8px);
+}
+
+.mizu-features-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mizu-space-xs);
+  padding: var(--mizu-space-xs) var(--mizu-space-md);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0;
+  background: rgba(16, 185, 129, 0.05);
+  margin-bottom: var(--mizu-space-md);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--mizu-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.mizu-features-badge:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.mizu-features-badge svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.mizu-features-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-sm) 0;
+}
+
+.mizu-features-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+}
+
+.mizu-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  border: 1px solid var(--mizu-border);
+}
+
+.mizu-feature-card {
+  padding: var(--mizu-space-xl);
+  border-right: 1px solid var(--mizu-border);
+  border-bottom: 1px solid var(--mizu-border);
+  background: var(--mizu-bg-elevated);
+  transition: all 0.2s ease;
+}
+
+.mizu-feature-card:last-child {
+  border-right: none;
+}
+
+.mizu-features-grid .mizu-feature-card:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+@media (max-width: 1023px) {
+  .mizu-feature-card {
+    border-right: none;
+  }
+  
+  .mizu-feature-card:last-child {
+    border-bottom: none;
+  }
+  
+  .mizu-features-grid .mizu-feature-card:nth-last-child(-n+3) {
+    border-bottom: 1px solid var(--mizu-border);
+  }
+}
+
+.mizu-feature-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mizu-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--mizu-space-md);
+  color: var(--mizu-accent);
+  border: 1px solid var(--mizu-border);
+  padding: var(--mizu-space-sm);
+}
+
+.mizu-feature-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-sm) 0;
+}
+
+.mizu-feature-description {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+}
+
+/* ================================================
+   MIZU STATS SECTION - Blocked Grid
+   ================================================ */
+
+.mizu-stats {
+  padding: var(--mizu-space-2xl) var(--mizu-space-xl);
+  background: var(--mizu-bg-primary);
+  border-top: 1px solid var(--mizu-border);
+}
+
+.mizu-stats-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mizu-stats-header {
+  text-align: center;
+  margin-bottom: var(--mizu-space-xl);
+  padding-bottom: var(--mizu-space-lg);
+  position: relative;
+}
+
+.mizu-stats-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: repeating-linear-gradient(90deg, var(--mizu-border-dashed) 0 4px, transparent 4px 8px);
+}
+
+.mizu-stats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mizu-space-xs);
+  padding: var(--mizu-space-xs) var(--mizu-space-md);
+  border: 1px solid var(--mizu-border);
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: var(--mizu-space-md);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--mizu-text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mizu-stats-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-sm) 0;
+}
+
+.mizu-stats-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+}
+
+.mizu-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border: 1px solid var(--mizu-border);
+}
+
+.mizu-stat-card {
+  text-align: center;
+  padding: var(--mizu-space-xl);
+  border-right: 1px solid var(--mizu-border);
+  border-bottom: 1px solid var(--mizu-border);
+  background: var(--mizu-bg-elevated);
+  transition: all 0.2s ease;
+}
+
+.mizu-stat-card:last-child {
+  border-right: none;
+}
+
+.mizu-stats-grid .mizu-stat-card:nth-last-child(-n+4) {
+  border-bottom: none;
+}
+
+@media (max-width: 1023px) {
+  .mizu-stat-card {
+    border-right: none;
+  }
+  
+  .mizu-stat-card:last-child {
+    border-bottom: none;
+  }
+  
+  .mizu-stats-grid .mizu-stat-card:nth-last-child(-n+4) {
+    border-bottom: 1px solid var(--mizu-border);
+  }
+}
+
+.mizu-stat-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mizu-stat-number {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--mizu-accent);
+  margin: 0 0 var(--mizu-space-sm) 0;
+}
+
+.mizu-stat-label {
+  font-size: 0.75rem;
+  color: var(--mizu-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ================================================
+   MIZU TESTIMONIAL SECTION - Two Pane
+   ================================================ */
+
+.mizu-testimonial {
+  padding: var(--mizu-space-2xl) var(--mizu-space-xl);
+  background: var(--mizu-bg-secondary);
+  border-top: 1px solid var(--mizu-border);
+}
+
+.mizu-testimonial-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid var(--mizu-border);
+}
+
+@media (min-width: 1024px) {
+  .mizu-testimonial-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mizu-testimonial-content {
+  padding: var(--mizu-space-xl);
+  border-bottom: 1px solid var(--mizu-border);
+}
+
+@media (min-width: 1024px) {
+  .mizu-testimonial-content {
+    border-bottom: none;
+    border-right: 1px solid var(--mizu-border);
+  }
+}
+
+.mizu-testimonial-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mizu-space-xs);
+  padding: var(--mizu-space-xs) var(--mizu-space-md);
+  border: 1px solid var(--mizu-border);
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: var(--mizu-space-md);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--mizu-text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mizu-testimonial-quote {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-lg) 0;
+}
+
+.mizu-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--mizu-space-md);
+}
+
+.mizu-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background: var(--mizu-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid var(--mizu-border);
+}
+
+.mizu-testimonial-author-info {
+  flex: 1;
+}
+
+.mizu-testimonial-author-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-xs) 0;
+}
+
+.mizu-testimonial-author-title {
+  font-size: 0.75rem;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+}
+
+.mizu-testimonial-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  padding: var(--mizu-space-xl);
+  border: 1px solid var(--mizu-border);
+  border-left: none;
+  background: var(--mizu-bg-elevated);
+}
+
+.mizu-testimonial-metrics .mizu-metric {
+  padding: var(--mizu-space-md);
+  border-right: 1px solid var(--mizu-border);
+  border-bottom: 1px solid var(--mizu-border);
+}
+
+.mizu-testimonial-metrics .mizu-metric:nth-child(2n) {
+  border-right: none;
+}
+
+.mizu-testimonial-metrics .mizu-metric:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.mizu-metric {
+  text-align: center;
+}
+
+.mizu-metric-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mizu-accent);
+  margin: 0 0 var(--mizu-space-xs) 0;
+}
+
+.mizu-metric-label {
+  font-size: 0.75rem;
+  color: var(--mizu-text-secondary);
+  margin: 0;
+}
+
+/* ================================================
+   MIZU HEADER - Brutalist Navigation
+   ================================================ */
+
+.mizu-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--mizu-bg-primary);
+  width: 100%;
+}
+
+.mizu-header-container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--mizu-space-lg);
+}
+
+.mizu-header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: var(--mizu-space-xl);
+}
+
+/* Logo */
+.mizu-header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--mizu-space-md);
+  text-decoration: none;
+  color: var(--mizu-text-primary);
+  transition: opacity 0.2s;
+}
+
+.mizu-header-logo:hover {
+  opacity: 0.8;
+}
+
+.mizu-header-logo-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mizu-accent);
+  color: #000000;
+  border: 1px solid var(--mizu-border);
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.mizu-header-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mizu-header-logo-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mizu-text-primary);
+}
+
+.mizu-header-logo-subtitle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--mizu-text-secondary);
+}
+
+/* Desktop Navigation Menu */
+.mizu-header-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--mizu-space-lg);
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .mizu-header-menu {
+    display: flex;
+  }
+}
+
+.mizu-header-menu-item {
+  margin: 0;
+  padding: 0;
+}
+
+.mizu-header-menu-link {
+  display: block;
+  padding: var(--mizu-space-sm) var(--mizu-space-md);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--mizu-text-secondary);
+  text-decoration: none;
+  border-radius: 0;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.mizu-header-menu-link:hover {
+  color: var(--mizu-text-primary);
+}
+
+.mizu-header-menu-link--active {
+  color: var(--mizu-text-primary);
+  font-weight: 500;
+}
+
+.mizu-header-menu-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--mizu-space-md);
+  right: var(--mizu-space-md);
+  height: 1px;
+  background: var(--mizu-accent);
+}
+
+/* Header Actions */
+.mizu-header-actions {
+  display: none;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .mizu-header-actions {
+    display: flex;
+  }
+}
+
+.mizu-header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mizu-space-sm) var(--mizu-space-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  background: var(--mizu-accent);
+  border: 1px solid var(--mizu-accent);
+  border-radius: 0;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.mizu-header-button:hover {
+  background: var(--mizu-accent-hover);
+  border-color: var(--mizu-accent-hover);
+  color: #000000;
+}
+
+.mizu-header-button--full {
+  width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.mizu-header-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--mizu-border);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+@media (min-width: 768px) {
+  .mizu-header-toggle {
+    display: none;
+  }
+}
+
+.mizu-header-toggle:hover {
+  border-color: var(--mizu-text-primary);
+}
+
+.mizu-header-toggle span {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--mizu-text-primary);
+  margin: 0 auto;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.mizu-header-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mizu-header-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.mizu-header-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Menu */
+.mizu-header-mobile-menu {
+  display: block;
+  padding: var(--mizu-space-lg);
+  background: var(--mizu-bg-primary);
+  border-top: 1px solid var(--mizu-border);
+}
+
+.mizu-header-mobile-menu.hidden {
+  display: none;
+}
+
+.mizu-header-mobile-menu-list {
+  list-style: none;
+  margin: 0 0 var(--mizu-space-lg) 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mizu-space-sm);
+}
+
+.mizu-header-mobile-menu-link {
+  display: block;
+  padding: var(--mizu-space-md);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--mizu-text-secondary);
+  text-decoration: none;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.mizu-header-mobile-menu-link:hover {
+  color: var(--mizu-text-primary);
+  border-color: var(--mizu-border);
+}
+
+.mizu-header-mobile-menu-link--active {
+  color: var(--mizu-text-primary);
+  font-weight: 500;
+  border-color: var(--mizu-accent);
+}
+
+.mizu-header-mobile-menu-cta {
+  padding-top: var(--mizu-space-lg);
+  border-top: 1px solid var(--mizu-border);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1024px) {
+  .mizu-header-container {
+    padding: 0 var(--mizu-space-2xl);
+  }
+
+  .mizu-header-nav {
+    height: 72px;
+  }
+
+  .mizu-header-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mizu-header-logo-title {
+    font-size: 1rem;
+  }
+
+  .mizu-header-logo-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .mizu-header-menu-link {
+    font-size: 0.9375rem;
+    padding: var(--mizu-space-sm) var(--mizu-space-lg);
+  }
+
+  .mizu-header-button {
+    font-size: 0.9375rem;
+    padding: var(--mizu-space-sm) var(--mizu-space-xl);
+  }
+}
+
+/* ================================================
+   MIZU CTA SECTION - Blocked
+   ================================================ */
+
+.mizu-cta {
+  padding: var(--mizu-space-2xl) var(--mizu-space-xl);
+  background: var(--mizu-bg-primary);
+  border-top: 1px solid var(--mizu-border);
+  text-align: center;
+}
+
+.mizu-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--mizu-space-xl);
+  border: 1px solid var(--mizu-border);
+}
+
+.mizu-cta-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--mizu-text-primary);
+  margin: 0 0 var(--mizu-space-md) 0;
+}
+
+.mizu-cta-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mizu-text-secondary);
+  margin: 0 0 var(--mizu-space-lg) 0;
+}
+
+.mizu-cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mizu-space-md);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+  .mizu-cta-buttons {
+    flex-direction: row;
+  }
+}
+
+.mizu-cta-note {
+  font-size: 0.75rem;
+  color: var(--mizu-text-muted);
+  margin: var(--mizu-space-md) 0 0 0;
+}
+
+/* ================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================ */
+
+@media (max-width: 768px) {
+  .mizu-hero-left,
+  .mizu-hero-right {
+    padding: var(--mizu-space-xl) var(--mizu-space-md);
+  }
+  
+  .mizu-features,
+  .mizu-stats,
+  .mizu-testimonial,
+  .mizu-cta {
+    padding: var(--mizu-space-xl) var(--mizu-space-md);
+  }
+}

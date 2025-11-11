@@ -21,12 +21,27 @@ import {
 } from './types'
 
 import { EdgeThreatDetectionSystem } from '../edge/EdgeThreatDetectionSystem'
-import { ThreatCorrelationEngine } from '../correlation/ThreatCorrelationEngine'
-import { ThreatIntelligenceDatabase } from '../database/ThreatIntelligenceDatabase'
-import { AutomatedThreatResponseOrchestrator } from '../orchestration/AutomatedThreatResponseOrchestrator'
-import { ThreatHuntingSystem } from '../hunting/ThreatHuntingSystem'
+import { 
+  ThreatCorrelationEngineCore,
+  type ThreatCorrelationEngine 
+} from '../correlation/ThreatCorrelationEngine'
+import { 
+  ThreatIntelligenceDatabaseCore,
+  type ThreatIntelligenceDatabase 
+} from '../database/ThreatIntelligenceDatabase'
+import { 
+  AutomatedThreatResponseOrchestratorCore,
+  type AutomatedThreatResponseOrchestrator 
+} from '../orchestration/AutomatedThreatResponseOrchestrator'
+import { 
+  ThreatHuntingSystemCore,
+  type ThreatHuntingSystem 
+} from '../hunting/ThreatHuntingSystem'
 import { ExternalThreatFeedIntegration } from '../integration/ExternalThreatFeedIntegration'
-import { ThreatValidationSystem } from '../validation/ThreatValidationSystem'
+import { 
+  ThreatValidationSystemCore,
+  type ThreatValidationSystem 
+} from '../validation/ThreatValidationSystem'
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import { AdvancedResponseOrchestrator } from '../../threat-detection/response-orchestration'
@@ -170,25 +185,25 @@ export class GlobalThreatIntelligenceNetworkCore
       await this.edgeDetectionSystem.initialize()
 
       // Initialize Threat Correlation Engine
-      this.correlationEngine = new ThreatCorrelationEngine(
+      this.correlationEngine = new ThreatCorrelationEngineCore(
         this.config.correlation,
       )
       await this.correlationEngine.initialize()
 
       // Initialize Threat Intelligence Database
-      this.intelligenceDatabase = new ThreatIntelligenceDatabase(
+      this.intelligenceDatabase = new ThreatIntelligenceDatabaseCore(
         this.config.database,
       )
       await this.intelligenceDatabase.initialize()
 
       // Initialize Automated Threat Response Orchestrator
-      this.responseOrchestrator = new AutomatedThreatResponseOrchestrator(
+      this.responseOrchestrator = new AutomatedThreatResponseOrchestratorCore(
         this.config.orchestration,
       )
       await this.responseOrchestrator.initialize()
 
       // Initialize Threat Hunting System
-      this.huntingSystem = new ThreatHuntingSystem()
+      this.huntingSystem = new ThreatHuntingSystemCore()
       await this.huntingSystem.initialize()
 
       // Initialize External Threat Feed Integration
@@ -196,7 +211,7 @@ export class GlobalThreatIntelligenceNetworkCore
       await this.feedIntegration.initialize()
 
       // Initialize Threat Validation System
-      this.validationSystem = new ThreatValidationSystem(this.config.validation)
+      this.validationSystem = new ThreatValidationSystemCore(this.config.validation)
       await this.validationSystem.initialize()
 
       logger.info('All subsystems initialized successfully')

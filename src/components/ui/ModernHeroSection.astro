@@ -1,162 +1,79 @@
 ---
-// Modern Hero Section - Inspired by Mizu, Flabbergasted, Antfu, and AstroMaxx
+// Mizu-inspired Two-Pane Hero Section with AntfuStyle refinements
 ---
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-content animate-fade-in">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary bg-secondary/50 backdrop-blur-sm mb-8">
-        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-        <span class="text-sm font-medium text-secondary">Next-Generation AI Training</span>
-      </div>
-
-      <!-- Main Heading -->
-      <h1 class="hero-title">
-        <span class="block">Transform Mental Health</span>
-        <span class="block">Training with</span>
-        <span class="block bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          AI Simulation
-        </span>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="hero-subtitle">
-        Revolutionary AI simulation platform for mental health professionals. Experience immersive training scenarios, 
-        develop advanced therapeutic skills, and improve patient outcomes through cutting-edge technology.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/demo-hub" class="btn btn--primary btn--lg">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M19 10a9 9 0 11-18 0 9 9 0 0118 0z" />
+<section class="mizu-hero">
+  <!-- AntfuStyle-inspired subtle background pattern -->
+  <div class="mizu-hero-bg-pattern" aria-hidden="true"></div>
+  
+  <div class="mizu-hero-container">
+    <!-- Left Pane - Content -->
+    <div class="mizu-hero-left">
+      <header class="mizu-hero-header">
+        <div class="mizu-hero-badge">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
           </svg>
-          Start Training
-        </a>
-        <a href="/features" class="btn btn--secondary btn--lg">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Learn More
-        </a>
-      </div>
+          <span>Next-Generation AI Training</span>
+        </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-primary">
-        <div class="text-center">
-          <div class="text-3xl font-bold text-primary mb-2">10K+</div>
-          <div class="text-sm text-secondary">Training Sessions</div>
+        <h1 class="mizu-hero-title">
+          <span class="mizu-hero-title-text">Transform Mental Health<br />Training with<br /><span class="mizu-hero-title-gradient">AI Simulation</span></span>
+          <div class="mizu-decoration-border mizu-decoration-border--dashed">
+            <span class="mizu-decoration-border__top"></span>
+            <span class="mizu-decoration-border__bottom"></span>
+          </div>
+        </h1>
+
+        <p class="mizu-hero-subtitle">build for the future</p>
+      </header>
+
+      <div class="mizu-hero-content">
+        <p class="mizu-hero-description">
+          Let AI handle the heavy lifting — from data insights to launch strategies — 
+          so you can focus on creating products that customers love.
+        </p>
+        <div class="mizu-hero-cta">
+          <a href="/demo-hub" class="mizu-btn mizu-btn-primary">
+            Start Training
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a href="/features" class="mizu-btn mizu-btn-secondary">
+            Learn More
+          </a>
         </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-primary mb-2">95%</div>
-          <div class="text-sm text-secondary">Accuracy Rate</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-primary mb-2">24/7</div>
-          <div class="text-sm text-secondary">Availability</div>
+      </div>
+    </div>
+
+    <!-- Right Pane - Visual -->
+    <div class="mizu-hero-right">
+      <!-- Visual content area with AntfuStyle-inspired dot pattern -->
+      <div class="mizu-hero-visual">
+        <div class="mizu-hero-visual-content">
+          <!-- Subtle dot pattern overlay -->
+          <div class="mizu-hero-dot-pattern" aria-hidden="true"></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Background Elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Gradient Orbs -->
-    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-    
-    <!-- Grid Pattern -->
-    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
-  </div>
-
-  <!-- Floating AI Simulation Demo -->
-  <div class="absolute top-1/2 right-8 transform -translate-y-1/2 hidden xl:block">
-    <div class="w-80 bg-secondary/50 backdrop-blur-lg border border-primary rounded-2xl p-6 shadow-2xl">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
-        <span class="text-xs font-medium text-secondary">AI SIMULATION</span>
-      </div>
-      
-      <div class="space-y-3">
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">
-            AI
-          </div>
-          <div class="bg-tertiary rounded-lg p-3 flex-1">
-            <p class="text-sm text-primary">How are you feeling today? I notice you seem a bit stressed...</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center text-white text-xs font-bold">
-            U
-          </div>
-          <div class="bg-accent/20 rounded-lg p-3 flex-1">
-            <p class="text-sm text-primary">I've been having trouble sleeping and feeling anxious about work...</p>
-          </div>
-        </div>
-        
-        <div class="text-center">
-          <div class="inline-flex items-center gap-1 text-xs text-secondary">
-            <div class="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span>Processing response...</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Session Analytics -->
-      <div class="mt-4 pt-4 border-t border-primary grid grid-cols-3 gap-4 text-center">
-        <div>
-          <div class="text-lg font-bold text-emerald-400">92%</div>
-          <div class="text-xs text-secondary">Engagement</div>
-        </div>
-        <div>
-          <div class="text-lg font-bold text-cyan-400">8.4</div>
-          <div class="text-xs text-secondary">Empathy</div>
-        </div>
-        <div>
-          <div class="text-lg font-bold text-blue-400">A+</div>
-          <div class="text-xs text-secondary">Grade</div>
-        </div>
-      </div>
-    </div>
+  
+  <!-- Decorative borders around entire section -->
+  <div class="mizu-decoration-border mizu-decoration-border--solid">
+    <span class="mizu-decoration-border__top"></span>
+    <span class="mizu-decoration-border__right"></span>
+    <span class="mizu-decoration-border__bottom"></span>
+    <span class="mizu-decoration-border__left"></span>
   </div>
 </section>
 
-<style>
-  .bg-grid-pattern {
-    background-image: 
-      linear-gradient(var(--border-primary) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  .hero .absolute.top-1\/2.right-8 {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1280px) {
-    .hero .absolute.top-1\/2.right-8 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 640px) {
-    .hero-content .grid-cols-3 {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-    
-    .hero-title {
-      font-size: var(--font-size-3xl);
-    }
-  }
-</style>
+<!-- Section Spacer with Decorative Borders -->
+<div class="mizu-section-spacer">
+  <div class="mizu-section-spacer-inner">
+    <div class="mizu-decoration-border mizu-decoration-border--dashed">
+      <span class="mizu-decoration-border__left"></span>
+      <span class="mizu-decoration-border__right"></span>
+    </div>
+  </div>
+</div>

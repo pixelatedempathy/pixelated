@@ -8,6 +8,7 @@ import { defineConfig, passthroughImageService } from 'astro/config';
 import icon from 'astro-icon';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
+import { agentsSummary } from '@nuasite/agent-summary';
 
 import cloudflare from '@astrojs/cloudflare'
 
@@ -263,6 +264,7 @@ export default defineConfig({
         },
         svgdir: './src/icons',
       }),
+      agentsSummary(),
       ...(process.env.SENTRY_DSN ? [
         sentry({
           sourceMapsUploadOptions: {
@@ -405,7 +407,12 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   image: {
-    service: passthroughImageService(),
+    // Use compile service for Cloudflare Workers compatibility
+    // This optimizes images at build time using sharp, which is not available at runtime
+    // In dev mode, use passthrough to avoid build-time processing
+    service: process.env.NODE_ENV === 'production' 
+      ? 'compile'
+      : passthroughImageService(),
     domains: ['pixelatedempathy.com', 'cdn.pixelatedempathy.com'],
   },
   redirects: {
