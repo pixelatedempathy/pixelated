@@ -3,7 +3,7 @@ import process from 'node:process';
 
 import react from '@astrojs/react';
 import UnoCSS from '@unocss/astro';
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig, passthroughImageService, sharpImageService } from 'astro/config';
 
 import icon from 'astro-icon';
 import sentry from '@sentry/astro';
@@ -407,11 +407,11 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   image: {
-    // Use compile service for Cloudflare Workers compatibility
-    // This optimizes images at build time using sharp, which is not available at runtime
-    // In dev mode, use passthrough to avoid build-time processing
+    // Use sharp service for production (build-time optimization)
+    // Use passthrough service for development (faster builds)
+    // Note: Cloudflare Workers don't support sharp at runtime, so images are optimized at build time
     service: process.env.NODE_ENV === 'production' 
-      ? 'compile'
+      ? sharpImageService()
       : passthroughImageService(),
     domains: ['pixelatedempathy.com', 'cdn.pixelatedempathy.com'],
   },
