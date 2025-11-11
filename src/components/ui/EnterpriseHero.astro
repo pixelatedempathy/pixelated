@@ -1,0 +1,501 @@
+---
+// Enterprise Hero Section - Dark-first, professional design
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+}
+
+const {
+  title = "Transform Mental Health",
+  subtitle = "with Enterprise-Grade AI",
+  description = "Pixelated Empathy delivers advanced AI-powered mental health solutions designed for healthcare organizations, enterprises, and clinical practices. Our platform combines cutting-edge technology with evidence-based therapeutic approaches.",
+  primaryCTA = { text: "Schedule Demo", href: "/demo" },
+  secondaryCTA = { text: "View Platform", href: "/platform" }
+} = Astro.props;
+---
+
+<section class="enterprise-hero">
+  <div class="container">
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <div class="badge-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10 10 12 6.16-2 10-6.45 10-12V7l-10-5z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <span>HIPAA Compliant • SOC 2 Certified</span>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="hero-title">
+        <span class="title-line">{title}</span>
+        <span class="title-line text-gradient">{subtitle}</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="hero-description">{description}</p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <a href={primaryCTA.href} class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          {primaryCTA.text}
+        </a>
+        <a href={secondaryCTA.href} class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          {secondaryCTA.text}
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="hero-proof">
+        <p class="proof-text">Trusted by leading healthcare organizations</p>
+        <div class="proof-stats">
+          <div class="stat">
+            <div class="stat-number">500K+</div>
+            <div class="stat-label">Sessions Completed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Clinical Efficacy</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">AI Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="hero-visual">
+      <div class="visual-container">
+        <div class="floating-elements">
+          <div class="element element-1"></div>
+          <div class="element element-2"></div>
+          <div class="element element-3"></div>
+        </div>
+        <div class="dashboard-preview">
+          <div class="preview-header">
+            <div class="header-controls">
+              <div class="control"></div>
+              <div class="control"></div>
+              <div class="control"></div>
+            </div>
+            <div class="header-title">Pixelated Empathy Platform</div>
+          </div>
+          <div class="preview-content">
+            <div class="content-row">
+              <div class="metric-card">
+                <div class="metric-value">92%</div>
+                <div class="metric-label">Patient Satisfaction</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">15min</div>
+                <div class="metric-label">Avg Response Time</div>
+              </div>
+            </div>
+            <div class="analytics-chart">
+              <div class="chart-bars">
+                <div class="bar" style="height: 60%"></div>
+                <div class="bar" style="height: 80%"></div>
+                <div class="bar" style="height: 45%"></div>
+                <div class="bar" style="height: 90%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background gradient -->
+  <div class="hero-background">
+    <div class="gradient-orb gradient-orb-1"></div>
+    <div class="gradient-orb gradient-orb-2"></div>
+  </div>
+</section>
+
+<style>
+  .enterprise-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-20) 0;
+    background: var(--bg-primary);
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  /* Hero Content */
+  .hero-content {
+    max-width: 600px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent-emerald);
+  }
+
+  .hero-title {
+    font-size: var(--text-7xl);
+    font-weight: 700;
+    line-height: 0.9;
+    margin-bottom: var(--space-6);
+    animation: slideUp 0.8s ease-out 0.2s both;
+  }
+
+  .title-line {
+    display: block;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-10);
+    max-width: 520px;
+    animation: slideUp 0.8s ease-out 0.4s both;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-16);
+    animation: slideUp 0.8s ease-out 0.6s both;
+  }
+
+  .hero-proof {
+    animation: fadeIn 0.8s ease-out 0.8s both;
+  }
+
+  .proof-text {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .proof-stats {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .stat {
+    text-align: left;
+  }
+
+  .stat-number {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+    height: 600px;
+    animation: slideUp 0.8s ease-out 0.4s both;
+  }
+
+  .visual-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .element {
+    position: absolute;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-400));
+    border-radius: var(--radius-full);
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .element-1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    right: 10%;
+    animation-delay: 0s;
+  }
+
+  .element-2 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 2s;
+  }
+
+  .element-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 4s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .dashboard-preview {
+    width: 400px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+  }
+
+  .preview-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .header-controls {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .control {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: var(--border-secondary);
+  }
+
+  .header-title {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .preview-content {
+    padding: var(--space-6);
+  }
+
+  .content-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .metric-card {
+    padding: var(--space-4);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+  }
+
+  .metric-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary-500);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+  }
+
+  .analytics-chart {
+    height: 120px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    align-items: end;
+  }
+
+  .chart-bars {
+    display: flex;
+    gap: var(--space-2);
+    height: 100%;
+    width: 100%;
+    align-items: end;
+  }
+
+  .bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--color-primary-500), var(--color-primary-400));
+    border-radius: var(--radius-sm);
+    min-height: 20px;
+    animation: growBar 1s ease-out 1s both;
+  }
+
+  @keyframes growBar {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--height, 50%);
+    }
+  }
+
+  /* Background */
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-orb {
+    position: absolute;
+    border-radius: var(--radius-full);
+    filter: blur(60px);
+    opacity: 0.3;
+  }
+
+  .gradient-orb-1 {
+    width: 400px;
+    height: 400px;
+    top: -200px;
+    right: -200px;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-purple));
+  }
+
+  .gradient-orb-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -150px;
+    left: -150px;
+    background: linear-gradient(135deg, var(--color-accent-emerald), var(--color-primary-400));
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+      text-align: center;
+    }
+
+    .hero-visual {
+      height: 400px;
+    }
+
+    .dashboard-preview {
+      width: 320px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .enterprise-hero {
+      padding: var(--space-16) 0;
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: var(--text-5xl);
+    }
+
+    .hero-description {
+      font-size: var(--text-lg);
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: center;
+      max-width: 280px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .proof-stats {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      height: 300px;
+    }
+
+    .dashboard-preview {
+      width: 280px;
+    }
+  }
+</style>

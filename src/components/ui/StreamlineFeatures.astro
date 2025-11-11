@@ -1,0 +1,365 @@
+---
+// Streamline Features - Clean, minimal, content-focused
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  specs?: string[];
+  link?: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 2L2 7v10c0 5.55 3.84 10 10 12 6.16-2 10-6.45 10-12V7l-10-5z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </svg>`,
+    title: "Clinical AI Engine",
+    description: "Evidence-based AI models trained on clinical datasets with continuous learning capabilities.",
+    specs: ["99.2% accuracy", "Sub-200ms latency", "HIPAA compliant", "24/7 monitoring"],
+    link: "/platform/ai"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <path d="M9 9h6v6H9z"/>
+    </svg>`,
+    title: "Integration Platform",
+    description: "Connect with existing healthcare systems through standardized APIs and webhooks.",
+    specs: ["HL7 FHIR R4", "Epic/Cerner", "RESTful APIs", "Real-time sync"],
+    link: "/platform/integration"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M3 13h18M3 17h18M3 9h18"/>
+      <circle cx="7" cy="7" r="1"/>
+    </svg>`,
+    title: "Analytics Suite",
+    description: "Real-time insights and reporting for clinical teams with customizable dashboards.",
+    specs: ["Real-time data", "Custom reports", "Population health", "Outcome tracking"],
+    link: "/platform/analytics"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="3" y="11" width="18" height="10" rx="2"/>
+      <circle cx="12" cy="16" r="1"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>`,
+    title: "Security Framework",
+    description: "Enterprise-grade security with end-to-end encryption and compliance monitoring.",
+    specs: ["SOC 2 Type II", "HIPAA/GDPR", "AES-256 encryption", "Zero-trust model"],
+    link: "/platform/security"
+  }
+];
+---
+
+<section class="streamline-features">
+  <div class="container">
+    <!-- Simple section header -->
+    <div class="section-header">
+      <h2 class="section-title">Platform Overview</h2>
+      <p class="section-subtitle">
+        Production-ready infrastructure designed for healthcare organizations
+      </p>
+    </div>
+
+    <!-- Clean feature grid -->
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <Fragment set:html={feature.icon} />
+            </div>
+            <h3 class="feature-title">{feature.title}</h3>
+          </div>
+          
+          <p class="feature-description">{feature.description}</p>
+          
+          {feature.specs && (
+            <div class="feature-specs">
+              {feature.specs.map((spec) => (
+                <div class="spec-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <span>{spec}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          
+          {feature.link && (
+            <div class="feature-footer">
+              <a href={feature.link} class="feature-link">
+                Learn more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17l10-10M17 7H7"/>
+                </svg>
+              </a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- API Preview -->
+    <div class="api-preview">
+      <div class="api-header">
+        <h3 class="api-title">Developer-First API</h3>
+        <p class="api-subtitle">Integrate mental health AI into your applications with our RESTful API</p>
+      </div>
+      
+      <div class="api-demo">
+        <div class="api-request">
+          <div class="code-header">Request</div>
+          <pre class="code-block"><code>POST /api/v1/analyze
+{
+  "text": "Patient reports feeling overwhelmed",
+  "context": "clinical_session",
+  "patient_id": "12345"
+}</code></pre>
+        </div>
+        
+        <div class="api-response">
+          <div class="code-header">Response</div>
+          <pre class="code-block"><code>{
+  "analysis": {
+    "sentiment": 0.82,
+    "risk_level": "moderate",
+    "recommendations": [
+      "cognitive_behavioral_therapy",
+      "stress_management_techniques"
+    ]
+  },
+  "confidence": 0.94
+}</code></pre>
+        </div>
+      </div>
+      
+      <div class="api-actions">
+        <a href="/docs/api" class="btn btn-primary">View Documentation</a>
+        <a href="/api/playground" class="btn btn-secondary">API Playground</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .streamline-features {
+    padding: var(--space-24) 0;
+    background: var(--bg-primary);
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-20);
+  }
+
+  .feature-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: border-color var(--transition);
+  }
+
+  .feature-card:hover {
+    border-color: var(--border-secondary);
+  }
+
+  .feature-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+
+  .feature-specs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .spec-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .spec-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .feature-footer {
+    border-top: 1px solid var(--border-primary);
+    padding-top: var(--space-4);
+  }
+
+  .feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: opacity var(--transition);
+  }
+
+  .feature-link:hover {
+    opacity: 0.8;
+  }
+
+  /* API Preview */
+  .api-preview {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+  }
+
+  .api-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .api-title {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .api-subtitle {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .api-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .api-request,
+  .api-response {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .code-header {
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-primary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .code-block {
+    padding: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--text-muted);
+    overflow-x: auto;
+    margin: 0;
+  }
+
+  .api-actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .streamline-features {
+      padding: var(--space-16) 0;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-12);
+    }
+
+    .section-title {
+      font-size: var(--text-3xl);
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-16);
+    }
+
+    .api-demo {
+      grid-template-columns: 1fr;
+    }
+
+    .api-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .api-actions .btn {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>

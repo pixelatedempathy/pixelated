@@ -1,0 +1,399 @@
+---
+// Modern Layout combining all the new components
+import ModernNavigation from '@/components/layout/ModernNavigation.astro';
+import ModernFooter from '@/components/layout/ModernFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: URL | string;
+  noindex?: boolean;
+  class?: string;
+}
+
+const {
+  title = 'Pixelated Empathy - AI-Powered Mental Health Support',
+  description = 'Transform mental health support with AI-powered empathy. Personalized therapeutic experiences that understand and respond to human emotions.',
+  ogImage = '/images/og-image.png',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  noindex = false,
+  class: className = ''
+} = Astro.props;
+
+const siteTitle = title.includes('Pixelated Empathy') ? title : `${title} | Pixelated Empathy`;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  
+  <!-- Primary Meta Tags -->
+  <title>{siteTitle}</title>
+  <meta name="title" content={siteTitle} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={siteTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={siteTitle} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={ogImage} />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/modern-design-system-v2.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  
+  <!-- Theme Detection -->
+  <script is:inline>
+    // Prevent flash of unstyled content
+    const theme = localStorage.getItem('theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+</head>
+
+<body class={className}>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Navigation -->
+  <ModernNavigation />
+  
+  <!-- Main Content -->
+  <main id="main-content" class="main-content">
+    <slot />
+  </main>
+  
+  <!-- Footer -->
+  <ModernFooter />
+  
+  <!-- Global Scripts -->
+  <script>
+    // Intersection Observer for animations
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observe all elements with animation classes
+      document.querySelectorAll('.slide-up, .fade-in').forEach((el) => {
+        observer.observe(el);
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (link) {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+
+    // Enhanced theme persistence
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        const theme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+    });
+
+    // Performance optimization - preload critical resources
+    const preloadCriticalResources = () => {
+      const criticalImages = document.querySelectorAll('img[data-critical]');
+      criticalImages.forEach(img => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = img.src || img.dataset.src;
+        document.head.appendChild(link);
+      });
+    };
+
+    // Load critical resources after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', preloadCriticalResources);
+    } else {
+      preloadCriticalResources();
+    }
+
+    // Error boundary for client-side errors
+    window.addEventListener('error', (e) => {
+      console.error('Client error:', e.error);
+      // You can send this to your error tracking service
+    });
+
+    window.addEventListener('unhandledrejection', (e) => {
+      console.error('Unhandled promise rejection:', e.reason);
+      // You can send this to your error tracking service
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  /* Global styles for the modern layout */
+  
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-primary-500);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    font-size: 14px;
+    font-weight: 500;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* Main content spacing */
+  .main-content {
+    margin-top: 80px; /* Account for fixed header */
+    min-height: calc(100vh - 160px);
+  }
+
+  /* Animation classes */
+  .slide-up,
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .slide-up.animate-in,
+  .fade-in.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .slide-up,
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus visible improvements */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-800);
+  }
+
+  [data-theme="dark"] ::selection {
+    background-color: var(--color-primary-700);
+    color: var(--color-primary-100);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-background-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
+  }
+
+  /* Print styles */
+  @media print {
+    .modern-header,
+    .modern-footer,
+    .skip-link {
+      display: none;
+    }
+
+    .main-content {
+      margin-top: 0;
+    }
+
+    * {
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    a[href^="http"]:after {
+      content: " (" attr(href) ")";
+      font-size: 12px;
+      color: #666;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-border: #000;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn {
+      border-width: 2px;
+    }
+
+    .modern-card {
+      border-width: 2px;
+    }
+  }
+
+  /* Loading states */
+  .loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    border-top-color: var(--color-primary-500);
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Error states */
+  .error {
+    border-color: #ef4444 !important;
+    background-color: rgba(239, 68, 68, 0.05);
+  }
+
+  .error-message {
+    color: #ef4444;
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-1);
+  }
+
+  /* Success states */
+  .success {
+    border-color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.05);
+  }
+
+  .success-message {
+    color: #10b981;
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-1);
+  }
+
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Table responsive */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Content spacing */
+  .prose > * + * {
+    margin-top: var(--space-4);
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+  }
+
+  .prose h1:first-child,
+  .prose h2:first-child,
+  .prose h3:first-child {
+    margin-top: 0;
+  }
+</style>

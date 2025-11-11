@@ -1,0 +1,498 @@
+---
+// Modern Navigation inspired by all three themes
+interface NavigationItem {
+  label: string;
+  href: string;
+  children?: NavigationItem[];
+}
+
+const navigationItems: NavigationItem[] = [
+  { label: "Home", href: "/" },
+  { 
+    label: "Solutions", 
+    href: "/solutions",
+    children: [
+      { label: "For Individuals", href: "/solutions/individuals" },
+      { label: "For Therapists", href: "/solutions/therapists" },
+      { label: "For Organizations", href: "/solutions/organizations" }
+    ]
+  },
+  { 
+    label: "Features", 
+    href: "/features",
+    children: [
+      { label: "AI Therapy", href: "/features/ai-therapy" },
+      { label: "Emotion Analysis", href: "/features/emotion-analysis" },
+      { label: "Progress Tracking", href: "/features/progress-tracking" }
+    ]
+  },
+  { label: "Research", href: "/research" },
+  { label: "About", href: "/about" }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="modern-header glass">
+  <nav class="container">
+    <div class="modern-nav">
+      <!-- Logo Section -->
+      <a href="/" class="modern-nav-logo">
+        <div class="logo-container">
+          <div class="logo-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L26 8v8c0 7.18-4.82 13.94-12 16-7.18-2.06-12-8.82-12-16V8l10-6z" 
+                    fill="var(--color-primary-500)" opacity="0.2"/>
+              <path d="M16 2L26 8v8c0 7.18-4.82 13.94-12 16-7.18-2.06-12-8.82-12-16V8l10-6z" 
+                    stroke="var(--color-primary-500)" stroke-width="2"/>
+              <circle cx="16" cy="14" r="3" fill="var(--color-primary-500)"/>
+              <path d="M12 20c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="var(--color-primary-500)" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="logo-text">Pixelated Empathy</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="modern-nav-links desktop-only">
+        {navigationItems.map((item) => (
+          <li class="nav-item">
+            <a 
+              href={item.href} 
+              class={`modern-nav-link ${currentPath === item.href ? 'active' : ''}`}
+            >
+              {item.label}
+              {item.children && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron">
+                  <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+              )}
+            </a>
+            {item.children && (
+              <div class="dropdown-menu">
+                <div class="dropdown-content">
+                  {item.children.map((child) => (
+                    <a href={child.href} class="dropdown-link">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="/login" class="btn btn-secondary btn-sm">
+          Sign In
+        </a>
+        
+        <a href="/get-started" class="btn btn-primary btn-sm">
+          Get Started
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle mobile-only" aria-label="Toggle mobile menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="mobile-menu mobile-only">
+      <ul class="mobile-nav-links">
+        {navigationItems.map((item) => (
+          <li class="mobile-nav-item">
+            <a href={item.href} class="mobile-nav-link">
+              {item.label}
+            </a>
+            {item.children && (
+              <ul class="mobile-submenu">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="mobile-submenu-link">
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .modern-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    transition: all var(--transition-normal);
+  }
+
+  [data-theme="dark"] .modern-header {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-primary-100), var(--color-primary-200));
+    transition: transform var(--transition-normal);
+  }
+
+  .logo-text {
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    background: linear-gradient(135deg, var(--color-text), var(--color-primary-500));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .modern-nav-logo:hover .logo-icon {
+    transform: scale(1.05) rotate(5deg);
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .modern-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+  }
+
+  .modern-nav-link:hover,
+  .modern-nav-link.active {
+    background: var(--color-background-secondary);
+    color: var(--color-primary-500);
+  }
+
+  .chevron {
+    transition: transform var(--transition-fast);
+  }
+
+  .nav-item:hover .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-normal);
+    z-index: 1000;
+  }
+
+  .dropdown-content {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .dropdown-link:hover {
+    background: var(--color-background-secondary);
+    color: var(--color-primary-500);
+  }
+
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Action Buttons */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+  }
+
+  .theme-toggle:hover {
+    background: var(--color-background-secondary);
+    border-color: var(--color-primary-300);
+  }
+
+  .sun-icon {
+    position: absolute;
+    transition: all var(--transition-normal);
+  }
+
+  .moon-icon {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+    transition: all var(--transition-normal);
+  }
+
+  [data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+  }
+
+  [data-theme="dark"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Mobile Styles */
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .mobile-menu-toggle:hover {
+    background: var(--color-background-secondary);
+  }
+
+  .hamburger-line {
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: all var(--transition-normal);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-4) 0;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav-link:hover {
+    background: var(--color-background-secondary);
+    color: var(--color-primary-500);
+  }
+
+  .mobile-submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--color-background-secondary);
+  }
+
+  .mobile-submenu-link {
+    display: block;
+    padding: var(--space-2) var(--space-8);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-submenu-link:hover {
+    color: var(--color-primary-500);
+    background: var(--color-background);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    .mobile-menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-actions {
+      gap: var(--space-2);
+    }
+
+    .btn-sm {
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .mobile-only {
+      display: none;
+    }
+
+    .desktop-only {
+      display: flex;
+    }
+  }
+
+  /* Scroll Effect */
+  .modern-header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-sm);
+  }
+
+  [data-theme="dark"] .modern-header.scrolled {
+    background: rgba(0, 0, 0, 0.98);
+  }
+</style>
+
+<script>
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuToggle?.addEventListener('click', () => {
+    mobileMenuToggle.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+  });
+
+  // Scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.modern-header');
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > 100) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+
+    lastScroll = currentScroll;
+  });
+</script>

@@ -1,40 +1,22 @@
 export const prerender = true
 
 ---
-import Layout from '@/layouts/Layout.astro'
-import EnterpriseHeroSection from '@/components/ui/EnterpriseHeroSection.astro'
-import FeatureShowcase from '@/components/ui/FeatureShowcase.astro'
+import HybridLayout from '@/layouts/HybridLayout.astro'
+import HybridHero from '@/components/ui/HybridHero.astro'
+import HybridFeatures from '@/components/ui/HybridFeatures.astro'
 ---
 
-<Layout 
-  title="Home" 
-  description="Revolutionary AI simulation platform for mental health professionals. Experience immersive training scenarios, develop advanced therapeutic skills, and improve patient outcomes through cutting-edge technology."
+<HybridLayout 
+  title="Enterprise Mental Health AI Platform | Pixelated Empathy"
+  description="Clinical-grade AI platform combining enterprise security with elegant user experience. Deploy evidence-based mental health solutions with seamless EHR integration."
 >
-  <EnterpriseHeroSection />
-  <FeatureShowcase />
+  <HybridHero 
+    title="Enterprise Mental Health AI"
+    subtitle="Clinical-grade platform designed for healthcare organizations"
+    description="Deploy evidence-based AI-powered mental health solutions with enterprise security, seamless EHR integration, and comprehensive compliance frameworks."
+    primaryCTA={{ text: "Request Demo", href: "/demo" }}
+    secondaryCTA={{ text: "View Documentation", href: "/docs" }}
+  />
   
-  <!-- CTA Section -->
-  <section class="py-24 bg-gradient-to-b from-gray-900 to-gray-950">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl font-bold text-white mb-6">Ready to Transform Mental Health Training?</h2>
-      <p class="text-xl text-gray-300 mb-8">
-        Join thousands of mental health professionals who are already using our AI-powered platform to 
-        enhance their skills and improve patient outcomes.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/demo" class="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 inline-flex items-center justify-center">
-          Start Free Trial
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
-        </a>
-        <a href="/contact" class="border border-gray-600 hover:border-gray-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-gray-800/50 inline-flex items-center justify-center">
-          Schedule Demo
-        </a>
-      </div>
-      <p class="text-gray-400 text-sm mt-4">
-        No credit card required • 14-day free trial • Cancel anytime
-      </p>
-    </div>
-  </section>
-</Layout>
+  <HybridFeatures />
+</HybridLayout>

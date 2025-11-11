@@ -1,0 +1,330 @@
+---
+// Modern Feature Grid combining elements from all three inspiration themes
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+  color?: 'primary' | 'blue' | 'purple' | 'emerald' | 'amber';
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  features: Feature[];
+  columns?: 2 | 3 | 4;
+}
+
+const {
+  title = "Powerful Features",
+  subtitle = "Experience the next generation of AI-powered mental health support",
+  features = [],
+  columns = 3
+} = Astro.props;
+
+const getColorClasses = (color: string = 'primary') => {
+  const colorMap = {
+    primary: 'feature-primary',
+    blue: 'feature-blue', 
+    purple: 'feature-purple',
+    emerald: 'feature-emerald',
+    amber: 'feature-amber'
+  };
+  return colorMap[color] || colorMap.primary;
+};
+---
+
+<section class="modern-section">
+  <div class="container">
+    {(title || subtitle) && (
+      <div class="modern-section-header">
+        {title && <h2 class="modern-section-title slide-up">{title}</h2>}
+        {subtitle && <p class="modern-section-subtitle slide-up">{subtitle}</p>}
+      </div>
+    )}
+
+    <div class={`modern-feature-grid grid-cols-${columns}`}>
+      {features.map((feature, index) => (
+        <div 
+          class={`modern-feature-item ${getColorClasses(feature.color)} slide-up`}
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <div class="modern-feature-icon">
+            <Fragment set:html={feature.icon} />
+          </div>
+          
+          <h3 class="modern-feature-title">{feature.title}</h3>
+          <p class="modern-feature-description">{feature.description}</p>
+          
+          {feature.href && (
+            <a href={feature.href} class="feature-link">
+              Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .modern-feature-grid {
+    display: grid;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .modern-feature-item {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    text-align: center;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    group: feature-item;
+  }
+
+  .modern-feature-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color, var(--color-primary-500)), var(--accent-color-secondary, var(--color-accent-blue)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+  }
+
+  .modern-feature-item:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    border-color: var(--accent-color, var(--color-primary-200));
+  }
+
+  .modern-feature-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .modern-feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-6);
+    background: var(--icon-bg, linear-gradient(135deg, var(--color-primary-100), var(--color-primary-200)));
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    color: var(--icon-color, var(--color-primary-600));
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modern-feature-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--icon-hover-bg, linear-gradient(135deg, var(--color-primary-200), var(--color-primary-300)));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .modern-feature-item:hover .modern-feature-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .modern-feature-item:hover .modern-feature-icon::before {
+    opacity: 1;
+  }
+
+  .modern-feature-icon > :global(svg) {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .modern-feature-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-tight);
+  }
+
+  .modern-feature-description {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--accent-color, var(--color-primary-500));
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    background: var(--accent-bg, transparent);
+  }
+
+  .feature-link:hover {
+    background: var(--accent-hover-bg, var(--color-primary-50));
+    transform: translateX(4px);
+  }
+
+  .feature-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .feature-link:hover svg {
+    transform: translateX(2px);
+  }
+
+  /* Color Variants */
+  .feature-primary {
+    --accent-color: var(--color-primary-500);
+    --accent-color-secondary: var(--color-primary-600);
+    --icon-bg: linear-gradient(135deg, var(--color-primary-100), var(--color-primary-200));
+    --icon-hover-bg: linear-gradient(135deg, var(--color-primary-200), var(--color-primary-300));
+    --icon-color: var(--color-primary-600);
+    --accent-bg: transparent;
+    --accent-hover-bg: var(--color-primary-50);
+  }
+
+  .feature-blue {
+    --accent-color: var(--color-accent-blue);
+    --accent-color-secondary: #2563eb;
+    --icon-bg: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    --icon-hover-bg: linear-gradient(135deg, #bfdbfe, #93c5fd);
+    --icon-color: var(--color-accent-blue);
+    --accent-bg: transparent;
+    --accent-hover-bg: #eff6ff;
+  }
+
+  .feature-purple {
+    --accent-color: var(--color-accent-purple);
+    --accent-color-secondary: #7c3aed;
+    --icon-bg: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    --icon-hover-bg: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+    --icon-color: var(--color-accent-purple);
+    --accent-bg: transparent;
+    --accent-hover-bg: #f5f3ff;
+  }
+
+  .feature-emerald {
+    --accent-color: var(--color-accent-emerald);
+    --accent-color-secondary: #059669;
+    --icon-bg: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    --icon-hover-bg: linear-gradient(135deg, #a7f3d0, #6ee7b7);
+    --icon-color: var(--color-accent-emerald);
+    --accent-bg: transparent;
+    --accent-hover-bg: #ecfdf5;
+  }
+
+  .feature-amber {
+    --accent-color: var(--color-accent-amber);
+    --accent-color-secondary: #d97706;
+    --icon-bg: linear-gradient(135deg, #fef3c7, #fde68a);
+    --icon-hover-bg: linear-gradient(135deg, #fde68a, #facc15);
+    --icon-color: var(--color-accent-amber);
+    --accent-bg: transparent;
+    --accent-hover-bg: #fffbeb;
+  }
+
+  /* Dark theme adjustments */
+  [data-theme="dark"] .feature-primary {
+    --accent-hover-bg: rgba(239, 68, 68, 0.1);
+  }
+
+  [data-theme="dark"] .feature-blue {
+    --accent-hover-bg: rgba(59, 130, 246, 0.1);
+  }
+
+  [data-theme="dark"] .feature-purple {
+    --accent-hover-bg: rgba(139, 92, 246, 0.1);
+  }
+
+  [data-theme="dark"] .feature-emerald {
+    --accent-hover-bg: rgba(16, 185, 129, 0.1);
+  }
+
+  [data-theme="dark"] .feature-amber {
+    --accent-hover-bg: rgba(245, 158, 11, 0.1);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .modern-feature-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .modern-feature-item {
+      padding: var(--space-6);
+    }
+
+    .modern-feature-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: var(--space-4);
+    }
+
+    .modern-feature-icon > :global(svg) {
+      width: 32px;
+      height: 32px;
+    }
+
+    .modern-feature-title {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  /* Animation improvements */
+  @media (prefers-reduced-motion: no-preference) {
+    .modern-feature-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUpFade 0.6s ease-out forwards;
+    }
+  }
+
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

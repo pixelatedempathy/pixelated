@@ -1,0 +1,347 @@
+/* Modern Component Styles
+ * Reusable component styles for the modern design system
+ */
+
+/* Modern Card Component */
+.modern-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.modern-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--color-primary-200);
+}
+
+.modern-card-interactive {
+  cursor: pointer;
+}
+
+.modern-card-header {
+  margin-bottom: var(--space-4);
+}
+
+.modern-card-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.modern-card-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Modern Navigation Styles */
+.modern-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-4) 0;
+}
+
+.modern-nav-logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.modern-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modern-nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.modern-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary-500);
+  transition: width var(--transition-normal);
+}
+
+.modern-nav-link:hover {
+  color: var(--color-text);
+}
+
+.modern-nav-link:hover::after,
+.modern-nav-link.active::after {
+  width: 100%;
+}
+
+/* Modern Hero Section */
+.modern-hero {
+  padding: var(--space-20) 0 var(--space-24);
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-secondary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, var(--color-primary-100) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, var(--color-accent-blue) 0%, transparent 50%);
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.modern-hero-title {
+  font-size: var(--font-size-6xl);
+  font-weight: 800;
+  line-height: var(--line-height-tight);
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary-500) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-6);
+}
+
+.modern-hero-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+  line-height: var(--line-height-relaxed);
+}
+
+.modern-hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Modern Feature Grid */
+.modern-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+  padding: var(--space-16) 0;
+}
+
+.modern-feature-item {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-blue));
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.modern-feature-item:hover::before {
+  transform: scaleX(1);
+}
+
+.modern-feature-item:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  border-color: var(--color-primary-200);
+}
+
+.modern-feature-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  background: linear-gradient(135deg, var(--color-primary-100), var(--color-primary-200));
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+}
+
+.modern-feature-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.modern-feature-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Modern Section Spacing */
+.modern-section {
+  padding: var(--space-16) 0;
+}
+
+.modern-section-header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.modern-section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.modern-section-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Modern Footer */
+.modern-footer {
+  background: var(--color-background-secondary);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.modern-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.modern-footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modern-footer-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.modern-footer-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.modern-footer-link:hover {
+  color: var(--color-primary-500);
+}
+
+.modern-footer-bottom {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Modern Form Elements */
+.modern-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .modern-hero-title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .modern-feature-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .modern-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modern-nav {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .modern-nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

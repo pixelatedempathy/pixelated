@@ -1,0 +1,358 @@
+---
+// Streamline Navigation - Clean, minimal, no-nonsense
+interface NavigationItem {
+  label: string;
+  href: string;
+  children?: NavigationItem[];
+}
+
+const navigation: NavigationItem[] = [
+  { label: "Platform", href: "/platform" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Documentation", href: "/docs" },
+  { label: "API", href: "/api" },
+  { label: "Support", href: "/support" },
+  { label: "Pricing", href: "/pricing" }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="streamline-nav">
+  <div class="nav-container">
+    <div class="nav-content">
+      <!-- Simple logo -->
+      <a href="/" class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="4" fill="currentColor"/>
+          <rect x="6" y="8" width="12" height="1" fill="var(--bg-primary)"/>
+          <rect x="6" y="11" width="12" height="1" fill="var(--bg-primary)"/>
+          <rect x="6" y="14" width="8" height="1" fill="var(--bg-primary)"/>
+        </svg>
+        <span>Pixelated Empathy</span>
+      </a>
+
+      <!-- Clean navigation -->
+      <nav class="nav-links">
+        {navigation.map((item) => (
+          <a 
+            href={item.href} 
+            class={`nav-link ${currentPath.startsWith(item.href) && item.href !== '/' ? 'active' : ''}`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Simple actions -->
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <a href="/login" class="btn btn-ghost btn-sm">
+          Sign In
+        </a>
+
+        <a href="/demo" class="btn btn-primary btn-sm">
+          Get Demo
+        </a>
+
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+          <svg class="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-content">
+        {navigation.map((item) => (
+          <a href={item.href} class="mobile-nav-link">
+            {item.label}
+          </a>
+        ))}
+        <div class="mobile-nav-actions">
+          <a href="/login" class="btn btn-ghost">Sign In</a>
+          <a href="/demo" class="btn btn-primary">Get Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .streamline-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  [data-theme="light"] .streamline-nav {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    transition: opacity var(--transition);
+  }
+
+  .nav-logo:hover {
+    opacity: 0.8;
+  }
+
+  /* Navigation */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: color var(--transition);
+    position: relative;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* Actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+  }
+
+  .theme-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--border-secondary);
+  }
+
+  .theme-icon {
+    position: absolute;
+    transition: all var(--transition);
+  }
+
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+  }
+
+  [data-theme="light"] .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+  }
+
+  [data-theme="light"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Mobile menu */
+  .mobile-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+  }
+
+  .mobile-menu-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-secondary);
+  }
+
+  .menu-icon,
+  .close-icon {
+    position: absolute;
+    transition: all var(--transition);
+  }
+
+  .close-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+  }
+
+  .mobile-menu-btn.active .menu-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+  }
+
+  .mobile-menu-btn.active .close-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .mobile-nav.active {
+    display: block;
+  }
+
+  .mobile-nav-content {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .mobile-nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: var(--text-base);
+    font-weight: 500;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .mobile-nav-link:last-of-type {
+    border-bottom: none;
+  }
+
+  .mobile-nav-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-primary);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .nav-actions .btn {
+      display: none;
+    }
+
+    .nav-actions .theme-toggle,
+    .nav-actions .mobile-menu-btn {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Clean theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileNav?.classList.toggle('active');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn?.classList.remove('active');
+      mobileNav?.classList.remove('active');
+    });
+  });
+</script>
