@@ -10,7 +10,10 @@ export const securityHeaders = async (
 ) => {
   const response = await next()
 
-  const nonce = context.locals['cspNonce']
+  const nonce = context.locals['cspNonce'] || ''
+
+  // Get NODE_ENV safely (works in both Node.js and Cloudflare Workers with nodejs_compat)
+  const nodeEnv = typeof process !== 'undefined' && process.env ? process.env.NODE_ENV : 'production'
 
   let csp = [
     // Core restrictions
@@ -44,7 +47,7 @@ export const securityHeaders = async (
     "media-src 'self'",
   ]
 
-  if (process.env.NODE_ENV === 'development') {
+  if (nodeEnv === 'development') {
     csp = [
       "default-src 'self' 'unsafe-inline' 'unsafe-eval'",
       "script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval'",
@@ -62,7 +65,7 @@ export const securityHeaders = async (
   response.headers.set('X-Frame-Options', 'DENY')
 
   // Only set HSTS header in production to avoid issues during local development
-  if (process.env.NODE_ENV === 'production') {
+  if (nodeEnv === 'production') {
     response.headers.set(
       'Strict-Transport-Security',
       'max-age=31536000; includeSubDomains; preload',
