@@ -1,0 +1,86 @@
+---
+interface Props {
+  value: string | number
+  label?: string
+  duration?: number
+  suffix?: string
+}
+
+const { value, label, duration = 2000, suffix = '' } = Astro.props
+
+// Type validation: ensure value is string or number before processing
+let numericValue = 0
+let hasPlus = false
+let hasPercent = false
+
+if (typeof value === 'string' || typeof value === 'number') {
+  const stringValue = String(value)
+  numericValue = parseInt(stringValue.replace(/[^\d]/g, '')) || 0
+  hasPlus = stringValue.includes('+')
+  hasPercent = stringValue.includes('%')
+}
+---
+
+<div class="animated-counter" data-target={numericValue} data-duration={duration} data-suffix={suffix} data-has-plus={hasPlus} data-has-percent={hasPercent}>
+  {label && <span class="counter-label">{label}</span>}
+  <span class="counter-value">0</span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.animated-counter')
+    
+    counters.forEach((counter) => {
+      const target = parseInt(counter.getAttribute('data-target') || '0')
+      const duration = parseInt(counter.getAttribute('data-duration') || '2000')
+      const suffix = counter.getAttribute('data-suffix') || ''
+      const hasPlus = counter.getAttribute('data-has-plus') === 'true'
+      const hasPercent = counter.getAttribute('data-has-percent') === 'true'
+      const valueElement = counter.querySelector('.counter-value')
+      
+      if (!valueElement) return
+      
+      const startTime = Date.now()
+      const endTime = startTime + duration
+      
+      const updateCounter = () => {
+        const now = Date.now()
+        const progress = Math.min((now - startTime) / duration, 1)
+        const current = Math.floor(progress * target)
+        
+        let displayValue = current.toString()
+        if (hasPlus) displayValue += '+'
+        if (hasPercent) displayValue += '%'
+        if (suffix) displayValue += suffix
+        
+        valueElement.textContent = displayValue
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter)
+        }
+      }
+      
+      updateCounter()
+    })
+  })
+</script>
+
+<style>
+  .animated-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .counter-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #666);
+  }
+  
+  .counter-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-text-primary, #000);
+  }
+</style>
