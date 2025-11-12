@@ -18,6 +18,9 @@
 /* Import Mind Mirror UI enhancements */
 @import './mind-mirror.css';
 
+/* Import Mizu theme */
+@import './mizu-theme.css';
+
 :root {
   --c-bg: #050505;
   --c-scrollbar: #111;
