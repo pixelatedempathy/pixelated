@@ -19,6 +19,8 @@ export const SITE: Site = {
     blog: 'Blog',
     about: 'About',
     contact: 'Contact',
+    architecture: 'Architecture',
+    'technical-specs': 'Tech Specs',
   },
 }
 

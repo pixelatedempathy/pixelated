@@ -1,0 +1,342 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Container from '@/components/tailus/Container.astro'
+import Frame from '@/components/tailus/Frame.astro'
+
+// Demo data for real-time metrics
+const demoMetrics = {
+  activeUsers: 1247,
+  sessionsToday: 3421,
+  aiRequests: 15678,
+  avgResponseTime: 87,
+  uptime: 99.9,
+  biasDetection: 98.7,
+}
+---
+
+<BaseLayout
+  title="Live Demo - Pixelated Empathy"
+  description="Experience our AI-powered mental health training platform in real-time with live analytics and interactive demonstrations"
+  bgType="dark"
+>
+  <!-- Hero Section -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-500 rounded-full text-sm font-medium mb-8">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          Live Platform Demo
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          Experience AI-Powered Mental Health
+          <span class="text-emerald-500">Training in Real-Time</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          Get hands-on experience with our enterprise-grade platform. See real-time analytics,
+          AI bias detection, and mental health training scenarios that are transforming healthcare education.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <Frame>
+            <a href="#live-metrics" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-medium transition-colors">
+              View Live Metrics
+            </a>
+          </Frame>
+          <Frame>
+            <a href="#ai-demo" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors">
+              Try AI Demo
+            </a>
+          </Frame>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Live Metrics Dashboard -->
+  <section id="live-metrics" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Real-Time Platform Metrics
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Live dashboard showing platform performance, user engagement, and AI processing statistics.
+        </p>
+      </div>
+
+      <!-- Real-time Metrics Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">Active Users</h3>
+            <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.activeUsers.toLocaleString()}</div>
+          <div class="text-sm text-emerald-500">+12% from yesterday</div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">Sessions Today</h3>
+            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.sessionsToday.toLocaleString()}</div>
+          <div class="text-sm text-blue-500">+8% from yesterday</div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">AI Requests</h3>
+            <div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.aiRequests.toLocaleString()}</div>
+          <div class="text-sm text-purple-500">+15% from yesterday</div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">Avg Response Time</h3>
+            <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.avgResponseTime}ms</div>
+          <div class="text-sm text-emerald-500">Global average</div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">Platform Uptime</h3>
+            <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.uptime}%</div>
+          <div class="text-sm text-emerald-500">Last 30 days</div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300">Bias Detection</h3>
+            <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+          </div>
+          <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{demoMetrics.biasDetection}%</div>
+          <div class="text-sm text-emerald-500">Accuracy rate</div>
+        </div>
+      </div>
+
+      <!-- Live Chart Placeholder -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Real-Time Traffic Analysis</h3>
+        <div class="h-64 bg-gray-50 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+            </div>
+            <div class="text-gray-600 dark:text-gray-300 mb-2">Live Analytics Dashboard</div>
+            <div class="text-sm text-gray-500">Interactive charts showing real-time user activity, system performance, and AI processing metrics</div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- AI Demo Section -->
+  <section id="ai-demo" class="py-20">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Interactive AI Demonstrations
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Experience our AI capabilities firsthand with live bias detection, emotion analysis, and mental health assessment tools.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Bias Detection Demo -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l-.259.966a1 1 0 001.932.518l.26-.966zM8.66 5.782a1 1 0 10-1.932.517l-.259.966a1 1 0 001.932.518l.26-.966zM11.32 5.782a1 1 0 10-1.932.517l-.259.966a1 1 0 001.932.518l.26-.966zM13.98 1.911a1 1 0 10-1.932.518l-.259.966a1 1 0 001.932.518l.26-.966z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">AI Bias Detection</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Test Text for Bias Analysis
+              </label>
+              <textarea
+                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+                rows="3"
+                placeholder="Enter text to analyze for potential biases..."
+              >The patient seems anxious and emotional, typical of someone with their background.</textarea>
+            </div>
+
+            <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+              Analyze for Bias
+            </button>
+
+            <div class="p-4 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg border border-emerald-200 dark:border-emerald-500/20">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span class="text-sm font-medium text-emerald-700 dark:text-emerald-400">Bias Detection Result</span>
+              </div>
+              <div class="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Potential Bias Detected:</strong> Gender-based assumptions in emotional description
+                <br><strong>Confidence:</strong> 87%
+                <br><strong>Recommendation:</strong> Use gender-neutral language and focus on clinical observations
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emotion Analysis Demo -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Emotion Analysis</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Session Transcript Snippet
+              </label>
+              <textarea
+                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+                rows="3"
+                placeholder="Enter a therapy session transcript to analyze emotions..."
+              >I've been feeling really overwhelmed lately. Work has been stressful and I can't seem to shake this feeling of anxiety. Sometimes I just want to stay in bed all day.</textarea>
+            </div>
+
+            <button class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+              Analyze Emotions
+            </button>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 bg-blue-50 dark:bg-blue-500/10 rounded-lg text-center">
+                <div class="text-sm text-blue-600 dark:text-blue-400">Anxiety</div>
+                <div class="text-lg font-semibold text-blue-700 dark:text-blue-300">78%</div>
+              </div>
+              <div class="p-3 bg-orange-50 dark:bg-orange-500/10 rounded-lg text-center">
+                <div class="text-sm text-orange-600 dark:text-orange-400">Stress</div>
+                <div class="text-lg font-semibold text-orange-700 dark:text-orange-300">65%</div>
+              </div>
+              <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg text-center">
+                <div class="text-sm text-gray-600 dark:text-gray-400">Neutral</div>
+                <div class="text-lg font-semibold text-gray-700 dark:text-gray-300">22%</div>
+              </div>
+              <div class="p-3 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg text-center">
+                <div class="text-sm text-emerald-600 dark:text-emerald-400">Positive</div>
+                <div class="text-lg font-semibold text-emerald-700 dark:text-emerald-300">8%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Enterprise Features Demo -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Enterprise Platform Features
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Advanced features designed for healthcare institutions and enterprise deployment.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Security Dashboard</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Real-time security monitoring with threat detection, access logging, and compliance reporting.
+          </p>
+          <a href="/admin/security-dashboard" class="text-purple-500 hover:text-purple-600 text-sm font-medium">
+            View Security Dashboard →
+          </a>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 3a1 1 0 000-1h1v1H3zM4 4H3v1h1V4zM3 6a1 1 0 000-1h1v1H3zM4 7H3v1h1V7zM3 9a1 1 0 000-1h1v1H3zm4 0a1 1 0 000-1h1v1H7zm2 0a1 1 0 100-1h1v1H9zM4 10H3v1h1v-1zm6-3a1 1 0 011-1h1v1h-1a1 1 0 01-1-1zM6 8a1 1 0 100-1H4a1 1 0 100 1h2zM3 13a1 1 0 011-1h1v1H4a1 1 0 01-1-1zm7-1a1 1 0 100-1h1v1h-1zM9 13a1 1 0 011-1h1v1H9a1 1 0 01-1-1zm-3-1a1 1 0 100-1H5a1 1 0 100 1h1zm8 1a1 1 0 011-1h1v1h-1a1 1 0 01-1-1z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Analytics Dashboard</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Comprehensive analytics with user behavior insights, training effectiveness metrics, and ROI tracking.
+          </p>
+          <a href="/analytics" class="text-emerald-500 hover:text-emerald-600 text-sm font-medium">
+            View Analytics →
+          </a>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Compliance Tools</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            HIPAA compliance monitoring, audit logging, and regulatory reporting for healthcare institutions.
+          </p>
+          <a href="/admin/audit-logs" class="text-blue-500 hover:text-blue-600 text-sm font-medium">
+            View Compliance Tools →
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-emerald-500 to-teal-600">
+    <Container>
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Ready to Experience Enterprise AI?
+        </h2>
+        <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          Schedule a personalized demo to see how our AI-powered platform can transform your mental health training programs.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <Frame>
+            <a href="/contact" class="bg-white text-emerald-600 px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+              Schedule Demo
+            </a>
+          </Frame>
+          <Frame>
+            <a href="/architecture" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-emerald-600 transition-colors">
+              View Architecture
+            </a>
+          </Frame>
+        </div>
+
+        <p class="text-emerald-100 text-sm mt-4">
+          Enterprise demo available • HIPAA compliant • SOC 2 certified • 99.9% uptime SLA
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

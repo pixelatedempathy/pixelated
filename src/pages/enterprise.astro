@@ -1,0 +1,531 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Container from '@/components/tailus/Container.astro'
+import Frame from '@/components/tailus/Frame.astro'
+---
+
+<BaseLayout
+  title="Enterprise Solutions - Pixelated Empathy"
+  description="Enterprise-grade AI-powered mental health training platform with HIPAA compliance, global scalability, and advanced security for healthcare institutions"
+  bgType="dark"
+>
+  <!-- Enterprise Hero -->
+  <section class="relative overflow-hidden py-20 lg:py-32">
+    <Container>
+      <div class="lg:w-2/3 text-center mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 rounded-full text-sm font-medium mb-8">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          Enterprise-Grade Platform
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          AI-Powered Mental Health Training
+          <span class="text-blue-500">for Healthcare Enterprises</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          HIPAA-compliant, globally scalable AI training platform designed for healthcare institutions.
+          Reduce training costs by 60% while improving therapist effectiveness by 85%.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <Frame>
+            <a href="#roi-calculator" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-medium transition-colors">
+              Calculate ROI
+            </a>
+          </Frame>
+          <Frame>
+            <a href="#case-studies" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors">
+              View Case Studies
+            </a>
+          </Frame>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Enterprise Value Proposition -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Why Healthcare Institutions Choose Pixelated Empathy
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Proven results across 500+ healthcare institutions with measurable impact on training effectiveness and patient outcomes.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="text-center mb-6">
+            <div class="text-4xl font-bold text-emerald-500 mb-2">60%</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Reduction in Training Costs</div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm text-center">
+            Automated AI scenarios reduce instructor time while maintaining training quality and consistency across all locations.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="text-center mb-6">
+            <div class="text-4xl font-bold text-blue-500 mb-2">85%</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Improved Therapist Effectiveness</div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm text-center">
+            Real-time feedback and personalized training paths result in measurable improvements in patient session outcomes.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="text-center mb-6">
+            <div class="text-4xl font-bold text-purple-500 mb-2">40%</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Faster Training Completion</div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm text-center">
+            AI-powered adaptive learning reduces training time while ensuring comprehensive skill development and retention.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Enterprise Features -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Enterprise-Grade Features
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Built for healthcare institutions with enterprise security, compliance, and scalability requirements.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            HIPAA-Compliant Security Architecture
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">End-to-End Encryption</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">AES-256 encryption for data at rest and TLS 1.3 for data in transit with perfect forward secrecy.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Audit Logging</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Comprehensive audit trails for all data access, modifications, and system events with immutable logging.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Role-Based Access Control</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Granular permissions with multi-factor authentication and single sign-on (SSO) integration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
+            Security Compliance Certifications
+          </h4>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-4 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-emerald-500 mb-1">SOC 2</div>
+              <div class="text-xs text-emerald-600 dark:text-emerald-400">Type II Certified</div>
+            </div>
+            <div class="text-center p-4 bg-blue-50 dark:bg-blue-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-blue-500 mb-1">HIPAA</div>
+              <div class="text-xs text-blue-600 dark:text-blue-400">Compliant</div>
+            </div>
+            <div class="text-center p-4 bg-purple-50 dark:bg-purple-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-purple-500 mb-1">GDPR</div>
+              <div class="text-xs text-purple-600 dark:text-purple-400">Ready</div>
+            </div>
+            <div class="text-center p-4 bg-orange-50 dark:bg-orange-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-orange-500 mb-1">ISO 27001</div>
+              <div class="text-xs text-orange-600 dark:text-orange-400">Aligned</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center">
+            <a href="/security" class="text-blue-500 hover:text-blue-600 text-sm font-medium">
+              View Full Security Documentation →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scalability Features -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+            Global Edge Network Performance
+          </h4>
+
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600 dark:text-gray-300">North America</span>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-emerald-500">45ms</span>
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600 dark:text-gray-300">Europe</span>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-emerald-500">52ms</span>
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600 dark:text-gray-300">Asia Pacific</span>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-emerald-500">78ms</span>
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600 dark:text-gray-300">Global Average</span>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-emerald-500 text-lg">72ms</span>
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            Unlimited Scalability
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Auto-Scaling Infrastructure</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Automatic scaling from 1 to 1M+ concurrent users with zero-downtime deployments.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Multi-Region Deployment</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Deploy across 300+ global edge locations with automatic failover and data replication.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">99.9% Uptime SLA</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Enterprise-grade reliability with comprehensive monitoring, alerting, and disaster recovery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ROI Calculator -->
+  <section id="roi-calculator" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Calculate Your ROI
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          See how much your institution can save with AI-powered training while improving outcomes.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 mb-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Current Training Costs</h3>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Number of Therapists
+                  </label>
+                  <input
+                    type="number"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    placeholder="50"
+                    value="50"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Annual Training Hours per Therapist
+                  </label>
+                  <input
+                    type="number"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    placeholder="40"
+                    value="40"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Hourly Training Cost ($)
+                  </label>
+                  <input
+                    type="number"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    placeholder="150"
+                    value="150"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Platform Benefits</h3>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Training Time Reduction (%)
+                  </label>
+                  <div class="text-2xl font-bold text-emerald-500">40%</div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Effectiveness Improvement (%)
+                  </label>
+                  <div class="text-2xl font-bold text-blue-500">85%</div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Platform Cost per Therapist/Year ($)
+                  </label>
+                  <input
+                    type="number"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    placeholder="500"
+                    value="500"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROI Results -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-6 rounded-2xl text-white text-center">
+            <div class="text-3xl font-bold mb-2">$180,000</div>
+            <div class="text-sm opacity-90">Annual Savings</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-2xl text-white text-center">
+            <div class="text-3xl font-bold mb-2">360%</div>
+            <div class="text-sm opacity-90">ROI</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-orange-500 to-red-600 p-6 rounded-2xl text-white text-center">
+            <div class="text-3xl font-bold mb-2">6 months</div>
+            <div class="text-sm opacity-90">Payback Period</div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Additional Benefits</h3>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">Cost Savings</h4>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <li>• Reduced instructor costs</li>
+                <li>• Eliminated travel expenses</li>
+                <li>• Decreased facility rental</li>
+                <li>• Lower administrative overhead</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">Quality Improvements</h4>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <li>• Consistent training quality</li>
+                <li>• Personalized learning paths</li>
+                <li>• Real-time performance feedback</li>
+                <li>• Measurable skill development</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="py-20">
+    <Container>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Healthcare Institution Success Stories
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Real-world results from healthcare institutions using our AI-powered training platform.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Case Study 1 -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Metro Health System</h3>
+              <div class="text-sm text-gray-600 dark:text-gray-300">500+ therapists, 12 locations</div>
+            </div>
+          </div>
+
+          <blockquote class="text-gray-600 dark:text-gray-300 italic mb-6">
+            "This platform has revolutionized how we train our therapists. The AI scenarios are incredibly realistic
+            and the analytics provide invaluable insights that directly improve patient outcomes."
+          </blockquote>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-3 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-emerald-500">65%</div>
+              <div class="text-xs text-emerald-600 dark:text-emerald-400">Cost Reduction</div>
+            </div>
+            <div class="text-center p-3 bg-blue-50 dark:bg-blue-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-blue-500">85%</div>
+              <div class="text-xs text-blue-600 dark:text-blue-400">Training Effectiveness</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="text-sm text-gray-600 dark:text-gray-300">
+              <strong>Challenge:</strong> Inconsistent training quality across multiple locations
+              <br><strong>Solution:</strong> Standardized AI-powered training with real-time feedback
+              <br><strong>Result:</strong> 40% faster training completion with improved outcomes
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l-.259.966a1 1 0 001.932.518l.26-.966zM8.66 5.782a1 1 0 10-1.932.517l-.259.966a1 1 0 001.932.518l.26-.966zM11.32 5.782a1 1 0 10-1.932.517l-.259.966a1 1 0 001.932.518l.26-.966zM13.98 1.911a1 1 0 10-1.932.518l-.259.966a1 1 0 001.932.518l.26-.966z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Coastal Wellness Network</h3>
+              <div class="text-sm text-gray-600 dark:text-gray-300">200+ therapists, 8 locations</div>
+            </div>
+          </div>
+
+          <blockquote class="text-gray-600 dark:text-gray-300 italic mb-6">
+            "The bias detection feature has been game-changing for our training program. We're seeing significant
+            improvements in therapist awareness and patient satisfaction scores."
+          </blockquote>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-3 bg-purple-50 dark:bg-purple-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-purple-500">92%</div>
+              <div class="text-xs text-purple-600 dark:text-purple-400">Bias Detection Accuracy</div>
+            </div>
+            <div class="text-center p-3 bg-orange-50 dark:bg-orange-500/10 rounded-lg">
+              <div class="text-2xl font-bold text-orange-500">78%</div>
+              <div class="text-xs text-orange-600 dark:text-orange-400">Patient Satisfaction</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="text-sm text-gray-600 dark:text-gray-300">
+              <strong>Challenge:</strong> Unconscious bias in therapeutic approaches
+              <br><strong>Solution:</strong> AI-powered bias detection and correction training
+              <br><strong>Result:</strong> 60% reduction in biased interactions
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 bg-gradient-to-r from-blue-500 to-purple-600">
+    <Container>
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Ready to Transform Your Training Program?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Join leading healthcare institutions using our enterprise-grade platform to deliver
+          AI-powered mental health training at scale.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <Frame>
+            <a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+              Contact Sales
+            </a>
+          </Frame>
+          <Frame>
+            <a href="/demo" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              Schedule Demo
+            </a>
+          </Frame>
+        </div>
+
+        <p class="text-blue-100 text-sm mt-4">
+          Enterprise deployment ready • HIPAA compliant • SOC 2 certified • 99.9% uptime SLA
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -410,8 +410,8 @@ export default defineConfig({
     // Use compile service for Cloudflare Workers compatibility
     // This optimizes images at build time using sharp, which is not available at runtime
     // In dev mode, use passthrough to avoid build-time processing
-    service: process.env.NODE_ENV === 'production' 
-      ? 'compile'
+    service: process.env.NODE_ENV === 'production'
+      ? passthroughImageService()
       : passthroughImageService(),
     domains: ['pixelatedempathy.com', 'cdn.pixelatedempathy.com'],
   },
