@@ -80,7 +80,7 @@
         "**/public/test-results/**": true,
         "**/secret-scan-artifacts/**": true,
         "**/security-scan-artifacts/**": true,
-        "**/cursor:/**": true,
+        "**/.cursor/**": true,
         "**/anysphere.cursor-mcp/**": true,
         "**/*oauth*callback*": true
     },
@@ -165,7 +165,6 @@
     },
     "cubent.autocomplete.allowWithCopilot": true,
     "cubent.autocomplete.enabled": true,
-    "cubent.autocomplete.inceptionApiKey": "sk_75b4e3290a0d0312c8559f4088cf4383",
     "cubent.cubentCloudEnabled": true,
     "cubent.mcp.alwaysAllow": true,
     "cubent.mcp.enabled": true,
