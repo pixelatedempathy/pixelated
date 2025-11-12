@@ -80,6 +80,9 @@
         "**/public/test-results/**": true,
         "**/secret-scan-artifacts/**": true,
         "**/security-scan-artifacts/**": true,
+        "**/cursor:/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "files.exclude": {
         "**/.git": true,
@@ -99,6 +102,9 @@
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
         "**/security-scan-artifacts": true,
+        "**/cursor:/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -111,7 +117,10 @@
         "**/youtube-transcription-pipeline": true,
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
-        "**/security-scan-artifacts": true
+        "**/security-scan-artifacts": true,
+        "**/cursor:/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
