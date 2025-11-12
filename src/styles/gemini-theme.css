@@ -1,0 +1,69 @@
+/*
+ Gemini Theme: A blend of Flabbergasted and Spaziobianco (dark mode)
+*/
+
+:root {
+  /* Color Palette */
+  --gemini-bg-primary: #1a1a1a;
+  --gemini-bg-secondary: #2a2a2a;
+  --gemini-text-primary: #ffffff;
+  --gemini-text-secondary: #b3b3b3;
+  --gemini-accent-primary: #ff6b6b;
+  --gemini-accent-secondary: #4ecdc4;
+  --gemini-border-primary: #3a3a3a;
+
+  /* Typography */
+  --gemini-font-family-sans: 'Inter', sans-serif;
+  --gemini-font-size-base: 16px;
+  --gemini-font-weight-normal: 400;
+  --gemini-font-weight-bold: 700;
+
+  /* Spacing */
+  --gemini-spacing-xs: 0.25rem;
+  --gemini-spacing-sm: 0.5rem;
+  --gemini-spacing-md: 1rem;
+  --gemini-spacing-lg: 1.5rem;
+  --gemini-spacing-xl: 2rem;
+
+  /* Borders */
+  --gemini-border-radius: 0.5rem;
+  --gemini-border-width: 1px;
+
+  /* Shadows */
+  --gemini-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --gemini-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --gemini-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  background-color: var(--gemini-bg-primary);
+  color: var(--gemini-text-primary);
+  font-family: var(--gemini-font-family-sans);
+  font-size: var(--gemini-font-size-base);
+  line-height: 1.5;
+}
+
+/* Component Styles */
+
+.btn-gemini {
+  display: inline-block;
+  padding: var(--gemini-spacing-sm) var(--gemini-spacing-md);
+  border-radius: var(--gemini-border-radius);
+  background-color: var(--gemini-accent-primary);
+  color: var(--gemini-text-primary);
+  font-weight: var(--gemini-font-weight-bold);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-gemini:hover {
+  background-color: #ff8787;
+}
+
+.card-gemini {
+  background-color: var(--gemini-bg-secondary);
+  border: var(--gemini-border-width) solid var(--gemini-border-primary);
+  border-radius: var(--gemini-border-radius);
+  padding: var(--gemini-spacing-lg);
+  box-shadow: var(--gemini-shadow-md);
+}

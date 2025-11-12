@@ -1,19 +1,19 @@
 ---
-// Modern Enterprise Header with Google Cloud Startup compliance
+// Modern Enterprise Header with Gemini Theme
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-gray-950/80 border-b border-gray-800/50">
+<header class="site-header fixed top-0 left-0 right-0 z-50 backdrop-blur-xl">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo/Brand -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 group">
-          <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+          <div class="logo-icon w-8 h-8 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <span class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+          <span class="text-xl font-bold">
             Pixelated Empathy
           </span>
         </a>
@@ -21,43 +21,16 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Home
-        </a>
-        <a href="/about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          About
-        </a>
-        <a href="/team" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Team
-        </a>
-        <a href="/company" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Company
-        </a>
-        <a href="/pricing" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Pricing
-        </a>
-        <a href="/contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Contact
-        </a>
-        <a href="/blog" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Blog
-        </a>
-        <a href="/privacy" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Privacy
-        </a>
-        <a href="/terms" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Terms
-        </a>
+        <a href="/" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+        <a href="/about" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+        <a href="/pricing" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
+        <a href="/contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
       </nav>
 
       <!-- CTA Buttons -->
       <div class="hidden md:flex items-center space-x-4">
-        <a href="/login" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-          Sign In
-        </a>
-        <a href="/demo" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-          Get Demo
-        </a>
+        <a href="/login" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Sign In</a>
+        <a href="/demo" class="btn btn-primary">Get Demo</a>
       </div>
 
       <!-- Mobile menu button -->
@@ -65,7 +38,7 @@
         <button 
           type="button" 
           id="mobile-menu-button"
-          class="text-gray-400 hover:text-white p-2 rounded-md transition-colors"
+          class="p-2 rounded-md transition-colors"
           aria-controls="mobile-menu" 
           aria-expanded="false"
         >
@@ -80,25 +53,46 @@
 
   <!-- Mobile menu -->
   <div class="md:hidden hidden" id="mobile-menu">
-    <div class="border-t border-gray-800 bg-gray-950/95 backdrop-blur-xl">
+    <div class="mobile-menu-container">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="/" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
-        <a href="/about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
-        <a href="/team" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Team</a>
-        <a href="/company" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Company</a>
-        <a href="/pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Pricing</a>
-        <a href="/contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Contact</a>
-        <a href="/blog" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Blog</a>
-        <a href="/privacy" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Privacy</a>
-        <a href="/terms" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Terms</a>
-        <div class="border-t border-gray-800 pt-4 pb-3">
-          <a href="/login" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Sign In</a>
-          <a href="/demo" class="bg-emerald-600 hover:bg-emerald-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors mt-2">Get Demo</a>
+        <a href="/" class="block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+        <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
+        <a href="/pricing" class="block px-3 py-2 rounded-md text-base font-medium transition-colors">Pricing</a>
+        <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium transition-colors">Contact</a>
+        <div class="border-t pt-4 pb-3">
+          <a href="/login" class="block px-3 py-2 rounded-md text-base font-medium transition-colors">Sign In</a>
+          <a href="/demo" class="btn btn-primary mt-2">Get Demo</a>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<style>
+  .site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .logo-icon {
+    background-color: var(--color-primary);
+  }
+  .logo-icon svg, .site-header, .site-header span {
+    color: var(--color-text-primary);
+  }
+  .nav-link, #mobile-menu-button, #mobile-menu a {
+    color: var(--color-text-secondary);
+  }
+  .nav-link:hover, #mobile-menu-button:hover, #mobile-menu a:hover {
+    color: var(--color-text-primary);
+  }
+  .mobile-menu-container {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+  #mobile-menu .border-t {
+    border-color: var(--color-border);
+  }
+</style>
 
 <script>
   // Mobile menu toggle

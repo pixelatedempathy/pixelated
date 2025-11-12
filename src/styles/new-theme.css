@@ -1,0 +1,156 @@
+/*
+ * Gemini Redesign Theme
+ * A 60/40 blend of Spaziobianco (dark) and Flabbergasted.
+ *
+ * Core: Dark, minimalist, sharp corners (Spaziobianco)
+ * Accent: Vibrant colors, modern typography (Flabbergasted)
+ */
+
+:root {
+  /* Typography (Inspired by Flabbergasted) */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'Fira Code', 'Courier New', monospace;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Color Palette (Inspired by Spaziobianco Dark) */
+  --color-background: #0D0D0D; /* Near black */
+  --color-surface: #1A1A1A;    /* Dark gray for cards/surfaces */
+  --color-border: #2C2C2C;     /* Subtle borders */
+
+  --color-text-primary: #E0E0E0;   /* Light gray for primary text */
+  --color-text-secondary: #A0A0A0; /* Muted gray for secondary text */
+  --color-text-muted: #666666;      /* For hints and disabled text */
+
+  /* Accent Color (Inspired by Flabbergasted's vibrancy) */
+  --color-primary: #00A9FF; /* A vibrant blue */
+  --color-primary-hover: #0087CC;
+  --color-secondary: #FF4081; /* A pop of pink for secondary actions */
+
+  /* Spacing System */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem;  /* 24px */
+  --space-8: 2rem;    /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem;   /* 48px */
+  --space-16: 4rem;   /* 64px */
+
+  /* Borders & Radius */
+  --border-width: 1px;
+  --border-radius: 0.25rem; /* 4px - A slight radius for a modern feel, deviating slightly from pure Spaziobianco */
+  --border-radius-sharp: 0rem; /* For the true Spaziobianco feel */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* Basic Components */
+.card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-background);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+/* Forms */
+.form-input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  outline: 0;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 169, 255, 0.25);
+}

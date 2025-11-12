@@ -32,9 +32,9 @@ const formattedDate = formatDate(post.data.pubDate)
 
 {
   hasValidData && (
-    <article class="group" itemscope itemtype="https://schema.org/BlogPosting">
+    <article class="card-gemini group" itemscope itemtype="https://schema.org/BlogPosting">
       <div class="flex flex-col sm:flex-row gap-4">
-        <aside class="flex-shrink-0 text-sm text-slate-400 sm:w-32">
+        <aside class="flex-shrink-0 text-sm sm:w-32" style="color: var(--gemini-text-secondary);">
           <time
             datetime={post.data.pubDate.toISOString()}
             itemprop="datePublished"
@@ -51,15 +51,16 @@ const formattedDate = formatDate(post.data.pubDate)
 
         <main class="flex-1">
           <h3
-            class="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors"
+            class="text-xl font-bold mb-2 transition-colors"
             itemprop="headline"
+            style="color: var(--gemini-text-primary);"
           >
             <a href={`/blog/${post.slug}`} class="block" itemprop="url">
               {post.data.title}
             </a>
           </h3>
 
-          <p class="text-slate-300 mb-3 leading-relaxed" itemprop="description">
+          <p class="mb-3 leading-relaxed" itemprop="description" style="color: var(--gemini-text-secondary);">
             {post.data.description}
           </p>
 
@@ -70,9 +71,10 @@ const formattedDate = formatDate(post.data.pubDate)
                   href={`/blog/tags/${postTag}`}
                   class={`text-xs transition-colors px-2 py-1 rounded ${
                     postTag === currentTag
-                      ? 'bg-green-900/30 text-green-400 font-medium'
-                      : 'text-slate-400 hover:text-green-300 hover:bg-slate-800/50'
+                      ? 'font-medium'
+                      : ''
                   }`}
+                  style="background-color: var(--gemini-accent-secondary); color: var(--gemini-text-primary);"
                   aria-current={postTag === currentTag ? 'page' : undefined}
                 >
                   #{postTag}
@@ -83,7 +85,8 @@ const formattedDate = formatDate(post.data.pubDate)
 
           <a
             href={`/blog/${post.slug}`}
-            class="inline-flex items-center text-sm text-slate-400 hover:text-green-400 transition-colors group-hover:text-green-400"
+            class="inline-flex items-center text-sm transition-colors"
+            style="color: var(--gemini-accent-primary);"
             aria-label={`Read more about ${post.data.title}`}
           >
             Read article
