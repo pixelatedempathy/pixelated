@@ -102,7 +102,7 @@
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
         "**/security-scan-artifacts": true,
-        "**/cursor:/**": true,
+        "**/.cursor/**": true,
         "**/anysphere.cursor-mcp/**": true,
         "**/*oauth*callback*": true
     },
@@ -118,7 +118,7 @@
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
         "**/security-scan-artifacts": true,
-        "**/cursor:/**": true,
+        "**/.cursor/**": true,
         "**/anysphere.cursor-mcp/**": true,
         "**/*oauth*callback*": true
     },
