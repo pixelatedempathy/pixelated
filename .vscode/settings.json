@@ -79,7 +79,10 @@
         "**/youtube-transcription-pipeline/**": true,
         "**/public/test-results/**": true,
         "**/secret-scan-artifacts/**": true,
-        "**/security-scan-artifacts/**": true
+        "**/security-scan-artifacts/**": true,
+        "**/.cursor/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "files.exclude": {
         "**/.git": true,
@@ -98,7 +101,10 @@
         "**/youtube-transcription-pipeline": true,
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
-        "**/security-scan-artifacts": true
+        "**/security-scan-artifacts": true,
+        "**/.cursor/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -111,7 +117,10 @@
         "**/youtube-transcription-pipeline": true,
         "**/public/test-results": true,
         "**/secret-scan-artifacts": true,
-        "**/security-scan-artifacts": true
+        "**/security-scan-artifacts": true,
+        "**/.cursor/**": true,
+        "**/anysphere.cursor-mcp/**": true,
+        "**/*oauth*callback*": true
     },
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -143,9 +152,11 @@
         }
     },
     "files.autoSave": "afterDelay",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.autoSave": "afterDelay",
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit",
@@ -154,7 +165,6 @@
     },
     "cubent.autocomplete.allowWithCopilot": true,
     "cubent.autocomplete.enabled": true,
-    "cubent.autocomplete.inceptionApiKey": "sk_75b4e3290a0d0312c8559f4088cf4383",
     "cubent.cubentCloudEnabled": true,
     "cubent.mcp.alwaysAllow": true,
     "cubent.mcp.enabled": true,
@@ -178,5 +188,7 @@
         "connectionId": "pixelatedempathy",
         "projectKey": "pixelatedempathy_pixelated"
     },
-    "oxc.enable": false
+    "oxc.enable": false,
+    "specstory.cloudSync.enabled": "always"
 }
+
