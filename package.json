@@ -295,7 +295,7 @@
     "eslint-plugin-vitest": "^0.5.4",
     "eslint-plugin-vitest-globals": "^1.5.0",
     "espree": "^10.4.0",
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "glob-parent": "^6.0.2",
     "globals": "^16.5.0",
     "globby": "^15.0.0",
