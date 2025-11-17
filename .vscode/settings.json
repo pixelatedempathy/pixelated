@@ -153,10 +153,9 @@
     },
     "files.autoSave": "afterDelay",
     "workbench.editor.enablePreview": false,
-    "workbench.editor.autoSave": "afterDelay",
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.defaultFormatter": "anysphere.cursorpyright",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit",
@@ -191,4 +190,3 @@
     "oxc.enable": false,
     "specstory.cloudSync.enabled": "always"
 }
-
