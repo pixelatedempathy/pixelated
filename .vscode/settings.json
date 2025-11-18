@@ -187,6 +187,17 @@
         "connectionId": "pixelatedempathy",
         "projectKey": "pixelatedempathy_pixelated"
     },
-    "oxc.enable": false,
-    "specstory.cloudSync.enabled": "always"
+    "oxc.enable": true,
+    "specstory.cloudSync.enabled": "always",
+    "claude-history.dashboard.enableButton": true,
+    "claude-history.leaderboard.enableSharing": true,
+    "claude-history.statusBar.showUsage": true,
+    "claudeCode.allowDangerouslySkipPermissions": true,
+    "claudeCode.respectGitIgnore": false,
+    "git.autofetch": "all",
+    "git.autofetchPeriod": 360,
+    "git.defaultBranchName": "master",
+    "git.detectSubmodules": true,
+    "git.detectWorktrees": true,
+    "git.diagnosticsCommitHook.Enabled": true
 }
