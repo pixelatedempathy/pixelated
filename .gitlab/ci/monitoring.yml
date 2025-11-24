@@ -42,15 +42,26 @@ monitoring:performance:
     # Generate performance report
     - echo "📊 Generating performance report..."
     - |
-      cat > performance-report.json << 'EOF'
+      if [ -f memory-usage.txt ]; then
+        MEMORY_USAGE_JSON=$(jq -Rs . memory-usage.txt 2>/dev/null || echo '"N/A"')
+      else
+        MEMORY_USAGE_JSON='"N/A"'
+      fi
+      if [ -f cpu-usage.txt ]; then
+        CPU_USAGE_JSON=$(jq -Rs . cpu-usage.txt 2>/dev/null || echo '"N/A"')
+      else
+        CPU_USAGE_JSON='"N/A"'
+      fi
+
+      cat > performance-report.json << EOF
       {
         "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
         "pipeline_id": "${CI_PIPELINE_ID}",
         "response_time_ms": ${RESPONSE_TIME},
         "test_url": "${PERFORMANCE_TEST_URL}",
-        "memory_usage": "$(cat memory-usage.txt 2>/dev/null || echo 'N/A')",
-        "cpu_usage": "$(cat cpu-usage.txt 2>/dev/null || echo 'N/A')",
+        "memory_usage": ${MEMORY_USAGE_JSON},
+        "cpu_usage": ${CPU_USAGE_JSON},
         "status": "monitored"
       }
       EOF
@@ -117,7 +128,12 @@ monitoring:health:
     # Generate health report
     - echo "📊 Generating health report..."
     - |
-      cat > health-report.json << 'EOF'
+      if [ "$HEALTH_STATUS" = "healthy" ] && [ "$DB_HEALTH_STATUS" = "healthy" ] && [ "$REDIS_HEALTH_STATUS" = "healthy" ]; then
+        OVERALL_STATUS="healthy"
+      else
+        OVERALL_STATUS="degraded"
+      fi
+      cat > health-report.json << EOF
       {
         "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
@@ -127,7 +143,7 @@ monitoring:health:
           "database": "${DB_HEALTH_STATUS}",
           "redis": "${REDIS_HEALTH_STATUS}"
         },
-        "overall_status": "$([ "$HEALTH_STATUS" = "healthy" ] && [ "$DB_HEALTH_STATUS" = "healthy" ] && [ "$REDIS_HEALTH_STATUS" = "healthy" ] && echo "healthy" || echo "degraded")"
+        "overall_status": "${OVERALL_STATUS}"
       }
       EOF
     
@@ -151,11 +167,12 @@ monitoring:resources:
     - echo "📊 Running resource monitoring..."
     
     # Authenticate to GKE if needed
-    - if [ -n "$GCP_SERVICE_ACCOUNT_KEY" ]; then
-        echo $GCP_SERVICE_ACCOUNT_KEY > /tmp/gcp-key.json;
-        gcloud auth activate-service-account --key-file /tmp/gcp-key.json;
-        gcloud config set project $GCP_PROJECT_ID;
-        gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_ZONE --project $GCP_PROJECT_ID;
+    - |
+      if [ -n "$GCP_SERVICE_ACCOUNT_KEY" ]; then
+        echo $GCP_SERVICE_ACCOUNT_KEY > /tmp/gcp-key.json
+        gcloud auth activate-service-account --key-file /tmp/gcp-key.json
+        gcloud config set project $GCP_PROJECT_ID
+        gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_ZONE --project $GCP_PROJECT_ID
       fi
     
     # Pod resource usage
@@ -177,15 +194,36 @@ monitoring:resources:
     # Generate resource report
     - echo "📊 Generating resource report..."
     - |
-      cat > resource-report.json << 'EOF'
+      if [ -f pod-resources.txt ]; then
+        POD_RESOURCES_JSON=$(jq -Rs . pod-resources.txt 2>/dev/null || echo '"N/A"')
+      else
+        POD_RESOURCES_JSON='"N/A"'
+      fi
+      if [ -f node-resources.txt ]; then
+        NODE_RESOURCES_JSON=$(jq -Rs . node-resources.txt 2>/dev/null || echo '"N/A"')
+      else
+        NODE_RESOURCES_JSON='"N/A"'
+      fi
+      if [ -f disk-usage.txt ]; then
+        DISK_USAGE_JSON=$(jq -Rs . disk-usage.txt 2>/dev/null || echo '"N/A"')
+      else
+        DISK_USAGE_JSON='"N/A"'
+      fi
+      if [ -f memory-allocation.txt ]; then
+        MEMORY_ALLOCATION_JSON=$(jq -Rs . memory-allocation.txt 2>/dev/null || echo '"N/A"')
+      else
+        MEMORY_ALLOCATION_JSON='"N/A"'
+      fi
+
+      cat > resource-report.json << EOF
       {
         "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
         "pipeline_id": "${CI_PIPELINE_ID}",
-        "pod_resources": "$(cat pod-resources.txt 2>/dev/null || echo 'N/A')",
-        "node_resources": "$(cat node-resources.txt 2>/dev/null || echo 'N/A')",
-        "disk_usage": "$(cat disk-usage.txt 2>/dev/null || echo 'N/A')",
-        "memory_allocation": "$(cat memory-allocation.txt 2>/dev/null || echo 'N/A')",
+        "pod_resources": ${POD_RESOURCES_JSON},
+        "node_resources": ${NODE_RESOURCES_JSON},
+        "disk_usage": ${DISK_USAGE_JSON},
+        "memory_allocation": ${MEMORY_ALLOCATION_JSON},
         "status": "monitored"
       }
       EOF
@@ -226,18 +264,27 @@ monitoring:errors:
     
     # Calculate error rate
     - TOTAL_LOGS=$(kubectl logs -n ${KUBE_NAMESPACE} -l app=pixelated --tail=1000 | wc -l)
-    - if [ "$TOTAL_LOGS" -eq 0 ]; then
-        echo "⚠️ No logs found, cannot calculate error rate";
-        ERROR_RATE=0;
+    - |
+      if [ "$TOTAL_LOGS" -eq 0 ]; then
+        echo "⚠️ No logs found, cannot calculate error rate"
+        ERROR_RATE=0
       else
-        ERROR_RATE=$(( ERROR_COUNT * 100 / TOTAL_LOGS ));
+        ERROR_RATE=$(( ERROR_COUNT * 100 / TOTAL_LOGS ))
       fi
     - echo "Error rate: ${ERROR_RATE}%"
+    
+    # Determine error status
+    - |
+      if [ $ERROR_RATE -lt 5 ]; then
+        ERROR_STATUS="acceptable"
+      else
+        ERROR_STATUS="high"
+      fi
     
     # Generate error report
     - echo "📊 Generating error report..."
     - |
-      cat > error-report.json << 'EOF'
+      cat > error-report.json << EOF
       {
         "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
@@ -249,7 +296,7 @@ monitoring:errors:
           "auth_errors": ${AUTH_ERRORS},
           "error_rate_percent": ${ERROR_RATE}
         },
-        "status": "$([ $ERROR_RATE -lt 5 ] && echo "acceptable" || echo "high")"
+        "status": "${ERROR_STATUS}"
       }
       EOF
     
@@ -285,7 +332,7 @@ monitoring:alerts:
     
     # Generate alert if needed
     - |
-      if [ "$HEALTH_STATUS" = "unhealthy" ] || [ "$ERROR_STATUS" = "high" ]; then
+      if [ "$HEALTH_STATUS" = "degraded" ] || [ "$ERROR_STATUS" = "high" ]; then
         echo "🚨 ALERT: System health issues detected"
         ALERT_LEVEL="critical"
         ALERT_MESSAGE="System health issues detected: Health=$HEALTH_STATUS, Error status=$ERROR_STATUS"
@@ -297,7 +344,7 @@ monitoring:alerts:
     
     # Create alert payload
     - |
-      cat > alert-payload.json << 'EOF'
+      cat > alert-payload.json << EOF
       {
         "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
@@ -342,7 +389,7 @@ monitoring:summary:
     # Aggregate all monitoring reports
     - echo "📋 Aggregating monitoring reports..."
     - |
-      cat > monitoring-summary.json << 'EOF'
+      cat > monitoring-summary.json << EOF
       {
         "summary_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
         "commit_sha": "${CI_COMMIT_SHORT_SHA}",
@@ -362,7 +409,7 @@ monitoring:summary:
     # Generate monitoring dashboard data
     - echo "📊 Generating monitoring dashboard data..."
     - |
-      cat > monitoring-dashboard.json << 'EOF'
+      cat > monitoring-dashboard.json << EOF
       {
         "dashboard": {
           "title": "Pixelated Empathy Monitoring",
