@@ -199,5 +199,12 @@
     "git.defaultBranchName": "master",
     "git.detectSubmodules": true,
     "git.detectWorktrees": true,
-    "git.diagnosticsCommitHook.Enabled": true
+    "git.diagnosticsCommitHook.Enabled": true,
+    "kaggle.cliPath": "/home/vivi/pixelated/.venv/bin/kaggle",
+    "editor.fontFamily": "JetBrains Mono",
+    "scm.inputFontFamily": "editor",
+    "extensions.experimental.deferredStartupFinishedActivation": true,
+    "kaggle.defaultInternet": true,
+    "npm.packageManager": "pnpm",
+    "markdown.validate.enabled": true
 }
