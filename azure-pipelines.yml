@@ -486,6 +486,62 @@ stages:
                     command: "rollout"
                     arguments: "status deployment/pixelated --timeout=900s"
 
+                - task: AzureCLI@2
+                  displayName: "Diagnose Rollout Failure (if needed)"
+                  condition: failed()
+                  inputs:
+                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
+                    scriptType: "bash"
+                    scriptLocation: "inlineScript"
+                    inlineScript: |
+                      echo "🔍 Diagnosing staging rollout failure..."
+
+                      # Get AKS credentials
+                      az aks get-credentials --resource-group $(AZURE_RESOURCE_GROUP) --name $(AKS_CLUSTER_NAME) --overwrite-existing
+
+                      # Suppress kubectl informational messages
+                      export KUBECTL_VERBOSITY=0
+
+                      echo ""
+                      echo "📊 Deployment Status:"
+                      kubectl get deployment pixelated -n $(KUBE_NAMESPACE) -o wide 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📊 Pod Status:"
+                      kubectl get pods -n $(KUBE_NAMESPACE) -l app=pixelated-app -o wide 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Deployment Conditions:"
+                      kubectl get deployment pixelated -n $(KUBE_NAMESPACE) -o jsonpath='{range .status.conditions[*]}{.type}: {.status} - {.reason}{"\n"}{end}' 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Recent Events:"
+                      kubectl get events -n $(KUBE_NAMESPACE) --sort-by='.lastTimestamp' --field-selector involvedObject.name=deployment/pixelated 2>&1 | tail -20 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Pod Events (new pods):"
+                      NEW_PODS=$(kubectl get pods -n $(KUBE_NAMESPACE) -l app=pixelated-app --sort-by='.metadata.creationTimestamp' -o jsonpath='{.items[-1:].metadata.name}' 2>&1 | grep -vE "(no symbol section|tls.go)" || true)
+                      if [ -n "$NEW_PODS" ]; then
+                        for pod in $NEW_PODS; do
+                          echo "--- Events for pod: $pod ---"
+                          kubectl describe pod "$pod" -n $(KUBE_NAMESPACE) 2>&1 | grep -A 20 "Events:" | grep -vE "(no symbol section|tls.go)" || true
+                        done
+                      fi
+
+                      echo ""
+                      echo "📋 ReplicaSet Status:"
+                      kubectl get replicasets -n $(KUBE_NAMESPACE) -l app=pixelated-app 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "💡 Common rollout issues:"
+                      echo "   - Readiness probe failures prevent rollout progression"
+                      echo "   - Resource constraints prevent pod scheduling"
+                      echo "   - Application startup taking longer than expected"
+                      echo ""
+                      echo "   Check pod logs for application errors:"
+                      echo "   kubectl logs -n $(KUBE_NAMESPACE) -l app=pixelated-app --tail=50"
+                      continueOnError: true
+
                 - task: Bash@3
                   displayName: "Create Sentry Release"
                   condition: succeededOrFailed()
@@ -677,6 +733,62 @@ stages:
                     namespace: "$(KUBE_NAMESPACE_PROD)"
                     command: "rollout"
                     arguments: "status deployment/pixelated --timeout=900s"
+
+                - task: AzureCLI@2
+                  displayName: "Diagnose Rollout Failure (if needed)"
+                  condition: failed()
+                  inputs:
+                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
+                    scriptType: "bash"
+                    scriptLocation: "inlineScript"
+                    inlineScript: |
+                      echo "🔍 Diagnosing production rollout failure..."
+
+                      # Get AKS credentials
+                      az aks get-credentials --resource-group $(AZURE_RESOURCE_GROUP) --name $(AKS_CLUSTER_NAME) --overwrite-existing
+
+                      # Suppress kubectl informational messages
+                      export KUBECTL_VERBOSITY=0
+
+                      echo ""
+                      echo "📊 Deployment Status:"
+                      kubectl get deployment pixelated -n $(KUBE_NAMESPACE_PROD) -o wide 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📊 Pod Status:"
+                      kubectl get pods -n $(KUBE_NAMESPACE_PROD) -l app=pixelated-app -o wide 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Deployment Conditions:"
+                      kubectl get deployment pixelated -n $(KUBE_NAMESPACE_PROD) -o jsonpath='{range .status.conditions[*]}{.type}: {.status} - {.reason}{"\n"}{end}' 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Recent Events:"
+                      kubectl get events -n $(KUBE_NAMESPACE_PROD) --sort-by='.lastTimestamp' --field-selector involvedObject.name=deployment/pixelated 2>&1 | tail -20 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "📋 Pod Events (new pods):"
+                      NEW_PODS=$(kubectl get pods -n $(KUBE_NAMESPACE_PROD) -l app=pixelated-app --sort-by='.metadata.creationTimestamp' -o jsonpath='{.items[-1:].metadata.name}' 2>&1 | grep -vE "(no symbol section|tls.go)" || true)
+                      if [ -n "$NEW_PODS" ]; then
+                        for pod in $NEW_PODS; do
+                          echo "--- Events for pod: $pod ---"
+                          kubectl describe pod "$pod" -n $(KUBE_NAMESPACE_PROD) 2>&1 | grep -A 20 "Events:" | grep -vE "(no symbol section|tls.go)" || true
+                        done
+                      fi
+
+                      echo ""
+                      echo "📋 ReplicaSet Status:"
+                      kubectl get replicasets -n $(KUBE_NAMESPACE_PROD) -l app=pixelated-app 2>&1 | grep -vE "(no symbol section|tls.go)" || true
+
+                      echo ""
+                      echo "💡 Common issues with maxUnavailable=0:"
+                      echo "   - New pod must become ready before old pods are terminated"
+                      echo "   - Requires sufficient cluster resources for surge (4 pods temporarily)"
+                      echo "   - Readiness probe failures prevent rollout progression"
+                      echo ""
+                      echo "   Check pod logs for application errors:"
+                      echo "   kubectl logs -n $(KUBE_NAMESPACE_PROD) -l app=pixelated-app --tail=50"
+                      continueOnError: true
 
                 - task: Bash@3
                   displayName: "Create Sentry Production Release"
