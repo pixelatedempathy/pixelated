@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ClientFacingDemo from '@/components/demo/ClientFacingDemo'
+---
+
+<BaseLayout
+  title="Psychology Pipeline Demo"
+  description="Interactive demo showcasing the complete psychology training pipeline with data ingestion, validation, category balancing, and export capabilities."
+>
+  <div class="min-h-screen bg-slate-900 py-8">
+    <ClientFacingDemo client:load />
+  </div>
+</BaseLayout>
+
