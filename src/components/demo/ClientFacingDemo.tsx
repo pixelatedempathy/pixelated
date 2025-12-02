@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Textarea } from '@/components/ui/textarea'
 import {
   Upload,
   CheckCircle,
@@ -28,6 +29,13 @@ interface DemoStep {
 const ClientFacingDemo: FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [isProcessing, setIsProcessing] = useState(false)
+  const [uploadedFiles, setUploadedFiles] = useState<
+    Array<{ name: string; size: string; type: string; status: string }>
+  >([])
+  const [isFileProcessing, setIsFileProcessing] = useState(false)
+  const [validationText, setValidationText] = useState('')
+  const [showValidationResults, setShowValidationResults] = useState(false)
+  const [isRealTimeBalancing, setIsRealTimeBalancing] = useState(false)
   const [, setDemoData] = useState({
     uploadedFiles: 0,
     validationScore: 0,
@@ -170,12 +178,36 @@ const ClientFacingDemo: FC = () => {
   const resetDemo = () => {
     setCurrentStep(0)
     setIsProcessing(false)
+    setIsFileProcessing(false)
+    setUploadedFiles([])
     setDemoData({
       uploadedFiles: 0,
       validationScore: 0,
       balanceScore: 0,
       exportReady: false,
     })
+  }
+
+  const handleFileUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const files = event.target.files
+    if (!files || files.length === 0) return
+
+    setIsFileProcessing(true)
+
+    // Simulate file processing
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    const newFiles = Array.from(files).map((file) => ({
+      name: file.name,
+      size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+      type: file.type || 'JSON',
+      status: 'processed',
+    }))
+
+    setUploadedFiles((prev) => [...prev, ...newFiles])
+    setIsFileProcessing(false)
   }
 
   return (
@@ -255,16 +287,38 @@ const ClientFacingDemo: FC = () => {
       {/* Demo Content */}
       <Tabs value={demoSteps[currentStep]?.id || 'upload'} className="w-full">
         <TabsList className="grid w-full grid-cols-4 bg-slate-800">
-          {demoSteps.map((step, index) => (
-            <TabsTrigger
-              key={step.id}
-              value={step.id}
-              disabled={index > currentStep}
-              className="data-[state=active]:bg-purple-600"
-            >
-              {step.title}
-            </TabsTrigger>
-          ))}
+          <TabsTrigger
+            value="upload"
+            disabled={currentStep < 0}
+            className="data-[state=active]:bg-purple-600"
+            data-testid="data-ingestion-tab"
+          >
+            {demoSteps[0]?.title}
+          </TabsTrigger>
+          <TabsTrigger
+            value="validate"
+            disabled={currentStep < 1}
+            className="data-[state=active]:bg-purple-600"
+            data-testid="validation-tab"
+          >
+            {demoSteps[1]?.title}
+          </TabsTrigger>
+          <TabsTrigger
+            value="balance"
+            disabled={currentStep < 2}
+            className="data-[state=active]:bg-purple-600"
+            data-testid="category-balancing-tab"
+          >
+            {demoSteps[2]?.title}
+          </TabsTrigger>
+          <TabsTrigger
+            value="export"
+            disabled={currentStep < 3}
+            className="data-[state=active]:bg-purple-600"
+            data-testid="export-tab"
+          >
+            {demoSteps[3]?.title}
+          </TabsTrigger>
         </TabsList>
 
         {/* Upload Tab */}
@@ -278,36 +332,93 @@ const ClientFacingDemo: FC = () => {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
+                <div data-testid="data-ingestion-section">
                   <h4 className="text-lg font-semibold text-white mb-4">
-                    Sample Files Processed
+                    Upload Files
+                  </h4>
+                  <div className="mb-4">
+                    <input
+                      type="file"
+                      accept=".json,.csv,.txt"
+                      onChange={handleFileUpload}
+                      data-testid="file-input"
+                      className="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 cursor-pointer"
+                    />
+                  </div>
+                  {isFileProcessing && (
+                    <div className="mb-4 p-3 bg-blue-900/50 rounded-lg text-blue-300 text-sm">
+                      Processing files...
+                    </div>
+                  )}
+                  {!isFileProcessing && uploadedFiles.length > 0 && (
+                    <div className="mb-4 p-3 bg-green-900/50 rounded-lg text-green-300 text-sm">
+                      Processing complete
+                    </div>
+                  )}
+                  <h4 className="text-lg font-semibold text-white mb-4 mt-6">
+                    Files Processed
                   </h4>
                   <div className="space-y-3">
-                    {sampleFiles.map((file) => (
-                      <div
-                        key={`${file.name}-${file.type}`}
-                        className="flex items-center justify-between p-3 bg-slate-700 rounded-lg"
-                      >
-                        <div className="flex items-center gap-3">
-                          <FileText className="w-5 h-5 text-purple-400" />
-                          <div>
-                            <div className="text-white text-sm font-medium">
-                              {file.name}
+                    {uploadedFiles.length === 0
+                      ? sampleFiles.map((file) => (
+                          <div
+                            key={`${file.name}-${file.type}`}
+                            className="flex items-center justify-between p-3 bg-slate-700 rounded-lg"
+                          >
+                            <div className="flex items-center gap-3">
+                              <FileText className="w-5 h-5 text-purple-400" />
+                              <div>
+                                <div className="text-white text-sm font-medium">
+                                  {file.name}
+                                </div>
+                                <div className="text-gray-400 text-xs">
+                                  {file.size} • {file.type}
+                                </div>
+                              </div>
                             </div>
-                            <div className="text-gray-400 text-xs">
-                              {file.size} • {file.type}
-                            </div>
+                            <Badge
+                              variant="outline"
+                              className="text-green-400 border-green-400"
+                            >
+                              {file.status}
+                            </Badge>
                           </div>
-                        </div>
-                        <Badge
-                          variant="outline"
-                          className="text-green-400 border-green-400"
-                        >
-                          {file.status}
-                        </Badge>
-                      </div>
-                    ))}
+                        ))
+                      : uploadedFiles.map((file, index) => (
+                          <div
+                            key={`uploaded-${file.name}-${index}`}
+                            className="flex items-center justify-between p-3 bg-slate-700 rounded-lg"
+                          >
+                            <div className="flex items-center gap-3">
+                              <FileText className="w-5 h-5 text-purple-400" />
+                              <div>
+                                <div className="text-white text-sm font-medium">
+                                  {file.name}
+                                </div>
+                                <div className="text-gray-400 text-xs">
+                                  {file.size} • {file.type}
+                                </div>
+                              </div>
+                            </div>
+                            <Badge
+                              variant="outline"
+                              className="text-green-400 border-green-400"
+                            >
+                              {file.status}
+                            </Badge>
+                          </div>
+                        ))}
                   </div>
+                  {uploadedFiles.length > 0 && (
+                    <div
+                      className="mt-4 p-4 bg-slate-700 rounded-lg"
+                      data-testid="processing-stats"
+                    >
+                      <div className="text-sm text-gray-300 mb-2">
+                        Items processed: {uploadedFiles.length * 100}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -354,7 +465,7 @@ const ClientFacingDemo: FC = () => {
 
         {/* Validation Tab */}
         <TabsContent value="validate" className="mt-6">
-          <Card className="bg-slate-800 border-slate-700">
+          <Card className="bg-slate-800 border-slate-700" data-testid="validation-section">
             <CardHeader>
               <CardTitle className="text-blue-400 flex items-center gap-2">
                 <Brain className="w-5 h-5" />
@@ -362,6 +473,28 @@ const ClientFacingDemo: FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
+              <div className="mb-6">
+                <Textarea
+                  placeholder="Enter psychology content for validation"
+                  value={validationText}
+                  onChange={(e) => {
+                    setValidationText(e.target.value)
+                    if (e.target.value.length > 10) {
+                      setTimeout(() => setShowValidationResults(true), 500)
+                    } else {
+                      setShowValidationResults(false)
+                    }
+                  }}
+                  className="min-h-[120px] bg-slate-900 text-white border-slate-600"
+                />
+              </div>
+              {showValidationResults && (
+                <div className="mb-6 p-4 bg-green-900/50 rounded-lg">
+                  <h4 className="text-lg font-semibold text-green-300 mb-2">
+                    Validation Results
+                  </h4>
+                </div>
+              )}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-4">
@@ -445,7 +578,7 @@ const ClientFacingDemo: FC = () => {
 
         {/* Balance Tab */}
         <TabsContent value="balance" className="mt-6">
-          <Card className="bg-slate-800 border-slate-700">
+          <Card className="bg-slate-800 border-slate-700" data-testid="category-balancing-section">
             <CardHeader>
               <CardTitle className="text-green-400 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5" />
@@ -455,6 +588,26 @@ const ClientFacingDemo: FC = () => {
             <CardContent>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
+                  <div className="mb-4">
+                    <Button
+                      onClick={() => setIsRealTimeBalancing(!isRealTimeBalancing)}
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                    >
+                      {isRealTimeBalancing ? 'Real-Time Balancing Active' : 'Inactive'}
+                    </Button>
+                  </div>
+                  {isRealTimeBalancing && (
+                    <div className="mb-4">
+                      <Button
+                        onClick={() => {
+                          // Simulate influx
+                        }}
+                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        Simulate Influx
+                      </Button>
+                    </div>
+                  )}
                   <h4 className="text-lg font-semibold text-white mb-4">
                     Category Distribution
                   </h4>
@@ -463,6 +616,7 @@ const ClientFacingDemo: FC = () => {
                       <div
                         key={`category-${category.name}`}
                         className="bg-slate-700 rounded-lg p-4"
+                        data-testid="category-card"
                       >
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white font-medium">
@@ -555,7 +709,7 @@ const ClientFacingDemo: FC = () => {
 
         {/* Export Tab */}
         <TabsContent value="export" className="mt-6">
-          <Card className="bg-slate-800 border-slate-700">
+          <Card className="bg-slate-800 border-slate-700" data-testid="export-section">
             <CardHeader>
               <CardTitle className="text-yellow-400 flex items-center gap-2">
                 <Download className="w-5 h-5" />
@@ -563,7 +717,54 @@ const ClientFacingDemo: FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Select Export Format
+                </h4>
+                <div className="grid grid-cols-3 gap-4">
+                  <button
+                    data-testid="format-json"
+                    className="bg-slate-700 hover:bg-slate-600 rounded-lg p-4 text-center border-2 border-transparent hover:border-purple-500 transition-colors"
+                  >
+                    <div className="text-2xl mb-2">📊</div>
+                    <div className="text-white font-medium">JSON</div>
+                  </button>
+                  <button
+                    data-testid="format-csv"
+                    className="bg-slate-700 hover:bg-slate-600 rounded-lg p-4 text-center border-2 border-transparent hover:border-blue-500 transition-colors"
+                  >
+                    <div className="text-2xl mb-2">📈</div>
+                    <div className="text-white font-medium">CSV</div>
+                  </button>
+                  <button
+                    data-testid="format-training-ready"
+                    className="bg-slate-700 hover:bg-slate-600 rounded-lg p-4 text-center border-2 border-transparent hover:border-green-500 transition-colors"
+                  >
+                    <div className="text-2xl mb-2">⚙️</div>
+                    <div className="text-white font-medium">Training Ready</div>
+                  </button>
+                </div>
+              </div>
+              <div className="mb-6">
+                <Button
+                  className="bg-purple-600 hover:bg-purple-700 text-white"
+                  onClick={() => {
+                    // Export functionality
+                  }}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Export Selected
+                </Button>
+              </div>
+              <div className="bg-green-900/50 rounded-lg p-4 mb-6">
+                <div className="text-green-300 font-semibold">COMPLETED</div>
+              </div>
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Export Data Preview
+                </h4>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6 mt-6">
                 <div className="bg-slate-700 rounded-lg p-6 text-center">
                   <div className="text-4xl mb-4">📊</div>
                   <h4 className="text-lg font-semibold text-purple-400 mb-2">
