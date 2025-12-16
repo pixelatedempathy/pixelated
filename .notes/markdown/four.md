@@ -9,7 +9,7 @@
 ```
 Google Drive (Source/Staging)
     ↓ [rclone sync - active uploads]
-S3: s3://pixelated-training-data/ (Training Mecca - Canonical)
+S3: s3://pixel-data/ (Training Mecca - Canonical)
     ↓ [Training Scripts Read From]
 Model Training
 ```
@@ -48,13 +48,13 @@ Model Training
 ## S3 Consolidation Status
 
 ### Current State
-- **Raw sync in progress**: Google Drive → `s3://pixelated-training-data/gdrive/raw/`
+- **Raw sync in progress**: Google Drive → `s3://pixel-data/gdrive/raw/`
   - Status: `processed` tier DONE, `raw` tier IN PROGRESS
   - Log: `upload_raw_final.log`
   - Method: rclone in tmux session (stable, low-priority)
 
 ### Target Structure
-- **Canonical location**: `s3://pixelated-training-data/gdrive/processed/`
+- **Canonical location**: `s3://pixel-data/gdrive/processed/`
   - Organized by category: `cot_reasoning/`, `professional_therapeutic/`, `priority/`, `edge_cases/`
   - This is where training scripts should read from
 
@@ -73,7 +73,7 @@ All training scripts should follow this pattern:
 ```python
 # S3 is canonical - read from S3
 def get_training_dataset(dataset_name: str, category: str):
-    s3_path = f"s3://pixelated-training-data/gdrive/processed/{category}/{dataset_name}"
+    s3_path = f"s3://pixel-data/gdrive/processed/{category}/{dataset_name}"
     # Load from S3, cache locally if needed
     return load_from_s3(s3_path)
 ```
