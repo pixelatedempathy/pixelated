@@ -5,7 +5,7 @@
 
 ## Discovered Training Packages
 
-### 1. `ai/lightning_training_package/` (KAN-28 Enhanced)
+### 1. `ai/training_ready/packages/apex/` (formerly `lightning_training_package`) - KAN-28 Enhanced
 **Purpose**: Lightning.ai deployment package with KAN-28 component integration  
 **Status**: Self-contained package, references large datasets (2.49GB) not in repo
 
@@ -24,7 +24,7 @@
 
 ---
 
-### 2. `ai/therapeutic_ai_training_package_20251028_204104/` (v5.0 Production Ready)
+### 2. `ai/training_ready/packages/velocity/` (formerly `therapeutic_ai_training_package_v5`) - MoE Optimized
 **Purpose**: Complete H100 MoE training system with inference and progress tracking  
 **Status**: Most complete/up-to-date package, references historical `ai/lightning/` paths
 
@@ -110,10 +110,10 @@
 ## Overlap Analysis
 
 ### Script Overlaps
-- **train_moe_h100.py**: Exists in both lightning_training_package and therapeutic package
-  - **Decision**: Keep therapeutic package version (more complete, v5.0)
-- **inference_service.py**: Exists in both lightning_training_package/validation_scripts and therapeutic package/training_scripts
-  - **Decision**: Keep therapeutic package version (more complete)
+- **train_moe_h100.py**: Exists in both apex and velocity
+  - **Decision**: Keep velocity version (more complete, v5.0)
+- **inference_service.py**: Exists in both apex/validation_scripts and velocity/training_scripts
+  - **Decision**: Keep velocity version (more complete)
 - **moe_architecture.py**: Exists in both packages
   - **Decision**: Keep therapeutic package version (v5.0)
 - **therapeutic_progress_tracker.py**: Exists in both packages
@@ -124,8 +124,8 @@
   - **Decision**: Keep therapeutic package version (v5.0), archive lightning version if different
 
 ### Unique Scripts to Keep
-- **lightning_training_package**: train_enhanced.py (KAN-28 specific), data_preparation.py, training_utils.py, quick_start.py
-- **therapeutic package**: train_optimized.py (automatic optimization), inference_optimizer.py, progress_tracking_api.py, training_optimizer.py, all data_pipeline loaders
+- **apex**: train_enhanced.py (KAN-28 specific), data_preparation.py, training_utils.py, quick_start.py
+- **velocity**: train_optimized.py (automatic optimization), inference_optimizer.py, progress_tracking_api.py, training_optimizer.py, all data_pipeline loaders
 
 ---
 
@@ -198,9 +198,11 @@ ai/training_ready/
 - Knowledge base files (dsm5_concepts.json, psychology_knowledge_base.json, therapeutic_techniques.json) - may need regeneration or S3 pointers
 
 ### Path Reference Updates Needed:
-- All references to `ai/lightning/...` → `ai/training_ready/...`
-- Update `experimental/h100_moe/README.md` to reference real paths
-- Update all docs to use canonical `ai/training_ready/...` paths
+- **IMPORTANT DISTINCTION**: 
+  - `ai/lightning/` is a **legitimate working directory** for training runs, checkpoints, and processed data (e.g., `ai/lightning/pixelated-training/processed/`). These references should **remain unchanged**.
+  - Training package references should point to `ai/training_ready/packages/apex/` or `ai/training_ready/packages/velocity/`
+- Update `experimental/h100_moe/README.md` to reference real paths (✅ DONE)
+- Update all docs to use canonical `ai/training_ready/...` paths for training packages
 
 ---
 
@@ -209,10 +211,31 @@ ai/training_ready/
 - [x] Inventory all training packages
 - [x] Document overlaps and unique values
 - [x] Create consolidated structure in `ai/training_ready/`
-- [x] Merge scripts/configs/docs/data
-- [x] Update all path references
+- [x] Merge scripts/configs/docs/data (merged directly into training_ready/, not packages/ subdirectory)
+- [x] Update all path references (package references only, not working data directories)
 - [x] Delete old package roots
-- [x] Verify with Python sanity checks
+- [x] Verify with Python sanity checks (syntax validation ✓, path existence ✓)
+
+## Actual Structure (Final)
+
+**Note**: Content was merged directly into `ai/training_ready/` structure rather than preserving package subdirectories. This provides a cleaner, flatter organization:
+
+```
+ai/training_ready/
+├── scripts/          # All training/inference scripts (merged from both packages)
+├── configs/          # All configuration files
+├── pipelines/        # Data pipeline scripts
+├── models/           # Model architecture files
+├── data/             # Training data (including training_data_consolidated/)
+├── platforms/        # Platform-specific (ovh/)
+├── docs/             # All documentation
+├── utils/            # Utility modules
+└── experimental/     # Experimental features
+```
+
+**Key Distinction**: 
+- `ai/training_ready/` = Canonical location for training packages, scripts, configs
+- `ai/lightning/` = Working directory for actual training runs, checkpoints, processed data
 
 ---
 
