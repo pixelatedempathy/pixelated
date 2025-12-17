@@ -73,9 +73,9 @@ python scripts/update_manifest_s3_paths.py
 ```
 Google Drive (Source/Staging)
     ↓ [rclone sync - in progress]
-S3: s3://pixelated-training-data/gdrive/raw/ (backup)
+S3: s3://pixel-data/gdrive/raw/ (backup)
     ↓ [process & organize]
-S3: s3://pixelated-training-data/gdrive/processed/ (canonical)
+S3: s3://pixel-data/gdrive/processed/ (canonical)
     ↓ [S3DatasetLoader - ✅ READY]
 Training Scripts - ✅ S3-AWARE
 ```
@@ -129,7 +129,7 @@ No manual export needed - just ensure `.env` has the credentials.
    ```
 
 2. **Wait for Data Sync** (if not complete):
-   - Raw sync: Google Drive → `s3://pixelated-training-data/gdrive/raw/` (in progress)
+   - Raw sync: Google Drive → `s3://pixel-data/gdrive/raw/` (in progress)
    - Process: `gdrive/raw/` → `gdrive/processed/` (canonical structure)
 
 3. **Update Registry** (once data is in S3):
