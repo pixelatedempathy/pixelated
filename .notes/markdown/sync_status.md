@@ -18,9 +18,9 @@
 
 **Important**: There are two bucket names in use:
 - **Sync target**: `pixel-data` (per one.md and check_uploads.py)
-- **Training loader default**: `pixelated-training-data` (per S3DatasetLoader)
+- **Training loader default**: `pixel-data` (per S3DatasetLoader)
 
-**Current Status**: Scripts can check both buckets. The sync is targeting `pixel-data`, but training scripts may need to use `pixelated-training-data` or the bucket name can be configured.
+**Current Status**: Scripts can check both buckets. The sync is targeting `pixel-data`, but training scripts may need to use `pixel-data` or the bucket name can be configured.
 
 ---
 
@@ -69,7 +69,7 @@ tail -f upload_raw_final.log
 Once sync completes, S3 should have:
 
 ```
-s3://pixel-data/  (or pixelated-training-data?)
+s3://pixel-data/  (or pixel-data?)
 ├── datasets/
 │   └── gdrive/
 │       ├── raw/                    # Raw Google Drive mirror (backup)
