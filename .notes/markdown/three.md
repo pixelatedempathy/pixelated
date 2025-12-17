@@ -186,7 +186,7 @@
 
 ### Target Structure on S3 (Canonical Training Data Location)
 
-**Primary Bucket**: `s3://pixelated-training-data/`
+**Primary Bucket**: `s3://pixel-data/`
 
 **Note**: Google Drive structure organization is secondary - the important consolidation is on S3 where training actually happens.
 
@@ -235,7 +235,7 @@ gdrive:datasets/
 - [x] Create summary document (`.notes/markdown/four.md`)
 
 ### Phase 2: S3 Organization (Primary Focus)
-- [ ] Complete raw sync: Google Drive → `s3://pixelated-training-data/gdrive/raw/` (in progress)
+- [ ] Complete raw sync: Google Drive → `s3://pixel-data/gdrive/raw/` (in progress)
 - [ ] Process and organize: `gdrive/raw/` → `gdrive/processed/` (canonical structure)
 - [ ] Create organized S3 structure:
   - `gdrive/processed/cot_reasoning/`
@@ -315,9 +315,9 @@ gdrive:datasets/
 ```
 Google Drive (Source/Staging)
     ↓ [rclone sync - active uploads running]
-S3: s3://pixelated-training-data/gdrive/raw/ (backup)
+S3: s3://pixel-data/gdrive/raw/ (backup)
     ↓ [process & organize]
-S3: s3://pixelated-training-data/gdrive/processed/ (canonical)
+S3: s3://pixel-data/gdrive/processed/ (canonical)
     ↓ [training scripts read from]
 Model Training
 ```
@@ -339,7 +339,7 @@ import boto3
 def get_training_dataset(dataset_name: str, category: str):
     """Get dataset from S3 - the training mecca"""
     s3 = boto3.client('s3', endpoint_url='https://s3.us-east-va.cloud.ovh.us')
-    bucket = 'pixelated-training-data'
+    bucket = 'pixel-data'
     
     # Try canonical processed structure first
     key = f'gdrive/processed/{category}/{dataset_name}'
@@ -365,7 +365,7 @@ def get_training_dataset(dataset_name: str, category: str):
    - [x] Update sync scripts with S3 structure awareness
 
 2. **Short-term** (S3 Organization):
-   - [ ] Complete raw sync: Google Drive → `s3://pixelated-training-data/gdrive/raw/` (in progress)
+   - [ ] Complete raw sync: Google Drive → `s3://pixel-data/gdrive/raw/` (in progress)
    - [ ] Process and organize raw data into `gdrive/processed/` canonical structure
    - [ ] Verify S3 access patterns and test S3DatasetLoader
    - [ ] Update training scripts to read from S3 (not Google Drive or local)
@@ -393,7 +393,7 @@ def get_training_dataset(dataset_name: str, category: str):
 
 - **S3 is the training mecca** - All training scripts should read from S3, not Google Drive or local
 - **Google Drive is source/staging** - Syncs to S3 via rclone (active uploads running)
-- **S3 structure is canonical** - `s3://pixelated-training-data/gdrive/processed/` is where training happens
+- **S3 structure is canonical** - `s3://pixel-data/gdrive/processed/` is where training happens
 - **No local copying required** - Training scripts read directly from S3
 - **Registry should reference S3** - `dataset_registry.json` should use S3 paths as primary
 - **Backward compatibility** - Sync scripts support both old and new structures during transition
