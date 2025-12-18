@@ -1,3 +1,11 @@
 source_name,url,license,allowed_uses,prohibited_uses,pii_present,deidentification_required,provenance_required,risk_level,acceptance_criteria,approval_status,reviewer,review_date,notes
 <example: PubMed abstracts>,https://pubmed.ncbi.nlm.nih.gov/,permissive,training;evaluation,redistribution,false,false,true,low,"license verified; provenance recorded; no PHI",pending,,,
 <example: Clinical forum>,https://example.com/forum,unclear,none,training;redistribution,true,true,true,high,"unclear license; contains potential PHI; reject unless contracted",rejected,privacy-team,2025-01-05,"risk too high"
+PubMed abstracts,https://pubmed.ncbi.nlm.nih.gov/,permissive,training;evaluation,redistribution,false,false,true,low,"license verified; provenance recorded; no PHI",pending,,,
+arXiv (cs.CL),https://arxiv.org/,permissive,training;evaluation,redistribution,false,false,true,low,"non-clinical; acceptable for method texts; ensure no patient data",pending,,,
+Common Crawl (filtered),https://commoncrawl.org/,unclear,none,training;redistribution,true,true,true,high,"broad crawl; potential PII; require strict filters and contracts",pending,,,
+StackExchange (Psychology),https://stackexchange.com/,unclear,none,training;redistribution,true,true,true,high,"license varies; potential PII; likely reject unless contract",pending,,,
+MedQuAD (FAQ),https://catalog.data.gov/dataset/medquad-medical-question-answer-dataset,permissive,training;evaluation,redistribution,false,false,true,medium,"verify license terms; ensure medical FAQs only (no PHI)",pending,,,
+MIMIC-III (deidentified),https://physionet.org/content/mimiciii-demo/1.4/,contracted,training;evaluation,redistribution,true,true,true,medium,"requires credentialed access; confirm deidentification; contract in place",pending,,,
+UK NHS patient info (leaflets),https://www.nhs.uk/conditions/,permissive,training;evaluation,redistribution,false,false,true,low,"public informational content; confirm license attribution",pending,,,
+WHO mental health resources,https://www.who.int/health-topics/mental-health,permissive,training;evaluation,redistribution,false,false,true,low,"public domain/informational; confirm license",pending,,,

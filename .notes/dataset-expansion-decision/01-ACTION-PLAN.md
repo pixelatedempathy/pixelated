@@ -44,8 +44,8 @@ Guidance
 - This auto-links PRs/commits to Jira issues and epics.
 
 Open PRs
-- Frontend (epics KAN-3, KAN-6): [add when available]
-- AI (epics KAN-1, KAN-2, KAN-4, KAN-5, KAN-7): [add when available]
+- Frontend (epics [KAN-3](https://gemcityxyz.atlassian.net/browse/KAN-3), [KAN-6](https://gemcityxyz.atlassian.net/browse/KAN-6)): _add when available_
+- AI (epics [KAN-1](https://gemcityxyz.atlassian.net/browse/KAN-1), [KAN-2](https://gemcityxyz.atlassian.net/browse/KAN-2), [KAN-4](https://gemcityxyz.atlassian.net/browse/KAN-4), [KAN-5](https://gemcityxyz.atlassian.net/browse/KAN-5), [KAN-7](https://gemcityxyz.atlassian.net/browse/KAN-7)): _add when available_
 - Source notes: [.notes/dataset-expansion-decision/00-README.md](../dataset-expansion-decision/00-README.md), [.notes/dataset-expansion-decision/02-DEEP-ANALYSIS.md](../dataset-expansion-decision/02-DEEP-ANALYSIS.md), [.notes/dataset-expansion-decision/03-RESEARCH-COMPARISON.md](../dataset-expansion-decision/03-RESEARCH-COMPARISON.md)
 
 Checklist (Phase 1–2 focus)

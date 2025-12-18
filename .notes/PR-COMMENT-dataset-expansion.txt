@@ -1,0 +1,22 @@
+KAN-10: Dataset Expansion scaffolding PR
+
+Description
+- Adds Project Links and Execution Checklist to .notes/dataset-expansion-decision/01-ACTION-PLAN.md
+- Links to Confluence index and epic child pages
+- Introduces governance artifacts:
+  - governance/data_source_matrix.csv
+  - governance/data_source_matrix.schema.json
+  - scripts/governance/validate_data_source_matrix.py (no external deps)
+- Aligns with Jira epics/stories and W1/W2 milestones
+- Docs-only; no runtime behavior changes
+
+Checklist
+- [ ] Rebased onto master
+- [ ] CI green (lint/tests)
+- [ ] No secrets/PII in diffs
+- [ ] Requested reviewers added (Governance, Ingestion/Quality, Curriculum, Training, Eval/Safety, Observability, Docs)
+- [ ] After merge: link PR on Confluence index and transition KAN-10
+
+Links
+- Confluence index: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7307265
+- Jira board: https://gemcityxyz.atlassian.net/browse/KAN
