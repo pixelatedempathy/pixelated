@@ -20,5 +20,14 @@ Verification
 Risk
 - Docs-only change; low risk. No runtime impacts.
 
+Suggested reviewers
+- Data Governance Lead (KAN-1)
+- Ingestion/Quality Lead (KAN-7)
+- Curriculum Lead (KAN-2)
+- Training Lead (KAN-5)
+- Safety/Evaluation Lead (KAN-6)
+- Observability Lead (KAN-4)
+- Documentation Lead (KAN-3)
+
 Follow-ups
 - Assign DRIs and finalize board filters/swimlanes in Jira UI (KAN-23)
