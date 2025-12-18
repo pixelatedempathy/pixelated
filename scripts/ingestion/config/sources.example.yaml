@@ -1,0 +1,11 @@
+sources:
+  - name: pubmed
+    url: https://pubmed.ncbi.nlm.nih.gov/
+    enabled: true
+    fields: [title, abstract, mesh_terms]
+    normalize: clinical_text
+  - name: arxiv_cs_cl
+    url: https://arxiv.org/
+    enabled: false
+    fields: [title, abstract, categories]
+    normalize: method_text
