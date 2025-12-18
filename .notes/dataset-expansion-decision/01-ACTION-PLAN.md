@@ -33,6 +33,10 @@ After comprehensive analysis of current dataset status (6.4GB, 300K+ conversatio
 ## Governance Artifacts
 
 ## Quality Scoring
+- CLI stub: scripts/quality_scoring/run_stub.py (reads JSONL id,text → writes scores JSONL)
+- Example input: scripts/quality_scoring/tmp_rovodev_input.jsonl
+- Example output: scripts/quality_scoring/example_output.jsonl
+
 - Spec (draft): https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/ (see Ingestion & Quality Scoring child page)
 - KAN-12 tracking: https://gemcityxyz.atlassian.net/browse/KAN-12
 
