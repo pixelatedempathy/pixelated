@@ -1,0 +1,19 @@
+PR Checklist (Dataset Expansion Scaffolding)
+
+Linked issue
+- [x] Includes issue key: KAN-10
+
+Readiness
+- [ ] Branch rebased on latest master
+- [ ] CI green (lint/tests)
+- [ ] No secrets/PII in diffs; governance artifacts added only
+- [ ] Docs-only scope verified (no behavior changes)
+
+Review
+- [ ] Requested reviewers added (Governance, Ingestion/Quality, Curriculum, Training, Eval/Safety, Observability, Docs)
+- [ ] Confluence index and epic pages render correctly
+
+Post-merge
+- [ ] Update Confluence index with PR link
+- [ ] Transition KAN-10 to Done (or appropriate status)
+- [ ] Start Week 1 execution (W1 stories)
