@@ -1,0 +1,24 @@
+Title: chore(project): wire Dataset Expansion project links, checklists, and Confluence index
+
+Summary
+- Adds Project Links and Execution Checklist to .notes/dataset-expansion-decision/01-ACTION-PLAN.md
+- Links to Confluence index and epic child pages
+- Aligns with Jira epics/stories and W1/W2 milestones
+- No functional code changes
+
+Details
+- Confluence index updated with Weekly Review section, DRIs placeholders, and Two-Week Execution Plan
+- Epic child pages scaffolded with Getting Started checklists and DRI placeholders
+- Documentation & Knowledge Base includes Experiment/Story and Decision Log templates
+- Jira epics & stories labeled (dataset-expansion, w1/w2) and components applied; due dates set for Week 1/2 items
+
+Verification
+- Open Confluence: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7307265
+- Open Jira board: https://gemcityxyz.atlassian.net/browse/KAN
+- Check ACTION-PLAN.md has Project Links and Execution Checklist with Confluence subpage links
+
+Risk
+- Docs-only change; low risk. No runtime impacts.
+
+Follow-ups
+- Assign DRIs and finalize board filters/swimlanes in Jira UI (KAN-23)
