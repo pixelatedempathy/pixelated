@@ -29,6 +29,23 @@ After comprehensive analysis of current dataset status (6.4GB, 300K+ conversatio
   - Evaluation & Safety Gates: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7405569
   - Observability & Drift: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7340033
   - Documentation & Knowledge Base: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7176194
+
+## Governance Artifacts
+- Data Source Approval Matrix (CSV): governance/data_source_matrix.csv
+- Matrix Schema: governance/data_source_matrix.schema.json
+- Validator: scripts/governance/validate_data_source_matrix.py
+
+## Repositories and PRs
+- Bitbucket (AI): https://bitbucket.org/metalpixel/ai
+- Bitbucket (Frontend): https://bitbucket.org/metalpixel/frontend
+
+Guidance
+- Include the Jira issue key in branch names, PR titles, and commits (e.g., feature/KAN-8-ingestion, "KAN-8: implement ingestion connectors").
+- This auto-links PRs/commits to Jira issues and epics.
+
+Open PRs
+- Frontend (epics KAN-3, KAN-6): [add when available]
+- AI (epics KAN-1, KAN-2, KAN-4, KAN-5, KAN-7): [add when available]
 - Source notes: [.notes/dataset-expansion-decision/00-README.md](../dataset-expansion-decision/00-README.md), [.notes/dataset-expansion-decision/02-DEEP-ANALYSIS.md](../dataset-expansion-decision/02-DEEP-ANALYSIS.md), [.notes/dataset-expansion-decision/03-RESEARCH-COMPARISON.md](../dataset-expansion-decision/03-RESEARCH-COMPARISON.md)
 
 Checklist (Phase 1–2 focus)
