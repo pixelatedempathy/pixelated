@@ -1,4 +1,4 @@
-Title: chore(project): wire Dataset Expansion project links, checklists, and Confluence index
+Title: KAN-10 chore(project): wire Dataset Expansion project links, checklists, and Confluence index
 
 Summary
 - Adds Project Links and Execution Checklist to .notes/dataset-expansion-decision/01-ACTION-PLAN.md
