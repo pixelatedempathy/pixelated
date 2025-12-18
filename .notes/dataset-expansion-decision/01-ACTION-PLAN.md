@@ -18,6 +18,50 @@ After comprehensive analysis of current dataset status (6.4GB, 300K+ conversatio
 
 ---
 
+## Project Links and Execution Checklist
+
+- Jira project: https://gemcityxyz.atlassian.net/browse/KAN
+- Confluence page: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7307265
+  - Governance & Licensing: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7372801
+  - Ingestion & Quality Scoring: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7471105
+  - Quality-Aware Curriculum: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7503873
+  - Training & Ablations: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7438337
+  - Evaluation & Safety Gates: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7405569
+  - Observability & Drift: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7340033
+  - Documentation & Knowledge Base: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7176194
+
+## Governance Artifacts
+- Data Source Approval Matrix (CSV): governance/data_source_matrix.csv
+- Matrix Schema: governance/data_source_matrix.schema.json
+- Validator: scripts/governance/validate_data_source_matrix.py
+
+## Repositories and PRs
+- Bitbucket (AI): https://bitbucket.org/metalpixel/ai
+- Bitbucket (Frontend): https://bitbucket.org/metalpixel/frontend
+
+Guidance
+- Include the Jira issue key in branch names, PR titles, and commits (e.g., feature/KAN-8-ingestion, "KAN-8: implement ingestion connectors").
+- This auto-links PRs/commits to Jira issues and epics.
+
+Open PRs
+- Frontend (epics KAN-3, KAN-6): [add when available]
+- AI (epics KAN-1, KAN-2, KAN-4, KAN-5, KAN-7): [add when available]
+- Source notes: [.notes/dataset-expansion-decision/00-README.md](../dataset-expansion-decision/00-README.md), [.notes/dataset-expansion-decision/02-DEEP-ANALYSIS.md](../dataset-expansion-decision/02-DEEP-ANALYSIS.md), [.notes/dataset-expansion-decision/03-RESEARCH-COMPARISON.md](../dataset-expansion-decision/03-RESEARCH-COMPARISON.md)
+
+Checklist (Phase 1–2 focus)
+- [ ] Governance: finalize data source matrix and license checks
+- [ ] Provenance pipeline: attach source + license metadata to all records
+- [ ] PII/PHI redaction MVP + audit sampling
+- [ ] Ingest missing Tier 1/2/3 datasets (per commands below)
+- [ ] Quality scoring v1 (empathy, fidelity, harmfulness, domain relevance)
+- [ ] Dedup to <1%; leakage prevention; holdout isolation
+- [ ] Bias/safety filters tuned with red-team feedback
+- [ ] Curriculum/mix policy defined and simulated
+- [ ] Baseline and ablation runs completed
+- [ ] Eval suite integrated and thresholds set (therapy-bench, clinical similarity, MI, toxicity/harms, refusal, crisis)
+- [ ] All safety gates pass vs baseline
+- [ ] Final compilation + manifest + verification report
+
 ## Phase 1: Foundation Completion (Weeks 1-2)
 
 ### 1.1 Download Missing GDrive Data (Priority: CRITICAL)
