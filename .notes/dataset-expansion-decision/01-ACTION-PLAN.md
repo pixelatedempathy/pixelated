@@ -31,6 +31,11 @@ After comprehensive analysis of current dataset status (6.4GB, 300K+ conversatio
   - Documentation & Knowledge Base: https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/7176194
 
 ## Governance Artifacts
+
+## Quality Scoring
+- Spec (draft): https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/ (see Ingestion & Quality Scoring child page)
+- KAN-12 tracking: https://gemcityxyz.atlassian.net/browse/KAN-12
+
 - Data Source Approval Matrix (CSV): governance/data_source_matrix.csv
 - Matrix Schema: governance/data_source_matrix.schema.json
 - Validator: scripts/governance/validate_data_source_matrix.py
@@ -44,8 +49,8 @@ Guidance
 - This auto-links PRs/commits to Jira issues and epics.
 
 Open PRs
-- Frontend (epics KAN-3, KAN-6): [add when available]
-- AI (epics KAN-1, KAN-2, KAN-4, KAN-5, KAN-7): [add when available]
+- Frontend (epics KAN-3, KAN-6): TBD
+- AI (epics KAN-1, KAN-2, KAN-4, KAN-5, KAN-7): TBD
 - Source notes: [.notes/dataset-expansion-decision/00-README.md](../dataset-expansion-decision/00-README.md), [.notes/dataset-expansion-decision/02-DEEP-ANALYSIS.md](../dataset-expansion-decision/02-DEEP-ANALYSIS.md), [.notes/dataset-expansion-decision/03-RESEARCH-COMPARISON.md](../dataset-expansion-decision/03-RESEARCH-COMPARISON.md)
 
 Checklist (Phase 1–2 focus)
