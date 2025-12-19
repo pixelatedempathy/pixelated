@@ -67,9 +67,9 @@ python scripts/update_manifest_s3_paths.py
 ```
 Google Drive (Source/Staging)
     ↓ [rclone sync - active]
-S3: s3://pixelated-training-data/gdrive/raw/ (backup)
+S3: s3://pixel-data/gdrive/raw/ (backup)
     ↓ [process & organize]
-S3: s3://pixelated-training-data/gdrive/processed/ (canonical)
+S3: s3://pixel-data/gdrive/processed/ (canonical)
     ↓ [S3DatasetLoader]
 Training Scripts
 ```
