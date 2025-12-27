@@ -40,8 +40,8 @@ After comprehensive analysis of current dataset status (6.4GB, 300K+ conversatio
 - Spec (draft): https://gemcityxyz.atlassian.net/wiki/spaces/PE/pages/ (see Ingestion & Quality Scoring child page)
 - KAN-12 tracking: https://gemcityxyz.atlassian.net/browse/KAN-12
 
-- Data Source Approval Matrix (CSV): governance/data_source_matrix.csv
-- Matrix Schema: governance/data_source_matrix.schema.json
+- Data Source Approval Matrix (CSV): docs/governance/data_source_matrix.csv
+- Matrix Schema: docs/governance/data_source_matrix.schema.json
 - Validator: scripts/governance/validate_data_source_matrix.py
 
 ## Repositories and PRs
