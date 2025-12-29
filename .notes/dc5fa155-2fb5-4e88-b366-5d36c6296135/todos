@@ -1,0 +1,116 @@
+[
+    {
+        "active_form": "Inventorying files under .notes and subfolders",
+        "content": "Inventory files under .notes and subfolders",
+        "id": 1,
+        "status": "completed"
+    },
+    {
+        "active_form": "Identifying actionable items suitable for Jira migration",
+        "content": "Identify actionable items (TODOs, tasks, decisions) suitable for Jira migration",
+        "id": 2,
+        "status": "completed"
+    },
+    {
+        "active_form": "Drafting Jira migration plan with mappings and selection criteria",
+        "content": "Propose Jira migration plan: issue types, epics, components, labels, and selection criteria",
+        "id": 3,
+        "status": "completed"
+    },
+    {
+        "active_form": "Confirming final scope and execution details for Jira import",
+        "content": "Request user confirmation and Jira project/site details before any Jira changes",
+        "id": 4,
+        "status": "completed"
+    },
+    {
+        "active_form": "Offering to document migration and open a PR with CSVs removed",
+        "content": "Upon approval, create Jira issues and optional Confluence summary page",
+        "id": 5,
+        "status": "pending"
+    },
+    {
+        "active_form": "Epics created in PIX. Creating initial Stories with correct Epic links.",
+        "content": "Execute Jira creation: epics and issues per approved plan",
+        "id": 6,
+        "status": "completed"
+    },
+    {
+        "active_form": "Generating CSV preview for Jira bulk import",
+        "content": "Generate CSV preview for Jira bulk import as fallback",
+        "id": 7,
+        "status": "completed"
+    },
+    {
+        "active_form": "Requesting Jira assignee identifier for import",
+        "content": "Collect Jira assignee identifier (email/accountId) for bulk import mapping",
+        "id": 8,
+        "status": "completed"
+    },
+    {
+        "active_form": "Extracting granular items from notes for Batch 2 Jira creation",
+        "content": "Decompose MetaAligner and Dataset Pipeline into granular stories/subtasks (Batch 2)",
+        "id": 9,
+        "status": "completed"
+    },
+    {
+        "active_form": "Confluence summary Markdown prepared and ready to publish",
+        "content": "Create Confluence page summarizing migration with links to Jira items",
+        "id": 10,
+        "status": "completed"
+    },
+    {
+        "active_form": "Deleting tmp_rovodev_jira_epics.csv and tmp_rovodev_jira_stories_batch1.csv",
+        "content": "Remove temporary CSV files created for fallback import",
+        "id": 11,
+        "status": "completed"
+    },
+    {
+        "active_form": "Parsing dataset merged notes and creating Batch 3 issues",
+        "content": "Batch 3: Expand Dataset Pipeline 'Implementation Files To Create' into Jira items",
+        "id": 12,
+        "status": "completed"
+    },
+    {
+        "active_form": "Adding Batch 4 subtasks to voice and ecosystem stories",
+        "content": "Batch 4: Create acceptance-criteria/engineering subtasks under key Stories",
+        "id": 13,
+        "status": "completed"
+    },
+    {
+        "active_form": "Confluence tiny-link failing via API; providing paste-ready roadmap content and alternatives",
+        "content": "Create Confluence 'PIX \u2014 Now/Next/Later' Roadmap page",
+        "id": 14,
+        "status": "completed"
+    },
+    {
+        "active_form": "Adding AC comments to MetaAligner 5.x subtasks",
+        "content": "Batch 5: Add detailed acceptance criteria to MetaAligner subtasks (2.x, 5.x)",
+        "id": 15,
+        "status": "in_progress"
+    },
+    {
+        "active_form": "Configuring board filters: creating implementation tasks and guidance",
+        "content": "Configure PIX board Now/Next/Later quick filters",
+        "id": 16,
+        "status": "completed"
+    },
+    {
+        "active_form": "Creating weekly rollup automation resources",
+        "content": "Create Confluence Weekly Rollup template and link from Roadmap",
+        "id": 17,
+        "status": "in_progress"
+    },
+    {
+        "active_form": "Creating Performance Optimization stories and AC/ENG/TEST subtasks",
+        "content": "Backfill performance-plan.md into Jira Stories/Subtasks",
+        "id": 18,
+        "status": "completed"
+    },
+    {
+        "active_form": "Publishing dashboard page in Confluence and creating Jira tasks for dashboard setup",
+        "content": "Set up dashboards (Jira/Confluence) for Now/Next/Later and KPIs",
+        "id": 19,
+        "status": "completed"
+    }
+]
