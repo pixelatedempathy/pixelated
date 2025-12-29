@@ -1,0 +1,26 @@
+[
+    {
+        "active_form": "Completed scanning pnpm-lock.yaml for duplicated jsonwebtoken entries",
+        "content": "Open and scan pnpm-lock.yaml for duplicated jsonwebtoken@9.0.3 mapping keys",
+        "id": 1,
+        "status": "completed"
+    },
+    {
+        "active_form": "No edit yet; awaiting verification run to confirm if a fix is needed",
+        "content": "Fix pnpm-lock.yaml by removing duplicate mapping key and ensure YAML validity (only if duplication is confirmed)",
+        "id": 2,
+        "status": "pending"
+    },
+    {
+        "active_form": "Ready to run pnpm install to validate lockfile in root and business-strategy-cms",
+        "content": "Run pnpm install --frozen-lockfile to verify the fix (root and business-strategy-cms)",
+        "id": 3,
+        "status": "pending"
+    },
+    {
+        "active_form": "Preparing summary and next steps",
+        "content": "Summarize fix and propose next steps (push branch/PR, pipeline run)",
+        "id": 4,
+        "status": "pending"
+    }
+]
