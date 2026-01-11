@@ -386,13 +386,26 @@ describe('allscripts Provider', () => {
       )
 
       // Simulate a search
-      await mockFhirClient.searchResources('Patient', { _summary: 'true' })
+      const result = await mockFhirClient.searchResources('Patient', {
+        _summary: 'true',
+      })
 
       // Assert that _summary or similar minimization parameter was potentially used
       // This requires knowing how minimization SHOULD be implemented.
-      // For now, just assert the mock was called.
-      expect(mockFhirClient.searchResources).toHaveBeenCalled()
-      // TODO: Add specific assertions about parameters or returned data fields.
+      // For now, just assert the mock was called with the correct parameter.
+      expect(mockFhirClient.searchResources).toHaveBeenCalledWith(
+        'Patient',
+        expect.objectContaining({ _summary: 'true' }),
+      )
+
+      // Add specific assertions about parameters or returned data fields.
+      expect(result).toHaveLength(1)
+      expect(result[0]).toEqual(
+        expect.objectContaining({
+          resourceType: 'Patient',
+          id: '123',
+        }),
+      )
     })
   })
 
