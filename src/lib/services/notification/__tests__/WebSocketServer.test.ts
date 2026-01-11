@@ -1,7 +1,9 @@
 import { WebSocket, WebSocketServer as WSServer } from 'ws'
 import { NotificationService } from '../NotificationService'
+import { WebSocketServer } from '../WebSocketServer'
 import type { IncomingMessage } from 'http'
 import type { Server } from 'ws'
+import * as logger from '../../../logging/build-safe-logger'
 
 // Define the mock type correctly based on vi.fn() return type
 type MockFn = ReturnType<typeof vi.fn>
@@ -16,52 +18,46 @@ vi.mock('ws', () => {
   }
 
   return {
-    WebSocketServer: vi.fn(() => mockServer),
-    WebSocket: vi.fn(),
+    WebSocketServer: vi.fn(function () {
+      return mockServer
+    }),
+    WebSocket: vi.fn(function () {
+      return {
+        on: vi.fn(),
+        send: vi.fn(),
+        close: vi.fn(),
+      }
+    }),
   }
 })
 
 vi.mock('../NotificationService')
-vi.mock('@/lib/utils/logger', () => ({
-  default: {
-    getLogger: () => ({
-      info: vi.fn(),
-      error: vi.fn(),
-      warn: vi.fn(),
-      debug: vi.fn(),
-    }),
-  },
+
+// Hoist mocks to avoid reference error
+const mocks = vi.hoisted(() => ({
+  info: vi.fn(),
+  error: vi.fn(),
+  warn: vi.fn(),
+  debug: vi.fn(),
 }))
 
-// Mock Supabase
-vi.mock('@/lib/supabase', () => {
-  const mockUser = { id: 'test-user' }
-  const mockProfile = { role: 'user' }
-  const mockSession = { user_id: 'test-user' }
+vi.mock('../../../logging/build-safe-logger', () => ({
+  createBuildSafeLogger: vi.fn(() => ({
+    info: mocks.info,
+    error: mocks.error,
+    warn: mocks.warn,
+    debug: mocks.debug,
+  })),
+}))
 
-  return {
-    mongoClient: {
-      auth: {
-        getUser: vi.fn().mockResolvedValue({
-          data: { user: mockUser },
-          error: null,
-        }),
-        getSession: vi.fn().mockResolvedValue({
-          data: { session: mockSession },
-          error: null,
-        }),
-      },
-      from: vi.fn().mockImplementation(() => ({
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        single: vi.fn().mockResolvedValue({
-          data: mockProfile,
-          error: null,
-        }),
-      })),
-    },
-  }
-})
+// Mock Auth0 Service
+vi.mock('../../../../services/auth0.service', () => ({
+  verifyToken: vi.fn().mockResolvedValue({
+    userId: 'test-user',
+    role: 'user',
+    email: 'test@example.com',
+  }),
+}))
 
 type WSEventHandler = (ws: WebSocket, req: IncomingMessage) => void
 type WSErrorHandler = (error: Error) => void
@@ -93,19 +89,22 @@ const findMockCall = (calls: unknown[], type: string): MockCall | undefined => {
 describe('WebSocketServer', () => {
   let mockPort: number
   let mockNotificationService: NotificationService
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let webSocketServer: WebSocketServer
 
   beforeEach(() => {
     vi.clearAllMocks()
     mockPort = 8082
     mockNotificationService = new NotificationService()
+    webSocketServer = new WebSocketServer(mockPort, mockNotificationService)
   })
 
   describe('constructor', () => {
     it('should initialize with provided port and notification service', () => {
       expect(WSServer).toHaveBeenCalledWith({ port: mockPort })
-      expect(
-        logger.createBuildSafeLogger('websocket').info,
-      ).toHaveBeenCalledWith('WebSocket server started', { port: mockPort })
+      expect(mocks.info).toHaveBeenCalledWith('WebSocket server started', {
+        port: mockPort,
+      })
     })
 
     it('should set up connection handler', () => {
@@ -174,6 +173,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
       expect(mockNotificationService.registerClient).toHaveBeenCalledWith(
         mockUserId,
@@ -183,11 +183,10 @@ describe('WebSocketServer', () => {
 
     it('should handle authentication failure', async () => {
       // Mock failed authentication
-      const { mongoClient } = await import('@/lib/supabase')
-      vi.mocked(mongoClient.auth.getUser).mockResolvedValueOnce({
-        data: { user: null },
-        error: { message: 'Invalid token', status: 401 },
-      })
+      const authService = await import('../../../../services/auth0.service')
+      vi.mocked(authService.verifyToken).mockRejectedValueOnce(
+        new Error('Invalid token'),
+      )
 
       const mockWs = new WebSocket(null) as unknown as WebSocket & {
         send: MockFn
@@ -212,6 +211,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
       // Verify error handling
       expect(mockWs.close).toHaveBeenCalledWith(
@@ -223,7 +223,7 @@ describe('WebSocketServer', () => {
       )
     })
 
-    it('should handle client messages', () => {
+    it('should handle client messages', async () => {
       const wsInstance = vi.mocked(WSServer).mock
         .instances[0] as unknown as MockedWSServer
       const connectionHandler = findMockCall(
@@ -236,6 +236,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
       expect(mockNotificationService.markAsRead).toHaveBeenCalledWith(
         mockUserId,
@@ -243,7 +244,7 @@ describe('WebSocketServer', () => {
       )
     })
 
-    it('should handle client disconnection', () => {
+    it('should handle client disconnection', async () => {
       const wsInstance = vi.mocked(WSServer).mock
         .instances[0] as unknown as MockedWSServer
       const connectionHandler = findMockCall(
@@ -256,6 +257,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
       const closeHandler = findMockCall(
         vi.mocked(mockWs.on).mock.calls,
@@ -285,13 +287,11 @@ describe('WebSocketServer', () => {
         throw new Error('Error handler not found')
       }
 
-      const mockError = new Error('Server error')
-      errorHandler.bind(wsInstance)(mockError)
+      const error = new Error('Server error')
+      errorHandler.bind(wsInstance)(error)
 
-      expect(
-        logger.createBuildSafeLogger('websocket').error,
-      ).toHaveBeenCalledWith('WebSocket server error', {
-        error: mockError.message,
+      expect(mocks.error).toHaveBeenCalledWith('WebSocket server error', {
+        error: String(error),
       })
     })
   })
