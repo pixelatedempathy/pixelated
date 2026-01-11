@@ -1,5 +1,7 @@
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
+import { mongoClient } from './mongoClient'
+import { createAuditLog, AuditEventType } from '../audit'
 
 let ObjectId: unknown
 
@@ -53,10 +55,13 @@ export interface UpdateUserSettings {
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  const settings = await mongoClient.db
+    .collection('user_settings')
+    .findOne({ user_id: userId })
+
+  return settings as UserSettings | null
 }
 
 /**
@@ -64,10 +69,38 @@ export async function getUserSettings(
  */
 export async function createUserSettings(
   settings: NewUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  const now = new Date()
+  const settingsToInsert = {
+    ...settings,
+    createdAt: now,
+    updatedAt: now,
+  }
+
+  const result = await mongoClient.db
+    .collection('user_settings')
+    .insertOne(settingsToInsert)
+
+  const newUserSettings = {
+    ...settingsToInsert,
+    _id: result.insertedId,
+  }
+
+  // Log the event
+  await createAuditLog(
+    AuditEventType.CREATE,
+    'create_user_settings',
+    settings.user_id,
+    'user_settings',
+    {
+      settingsId: result.insertedId.toString(),
+      ipAddress: request?.headers.get('x-forwarded-for'),
+      userAgent: request?.headers.get('user-agent'),
+    }
+  )
+
+  return newUserSettings as UserSettings
 }
 
 /**
@@ -76,10 +109,40 @@ export async function createUserSettings(
 export async function updateUserSettings(
   userId: string,
   updates: UpdateUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  const now = new Date()
+  const result = await mongoClient.db
+    .collection('user_settings')
+    .findOneAndUpdate(
+      { user_id: userId },
+      {
+        $set: {
+          ...updates,
+          updatedAt: now
+        }
+      },
+      { returnDocument: 'after' }
+    )
+
+  if (!result.value) {
+    throw new Error('User settings not found')
+  }
+
+  // Log the event
+  await createAuditLog(
+    AuditEventType.MODIFY,
+    'update_user_settings',
+    userId,
+    'user_settings',
+    {
+      updates,
+      ipAddress: request?.headers.get('x-forwarded-for'),
+      userAgent: request?.headers.get('user-agent'),
+    }
+  )
+
+  return result.value as UserSettings
 }
 
 /**
