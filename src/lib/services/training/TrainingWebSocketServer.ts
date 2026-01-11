@@ -395,16 +395,14 @@ export class TrainingWebSocketServer {
       return
     }
 
-    // TODO: Validate user has permission to send coaching notes
-    // - Only supervisors/observers should be able to send coaching notes
-    // - Verify role matches 'supervisor' or 'observer'
-
+    // Validate user has permission to send coaching notes
     if (client.role !== 'supervisor' && client.role !== 'observer') {
       logger.warn('Unauthorized coaching note attempt', {
         clientId,
         userId: client.userId,
         role: client.role
       })
+      this.sendError(client.ws, 'Permission denied: Only supervisors and observers can send coaching notes')
       return
     }
 
