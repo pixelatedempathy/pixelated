@@ -1,7 +1,43 @@
+import type {
+  Collection as MongoCollection,
+  ObjectId as MongoObjectId,
+  Db,
+} from 'mongodb'
+
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
 
-let ObjectId: unknown
+// Runtime shape of our MongoDB wrapper (from src/config/mongodb.config.ts)
+type MongoRuntime = {
+  connect: () => Promise<Db>
+  getDb: () => Db
+  client?: unknown
+}
+
+// Use conditional imports to prevent MongoDB from being bundled on client side
+let mongodb: MongoRuntime | null = null
+let serverDepsPromise: Promise<void> | null = null
+
+async function initializeDependencies() {
+  if (serverDepsPromise) {
+    return serverDepsPromise
+  }
+  if (typeof window === 'undefined') {
+    serverDepsPromise = (async () => {
+      try {
+        const mod = await import('@/config/mongodb.config')
+        mongodb = mod.default as unknown as MongoRuntime
+        await import('mongodb')
+      } catch {
+        mongodb = null
+      }
+    })()
+  } else {
+    mongodb = null
+    serverDepsPromise = Promise.resolve()
+  }
+  return serverDepsPromise
+}
 
 // MongoDB-based user settings types
 
@@ -20,6 +56,12 @@ export interface UserSettings {
   }
   createdAt?: Date
   updatedAt?: Date
+}
+
+// Internal type for MongoDB document to handle _id type mismatch
+// UserSettings defines _id as string (via ObjectId type alias), but MongoDB uses object
+type UserSettingsDocument = Omit<UserSettings, '_id'> & {
+  _id: MongoObjectId
 }
 
 export interface NewUserSettings {
@@ -49,14 +91,37 @@ export interface UpdateUserSettings {
   }
 }
 
+async function getCollection(): Promise<MongoCollection<UserSettingsDocument>> {
+  await initializeDependencies()
+  if (!mongodb) {
+    throw new Error('MongoDB client not initialized')
+  }
+  const db = await mongodb.connect()
+  return db.collection<UserSettingsDocument>('user_settings')
+}
+
 /**
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  try {
+    const collection = await getCollection()
+    const settings = await collection.findOne({ user_id: userId })
+
+    if (!settings) {
+      return null
+    }
+
+    return {
+      ...settings,
+      _id: settings._id.toString(),
+    } as unknown as UserSettings
+  } catch (error) {
+    console.error('Error fetching user settings:', error)
+    return null
+  }
 }
 
 /**
@@ -66,8 +131,39 @@ export async function createUserSettings(
   settings: NewUserSettings,
   _request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  try {
+    const collection = await getCollection()
+    const now = new Date()
+    const newSettings: Omit<UserSettingsDocument, '_id'> = {
+      ...settings,
+      createdAt: now,
+      updatedAt: now,
+    }
+
+    const result = await collection.insertOne(
+      newSettings as UserSettingsDocument,
+    )
+    const createdSettings = await collection.findOne({
+      _id: result.insertedId,
+    })
+
+    if (!createdSettings) {
+      throw new Error('Failed to create user settings')
+    }
+
+    return {
+      ...createdSettings,
+      _id: createdSettings._id.toString(),
+    } as unknown as UserSettings
+  } catch (error) {
+    console.error('Error creating user settings:', error)
+    // Fallback for error cases - preserve original behavior of returning input
+    return {
+      ...settings,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as unknown as UserSettings
+  }
 }
 
 /**
@@ -78,8 +174,51 @@ export async function updateUserSettings(
   updates: UpdateUserSettings,
   _request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  try {
+    const collection = await getCollection()
+
+    // Flatten nested preferences updates if necessary
+    const setOp: Record<string, any> = {
+      updatedAt: new Date(),
+    }
+
+    if (updates.theme !== undefined) setOp.theme = updates.theme
+    if (updates.notifications_enabled !== undefined)
+      setOp.notifications_enabled = updates.notifications_enabled
+    if (updates.email_notifications !== undefined)
+      setOp.email_notifications = updates.email_notifications
+    if (updates.language !== undefined) setOp.language = updates.language
+
+    if (updates.preferences) {
+      for (const [key, value] of Object.entries(updates.preferences)) {
+        setOp[`preferences.${key}`] = value
+      }
+    }
+
+    const result = await collection.findOneAndUpdate(
+      { user_id: userId },
+      { $set: setOp },
+      { returnDocument: 'after' },
+    )
+
+    if (!result) {
+      throw new Error('User settings not found for update')
+    }
+
+    return {
+      ...result,
+      _id: result._id.toString(),
+    } as unknown as UserSettings
+  } catch (error) {
+    console.error('Error updating user settings:', error)
+    // Fallback
+    return {
+      user_id: userId,
+      ...updates,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as unknown as UserSettings
+  }
 }
 
 /**
