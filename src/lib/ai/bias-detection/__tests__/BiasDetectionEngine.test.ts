@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi, afterEach, beforeAll } from 'vitest'
 import { BiasDetectionEngine } from '../BiasDetectionEngine'
 
 // Create a hoisted mock instance that can be accessed by both the mock factory and tests
@@ -1647,8 +1647,8 @@ describe('BiasDetectionEngine', { timeout: 20000 }, () => {
         sessionDataToTherapeuticSession(mockSessionData),
       )
 
-      // TODO: Bug - storeAnalysisResult is not called when auditLogging is true.
-      expect(storeAnalysisResultSpy).not.toHaveBeenCalled()
+      // storeAnalysisResult should be called even when auditLogging is true
+      expect(storeAnalysisResultSpy).toHaveBeenCalled()
     })
 
     it('should not create audit logs when disabled', async () => {
