@@ -56,6 +56,7 @@ async function initializeDependencies() {
 }
 import type {
   AIMetrics,
+  AuditLog,
   BiasDetection,
   ConsentManagement,
   CrisisSessionFlag,
@@ -462,6 +463,45 @@ export class ConsentManagementDAO {
   }
 }
 
+export class AuditLogDAO {
+  private async getCollection(): Promise<MongoCollection<AuditLog>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error('MongoDB client not initialized')
+    }
+    const db = await mongodb.connect()
+    return db.collection<AuditLog>('audit_logs')
+  }
+
+  async create(log: Omit<AuditLog, '_id'>): Promise<AuditLog> {
+    const collection = await this.getCollection()
+    const result = await collection.insertOne(log)
+    const createdLog = await collection.findOne({ _id: result.insertedId })
+
+    if (!createdLog) {
+      throw new Error('Failed to create audit log')
+    }
+
+    return { ...createdLog, id: createdLog._id?.toString() }
+  }
+
+  async findByUserId(
+    userId: string,
+    limit = 100,
+    offset = 0,
+  ): Promise<AuditLog[]> {
+    const collection = await this.getCollection()
+    const logs = await collection
+      .find({ userId: new ObjectId!(userId) })
+      .sort({ timestamp: -1 })
+      .skip(offset)
+      .limit(limit)
+      .toArray()
+
+    return logs.map((log) => ({ ...log, id: log._id?.toString() }))
+  }
+}
+
 // Export instances for use throughout the application
 export const todoDAO = new TodoDAO()
 export const aiMetricsDAO = new AIMetricsDAO()
@@ -469,3 +509,4 @@ export const biasDetectionDAO = new BiasDetectionDAO()
 export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
+export const auditLogDAO = new AuditLogDAO()
