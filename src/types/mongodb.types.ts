@@ -113,3 +113,14 @@ export interface ConsentManagement {
   revokedAt?: Date
   ipAddress?: string
 }
+
+export interface AuditLog {
+  _id?: MongoObjectId
+  id?: string
+  userId: MongoObjectId
+  action: string
+  resourceId: string
+  resourceType?: string
+  metadata?: Record<string, unknown>
+  timestamp: Date
+}
