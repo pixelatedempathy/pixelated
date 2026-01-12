@@ -34,16 +34,16 @@ importers:
         version: 0.9.6(prettier-plugin-astro@0.14.1)(prettier@3.7.4)(typescript@5.9.3)
       '@astrojs/cloudflare':
         specifier: ^12.6.12
-        version: 12.6.12(@types/node@25.0.3)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+        version: 12.6.12(@types/node@25.0.3)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       '@astrojs/node':
         specifier: ^9.5.1
-        version: 9.5.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 9.5.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@25.0.3)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       '@astrojs/vercel':
         specifier: ^9.0.3
-        version: 9.0.3(@aws-sdk/credential-provider-web-identity@3.965.0)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)(rollup@4.55.1)(vue@3.5.26(typescript@5.9.3))
+        version: 9.0.3(@aws-sdk/credential-provider-web-identity@3.966.0)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)(rollup@4.55.1)(vue@3.5.26(typescript@5.9.3))
       '@auth0/auth0-react':
         specifier: ~2.11.0
         version: 2.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -102,8 +102,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.70.0(react@19.2.3))
       '@iconify-json/lucide':
-        specifier: ^1.2.83
-        version: 1.2.83
+        specifier: ^1.2.84
+        version: 1.2.84
       '@memobase/memobase':
         specifier: ^0.0.18
         version: 0.0.18
@@ -154,7 +154,7 @@ importers:
         version: 9.5.0(@types/react@19.2.7)(immer@11.1.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(three@0.182.0)
       '@sentry/astro':
         specifier: ^10.32.1
-        version: 10.32.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 10.32.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       '@sentry/node':
         specifier: ^10.32.1
         version: 10.32.1
@@ -172,7 +172,7 @@ importers:
         version: 4.0.1(@modelcontextprotocol/sdk@1.25.2(hono@4.11.1)(zod@4.3.5))(zod@4.3.5)
       '@spotlightjs/astro':
         specifier: ^3.2.6
-        version: 3.2.6(@sentry/astro@10.32.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)))(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(hono@4.11.1)
+        version: 3.2.6(@sentry/astro@10.32.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)))(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(hono@4.11.1)
       '@tanstack/react-query':
         specifier: ^5.90.16
         version: 5.90.16(react@19.2.3)
@@ -189,8 +189,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/nodemailer':
-        specifier: ^7.0.4
-        version: 7.0.4
+        specifier: ^7.0.5
+        version: 7.0.5
       '@types/three':
         specifier: ^0.182.0
         version: 0.182.0
@@ -213,8 +213,8 @@ importers:
         specifier: 1.6.1
         version: 1.6.1(hono@4.11.1)
       astro:
-        specifier: ^5.16.7
-        version: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: ^5.16.8
+        version: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -276,8 +276,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       express-openid-connect:
-        specifier: ^2.19.3
-        version: 2.19.3(express@5.2.1)
+        specifier: ^2.19.4
+        version: 2.19.4(express@5.2.1)
       express-rate-limit:
         specifier: ^8.2.1
         version: 8.2.1(express@5.2.1)
@@ -443,7 +443,7 @@ importers:
     devDependencies:
       '@astrojs/markdoc':
         specifier: ^0.15.10
-        version: 0.15.10(@types/react@19.2.7)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)
+        version: 0.15.10(@types/react@19.2.7)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)
       '@astrojs/rss':
         specifier: ^4.0.14
         version: 4.0.14
@@ -527,19 +527,19 @@ importers:
         version: 1.2.2
       astro-expressive-code:
         specifier: ^0.41.5
-        version: 0.41.5(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 0.41.5(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       astro-loader-github-prs:
         specifier: ^1.3.1
-        version: 1.3.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 1.3.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       astro-loader-github-releases:
         specifier: ^2.1.1
-        version: 2.1.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 2.1.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
       astro-vitesse:
         specifier: ^0.5.2
-        version: 0.5.2(@iconify/json@2.2.416)(@unocss/reset@66.5.12)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(unocss@66.5.12(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)))
+        version: 0.5.2(@iconify/json@2.2.416)(@unocss/reset@66.5.12)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(unocss@66.5.12(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)))
       autoprefixer:
         specifier: ^10.4.23
         version: 10.4.23(postcss@8.5.6)
@@ -994,8 +994,8 @@ packages:
     resolution: {integrity: sha512-BTeaaU1iK0BfatTCrtYjNkIHCoZH256qOI18l9bK4z6mVOgpHkYN4RvOu+NnKgyX58n+HWfOuhtKUD4OE33Vdw==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/client-sesv2@3.958.0':
-    resolution: {integrity: sha512-3x3n8IIxIMAkdpt9wy9zS7MO2lqTcJwQTdHMn6BlD7YUohb+r5Q4KCOEQ2uHWd4WIJv2tlbXnfypHaXReO/WXA==}
+  '@aws-sdk/client-sesv2@3.966.0':
+    resolution: {integrity: sha512-M1xu5gcGmaE1gGYHydODnlWz1YWgnzjfClrpzgCaLpWqGriH1dqFyGw0cyCV93jli0UbzyPrNVgb7aTphEjHvg==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/client-sso@3.958.0':
@@ -1006,12 +1006,20 @@ packages:
     resolution: {integrity: sha512-iv2tr+n4aZ+nPUFFvG00hISPuEd4DU+1/Q8rPAYKXsM+vEPJ2nAnP5duUOa2fbOLIUCRxX3dcQaQaghVHDHzQw==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/client-sso@3.966.0':
+    resolution: {integrity: sha512-hQZDQgqRJclALDo9wK+bb5O+VpO8JcjImp52w9KPSz9XveNRgE9AYfklRJd8qT2Bwhxe6IbnqYEino2wqUMA1w==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/core@3.957.0':
     resolution: {integrity: sha512-DrZgDnF1lQZv75a52nFWs6MExihJF2GZB6ETZRqr6jMwhrk2kbJPUtvgbifwcL7AYmVqHQDJBrR/MqkwwFCpiw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/core@3.965.0':
     resolution: {integrity: sha512-aq9BhQxdHit8UUJ9C0im9TtuKeK0pT6NXmNJxMTCFeStI7GG7ImIsSislg3BZTIifVg1P6VLdzMyz9de85iutQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/core@3.966.0':
+    resolution: {integrity: sha512-QaRVBHD1prdrFXIeFAY/1w4b4S0EFyo/ytzU+rCklEjMRT7DKGXGoHXTWLGz+HD7ovlS5u+9cf8a/LeSOEMzww==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/crc64-nvme@3.965.0':
@@ -1026,12 +1034,20 @@ packages:
     resolution: {integrity: sha512-mdGnaIjMxTIjsb70dEj3VsWPWpoq1V5MWzBSfJq2H8zgMBXjn6d5/qHP8HMf53l9PrsgqzMpXGv3Av549A2x1g==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/credential-provider-env@3.966.0':
+    resolution: {integrity: sha512-sxVKc9PY0SH7jgN/8WxhbKQ7MWDIgaJv1AoAKJkhJ+GM5r09G5Vb2Vl8ALYpsy+r8b+iYpq5dGJj8k2VqxoQMg==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/credential-provider-http@3.957.0':
     resolution: {integrity: sha512-8dS55QHRxXgJlHkEYaCGZIhieCs9NU1HU1BcqQ4RfUdSsfRdxxktqUKgCnBnOOn0oD3PPA8cQOCAVgIyRb3Rfw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-http@3.965.0':
     resolution: {integrity: sha512-YuGQel9EgA/z25oeLM+GYYQS750+8AESvr7ZEmVnRPL0sg+K3DmGqdv+9gFjFd0UkLjTlC/jtbP2cuY6UcPiHQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/credential-provider-http@3.966.0':
+    resolution: {integrity: sha512-VTJDP1jOibVtc5pn5TNE12rhqOO/n10IjkoJi8fFp9BMfmh3iqo70Ppvphz/Pe/R9LcK5Z3h0Z4EB9IXDR6kag==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-ini@3.958.0':
@@ -1042,12 +1058,20 @@ packages:
     resolution: {integrity: sha512-xRo72Prer5s0xYVSCxCymVIRSqrVlevK5cmU0GWq9yJtaBNpnx02jwdJg80t/Ni7pgbkQyFWRMcq38c1tc6M/w==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/credential-provider-ini@3.966.0':
+    resolution: {integrity: sha512-4oQKkYMCUx0mffKuH8LQag1M4Fo5daKVmsLAnjrIqKh91xmCrcWlAFNMgeEYvI1Yy125XeNSaFMfir6oNc2ODA==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/credential-provider-login@3.958.0':
     resolution: {integrity: sha512-sDwtDnBSszUIbzbOORGh5gmXGl9aK25+BHb4gb1aVlqB+nNL2+IUEJA62+CE55lXSH8qXF90paivjK8tOHTwPA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-login@3.965.0':
     resolution: {integrity: sha512-43/H8Qku8LHyugbhLo8kjD+eauhybCeVkmrnvWl8bXNHJP7xi1jCdtBQJKKJqiIHZws4MOEwkji8kFdAVRCe6g==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/credential-provider-login@3.966.0':
+    resolution: {integrity: sha512-wD1KlqLyh23Xfns/ZAPxebwXixoJJCuDbeJHFrLDpP4D4h3vA2S8nSFgBSFR15q9FhgRfHleClycf6g5K4Ww6w==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-node@3.958.0':
@@ -1058,12 +1082,20 @@ packages:
     resolution: {integrity: sha512-cRxmMHF+Zh2lkkkEVduKl+8OQdtg/DhYA69+/7SPSQURlgyjFQGlRQ58B7q8abuNlrGT3sV+UzeOylZpJbV61Q==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/credential-provider-node@3.966.0':
+    resolution: {integrity: sha512-7QCOERGddMw7QbjE+LSAFgwOBpPv4px2ty0GCK7ZiPJGsni2EYmM4TtYnQb9u1WNHmHqIPWMbZR0pKDbyRyHlQ==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/credential-provider-process@3.957.0':
     resolution: {integrity: sha512-/KIz9kadwbeLy6SKvT79W81Y+hb/8LMDyeloA2zhouE28hmne+hLn0wNCQXAAupFFlYOAtZR2NTBs7HBAReJlg==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-process@3.965.0':
     resolution: {integrity: sha512-gmkPmdiR0yxnTzLPDb7rwrDhGuCUjtgnj8qWP+m0gSz/W43rR4jRPVEf6DUX2iC+ImQhxo3NFhuB3V42Kzo3TQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/credential-provider-process@3.966.0':
+    resolution: {integrity: sha512-q5kCo+xHXisNbbPAh/DiCd+LZX4wdby77t7GLk0b2U0/mrel4lgy6o79CApe+0emakpOS1nPZS7voXA7vGPz4w==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-sso@3.958.0':
@@ -1074,12 +1106,20 @@ packages:
     resolution: {integrity: sha512-N01AYvtCqG3Wo/s/LvYt19ity18/FqggiXT+elAs3X9Om/Wfx+hw9G+i7jaDmy+/xewmv8AdQ2SK5Q30dXw/Fw==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/credential-provider-sso@3.966.0':
+    resolution: {integrity: sha512-Rv5aEfbpqsQZzxpX2x+FbSyVFOE3Dngome+exNA8jGzc00rrMZEUnm3J3yAsLp/I2l7wnTfI0r2zMe+T9/nZAQ==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/credential-provider-web-identity@3.958.0':
     resolution: {integrity: sha512-dgnvwjMq5Y66WozzUzxNkCFap+umHUtqMMKlr8z/vl9NYMLem/WUbWNpFFOVFWquXikc+ewtpBMR4KEDXfZ+KA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-web-identity@3.965.0':
     resolution: {integrity: sha512-T4gMZ2JzXnfxe1oTD+EDGLSxFfk1+WkLZdiHXEMZp8bFI1swP/3YyDFXI+Ib9Uq1JhnAmrCXtOnkicKEhDkdhQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/credential-provider-web-identity@3.966.0':
+    resolution: {integrity: sha512-Yv1lc9iic9xg3ywMmIAeXN1YwuvfcClLVdiF2y71LqUgIOupW8B8my84XJr6pmOQuKzZa++c2znNhC9lGsbKyw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/dynamodb-codec@3.965.0':
@@ -1150,12 +1190,12 @@ packages:
     resolution: {integrity: sha512-gMouB2IYWjsshN3pIx8sjHtSEtAU7wZ8Dwmt4DOlHzvlh0tl9Sq2LTFMW3/O3Bfazs1YdfdnG/WP+r4Q7kJKDQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/middleware-sdk-s3@3.957.0':
-    resolution: {integrity: sha512-5B2qY2nR2LYpxoQP0xUum5A1UNvH2JQpLHDH1nWFNF/XetV7ipFHksMxPNhtJJ6ARaWhQIDXfOUj0jcnkJxXUg==}
-    engines: {node: '>=18.0.0'}
-
   '@aws-sdk/middleware-sdk-s3@3.965.0':
     resolution: {integrity: sha512-dXEgnojaaVRl+OlOx35mg3rYEbfffIN4X6tLmIfDnaKz0hMaDMvsE9jJXb/vBvokbdO1sVB27/2FEM4ttLSLnw==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/middleware-sdk-s3@3.966.0':
+    resolution: {integrity: sha512-9N9zncsY5ydDCRatKdrPZcdCwNWt7TdHmqgwQM52PuA5gs1HXWwLLNDy/51H+9RTHi7v6oly+x9utJ/qypCh2g==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/middleware-ssec@3.965.0':
@@ -1170,12 +1210,20 @@ packages:
     resolution: {integrity: sha512-RBEYVGgu/WeAt+H/qLrGc+t8LqAUkbyvh3wBfTiuAD+uBcWsKnvnB1iSBX75FearC0fmoxzXRUc0PMxMdqpjJQ==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/middleware-user-agent@3.966.0':
+    resolution: {integrity: sha512-MvGoy0vhMluVpSB5GaGJbYLqwbZfZjwEZhneDHdPhgCgQqmCtugnYIIjpUw7kKqWGsmaMQmNEgSFf1zYYmwOyg==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/nested-clients@3.958.0':
     resolution: {integrity: sha512-/KuCcS8b5TpQXkYOrPLYytrgxBhv81+5pChkOlhegbeHttjM69pyUpQVJqyfDM/A7wPLnDrzCAnk4zaAOkY0Nw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/nested-clients@3.965.0':
     resolution: {integrity: sha512-muNVUjUEU+/KLFrLzQ8PMXyw4+a/MP6t4GIvwLtyx/kH0rpSy5s0YmqacMXheuIe6F/5QT8uksXGNAQenitkGQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/nested-clients@3.966.0':
+    resolution: {integrity: sha512-FRzAWwLNoKiaEWbYhnpnfartIdOgiaBLnPcd3uG1Io+vvxQUeRPhQIy4EfKnT3AuA+g7gzSCjMG2JKoJOplDtQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/region-config-resolver@3.957.0':
@@ -1190,12 +1238,12 @@ packages:
     resolution: {integrity: sha512-aQ9vvXjeoQsAaRHS18l8doY+E/6mmNMSDMU6eJsSUDgvgGRMHhsKjiVh7DJGbZRRogdrES4KAfx6raIB4kBz5Q==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/signature-v4-multi-region@3.957.0':
-    resolution: {integrity: sha512-t6UfP1xMUigMMzHcb7vaZcjv7dA2DQkk9C/OAP1dKyrE0vb4lFGDaTApi17GN6Km9zFxJthEMUbBc7DL0hq1Bg==}
-    engines: {node: '>=18.0.0'}
-
   '@aws-sdk/signature-v4-multi-region@3.965.0':
     resolution: {integrity: sha512-hgbAThbsUrWtNpFBQxzXevIfd5Qgr4TLbXY1AIbmpSX9fPVC114pdieRMpopJ0fYaJ7v5/blTiS6wzVdXleZ/w==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/signature-v4-multi-region@3.966.0':
+    resolution: {integrity: sha512-VNSpyfKtDiBg/nPwSXDvnjISaDE9mI8zhOK3C4/obqh8lK1V6j04xDlwyIWbbIM0f6VgV1FVixlghtJB79eBqA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/token-providers@3.958.0':
@@ -1206,6 +1254,10 @@ packages:
     resolution: {integrity: sha512-aR0qxg0b8flkXJVE+CM1gzo7uJ57md50z2eyCwofC0QIz5Y0P7/7vvb9/dmUQt6eT9XRN5iRcUqq2IVxVDvJOw==}
     engines: {node: '>=18.0.0'}
 
+  '@aws-sdk/token-providers@3.966.0':
+    resolution: {integrity: sha512-8k5cBTicTGYJHhKaweO4gL4fud1KDnLS5fByT6/Xbiu59AxYM4E/h3ds+3jxDMnniCE3gIWpEnyfM9khtmw2lA==}
+    engines: {node: '>=18.0.0'}
+
   '@aws-sdk/types@3.957.0':
     resolution: {integrity: sha512-wzWC2Nrt859ABk6UCAVY/WYEbAd7FjkdrQL6m24+tfmWYDNRByTJ9uOgU/kw9zqLCAwb//CPvrJdhqjTznWXAg==}
     engines: {node: '>=18.0.0'}
@@ -1214,12 +1266,12 @@ packages:
     resolution: {integrity: sha512-jvodoJdMavvg8faN7co58vVJRO5MVep4JFPRzUNCzpJ98BDqWDk/ad045aMJcmxkLzYLS2UAnUmqjJ/tUPNlzQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/util-arn-parser@3.957.0':
-    resolution: {integrity: sha512-Aj6m+AyrhWyg8YQ4LDPg2/gIfGHCEcoQdBt5DeSFogN5k9mmJPOJ+IAmNSWmWRjpOxEy6eY813RNDI6qS97M0g==}
-    engines: {node: '>=18.0.0'}
-
   '@aws-sdk/util-arn-parser@3.965.0':
     resolution: {integrity: sha512-bNGKr5Tct28jGLkL8xIkGu7swpDgBpkTVbGaofhzr/X80iclbOv656RGxhMpDvmc4S9UuQnqLRXyceNFNF2V7Q==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws-sdk/util-arn-parser@3.966.0':
+    resolution: {integrity: sha512-WcCLdKBK2nHhtOPE8du5XjOXaOToxGF3Ge8rgK2jaRpjkzjS0/mO+Jp2H4+25hOne3sP2twBu5BrvD9KoXQ5LQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/util-dynamodb@3.965.0':
@@ -1261,6 +1313,15 @@ packages:
 
   '@aws-sdk/util-user-agent-node@3.965.0':
     resolution: {integrity: sha512-kokIHUfNT3/P55E4fUJJrFHuuA9BbjFKUIxoLrd3UaRfdafT0ScRfg2eaZie6arf60EuhlUIZH0yALxttMEjxQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      aws-crt: '>=1.0.0'
+    peerDependenciesMeta:
+      aws-crt:
+        optional: true
+
+  '@aws-sdk/util-user-agent-node@3.966.0':
+    resolution: {integrity: sha512-vPPe8V0GLj+jVS5EqFz2NUBgWH35favqxliUOvhp8xBdNRkEjiZm5TqitVtFlxS4RrLY3HOndrWbrP5ejbwl1Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       aws-crt: '>=1.0.0'
@@ -2395,8 +2456,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/lucide@1.2.83':
-    resolution: {integrity: sha512-k/255BFdcE+gY8cwQOlJMKjxOScW++8tiMxWw8jJXqHoQhBmOgsxm8SHVUIZqSrquMCcSNJn6rx67ZTQhoR2cA==}
+  '@iconify-json/lucide@1.2.84':
+    resolution: {integrity: sha512-m45MY1aW2swSK6Neb3J2qdZ+BxZ1VTdN7UeoXENwyMACG9bqGHWYJYxWoFzwoSnCfYLyKWTcBhesBgMd5IrUzQ==}
 
   '@iconify-json/ri@1.2.7':
     resolution: {integrity: sha512-j/Fkb8GlWY5y/zLj1BGxWRtDzuJFrI7562zLw+iQVEykieBgew43+r8qAvtSajvb75MfUIHjsNOYQPRD8FfLfw==}
@@ -5342,6 +5403,10 @@ packages:
     resolution: {integrity: sha512-wOboSEdQ85dbKAJ0zL+wQ6b0HTSBRhtGa0PYKysQXkRg+vK0tdCRRVruiFM2QMprkOQwSYOnwF4og96PAaEGag==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/core@3.20.2':
+    resolution: {integrity: sha512-nc99TseyTwL1bg+T21cyEA5oItNy1XN4aUeyOlXJnvyRW5VSK1oRKRoSM/Iq0KFPuqZMxjBemSZHZCOZbSyBMw==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/credential-provider-imds@4.2.7':
     resolution: {integrity: sha512-CmduWdCiILCRNbQWFR0OcZlUPVtyE49Sr8yYL0rZQ4D/wKxiNzBNS/YHemvnbkIWj623fplgkexUd/c9CAKdoA==}
     engines: {node: '>=18.0.0'}
@@ -5410,8 +5475,16 @@ packages:
     resolution: {integrity: sha512-mqpAdux0BNmZu/SqkFhQEnod4fX23xxTvU2LUpmKp0JpSI+kPYCiHJMmzREr8yxbNxKL2/DU1UZm9i++ayU+2g==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/middleware-endpoint@4.4.3':
+    resolution: {integrity: sha512-Zb8R35hjBhp1oFhiaAZ9QhClpPHdEDmNDC2UrrB2fqV0oNDUUPH12ovZHB5xi/Rd+pg/BJHOR1q+SfsieSKPQg==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/middleware-retry@4.4.18':
     resolution: {integrity: sha512-E5hulijA59nBk/zvcwVMaS7FG7Y4l6hWA9vrW018r+8kiZef4/ETQaPI4oY+3zsy9f6KqDv3c4VKtO4DwwgpCg==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/middleware-retry@4.4.19':
+    resolution: {integrity: sha512-QtisFIjIw2tjMm/ESatjWFVIQb5Xd093z8xhxq/SijLg7Mgo2C2wod47Ib/AHpBLFhwYXPzd7Hp2+JVXfeZyMQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/middleware-serde@4.2.8':
@@ -5462,6 +5535,10 @@ packages:
     resolution: {integrity: sha512-EfECiO/0fAfb590LBnUe7rI5ux7XfquQ8LBzTe7gxw0j9QW/q8UT/EHWHlxV/+jhQ3+Ssga9uUYXCQgImGMbNg==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/smithy-client@4.10.4':
+    resolution: {integrity: sha512-rHig+BWjhjlHlah67ryaW9DECYixiJo5pQCTEwsJyarRBAwHMMC3iYz5MXXAHXe64ZAMn1NhTUSTFIu1T6n6jg==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/types@4.11.0':
     resolution: {integrity: sha512-mlrmL0DRDVe3mNrjTcVcZEgkFmufITfUAPBEA+AHYiIeYyJebso/He1qLbP3PssRe22KUzLRpQSdBPbXdgZ2VA==}
     engines: {node: '>=18.0.0'}
@@ -5498,8 +5575,16 @@ packages:
     resolution: {integrity: sha512-dwN4GmivYF1QphnP3xJESXKtHvkkvKHSZI8GrSKMVoENVSKW2cFPRYC4ZgstYjUHdR3zwaDkIaTDIp26JuY7Cw==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/util-defaults-mode-browser@4.3.18':
+    resolution: {integrity: sha512-Ao1oLH37YmLyHnKdteMp6l4KMCGBeZEAN68YYe00KAaKFijFELDbRQRm3CNplz7bez1HifuBV0l5uR6eVJLhIg==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/util-defaults-mode-node@4.2.20':
     resolution: {integrity: sha512-VD/I4AEhF1lpB3B//pmOIMBNLMrtdMXwy9yCOfa2QkJGDr63vH3RqPbSAKzoGMov3iryCxTXCxSsyGmEB8PDpg==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/util-defaults-mode-node@4.2.21':
+    resolution: {integrity: sha512-e21ASJDirE96kKXZLcYcnn4Zt0WGOvMYc1P8EK0gQeQ3I8PbJWqBKx9AUr/YeFpDkpYwEu1RsPe4UXk2+QL7IA==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-endpoints@3.2.7':
@@ -5849,17 +5934,17 @@ packages:
   '@types/node-fetch@2.6.13':
     resolution: {integrity: sha512-QGpRVpzSaUs30JBSGPjOg4Uveu384erbHBoT1zeONvyCfwQxIkUshLAOqN/k9EjGviPRmWTTe6aH2qySWKTVSw==}
 
-  '@types/node@22.19.3':
-    resolution: {integrity: sha512-1N9SBnWYOJTrNZCdh/yJE+t910Y128BoyY+zBLWhL3r0TYzlTmFdXrPwHL9DyFZmlEXNQQolTZh3KHV31QDhyA==}
+  '@types/node@22.19.5':
+    resolution: {integrity: sha512-HfF8+mYcHPcPypui3w3mvzuIErlNOh2OAG+BCeBZCEwyiD5ls2SiCwEyT47OELtf7M3nHxBdu0FsmzdKxkN52Q==}
 
-  '@types/node@24.10.4':
-    resolution: {integrity: sha512-vnDVpYPMzs4wunl27jHrfmwojOGKya0xyM3sH+UE5iv5uPS6vX7UIoh6m+vQc5LGBq52HBKPIn/zcSZVzeDEZg==}
+  '@types/node@24.10.7':
+    resolution: {integrity: sha512-+054pVMzVTmRQV8BhpGv3UyfZ2Llgl8rdpDTon+cUH9+na0ncBVXj3wTUKh14+Kiz18ziM3b4ikpP5/Pc0rQEQ==}
 
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
 
-  '@types/nodemailer@7.0.4':
-    resolution: {integrity: sha512-ee8fxWqOchH+Hv6MDDNNy028kwvVnLplrStm4Zf/3uHWw5zzo8FoYYeffpJtGs2wWysEumMH0ZIdMGMY1eMAow==}
+  '@types/nodemailer@7.0.5':
+    resolution: {integrity: sha512-7WtR4MFJUNN2UFy0NIowBRJswj5KXjXDhlZY43Hmots5eGu5q/dTeFd/I6GgJA/qj3RqO6dDy4SvfcV3fOVeIA==}
 
   '@types/nprogress@0.2.3':
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
@@ -6640,8 +6725,8 @@ packages:
       astro: ^5.0.0
       unocss: ^66.5.12
 
-  astro@5.16.7:
-    resolution: {integrity: sha512-Kfv7FKisFR+THvmojXWtvJGRCvQ4D9przguE9XdeUtS464ned6hvbgmyFDvPzyaNmDtkHGNpPwAQ9tgFcVqp+Q==}
+  astro@5.16.8:
+    resolution: {integrity: sha512-gzZE+epuCrNuxOa8/F1dzkllDOFvxWhGeobQKeBRIAef5sUpUKMHZo/8clse+02rYnKJCgwXBgjW4uTu9mqUUw==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -8197,8 +8282,8 @@ packages:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
 
-  express-openid-connect@2.19.3:
-    resolution: {integrity: sha512-3XTQBa6Bzuw1GozlIQcruJ7vaWkjHaSDHTTJFuAvQwq/B42Brzn/MiVQUsxPXHnLCs/tN9Scg+G12dS2RGgT4Q==}
+  express-openid-connect@2.19.4:
+    resolution: {integrity: sha512-3YFPZ4MgUPhwfHbCaJKEij7uTc0vF4KpGKsuc3D1IhNMooiP6w8p1HBaaDQOE2KaAas22UghxVECxPpcC/gfOA==}
     engines: {node: ^10.19.0 || >=12.0.0 < 13 || >=13.7.0 < 14 || >= 14.2.0}
     peerDependencies:
       express: '>= 4.17.0'
@@ -12876,12 +12961,12 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@12.6.12(@types/node@25.0.3)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)':
+  '@astrojs/cloudflare@12.6.12(@types/node@25.0.3)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/underscore-redirects': 1.0.0
       '@cloudflare/workers-types': 4.20251231.0
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       tinyglobby: 0.2.15
       vite: 7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       wrangler: 4.50.0(@cloudflare/workers-types@4.20251231.0)
@@ -12930,13 +13015,13 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdoc@0.15.10(@types/react@19.2.7)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)':
+  '@astrojs/markdoc@0.15.10(@types/react@19.2.7)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/markdown-remark': 6.3.10
       '@astrojs/prism': 3.3.0
       '@markdoc/markdoc': 0.5.4(@types/react@19.2.7)(react@19.2.3)
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       esbuild: 0.25.12
       github-slugger: 2.0.0
       htmlparser2: 10.0.0
@@ -12971,12 +13056,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astrojs/mdx@4.3.13(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -12990,10 +13075,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.5.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astrojs/node@9.5.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -13051,14 +13136,14 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@9.0.3(@aws-sdk/credential-provider-web-identity@3.965.0)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)(rollup@4.55.1)(vue@3.5.26(typescript@5.9.3))':
+  '@astrojs/vercel@9.0.3(@aws-sdk/credential-provider-web-identity@3.966.0)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.3)(rollup@4.55.1)(vue@3.5.26(typescript@5.9.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1(react@19.2.3)(vue@3.5.26(typescript@5.9.3))
-      '@vercel/functions': 2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0)
+      '@vercel/functions': 2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0)
       '@vercel/nft': 0.30.4(rollup@4.55.1)
       '@vercel/routing-utils': 5.3.1
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -13477,43 +13562,43 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sesv2@3.958.0':
+  '@aws-sdk/client-sesv2@3.966.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.957.0
-      '@aws-sdk/credential-provider-node': 3.958.0
-      '@aws-sdk/middleware-host-header': 3.957.0
-      '@aws-sdk/middleware-logger': 3.957.0
-      '@aws-sdk/middleware-recursion-detection': 3.957.0
-      '@aws-sdk/middleware-user-agent': 3.957.0
-      '@aws-sdk/region-config-resolver': 3.957.0
-      '@aws-sdk/signature-v4-multi-region': 3.957.0
-      '@aws-sdk/types': 3.957.0
-      '@aws-sdk/util-endpoints': 3.957.0
-      '@aws-sdk/util-user-agent-browser': 3.957.0
-      '@aws-sdk/util-user-agent-node': 3.957.0
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/credential-provider-node': 3.966.0
+      '@aws-sdk/middleware-host-header': 3.965.0
+      '@aws-sdk/middleware-logger': 3.965.0
+      '@aws-sdk/middleware-recursion-detection': 3.965.0
+      '@aws-sdk/middleware-user-agent': 3.966.0
+      '@aws-sdk/region-config-resolver': 3.965.0
+      '@aws-sdk/signature-v4-multi-region': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/util-endpoints': 3.965.0
+      '@aws-sdk/util-user-agent-browser': 3.965.0
+      '@aws-sdk/util-user-agent-node': 3.966.0
       '@smithy/config-resolver': 4.4.5
-      '@smithy/core': 3.20.1
+      '@smithy/core': 3.20.2
       '@smithy/fetch-http-handler': 5.3.8
       '@smithy/hash-node': 4.2.7
       '@smithy/invalid-dependency': 4.2.7
       '@smithy/middleware-content-length': 4.2.7
-      '@smithy/middleware-endpoint': 4.4.2
-      '@smithy/middleware-retry': 4.4.18
+      '@smithy/middleware-endpoint': 4.4.3
+      '@smithy/middleware-retry': 4.4.19
       '@smithy/middleware-serde': 4.2.8
       '@smithy/middleware-stack': 4.2.7
       '@smithy/node-config-provider': 4.3.7
       '@smithy/node-http-handler': 4.4.7
       '@smithy/protocol-http': 5.3.7
-      '@smithy/smithy-client': 4.10.3
+      '@smithy/smithy-client': 4.10.4
       '@smithy/types': 4.11.0
       '@smithy/url-parser': 4.2.7
       '@smithy/util-base64': 4.3.0
       '@smithy/util-body-length-browser': 4.2.0
       '@smithy/util-body-length-node': 4.2.1
-      '@smithy/util-defaults-mode-browser': 4.3.17
-      '@smithy/util-defaults-mode-node': 4.2.20
+      '@smithy/util-defaults-mode-browser': 4.3.18
+      '@smithy/util-defaults-mode-node': 4.2.21
       '@smithy/util-endpoints': 3.2.7
       '@smithy/util-middleware': 4.2.7
       '@smithy/util-retry': 4.2.7
@@ -13608,6 +13693,49 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/client-sso@3.966.0':
+    dependencies:
+      '@aws-crypto/sha256-browser': 5.2.0
+      '@aws-crypto/sha256-js': 5.2.0
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/middleware-host-header': 3.965.0
+      '@aws-sdk/middleware-logger': 3.965.0
+      '@aws-sdk/middleware-recursion-detection': 3.965.0
+      '@aws-sdk/middleware-user-agent': 3.966.0
+      '@aws-sdk/region-config-resolver': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/util-endpoints': 3.965.0
+      '@aws-sdk/util-user-agent-browser': 3.965.0
+      '@aws-sdk/util-user-agent-node': 3.966.0
+      '@smithy/config-resolver': 4.4.5
+      '@smithy/core': 3.20.2
+      '@smithy/fetch-http-handler': 5.3.8
+      '@smithy/hash-node': 4.2.7
+      '@smithy/invalid-dependency': 4.2.7
+      '@smithy/middleware-content-length': 4.2.7
+      '@smithy/middleware-endpoint': 4.4.3
+      '@smithy/middleware-retry': 4.4.19
+      '@smithy/middleware-serde': 4.2.8
+      '@smithy/middleware-stack': 4.2.7
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/node-http-handler': 4.4.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/smithy-client': 4.10.4
+      '@smithy/types': 4.11.0
+      '@smithy/url-parser': 4.2.7
+      '@smithy/util-base64': 4.3.0
+      '@smithy/util-body-length-browser': 4.2.0
+      '@smithy/util-body-length-node': 4.2.1
+      '@smithy/util-defaults-mode-browser': 4.3.18
+      '@smithy/util-defaults-mode-node': 4.2.21
+      '@smithy/util-endpoints': 3.2.7
+      '@smithy/util-middleware': 4.2.7
+      '@smithy/util-retry': 4.2.7
+      '@smithy/util-utf8': 4.2.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/core@3.957.0':
     dependencies:
       '@aws-sdk/types': 3.957.0
@@ -13640,6 +13768,22 @@ snapshots:
       '@smithy/util-utf8': 4.2.0
       tslib: 2.8.1
 
+  '@aws-sdk/core@3.966.0':
+    dependencies:
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/xml-builder': 3.965.0
+      '@smithy/core': 3.20.2
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/property-provider': 4.2.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/signature-v4': 5.3.7
+      '@smithy/smithy-client': 4.10.4
+      '@smithy/types': 4.11.0
+      '@smithy/util-base64': 4.3.0
+      '@smithy/util-middleware': 4.2.7
+      '@smithy/util-utf8': 4.2.0
+      tslib: 2.8.1
+
   '@aws-sdk/crc64-nvme@3.965.0':
     dependencies:
       '@smithy/types': 4.11.0
@@ -13656,6 +13800,14 @@ snapshots:
   '@aws-sdk/credential-provider-env@3.965.0':
     dependencies:
       '@aws-sdk/core': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
+  '@aws-sdk/credential-provider-env@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/property-provider': 4.2.7
       '@smithy/types': 4.11.0
@@ -13683,6 +13835,19 @@ snapshots:
       '@smithy/property-provider': 4.2.7
       '@smithy/protocol-http': 5.3.7
       '@smithy/smithy-client': 4.10.3
+      '@smithy/types': 4.11.0
+      '@smithy/util-stream': 4.5.8
+      tslib: 2.8.1
+
+  '@aws-sdk/credential-provider-http@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/fetch-http-handler': 5.3.8
+      '@smithy/node-http-handler': 4.4.7
+      '@smithy/property-provider': 4.2.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/smithy-client': 4.10.4
       '@smithy/types': 4.11.0
       '@smithy/util-stream': 4.5.8
       tslib: 2.8.1
@@ -13725,6 +13890,25 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/credential-provider-ini@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/credential-provider-env': 3.966.0
+      '@aws-sdk/credential-provider-http': 3.966.0
+      '@aws-sdk/credential-provider-login': 3.966.0
+      '@aws-sdk/credential-provider-process': 3.966.0
+      '@aws-sdk/credential-provider-sso': 3.966.0
+      '@aws-sdk/credential-provider-web-identity': 3.966.0
+      '@aws-sdk/nested-clients': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/credential-provider-imds': 4.2.7
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/credential-provider-login@3.958.0':
     dependencies:
       '@aws-sdk/core': 3.957.0
@@ -13742,6 +13926,19 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.965.0
       '@aws-sdk/nested-clients': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
+  '@aws-sdk/credential-provider-login@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/nested-clients': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/property-provider': 4.2.7
       '@smithy/protocol-http': 5.3.7
@@ -13785,6 +13982,23 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/credential-provider-node@3.966.0':
+    dependencies:
+      '@aws-sdk/credential-provider-env': 3.966.0
+      '@aws-sdk/credential-provider-http': 3.966.0
+      '@aws-sdk/credential-provider-ini': 3.966.0
+      '@aws-sdk/credential-provider-process': 3.966.0
+      '@aws-sdk/credential-provider-sso': 3.966.0
+      '@aws-sdk/credential-provider-web-identity': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/credential-provider-imds': 4.2.7
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/credential-provider-process@3.957.0':
     dependencies:
       '@aws-sdk/core': 3.957.0
@@ -13797,6 +14011,15 @@ snapshots:
   '@aws-sdk/credential-provider-process@3.965.0':
     dependencies:
       '@aws-sdk/core': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
+  '@aws-sdk/credential-provider-process@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/property-provider': 4.2.7
       '@smithy/shared-ini-file-loader': 4.4.2
@@ -13829,6 +14052,19 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/credential-provider-sso@3.966.0':
+    dependencies:
+      '@aws-sdk/client-sso': 3.966.0
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/token-providers': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/credential-provider-web-identity@3.958.0':
     dependencies:
       '@aws-sdk/core': 3.957.0
@@ -13845,6 +14081,18 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.965.0
       '@aws-sdk/nested-clients': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
+  '@aws-sdk/credential-provider-web-identity@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/nested-clients': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/property-provider': 4.2.7
       '@smithy/shared-ini-file-loader': 4.4.2
@@ -13990,11 +14238,11 @@ snapshots:
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-sdk-s3@3.957.0':
+  '@aws-sdk/middleware-sdk-s3@3.965.0':
     dependencies:
-      '@aws-sdk/core': 3.957.0
-      '@aws-sdk/types': 3.957.0
-      '@aws-sdk/util-arn-parser': 3.957.0
+      '@aws-sdk/core': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/util-arn-parser': 3.965.0
       '@smithy/core': 3.20.1
       '@smithy/node-config-provider': 4.3.7
       '@smithy/protocol-http': 5.3.7
@@ -14007,16 +14255,16 @@ snapshots:
       '@smithy/util-utf8': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-sdk-s3@3.965.0':
+  '@aws-sdk/middleware-sdk-s3@3.966.0':
     dependencies:
-      '@aws-sdk/core': 3.965.0
+      '@aws-sdk/core': 3.966.0
       '@aws-sdk/types': 3.965.0
-      '@aws-sdk/util-arn-parser': 3.965.0
-      '@smithy/core': 3.20.1
+      '@aws-sdk/util-arn-parser': 3.966.0
+      '@smithy/core': 3.20.2
       '@smithy/node-config-provider': 4.3.7
       '@smithy/protocol-http': 5.3.7
       '@smithy/signature-v4': 5.3.7
-      '@smithy/smithy-client': 4.10.3
+      '@smithy/smithy-client': 4.10.4
       '@smithy/types': 4.11.0
       '@smithy/util-config-provider': 4.2.0
       '@smithy/util-middleware': 4.2.7
@@ -14046,6 +14294,16 @@ snapshots:
       '@aws-sdk/types': 3.965.0
       '@aws-sdk/util-endpoints': 3.965.0
       '@smithy/core': 3.20.1
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
+  '@aws-sdk/middleware-user-agent@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/util-endpoints': 3.965.0
+      '@smithy/core': 3.20.2
       '@smithy/protocol-http': 5.3.7
       '@smithy/types': 4.11.0
       tslib: 2.8.1
@@ -14136,6 +14394,49 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/nested-clients@3.966.0':
+    dependencies:
+      '@aws-crypto/sha256-browser': 5.2.0
+      '@aws-crypto/sha256-js': 5.2.0
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/middleware-host-header': 3.965.0
+      '@aws-sdk/middleware-logger': 3.965.0
+      '@aws-sdk/middleware-recursion-detection': 3.965.0
+      '@aws-sdk/middleware-user-agent': 3.966.0
+      '@aws-sdk/region-config-resolver': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@aws-sdk/util-endpoints': 3.965.0
+      '@aws-sdk/util-user-agent-browser': 3.965.0
+      '@aws-sdk/util-user-agent-node': 3.966.0
+      '@smithy/config-resolver': 4.4.5
+      '@smithy/core': 3.20.2
+      '@smithy/fetch-http-handler': 5.3.8
+      '@smithy/hash-node': 4.2.7
+      '@smithy/invalid-dependency': 4.2.7
+      '@smithy/middleware-content-length': 4.2.7
+      '@smithy/middleware-endpoint': 4.4.3
+      '@smithy/middleware-retry': 4.4.19
+      '@smithy/middleware-serde': 4.2.8
+      '@smithy/middleware-stack': 4.2.7
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/node-http-handler': 4.4.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/smithy-client': 4.10.4
+      '@smithy/types': 4.11.0
+      '@smithy/url-parser': 4.2.7
+      '@smithy/util-base64': 4.3.0
+      '@smithy/util-body-length-browser': 4.2.0
+      '@smithy/util-body-length-node': 4.2.1
+      '@smithy/util-defaults-mode-browser': 4.3.18
+      '@smithy/util-defaults-mode-node': 4.2.21
+      '@smithy/util-endpoints': 3.2.7
+      '@smithy/util-middleware': 4.2.7
+      '@smithy/util-retry': 4.2.7
+      '@smithy/util-utf8': 4.2.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/region-config-resolver@3.957.0':
     dependencies:
       '@aws-sdk/types': 3.957.0
@@ -14163,18 +14464,18 @@ snapshots:
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/signature-v4-multi-region@3.957.0':
+  '@aws-sdk/signature-v4-multi-region@3.965.0':
     dependencies:
-      '@aws-sdk/middleware-sdk-s3': 3.957.0
-      '@aws-sdk/types': 3.957.0
+      '@aws-sdk/middleware-sdk-s3': 3.965.0
+      '@aws-sdk/types': 3.965.0
       '@smithy/protocol-http': 5.3.7
       '@smithy/signature-v4': 5.3.7
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/signature-v4-multi-region@3.965.0':
+  '@aws-sdk/signature-v4-multi-region@3.966.0':
     dependencies:
-      '@aws-sdk/middleware-sdk-s3': 3.965.0
+      '@aws-sdk/middleware-sdk-s3': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/protocol-http': 5.3.7
       '@smithy/signature-v4': 5.3.7
@@ -14205,6 +14506,18 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
+  '@aws-sdk/token-providers@3.966.0':
+    dependencies:
+      '@aws-sdk/core': 3.966.0
+      '@aws-sdk/nested-clients': 3.966.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/property-provider': 4.2.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - aws-crt
+
   '@aws-sdk/types@3.957.0':
     dependencies:
       '@smithy/types': 4.11.0
@@ -14215,11 +14528,11 @@ snapshots:
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/util-arn-parser@3.957.0':
+  '@aws-sdk/util-arn-parser@3.965.0':
     dependencies:
       tslib: 2.8.1
 
-  '@aws-sdk/util-arn-parser@3.965.0':
+  '@aws-sdk/util-arn-parser@3.966.0':
     dependencies:
       tslib: 2.8.1
 
@@ -14280,6 +14593,14 @@ snapshots:
   '@aws-sdk/util-user-agent-node@3.965.0':
     dependencies:
       '@aws-sdk/middleware-user-agent': 3.965.0
+      '@aws-sdk/types': 3.965.0
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
+  '@aws-sdk/util-user-agent-node@3.966.0':
+    dependencies:
+      '@aws-sdk/middleware-user-agent': 3.966.0
       '@aws-sdk/types': 3.965.0
       '@smithy/node-config-provider': 4.3.7
       '@smithy/types': 4.11.0
@@ -15403,7 +15724,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify-json/lucide@1.2.83':
+  '@iconify-json/lucide@1.2.84':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -15666,7 +15987,7 @@ snapshots:
       '@inquirer/figures': 1.0.15
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.19.3
+      '@types/node': 22.19.5
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -18380,13 +18701,13 @@ snapshots:
       '@sentry-internal/browser-utils': 10.32.1
       '@sentry/core': 10.32.1
 
-  '@sentry/astro@10.32.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
+  '@sentry/astro@10.32.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@sentry/browser': 10.32.1
       '@sentry/core': 10.32.1
       '@sentry/node': 10.32.1
       '@sentry/vite-plugin': 4.6.1
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -18766,6 +19087,19 @@ snapshots:
       '@smithy/uuid': 1.1.0
       tslib: 2.8.1
 
+  '@smithy/core@3.20.2':
+    dependencies:
+      '@smithy/middleware-serde': 4.2.8
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/types': 4.11.0
+      '@smithy/util-base64': 4.3.0
+      '@smithy/util-body-length-browser': 4.2.0
+      '@smithy/util-middleware': 4.2.7
+      '@smithy/util-stream': 4.5.8
+      '@smithy/util-utf8': 4.2.0
+      '@smithy/uuid': 1.1.0
+      tslib: 2.8.1
+
   '@smithy/credential-provider-imds@4.2.7':
     dependencies:
       '@smithy/node-config-provider': 4.3.7
@@ -18881,12 +19215,35 @@ snapshots:
       '@smithy/util-middleware': 4.2.7
       tslib: 2.8.1
 
+  '@smithy/middleware-endpoint@4.4.3':
+    dependencies:
+      '@smithy/core': 3.20.2
+      '@smithy/middleware-serde': 4.2.8
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/shared-ini-file-loader': 4.4.2
+      '@smithy/types': 4.11.0
+      '@smithy/url-parser': 4.2.7
+      '@smithy/util-middleware': 4.2.7
+      tslib: 2.8.1
+
   '@smithy/middleware-retry@4.4.18':
     dependencies:
       '@smithy/node-config-provider': 4.3.7
       '@smithy/protocol-http': 5.3.7
       '@smithy/service-error-classification': 4.2.7
       '@smithy/smithy-client': 4.10.3
+      '@smithy/types': 4.11.0
+      '@smithy/util-middleware': 4.2.7
+      '@smithy/util-retry': 4.2.7
+      '@smithy/uuid': 1.1.0
+      tslib: 2.8.1
+
+  '@smithy/middleware-retry@4.4.19':
+    dependencies:
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/service-error-classification': 4.2.7
+      '@smithy/smithy-client': 4.10.4
       '@smithy/types': 4.11.0
       '@smithy/util-middleware': 4.2.7
       '@smithy/util-retry': 4.2.7
@@ -18970,6 +19327,16 @@ snapshots:
       '@smithy/util-stream': 4.5.8
       tslib: 2.8.1
 
+  '@smithy/smithy-client@4.10.4':
+    dependencies:
+      '@smithy/core': 3.20.2
+      '@smithy/middleware-endpoint': 4.4.3
+      '@smithy/middleware-stack': 4.2.7
+      '@smithy/protocol-http': 5.3.7
+      '@smithy/types': 4.11.0
+      '@smithy/util-stream': 4.5.8
+      tslib: 2.8.1
+
   '@smithy/types@4.11.0':
     dependencies:
       tslib: 2.8.1
@@ -19015,6 +19382,13 @@ snapshots:
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
+  '@smithy/util-defaults-mode-browser@4.3.18':
+    dependencies:
+      '@smithy/property-provider': 4.2.7
+      '@smithy/smithy-client': 4.10.4
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
   '@smithy/util-defaults-mode-node@4.2.20':
     dependencies:
       '@smithy/config-resolver': 4.4.5
@@ -19022,6 +19396,16 @@ snapshots:
       '@smithy/node-config-provider': 4.3.7
       '@smithy/property-provider': 4.2.7
       '@smithy/smithy-client': 4.10.3
+      '@smithy/types': 4.11.0
+      tslib: 2.8.1
+
+  '@smithy/util-defaults-mode-node@4.2.21':
+    dependencies:
+      '@smithy/config-resolver': 4.4.5
+      '@smithy/credential-provider-imds': 4.2.7
+      '@smithy/node-config-provider': 4.3.7
+      '@smithy/property-provider': 4.2.7
+      '@smithy/smithy-client': 4.10.4
       '@smithy/types': 4.11.0
       tslib: 2.8.1
 
@@ -19085,11 +19469,11 @@ snapshots:
 
   '@speed-highlight/core@1.2.14': {}
 
-  '@spotlightjs/astro@3.2.6(@sentry/astro@10.32.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)))(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(hono@4.11.1)':
+  '@spotlightjs/astro@3.2.6(@sentry/astro@10.32.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)))(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(hono@4.11.1)':
     dependencies:
-      '@sentry/astro': 10.32.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+      '@sentry/astro': 10.32.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       '@spotlightjs/spotlight': 3.0.2(hono@4.11.1)
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
     transitivePeerDependencies:
       - '@cfworker/json-schema'
       - hono
@@ -19451,11 +19835,11 @@ snapshots:
       '@types/node': 25.0.3
       form-data: 4.0.5
 
-  '@types/node@22.19.3':
+  '@types/node@22.19.5':
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@24.10.4':
+  '@types/node@24.10.7':
     dependencies:
       undici-types: 7.16.0
 
@@ -19463,9 +19847,9 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
-  '@types/nodemailer@7.0.4':
+  '@types/nodemailer@7.0.5':
     dependencies:
-      '@aws-sdk/client-sesv2': 3.958.0
+      '@aws-sdk/client-sesv2': 3.966.0
       '@types/node': 25.0.3
     transitivePeerDependencies:
       - aws-crt
@@ -19924,11 +20308,11 @@ snapshots:
       react: 19.2.3
       vue: 3.5.26(typescript@5.9.3)
 
-  '@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0)':
+  '@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0)':
     dependencies:
       '@vercel/oidc': 2.0.2
     optionalDependencies:
-      '@aws-sdk/credential-provider-web-identity': 3.965.0
+      '@aws-sdk/credential-provider-web-identity': 3.966.0
 
   '@vercel/kv@3.0.0':
     dependencies:
@@ -20470,14 +20854,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-expressive-code@0.38.3(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-expressive-code@0.38.3(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       rehype-expressive-code: 0.38.3
 
-  astro-expressive-code@0.41.5(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-expressive-code@0.41.5(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       rehype-expressive-code: 0.41.5
 
   astro-icon@1.1.5:
@@ -20488,14 +20872,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-loader-github-prs@1.3.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-loader-github-prs@1.3.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       octokit: 5.0.5
 
-  astro-loader-github-releases@2.1.1(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-loader-github-releases@2.1.1(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
       octokit: 5.0.5
 
   astro-robots-txt@1.0.0:
@@ -20503,15 +20887,15 @@ snapshots:
       valid-filename: 4.0.0
       zod: 4.3.5
 
-  astro-vitesse@0.5.2(@iconify/json@2.2.416)(@unocss/reset@66.5.12)(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(unocss@66.5.12(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))):
+  astro-vitesse@0.5.2(@iconify/json@2.2.416)(@unocss/reset@66.5.12)(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(unocss@66.5.12(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))):
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
-      '@astrojs/mdx': 4.3.13(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+      '@astrojs/mdx': 4.3.13(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       '@astrojs/sitemap': 3.6.0
       '@iconify/json': 2.2.416
       '@unocss/reset': 66.5.12
-      astro: 5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
-      astro-expressive-code: 0.38.3(astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro-expressive-code: 0.38.3(astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
       bcp-47: 2.1.0
       dayjs: 1.11.19
       fast-glob: 3.3.3
@@ -20528,7 +20912,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.16.7(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2):
+  astro@5.16.8(@azure/storage-blob@12.29.1)(@types/node@25.0.3)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)(jiti@2.6.1)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -20583,7 +20967,7 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.7.1
       unist-util-visit: 5.0.0
-      unstorage: 1.17.3(@azure/storage-blob@12.29.1)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)
+      unstorage: 1.17.3(@azure/storage-blob@12.29.1)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1)
       vfile: 6.0.3
       vite: 7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       vitefu: 1.1.1(vite@7.3.1(@types/node@25.0.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
@@ -22253,7 +22637,7 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  express-openid-connect@2.19.3(express@5.2.1):
+  express-openid-connect@2.19.4(express@5.2.1):
     dependencies:
       base64url: 3.0.1
       clone: 2.1.2
@@ -26414,7 +26798,7 @@ snapshots:
 
   sitemap@9.0.0:
     dependencies:
-      '@types/node': 24.10.4
+      '@types/node': 24.10.7
       '@types/sax': 1.2.7
       arg: 5.0.2
       sax: 1.4.4
@@ -27298,7 +27682,7 @@ snapshots:
       webpack-sources: 3.3.3
       webpack-virtual-modules: 0.5.0
 
-  unstorage@1.17.3(@azure/storage-blob@12.29.1)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0))(@vercel/kv@3.0.0)(ioredis@5.9.1):
+  unstorage@1.17.3(@azure/storage-blob@12.29.1)(@upstash/redis@1.36.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0))(@vercel/kv@3.0.0)(ioredis@5.9.1):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -27311,7 +27695,7 @@ snapshots:
     optionalDependencies:
       '@azure/storage-blob': 12.29.1
       '@upstash/redis': 1.36.1
-      '@vercel/functions': 2.2.13(@aws-sdk/credential-provider-web-identity@3.965.0)
+      '@vercel/functions': 2.2.13(@aws-sdk/credential-provider-web-identity@3.966.0)
       '@vercel/kv': 3.0.0
       ioredis: 5.9.1
 
