@@ -5,3 +5,7 @@
 ## 2024-05-24 - Hiding Interactive Elements
 **Learning:** Using `opacity-0` and `pointer-events-none` is not enough to hide elements from keyboard users (who can still tab to them) or screen readers. You must also manage `tabindex="-1"` and `aria-hidden="true"`, or use `visibility: hidden`.
 **Action:** When implementing "fade in" elements like a "Scroll to Top" button, ensure you toggle `tabindex` and `aria-hidden` states alongside the visual transition.
+
+## 2024-05-25 - Tabs Accessibility & Navigation
+**Learning:** Nested `role="tablist"` (e.g., on the container AND the list) is invalid ARIA. Also, providing `role="tab"` and `tabindex` is not enough; you must explicitly implement Arrow key navigation (Left/Right/Home/End) because native buttons don't handle this logic in a tablist context.
+**Action:** When building Tabs, ensure only the direct parent of triggers has `role="tablist"`, and implement an `onKeyDown` handler to manage focus movement between tabs.
