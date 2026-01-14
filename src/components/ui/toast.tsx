@@ -84,6 +84,7 @@ export const toast = {
           <button
             onClick={() => hotToast.dismiss(t.id)}
             className="ml-4 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+            aria-label="Close"
           >
             <svg
               className="w-4 h-4 text-gray-500"
@@ -91,6 +92,7 @@ export const toast = {
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -137,6 +139,7 @@ export const toast = {
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path
             fillRule="evenodd"
@@ -159,6 +162,7 @@ export const toast = {
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path
             fillRule="evenodd"
