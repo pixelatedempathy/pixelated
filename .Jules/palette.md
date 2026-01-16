@@ -5,3 +5,7 @@
 ## 2024-05-24 - Hiding Interactive Elements
 **Learning:** Using `opacity-0` and `pointer-events-none` is not enough to hide elements from keyboard users (who can still tab to them) or screen readers. You must also manage `tabindex="-1"` and `aria-hidden="true"`, or use `visibility: hidden`.
 **Action:** When implementing "fade in" elements like a "Scroll to Top" button, ensure you toggle `tabindex` and `aria-hidden` states alongside the visual transition.
+
+## 2026-01-14 - Accessible Toast Notifications
+**Learning:** Custom buttons in toast notifications (like "Close") often miss aria-label, and decorative icons are not hidden from screen readers, causing redundant or confusing announcements.
+**Action:** Always verify custom toast implementations include aria-label="Close" on dismiss buttons and aria-hidden="true" on decorative icons.
