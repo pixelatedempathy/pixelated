@@ -1,5 +1,11 @@
 import React, { useState, forwardRef } from 'react'
 import { usePasswordStrength } from '../../hooks/usePasswordStrength'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './tooltip'
 
 interface PasswordInputWithStrengthProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -142,28 +148,39 @@ export const PasswordInputWithStrength = forwardRef<
             />
 
             {showToggleButton && (
-              <button
-                type="button"
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 rounded-sm"
-                onClick={togglePasswordVisibility}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-              >
-                {showPassword ? (
-                  <span
-                    className="material-symbols-outlined"
-                    aria-hidden="true"
-                  >
-                    visibility_off
-                  </span>
-                ) : (
-                  <span
-                    className="material-symbols-outlined"
-                    aria-hidden="true"
-                  >
-                    visibility
-                  </span>
-                )}
-              </button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 rounded-sm"
+                      onClick={togglePasswordVisibility}
+                      aria-label={
+                        showPassword ? 'Hide password' : 'Show password'
+                      }
+                    >
+                      {showPassword ? (
+                        <span
+                          className="material-symbols-outlined"
+                          aria-hidden="true"
+                        >
+                          visibility_off
+                        </span>
+                      ) : (
+                        <span
+                          className="material-symbols-outlined"
+                          aria-hidden="true"
+                        >
+                          visibility
+                        </span>
+                      )}
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{showPassword ? 'Hide password' : 'Show password'}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             )}
 
             {isShowingError && <div className="error-label">{error}</div>}
