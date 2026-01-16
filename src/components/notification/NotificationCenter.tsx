@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import type { NotificationItem } from '@/lib/services/notification/NotificationService'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -7,42 +7,74 @@ import { useWebSocket } from '@/hooks/useWebSocket'
 import { NotificationStatus } from '@/lib/services/notification/NotificationService'
 import { cn } from '@/lib/utils'
 import { Bell, Check, X } from 'lucide-react'
+import type { ChatMessage } from '@/types/chat'
 
 interface NotificationCenterProps {
   className?: string
 }
+
+type ServerMessage =
+  | { type: 'unreadCount'; count: number }
+  | { type: 'notifications'; data: NotificationItem[] }
+  | { type: 'notification'; data: NotificationItem }
+  | { type: 'error'; message: string }
 
 export function NotificationCenter({ className }: NotificationCenterProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [notifications, setNotifications] = useState<NotificationItem[]>([])
   const [unreadCount, setUnreadCount] = useState(0)
 
+  // Memoize onMessage to avoid reconnect loop
+  const handleMessage = useCallback((message: ChatMessage) => {
+    try {
+      // The server sends messages wrapped in ChatMessage if possible, or we might need to handle raw content.
+      // However, useWebSocket forces ChatMessage structure on received data (JSON.parse -> type check).
+      // If the server sends raw JSON that doesn't match ChatMessage, useWebSocket might ignore it or error.
+      // But based on the task description "parsing and handling logic... const data = JSON.parse(message.content)",
+      // we assume the server sends a ChatMessage where `content` is a JSON string containing the actual notification data.
+      // OR, maybe we are simulating this wrapper.
+
+      // Let's assume the "message.content" holds the JSON payload.
+      const data = JSON.parse(message.content) as ServerMessage
+
+      switch (data.type) {
+        case 'unreadCount':
+          setUnreadCount(data.count)
+          break
+        case 'notifications':
+          setNotifications(data.data)
+          break
+        case 'notification':
+          setNotifications((prev) => [data.data, ...prev])
+          if (data.data.status !== NotificationStatus.READ) {
+            setUnreadCount((prev) => prev + 1)
+          }
+          break
+        case 'error':
+          console.error('Notification server error:', data.message)
+          break
+      }
+    } catch (e) {
+      console.error('Error parsing notification message:', e)
+    }
+  }, [])
+
   const { sendMessage } = useWebSocket({
     url: 'ws://localhost:8080', // Placeholder URL
     sessionId: 'placeholder-session', // Placeholder session ID
-    onMessage: (message) => {
-      // TODO: This is where incoming messages (lastMessage equivalent) would be handled
-      console.log('Received message:', message)
-      // For now, parsing and handling logic from the original useEffect [lastMessage] needs to be adapted here
-      // Example of how you might handle based on your previous logic:
-      // const data = JSON.parse(message.content) as unknown // Assuming message.content is the stringified data
-      // switch (data.type) { ... }
-    },
+    onMessage: handleMessage,
   })
 
   useEffect(() => {
     // Request initial notifications
     sendMessage({
-      id: 'init-notifications', // Placeholder ID
-      role: 'system', // Placeholder role
+      id: 'init-notifications',
+      role: 'system',
       content: JSON.stringify({
         type: 'get_notifications',
         limit: 20,
         offset: 0,
-      }), // Stringify custom payload
-      // type: 'get_notifications',
-      // limit: 20,
-      // offset: 0,
+      }),
     })
   }, [sendMessage])
 
@@ -51,8 +83,6 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
       id: `mark-read-${notificationId}`,
       role: 'system',
       content: JSON.stringify({ type: 'mark_read', notificationId }),
-      // type: 'mark_read',
-      // notificationId,
     })
 
     setNotifications((prev: NotificationItem[]) =>
@@ -70,8 +100,6 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
       id: `dismiss-${notificationId}`,
       role: 'system',
       content: JSON.stringify({ type: 'dismiss', notificationId }),
-      // type: 'dismiss',
-      // notificationId,
     })
 
     setNotifications((prev: NotificationItem[]) =>
@@ -92,6 +120,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
         size="icon"
         className="relative"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle notifications"
       >
         <Bell className="h-5 w-5" />
         {unreadCount > 0 && (
@@ -112,6 +141,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
+              aria-label="Close notifications"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -149,6 +179,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleMarkAsRead(notification.id)}
+                          aria-label="Mark as read"
                         >
                           <Check className="h-4 w-4" />
                         </Button>
@@ -157,6 +188,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                         variant="ghost"
                         size="icon"
                         onClick={() => handleDismiss(notification.id)}
+                        aria-label="Dismiss notification"
                       >
                         <X className="h-4 w-4" />
                       </Button>
