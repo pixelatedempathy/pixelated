@@ -83,7 +83,8 @@ export const toast = {
           <div className="flex-1">{message}</div>
           <button
             onClick={() => hotToast.dismiss(t.id)}
-            className="ml-4 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+            className="ml-4 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            aria-label="Dismiss"
           >
             <svg
               className="w-4 h-4 text-gray-500"
@@ -91,6 +92,7 @@ export const toast = {
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
