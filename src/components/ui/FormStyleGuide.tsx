@@ -1,7 +1,7 @@
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 /**
  * Form Style Guide Component
@@ -37,7 +37,7 @@ export function FormStyleGuide() {
             <Input
               id="error-input"
               placeholder="Invalid input"
-              className="border-destructive focus-visible:ring-destructive"
+              aria-invalid={true}
             />
 
             <p className="text-sm text-destructive">This field is required</p>
@@ -196,7 +196,7 @@ export function FormStyleGuide() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default FormStyleGuide
+export default FormStyleGuide;
