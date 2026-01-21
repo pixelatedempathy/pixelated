@@ -29,7 +29,8 @@ const AccordionContext = React.createContext<{
   openItems: string[]
   toggleItem: (value: string) => void
   type: 'single' | 'multiple'
-}>({ openItems: [], toggleItem: () => {}, type: 'single' })
+  uniqueId: string
+}>({ openItems: [], toggleItem: () => {}, type: 'single', uniqueId: 'accordion' })
 
 const AccordionItemContext = React.createContext<{
   value: string
@@ -42,6 +43,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     ref,
   ) => {
     const [openItems, setOpenItems] = React.useState<string[]>([])
+    const uniqueId = React.useId()
 
     const toggleItem = React.useCallback(
       (value: string) => {
@@ -62,7 +64,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     )
 
     return (
-      <AccordionContext.Provider value={{ openItems, toggleItem, type }}>
+      <AccordionContext.Provider value={{ openItems, toggleItem, type, uniqueId }}>
         <div ref={ref} className={cn('w-full', className)} {...props}>
           {children}
         </div>
@@ -92,17 +94,22 @@ const AccordionTrigger = React.forwardRef<
   HTMLButtonElement,
   AccordionTriggerProps
 >(({ className, children, ...props }, ref) => {
-  const { toggleItem } = React.useContext(AccordionContext)
+  const { toggleItem, uniqueId } = React.useContext(AccordionContext)
   const { value, isOpen } = React.useContext(AccordionItemContext)
+  const contentId = `${uniqueId}-content-${value}`
+  const triggerId = `${uniqueId}-trigger-${value}`
 
   return (
     <button
       ref={ref}
+      id={triggerId}
       className={cn(
         'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline text-left w-full',
         className,
       )}
       onClick={() => toggleItem(value)}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
       {...props}
     >
       {children}
@@ -121,11 +128,17 @@ const AccordionContent = React.forwardRef<
   HTMLDivElement,
   AccordionContentProps
 >(({ className, children, ...props }, ref) => {
-  const { isOpen } = React.useContext(AccordionItemContext)
+  const { uniqueId } = React.useContext(AccordionContext)
+  const { isOpen, value } = React.useContext(AccordionItemContext)
+  const contentId = `${uniqueId}-content-${value}`
+  const triggerId = `${uniqueId}-trigger-${value}`
 
   return (
     <div
       ref={ref}
+      id={contentId}
+      role="region"
+      aria-labelledby={triggerId}
       className={cn(
         'overflow-hidden text-sm transition-all duration-200',
         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
