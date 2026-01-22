@@ -43,6 +43,10 @@ interface TrainingSessionClient {
   userId: string
   isAuthenticated: boolean
   authenticatedAt?: Date
+  messageRateLimit?: {
+    count: number
+    windowStart: number
+  }
 }
 
 interface ClientAuthResult {
@@ -373,9 +377,35 @@ export class TrainingWebSocketServer {
       return
     }
 
-    // TODO: Validate user has permission to send messages in this session
-    // - Verify user is the session owner or has appropriate role
-    // - Rate limiting to prevent abuse
+    // Permission Check: Observers cannot send session messages (only trainees and supervisors)
+    if (client.role === 'observer') {
+      logger.warn('Observer attempted to send session message', {
+        clientId,
+        userId: client.userId,
+        role: client.role
+      })
+      this.sendError(client.ws, 'Observers are not allowed to send session messages')
+      return
+    }
+
+    // Rate Limiting: 10 messages per 10 seconds
+    const RATE_LIMIT_WINDOW_MS = 10000 // 10 seconds
+    const MAX_MESSAGES_PER_WINDOW = 10
+
+    if (!client.messageRateLimit || Date.now() - client.messageRateLimit.windowStart > RATE_LIMIT_WINDOW_MS) {
+      client.messageRateLimit = {
+        count: 0,
+        windowStart: Date.now()
+      }
+    }
+
+    if (client.messageRateLimit.count >= MAX_MESSAGES_PER_WINDOW) {
+      logger.warn('Rate limit exceeded', { clientId, userId: client.userId })
+      this.sendError(client.ws, 'Rate limit exceeded. Please slow down.')
+      return
+    }
+
+    client.messageRateLimit.count++
 
     // Broadcast chat message to everyone in the session
     this.broadcastToSession(client.sessionId, {
