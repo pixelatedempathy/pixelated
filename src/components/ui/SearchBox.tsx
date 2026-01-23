@@ -63,6 +63,21 @@ export default function SearchBox({
     }
   }, [autoFocus])
 
+  // Handle global keyboard shortcut (Cmd+K)
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        inputRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleGlobalKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleGlobalKeyDown)
+    }
+  }, [])
+
   // Reset active index when results change
   useEffect(() => {
     setActiveIndex(-1)
@@ -192,10 +207,21 @@ export default function SearchBox({
           aria-autocomplete="list"
           aria-controls="search-results"
           aria-activedescendant={
-            showResults && activeIndex >= 0 ? `result-${activeIndex}` : undefined
+            showResults && activeIndex >= 0
+              ? `result-${activeIndex}`
+              : undefined
           }
           autoComplete="off"
         />
+
+        {/* Keyboard shortcut hint */}
+        {!query && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none hidden sm:flex items-center gap-1">
+            <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 bg-gray-100 px-1.5 font-mono text-[10px] font-medium text-gray-500 opacity-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </div>
+        )}
 
         {query.length > 0 && (
           <button
