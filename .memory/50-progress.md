@@ -30,34 +30,34 @@
 ### Phase 1: Foundation Completion (Weeks 1-2)
 
 #### 1.1 Download Missing GDrive Data - CRITICAL
-- [ ] **Tier 1 Priority (1.16GB, 40% training weight)**:
+- [ ] **Task 1: Tier 1 Priority (1.16GB, 40% training weight)**:
   - `priority_1_FINAL.jsonl` (462MB)
   - `priority_2_FINAL.jsonl` (330MB) 
   - `priority_3_FINAL.jsonl` (370MB)
   - `priority_4_FINAL.jsonl`
   - `priority_5_FINAL.jsonl`
 
-- [ ] **Tier 3 CoT Datasets (86MB)**:
+- [ ] **Task 2: Tier 3 CoT Datasets (86MB)**:
   - `CoT_Neurodivergent_vs_Neurotypical_Interactions/`
   - `CoT_Philosophical_Understanding/`
 
-- [ ] **Tier 4 Reddit Data (700MB+)**:
+- [ ] **Task 3: Tier 4 Reddit Data (700MB+)**:
   - `reddit_mental_health/mental_disorders_reddit.csv`
   - `reddit_mental_health/Suicide_Detection.csv`
 
 #### 1.2 Generate Missing Datasets
-- [ ] **Edge Case Synthetic Dataset (10,000 samples)**: Script available
+- [ ] **Task 4: Edge Case Synthetic Dataset (10,000 samples)**: Script available
 - [x] **Long-Running Therapy Dataset**: Script enhanced ✅
-- [ ] **CPTSD Dataset from Tim Fletcher Transcripts**: Script available
+- [ ] **Task 5: CPTSD Dataset from Tim Fletcher Transcripts**: Script available
 
 #### 1.3 Quality Optimization
-- [ ] **Deduplication (<1% duplicate rate)**: Script available
-- [ ] **UTF-8 Encoding Fix**: Script available
-- [ ] **8-Gate Quality Validation**: Script available
+- [ ] **Task 6: Deduplication (<1% duplicate rate)**: Script available
+- [ ] **Task 7: UTF-8 Encoding Fix**: Script available
+- [ ] **Task 8: 8-Gate Quality Validation**: Script available
 
 #### 1.4 Final Dataset Compilation
-- [ ] **Compile and Upload**: Script available
-- [ ] **Verify S3 Upload**: Command available
+- [ ] **Task 9: Compile and Upload**: Script available
+- [ ] **Task 10: Verify S3 Upload**: Command available
 
 ### Phase 2: Baseline Validation (Weeks 3-4) - PENDING
 

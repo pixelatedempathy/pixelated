@@ -27,6 +27,7 @@ pr:
       - master
       - main
       - develop
+      - staging
 
 parameters:
   - name: TRIGGER_OVH_OLLAMA_BUILD
@@ -866,7 +867,7 @@ stages:
   - stage: InstallCertManager
     displayName: 'Install cert-manager'
     dependsOn: Security
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
     jobs:
       - deployment: InstallCertManager
         displayName: 'Install cert-manager for TLS'
@@ -1006,7 +1007,7 @@ stages:
   - stage: DeployStaging
     displayName: 'Deploy to Staging (AKS)'
     dependsOn: InstallCertManager
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
     jobs:
       - deployment: DeployToStaging
         displayName: 'Deploy to Azure Kubernetes Service'
@@ -1249,7 +1250,7 @@ stages:
                       set -euo pipefail
                        
                       echo "🔄 Updating Pixelated image tag..."
-                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
+                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n $(KUBE_NAMESPACE)
                        
                       echo "✅ Image tag updated to $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)"
 
@@ -1263,10 +1264,10 @@ stages:
                       echo "⏳ Waiting for all deployments to be ready..."
 
                       # Wait for Pixelated deployment
-                      kubectl rollout status deployment/pixelated -n pixelated --timeout=900s || {
+                      kubectl rollout status deployment/pixelated -n $(KUBE_NAMESPACE) --timeout=900s || {
                         echo "⚠️ Pixelated deployment rollout check failed or timed out"
-                        kubectl get pods -n pixelated
-                        kubectl describe deployment pixelated -n pixelated
+                        kubectl get pods -n $(KUBE_NAMESPACE)
+                        kubectl describe deployment pixelated -n $(KUBE_NAMESPACE)
                       }
 
                       # Wait for Ollama deployment
