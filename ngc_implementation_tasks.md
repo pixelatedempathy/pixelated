@@ -1,133 +1,181 @@
-# 📍 NGC Implementation Tracker
+# 📋 NGC Implementation Tasks
 
-> **Status**: 🟢 **COMPLETED** (Phase 1)  
-> **Last Sync**: 2026-01-25
-> **Focus**: Phase 2 - Model Development & Integration
+## Production Ready ✅
 
-## 📊 Updated Component Status
+## 🎯 CURRENT FOCUS: DATASET COMPLETION
 
-| Component | Status | Progress | Notes |
-| :--- | :---: | :---: | :--- |
-| **VPS Migration** | 🟢 Active | 100% | Migrated to vivi@3.137.216.156 (Intel Xeon Platinum 8488C, 7.6GB RAM) |
-| **NGC Setup Script** | 🟢 Completed | 100% | `vps-ngc-setup.sh` executed successfully; all containers downloaded |
-| **AI Containers** | 🟢 Ready | 100% | PyTorch, TensorFlow, Triton containers available on VPS |
-| **Model Downloads** | 🔵 In Progress | 30% | Llama-3-70b-instruct / Nemotron-3 integration ongoing |
-| **Infrastructure** | 🟢 Complete | 100% | Docker configured; NGC CLI installed in ~/bin; BatchedTierProcessor available for storage management |
-| **Documentation Sync** | 🟢 Complete | 100% | Updated ngc_therapeutic_enhancement_plan.md (v2.6) with Phase 1 completion details |
+### Phase 1: Foundation Completion (Weeks 1-2) - **IN PROGRESS**
 
----
+#### 🔥 CRITICAL TASKS (80% of Phase 1 weight)
 
-## 🛑 Critical Blockers (Resolved)
+##### 1.1 Download Missing Priority Datasets
+**Estimated Time:** 1-2 hours
+**Impact:** 40% of training weight
 
-**Issue**: NGC CLI Python dependency missing  
-**Status**: 🟢 **RESOLVED** - Using Docker-based workflow instead of NGC CLI
-
-**Discovery**: VPS has no GPU (CPU-only). All containers will run in CPU mode. This is acceptable for development/testing but will be slower for training.
-
-**Git Push**: GitLab sync completed successfully.
-
-**Recovery Actions Taken**:
-- [x] **Verify Credentials**: NGC API key verified.
-- [x] **Accept EULA**: User accepted EULA / Permissions.
-- [x] **Retry Downloads**: All base containers are currently pulling.
-
----
-
-## 📝 Updated Implementation Phase Tracker
-
-### Phase 1: Foundation & Infrastructure 🟢 COMPLETED
-*Goal: Secure essential therapeutic AI building blocks*
-
-#### 1.1 Resource Acquisition
-- [x] **NeMo Microservices Quickstart**
-  - Path: `ngc_therapeutic_resources/microservices/nemo-microservices-quickstart_v25.10/`
-- [x] **PyTorch Container** (Therapeutic Model Training)
-  - *Status: Ready*
-- [x] **TensorFlow Container** (Alternative Framework)
-  - *Status: Ready*
-- [x] **Triton Inference Server** (Production Serving)
-  - *Status: Ready*
-
-#### 1.2 Environment Configuration
-- [x] Install container runtime (Docker/Podman)
-- [x] Configure NVIDIA Container Toolkit (GPU passthrough)
-- [x] Validate container integrity checks
-- [x] **BatchedTierProcessor**: Implemented for VPS storage management (hotswapping datasets)
-
-### Phase 2: Model Development 🔵 IN PROGRESS
-*Goal: Create the "Empathy Engine"*
-
-#### 2.1 Core Capabilities
-- [ ] **Therapeutic Fine-tuning**: Train on empathy datasets
-- [ ] **Bias Detection**: Implement diverse demographic guards
-- [ ] **Emotion Recognition**: Integrate text/audio emotion classifiers
-
-#### 2.2 Data Pipeline
-- [ ] Generate synthetic patient dialogues (NeMo Data Designer)
-- [ ] Build "Crisis Signal" evaluation dataset
-- [ ] Curate cultural competency benchmarks
-
-### Phase 3: Integration & Production ⚪ PLANNED
-*Goal: Deploy to Pixelated Empathy Platform*
-
-- [ ] Deploy Triton Inference Cluster
-- [ ] Integrate Real-time WebSocket Stream
-- [ ] Launch "Therapist-in-the-Loop" Validation Tool
-- [ ] Monitor Latency (<200ms target)
-
----
-
-## ✅ Recent Wins
-- **2026-01-25**: NGC setup script completed successfully; all containers downloaded and verified
-- **2026-01-25**: Documentation updated to reflect Phase 1 completion
-- **2026-01-24**: Successfully retrieved NeMo Microservices configurations
-
----
-
-## 🎯 Next Steps (Phase 2)
-
-1. **Initiate Model Integration**
-   - Begin Llama-3-70b-instruct / Nemotron-3 integration
-   - Configure model serving endpoints
-   - Test basic inference capabilities
-
-2. **Data Pipeline Setup**
-   - Deploy NeMo Data Designer for synthetic data generation
-   - Build crisis signal detection dataset
-   - Curate cultural competency benchmarks
-
-3. **Therapeutic Model Training**
-   - Fine-tune models on therapeutic transcripts
-   - Implement crisis vectors for distress signal detection
-   - Validate model performance on clinical scenarios
-
-4. **Bias Detection Integration**
-   - Deploy multi-dimensional bias identification algorithms
-   - Test cultural competency metrics
-   - Integrate bias alerts into real-time feedback
-
----
-
-## 🚀 Quick Start Commands
-
-### Run NGC Container Tests:
 ```bash
-# Test PyTorch container
-docker run --rm nvcr.io/nvidia/pytorch:24.12-py3 python -c "import torch; print(f'PyTorch {torch.__version__}')"
+# Tier 1 Priority (1.16GB)
+rclone copy gdrive:datasets/datasets-wendy ~/datasets/consolidated/priority_wendy/
 
-# Test Triton server
-docker run --rm nvcr.io/nvidia/tritonserver:24.12-py3 tritonserver --help
+# Tier 3 CoT Datasets (86MB)
+rclone copy gdrive:datasets/CoT_Neurodivergent_vs_Neurotypical_Interactions ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/CoT_Philosophical_Understanding ~/datasets/consolidated/cot/
 
-# Test TensorFlow container
-docker run --rm nvcr.io/nvidia/tensorflow:24.12-tf2-py3 python -c "import tensorflow as tf; print(f'TensorFlow {tf.__version__}')"
+# Tier 4 Reddit Data (700MB+)
+rclone copy gdrive:datasets/reddit_mental_health/mental_disorders_reddit.csv ~/datasets/consolidated/reddit/
+rclone copy gdrive:datasets/reddit_mental_health/Suicide_Detection.csv ~/datasets/consolidated/reddit/
 ```
 
-### Deploy NeMo Microservices:
+##### 1.2 Generate Missing Datasets
+**Estimated Time:** 30-60 minutes per dataset
+
+- **Edge Case Synthetic Dataset (10,000 samples):**
+  ```bash
+  python ai/training_ready/scripts/generate_edge_case_synthetic_dataset.py \
+    --output ai/training_ready/data/generated/edge_case_synthetic.jsonl \
+    --categories all --count 10000
+  ```
+
+- **CPTSD Dataset from Tim Fletcher Transcripts:**
+  ```bash
+  python ai/training_ready/scripts/build_cptsd_dataset_from_transcripts.py \
+    --input-dir ~/datasets/gdrive/tier4_voice_persona/Tim\ Fletcher/ \
+    --output ai/training_ready/data/generated/cptsd_transcripts.jsonl
+  ```
+
+##### 1.3 Quality Optimization
+**Estimated Time:** 1-2 hours
+
+- **Deduplication (<1% duplicate rate):**
+  ```bash
+  uv run python ai/training_ready/scripts/enhanced_deduplication.py --dry-run
+  uv run python ai/training_ready/scripts/enhanced_deduplication.py --confirm
+  ```
+
+- **UTF-8 Encoding Fix:**
+  ```bash
+  python ai/training_ready/scripts/fix_encoding.py \
+    --input-dir ~/datasets/consolidated/ \
+    --output-dir ~/datasets/consolidated/fixed/
+  ```
+
+- **8-Gate Quality Validation:**
+  ```bash
+  python ai/training_ready/scripts/verify_final_dataset.py --report
+  ```
+
+##### 1.4 Final Compilation
+**Estimated Time:** 30-60 minutes
+
 ```bash
-cd ngc_therapeutic_resources/microservices/nemo-microservices-quickstart_v25.10/
-docker-compose up -d
+# Compile and upload to S3
+python ai/training_ready/scripts/compile_final_dataset.py \
+  --s3-bucket pixel-data \
+  --upload-canonical
+
+# Verify upload
+aws s3 ls s3://pixel-data/final_dataset/ --recursive
 ```
+
+### Phase 2: Baseline Validation (Weeks 3-4) - **PENDING**
+
+#### 2.1 Stage 1 Training
+- Launch foundation training
+- Monitor metrics (Empathy: ≥0.70, Therapeutic appropriateness: ≥0.75, Safety: ≥0.80)
+
+#### 2.2 Metrics Analysis
+- Generate metrics dashboard
+- Identify specific gaps
+- Decision: Proceed to Phase 3 or optimize current data
+
+### Phase 3: Conditional Strategic Expansion (Weeks 5-8) - **PENDING**
+
+*Only triggered if Phase 2 metrics show specific gaps*
+
+#### 3.1 Journal Research Searches (6 parallel)
+- Psychotherapy Transcripts Search
+- Clinical Reasoning Search
+- Emotion Recognition Search
+- Crisis Intervention Search
+- Trauma-Informed Care Search
+- Motivational Interviewing Search
+
+#### 3.2 HuggingFace Deep Dive
+- Search mental health conversation datasets
+- Search Chain-of-thought reasoning datasets
+- Search emotional support datasets
+- Evaluate and prioritize discoveries
+
+#### 3.3 Integration
+- Integrate top 5 discoveries
+- Update manifest
+- Re-run quality validation
+- Re-train and validate improvement
+
+## 📊 PROGRESS OVERVIEW
+
+| Phase | Status | Progress |
+|-------|--------|----------|
+| Phase 1 | ⚠️ In Progress | 75% Complete |
+| Phase 2 | ⏳ Pending | 0% Complete |
+| Phase 3 | ⏳ Pending | 0% Complete |
+
+## ✅ COMPLETED TASKS
+
+### Core Infrastructure ✅
+
+#### Data Sources ✅
+- Tim Fletcher integration complete (913 transcripts) ✅
+- Multi-source voice persona integration (Understood, Wu Wei Wisdom, Unfilteredd, etc.) ✅
+- Video transcripts (all .notes/transcripts/ files) ✅
+- 52.20GB dataset confirmed in S3 ✅
+
+#### Configuration ✅
+- Training curriculum 2025 finalized ✅
+- Enhanced `extract_long_running_therapy.py` with S3 streaming, upload, and dir scanning ✅
+- Updated `MASTER_TRAINING_EPIC.md` to reflect dataset focus ✅
+- Updated .memory files to track progress ✅
+
+## 🎯 IMMEDIATE ACTIONS (Copy-Paste Ready)
+
+```bash
+# 1. Download priority datasets (CRITICAL)
+rclone copy gdrive:datasets/datasets-wendy ~/datasets/consolidated/priority_wendy/
+rclone copy gdrive:datasets/CoT_Neurodivergent_vs_Neurotypical_Interactions ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/CoT_Philosophical_Understanding ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/reddit_mental_health/mental_disorders_reddit.csv ~/datasets/consolidated/reddit/
+rclone copy gdrive:datasets/reddit_mental_health/Suicide_Detection.csv ~/datasets/consolidated/reddit/
+
+# 2. Generate synthetic datasets
+python ai/training_ready/scripts/generate_edge_case_synthetic_dataset.py \
+  --output ai/training_ready/data/generated/edge_case_synthetic.jsonl \
+  --categories all --count 10000
+python ai/training_ready/scripts/build_cptsd_dataset_from_transcripts.py \
+  --input-dir ~/datasets/gdrive/tier4_voice_persona/Tim\ Fletcher/ \
+  --output ai/training_ready/data/generated/cptsd_transcripts.jsonl
+
+# 3. Quality optimization
+uv run python ai/training_ready/scripts/enhanced_deduplication.py --dry-run
+uv run python ai/training_ready/scripts/enhanced_deduplication.py --confirm
+python ai/training_ready/scripts/fix_encoding.py \
+  --input-dir ~/datasets/consolidated/ \
+  --output-dir ~/datasets/consolidated/fixed/
+python ai/training_ready/scripts/verify_final_dataset.py --report
+
+# 4. Compile and verify
+python ai/training_ready/scripts/compile_final_dataset.py --s3-bucket pixel-data --upload-canonical
+aws s3 ls s3://pixel-data/final_dataset/ --recursive
+```
+
+## 📝 NOTE TO TEAM
+
+All coding agents should:
+1. Focus on completing Phase 1 tasks FIRST before moving to other work
+2. Document any issues or delays in .memory/60-issues.md
+3. Update progress in .memory/50-progress.md after each task
+4. Use the provided rclone and script commands to avoid errors
+
+**Current bottleneck:** Downloading Tier 1 Priority datasets - this is required before any other training can proceed.
 
 ---
 
-*This tracker is updated in real-time. For detailed status, refer to `ngc_therapeutic_enhancement_plan.md` and `.memory/40-active.md`.*
+Last Updated: 2026-01-25
