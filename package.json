@@ -369,7 +369,7 @@
     "nprogress": "^0.2.0",
     "oxc-parser": "^0.107.0",
     "oxc-resolver": "^11.16.4",
-    "oxfmt": "^0.23.0",
+    "oxfmt": "^0.26.0",
     "oxlint": "^1.41.0",
     "oxlint-tsgolint": "^0.11.1",
     "papaparse": "^5.5.3",

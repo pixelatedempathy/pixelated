@@ -15,9 +15,11 @@ import https from 'https';
 import process from 'process';
 
 // Get environment variables
-const JIRA_URL = process.env.JIRA_URL || 'https://pixeldeck.atlassian.net';
-const JIRA_USERNAME = process.env.JIRA_USERNAME;
-const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
+const {
+  JIRA_URL = 'https://ratchetaf.atlassian.net',
+  JIRA_USERNAME,
+  JIRA_API_TOKEN
+} = process.env;
 
 // Check if required environment variables are set
 if (!JIRA_API_TOKEN) {

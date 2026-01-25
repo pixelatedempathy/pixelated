@@ -11,6 +11,7 @@
 Pixelated Empathy integrates NVIDIA NeMo and Triton to create a "Therapeutic Intelligence Layer." This layer sits between our core platform and the user, providing real-time emotional analysis, safety guardrails, and empathetic response generation.
 
 ### The Stack
+
 | Layer | Technology | Role | Status |
 | :--- | :--- | :--- | :--- |
 | **Serving** | **Triton Inference Server** | High-throughput model serving | 🔴 Pending |
