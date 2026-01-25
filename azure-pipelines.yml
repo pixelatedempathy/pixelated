@@ -12,6 +12,7 @@
 trigger:
   branches:
     include:
+      - staging
       - master
       - main
       - develop
