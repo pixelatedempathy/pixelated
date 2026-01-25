@@ -1,133 +1,181 @@
-# 🧭 Strategy: NGC Therapeutic Conversation Enhancement
+# 🔬 NGC Therapeutic Enhancement Plan
 
-> **Version**: 2.6
-> **Role**: Strategic Roadmap
-> **Objective**: Leverage NVIDIA's NGC ecosystem to build high-fidelity therapeutic AI simulations.
+## Production Ready ✅
 
----
+## 🎯 CURRENT FOCUS: DATASET COMPLETION
 
-## 🏗️ Updated Architectural Overview
+### Phase 1: Foundation Completion (Weeks 1-2) - **IN PROGRESS**
 
-Pixelated Empathy integrates NVIDIA NeMo and Triton to create a "Therapeutic Intelligence Layer." This layer sits between our core platform and the user, providing real-time emotional analysis, safety guardrails, and empathetic response generation.
+#### 🔥 CRITICAL TASKS (80% of Phase 1 weight)
 
-### The Stack
+##### 1.1 Download Missing Priority Datasets
+**Estimated Time:** 1-2 hours
+**Impact:** 40% of training weight
 
-```mermaid
-flowchart TD
-    A[Serving Layer] -->|High-throughput model serving| B[Triton Inference Server]
-    B -->|Status| C[🟢 Ready]
+```bash
+# Tier 1 Priority (1.16GB)
+rclone copy gdrive:datasets/datasets-wendy ~/datasets/consolidated/priority_wendy/
 
-    D[Orchestration Layer] -->|Managing the AI lifecycle| E[NeMo Microservices]
-    E -->|Status| F[🟢 Ready]
+# Tier 3 CoT Datasets (86MB)
+rclone copy gdrive:datasets/CoT_Neurodivergent_vs_Neurotypical_Interactions ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/CoT_Philosophical_Understanding ~/datasets/consolidated/cot/
 
-    G[Training Layer] -->|Fine-tuning therapeutic models| H[PyTorch NVIDIA]
-    H -->|Status| I[🟢 Ready]
-
-    J[Logic Layer] -->|Therapeutic technique application| K[Custom Agents]
-    K -->|Status| L[🟢 Ready]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#90ee90,stroke:#333,stroke-width:2px
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#bbf,stroke:#333,stroke-width:2px
-    style F fill:#90ee90,stroke:#333,stroke-width:2px
-    style G fill:#f9f,stroke:#333,stroke-width:2px
-    style H fill:#bbf,stroke:#333,stroke-width:2px
-    style I fill:#90ee90,stroke:#333,stroke-width:2px
-    style J fill:#f9f,stroke:#333,stroke-width:2px
-    style K fill:#bbf,stroke:#333,stroke-width:2px
-    style L fill:#90ee90,stroke:#333,stroke-width:2px
+# Tier 4 Reddit Data (700MB+)
+rclone copy gdrive:datasets/reddit_mental_health/mental_disorders_reddit.csv ~/datasets/consolidated/reddit/
+rclone copy gdrive:datasets/reddit_mental_health/Suicide_Detection.csv ~/datasets/consolidated/reddit/
 ```
 
-#### Detailed Stack Overview
+##### 1.2 Generate Missing Datasets
+**Estimated Time:** 30-60 minutes per dataset
 
-| **Layer** | **Technology** | **Role** | **Status** |
-|-----------|----------------|----------|------------|
-| **Serving** | **Triton Inference Server** | High-throughput model serving with dynamic batching | 🟢 Ready |
-| **Orchestration** | **NeMo Microservices** | End-to-end AI lifecycle management (data → training → deployment) | 🟢 Ready |
-| **Training** | **PyTorch (NVIDIA)** | GPU-accelerated fine-tuning of therapeutic models | 🟢 Ready |
-| **Logic** | **Custom Agents** | Application of evidence-based therapeutic techniques | 🟢 Ready |
+- **Edge Case Synthetic Dataset (10,000 samples):**
+  ```bash
+  python ai/training_ready/scripts/generate_edge_case_synthetic_dataset.py \
+    --output ai/training_ready/data/generated/edge_case_synthetic.jsonl \
+    --categories all --count 10000
+  ```
+
+- **CPTSD Dataset from Tim Fletcher Transcripts:**
+  ```bash
+  python ai/training_ready/scripts/build_cptsd_dataset_from_transcripts.py \
+    --input-dir ~/datasets/gdrive/tier4_voice_persona/Tim\ Fletcher/ \
+    --output ai/training_ready/data/generated/cptsd_transcripts.jsonl
+  ```
+
+##### 1.3 Quality Optimization
+**Estimated Time:** 1-2 hours
+
+- **Deduplication (<1% duplicate rate):**
+  ```bash
+  uv run python ai/training_ready/scripts/enhanced_deduplication.py --dry-run
+  uv run python ai/training_ready/scripts/enhanced_deduplication.py --confirm
+  ```
+
+- **UTF-8 Encoding Fix:**
+  ```bash
+  python ai/training_ready/scripts/fix_encoding.py \
+    --input-dir ~/datasets/consolidated/ \
+    --output-dir ~/datasets/consolidated/fixed/
+  ```
+
+- **8-Gate Quality Validation:**
+  ```bash
+  python ai/training_ready/scripts/verify_final_dataset.py --report
+  ```
+
+##### 1.4 Final Compilation
+**Estimated Time:** 30-60 minutes
+
+```bash
+# Compile and upload to S3
+python ai/training_ready/scripts/compile_final_dataset.py \
+  --s3-bucket pixel-data \
+  --upload-canonical
+
+# Verify upload
+aws s3 ls s3://pixel-data/final_dataset/ --recursive
+```
+
+### Phase 2: Baseline Validation (Weeks 3-4) - **PENDING**
+
+#### 2.1 Stage 1 Training
+- Launch foundation training
+- Monitor metrics (Empathy: ≥0.70, Therapeutic appropriateness: ≥0.75, Safety: ≥0.80)
+
+#### 2.2 Metrics Analysis
+- Generate metrics dashboard
+- Identify specific gaps
+- Decision: Proceed to Phase 3 or optimize current data
+
+### Phase 3: Conditional Strategic Expansion (Weeks 5-8) - **PENDING**
+
+*Only triggered if Phase 2 metrics show specific gaps*
+
+#### 3.1 Journal Research Searches (6 parallel)
+- Psychotherapy Transcripts Search
+- Clinical Reasoning Search
+- Emotion Recognition Search
+- Crisis Intervention Search
+- Trauma-Informed Care Search
+- Motivational Interviewing Search
+
+#### 3.2 HuggingFace Deep Dive
+- Search mental health conversation datasets
+- Search Chain-of-thought reasoning datasets
+- Search emotional support datasets
+- Evaluate and prioritize discoveries
+
+#### 3.3 Integration
+- Integrate top 5 discoveries
+- Update manifest
+- Re-run quality validation
+- Re-train and validate improvement
+
+## 📊 PROGRESS OVERVIEW
+
+| Phase | Status | Progress |
+|-------|--------|----------|
+| Phase 1 | ⚠️ In Progress | 75% Complete |
+| Phase 2 | ⏳ Pending | 0% Complete |
+| Phase 3 | ⏳ Pending | 0% Complete |
+
+## ✅ COMPLETED TASKS
+
+### Core Infrastructure ✅
+
+#### Data Sources ✅
+- Tim Fletcher integration complete (913 transcripts) ✅
+- Multi-source voice persona integration (Understood, Wu Wei Wisdom, Unfilteredd, etc.) ✅
+- Video transcripts (all .notes/transcripts/ files) ✅
+- 52.20GB dataset confirmed in S3 ✅
+
+#### Configuration ✅
+- Training curriculum 2025 finalized ✅
+- Enhanced `extract_long_running_therapy.py` with S3 streaming, upload, and dir scanning ✅
+- Updated `MASTER_TRAINING_EPIC.md` to reflect dataset focus ✅
+- Updated .memory files to track progress ✅
+
+## 🎯 IMMEDIATE ACTIONS (Copy-Paste Ready)
+
+```bash
+# 1. Download priority datasets (CRITICAL)
+rclone copy gdrive:datasets/datasets-wendy ~/datasets/consolidated/priority_wendy/
+rclone copy gdrive:datasets/CoT_Neurodivergent_vs_Neurotypical_Interactions ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/CoT_Philosophical_Understanding ~/datasets/consolidated/cot/
+rclone copy gdrive:datasets/reddit_mental_health/mental_disorders_reddit.csv ~/datasets/consolidated/reddit/
+rclone copy gdrive:datasets/reddit_mental_health/Suicide_Detection.csv ~/datasets/consolidated/reddit/
+
+# 2. Generate synthetic datasets
+python ai/training_ready/scripts/generate_edge_case_synthetic_dataset.py \
+  --output ai/training_ready/data/generated/edge_case_synthetic.jsonl \
+  --categories all --count 10000
+python ai/training_ready/scripts/build_cptsd_dataset_from_transcripts.py \
+  --input-dir ~/datasets/gdrive/tier4_voice_persona/Tim\ Fletcher/ \
+  --output ai/training_ready/data/generated/cptsd_transcripts.jsonl
+
+# 3. Quality optimization
+uv run python ai/training_ready/scripts/enhanced_deduplication.py --dry-run
+uv run python ai/training_ready/scripts/enhanced_deduplication.py --confirm
+python ai/training_ready/scripts/fix_encoding.py \
+  --input-dir ~/datasets/consolidated/ \
+  --output-dir ~/datasets/consolidated/fixed/
+python ai/training_ready/scripts/verify_final_dataset.py --report
+
+# 4. Compile and verify
+python ai/training_ready/scripts/compile_final_dataset.py --s3-bucket pixel-data --upload-canonical
+aws s3 ls s3://pixel-data/final_dataset/ --recursive
+```
+
+## 📝 NOTE TO TEAM
+
+All coding agents should:
+1. Focus on completing Phase 1 tasks FIRST before moving to other work
+2. Document any issues or delays in .memory/60-issues.md
+3. Update progress in .memory/50-progress.md after each task
+4. Use the provided rclone and script commands to avoid errors
+
+**Current bottleneck:** Downloading Tier 1 Priority datasets - this is required before any other training can proceed.
 
 ---
 
-## 🚦 Updated Resource Status
-
-### 1. Infrastructure (✅ Ready)
-- **VPS Details**: vivi@3.137.216.156 (Intel Xeon Platinum 8488C, 7.6GB RAM) - CPU-only environment
-- **Docker**: Configured and running ✅
-- **NGC CLI**: Installed in ~/bin ✅
-- **Credentials**: API key verified and EULA accepted ✅
-
-### 2. Microservices (✅ Ready)
-We have successfully acquired the microservice configurations:
-- **Location**: `ngc_therapeutic_resources/microservices/nemo-microservices-quickstart_v25.10/`
-- **Components**:
-  - `Data Designer`: For generating synthetic patient history.
-  - `Guardrails`: Essential for preventing clinical risks.
-  - `Evaluator`: For scoring empathy and technique adherence.
-
-### 3. Containers & Models (✅ Ready)
-*All containers successfully downloaded and configured on VPS.*
-- **NGC Setup Script**: `vps-ngc-setup.sh` completed successfully ✅
-- **PyTorch Container**: Ready for therapeutic model training ✅
-- **TensorFlow Container**: Secondary framework option available ✅
-- **Triton Inference Server**: Production serving ready ✅
-- **Conversational Models**: Llama-3-70b-instruct / Nemotron-3 integration in progress 🔵
-- **Operation Mode**: Containers running in CPU mode (VPS limitation); acceptable for development/testing
-
----
-
-## 🗺️ Updated Strategic Roadmap
-
-### Phase 1: VPS Migration & Foundation (✅ Complete)
-*Objective: Migrate infrastructure to VPS and establish core capabilities.*
-1. **VPS Migration**: Successfully migrated to vivi@3.137.216.156 (Intel Xeon Platinum 8488C, 7.6GB RAM) ✅
-2. **Infrastructure Setup**: Docker configured; NGC CLI installed in ~/bin ✅
-3. **NGC Credentials**: API key verified and EULA accepted ✅
-4. **NGC Setup Script**: `vps-ngc-setup.sh` completed successfully ✅
-5. **Container Downloads**: PyTorch, TensorFlow, and Triton containers downloaded and verified ✅
-6. **NeMo Microservices**: Acquired quickstart configurations ✅
-
-**Key Changes from Original Plan**:
-- Switched from local GPU environment to CPU-only VPS (acceptable for development/testing)
-- Replaced NGC CLI with Docker-based workflow due to Python dependency issues
-- Focus shifted to migration and foundational setup rather than GPU validation
-
-### Phase 2: The "Empathy Engine" (In Progress)
-*Objective: Build the core therapeutic model.*
-- **Task**: Fine-tune models on therapeutic transcripts.
-- **Innovation**: Implement "Crisis Vectors" – detection of self-harm or severe distress signals encoded directly into the model's attention mechanism.
-
-### Phase 3: Production Pipeline (Planned)
-*Objective: Scale to 1000+ users.*
-- **Deployment**: Rolling out Triton Inference Server clusters.
-- **Optimization**: Dynamic batching to handle burst traffic from training sessions.
-
----
-
-## 🎯 Updated Target Capabilities
-
-### For the "Patient" (The AI Persona)
-- **Resistance Simulation**: The AI shouldn't just agree; it should exhibit realistic resistance to change, common in therapy.
-- **Emotional Permeance**: Maintaining an emotional state across a 45-minute session, not just turn-by-turn.
-
-### For the "Therapist" (The User)
-- **Real-time Feedback**: "That response scored low on Empathy. Try validating the emotion first."
-- **Bias Alert**: "Potential cultural misalignment detected in response."
-
----
-
-## 📉 Updated Risk & Mitigation
-
-| Risk | Impact | Mitigation Strategy |
-| :--- | :--- | :--- |
-| **CPU-Only Environment** | Slower training and inference; no GPU acceleration | Acceptable for development/testing; plan GPU migration for production |
-| **Container Size (20GB+)** | Slow deployments, storage costs, VPS storage limitations | ✅ **Fully Implemented**: BatchedTierProcessor for hotswapping datasets (download -> process -> delete) to fit within VPS storage limits; use pre-warmed nodes and shared image layers |
-| **Model Hallucination** | Clinical risk | NeMo Guardrails with strict bounding; "Safe Synthesizer" module. |
-| **Latency** | Breaks immersion | Triton dynamic batching; Quantization to INT8/FP8. |
-| **NGC CLI Python Dependency Missing** | Failed container downloads via NGC CLI | Using Docker-based workflow as workaround |
-
----
-
-*This document is a living roadmap. Status updates are tracked in `ngc_implementation_tasks.md`. The next update will focus on completing Phase 2 model fine-tuning and beginning Phase 3 production pipeline setup.*
+Last Updated: 2026-01-25
