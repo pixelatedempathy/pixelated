@@ -206,5 +206,10 @@
     "terminal.integrated.developer.devMode": true,
     "[azure-pipelines]": {},
     "snyk.advanced.organization": "af2ac194-d19f-400d-b8ff-bfe480cdefb1",
-    "snyk.advanced.autoSelectOrganization": true
+    "snyk.advanced.autoSelectOrganization": true,
+    "chat.mcp.serverSampling": {
+        "pixelated/.vscode/mcp.json: contextstream": {
+            "allowedModels": []
+        }
+    }
 }
