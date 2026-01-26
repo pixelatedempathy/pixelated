@@ -262,7 +262,7 @@ stages:
               export CI=true
               export VITEST_COVERAGE_ENABLED=false
               export NODE_OPTIONS="--max-old-space-size=4096"
-              timeout 300s pnpm exec vitest run --no-coverage --maxWorkers=1 --bail=3 --reporter=junit --outputFile=./coverage/junit.xml || {
+              timeout 300s pnpm exec vitest run -c config/vitest.config.ts --no-coverage --maxWorkers=1 --bail=3 --reporter=junit --outputFile=./coverage/junit.xml || {
                 echo "Tests timed out or failed"
                 exit 1
               }
@@ -588,6 +588,45 @@ stages:
             vmImage: 'ubuntu-latest'
         timeoutInMinutes: '45'
         steps:
+          - script: |
+              set -euo pipefail
+              echo "🧹 Deep cleanup of disk space before build..."
+
+              echo "📊 Disk space before cleanup:"
+              df -h / | tail -1
+
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning up Docker resources..."
+                
+                # Check for running containers first
+                if [ "$(docker ps -q)" ]; then
+                   echo "⚠️ Found running containers. Attempting to stop them..."
+                   docker stop $(docker ps -q) 2>/dev/null || true
+                fi
+
+                # Aggressive cleanup
+                # -a: Remove all unused images not just dangling ones
+                # --volumes: Remove unused volumes
+                # -f: Force
+                docker system prune -af --volumes 2>/dev/null || true
+                
+                # Explicitly clean builder cache (often a culprit)
+                docker builder prune -af 2>/dev/null || true
+              fi
+
+              echo "Cleaning up temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+              rm -rf "$HOME/.tmp" 2>/dev/null || true
+
+              echo "Cleaning up workspace..."
+              # Remove potential debris from previous jobs if workspace wasn't cleaned
+              rm -rf $(Build.SourcesDirectory)/node_modules 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/dist 2>/dev/null || true
+
+              echo "📊 Disk space after cleanup:"
+              df -h / | tail -1
+            displayName: 'Pre-Build Deep Cleanup'
+
           - task: NodeTool@0
             inputs:
               versionSpec: '$(NODE_VERSION)'
