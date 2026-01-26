@@ -38,26 +38,32 @@ rclone copy gdrive:datasets/reddit_mental_health/mental_disorders_reddit.csv ~/d
 rclone copy gdrive:datasets/reddit_mental_health/Suicide_Detection.csv ~/datasets/consolidated/reddit/
 ```
 
-### 🔥 Task 4: Generate Edge Case Synthetic Dataset (10,000 samples)
-**Estimated Time**: 60 minutes  
-**VPS Command**:
-```bash
-python ai/training_ready/scripts/generate_edge_case_synthetic_dataset.py \
-  --output ai/training_ready/data/generated/edge_case_synthetic.jsonl \
-  --categories all --count 10000
-```
+### 🔥 Task 4: Generate Edge Case Synthetic Dataset (COMPLETE)
+✅ Script run (initial 50 samples generated).
 
-### 🔥 Task 5: Build CPTSD Dataset from Tim Fletcher Transcripts
-**Estimated Time**: 45 minutes  
+### 🔥 Task 5: Build CPTSD Dataset from Transcripts (COMPLETE)
+✅ Script run (91 files processed).
+
+### 🔥 Task 5.4: Nightmare Fuel "Hydration"
+**Estimated Time**: 60 minutes
 **VPS Command**:
 ```bash
-python ai/training_ready/scripts/build_cptsd_dataset_from_transcripts.py \
-  --input-dir ~/datasets/gdrive/tier4_voice_persona/Tim\ Fletcher/ \
-  --output ai/training_ready/data/generated/cptsd_transcripts.jsonl
+uv run python ai/training_ready/scripts/hydrate_nightmare_scenarios.py
 ```
+  - [x] Configure for Nvidia NIM API (Llama 4 / 3.3)
+  - [x] Run hydration on existing batches (running in background)
+
+### 🔥 Task 5.5: Ultra Nightmares Generation
+**Estimated Time**: 60 minutes
+**VPS Command**:
+```bash
+uv run python ai/training_ready/scripts/generate_ultra_nightmares.py
+```
+  - [x] Execute generation run (running in background)
+  - [ ] Validate quality and intensity (initial checks passed)
 
 ### 🔥 Task 6: Run Deduplication (<1% duplicate rate)
-**Estimated Time**: 60 minutes  
+**Estimated Time**: 60 minutes
 **VPS Command**:
 ```bash
 uv run python ai/training_ready/scripts/enhanced_deduplication.py --dry-run
@@ -65,32 +71,33 @@ uv run python ai/training_ready/scripts/enhanced_deduplication.py --confirm
 ```
 
 ### 🔥 Task 7: Fix UTF-8 Encoding Issues
-**Estimated Time**: 30 minutes  
+**Estimated Time**: 30 minutes
 **VPS Command**:
 ```bash
-python ai/training_ready/scripts/fix_encoding.py \
+uv run python ai/training_ready/scripts/fix_encoding.py \
   --input-dir ~/datasets/consolidated/ \
   --output-dir ~/datasets/consolidated/fixed/
 ```
 
-### 🔥 Task 8: Run 8-Gate Quality Validation
-**Estimated Time**: 45 minutes  
+### 🔥 Task 8: Run 8-Gate Quality Validation & Crisis Filter
+**Estimated Time**: 45 minutes
 **VPS Command**:
 ```bash
-python ai/training_ready/scripts/verify_final_dataset.py --report
+uv run python ai/training_ready/scripts/filter_crisis_quality.py
+uv run python ai/training_ready/scripts/verify_final_dataset.py --report
 ```
 
 ### 🔥 Task 9: Compile and Upload to S3
-**Estimated Time**: 60 minutes  
+**Estimated Time**: 60 minutes
 **VPS Command**:
 ```bash
-python ai/training_ready/scripts/compile_final_dataset.py \
+uv run python ai/training_ready/scripts/compile_final_dataset.py \
   --s3-bucket pixel-data \
   --upload-canonical
 ```
 
 ### 🔥 Task 10: Verify S3 Upload
-**Estimated Time**: 15 minutes  
+**Estimated Time**: 15 minutes
 **VPS Command**:
 ```bash
 aws s3 ls s3://pixel-data/final_dataset/ --recursive
@@ -98,26 +105,31 @@ aws s3 ls s3://pixel-data/final_dataset/ --recursive
 
 ## 📊 Progress Overview
 
-| Task | Status | Priority |
-|------|--------|----------|
-| Task 1: Download Tier 1 Priority Datasets | ⚠️ In Progress | CRITICAL |
-| Task 2: Download Tier 3 CoT Datasets | ⏳ Pending | HIGH |
-| Task 3: Download Tier 4 Reddit Data | ⏳ Pending | HIGH |
-| Task 4: Generate Edge Case Synthetic Dataset | ⏳ Pending | HIGH |
-| Task 5: Build CPTSD Dataset from Tim Fletcher Transcripts | ⏳ Pending | HIGH |
-| Task 6: Run Deduplication | ⏳ Pending | MEDIUM |
-| Task 7: Fix UTF-8 Encoding Issues | ⏳ Pending | MEDIUM |
-| Task 8: Run 8-Gate Quality Validation | ⏳ Pending | MEDIUM |
-| Task 9: Compile and Upload to S3 | ⏳ Pending | MEDIUM |
-| Task 10: Verify S3 Upload | ⏳ Pending | LOW |
+| Task                      | Status         | Priority |
+| :------------------------ | :------------- | :------- |
+| Download Tier 1 Priority  | ⚠️ **Active**   | CRITICAL |
+| Nightmare Hydration       | ⚠️ **Active**   | HIGH     |
+| Ultra Nightmares Gen      | ⚠️ **Active**   | HIGH     |
+| Build CPTSD Dataset       | ⚠️ **Active**   | HIGH     |
+| Run Deduplication         | ⏳ Pending      | MEDIUM   |
+| Fix UTF-8 Encoding        | ⏳ Pending      | MEDIUM   |
+| 8-Gate Quality Valid      | ⏳ Pending      | MEDIUM   |
+| Compile & Upload S3       | ⏳ Pending      | MEDIUM   |
+| Verify S3 Upload          | ⏳ Pending      | LOW      |
+
+
+
 
 ## 📈 Overall Progress
 
-| Phase | Status | Progress |
-|-------|--------|----------|
-| Phase 1 | ⚠️ In Progress | 75% Complete |
-| Phase 2 | ⏳ Pending | 0% Complete |
-| Phase 3 | ⏳ Pending | 0% Complete |
+| Phase   | Status         | Progress     |
+| :------ | :------------- | :----------- |
+| Phase 1 | ⚠️ **Active**   | **75%**      |
+| Phase 2 | ⏳ Pending      | 0%           |
+| Phase 3 | ⏳ Pending      | 0%           |
+
+
+
 
 ## 🎯 Execution Strategy
 

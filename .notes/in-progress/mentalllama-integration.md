@@ -9,7 +9,7 @@ status: 'in-progress' # Remains in-progress due to foundational work
 
 **Note:** This plan has been significantly updated as of 2025-06-26. The `MentalLLaMAAdapter` and `MentalHealthTaskRouter` were found to be stubs. Foundational implementation of these components, including crisis protocol, has been completed. `OpenAIModelProvider` has been added, and LLM-based routing + detailed analysis for `general_mental_health` is now functional. See `[.notes/in-progress/mentalllama-adapter-impl.md](mentalllama-adapter-impl.md)` for details on this foundational work. Many items below now depend on the *full* implementation of these components beyond their initial structure.
 
-## 📊 Implementation Progress
+## Implementation Progress
 
 | Feature Area              | Progress | Status Update                                                                                                                                    | Priority | Due     |
 | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
@@ -20,7 +20,7 @@ status: 'in-progress' # Remains in-progress due to foundational work
 | Security Auditing         | 60%      | Ongoing audit; key controls implemented.                                                                                                         | 🔴 High  | Q2 2025 |
 | Deployment Infrastructure | 60%      | Containerized deployment with security controls implemented.                                                                                     | 🟡 Med   | Q4 2025 |
 
-## 🎯 Success Metrics
+## Success Metrics
 
 (Metrics will need re-evaluation once adapter is fully functional for more categories)
 | Metric                       | Current | Target | Status         |
@@ -31,9 +31,9 @@ status: 'in-progress' # Remains in-progress due to foundational work
 | System Integration Coverage  | 50%     | 100%   | 🟡 In Progress |
 | Task Coverage                | 3/8     | 8/8    | 🟡 In Progress |
 
-## 🚀 Active Implementation Tasks
+## Active Implementation Tasks
 
-### NEW: 0. Implement Production-Grade Crisis Protocol [🔴 CRITICAL PRIORITY]
+### NEW: 0. Implement Production-Grade Crisis Protocol **(🔴 CRITICAL PRIORITY)** 
 - [x] Define `NotificationService` interface for crisis alerts. (Used `ICrisisNotificationHandler`, as per foundational work)
 - [x] Modify `MentalLLaMAAdapter` to accept and use an optional `NotificationService`. (Completed in foundational work)
 - [x] In `MentalLLaMAAdapter` crisis path: (Completed in foundational work)
@@ -51,7 +51,7 @@ status: 'in-progress' # Remains in-progress due to foundational work
 - [x] Refine user/session flagging: Update `MentalLLaMAAdapter` crisis path to use `ICrisisNotificationHandler`. (Completed in foundational work)
 - [x] Update instantiation of `MentalLLaMAAdapter` (in `MentalLLaMAFactory`) to use `SlackNotificationService` when available. (Completed in foundational factory update)
 
-### 1. Model Integration [HIGH PRIORITY]
+### 1. Model Integration **(HIGH PRIORITY)** 
 (These items now refer to *full* integration beyond the foundational adapter structure)
 - [ ] Implement MentalLLaMA adapter for existing framework. (Foundational adapter created. Detailed analysis for one category implemented. See `mentalllama-adapter-impl.md`)
 - [ ] Integrate directly with MentalLLaMA-chat-7B model via ModelProvider. (OpenAIModelProvider implemented; specific model targeting TBD)
@@ -68,7 +68,7 @@ status: 'in-progress' # Remains in-progress due to foundational work
 - [x] Create logging and monitoring for model usage
 - [x] Configure security controls for API access
 
-### 2. Prompt Engineering [HIGH PRIORITY]
+### 2. Prompt Engineering **(HIGH PRIORITY)** 
 (Assumed complete as per original, but integration into new adapter's ModelProvider path is TBD)
 #### Prompt Development (100% Complete)
   ... (items remain checked, but their application is pending ModelProvider)
@@ -77,14 +77,14 @@ status: 'in-progress' # Remains in-progress due to foundational work
 #### Framework & Tools Development (100% Complete)
   ... (items remain checked)
 
-### 3. Evaluation System [MEDIUM PRIORITY]
+### 3. Evaluation System **(MEDIUM PRIORITY)** 
 (Assumed complete as per original, but integration into new adapter is stubbed)
 #### Metrics Implementation (100% Complete)
   ... (items remain checked, but `evaluateExplanationQuality` in adapter is a stub)
 #### Feedback Loop System (100% Complete)
   ... (items remain checked)
 
-### 4. Architecture Learning [MEDIUM PRIORITY]
+### 4. Architecture Learning **(MEDIUM PRIORITY)** 
 #### Research & Analysis (100% Complete)
   ... (items remain checked)
 #### Implementation (Progress adjusted)
@@ -94,7 +94,7 @@ status: 'in-progress' # Remains in-progress due to foundational work
 - [x] Test architectural approach with smaller models (Basic CLI testing of new structure done)
 Scale to production requirements (Deferred, see `src/lib/ai/mental-llama/docs/README.md`)
 
-### 5. Task-Specific Optimization [MEDIUM PRIORITY]
+### 5. Task-Specific Optimization **(MEDIUM PRIORITY)** 
 
 #### Specialized Analyzers (Assumed complete, but depend on ModelProvider)
 - [x] Implement depression detection analyzer
@@ -146,7 +146,7 @@ Scale to production requirements (Deferred, see `src/lib/ai/mental-llama/docs/RE
     - [x] Return value incorporates router's decision.
   - [x] Added `ROUTER_LOW_CONFIDENCE_THRESHOLD` constant. (Not explicitly added, but confidence handling is present. Can be added if needed.)
 
-### 6. Performance Optimization [MEDIUM PRIORITY]
+### 6. Performance Optimization **(MEDIUM PRIORITY)** 
 (All items here are largely deferred until core logic is complete. See `src/lib/ai/mental-llama/docs/README.md`)
 #### API Response Time Reduction (Target: 850ms -> 300ms)
 - [ ] Profile current API endpoints... (Original items were for a different baseline)
@@ -159,7 +159,7 @@ Scale to production requirements (Deferred, see `src/lib/ai/mental-llama/docs/RE
 - [ ] Implement asynchronous processing... (Deferred)
 
 
-## 📅 Implementation Timeline
+## Implementation Timeline
 (Timeline will need significant revision based on the foundational work required)
 ```mermaid
 gantt
@@ -191,7 +191,7 @@ gantt
     Evaluation (Full)           :c1, 2025-03-01, 1d, #DFE6E9
 ```
 
-## 🔍 Validation Strategy
+## Validation Strategy
 
 ### Model Evaluation
 (Depends on full ModelProvider and Adapter logic)
@@ -209,7 +209,7 @@ gantt
 - [ ] Design scalability tests
 - [ ] Set up reliability measurement
 
-## 🎮 Interactive Features
+## Interactive Features
 
 > 💡 **Quick Actions**
 >
@@ -267,29 +267,29 @@ gantt
 <details>
 <summary>🔄 Recent Updates</summary>
 
-- [2025-05-14] Implemented BART-score for explanation quality assessment
-- [2025-05-14] Added clinical relevance scoring for mental health explanations
-- [2025-05-14] Developed comprehensive user feedback system for collecting and analyzing user input
-- [2025-05-13] Enhanced explanation evaluation with additional metrics for feedback loop
-- [2025-05-13] Implemented 5-tier prompt engineering framework with specialized templates for mental health categories
-- [2025-05-12] Created robust evaluation system for testing and comparing prompt effectiveness
-- [2025-05-12] Added self-consistency and emotional context enhancements to improve prompt performance
-- [2025-05-11] Implemented comprehensive security controls for API access including OAuth2, API key management, and rate limiting
-- [2025-05-10] Implemented containerized deployment with Docker, Nginx, and monitoring stack
-- [2025-05-09] Fixed remaining EmotionAnalysis type errors and improved type safety with fallback methods
-- [2025-05-08] Fixed TypeScript errors in MentalLLaMA integration implementation
-- [2025-05-07] Created proper PythonBridge functionality for MentalLLaMA models
-- [2025-05-06] Completed direct integration with MentalLLaMA-chat-13B model
-- [2025-05-06] Added demo component and API docs for 13B model
-- [2025-05-06] Implemented comprehensive CLI tools for model testing
-- [2025-05-05] Updated MentalLLaMAModelProvider to support both 7B and 13B models
-- [2025-05-05] Enhanced MentalLLaMAFactory to prioritize 13B model when available
-- [2025-05-05] Added comprehensive CLI tooling for testing both model tiers
-- [2025-03-16] Direct integration with MentalLLaMA-chat-7B model completed
-- [2025-03-15] Initial MentalLLaMA adapter implementation completed
-- [2025-03-10] Completed analysis of model architecture and methodological approach
-- [2025-03-05] Confirmed dataset unavailability and adjusted strategy
-- [2025-03-01] Initiated implementation planning and resource assessment
+- **2025-05-14**: Implemented BART-score for explanation quality assessment
+- **2025-05-14**: Added clinical relevance scoring for mental health explanations
+- **2025-05-14**: Developed comprehensive user feedback system for collecting and analyzing user input
+- **2025-05-13**: Enhanced explanation evaluation with additional metrics for feedback loop
+- **2025-05-13**: Implemented 5-tier prompt engineering framework with specialized templates for mental health categories
+- **2025-05-12**: Created robust evaluation system for testing and comparing prompt effectiveness
+- **2025-05-12**: Added self-consistency and emotional context enhancements to improve prompt performance
+- **2025-05-11**: Implemented comprehensive security controls for API access including OAuth2, API key management, and rate limiting
+- **2025-05-10**: Implemented containerized deployment with Docker, Nginx, and monitoring stack
+- **2025-05-09**: Fixed remaining EmotionAnalysis type errors and improved type safety with fallback methods
+- **2025-05-08**: Fixed TypeScript errors in MentalLLaMA integration implementation
+- **2025-05-07**: Created proper PythonBridge functionality for MentalLLaMA models
+- **2025-05-06**: Completed direct integration with MentalLLaMA-chat-13B model
+- **2025-05-06**: Added demo component and API docs for 13B model
+- **2025-05-06**: Implemented comprehensive CLI tools for model testing
+- **2025-05-05**: Updated MentalLLaMAModelProvider to support both 7B and 13B models
+- **2025-05-05**: Enhanced MentalLLaMAFactory to prioritize 13B model when available
+- **2025-05-05**: Added comprehensive CLI tooling for testing both model tiers
+- **2025-03-16**: Direct integration with MentalLLaMA-chat-7B model completed
+- **2025-03-15**: Initial MentalLLaMA adapter implementation completed
+- **2025-03-10**: Completed analysis of model architecture and methodological approach
+- **2025-03-05**: Confirmed dataset unavailability and adjusted strategy
+- **2025-03-01**: Initiated implementation planning and resource assessment
 
 </details>
 

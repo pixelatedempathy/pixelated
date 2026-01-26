@@ -32,21 +32,27 @@ Rules Version: 0.4.39
 
 ### For Coding Tasks
 
-| Action | Tool Call |
-|--------|-----------|
-| **1st message** | `mcp__contextstream__session_init(folder_path="<cwd>", context_hint="<msg>")` then `mcp__contextstream__context_smart(...)` |
-| **2nd+ messages** | `mcp__contextstream__context_smart(user_message="<msg>", format="minified", max_tokens=400)` |
-| **Code search** | `mcp__contextstream__search(mode="hybrid", query="...")` — BEFORE any local tools |
-| **Save decisions** | `mcp__contextstream__session(action="capture", event_type="decision", ...)` |
+| Action             | Tool Call                                                     |
+| :----------------- | :------------------------------------------------------------ |
+| **1st message**    | `ctx_session_init(fp="<cwd>")` + `ctx_context_smart(...)`     |
+| **2nd+ messages**  | `ctx_context_smart(user_message="<msg>", tokens=400)`         |
+| **Code search**    | `ctx_search(mode="hybrid", query="...")`                      |
+| **Save decisions** | `ctx_session(action="capture", event_type="decision", ...)`   |
+
+
+
 
 ### Search Modes
 
-| Mode | Use Case |
-|------|----------|
-| `hybrid` | General code mcp__contextstream__search (default) |
-| `keyword` | Exact symbol/string match |
-| `exhaustive` | Find ALL matches (grep-like) |
-| `semantic` | Conceptual questions |
+| Mode         | Use Case                              |
+| :----------- | :------------------------------------ |
+| `hybrid`     | General code search (default)         |
+| `keyword`    | Exact symbol/string match             |
+| `exhaustive` | Find ALL matches (grep-like)          |
+| `semantic`   | Conceptual questions                  |
+
+
+
 
 ### Why ContextStream First?
 
@@ -57,24 +63,30 @@ ContextStream search is **indexed** and returns semantic matches + context in ON
 
 ### Quick Reference
 
-| Tool | Example |
-|------|---------|
-| `search` | `mcp__contextstream__search(mode="hybrid", query="auth", limit=3)` |
-| `session` | `mcp__contextstream__session(action="capture", event_type="decision", title="...", content="...")` |
-| `memory` | `mcp__contextstream__memory(action="list_events", limit=10)` |
-| `graph` | `mcp__contextstream__graph(action="dependencies", file_path="...")` |
+| Tool      | Example                                                     |
+| :-------- | :---------------------------------------------------------- |
+| `search`  | `ctx_search(mode="hybrid", query="auth", limit=3)`          |
+| `session` | `ctx_session(action="capture", title="...", content="...")` |
+| `memory`  | `ctx_memory(action="list_events", limit=10)`                |
+| `graph`   | `ctx_graph(action="dependencies", file_path="...")`         |
+
+
+
 
 ### 🚀 FAST PATH: Simple Utility Operations
 
 **For simple utility commands, SKIP the ceremony and just execute directly:**
 
-| Command Type | Just Call | Skip |
-|--------------|-----------|------|
-| List workspaces | `mcp__contextstream__workspace(action="list")` | session_init, context_smart, capture |
-| List projects | `mcp__contextstream__project(action="list")` | session_init, context_smart, capture |
-| Show version | `mcp__contextstream__help(action="version")` | session_init, context_smart, capture |
-| List reminders | `mcp__contextstream__reminder(action="list")` | session_init, context_smart, capture |
-| Check auth | `mcp__contextstream__help(action="auth")` | session_init, context_smart, capture |
+| Command Type    | Just Call                          | Skip                                 |
+| :-------------- | :--------------------------------- | :----------------------------------- |
+| List workspaces | `ctx_workspace(action="list")`     | session_init, context_smart, capture |
+| List projects   | `ctx_project(action="list")`       | session_init, context_smart, capture |
+| Show version    | `ctx_help(action="version")`       | session_init, context_smart, capture |
+| List reminders  | `ctx_reminder(action="list")`      | session_init, context_smart, capture |
+| Check auth      | `ctx_help(action="auth")`          | session_init, context_smart, capture |
+
+
+
 
 **Detect simple operations by these patterns:**
 - "list ...", "show ...", "what are my ...", "get ..."
@@ -117,9 +129,9 @@ To disable automatic restoration:
 
 ### Notices - MUST HANDLE IMMEDIATELY
 
-- **[VERSION_NOTICE]**: Tell the user about the update and command to run
-- **[RULES_NOTICE]**: Run `mcp__contextstream__generate_rules(overwrite_existing=true)` to update
-- **[LESSONS_WARNING]**: Read lessons, tell user about them, explain how you'll avoid past mistakes
+- **(VERSION_NOTICE)**: Tell the user about the update and command to run
+- **(RULES_NOTICE)**: Run `mcp__contextstream__generate_rules(overwrite_existing=true)` to update
+- **(LESSONS_WARNING)**: Read lessons, tell user about them, explain how you'll avoid past mistakes
 
 ### Plans & Tasks
 

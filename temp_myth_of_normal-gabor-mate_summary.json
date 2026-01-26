@@ -1,0 +1,17 @@
+{
+  "source_file": "/home/vivi/datasets/consolidated/books/myth_of_normal-gabor-mate.pdf",
+  "book_metadata": {
+    "title": "myth_of_normal-gabor-mate",
+    "author": "Unknown",
+    "year": 2026
+  },
+  "processing_date": "2026-01-25T23:15:57.385499",
+  "total_chunks": 99,
+  "total_conversations": 31,
+  "average_quality_score": 0.767741935483871,
+  "conversation_types": {
+    "therapeutic_knowledge": 16,
+    "therapeutic_application": 5,
+    "therapeutic_case_study": 10
+  }
+}
