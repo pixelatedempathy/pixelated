@@ -1,0 +1,17 @@
+{
+  "source_file": "/home/vivi/datasets/consolidated/books/Diagnostic and Statistical Manual of... (Z-Library).pdf",
+  "book_metadata": {
+    "title": "Diagnostic and Statistical Manual of... (Z-Library)",
+    "author": "Unknown",
+    "year": 2026
+  },
+  "processing_date": "2026-01-25T23:15:55.518388",
+  "total_chunks": 2169,
+  "total_conversations": 324,
+  "average_quality_score": 0.7679012345678996,
+  "conversation_types": {
+    "therapeutic_knowledge": 129,
+    "therapeutic_application": 71,
+    "therapeutic_case_study": 124
+  }
+}

@@ -21,10 +21,13 @@
 ## 🧰 Quick Reference (Top Info)
 
 ### 📦 Package Management
-| Domain | Tool | Critical Rule |
-| :--- | :--- | :--- |
-| **Frontend/Node** | `pnpm` | Never use `npm` or `yarn`. |
-| **AI/Python** | `uv` | Never use `pip`, `conda`, or `venv`. |
+| Domain            | Tool   | Critical Rule                        |
+| :---------------- | :----- | :----------------------------------- |
+| **Frontend/Node** | `pnpm` | Never use `npm` or `yarn`.           |
+| **AI/Python**     | `uv`   | Never use `pip`, `conda`, or `venv`. |
+
+
+
 
 ### 🚀 Essential Commands
 - `pnpm dev:all-services` — Start everything (Frontend, AI, Worker, WebSocket).

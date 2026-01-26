@@ -113,11 +113,14 @@ aws s3 ls s3://pixel-data/final_dataset/ --recursive
 
 ## 📊 PROGRESS OVERVIEW
 
-| Phase | Status | Progress |
-|-------|--------|----------|
+| Phase   | Status         | Progress     |
+| ------- | -------------- | ------------ |
 | Phase 1 | ⚠️ In Progress | 75% Complete |
-| Phase 2 | ⏳ Pending | 0% Complete |
-| Phase 3 | ⏳ Pending | 0% Complete |
+| Phase 2 | ⏳ Pending      | 0% Complete  |
+| Phase 3 | ⏳ Pending      | 0% Complete  |
+
+
+
 
 ## ✅ COMPLETED TASKS
 
