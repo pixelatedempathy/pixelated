@@ -1,7 +1,35 @@
 /**
  * This file is loaded before all tests across the entire project
  */
+
 import { afterEach, beforeEach, vi } from 'vitest'
+
+// CRITICAL: Mock React module to add act before react-dom loads it
+vi.mock('react', async () => {
+  const actual = await vi.importActual<typeof import('react')>('react')
+
+  const reactAct = (callback: () => void | Promise<void>): Promise<void> => {
+    const result = callback()
+    if (result && typeof result === 'object' && 'then' in result) {
+      return Promise.resolve(result).then(() => {
+        if (typeof queueMicrotask !== 'undefined') {
+          return new Promise<void>((resolve) => queueMicrotask(() => resolve()))
+        }
+        return Promise.resolve()
+      })
+    }
+    if (typeof queueMicrotask !== 'undefined') {
+      return new Promise<void>((resolve) => queueMicrotask(() => resolve()))
+    }
+    return Promise.resolve()
+  }
+
+  return {
+    ...actual,
+    act: reactAct,
+  }
+})
+
 import '@testing-library/jest-dom/vitest'
 import '../src/test/setup-react19'
 
@@ -572,7 +600,7 @@ vi.mock('@/lib/security/backup', () => {
       }),
     }),
   }
-  
+
   return {
     BackupSecurityManager: mockBackupManager,
     default: mockBackupManager,
