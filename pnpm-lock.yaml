@@ -429,6 +429,9 @@ importers:
       uuid:
         specifier: ^13.0.0
         version: 13.0.0
+      vibe-kanban:
+        specifier: ^0.0.162
+        version: 0.0.162
       viewerjs:
         specifier: ^1.11.7
         version: 1.11.7
@@ -6392,6 +6395,10 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
+  adm-zip@0.5.16:
+    resolution: {integrity: sha512-TGw5yVi4saajsSEgz25grObGHEUaDrniwvA2qwSC060KfqGPdglhvPMA2lPIoxs3PQIItj2iag35fONcQqgUaQ==}
+    engines: {node: '>=12.0'}
+
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -12227,6 +12234,10 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vibe-kanban@0.0.162:
+    resolution: {integrity: sha512-O+3T1Ogv5FzE17KBteSlZApI1o7RzsNrNs0NGw98jsp1cHStDy3mAPnTrYAenPLHTX8O9/XIHYnPx9eZ0bILBw==}
+    hasBin: true
 
   victory-vendor@37.3.6:
     resolution: {integrity: sha512-SbPDPdDBYp+5MJHhBCAyI7wKM3d5ivekigc2Dk2s7pgbZ9wIgIBYGVw4zGHBml/qTFbexrofXW6Gu4noGxrOwQ==}
@@ -19983,6 +19994,8 @@ snapshots:
 
   acorn@8.15.0: {}
 
+  adm-zip@0.5.16: {}
+
   agent-base@6.0.2:
     dependencies:
       debug: 4.4.3(supports-color@8.1.1)
@@ -27188,6 +27201,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
+
+  vibe-kanban@0.0.162:
+    dependencies:
+      adm-zip: 0.5.16
 
   victory-vendor@37.3.6:
     dependencies:

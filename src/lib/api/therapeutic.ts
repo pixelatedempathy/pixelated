@@ -84,7 +84,7 @@ export class TherapeuticClient {
         this.baseUrl = baseUrl.replace(/\/$/, '');
     }
 
-    private async post<T>(endpoint: string, data: any): Promise<T> {
+    private async post<T>(endpoint: string, data: unknown): Promise<T> {
         try {
             const response = await fetch(`${this.baseUrl}${endpoint}`, {
                 method: 'POST',
@@ -113,7 +113,7 @@ export class TherapeuticClient {
         return this.post<CrisisResult>('/api/security/detect-crisis', { text, session_id: sessionId });
     }
 
-    async analyzeBias(data: any): Promise<BiasResult> {
+    async analyzeBias(data: Record<string, unknown>): Promise<BiasResult> {
         return this.post<BiasResult>('/api/bias/analyze-session', data);
     }
 

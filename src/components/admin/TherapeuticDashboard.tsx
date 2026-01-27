@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { therapeuticClient, type CrisisResult, type PIIScrubResult } from '@/lib/api/therapeutic';
 
 export const TherapeuticDashboard: React.FC = () => {
-    const [health, setHealth] = useState<any>(null);
+    type HealthStatus = { status: string; service?: string; mode?: string };
+
+    const [health, setHealth] = useState<HealthStatus | null>(null);
     const [inputText, setInputText] = useState('');
     const [analysis, setAnalysis] = useState<{
         crisis?: CrisisResult;
@@ -31,7 +33,7 @@ export const TherapeuticDashboard: React.FC = () => {
                 therapeuticClient.scrubPII(inputText) // No session ID for test
             ]);
             setAnalysis({ crisis, pii });
-        } catch {
+        } catch (e: unknown) {
             console.error(e);
             alert('Analysis failed');
         } finally {
@@ -52,10 +54,11 @@ export const TherapeuticDashboard: React.FC = () => {
             <div className="space-y-6">
                 {/* Input Section */}
                 <div className="bg-white p-4 rounded-lg border border-gray-200">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="therapeutic-dashboard-input" className="block text-sm font-medium text-gray-700 mb-2">
                         Test Input (Patient Transcript)
                     </label>
                     <textarea
+                        id="therapeutic-dashboard-input"
                         className="w-full h-32 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter text here... (e.g., 'I am feeling hopeless and want to end it all')"
                         value={inputText}
@@ -97,7 +100,7 @@ export const TherapeuticDashboard: React.FC = () => {
                                         <h4 className="text-xs uppercase text-gray-500 font-semibold mb-2">Detected Signals</h4>
                                         <ul className="space-y-2">
                                             {analysis.crisis.signals.map((signal, idx) => (
-                                                <li key={idx} className="text-sm bg-gray-50 p-2 rounded">
+                                                <li key={`signal-${signal.category}-${signal.context}-${signal.id || idx}`} className="text-sm bg-gray-50 p-2 rounded">
                                                     <span className="font-medium text-indigo-700">{signal.category}:</span> {signal.context}
                                                 </li>
                                             ))}
@@ -109,8 +112,8 @@ export const TherapeuticDashboard: React.FC = () => {
                                     <div className="mt-2">
                                         <h4 className="text-xs uppercase text-gray-500 font-semibold mb-1">Protocol</h4>
                                         <ul className="list-disc list-inside text-sm text-gray-700">
-                                            {analysis.crisis.escalation_protocol.map((step, i) => (
-                                                <li key={i}>{step}</li>
+                                            {analysis.crisis.escalation_protocol.map((step) => (
+                                                <li key={`protocol-step-${step.replace(/\s+/g, '-').toLowerCase()}`}>{step}</li>
                                             ))}
                                         </ul>
                                     </div>

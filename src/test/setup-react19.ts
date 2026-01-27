@@ -37,12 +37,14 @@ const act = (callback: () => void | Promise<void>): Promise<void> => {
 try {
   if (!React.act || typeof React.act !== 'function') {
     // @ts-expect-error - Adding act to React for compatibility
-    React.act = act
+    ;(React as unknown as { act?: typeof act }).act = act
   }
-} catch (error) {
+} catch {
   // If we can't set it directly, try with Object.defineProperty
   try {
-    Object.defineProperty(React, 'act', {
+    const reactNamespace = React as unknown as object
+
+    Object.defineProperty(reactNamespace, 'act', {
       value: act,
       writable: true,
       configurable: true,
