@@ -63,10 +63,14 @@ vi.mock('astro:env/server', () => ({
 // Mock Redis service for tests that don't need real Redis
 // Create a stateful in-memory Redis mock (copied and simplified from RedisService.createMockClient)
 function createMockRedis() {
-  const store = new Map<string, any>()
-  const setStore = new Map<string, Set<any>>()
-  const hashStore = new Map<string, Map<string, any>>()
-  const zsetStore = new Map<string, Map<any, number>>()
+  type RedisValue = unknown
+  type RedisHashValue = unknown
+  type RedisMember = unknown
+
+  const store = new Map<string, RedisValue>()
+  const setStore = new Map<string, Set<RedisMember>>()
+  const hashStore = new Map<string, Map<string, RedisHashValue>>()
+  const zsetStore = new Map<string, Map<RedisMember, number>>()
   const expirations = new Map<string, number>()
 
   // implement functions first so we can wrap them with vi.fn for spying
@@ -185,13 +189,11 @@ function createMockRedis() {
   }
 
   const _zrange = async (key, start, stop, withScores) => {
-    const z = zsetStore.get(key) as Map<any, number> | undefined
+    const z = zsetStore.get(key)
     if (!z) {
       return []
     }
-    const entries: [any, number][] = Array.from(
-      (z as Map<any, number>).entries(),
-    )
+    const entries: Array<[RedisMember, number]> = Array.from(z.entries())
     const sorted = entries.sort((a, b) => (a[1] as number) - (b[1] as number))
     const slice =
       stop === -1 ? sorted.slice(start) : sorted.slice(start, stop + 1)
@@ -202,13 +204,11 @@ function createMockRedis() {
   }
 
   const _zpopmin = async (key) => {
-    const z = zsetStore.get(key) as Map<any, number> | undefined
+    const z = zsetStore.get(key)
     if (!z || z.size === 0) {
       return []
     }
-    const entries: [any, number][] = Array.from(
-      (z as Map<any, number>).entries(),
-    )
+    const entries: Array<[RedisMember, number]> = Array.from(z.entries())
     const sorted = entries.sort((a, b) => (a[1] as number) - (b[1] as number))
     const [member, score] = sorted[0]!
     z.delete(member)
@@ -269,7 +269,7 @@ function createMockRedis() {
   // mget/mset
   const _mget = async (...keys: string[]) =>
     keys.map((k) => (store.has(k) ? store.get(k) : null))
-  const _mset = async (obj: Record<string, any>) => {
+  const _mset = async (obj: Record<string, unknown>) => {
     Object.entries(obj).forEach(([k, v]) => store.set(k, String(v)))
     return 'OK'
   }
@@ -293,23 +293,34 @@ function createMockRedis() {
     keys.forEach((k) => store.delete(k))
     return keys.length
   }
-  const _multi = () => {
-    const commands: Array<{ cmd: string; args: any[] }> = []
-    const pipeline: any = {
+  interface RedisPipeline {
+    get: (key: string) => RedisPipeline
+    set: (key: string, value: unknown) => RedisPipeline
+    setex: (key: string, ttl: number, value: unknown) => RedisPipeline
+    sadd: (key: string, member: unknown) => RedisPipeline
+    expire: (key: string, ttl: number) => RedisPipeline
+    del: (...keys: string[]) => RedisPipeline
+    exec: () => Promise<unknown>
+    pipeline?: RedisPipeline
+  }
+
+  const _multi = (): RedisPipeline => {
+    const commands: Array<{ cmd: string; args: unknown[] }> = []
+    const pipeline: RedisPipeline = {
       // support queuing get/set so tests using pipeline/multi behave
       get: (key: string) => {
         commands.push({ cmd: 'get', args: [key] })
         return pipeline
       },
-      set: (key: string, value: any) => {
+      set: (key: string, value: unknown) => {
         commands.push({ cmd: 'set', args: [key, value] })
         return pipeline
       },
-      setex: (key: string, ttl: number, value: any) => {
+      setex: (key: string, ttl: number, value: unknown) => {
         commands.push({ cmd: 'setex', args: [key, ttl, value] })
         return pipeline
       },
-      sadd: (key: string, member: any) => {
+      sadd: (key: string, member: unknown) => {
         commands.push({ cmd: 'sadd', args: [key, member] })
         return pipeline
       },
@@ -322,7 +333,7 @@ function createMockRedis() {
         return pipeline
       },
       exec: async () => {
-        const results: any[] = []
+        const results: unknown[] = []
         for (const c of commands) {
           if (c.cmd === 'setex') {
             const [_k, ttl, value] = c.args
@@ -364,11 +375,11 @@ function createMockRedis() {
           } else if (c.cmd === 'del') {
             const keys = c.args as string[]
             let deleted = 0
-            for (const k of keys) {
-              if (store.delete(k)) {
+            for (const key of keys) {
+              if (store.delete(key)) {
                 deleted++
               }
-              expirations.delete(k)
+              expirations.delete(key)
             }
             results.push([null, deleted])
           } else {
@@ -379,12 +390,10 @@ function createMockRedis() {
       },
     }
 
-      // pipeline alias commonly used in some clients
-      ; (pipeline as any).pipeline = pipeline
+    // pipeline alias commonly used in some clients
+    ;(pipeline as unknown as { pipeline?: RedisPipeline }).pipeline = pipeline
     return pipeline
   }
-  // pipeline helper intentionally removed; use multi()/pipeline returned from mock
-  const _isHealthy = async () => true
   const _connect = async () => undefined
   const _getPoolStats = async () => ({
     totalConnections: 1,
@@ -393,7 +402,7 @@ function createMockRedis() {
     waitingClients: 0,
   })
   // pub/sub (no-op for tests)
-  const _publish = async (_channel: string, _message: any) => 0
+  const _publish = async (_channel: string, _message: unknown) => 0
   const _subscribe = async (_channel: string) => undefined
   const _unsubscribe = async (_channel: string) => undefined
   // scan convenience
@@ -467,7 +476,7 @@ function createMockRedis() {
   }
 
   // now assemble mock with vi.fn wrappers so tests can spy on calls
-  const mock: any = {
+  const mock: Record<string, unknown> = {
     get: vi.fn(_get),
     set: vi.fn(_set),
     del: vi.fn(_del),
@@ -534,7 +543,7 @@ function createMockRedis() {
 const globalMockRedis = createMockRedis()
 
 vi.mock('@/lib/services/redis', () => {
-  const impl: any = Object.assign({}, globalMockRedis, {
+  const impl = Object.assign({}, globalMockRedis, {
     getClient: () => globalMockRedis,
     isConnected: () => true,
   })
@@ -551,7 +560,7 @@ vi.mock('@/lib/redis', () => ({
 
 // Also mock the RedisService class directly for tests that import it
 vi.mock('@/lib/services/redis/RedisService', () => {
-  const impl: any = Object.assign({}, globalMockRedis, {
+  const impl = Object.assign({}, globalMockRedis, {
     getClient: () => globalMockRedis,
     isConnected: () => true,
   })
@@ -562,7 +571,7 @@ vi.mock('@/lib/services/redis/RedisService', () => {
 
 // Also mock relative imports for tests in subdirectories
 vi.mock('../RedisService', () => {
-  const impl: any = Object.assign({}, globalMockRedis, {
+  const impl = Object.assign({}, globalMockRedis, {
     getClient: () => globalMockRedis,
     isConnected: () => true,
   })

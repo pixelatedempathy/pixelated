@@ -179,6 +179,15 @@ All coding agents should:
 
 **Current bottleneck:** Downloading Tier 1 Priority datasets - this is required before any other training can proceed.
 
+## Infrastructure Issue
+- **Azure Host Platform**: LOST - Need to find alternative hosting solution
+- **Current Options to Explore**:
+  - OVHcloud AI Training (existing S3 integration)
+  - RunPod (GPU-optimized, pay-as-you-go)
+  - Lambda Labs (high-performance GPUs)
+  - Google Cloud AI Platform
+  - AWS SageMaker
+
 ---
 
-Last Updated: 2026-01-25
+Last Updated: 2026-01-27
