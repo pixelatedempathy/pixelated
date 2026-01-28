@@ -4,7 +4,7 @@ services:
   # Main Application
   app:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile.production
     container_name: pixelated-app
     restart: unless-stopped
@@ -46,6 +46,11 @@ services:
         reservations:
           cpus: '0.5'
           memory: 512M
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`${DOMAIN:-pixelatedempathy.com}`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls.certresolver=letsencrypt"
 
   # PostgreSQL Database
   postgres:

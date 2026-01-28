@@ -10,6 +10,10 @@
 
 **Pixelated Empathy** is an enterprise-grade platform engineered to translate human emotion into actionable intelligence. Our cornerstone, **The Empathy Gym™**, provides mental health professionals with a high-fidelity, risk-free AI environment to master complex therapeutic dialogues.
 
+### Container Orchestration
+- **Docker Compose**: Primary deployment method (Development, Staging, Production).
+- **Kubernetes**: Future/Secondary infrastructure (Helm charts available in `/helm`).
+
 ### Core Goals:
 - **Forge Empathy**: Transform difficult conversations into safe practice.
 - **Architect Understanding**: Map the "Emotional Cartography" of human interaction.
@@ -31,6 +35,7 @@
 
 ### 🚀 Essential Commands
 - `pnpm dev:all-services` — Start everything (Frontend, AI, Worker, WebSocket).
+- `pnpm docker:up` — Deploy locally with Docker Compose.
 - `pnpm check:all` — Lint + Typecheck + Format check.
 - `pnpm test:all` — Run the full test suite.
 - `pnpm security:scan` — Deep security audit.

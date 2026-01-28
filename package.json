@@ -1,13 +1,9 @@
 {
   "name": "pixelated",
-  "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@10.28.1",
   "license": "MIT",
-  "engines": {
-    "node": ">=24"
-  },
+  "type": "module",
   "scripts": {
     "bias:py": "ENV=development uv run --python 3.11 python src/lib/ai/bias-detection/python-service/bias_detection_service.py",
     "astro": "astro",
@@ -26,8 +22,6 @@
     "dev:all-services": "concurrently \"pnpm dev\" \"pnpm dev:bias-detection\" \"pnpm dev:ai-service\" \"pnpm dev:analytics\" \"pnpm dev:worker\" \"pnpm dev:training-server\" \"pnpm dev:websocket\" \"pnpm dev:academic-sourcing\" \"pnpm bias:py\"",
     "setup:dev": "./scripts/setup-dev.sh",
     "build": "node scripts/build-with-pipe-handling.mjs",
-    "build:vercel": "bash scripts/build-vercel.sh",
-    "vercel-build": "bash scripts/build-vercel.sh",
     "build:cloudflare": "bash scripts/build-cloudflare.sh",
     "build:railway": "DEPLOY_TARGET=railway astro build",
     "build:heroku": "DEPLOY_TARGET=heroku astro build",
@@ -101,12 +95,10 @@
     "performance:test": "playwright test tests/performance/",
     "performance:quick": "./scripts/test-performance.sh",
     "performance:optimize": "./scripts/performance-quickstart.sh",
-    "deploy": "node scripts/consolidated-deploy.js deploy staging",
-    "deploy:prod": "node scripts/consolidated-deploy.js deploy production",
-    "deploy:enhanced": "node scripts/enhanced-deploy.js deploy staging",
-    "deploy:enhanced:prod": "node scripts/enhanced-deploy.js deploy production",
-    "rollback": "node scripts/enhanced-deploy.js rollback staging",
-    "rollback:prod": "node scripts/enhanced-deploy.js rollback production",
+    "deploy": "bash scripts/infrastructure/deploy.sh staging",
+    "deploy:prod": "bash scripts/infrastructure/deploy.sh production",
+    "rollback": "bash scripts/infrastructure/deploy.sh rollback staging",
+    "rollback:prod": "bash scripts/infrastructure/deploy.sh rollback production",
     "cf:deploy": "./scripts/infrastructure/cloudflare-deploy.sh deploy production",
     "cf:deploy:staging": "./scripts/infrastructure/cloudflare-deploy.sh deploy staging",
     "cf:deploy:dev": "./scripts/infrastructure/cloudflare-deploy.sh deploy development",
@@ -117,7 +109,7 @@
     "wrangler": "wrangler",
     "docker:build": "docker build -f docker/Dockerfile -t pixelated .",
     "docker:run": "docker run -p 4321:4321 pixelated",
-    "docker:up": "./scripts/deploy.sh",
+    "docker:up": "bash scripts/infrastructure/deploy.sh",
     "docker:down": "docker-compose -f docker/docker-compose.yml down",
     "docker:logs": "docker-compose -f docker/docker-compose.yml logs -f",
     "docker:restart": "docker-compose -f docker/docker-compose.yml restart",
@@ -420,6 +412,16 @@
     "vue": "^3.5.27",
     "wait-on": "^9.0.3"
   },
+  "peerDependencies": {
+    "hono": "^4.11.5"
+  },
+  "resolutions": {
+    "path-to-regexp": "8.3.0"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.28.1",
   "pnpm": {
     "overrides": {
       "@opentelemetry/api": "^1.9.0",
@@ -522,17 +524,11 @@
       "libpg-query"
     ]
   },
-  "resolutions": {
-    "path-to-regexp": "8.3.0"
-  },
   "trustedDependencies": [
     "aws-sdk",
     "core-js",
     "postinstall-postinstall",
     "protobufjs",
     "unrs-resolver"
-  ],
-  "peerDependencies": {
-    "hono": "^4.11.5"
-  }
+  ]
 }
