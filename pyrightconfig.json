@@ -1,5 +1,5 @@
 {
-  "include": ["src", "tests", "ai", "api"],
+  "include": ["src", "tests", "ai"],
   "exclude": [
     "node_modules",
     "business-strategy-cms/node_modules",

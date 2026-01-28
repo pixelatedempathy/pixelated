@@ -28,7 +28,7 @@ sleep 10
 
 # Check if services are running
 echo "🔍 Checking service status..."
-docker compose -f docker/docker-compose.monitoring.yml ps
+docker compose -f docker/docker-compose.monitoring.yml -f docker/docker-compose.production.yml ps
 
 # Test Loki connectivity
 echo "🧪 Testing Loki connectivity..."

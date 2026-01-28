@@ -7,19 +7,19 @@ echo "🔒 SECURITY REMEDIATION: Removing MongoDB credentials from git history"
 echo "====================================================================="
 
 # Check if git-filter-repo is installed
-if ! command -v git-filter-repo &> /dev/null; then
-    echo "📦 Installing git-filter-repo..."
-    pip install git-filter-repo
+if ! command -v git-filter-repo &>/dev/null; then
+	echo "📦 Installing git-filter-repo..."
+	pip install git-filter-repo
 fi
 
 # Backup current state
 echo "💾 Creating backup..."
 BACKUP_DIR="/tmp/pixelated-backup-$(date +%Y%m%d-%H%M%S)"
-cp -r . "$BACKUP_DIR"
-echo "✅ Backup created at: $BACKUP_DIR"
+cp -r . "${BACKUP_DIR}"
+echo "✅ Backup created at: ${BACKUP_DIR}"
 
 # Create expressions file for filtering
-cat > /tmp/filter-expressions.txt << 'EOF'
+cat >/tmp/filter-expressions.txt <<'EOF'
 # Replace the exposed MongoDB URI with a placeholder
 regex:mongodb\+srv://CORE_USER:CORE_PASS@CORE_CLUSTER\.mongodb\.net/DATABASE\?retryWrites=true&w=majority&appName=APP_NAME==>mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/DATABASE?retryWrites=true&w=majority&appName=APP_NAME
 EOF
@@ -34,9 +34,9 @@ echo "   - Force push will be required to all remotes"
 echo "   - Anyone with a clone will need to re-clone"
 echo ""
 read -p "Continue? (yes/no): " -r
-if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
-    echo "❌ Aborted. Backup preserved at: $BACKUP_DIR"
-    exit 1
+if [[ ! ${REPLY} =~ ^[Yy][Ee][Ss]$ ]]; then
+	echo "❌ Aborted. Backup preserved at: ${BACKUP_DIR}"
+	exit 1
 fi
 
 # Run git-filter-repo
