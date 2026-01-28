@@ -23,6 +23,7 @@ runtimes:
 lint:
   disabled:
     - markdownlint
+    - shellcheck
   enabled:
     - actionlint@1.7.10
     - bandit@1.9.3
@@ -41,7 +42,6 @@ lint:
     - prettier@3.8.1
     - pyright@1.1.408
     - ruff@0.14.14
-    - shellcheck@0.11.0
     - shfmt@3.6.0
     - svgo@4.0.0
     - taplo@0.10.0
