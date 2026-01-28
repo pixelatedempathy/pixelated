@@ -541,13 +541,13 @@ The above BSD License Applies to all code, even that also covered by Apache
 
 ------
 
-** Pyintaller 3.5; version 3.5 --
+** PyInstaller 3.5; version 3.5 --
 https://github.com/pyinstaller/pyinstaller/tree/v3.5
 Copyright (c) 2010-2020, PyInstaller Development Team
 Copyright (c) 2005-2009, Giovanni Bajo
 Based on previous work under copyright (c) 2002 McMillan Enterprises, Inc.
 
-    * Package Pyintaller 3.5's source code may be found at:
+    * Package PyInstaller 3.5's source code may be found at:
       https://files.pythonhosted.org/packages/e2/c9/0b44b2ea87ba36395483a672fddd07e6a9cb2b8d3c4a28d7ae76c7e7e1e5/PyInstaller-3.5.tar.gz
 
 ================================
@@ -1084,7 +1084,7 @@ Copyright (c) 2014-2019 Anthon van der Neut, Ruamel bvba
 ------
 
 ** OpenSSL; version 1.0.2s --
-https://github.com/openssl/openssl/tree/OpenSSL_1_0_1s
+https://github.com/openssl/openssl/tree/OpenSSL_1_0_2s
 Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
 Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
 
