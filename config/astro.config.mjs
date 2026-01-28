@@ -110,9 +110,7 @@ const adapter = (() => {
     };
     // Only include platformProxy when running dev server locally (not during builds)
     if (isDevelopment && !isBuildCommand) {
-      adapterConfig.platformProxy = {
-        enabled: true,
-      };
+      adapterConfig.platformProxy = true;
     }
     return cloudflareAdapter(adapterConfig);
   }
