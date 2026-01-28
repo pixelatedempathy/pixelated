@@ -280,7 +280,7 @@ recommend that a file or class name and description of purpose be included on
 the same "printed page" as the copyright notice for easier identification
 within third-party archives.
 
-Copyright [yyyy] [name of copyright owner]
+Copyright \[yyyy\] \[name of copyright owner\]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 
@@ -461,7 +461,7 @@ this
   list of conditions and the following disclaimer in the documentation and/or
   other materials provided with the distribution.
 
-* Neither the name of the {organization} nor the names of its
+* Neither the name of the prompt-toolkit project nor the names of its
   contributors may be used to endorse or promote products derived from
   this software without specific prior written permission.
 
@@ -541,7 +541,7 @@ The above BSD License Applies to all code, even that also covered by Apache
 
 ------
 
-** PyInstaller 3.5; version 3.5 --
+** PyInstaller; version 3.5 --
 https://github.com/pyinstaller/pyinstaller/tree/v3.5
 Copyright (c) 2010-2020, PyInstaller Development Team
 Copyright (c) 2005-2009, Giovanni Bajo
@@ -1085,7 +1085,7 @@ Copyright (c) 2014-2019 Anthon van der Neut, Ruamel bvba
 
 ** OpenSSL; version 1.0.2s --
 https://github.com/openssl/openssl/tree/OpenSSL_1_0_2s
-Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+Copyright (c) 1998-2017 The OpenSSL Project.  All rights reserved.
 Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
 
 LICENSE ISSUES
@@ -1209,7 +1209,7 @@ LICENSE ISSUES
  * The licence and distribution terms for any publically available version or
  * derivative of this code cannot be changed.  i.e. this code cannot simply be
  * copied and put under another distribution licence
- * [including the GNU Public Licence.]
+ * \[including the GNU Public Licence.\]
  */
 
 ------
@@ -1335,9 +1335,9 @@ commercial or non-commercial, and in any way, including by methods
 that have not yet been invented or conceived.
 
 (This dedication is derived from the text of the `Creative Commons
-Public Domain Dedication`. [#]_)
+Public Domain Dedication`. \[#\]_)
 
-.. [#] Creative Commons has `retired this legal tool`__ and does not
+.. \[#\] Creative Commons has `retired this legal tool`__ and does not
    recommend that it be applied to works: This tool is based on United
    States law and may not be applicable outside the US. For dedicating new
    works to the public domain, Creative Commons recommend the replacement
