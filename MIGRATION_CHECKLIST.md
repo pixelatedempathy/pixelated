@@ -1,12 +1,12 @@
 # 📋 Server Migration & Role Transition Checklist
 
 ## 🌍 Overview
-- **Production:** `vivi@3.137.216.156` (AWS EC2) - **Nuked & Fresh Rebuild**
-- **Staging/Ops:** `root@194.113.75.34` (OVH VPS) - **Active Dev/Backups**
+- **Production:** `<PROD_SSH_USER>@<PROD_HOST>` (AWS EC2) - **Nuked & Fresh Rebuild**
+- **Staging/Ops:** `<STAGING_SSH_USER>@<STAGING_HOST>` (OVH VPS) - **Active Dev/Backups**
 
 ---
 
-## 🛠️ Phase 1: Staging/Ops Server Setup (`194.113.75.34`)
+## 🛠️ Phase 1: Staging/Ops Server Setup
 - [x] **1.1 Base System**
   - [x] Update apt packages
   - [x] Install `git`, `curl`, `jq`, `build-essential`, `ca-certificates`
