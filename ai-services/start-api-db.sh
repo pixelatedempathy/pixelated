@@ -13,10 +13,10 @@ source ~/pixelated/.venv/bin/activate
 # Set Environment Variables
 # MONGODB_URI should be set in your environment or .env file
 # Never commit credentials to version control!
-if [[ -z "${MONGODB_URI}" ]]; then
-  echo "❌ ERROR: MONGODB_URI environment variable is not set"
-  echo "Please set it in your environment or load from .env file"
-  exit 1
+if [[ -z ${MONGODB_URI} ]]; then
+	echo "❌ ERROR: MONGODB_URI environment variable is not set"
+	echo "Please set it in your environment or load from .env file"
+	exit 1
 fi
 
 # Navigate to API directory
