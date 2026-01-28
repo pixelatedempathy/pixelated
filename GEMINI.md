@@ -46,7 +46,7 @@
 - `/ai` — (Submodule) The core Emotional Intelligence engine.
 - `.kiro/steering/` — Critical domain and style guidelines.
 - `/docs` — Comprehensive architecture and research documentation.
-- `/memory-bank` — Project state and historical context.
+- `/.memory` — Project state and historical context.
 
 ---
 

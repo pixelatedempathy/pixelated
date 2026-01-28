@@ -1,20 +1,23 @@
 {
-  "include": ["src", "tests", "ai"],
+  "include": [
+    "src",
+    "tests"
+  ],
   "exclude": [
-    "node_modules",
+    "**/node_modules/**",
     "business-strategy-cms/node_modules",
     "stubs",
-    "venv",
-    ".venv",
-    "env",
+    "**/venv/**",
+    "**/.venv/**",
+    "**/env/**",
     "build",
     "dist",
     ".coveragerc",
-    ".git",
-    ".pytest_cache",
-    "__pycache__",
-    ".ruff_cache",
-    ".mypy_cache",
+    "**/.git/**",
+    "**/.pytest_cache/**",
+    "**/__pycache__/**",
+    "**/.ruff_cache/**",
+    "**/.mypy_cache/**",
     ".vscode",
     ".idea",
     ".cursor",
@@ -77,7 +80,9 @@
     "uv.lock",
     "pixelated.egg-info"
   ],
-  "extraPaths": ["stubs"],
+  "extraPaths": [
+    "stubs"
+  ],
   "typeCheckingMode": "basic",
   "reportMissingTypeStubs": false,
   "reportMissingImports": false,
