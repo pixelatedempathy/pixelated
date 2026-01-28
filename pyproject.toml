@@ -124,11 +124,11 @@ include = ["ai*"]
 python_version = "3.11"
 ignore_missing_imports = true
 mypy_path = "stubs"
-files = ["src", "tests", "ai", "api"]
+files = ["src", "tests", "ai"]
 show_error_codes = true
 
 [tool.pyright]
-include = ["src", "tests", "ai", "api"]
+include = ["src", "tests", "ai"]
 exclude = [
   "node_modules",
   "stubs",
@@ -138,6 +138,8 @@ exclude = [
   "build",
   "dist",
   ".coveragerc",
+  ".git",
+  "dist"
 ]
 extraPaths = ["stubs"]
 typeCheckingMode = "basic"
@@ -159,6 +161,8 @@ exclude = [
   "build",
   "dist",
   ".coveragerc",
+  ".git",
+  "dist"
 ]
 
 [tool.ruff.lint]
@@ -187,7 +191,7 @@ select = [
 ignore = ["E501", "UP017", "PLR2004"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["ai", "src", "api"]
+known-first-party = ["ai", "src"]
 combine-as-imports = true
 force-single-line = false
 
@@ -199,7 +203,7 @@ skip-string-normalization = false
 [tool.isort]
 profile = "black"
 line_length = 100
-known_first_party = ["ai", "src", "api"]
+known_first_party = ["ai", "src"]
 combine_as_imports = true
 force_single_line = false
 
@@ -209,7 +213,7 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["src", "ai", "api"]
+source = ["src", "ai"]
 
 [tool.coverage.report]
 show_missing = true
