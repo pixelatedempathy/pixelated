@@ -139,7 +139,7 @@ exclude = [
   "dist",
   ".coveragerc",
   ".git",
-  "dist"
+  "dist",
 ]
 extraPaths = ["stubs"]
 typeCheckingMode = "basic"
@@ -162,7 +162,7 @@ exclude = [
   "dist",
   ".coveragerc",
   ".git",
-  "dist"
+  "dist",
 ]
 
 [tool.ruff.lint]
