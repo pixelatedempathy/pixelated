@@ -143,11 +143,9 @@ aws s3 ls s3://pixel-data/final_dataset/ --recursive
 | 8-Gate Quality Valid      | ⏳ Pending      | MEDIUM   |
 | Compile & Upload S3       | ⏳ Pending      | MEDIUM   |
 | Verify S3 Upload          | ⏳ Pending      | LOW      |
-| Verify S3 Upload          | ⏳ Pending      | LOW      |
 | **Server Migration**      | 🚀 **IN PROGRESS** | CRITICAL |
 | **Prod Deployment**       | 🚀 **IN PROGRESS** | CRITICAL |
-| Find Azure Alternative    | ✅ **RESOLVED** (Using 194.113.75.34) | DONE |
-
+| Find Azure Alternative    | ⏳ **NOT STARTED** | CRITICAL |
 
 ## 📈 Overall Progress
 
