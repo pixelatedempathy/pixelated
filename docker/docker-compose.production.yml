@@ -65,7 +65,7 @@ services:
       - db_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql
     healthcheck:
       test:
         [
@@ -117,7 +117,7 @@ services:
       - "8080:8080" # Dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./docker/traefik:/etc/traefik
+      - ./traefik:/etc/traefik
       - ssl_certs:/ssl-certs
     environment:
       - TRAEFIK_PROVIDERS_DOCKER=true
@@ -144,7 +144,7 @@ services:
     container_name: pixelated-prometheus
     restart: unless-stopped
     volumes:
-      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
@@ -169,9 +169,9 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-      - ./docker/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
     ports:
       - "3000:3000"
     depends_on:
@@ -189,7 +189,7 @@ services:
     restart: unless-stopped
     volumes:
       - loki_data:/loki
-      - ./docker/loki/config.yml:/etc/loki/local-config.yaml
+      - ./loki/config.yml:/etc/loki/local-config.yaml
     command: -config.file=/etc/loki/local-config.yaml
     ports:
       - "3100:3100"
@@ -204,7 +204,7 @@ services:
     container_name: pixelated-promtail
     restart: unless-stopped
     volumes:
-      - ./docker/promtail/config.yml:/etc/promtail/config.yml
+      - ./promtail/config.yml:/etc/promtail/config.yml
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command: -config.file=/etc/promtail/config.yml
