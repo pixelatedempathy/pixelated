@@ -20,7 +20,7 @@ echo "📁 Created necessary directories"
 
 # Start monitoring services
 echo "🐳 Starting monitoring containers..."
-docker compose -f docker/docker-compose.monitoring.yml up -d
+docker compose -f docker/docker-compose.monitoring.yml -f docker/docker-compose.production.yml up -d loki promtail prometheus grafana alertmanager
 
 # Wait for services to be ready
 echo "⏳ Waiting for services to initialize..."
