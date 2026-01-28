@@ -291,3 +291,4 @@ logs/*.jsonl
 
 .codebuff/agents
 .mcp.json
+claude-wrapper.sh

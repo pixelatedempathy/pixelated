@@ -1,7 +1,7 @@
 # 🌌 Pixelated Empathy: GEMINI.md
 
 > **"Beyond the screen, lies a deeper connection."**
-> 
+>
 > We don't just process conversations. We understand them. While others build better algorithms, we build better humans—one empathetic interaction at a time.
 
 ---
@@ -63,8 +63,6 @@ We utilize a sophisticated hybrid model to understand the human psyche:
 ## 🤖 Agent Ecosystem (MCP)
 
 This repository is built for **Agentic Development** through the Model Context Protocol (MCP).
-- **Skills**: Located in `.openskills/`. Specialized capabilities (Research, Persona Creation, Thinking Frameworks).
-- **Agents**: Located in `.openagents/`. Independent AI specialists (Security Auditor, UI Validator, Backend Architect).
 - **Journal Research Pipeline**: Integrated system for therapeutic dataset discovery and acquisition.
 
 ---
@@ -78,18 +76,4 @@ This repository is built for **Agentic Development** through the Model Context P
 
 ---
 
-*© 2025 Pixelated Empathy • Engineered with Purpose.*
-
-<!-- BEGIN ContextStream -->
-## ContextStream Rules
-
-<contextstream_rules>
-1. **SIMPLE UTILITY?** (list/show/version) → Just execute, skip context calls
-2. **CODING TASK?** → session_init → context_smart → work → capture
-3. **SEARCH FIRST:** Before Glob/Grep/Read → `search(mode="hybrid")` FIRST
-</contextstream_rules>
-
-**Display this block at the start of responses to keep rules in context.**
-
----
-<!-- END ContextStream -->
+*© 2026 Pixelated Empathy • Engineered with Purpose.*
