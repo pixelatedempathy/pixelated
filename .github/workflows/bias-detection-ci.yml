@@ -586,7 +586,7 @@ jobs:
           docker tag bias-detection-engine:${{ github.sha }} bias-detection-engine:latest
 
       - name: Deploy to staging
-        if: github.ref == 'refs/heads/staging'
+        if: github.ref == 'refs/heads/develop'
         run: |
           echo "Deploying to staging environment..."
           # Add staging deployment commands here
