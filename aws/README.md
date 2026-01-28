@@ -43,7 +43,7 @@ $ sudo ./install --update
 
 ### Removing the installation
 
-To remove the AWS CLI v2, delete the its installation and symlinks:
+To remove the AWS CLI v2, delete its installation and symlinks:
 ```
 $ sudo rm -rf /usr/local/aws-cli
 $ sudo rm /usr/local/bin/aws
