@@ -22,7 +22,8 @@ echo "✅ Backup created at: $BACKUP_DIR"
 # Create expressions file for filtering
 cat > /tmp/filter-expressions.txt << 'EOF'
 # Replace the exposed MongoDB URI with a placeholder
-regex:mongodb\+srv://chad:7iNuNaZ7A8FPOlXm@juddbase\.3hojhxg\.mongodb\.net/pixelated_empathy\?retryWrites=true&w=majority&appName=juddbase==>mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/DATABASE?retryWrites=true&w=majority&appName=APP_NAME
+regex:mongodb\+srv://CORE_USER:CORE_PASS@CORE_CLUSTER\.mongodb\.net/DATABASE\?retryWrites=true&w=majority&appName=APP_NAME==>mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/DATABASE?retryWrites=true&w=majority&appName=APP_NAME
+
 EOF
 
 echo "🔍 Scanning repository for exposed credentials..."
