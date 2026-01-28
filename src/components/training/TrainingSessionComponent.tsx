@@ -439,7 +439,13 @@ export function TrainingSessionComponent() {
   // Handle role changes by sending a new join_session message without reconnecting
   useEffect(() => {
     locallyAddedMessages.current.clear();
-    setConversation([{ role: "client", message: initialClientMessage }]);
+    setConversation([
+      {
+        id: `msg-${Date.now()}`,
+        role: "client",
+        message: initialClientMessage,
+      },
+    ]);
     setEvaluation(null);
 
     if (!ws.current) {
@@ -538,6 +544,7 @@ export function TrainingSessionComponent() {
       setTherapistResponse: React.Dispatch<React.SetStateAction<string>>,
     ) => {
       const therapistMessage: ConversationEntry = {
+        id: `msg-${Date.now()}-${userId}`,
         role: "therapist",
         message: response,
       };
@@ -568,6 +575,7 @@ export function TrainingSessionComponent() {
       setEvaluation(formatEvaluation(biasResult));
 
       const clientMessage: ConversationEntry = {
+        id: `msg-${Date.now()}-${userId}`,
         role: "client",
         message: nextClientMsg,
       };

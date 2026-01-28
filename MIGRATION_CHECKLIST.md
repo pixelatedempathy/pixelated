@@ -1,8 +1,8 @@
 # 📋 Server Migration & Role Transition Checklist
 
 ## 🌍 Overview
-- **Production:** `<PROD_SSH_USER>@<PROD_HOST>` (AWS EC2) - **Nuked & Fresh Rebuild**
-- **Staging/Ops:** `<STAGING_SSH_USER>@<STAGING_HOST>` (OVH VPS) - **Active Dev/Backups**
+- **Production:** `PROD_USER@PROD_HOST_PLACEHOLDER` (AWS EC2) - **Nuked & Fresh Rebuild**
+- **Staging/Ops:** `STAGING_USER@STAGING_HOST_PLACEHOLDER` (OVH VPS) - **Active Dev/Backups**
 
 ---
 
@@ -26,7 +26,7 @@
 
 ---
 
-## 🏗️ Phase 2: Production Rebuild (`3.137.216.156`)
+## 🏗️ Phase 2: Production Rebuild (`<PROD_HOST>`)
 - [x] **2.1 Nuclear Cleanup**
   - [x] Wipe `~/pixelated` and all old dev data (Nuked to 37% disk usage)
   - [x] Fresh Git Clone via SSH (using `atlanta` key)
@@ -49,8 +49,8 @@
 
 ## 🔗 Phase 3: Final Cutover
 - [ ] **3.1 DNS Update**
-  - [ ] Point `pixelatedempathy.com` to `3.137.216.156`
-  - [ ] Point dev subdomains (if any) to `194.113.75.34`
+  - [ ] Point `pixelatedempathy.com` to `<PROD_HOST>`
+  - [ ] Point dev subdomains (if any) to `<STAGING_HOST>`
 - [ ] **3.2 Memory Update**
   - [ ] Update `GEMINI.md` server entries
   - [ ] Update `.memory/30-tech.md` infrastructure section
