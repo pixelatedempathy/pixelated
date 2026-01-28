@@ -32,15 +32,15 @@ docker compose -f docker/docker-compose.monitoring.yml -f docker/docker-compose.
 
 # Test Loki connectivity
 echo "🧪 Testing Loki connectivity..."
-curl -s http://localhost:3100/ready || echo "❌ Loki not ready"
+curl -fsS --connect-timeout 5 --max-time 5 http://localhost:3100/ready >/dev/null || echo "❌ Loki not ready"
 
 # Test Prometheus connectivity
 echo "🧪 Testing Prometheus connectivity..."
-curl -s http://localhost:9090/-/healthy || echo "❌ Prometheus not ready"
+curl -fsS --connect-timeout 5 --max-time 5 http://localhost:9090/-/healthy >/dev/null || echo "❌ Prometheus not ready"
 
 # Test Grafana connectivity
 echo "🧪 Testing Grafana connectivity..."
-curl -s http://localhost:3001/api/health || echo "❌ Grafana not ready"
+curl -fsS --connect-timeout 5 --max-time 5 http://localhost:3001/api/health >/dev/null || echo "❌ Grafana not ready"
 
 echo "✅ Monitoring stack startup completed!"
 echo ""
