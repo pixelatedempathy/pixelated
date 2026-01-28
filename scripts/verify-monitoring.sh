@@ -17,7 +17,7 @@ check_service() {
 	local endpoint="$3"
 
 	echo "Checking ${service} on port ${port}..."
-	if curl -s --connect-timeout 5 "http://localhost:${port}${endpoint}" >/dev/null; then
+	if curl -fsS --connect-timeout 5 --max-time 5 "http://localhost:${port}${endpoint}" >/dev/null; then
 		echo "✅ ${service} is running"
 		return 0
 	else
@@ -71,25 +71,29 @@ fi
 echo ""
 echo "🐳 Checking running services..."
 
+overall_ok=true
+
 # Check if monitoring stack is running
 if monitoring_ps_output="$(docker compose -f docker/docker-compose.monitoring.yml ps 2>/dev/null)"; then
 	if echo "${monitoring_ps_output}" | grep -q "Up"; then
 		echo "✅ Monitoring stack is running"
 
 		# Check individual services
-		check_service "Loki" "3100" "/ready"
-		check_service "Prometheus" "9090" "/-/healthy"
-		check_service "Grafana" "3001" "/api/health"
-		check_service "AlertManager" "9093" "/-/healthy"
+		check_service "Loki" "3100" "/ready" || overall_ok=false
+		check_service "Prometheus" "9090" "/-/healthy" || overall_ok=false
+		check_service "Grafana" "3001" "/api/health" || overall_ok=false
+		check_service "AlertManager" "9093" "/-/healthy" || overall_ok=false
 
 	else
 		echo "❌ Monitoring stack is not running"
 		echo "💡 Run './scripts/start-monitoring.sh' to start the monitoring services"
+		overall_ok=false
 	fi
 
 else
 	echo "❌ Unable to query monitoring stack with docker compose"
 	echo "💡 Ensure Docker is running and compose file exists: docker/docker-compose.monitoring.yml"
+	overall_ok=false
 fi
 
 # Check production stack for Loki/Promtail
@@ -141,3 +145,7 @@ echo "🔧 If services are not running, use './scripts/start-monitoring.sh'"
 echo "📊 Access Grafana at: http://localhost:3001"
 echo "📈 Access Prometheus at: http://localhost:9090"
 echo "📝 Access Loki at: http://localhost:3100"
+
+if [[ ${overall_ok} == "false" ]]; then
+	exit 1
+fi
