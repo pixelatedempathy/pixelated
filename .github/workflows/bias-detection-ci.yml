@@ -14,7 +14,7 @@ permissions:
 
 on:
   push:
-    branches: [master, develop]
+    branches: [master, develop, staging]
     paths:
       - src/lib/ai/bias-detection/**
       - src/components/admin/bias-detection/**
@@ -534,7 +534,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     needs: [typescript-tests, python-tests, e2e-tests]
-    if: always() && github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop') && needs.typescript-tests.result == 'success' && needs.python-tests.result == 'success' && needs.e2e-tests.result == 'success'
+    if: always() && github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging') && needs.typescript-tests.result == 'success' && needs.python-tests.result == 'success' && needs.e2e-tests.result == 'success'
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

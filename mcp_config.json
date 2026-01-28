@@ -3,13 +3,13 @@
     "servers": {
       "atlassian": {
         "command": "pnpm dlx",
-        "args": ["mcp-remote", "https://ratchetaf.atlassian.net/rest/api/3"],
+        "args": ["mcp-remote", "https://mcp.atlassian.com/v1/mcp"],
         "description": "Atlassian MCP Server for Jira and Confluence integration (ratchetaf)",
         "tool_prefix": "atlassian_"
       },
       "atlassian-meta": {
         "command": "pnpm dlx",
-        "args": ["mcp-remote", "https://ratchetaf.atlassian.net/rest/api/3"],
+        "args": ["mcp-remote", "https://mcp.atlassian.com/v1/mcp"],
         "description": "Atlassian MCP Server for Jira and Confluence integration (ratchetaf)",
         "tool_prefix": "atlassian_meta_"
       },
