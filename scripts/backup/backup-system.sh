@@ -276,8 +276,8 @@ main_backup() {
 {
     "timestamp": "${TIMESTAMP}",
     "project": "${PROJECT_NAME}",
-    "backup_files": [${backup_files_json}]
-    "failed_backups": [${failed_backups_json}]
+    "backup_files": [${backup_files_json}],
+    "failed_backups": [${failed_backups_json}],
     "total_files": ${total_backups},
     "failed_count": ${failed_count}
 }
@@ -287,6 +287,11 @@ EOF
 # Restore function
 restore_backup() {
 	local backup_date="$1"
+
+	if [[ -z ${backup_date} ]]; then
+		log_error "Backup date required (format: YYYYMMDD_HHMMSS)"
+		exit 1
+	fi
 
 	log_info "Restoring backup from ${backup_date}"
 
