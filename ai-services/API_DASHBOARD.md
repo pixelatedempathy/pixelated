@@ -1,8 +1,8 @@
 # Therapeutic AI API - Status Dashboard
 
 **Status**: 🟢 **ONLINE**  
-**Host**: 3.137.216.156  
-**Port**: 5000  
+**Host**: `${THERAPEUTIC_API_HOST}`  
+**Port**: `${THERAPEUTIC_API_PORT}`  
 **Mode**: CPU-only  
 **Framework**: Flask + PyTorch + Fairlearn  
 **Data Models**: Pydantic (Type-safe)
