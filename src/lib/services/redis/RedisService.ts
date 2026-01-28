@@ -32,6 +32,7 @@ export class RedisService extends EventEmitter implements IRedisService {
       retryDelay: 1000,
       maxConnections: 10,
       url: '',
+      password: '',
     }
     this.validateConfig(config)
   }
@@ -59,17 +60,22 @@ export class RedisService extends EventEmitter implements IRedisService {
             // Reconstruct URL with password if it doesn't already have one
             const urlObj = new URL(this.config.url)
             if (!urlObj.password) {
-              urlObj.password = password
-              this.config.url = urlObj.toString()
+              this.config.password = password
+              console.log(`[RedisService] Password loaded from ${redisPasswordFile}`)
             }
           }
         } catch (error) {
+          console.error(`[RedisService] Failed to read Redis password file: ${redisPasswordFile}`, error)
           logger.error('Failed to read Redis password file:', {
             file: redisPasswordFile,
             error: String(error),
           })
         }
       }
+    }
+
+    if (this.config.url) {
+      console.log(`[RedisService] Using Redis URL: ${this.config.url.replace(/:[^@]+@/, ':****@')}`)
     }
 
 
@@ -125,14 +131,20 @@ export class RedisService extends EventEmitter implements IRedisService {
         redisOptions['connectTimeout'] = this.config.connectTimeout
       }
 
+      if (this.config.password) {
+        redisOptions['password'] = this.config.password
+      }
+
       this.client = new Redis(this.config.url, redisOptions)
 
       // Set up event handlers
       this.client.on('error', (error: unknown) => {
+        console.error('[RedisService] Redis error event:', String(error))
         logger.error('Redis error:', { error: String(error) })
       })
 
       this.client.on('connect', () => {
+        console.log('[RedisService] Connected to Redis successfully')
         logger.info('Connected to Redis')
       })
 
