@@ -5,7 +5,7 @@ server:
   grpc_listen_port: 9096
 
 common:
-  instance_addr: 127.0.0.1
+  instance_addr: 0.0.0.0
   path_prefix: /loki
   storage:
     filesystem:
@@ -41,4 +41,4 @@ limits_config:
   split_queries_by_interval: 15m
 
 ruler:
-  alertmanager_url: http://prometheus:9093
+  alertmanager_url: http://alertmanager:9093

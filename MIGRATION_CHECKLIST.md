@@ -42,7 +42,7 @@
   - [ ] Verify SSL via Let's Encrypt
 - [ ] **2.4 Health & Monitoring**
   - [x] Verify `/api/health` responsiveness (App is UP and Healthy)
-  - [/] Confirm Prometheus/Grafana metric collection (Loki needs config tweak)
+  - [x] Confirm Prometheus/Grafana metric collection (Loki config fixed and deployed to production)
 
 
 ---
@@ -58,4 +58,3 @@
 - [ ] **3.3 Success Verification**
   - [ ] Final E2E test run
   - [ ] PII scrubbing & crisis detection validation
-
