@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 **BETA LAUNCH ANNOUNCEMENT**
+## **BETA LAUNCH ANNOUNCEMENT**
 
 ### **Primary Message**
 *"Introducing Pixelated Empathy: The first AI therapeutic companion built by mental health professionals, for real healing."*
@@ -120,7 +120,7 @@ Recommendations:
 
 ---
 
-## 🎨 **LAUNCH MONITORING DASHBOARD**
+## **LAUNCH MONITORING DASHBOARD**
 
 ### **Real-Time Metrics**
 - **Active Users**: Current session count
