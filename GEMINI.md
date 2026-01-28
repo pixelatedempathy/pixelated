@@ -75,5 +75,4 @@ This repository is built for **Agentic Development** through the Model Context P
 4. **Confidentiality**: Respect HIPAA-level standards for sensitive mental health data.
 
 ---
-
-*© 2026 Pixelated Empathy • Engineered with Purpose.*
+* © 2026 Pixelated Empathy • Engineered with Purpose.

@@ -79,10 +79,26 @@ if monitoring_ps_output="$(docker compose -f docker/docker-compose.monitoring.ym
 		echo "✅ Monitoring stack is running"
 
 		# Check individual services
-		check_service "Loki" "3100" "/ready" || overall_ok=false
-		check_service "Prometheus" "9090" "/-/healthy" || overall_ok=false
-		check_service "Grafana" "3001" "/api/health" || overall_ok=false
-		check_service "AlertManager" "9093" "/-/healthy" || overall_ok=false
+		check_service "Loki" "3100" "/ready"
+		loki_status=$?
+		if [[ ${loki_status} -ne 0 ]]; then
+			overall_ok=false
+		fi
+		check_service "Prometheus" "9090" "/-/healthy"
+		prometheus_status=$?
+		if [[ ${prometheus_status} -ne 0 ]]; then
+			overall_ok=false
+		fi
+		check_service "Grafana" "3001" "/api/health"
+		grafana_status=$?
+		if [[ ${grafana_status} -ne 0 ]]; then
+			overall_ok=false
+		fi
+		check_service "AlertManager" "9093" "/-/healthy"
+		alertmanager_status=$?
+		if [[ ${alertmanager_status} -ne 0 ]]; then
+			overall_ok=false
+		fi
 
 	else
 		echo "❌ Monitoring stack is not running"
