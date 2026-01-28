@@ -232,11 +232,11 @@ volumes:
 
 secrets:
   db_password:
-    file: ./config/secrets/db-password
+    file: ../config/secrets/db-password
   redis_password:
-    file: ./config/secrets/redis-password
+    file: ../config/secrets/redis-password
   jwt_secret:
-    file: ./config/secrets/jwt-secret
+    file: ../config/secrets/jwt-secret
 
 networks:
   default:
