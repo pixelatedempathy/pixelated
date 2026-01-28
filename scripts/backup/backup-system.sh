@@ -213,10 +213,8 @@ main_backup() {
 	local failed_backups=()
 
 	# Database backup
-	backup_database
-	db_backup_status=$?
-	if [[ ${db_backup_status} -eq 0 ]]; then
-		db_backup=$(backup_database)
+	# trunk-ignore(shellcheck/SC2310)
+	if db_backup=$(backup_database); then
 		backup_files+=("${db_backup}")
 		verify_backup "${db_backup}"
 		upload_to_s3 "${db_backup}"
@@ -225,10 +223,9 @@ main_backup() {
 	fi
 
 	# Redis backup
-	backup_redis
-	redis_backup_status=$?
-	if [[ ${redis_backup_status} -eq 0 ]]; then
-		redis_backup=$(backup_redis)
+	# trunk-ignore(shellcheck/SC2310)
+	# trunk-ignore(shellcheck/SC2310)
+	if redis_backup=$(backup_redis); then
 		backup_files+=("${redis_backup}")
 		upload_to_s3 "${redis_backup}"
 	else
@@ -236,10 +233,8 @@ main_backup() {
 	fi
 
 	# Application data backup
-	backup_application_data
-	app_backup_status=$?
-	if [[ ${app_backup_status} -eq 0 ]]; then
-		app_backup=$(backup_application_data)
+	# trunk-ignore(shellcheck/SC2310)
+	if app_backup=$(backup_application_data); then
 		backup_files+=("${app_backup}")
 		verify_backup "${app_backup}"
 		upload_to_s3 "${app_backup}"
@@ -248,13 +243,13 @@ main_backup() {
 	fi
 
 	# Monitoring data backup
-	backup_monitoring_data
-	monitoring_backup_status=$?
-	if [[ ${monitoring_backup_status} -eq 0 ]]; then
-		monitoring_backup=$(backup_monitoring_data)
+	# trunk-ignore(shellcheck/SC2310)
+	if monitoring_backup=$(backup_monitoring_data); then
 		backup_files+=("${monitoring_backup}")
 		verify_backup "${monitoring_backup}"
 		upload_to_s3 "${monitoring_backup}"
+	else
+		failed_backups+=("monitoring")
 	fi
 
 	# Cleanup old backups
@@ -292,11 +287,6 @@ EOF
 # Restore function
 restore_backup() {
 	local backup_date="$1"
-
-	if [[ -z ${backup_date} ]]; then
-		log_error "Backup date required (format: YYYYMMDD_HHMMSS)"
-		exit 1
-	fi
 
 	log_info "Restoring backup from ${backup_date}"
 
