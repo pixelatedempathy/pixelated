@@ -32,6 +32,7 @@
 ### **2. Crisis Detection**
 - **Signals**: Self-harm, Violence, Despair, Substance Abuse, Medical
 - **Output**: Risk Level (Minimal → Imminent) + Escalation Protocol
+- **Safeguards**: Intended as decision support only; requires clinician review/override. Provide explainability, confidence thresholds, and audit logging before any escalation.
 - **Performance**: <100ms response time
 
 ### **3. Emotion Validation**
