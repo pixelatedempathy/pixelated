@@ -394,6 +394,7 @@ function createMockRedis() {
     ;(pipeline as unknown as { pipeline?: RedisPipeline }).pipeline = pipeline
     return pipeline
   }
+  const _isHealthy = async () => true
   const _connect = async () => undefined
   const _getPoolStats = async () => ({
     totalConnections: 1,
