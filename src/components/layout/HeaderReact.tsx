@@ -23,6 +23,16 @@ export function Header({
   useEffect(() => {
     setMobileMenuOpen(false)
     setIsSearchOpen(false)
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen((prev) => !prev)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   // Safe check for client-side rendering
@@ -120,6 +130,7 @@ export function Header({
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 aria-label="Search"
                 aria-expanded={isSearchOpen}
+                title="Search (⌘K)"
               >
                 <svg
                   className="w-5 h-5"
@@ -185,6 +196,7 @@ export function Header({
                 minQueryLength={2}
                 showNoResults={true}
                 onResultClick={() => setIsSearchOpen(false)}
+                autoFocus={true}
               />
 
               <div className="mt-4 text-xs text-muted-foreground">
