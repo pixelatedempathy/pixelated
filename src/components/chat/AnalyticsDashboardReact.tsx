@@ -726,6 +726,7 @@ export default function AnalyticsDashboard({
             onClick={loadAnalytics}
             className="p-1 hover:bg-black hover:bg-opacity-30 rounded"
             title="Refresh Analytics"
+            aria-label="Refresh Analytics"
           >
             <IconRefresh className="h-4 w-4" />
           </button>
@@ -747,8 +748,12 @@ export default function AnalyticsDashboard({
 
       {/* Analytics tabs */}
       <div className="bg-black bg-opacity-40 border-b border-gray-800">
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto" role="tablist" aria-label="Analytics Views">
           <button
+            role="tab"
+            aria-selected={activeTab === AnalyticsType.SENTIMENT_TREND}
+            aria-controls="analytics-panel"
+            id={`tab-${AnalyticsType.SENTIMENT_TREND}`}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === AnalyticsType.SENTIMENT_TREND
                 ? 'text-purple-400 border-b-2 border-purple-400'
@@ -763,6 +768,10 @@ export default function AnalyticsDashboard({
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === AnalyticsType.TOPIC_CLUSTERING}
+            aria-controls="analytics-panel"
+            id={`tab-${AnalyticsType.TOPIC_CLUSTERING}`}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === AnalyticsType.TOPIC_CLUSTERING
                 ? 'text-purple-400 border-b-2 border-purple-400'
@@ -777,6 +786,10 @@ export default function AnalyticsDashboard({
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === AnalyticsType.EMOTIONAL_PATTERNS}
+            aria-controls="analytics-panel"
+            id={`tab-${AnalyticsType.EMOTIONAL_PATTERNS}`}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === AnalyticsType.EMOTIONAL_PATTERNS
                 ? 'text-purple-400 border-b-2 border-purple-400'
@@ -791,6 +804,10 @@ export default function AnalyticsDashboard({
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === AnalyticsType.INTERVENTION_EFFECTIVENESS}
+            aria-controls="analytics-panel"
+            id={`tab-${AnalyticsType.INTERVENTION_EFFECTIVENESS}`}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === AnalyticsType.INTERVENTION_EFFECTIVENESS
                 ? 'text-purple-400 border-b-2 border-purple-400'
@@ -807,6 +824,10 @@ export default function AnalyticsDashboard({
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === AnalyticsType.RISK_ASSESSMENT}
+            aria-controls="analytics-panel"
+            id={`tab-${AnalyticsType.RISK_ASSESSMENT}`}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === AnalyticsType.RISK_ASSESSMENT
                 ? 'text-purple-400 border-b-2 border-purple-400'
@@ -823,7 +844,14 @@ export default function AnalyticsDashboard({
       </div>
 
       {/* Analytics content */}
-      <div className="min-h-[300px]">{renderAnalyticsContent()}</div>
+      <div
+        className="min-h-[300px]"
+        role="tabpanel"
+        id="analytics-panel"
+        aria-labelledby={`tab-${activeTab}`}
+      >
+        {renderAnalyticsContent()}
+      </div>
 
       {/* Footer */}
       <div className="bg-black bg-opacity-40 p-2 text-xs text-gray-500 flex justify-between">
