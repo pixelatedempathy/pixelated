@@ -23,6 +23,7 @@
     "setup:dev": "./scripts/setup-dev.sh",
     "build": "node scripts/build-with-pipe-handling.mjs",
     "build:cloudflare": "bash scripts/build-cloudflare.sh",
+    "build:netlify": "DEPLOY_TARGET=netlify astro build",
     "build:railway": "DEPLOY_TARGET=railway astro build",
     "build:heroku": "DEPLOY_TARGET=heroku astro build",
     "build:flyio": "DEPLOY_TARGET=flyio astro build",
@@ -423,9 +424,9 @@
     "path-to-regexp": "8.3.0"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@9.15.0",
   "pnpm": {
     "overrides": {
       "@opentelemetry/api": "^1.9.0",

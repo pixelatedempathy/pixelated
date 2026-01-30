@@ -34,6 +34,7 @@ const AccordionContext = React.createContext<{
 const AccordionItemContext = React.createContext<{
   value: string
   isOpen: boolean
+  id?: string
 }>({ value: '', isOpen: false })
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
@@ -76,9 +77,10 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, children, ...props }, ref) => {
     const { openItems } = React.useContext(AccordionContext)
     const isOpen = openItems.includes(value)
+    const id = React.useId()
 
     return (
-      <AccordionItemContext.Provider value={{ value, isOpen }}>
+      <AccordionItemContext.Provider value={{ value, isOpen, id }}>
         <div ref={ref} className={cn('border-b', className)} {...props}>
           {children}
         </div>
@@ -93,11 +95,16 @@ const AccordionTrigger = React.forwardRef<
   AccordionTriggerProps
 >(({ className, children, ...props }, ref) => {
   const { toggleItem } = React.useContext(AccordionContext)
-  const { value, isOpen } = React.useContext(AccordionItemContext)
+  const { value, isOpen, id } = React.useContext(AccordionItemContext)
+  const triggerId = `accordion-trigger-${id}`
+  const contentId = `accordion-content-${id}`
 
   return (
     <button
       ref={ref}
+      id={triggerId}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
       className={cn(
         'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline text-left w-full',
         className,
@@ -121,11 +128,16 @@ const AccordionContent = React.forwardRef<
   HTMLDivElement,
   AccordionContentProps
 >(({ className, children, ...props }, ref) => {
-  const { isOpen } = React.useContext(AccordionItemContext)
+  const { isOpen, id } = React.useContext(AccordionItemContext)
+  const triggerId = `accordion-trigger-${id}`
+  const contentId = `accordion-content-${id}`
 
   return (
     <div
       ref={ref}
+      id={contentId}
+      role="region"
+      aria-labelledby={triggerId}
       className={cn(
         'overflow-hidden text-sm transition-all duration-200',
         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
