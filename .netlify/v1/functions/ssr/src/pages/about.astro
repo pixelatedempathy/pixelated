@@ -1,0 +1,134 @@
+---
+import PageHeader from '@/components/ui/PageHeader.astro'
+import Surface from '@/components/ui/Surface.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': 'Pixelated Empathy',
+  'url': 'https://pixelatedempathy.com',
+  'logo': 'https://pixelatedempathy.com/android-chrome-192x192.png',
+  'description': 'AI-powered training platform for mental health professionals',
+  'foundingDate': '2025',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressCountry': 'US',
+  },
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'email': 'info@pixelatedempathy.com',
+    'contactType': 'Customer Service',
+  },
+}
+---
+
+<BaseLayout title="About Us - Pixelated Empathy">
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(organizationSchema)}
+  />
+  <section class="brutalist-section pt-20 md:pt-24 pb-16">
+    <div class="brutalist-container">
+      <PageHeader
+        eyebrow="About"
+        title="About Pixelated Empathy"
+        lede="We build safe AI simulation for therapists to practice the hardest sessions before they happen in real life."
+      />
+
+      <div class="divider my-12"></div>
+
+      <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <Surface class="p-6">
+          <h2 class="text-2xl md:text-3xl font-semibold text-white">
+            What we built
+          </h2>
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            An enterprise‑grade training simulator that lets programs run
+            unlimited high‑stakes role‑plays with adversarial AI clients,
+            real‑time bias cues, and post‑session coaching. Practice escalations
+            safely. Build measurable competence. Reduce risk.
+          </p>
+        </Surface>
+        <Surface class="p-6">
+          <h2 class="text-2xl md:text-3xl font-semibold text-white">
+            Why it matters
+          </h2>
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            Students see a handful of curated cases. Real practice isn’t
+            curated. We give universities, clinics, and practitioners a way to
+            train for the edge‑cases that actually break sessions—without
+            putting patients at risk.
+          </p>
+        </Surface>
+      </div>
+
+      <div class="divider my-12"></div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="brutalist-caption mb-2 text-teal-400">Founded</div>
+          <p class="text-white font-medium">2025</p>
+          <p class="text-gray-400 text-sm mt-1">
+            Built deliberately, production‑ready
+          </p>
+        </div>
+        <div>
+          <div class="brutalist-caption mb-2 text-teal-400">Location</div>
+          <p class="text-white font-medium">United States</p>
+          <p class="text-gray-400 text-sm mt-1">Serving clients globally</p>
+        </div>
+        <div>
+          <div class="brutalist-caption mb-2 text-teal-400">Who we serve</div>
+          <p class="text-white font-medium">
+            Universities, clinics, practitioners
+          </p>
+          <p class="text-gray-400 text-sm mt-1">Competency you can measure</p>
+        </div>
+      </div>
+
+      <div class="divider my-12"></div>
+
+      <div class="mt-16">
+        <Surface class="p-6">
+          <h2 class="text-2xl md:text-3xl font-semibold text-white mb-4">
+            Company Information
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Legal Entity</div>
+              <div class="text-white font-medium">Pixelated Empathy</div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Founded</div>
+              <div class="text-white font-medium">2025</div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Location</div>
+              <div class="text-white font-medium">United States</div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Status</div>
+              <div class="text-white font-medium">Early-stage startup</div>
+            </div>
+          </div>
+          <p class="mt-6 text-gray-400">
+            Learn more about our team and mission on our
+            <a href="/team" class="text-teal-400 hover:text-teal-300"
+              >team page</a
+            >.
+          </p>
+        </Surface>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a
+          href="/contact"
+          class="brutalist-button brutalist-button--primary px-8 py-4 font-semibold"
+        >
+          Partner with us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

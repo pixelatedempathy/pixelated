@@ -1,0 +1,508 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': 'Pixelated Empathy',
+  'url': 'https://pixelatedempathy.com',
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'email': 'info@pixelatedempathy.com',
+    'contactType': 'Customer Service',
+    'areaServed': 'Worldwide',
+  },
+}
+---
+
+<BaseLayout
+  title="Contact | Pixelated Empathy"
+  description="Get in touch with our team. Schedule demos, discuss partnerships, or ask questions."
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(organizationSchema)}
+  />
+  <!-- Section 01 / Contact -->
+  <section
+    class="section-container section-spacing-lg"
+    style="counter-reset: section-counter;"
+  >
+    <div class="container-refined">
+      <!-- Numbered Section Header -->
+      <div class="section-number">Contact</div>
+
+      <div
+        class="grid grid-responsive gap-12 lg:grid-cols-2"
+        style="gap: var(--space-12);"
+      >
+        <!-- Left: Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <h1 class="display-heading mb-6">Get in Touch</h1>
+            <p class="lede-text">
+              Ready to transform your therapy training program? Let's discuss
+              how we can customize our platform for your needs.
+            </p>
+          </div>
+
+          <!-- Contact Methods -->
+          <div class="space-y-6">
+            <div class="card-elegant">
+              <div class="eyebrow-text mb-2">Email</div>
+              <a
+                href="mailto:info@pixelatedempathy.com"
+                class="text-gradient-primary hover:opacity-80 transition-opacity"
+                style="font-size: var(--text-lg); font-weight: 600;"
+              >
+                info@pixelatedempathy.com
+              </a>
+            </div>
+
+            <div class="card-elegant">
+              <div class="eyebrow-text mb-2">Location</div>
+              <p
+                style="color: var(--text-secondary); font-size: var(--text-base);"
+              >
+                United States
+              </p>
+              <p
+                style="color: var(--text-muted); font-size: var(--text-sm); margin-top: 0.5rem;"
+              >
+                Serving clients globally
+              </p>
+            </div>
+            <div class="card-elegant">
+              <div class="eyebrow-text mb-2">Company</div>
+              <p
+                style="color: var(--text-secondary); font-size: var(--text-base);"
+              >
+                Pixelated Empathy
+              </p>
+              <p
+                style="color: var(--text-muted); font-size: var(--text-sm); margin-top: 0.5rem;"
+              >
+                Founded 2025 • Early-stage startup
+              </p>
+            </div>
+
+            <div class="card-elegant">
+              <div class="eyebrow-text mb-2">Connect</div>
+              <div class="flex gap-4 mt-3">
+                <a
+                  href="https://twitter.com/pixelatedempathy"
+                  class="nav-link-refined"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/pixelated-empathy"
+                  class="nav-link-refined"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/nochadisfaction/pixelated"
+                  class="nav-link-refined"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div>
+          <div class="card-elegant">
+            <h2
+              class="brutalist-heading mb-6"
+              style="font-size: var(--text-2xl);"
+            >
+              Send a Message
+            </h2>
+
+            <form id="contact-form" class="space-y-6" novalidate>
+              <!-- Error message -->
+              <div
+                id="error-message"
+                class="hidden p-4 rounded-lg"
+                style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171;"
+                role="alert"
+              >
+                <p id="error-text"></p>
+              </div>
+
+              <!-- Name & Email Row -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="eyebrow-text block mb-2">
+                    Name <span style="color: var(--accent-primary);">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    maxlength="100"
+                    class="brutalist-input"
+                    placeholder="Your name"
+                  />
+                  <div class="text-xs mt-1 hidden text-red-400" id="name-error">
+                  </div>
+                </div>
+                <div>
+                  <label for="email" class="eyebrow-text block mb-2">
+                    Email <span style="color: var(--accent-primary);">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    maxlength="100"
+                    class="brutalist-input"
+                    placeholder="you@example.com"
+                  />
+                  <div
+                    class="text-xs mt-1 hidden text-red-400"
+                    id="email-error"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <label for="subject" class="eyebrow-text block mb-2">
+                  Subject <span style="color: var(--accent-primary);">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  maxlength="200"
+                  class="brutalist-input"
+                  placeholder="What is this about?"
+                />
+                <div
+                  class="text-xs mt-1 hidden text-red-400"
+                  id="subject-error"
+                >
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="message" class="eyebrow-text block mb-2">
+                  Message <span style="color: var(--accent-primary);">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  maxlength="2000"
+                  class="brutalist-input resize-none"
+                  placeholder="Tell us more about your inquiry..."></textarea>
+                <div class="flex justify-between items-center mt-1">
+                  <div class="text-xs hidden text-red-400" id="message-error">
+                  </div>
+                  <div class="text-xs" style="color: var(--text-muted);">
+                    <span id="message-count">0</span>/2000
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="flex items-center justify-between pt-2">
+                <button
+                  type="submit"
+                  id="submit-button"
+                  class="btn-brutalist btn-brutalist--primary"
+                >
+                  <span id="submit-text">Send Message</span>
+                  <svg
+                    id="loading-spinner"
+                    class="hidden animate-spin ml-2 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                </button>
+                <span class="text-xs" style="color: var(--text-muted);">
+                  * Required
+                </span>
+              </div>
+            </form>
+
+            <!-- Success message -->
+            <div
+              id="success-message"
+              class="hidden mt-6 p-6 rounded-lg"
+              style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);"
+              role="alert"
+            >
+              <h3
+                class="font-semibold mb-2"
+                style="color: var(--accent-primary);"
+              >
+                Message sent successfully!
+              </h3>
+              <p
+                class="text-sm"
+                style="color: var(--text-secondary);"
+                id="success-text"
+              >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Form elements
+    const form = document.getElementById('contact-form')!
+    const submitButton = document.getElementById('submit-button')!
+    const submitText = document.getElementById('submit-text')!
+    const loadingSpinner = document.getElementById('loading-spinner')!
+    const successMessage = document.getElementById('success-message')!
+    const errorMessage = document.getElementById('error-message')!
+    const errorText = document.getElementById('error-text')!
+
+    // Form inputs
+    const nameInput = document.getElementById('name')! as HTMLInputElement
+    const emailInput = document.getElementById('email')! as HTMLInputElement
+    const subjectInput = document.getElementById('subject')! as HTMLInputElement
+    const messageInput = document.getElementById(
+      'message',
+    )! as HTMLTextAreaElement
+    const messageCount = document.getElementById('message-count')!
+
+    // Error displays
+    const nameError = document.getElementById('name-error')!
+    const emailError = document.getElementById('email-error')!
+    const subjectError = document.getElementById('subject-error')!
+    const messageError = document.getElementById('message-error')!
+
+    // Character counter
+    messageInput?.addEventListener('input', () => {
+      const length = messageInput.value.length
+      messageCount.textContent = length.toString()
+    })
+
+    // Validation functions
+    function validateName(name: string): string | null {
+      if (!name.trim()) return 'Name is required'
+      if (name.length < 2) return 'Name must be at least 2 characters'
+      if (name.length > 100) return 'Name must not exceed 100 characters'
+      return null
+    }
+
+    function validateEmail(email: string): string | null {
+      if (!email.trim()) return 'Email is required'
+      if (email.length > 100) return 'Email must not exceed 100 characters'
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) return 'Please enter a valid email address'
+      return null
+    }
+
+    function validateSubject(subject: string): string | null {
+      if (!subject.trim()) return 'Subject is required'
+      if (subject.length < 3) return 'Subject must be at least 3 characters'
+      if (subject.length > 200) return 'Subject must not exceed 200 characters'
+      return null
+    }
+
+    function validateMessage(message: string): string | null {
+      if (!message.trim()) return 'Message is required'
+      if (message.length < 10) return 'Message must be at least 10 characters'
+      if (message.length > 2000)
+        return 'Message must not exceed 2000 characters'
+      return null
+    }
+
+    // Show field error
+    function showFieldError(
+      input: HTMLElement,
+      errorElement: HTMLElement,
+      message: string,
+    ) {
+      input.style.borderColor = 'rgba(239, 68, 68, 0.5)'
+      errorElement.textContent = message
+      errorElement.classList.remove('hidden')
+    }
+
+    // Clear field error
+    function clearFieldError(input: HTMLElement, errorElement: HTMLElement) {
+      input.style.borderColor = ''
+      errorElement.classList.add('hidden')
+    }
+
+    // Show general error
+    function showError(message: string) {
+      errorText.textContent = message
+      errorMessage.classList.remove('hidden')
+      errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+
+    // Hide messages
+    function hideMessages() {
+      errorMessage.classList.add('hidden')
+      successMessage.classList.add('hidden')
+    }
+
+    // Set loading state
+    function setLoading(loading: boolean) {
+      if (loading) {
+        submitButton.disabled = true
+        submitText.textContent = 'Sending...'
+        loadingSpinner.classList.remove('hidden')
+      } else {
+        submitButton.disabled = false
+        submitText.textContent = 'Send Message'
+        loadingSpinner.classList.add('hidden')
+      }
+    }
+
+    // Form submission
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      hideMessages()
+
+      // Validate all fields
+      const nameValidation = validateName(nameInput.value)
+      const emailValidation = validateEmail(emailInput.value)
+      const subjectValidation = validateSubject(subjectInput.value)
+      const messageValidation = validateMessage(messageInput.value)
+
+      // Clear previous errors
+      clearFieldError(nameInput, nameError)
+      clearFieldError(emailInput, emailError)
+      clearFieldError(subjectInput, subjectError)
+      clearFieldError(messageInput, messageError)
+
+      // Show field errors
+      let hasErrors = false
+      if (nameValidation) {
+        showFieldError(nameInput, nameError, nameValidation)
+        hasErrors = true
+      }
+      if (emailValidation) {
+        showFieldError(emailInput, emailError, emailValidation)
+        hasErrors = true
+      }
+      if (subjectValidation) {
+        showFieldError(subjectInput, subjectError, subjectValidation)
+        hasErrors = true
+      }
+      if (messageValidation) {
+        showFieldError(messageInput, messageError, messageValidation)
+        hasErrors = true
+      }
+
+      if (hasErrors) {
+        showError('Please correct the errors above and try again.')
+        return
+      }
+
+      // Submit form
+      setLoading(true)
+
+      try {
+        const formData = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim().toLowerCase(),
+          subject: subjectInput.value.trim(),
+          message: messageInput.value.trim(),
+        }
+
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+          const successTextEl = document.getElementById('success-text')
+          if (successTextEl) successTextEl.textContent = result.message
+          successMessage.classList.remove('hidden')
+          form.style.display = 'none'
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        } else {
+          showError(
+            result.message || 'An error occurred while sending your message.',
+          )
+        }
+      } catch (error: unknown) {
+        console.error('Contact form submission error:', String(error))
+        showError('Network error: Please check your connection and try again.')
+      } finally {
+        setLoading(false)
+      }
+    })
+
+    // Real-time validation
+    nameInput?.addEventListener('blur', () => {
+      const error = validateName(nameInput.value)
+      if (error) {
+        showFieldError(nameInput, nameError, error)
+      } else {
+        clearFieldError(nameInput, nameError)
+      }
+    })
+
+    emailInput?.addEventListener('blur', () => {
+      const error = validateEmail(emailInput.value)
+      if (error) {
+        showFieldError(emailInput, emailError, error)
+      } else {
+        clearFieldError(emailInput, emailError)
+      }
+    })
+
+    subjectInput?.addEventListener('blur', () => {
+      const error = validateSubject(subjectInput.value)
+      if (error) {
+        showFieldError(subjectInput, subjectError, error)
+      } else {
+        clearFieldError(subjectInput, subjectError)
+      }
+    })
+
+    messageInput?.addEventListener('blur', () => {
+      const error = validateMessage(messageInput.value)
+      if (error) {
+        showFieldError(messageInput, messageError, error)
+      } else {
+        clearFieldError(messageInput, messageError)
+      }
+    })
+  </script>
+</BaseLayout>
