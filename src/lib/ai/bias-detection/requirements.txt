@@ -156,7 +156,7 @@ executing==2.2.1
     #   stack-data
 fairlearn==0.13.0
     # via -r requirements.txt
-filelock==3.20.1
+filelock==3.20.3
     # via
     #   -r requirements.txt
     #   datasets
