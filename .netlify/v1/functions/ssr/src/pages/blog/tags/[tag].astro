@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import BlogPostCard from '@/components/BlogPostCard.astro'
+import { filterBlogPosts } from '@/utils/blog'
+
+const { tag } = Astro.params
+
+if (!tag) {
+  return Astro.redirect('/blog/tags')
+}
+
+let posts: CollectionEntry<'blog'>[] = []
+try {
+  const allPosts = await getCollection('blog')
+  const validPosts = filterBlogPosts(allPosts, { excludeDrafts: true })
+  posts = filterBlogPosts(validPosts, { tag })
+} catch (error) {
+  console.error('Error fetching blog posts for tag:', tag, error)
+}
+
+// Handle empty posts gracefully
+const hasPosts = posts && posts.length > 0
+const postCount = hasPosts ? posts.length : 0
+---
+
+<BaseLayout title={`#${tag}`} description={`All blog posts tagged with ${tag}`}>
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-12">
+      <nav
+        class="flex items-center gap-2 mb-4 text-sm text-slate-400"
+        aria-label="Breadcrumb"
+      >
+        <a href="/blog" class="hover:text-green-400 transition-colors">Blog</a>
+        <span aria-hidden="true">/</span>
+        <a href="/blog/tags" class="hover:text-green-400 transition-colors"
+          >Topics</a
+        >
+        <span aria-hidden="true">/</span>
+        <span class="text-green-400" aria-current="page">#{tag}</span>
+      </nav>
+
+      <h1 class="text-3xl font-bold mb-4">#{tag}</h1>
+      <p class="text-slate-400">
+        {postCount} post{postCount !== 1 ? 's' : ''} about {tag}
+      </p>
+    </header>
+
+    <section class="space-y-8" aria-label={`Posts tagged with ${tag}`}>
+      {
+        hasPosts ? (
+          posts.map((post) => <BlogPostCard post={post} currentTag={tag} />)
+        ) : (
+          <div class="text-center py-12">
+            <p class="text-slate-400 mb-4">No posts found for #{tag}</p>
+            <a
+              href="/blog/tags"
+              class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors"
+            >
+              Browse all topics
+            </a>
+          </div>
+        )
+      }
+    </section>
+
+    <footer class="border-t border-slate-700 pt-8 mt-12">
+      <nav
+        class="flex flex-col sm:flex-row gap-4 justify-between"
+        aria-label="Related pages"
+      >
+        <a
+          href="/blog/tags"
+          class="inline-flex items-center text-slate-400 hover:text-green-400 transition-colors"
+          aria-label="Browse all topics"
+        >
+          ← All topics
+        </a>
+        <a
+          href="/blog"
+          class="inline-flex items-center text-slate-400 hover:text-green-400 transition-colors"
+          aria-label="View all blog posts"
+        >
+          All posts →
+        </a>
+      </nav>
+    </footer>
+  </div>
+</BaseLayout>
