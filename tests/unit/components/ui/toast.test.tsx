@@ -2,7 +2,7 @@
 import { render, screen, act, waitFor } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import React from 'react'
-import { Toast, toast } from '../toast'
+import { Toast, toast } from '@/components/ui/toast'
 
 // Mock matchMedia for framer-motion or other libs if needed (though toast usually doesn't need it)
 window.matchMedia =
