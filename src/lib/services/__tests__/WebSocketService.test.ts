@@ -22,20 +22,16 @@ class MockWebSocket {
   static CONNECTING = 0
 }
 
-global.WebSocket = MockWebSocket as any
+// Store original global
+const originalWebSocket = global.WebSocket
 
 describe('WebSocketService', () => {
   let wsService: WebSocketService
 
   beforeEach(() => {
-    // Reset instance for each test
-    // We can't easily reset private static instance, so we might need to cast or just rely on state reset
-    // However, since it is a singleton, state persists.
-    // For testing, we might want to allow resetting or just get the instance.
-    // Let's assume we can get the instance and reset its state if needed, but private props are hard to reach.
-    // We'll just test the public API.
+    global.WebSocket = MockWebSocket as any
     wsService = WebSocketService.getInstance()
-    // Reset handlers
+    // Reset internal state (hacky access to private props for testing)
     // @ts-ignore
     wsService.handlers = new Map()
     // @ts-ignore
@@ -46,6 +42,14 @@ describe('WebSocketService', () => {
     wsService.url = null
     // @ts-ignore
     wsService.ws = null
+    // @ts-ignore
+    if (wsService.reconnectTimer) clearTimeout(wsService.reconnectTimer)
+    // @ts-ignore
+    wsService.reconnectTimer = null
+  })
+
+  afterEach(() => {
+    global.WebSocket = originalWebSocket
   })
 
   it('should be a singleton', () => {
@@ -82,7 +86,7 @@ describe('WebSocketService', () => {
     // @ts-ignore
     wsService.isConnected = false
     // @ts-ignore
-    wsService.url = 'ws://test.com' // Set URL so it doesn't throw "not configured"
+    wsService.url = 'ws://test.com'
 
     // This will queue
     await wsService.send('test-event', { data: 1 })
@@ -100,5 +104,17 @@ describe('WebSocketService', () => {
     // Check if send was called on the current WebSocket instance
     // @ts-ignore
     expect(wsService.ws.send).toHaveBeenCalled()
+  })
+
+  it('should handle SSR gracefully (WebSocket undefined)', async () => {
+    // @ts-ignore
+    global.WebSocket = undefined
+
+    await wsService.connect('ws://test.com')
+
+    // @ts-ignore
+    expect(wsService.isConnected).toBe(false)
+    // @ts-ignore
+    expect(wsService.ws).toBeNull()
   })
 })
