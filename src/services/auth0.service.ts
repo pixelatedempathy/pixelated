@@ -5,7 +5,7 @@
  * previous MongoDB-based authentication system.
  */
 
-import { ManagementClient, AuthenticationClient } from 'auth0'
+import { ManagementClient, AuthenticationClient, UserInfoClient } from 'auth0'
 import type { Db } from 'mongodb'
 import { mongodb } from '../config/mongodb.config'
 import { auth0MFAService } from '../lib/auth/auth0-mfa-service'
@@ -26,13 +26,20 @@ const AUTH0_CONFIG = {
 // Initialize Auth0 clients
 let auth0Management: ManagementClient | null = null
 let auth0Authentication: AuthenticationClient | null = null
+let auth0UserInfo: UserInfoClient | null = null
 
 /**
  * Initialize Auth0 clients
  */
 function initializeAuth0Clients() {
-  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.managementClientId || !AUTH0_CONFIG.managementClientSecret) {
-    console.warn('Auth0 configuration is incomplete. Authentication features may not work.')
+  if (
+    !AUTH0_CONFIG.domain ||
+    !AUTH0_CONFIG.managementClientId ||
+    !AUTH0_CONFIG.managementClientSecret
+  ) {
+    console.warn(
+      'Auth0 configuration is incomplete. Authentication features may not work.',
+    )
     return
   }
 
@@ -42,7 +49,6 @@ function initializeAuth0Clients() {
       clientId: AUTH0_CONFIG.managementClientId,
       clientSecret: AUTH0_CONFIG.managementClientSecret,
       audience: `https://${AUTH0_CONFIG.domain}/api/v2/`,
-      scope: 'read:users update:users create:users delete:users'
     })
   }
 
@@ -50,7 +56,13 @@ function initializeAuth0Clients() {
     auth0Authentication = new AuthenticationClient({
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
-      clientSecret: AUTH0_CONFIG.clientSecret
+      clientSecret: AUTH0_CONFIG.clientSecret,
+    })
+  }
+
+  if (!auth0UserInfo) {
+    auth0UserInfo = new UserInfoClient({
+      domain: AUTH0_CONFIG.domain,
     })
   }
 }
@@ -83,38 +95,41 @@ export class Auth0UserService {
    * @returns User and access token
    */
   async signIn(email: string, password: string) {
-    if (!auth0Authentication) {
+    if (!auth0Authentication || !auth0UserInfo) {
       throw new Error('Auth0 authentication client not initialized')
     }
 
     try {
       // Use Auth0's Resource Owner Password grant for direct authentication
-      const tokenResponse = await auth0Authentication.passwordGrant({
+      const tokenResponse = await auth0Authentication.oauth.passwordGrant({
         username: email,
         password: password,
         realm: 'Username-Password-Authentication',
         scope: 'openid profile email',
-        audience: AUTH0_CONFIG.audience
+        audience: AUTH0_CONFIG.audience,
       })
 
       // Get user info
-      const userResponse = await auth0Authentication.getProfile(tokenResponse.access_token)
+      const userInfoResponse = await auth0UserInfo.getUserInfo(
+        tokenResponse.data.access_token,
+      )
+      const userResponse = userInfoResponse.data
 
       return {
         user: {
-          id: userResponse.user_id,
+          id: (userResponse as any).sub,
           email: userResponse.email,
           emailVerified: userResponse.email_verified,
           role: this.extractRoleFromUser(userResponse),
           fullName: userResponse.name,
           avatarUrl: userResponse.picture,
-          createdAt: userResponse.created_at,
-          lastLogin: userResponse.last_login,
-          appMetadata: userResponse.app_metadata,
-          userMetadata: userResponse.user_metadata
+          createdAt: userResponse.updated_at, // UserInfo doesn't give created_at usually
+          lastLogin: new Date().toISOString(), // Approximation
+          appMetadata: {}, // UserInfo might not include metadata without specific scopes/rules
+          userMetadata: {},
         },
-        token: tokenResponse.access_token,
-        refreshToken: tokenResponse.refresh_token
+        token: tokenResponse.data.access_token,
+        refreshToken: tokenResponse.data.refresh_token,
       }
     } catch (error) {
       console.error('Auth0 sign in error:', error)
@@ -136,20 +151,21 @@ export class Auth0UserService {
 
     try {
       // Create user in Auth0
-      const auth0User = await auth0Management.createUser({
+      const response = await auth0Management.users.create({
         email,
         password,
         connection: 'Username-Password-Authentication',
         email_verified: false,
         app_metadata: {
           roles: [this.mapRoleToAuth0Role(role)],
-          imported_from: 'manual_creation'
+          imported_from: 'manual_creation',
         },
         user_metadata: {
           role,
-          created_at: new Date().toISOString()
-        }
+          created_at: new Date().toISOString(),
+        },
       })
+      const auth0User = response.data
 
       return {
         id: auth0User.user_id,
@@ -160,7 +176,7 @@ export class Auth0UserService {
         avatarUrl: auth0User.picture,
         createdAt: auth0User.created_at,
         appMetadata: auth0User.app_metadata,
-        userMetadata: auth0User.user_metadata
+        userMetadata: auth0User.user_metadata,
       }
     } catch (error) {
       console.error('Auth0 create user error:', error)
@@ -179,7 +195,7 @@ export class Auth0UserService {
     }
 
     try {
-      const auth0User = await auth0Management.getUser({ id: userId })
+      const auth0User = await auth0Management.users.get(userId)
 
       return {
         id: auth0User.user_id,
@@ -191,7 +207,7 @@ export class Auth0UserService {
         createdAt: auth0User.created_at,
         lastLogin: auth0User.last_login,
         appMetadata: auth0User.app_metadata,
-        userMetadata: auth0User.user_metadata
+        userMetadata: auth0User.user_metadata,
       }
     } catch (error) {
       console.error('Auth0 get user error:', error)
@@ -209,8 +225,9 @@ export class Auth0UserService {
     }
 
     try {
-      const users = await auth0Management.getUsers()
-      return users.map(user => ({
+      const response = await auth0Management.users.list()
+      const users = response.data
+      return users.map((user) => ({
         id: user.user_id,
         email: user.email,
         emailVerified: user.email_verified,
@@ -220,7 +237,7 @@ export class Auth0UserService {
         createdAt: user.created_at,
         lastLogin: user.last_login,
         appMetadata: user.app_metadata,
-        userMetadata: user.user_metadata
+        userMetadata: user.user_metadata,
       }))
     } catch (error) {
       console.error('Auth0 get all users error:', error)
@@ -239,9 +256,8 @@ export class Auth0UserService {
     }
 
     try {
-      const users = await auth0Management.getUsers({
-        q: `email:"${email}"`,
-        search_engine: 'v3'
+      const users = await auth0Management.users.listUsersByEmail({
+        email,
       })
 
       if (users.length === 0) {
@@ -260,7 +276,7 @@ export class Auth0UserService {
         createdAt: auth0User.created_at,
         lastLogin: auth0User.last_login,
         appMetadata: auth0User.app_metadata,
-        userMetadata: auth0User.user_metadata
+        userMetadata: auth0User.user_metadata,
       }
     } catch (error) {
       console.error('Auth0 find user error:', error)
@@ -322,9 +338,9 @@ export class Auth0UserService {
         updateParams.app_metadata = appMetadataUpdates
       }
 
-      const auth0User = await auth0Management.updateUser(
-        { id: userId },
-        updateParams
+      const auth0User = await auth0Management.users.update(
+        userId,
+        updateParams,
       )
 
       return {
@@ -337,7 +353,7 @@ export class Auth0UserService {
         createdAt: auth0User.created_at,
         lastLogin: auth0User.last_login,
         appMetadata: auth0User.app_metadata,
-        userMetadata: auth0User.user_metadata
+        userMetadata: auth0User.user_metadata,
       }
     } catch (error) {
       console.error('Auth0 update user error:', error)
@@ -356,9 +372,9 @@ export class Auth0UserService {
     }
 
     try {
-      await auth0Management.updateUser(
-        { id: userId },
-        { password: newPassword }
+      await auth0Management.users.update(
+        userId,
+        { password: newPassword },
       )
     } catch (error) {
       console.error('Auth0 change password error:', error)
@@ -377,8 +393,8 @@ export class Auth0UserService {
 
     try {
       // Revoke refresh token
-      await auth0Authentication.revokeRefreshToken({
-        token: refreshToken
+      await auth0Authentication.oauth.revokeRefreshToken({
+        token: refreshToken,
       })
     } catch (error) {
       console.error('Auth0 sign out error:', error)
@@ -392,38 +408,41 @@ export class Auth0UserService {
    * @returns New access token and user info
    */
   async refreshSession(refreshToken: string) {
-    if (!auth0Authentication) {
+    if (!auth0Authentication || !auth0UserInfo) {
       throw new Error('Auth0 authentication client not initialized')
     }
 
     try {
       // Exchange refresh token for new access token
-      const tokenResponse = await auth0Authentication.refreshToken({
-        refresh_token: refreshToken
+      const tokenResponse = await auth0Authentication.oauth.refreshTokenGrant({
+        refresh_token: refreshToken,
       })
 
       // Get user info
-      const userResponse = await auth0Authentication.getProfile(tokenResponse.access_token)
+      const userInfoResponse = await auth0UserInfo.getUserInfo(
+        tokenResponse.data.access_token,
+      )
+      const userResponse = userInfoResponse.data
 
       return {
         user: {
-          id: userResponse.user_id,
+          id: (userResponse as any).sub,
           email: userResponse.email,
           emailVerified: userResponse.email_verified,
           role: this.extractRoleFromUser(userResponse),
           fullName: userResponse.name,
           avatarUrl: userResponse.picture,
-          createdAt: userResponse.created_at,
-          lastLogin: userResponse.last_login,
-          appMetadata: userResponse.app_metadata,
-          userMetadata: userResponse.user_metadata
+          createdAt: userResponse.updated_at,
+          lastLogin: new Date().toISOString(), // Approximation
+          appMetadata: {},
+          userMetadata: {},
         },
         session: {
-          accessToken: tokenResponse.access_token,
-          refreshToken: tokenResponse.refresh_token,
-          expiresAt: new Date(Date.now() + tokenResponse.expires_in * 1000)
+          accessToken: tokenResponse.data.access_token,
+          refreshToken: tokenResponse.data.refresh_token,
+          expiresAt: new Date(Date.now() + tokenResponse.data.expires_in * 1000),
         },
-        accessToken: tokenResponse.access_token
+        accessToken: tokenResponse.data.access_token,
       }
     } catch (error) {
       console.error('Auth0 refresh session error:', error)
@@ -437,18 +456,19 @@ export class Auth0UserService {
    * @returns User info from token
    */
   async verifyAuthToken(token: string) {
-    if (!auth0Authentication) {
+    if (!auth0UserInfo) {
       throw new Error('Auth0 authentication client not initialized')
     }
 
     try {
       // Decode token to get user info
-      const decodedToken = await auth0Authentication.getProfile(token)
+      const response = await auth0UserInfo.getUserInfo(token)
+      const decodedToken = response.data
 
       return {
-        userId: decodedToken.user_id,
+        userId: (decodedToken as any).sub,
         email: decodedToken.email,
-        role: this.extractRoleFromUser(decodedToken)
+        role: this.extractRoleFromUser(decodedToken),
       }
     } catch (error) {
       console.error('Auth0 verify token error:', error)
@@ -468,13 +488,13 @@ export class Auth0UserService {
     }
 
     try {
-      const ticket = await auth0Management.createPasswordChangeTicket({
+      const response = await auth0Management.tickets.changePassword({
         user_id: userId,
         result_url: returnUrl,
-        ttl_sec: 3600 // 1 hour
+        ttl_sec: 3600, // 1 hour
       })
 
-      return ticket.ticket
+      return response.ticket
     } catch (error) {
       console.error('Auth0 create password reset ticket error:', error)
       throw new Error('Failed to create password reset ticket')
