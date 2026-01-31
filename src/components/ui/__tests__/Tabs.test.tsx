@@ -1,16 +1,16 @@
 // @vitest-environment jsdom
-import { render, fireEvent, cleanup } from '@testing-library/react';
-import { describe, it, expect, afterEach } from 'vitest';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../tabs';
-import React from 'react';
-import '@testing-library/jest-dom/vitest';
+import { render, fireEvent, cleanup } from "@testing-library/react";
+import { describe, it, expect, afterEach } from "vitest";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../tabs";
+import React from "react";
+import "@testing-library/jest-dom/vitest";
 
 afterEach(() => {
   cleanup();
 });
 
-describe('Tabs Component', () => {
-  it('should have correct ARIA roles hierarchy', () => {
+describe("Tabs Component", () => {
+  it("should have correct ARIA roles hierarchy", () => {
     // We expect the component to accept ...props so data-testid works
     const { getByTestId, getByRole } = render(
       <Tabs defaultValue="tab1" data-testid="tabs-root">
@@ -24,15 +24,15 @@ describe('Tabs Component', () => {
     );
 
     // The root should NOT have role="tablist"
-    const root = getByTestId('tabs-root');
-    expect(root).not.toHaveAttribute('role', 'tablist');
+    const root = getByTestId("tabs-root");
+    expect(root).not.toHaveAttribute("role", "tablist");
 
     // The list SHOULD have role="tablist"
-    const list = getByRole('tablist');
+    const list = getByRole("tablist");
     expect(list).toBeInTheDocument();
   });
 
-  it('should support keyboard navigation', () => {
+  it("should support keyboard navigation", () => {
     const { getByRole } = render(
       <Tabs defaultValue="tab1">
         <TabsList>
@@ -46,52 +46,36 @@ describe('Tabs Component', () => {
       </Tabs>,
     );
 
-    const tab1 = getByRole('tab', { name: 'Tab 1' });
-    const tab2 = getByRole('tab', { name: 'Tab 2' });
-    const tab3 = getByRole('tab', { name: 'Tab 3' });
+    const tab1 = getByRole("tab", { name: "Tab 1" });
+    const tab2 = getByRole("tab", { name: "Tab 2" });
+    const tab3 = getByRole("tab", { name: "Tab 3" });
 
     // Focus first tab
     tab1.focus();
     expect(document.activeElement).toBe(tab1);
 
     // Arrow Right -> Tab 2
-    fireEvent.keyDown(tab1, {
-      key: 'ArrowRight',
-      code: 'ArrowRight',
-      bubbles: true,
-    });
+    fireEvent.keyDown(tab1, { key: "ArrowRight", code: "ArrowRight", bubbles: true });
     expect(document.activeElement).toBe(tab2);
 
     // Arrow Right -> Tab 3
-    fireEvent.keyDown(tab2, {
-      key: 'ArrowRight',
-      code: 'ArrowRight',
-      bubbles: true,
-    });
+    fireEvent.keyDown(tab2, { key: "ArrowRight", code: "ArrowRight", bubbles: true });
     expect(document.activeElement).toBe(tab3);
 
     // Arrow Right -> Loop to Tab 1
-    fireEvent.keyDown(tab3, {
-      key: 'ArrowRight',
-      code: 'ArrowRight',
-      bubbles: true,
-    });
+    fireEvent.keyDown(tab3, { key: "ArrowRight", code: "ArrowRight", bubbles: true });
     expect(document.activeElement).toBe(tab1);
 
     // Arrow Left -> Loop to Tab 3
-    fireEvent.keyDown(tab1, {
-      key: 'ArrowLeft',
-      code: 'ArrowLeft',
-      bubbles: true,
-    });
+    fireEvent.keyDown(tab1, { key: "ArrowLeft", code: "ArrowLeft", bubbles: true });
     expect(document.activeElement).toBe(tab3);
 
     // Home -> Tab 1
-    fireEvent.keyDown(tab3, { key: 'Home', code: 'Home', bubbles: true });
+    fireEvent.keyDown(tab3, { key: "Home", code: "Home", bubbles: true });
     expect(document.activeElement).toBe(tab1);
 
     // End -> Tab 3
-    fireEvent.keyDown(tab1, { key: 'End', code: 'End', bubbles: true });
+    fireEvent.keyDown(tab1, { key: "End", code: "End", bubbles: true });
     expect(document.activeElement).toBe(tab3);
   });
 });
