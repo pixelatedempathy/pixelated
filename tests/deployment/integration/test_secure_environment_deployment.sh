@@ -66,10 +66,10 @@ case "$1" in
                 cat > "$output_file" << 'ENVEOF'
 # Decrypted environment variables
 DATABASE_URL=postgresql://user:secure_pass@localhost/pixelated_prod
-API_KEY=prod-api-key-abc123def456
-JWT_SECRET=super-secure-jwt-production-key
+API_KEY=test-prod-api-key-placeholder
+JWT_SECRET=test-jwt-prod-secret-placeholder
 REDIS_URL=redis://localhost:6379/0
-SMTP_PASSWORD=secure-email-password-xyz789
+SMTP_PASSWORD=test-email-pass-placeholder
 GITHUB_TOKEN=ghp_production_token_secure_123
 SENTRY_DSN=https://key@sentry.io/project
 ENVEOF
@@ -189,8 +189,8 @@ GPGEOF
             cat > "$output_file" << 'ENVEOF'
 # GPG Decrypted environment variables - TEST DATA ONLY
 DATABASE_URL=postgresql://testuser:MOCK_PASSWORD_123@localhost/pixelated_test
-API_KEY=test-api-key-not-real-value
-JWT_SECRET=test-jwt-secret-placeholder-not-real
+API_KEY=test-api-key-placeholder
+JWT_SECRET=test-jwt-secret-placeholder
 REDIS_URL=redis://localhost:6379/1
 ENVEOF
             exit 0
@@ -313,21 +313,21 @@ setup_test_environment() {
     cat > local/.env << 'EOF'
 # Production environment variables
 DATABASE_URL=postgresql://user:secure_pass@localhost/pixelated_prod
-API_KEY=prod-api-key-abc123def456
-JWT_SECRET=super-secure-jwt-production-key
+API_KEY=test-prod-api-key-placeholder
+JWT_SECRET=test-jwt-prod-secret-placeholder
 REDIS_URL=redis://localhost:6379/0
-SMTP_PASSWORD=secure-email-password-xyz789
+SMTP_PASSWORD=test-email-pass-placeholder
 GITHUB_TOKEN=ghp_production_token_secure_123
 SENTRY_DSN=https://key@sentry.io/project
-STRIPE_SECRET_KEY=sk_live_secure_stripe_key_123
-AWS_ACCESS_KEY_ID=AKIA_SECURE_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY=secure_aws_secret_access_key_xyz
+STRIPE_SECRET_KEY=sk_test_stripe_key_placeholder
+AWS_ACCESS_KEY_ID=AKIA_TEST_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY=test_aws_secret_key_placeholder
 EOF
     
     # Create test environment with sensitive patterns
     cat > local/.env.test << 'EOF'
 # Test environment with various sensitive patterns
-DATABASE_PASSWORD=test_db_password_123
+DATABASE_PASSWORD=test_db_password_placeholder
 API_TOKEN=fake_test_token_placeholder
 PRIVATE_KEY=fake_test_private_key_placeholder
 AUTH_SECRET=fake_test_auth_secret_placeholder
@@ -837,7 +837,7 @@ test_environment_rollback_scenarios() {
         
         # Create current environment state
         export DATABASE_URL="postgresql://current@localhost/db"
-        export API_KEY="current-api-key-123"
+        export API_KEY="test-current-api-key-placeholder"
         export JWT_SECRET="current-jwt-secret"
         
         # Backup environment
@@ -858,7 +858,7 @@ test_environment_rollback_scenarios() {
         
         # Change environment variables (simulate new deployment)
         export DATABASE_URL="postgresql://new@localhost/db"
-        export API_KEY="new-api-key-456"
+        export API_KEY="test-new-api-key-placeholder"
         export JWT_SECRET="new-jwt-secret"
         
         # Simulate deployment failure
@@ -878,7 +878,7 @@ test_environment_rollback_scenarios() {
             
             # Verify rollback
             if [[ "$DATABASE_URL" == "postgresql://current@localhost/db" ]] && \
-               [[ "$API_KEY" == "current-api-key-123" ]] && \
+               [[ "$API_KEY" == "test-current-api-key-placeholder" ]] && \
                [[ "$JWT_SECRET" == "current-jwt-secret" ]]; then
                 echo "[$(date)] Environment rollback: SUCCESS" >> "$rollback_log"
             else

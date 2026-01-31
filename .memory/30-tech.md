@@ -177,8 +177,8 @@ AUTH_SECRET=your-secret-key
 AUTH0_DOMAIN=your-domain.auth0.com
 
 # API Keys
-OPENAI_API_KEY=sk-...
-HUGGINGFACE_TOKEN=hf_...
+OPENAI_API_KEY=your-openai-api-key
+HUGGINGFACE_TOKEN=your-huggingface-token
 
 # Security
 ENCRYPTION_KEY=32-byte-encryption-key
