@@ -134,10 +134,8 @@ export {
   extractTokenFromRequest,
   getClientIp,
   getClientInfo,
-  createAuthRateLimit,
   csrfProtection,
   securityHeaders,
-  createAuthMiddlewareStack,
 } from './auth0-middleware'
 
 /**
