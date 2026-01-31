@@ -26,7 +26,7 @@
 - Real-time progress tracking requires WebSocket or polling integration
 - Unit tests should cover all utility functions and React hooks
 - End-to-end tests should verify the complete pipeline demonstration flow
-- Use `npx jest [optional/path/to/test/file]` to run tests
+- Use `pnpm dlx jest [optional/path/to/test/file]` to run tests
 
 ## Tasks
 
