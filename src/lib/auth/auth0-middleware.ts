@@ -3,7 +3,7 @@
  * Provides request authentication validation with Auth0 integration
  */
 
-import { ROLE_DEFINITIONS, type UserRole } from './auth0-rbac-service'
+import { ROLE_DEFINITIONS, type UserRole, roleHasPermission } from './auth0-rbac-service'
 import { validateToken } from './auth0-jwt-service'
 import { auth0AdaptiveMFAService } from './auth0-adaptive-mfa-service'
 import { auth0UserService } from '../../services/auth0.service'
@@ -241,6 +241,174 @@ export async function rateLimitMiddleware(
   )
 
   return { success: true, request }
+}
+
+/**
+ * Require any of the specified roles
+ * Alias for requireRole since it already handles array of roles
+ */
+export const requireAnyRole = requireRole
+
+/**
+ * Require specific permission(s) - All permissions required
+ */
+export async function requirePermission(
+  request: AuthenticatedRequest,
+  permissions: string[],
+): Promise<{
+  success: boolean
+  request?: AuthenticatedRequest
+  response?: Response
+  error?: string
+}> {
+  if (!request.user) {
+    return {
+      success: false,
+      response: new Response(
+        JSON.stringify({ error: 'User not authenticated' }),
+        {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      ),
+      error: 'User not authenticated',
+    }
+  }
+
+  const userRole = request.user.role as UserRole
+
+  // Check if user has all required permissions
+  const hasAccess = permissions.every(permission => roleHasPermission(userRole, permission))
+
+  if (!hasAccess) {
+    try {
+      const { logSecurityEvent, SecurityEventType } = await import('../security')
+      await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+        requiredPermissions: permissions,
+        userRole: request.user.role,
+      })
+    } catch {
+      // Security module not available in test environment
+    }
+
+    return {
+      success: false,
+      response: new Response(
+        JSON.stringify({ error: 'Insufficient permissions' }),
+        {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      ),
+      error: 'Insufficient permissions',
+    }
+  }
+
+  return { success: true, request }
+}
+
+/**
+ * Require any of the specified permissions
+ */
+export async function requireAnyPermission(
+  request: AuthenticatedRequest,
+  permissions: string[],
+): Promise<{
+  success: boolean
+  request?: AuthenticatedRequest
+  response?: Response
+  error?: string
+}> {
+  if (!request.user) {
+    return {
+      success: false,
+      response: new Response(
+        JSON.stringify({ error: 'User not authenticated' }),
+        {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      ),
+      error: 'User not authenticated',
+    }
+  }
+
+  const userRole = request.user.role as UserRole
+
+  // Check if user has any of the required permissions
+  const hasAccess = permissions.some(permission => roleHasPermission(userRole, permission))
+
+  if (!hasAccess) {
+    try {
+      const { logSecurityEvent, SecurityEventType } = await import('../security')
+      await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+        requiredAnyPermission: permissions,
+        userRole: request.user.role,
+      })
+    } catch {
+      // Security module not available in test environment
+    }
+
+    return {
+      success: false,
+      response: new Response(
+        JSON.stringify({ error: 'Insufficient permissions' }),
+        {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      ),
+      error: 'Insufficient permissions',
+    }
+  }
+
+  return { success: true, request }
+}
+
+/**
+ * Require admin role
+ */
+export async function requireAdmin(request: AuthenticatedRequest) {
+  return requireRole(request, ['admin'])
+}
+
+/**
+ * Require therapist role or higher
+ */
+export async function requireTherapistOrHigher(request: AuthenticatedRequest) {
+  // Since requireRole checks hierarchy, 'therapist' allows therapist and admin
+  return requireRole(request, ['therapist'])
+}
+
+/**
+ * Require authenticated user
+ */
+export async function requireAuthenticated(request: Request) {
+  const result = await authenticateRequest(request)
+  if (!result.success) {
+    return result
+  }
+  return { success: true, request: result.request }
+}
+
+/**
+ * Optional authentication - attaches user if valid, otherwise continues as guest
+ */
+export async function optionalAuthentication(request: Request) {
+  // Attempt authentication
+  const result = await authenticateRequest(request)
+
+  // If successful (valid token), return result with user
+  if (result.success) {
+    return result
+  }
+
+  // If failed (no token or invalid), ignore error and continue as guest
+  // We return success=true so the middleware chain continues
+  return {
+    success: true,
+    request: request as AuthenticatedRequest // User will be undefined
+  }
 }
 
 /**
