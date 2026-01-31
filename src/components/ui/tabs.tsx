@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useCallback,
-  useEffect,
-} from 'react';
-import type { ReactNode } from 'react';
+import React, { createContext, useState, useContext, useCallback, useEffect } from "react";
+import type { ReactNode } from "react";
 
 // Define the TabsContext to manage tab state
 type TabsContextType = {
@@ -22,7 +16,7 @@ const TabsContext = createContext<TabsContextType | undefined>(undefined);
 function useTabsContext() {
   const context = useContext(TabsContext);
   if (!context) {
-    throw new Error('Tabs components must be used within a Tabs provider');
+    throw new Error("Tabs components must be used within a Tabs provider");
   }
   return context;
 }
@@ -42,16 +36,14 @@ export function Tabs({
   value,
   onValueChange,
   children,
-  className = '',
+  className = "",
   ...props
 }: TabsProps) {
   // Track registered tab values
   const [tabValues, setTabValues] = useState<string[]>([]);
 
   // Initialize with controlled value, defaultValue, or first registered tab
-  const [internalValue, setInternalValue] = useState<string>(
-    value || defaultValue || '',
-  );
+  const [internalValue, setInternalValue] = useState<string>(value || defaultValue || "");
 
   // If this is a controlled component, use the provided value
   const activeValue = value !== undefined ? value : internalValue;
@@ -121,12 +113,10 @@ export interface TabsListProps {
 }
 
 // TabsList component - container for tab triggers
-export function TabsList({ children, className = '' }: TabsListProps) {
+export function TabsList({ children, className = "" }: TabsListProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const list = e.currentTarget;
-    const tabs = Array.from(
-      list.querySelectorAll('[role="tab"]:not([disabled])'),
-    ) as HTMLElement[];
+    const tabs = Array.from(list.querySelectorAll('[role="tab"]:not([disabled])')) as HTMLElement[];
     const index = tabs.indexOf(document.activeElement as HTMLElement);
 
     if (index === -1) return;
@@ -134,18 +124,18 @@ export function TabsList({ children, className = '' }: TabsListProps) {
     let nextIndex = index;
 
     switch (e.key) {
-      case 'ArrowLeft':
+      case "ArrowLeft":
         nextIndex = index - 1;
         if (nextIndex < 0) nextIndex = tabs.length - 1;
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         nextIndex = index + 1;
         if (nextIndex >= tabs.length) nextIndex = 0;
         break;
-      case 'Home':
+      case "Home":
         nextIndex = 0;
         break;
-      case 'End':
+      case "End":
         nextIndex = tabs.length - 1;
         break;
       default:
@@ -157,11 +147,7 @@ export function TabsList({ children, className = '' }: TabsListProps) {
   };
 
   return (
-    <div
-      className={`tabs-list ${className}`}
-      role="tablist"
-      onKeyDown={handleKeyDown}
-    >
+    <div className={`tabs-list ${className}`} role="tablist" onKeyDown={handleKeyDown}>
       {children}
     </div>
   );
@@ -179,11 +165,10 @@ export interface TabsTriggerProps {
 export function TabsTrigger({
   value,
   children,
-  className = '',
+  className = "",
   disabled = false,
 }: TabsTriggerProps) {
-  const { activeValue, setActiveValue, registerTab, unregisterTab } =
-    useTabsContext();
+  const { activeValue, setActiveValue, registerTab, unregisterTab } = useTabsContext();
 
   // Register/unregister this tab on mount/unmount
   useEffect(() => {
@@ -202,7 +187,7 @@ export function TabsTrigger({
       aria-controls={`tabpanel-${value}`}
       id={`tab-${value}`}
       tabIndex={isActive ? 0 : -1}
-      className={`tabs-trigger ${isActive ? 'tabs-trigger-active' : ''} ${className}`}
+      className={`tabs-trigger ${isActive ? "tabs-trigger-active" : ""} ${className}`}
       onClick={() => !disabled && setActiveValue(value)}
       disabled={disabled}
     >
@@ -223,7 +208,7 @@ export interface TabsContentProps {
 export function TabsContent({
   value,
   children,
-  className = '',
+  className = "",
   forceMount = false,
 }: TabsContentProps) {
   const { activeValue } = useTabsContext();
