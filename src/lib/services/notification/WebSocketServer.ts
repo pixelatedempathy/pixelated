@@ -205,6 +205,24 @@ export class WebSocketServer {
   }
 
   /**
+   * Close the WebSocket server
+   */
+  public close(): void {
+    try {
+      this.wss.close()
+      logger
+        .createBuildSafeLogger('websocket')
+        .info('WebSocket server closed')
+    } catch (error: unknown) {
+      logger
+        .createBuildSafeLogger('websocket')
+        .error('Failed to close WebSocket server', {
+          error: error instanceof Error ? String(error) : String(error),
+        })
+    }
+  }
+
+  /**
    * Send unread count to client
    */
   private async sendUnreadCount(userId: string, ws: WebSocket): Promise<void> {
