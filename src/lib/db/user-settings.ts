@@ -25,9 +25,9 @@ async function initializeDependencies() {
   if (typeof window === 'undefined') {
     serverDepsPromise = (async () => {
       try {
-        const mod = await import('@/config/mongodb.config')
+        // Use relative import to ensure consistent resolution and avoid alias issues in some bundlers
+        const mod = await import('../../config/mongodb.config')
         mongodb = mod.default as unknown as MongoRuntime
-        await import('mongodb')
       } catch {
         mongodb = null
       }
