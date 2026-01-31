@@ -1,116 +1,288 @@
+ WARN  Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.21.1","pnpm":"10.28.0"})
 
-> pixelated@0.0.1 lint /home/vivi/pixelated
+> pixelated@0.0.1 lint /app
 > oxlint .
 
 
-  ! eslint(no-unused-vars): Identifier 'vi' is imported but never used.
-   ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:1:44]
- 1 | import { describe, it, expect, beforeEach, vi } from 'vitest'
-   :                                            ^|
-   :                                             `-- 'vi' is imported here
- 2 | import {
-   `----
-  help: Consider removing this import.
+  ! eslint(no-unused-vars): Parameter 'profile' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/lib/ai/services/contextual-enhancer.ts:329:5]
+ 328 |     history: SessionContext[],
+ 329 |     profile: PatientPsiProfile,
+     :     ^^^|^^^
+     :        `-- 'profile' is declared here
+ 330 |   ): number {
+     `----
+  help: Consider removing this parameter.
 
-  ! eslint(no-unused-vars): Identifier 'DEFAULT_DYNAMIC_WEIGHTING_CONFIG' is imported but never used.
-   ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:4:3]
- 3 |   DynamicWeightingEngine,
- 4 |   DEFAULT_DYNAMIC_WEIGHTING_CONFIG,
-   :   ^^^^^^^^^^^^^^^^|^^^^^^^^^^^^^^^
-   :                   `-- 'DEFAULT_DYNAMIC_WEIGHTING_CONFIG' is imported here
- 5 |   getDynamicWeightingEngine,
-   `----
-  help: Consider removing this import.
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[business-strategy-cms/src/routes/workflow.ts:15:12]
+ 14 |     res.json(templates)
+ 15 |   } catch (_error) {
+    :            ^^^|^^
+    :               `-- '_error' is declared here
+ 16 |     res.status(500).json({ error: 'Failed to fetch workflow templates' })
+    `----
+  help: Consider handling this error.
 
-  ! eslint(no-unused-vars): Variable 'result1' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:204:13]
- 203 | 
- 204 |       const result1 = engine.calculateDynamicWeights(context1)
-     :             ^^^|^^^
-     :                `-- 'result1' is declared here
- 205 |       const result2 = engine.calculateDynamicWeights(context2)
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[business-strategy-cms/src/routes/workflow.ts:28:12]
+ 27 |     res.json(template)
+ 28 |   } catch (_error) {
+    :            ^^^|^^
+    :               `-- '_error' is declared here
+ 29 |     res.status(500).json({ error: 'Failed to fetch workflow template' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[business-strategy-cms/src/routes/workflow.ts:70:14]
+ 69 |       res.json(instances)
+ 70 |     } catch (_error) {
+    :              ^^^|^^
+    :                 `-- '_error' is declared here
+ 71 |       res.status(500).json({ error: 'Failed to fetch workflow instances' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[business-strategy-cms/src/routes/workflow.ts:84:12]
+ 83 |     res.json(instance)
+ 84 |   } catch (_error) {
+    :            ^^^|^^
+    :               `-- '_error' is declared here
+ 85 |     res.status(500).json({ error: 'Failed to fetch workflow instance' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[business-strategy-cms/src/routes/workflow.ts:109:12]
+ 108 |     res.json(instances)
+ 109 |   } catch (_error) {
+     :            ^^^|^^
+     :               `-- '_error' is declared here
+ 110 |     res.status(500).json({ error: 'Failed to search workflow instances' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[business-strategy-cms/src/routes/workflow.ts:180:12]
+ 179 |     res.json(comments)
+ 180 |   } catch (_error) {
+     :            ^^^|^^
+     :               `-- '_error' is declared here
+ 181 |     res.status(500).json({ error: 'Failed to fetch comments' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[business-strategy-cms/src/routes/workflow.ts:190:12]
+ 189 |     res.json(approvals)
+ 190 |   } catch (_error) {
+     :            ^^^|^^
+     :               `-- '_error' is declared here
+ 191 |     res.status(500).json({ error: 'Failed to fetch approvals' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[business-strategy-cms/src/routes/workflow.ts:204:14]
+ 203 |       res.json(analytics)
+ 204 |     } catch (_error) {
+     :              ^^^|^^
+     :                 `-- '_error' is declared here
+ 205 |       res.status(500).json({ error: 'Failed to fetch analytics' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[business-strategy-cms/src/routes/workflow.ts:219:14]
+ 218 |       res.json(overdue)
+ 219 |     } catch (_error) {
+     :              ^^^|^^
+     :                 `-- '_error' is declared here
+ 220 |       res.status(500).json({ error: 'Failed to fetch overdue workflows' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint-plugin-unicorn(no-invalid-fetch-options): "body" is not allowed when method is "GET"
+     ,-[src/lib/ai/embedding-agent/client.ts:152:9]
+ 151 |         headers,
+ 152 |         body: body ? JSON.stringify(toSnakeCase(body)) : undefined,
+     :         ^^^^
+ 153 |         signal: controller.signal,
+     `----
+
+  ! eslint(no-unused-vars): Variable 'marketAnalysis' is declared but never used. Unused variables should start with a '_'.
+     ,-[business-strategy-cms/src/services/marketAnalyticsService.ts:103:11]
+ 102 |   }> {
+ 103 |     const marketAnalysis = await this.analyzeTargetMarkets(
+     :           ^^^^^^^|^^^^^^
+     :                  `-- 'marketAnalysis' is declared here
+ 104 |       currentMarket,
      `----
   help: Consider removing this declaration.
 
-  ! eslint(no-unused-vars): Variable 'key' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:426:21]
- 425 | 
- 426 |         for (const [key, weight] of Object.entries(result.weights)) {
-     :                     ^|^
-     :                      `-- 'key' is declared here
- 427 |           expect(weight).toBeGreaterThanOrEqual(0)
+  ! eslint(no-unused-vars): Parameter 'market' is declared but never used. Unused parameters should start with a '_'.
+     ,-[business-strategy-cms/src/services/marketAnalyticsService.ts:392:43]
+ 391 |
+ 392 |   private async fetchMarketSaturationData(market: string): Promise<any> {
+     :                                           ^^^|^^
+     :                                              `-- 'market' is declared here
+ 393 |     // Mock data - replace with actual market data
      `----
-  help: Consider removing this declaration.
+  help: Consider removing this parameter.
 
-  ! eslint(no-unused-vars): Identifier 'ObjectiveId' is imported but never used.
-   ,-[src/lib/metaaligner/core/dynamic-weighting-benchmark.ts:8:10]
- 7 | import { ContextType, type AlignmentContext } from './objectives'
- 8 | import { ObjectiveId } from '../config/mapping-config'
-   :          ^^^^^|^^^^^
-   :               `-- 'ObjectiveId' is imported here
- 9 | 
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Variable 'jsonData' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/metaaligner/core/dynamic-weighting-benchmark.ts:463:13]
- 462 |     .then((suite) => {
- 463 |       const jsonData = exportVisualizationDataForGraphing(suite)
-     :             ^^^^|^^^
-     :                 `-- 'jsonData' is declared here
- 464 |       console.log('\n📁 Visualization data available (JSON):')
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-     ,-[ai/docs/api/clients/javascript_client.js:115:26]
- 114 |                     data = JSON.parse(response.body);
- 115 |                 } catch (e) {
-     :                          |
-     :                          `-- 'e' is declared here
- 116 |                     data = { success: false, message: 'Invalid JSON response' };
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[business-strategy-cms/src/services/authService.ts:155:14]
+ 154 |       return tokens
+ 155 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 156 |       throw new Error('Invalid refresh token')
      `----
   help: Consider handling this error.
 
   ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[ai/docs/api/clients/javascript_client.js:444:18]
- 443 |             return response.success;
- 444 |         } catch (error) {
-     :                  ^^|^^
-     :                    `-- 'error' is declared here
- 445 |             return false;
+     ,-[business-strategy-cms/src/services/authService.ts:183:14]
+ 182 |       }
+ 183 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 184 |       return null
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[business-strategy-cms/src/middleware/auth.ts:41:12]
+ 40 |     next()
+ 41 |   } catch (_error) {
+    :            ^^^|^^
+    :               `-- '_error' is declared here
+ 42 |     res.status(401).json({
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/integrations/react/utils.js:58:1]
+ 57 |     }
+ 58 | ,-> !(function () {
+ 59 | |     try {
+ 60 | |       var e =
+ 61 | |           'undefined' != typeof window
+ 62 | |             ? window
+ 63 | |             : 'undefined' != typeof global
+ 64 | |               ? global
+ 65 | |               : 'undefined' != typeof globalThis
+ 66 | |                 ? globalThis
+ 67 | |                 : 'undefined' != typeof self
+ 68 | |                   ? self
+ 69 | |                   : {},
+ 70 | |         n = new e.Error().stack
+ 71 | |       n &&
+ 72 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 73 | |         (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
+ 74 | |     } catch (e) {}
+ 75 | `-> })()
+ 76 |     //# debugId=44a74ecd-27a6-5286-b0ba-e74237a5e4e4
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/integrations/react/utils.js:71:5]
+ 70 |           n = new e.Error().stack
+ 71 | ,->     n &&
+ 72 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 73 | `->       (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
+ 74 |       } catch (e) {}
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[src/integrations/react/utils.js:74:12]
+ 73 |       (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
+ 74 |   } catch (e) {}
+    :            |
+    :            `-- 'e' is declared here
+ 75 | })()
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/plugins/vite-plugin-external-node.js:85:5]
+ 84 |           n = new e.Error().stack
+ 85 | ,->     n &&
+ 86 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 87 | `->       (e._sentryDebugIds[n] = '997a2ae6-b7d4-509e-9ed0-412733abc2ae'))
+ 88 |       } catch (error) {
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/plugins/vite-plugin-external-node.js:88:12]
+ 87 |       (e._sentryDebugIds[n] = '997a2ae6-b7d4-509e-9ed0-412733abc2ae'))
+ 88 |   } catch (error) {
+    :            ^^|^^
+    :              `-- 'error' is declared here
+ 89 |     // Intentionally empty - silencing Sentry debug errors
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:136:1]
+ 135 |     }
+ 136 | ,-> !(function () {
+ 137 | |     try {
+ 138 | |       var e =
+ 139 | |           'undefined' != typeof window
+ 140 | |             ? window
+ 141 | |             : 'undefined' != typeof global
+ 142 | |               ? global
+ 143 | |               : 'undefined' != typeof globalThis
+ 144 | |                 ? globalThis
+ 145 | |                 : 'undefined' != typeof self
+ 146 | |                   ? self
+ 147 | |                   : {},
+ 148 | |         n = new e.Error().stack
+ 149 | |       n &&
+ 150 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 151 | |         (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
+ 152 | |     } catch (error) {
+ 153 | |       // Intentionally empty - silencing Sentry debug errors
+ 154 | |     }
+ 155 | `-> })()
+ 156 |     //# debugId=a0db6a53-f0a3-5748-899c-6016b824b882
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:149:5]
+ 148 |           n = new e.Error().stack
+ 149 | ,->     n &&
+ 150 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 151 | `->       (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
+ 152 |       } catch (error) {
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:152:12]
+ 151 |       (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
+ 152 |   } catch (error) {
+     :            ^^|^^
+     :              `-- 'error' is declared here
+ 153 |     // Intentionally empty - silencing Sentry debug errors
      `----
   help: Consider handling this error.
 
   ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
-    ,-[src/lib/ai/bias-detection/job-queue.ts:95:14]
- 94 |       // Job processing logic would go here
- 95 |     } catch (_err: any) {
-    :              ^^|^
-    :                `-- '_err' is declared here
- 96 |       console.error(`[JobQueue] Job failed`, {
+    ,-[src/lib/threat-detection/threat-hunting/utils/threat-data-utils.ts:24:12]
+ 23 |     }
+ 24 |   } catch (_err) {
+    :            ^^|^
+    :              `-- '_err' is declared here
+ 25 |     // ignore and fall through to fallback
     `----
   help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-     ,-[src/lib/ai/bias-detection/python-bridge.ts:271:22]
- 270 |               controller.abort()
- 271 |             } catch (e) {
-     :                      |
-     :                      `-- 'e' is declared here
- 272 |               /* ignore */
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Identifier 'ObjectiveId' is imported but never used.
-    ,-[src/lib/metaaligner/core/dynamic-weighting.ts:10:10]
-  9 | import { getContextMapperService } from '../config/context-mapper-service'
- 10 | import { ObjectiveId } from '../config/mapping-config'
-    :          ^^^^^|^^^^^
-    :               `-- 'ObjectiveId' is imported here
- 11 | import { createBuildSafeLogger } from '../../logging/build-safe-logger'
-    `----
-  help: Consider removing this import.
 
   ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
     ,-[public/js/polyfill-detector.js:9:14]
@@ -121,6 +293,34 @@
  10 |         // swallow
     `----
   help: Consider handling this error.
+
+  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
+     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:125:9]
+ 124 |       [category]: {
+ 125 |         ...((options[category] as Record<string, unknown>) || {}),
+     :         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 126 |         [key]: value,
+     `----
+  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
+
+  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
+     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:141:9]
+ 140 |       [category]: {
+ 141 |         ...((options[category] as Record<string, unknown>) || {}),
+     :         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 142 |         [parentKey]: {
+     `----
+  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
+
+  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
+     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:143:11]
+ 142 |             [parentKey]: {
+ 143 | ,->           ...(((options[category] as Record<string, unknown>)?.[
+ 144 | |               parentKey
+ 145 | `->           ] as Record<string, unknown>) || {}),
+ 146 |               [key]: value,
+     `----
+  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
 
   ! eslint(no-unused-expressions): Expected expression to be used
     ,-[public/js/service-worker-registration.js:14:1]
@@ -166,14 +366,6 @@
  31 | })()
     `----
   help: Consider handling this error.
-
-  ! eslint-plugin-unicorn(no-invalid-fetch-options): "body" is not allowed when method is "GET"
-     ,-[src/lib/ai/embedding-agent/client.ts:152:9]
- 151 |         headers,
- 152 |         body: body ? JSON.stringify(toSnakeCase(body)) : undefined,
-     :         ^^^^
- 153 |         signal: controller.signal,
-     `----
 
   ! eslint(no-unused-expressions): Expected expression to be used
      ,-[public/audio-processor.js:124:1]
@@ -321,718 +513,9 @@
  211 |     var view = new Uint8Array(buf);
  212 |     var chars = new Array(view.length);
      :                 ^^^^^^^^^^^^^^^^^^^^^^
- 213 | 
+ 213 |
      `----
   help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-     ,-[src/lib/threat-intelligence/global/GlobalThreatIntelligenceNetwork.ts:489:14]
- 488 |       }
- 489 |     } catch (e) {
-     :              |
-     :              `-- 'e' is declared here
- 490 |       // Fallback to timestamp-based ID
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[src/scripts/preload-auth.js:200:1]
- 199 |     }
- 200 | ,-> !(function () {
- 201 | |     try {
- 202 | |       var e =
- 203 | |           'undefined' != typeof window
- 204 | |             ? window
- 205 | |             : 'undefined' != typeof global
- 206 | |               ? global
- 207 | |               : 'undefined' != typeof globalThis
- 208 | |                 ? globalThis
- 209 | |                 : 'undefined' != typeof self
- 210 | |                   ? self
- 211 | |                   : {},
- 212 | |         n = new e.Error().stack
- 213 | |       n &&
- 214 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 215 | |         (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
- 216 | |     } catch (e) {}
- 217 | `-> })()
- 218 |     //# debugId=2cc628ec-2a7b-516a-8129-de92553dbdb7
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[src/scripts/preload-auth.js:213:5]
- 212 |           n = new e.Error().stack
- 213 | ,->     n &&
- 214 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 215 | `->       (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
- 216 |       } catch (e) {}
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-     ,-[src/scripts/preload-auth.js:216:12]
- 215 |       (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
- 216 |   } catch (e) {}
-     :            |
-     :            `-- 'e' is declared here
- 217 | })()
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'startTime' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/ai/realTimeProcessor.ts:306:13]
- 305 |     try {
- 306 |       const startTime = Date.now()
-     :             ^^^^|^^^^
-     :                 `-- 'startTime' is declared here
- 307 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-control-regex): Unexpected control characters
-    ,-[src/utils/path-security.ts:93:34]
- 92 |   // Using explicit character codes for control characters to avoid regex warnings
- 93 |   const unsafeChars = new RegExp('[<>:"|?*\x00-\x1F]', 'g')
-    :                                  ^^^^^^^^^^^^^^^^^^^^
- 94 | 
-    `----
-  help: ' , ' are control characters.
-
-  ! eslint(no-unused-vars): Parameter 'riskFactors' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/lib/ai/validation/clinical-validator.ts:322:5]
- 321 |     level: 'low' | 'medium' | 'high' | 'critical',
- 322 |     riskFactors: string[],
-     :     ^^^^^|^^^^^
-     :          `-- 'riskFactors' is declared here
- 323 |   ): string[] {
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/plugins/vite-plugin-external-node.js:85:5]
- 84 |           n = new e.Error().stack
- 85 | ,->     n &&
- 86 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 87 | `->       (e._sentryDebugIds[n] = '997a2ae6-b7d4-509e-9ed0-412733abc2ae'))
- 88 |       } catch (error) {
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/plugins/vite-plugin-external-node.js:88:12]
- 87 |       (e._sentryDebugIds[n] = '997a2ae6-b7d4-509e-9ed0-412733abc2ae'))
- 88 |   } catch (error) {
-    :            ^^|^^
-    :              `-- 'error' is declared here
- 89 |     // Intentionally empty - silencing Sentry debug errors
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:136:1]
- 135 |     }
- 136 | ,-> !(function () {
- 137 | |     try {
- 138 | |       var e =
- 139 | |           'undefined' != typeof window
- 140 | |             ? window
- 141 | |             : 'undefined' != typeof global
- 142 | |               ? global
- 143 | |               : 'undefined' != typeof globalThis
- 144 | |                 ? globalThis
- 145 | |                 : 'undefined' != typeof self
- 146 | |                   ? self
- 147 | |                   : {},
- 148 | |         n = new e.Error().stack
- 149 | |       n &&
- 150 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 151 | |         (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
- 152 | |     } catch (error) {
- 153 | |       // Intentionally empty - silencing Sentry debug errors
- 154 | |     }
- 155 | `-> })()
- 156 |     //# debugId=a0db6a53-f0a3-5748-899c-6016b824b882
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:149:5]
- 148 |           n = new e.Error().stack
- 149 | ,->     n &&
- 150 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 151 | `->       (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
- 152 |       } catch (error) {
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/plugins/vite-plugin-flexsearch-ssr.js:152:12]
- 151 |       (e._sentryDebugIds[n] = 'a0db6a53-f0a3-5748-899c-6016b824b882'))
- 152 |   } catch (error) {
-     :            ^^|^^
-     :              `-- 'error' is declared here
- 153 |     // Intentionally empty - silencing Sentry debug errors
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:16:14]
- 15 |       res.json(marketData)
- 16 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 17 |       res.status(500).json({ error: 'Failed to fetch market data' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:27:14]
- 26 |       res.json(trends)
- 27 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 28 |       res.status(500).json({ error: 'Failed to fetch market trends' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:38:14]
- 37 |       res.json(analysis)
- 38 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 39 |       res.status(500).json({ error: 'Failed to fetch competitor analysis' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:49:14]
- 48 |       res.json(opportunities)
- 49 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 50 |       res.status(500).json({ error: 'Failed to fetch market opportunities' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:66:14]
- 65 |       res.json(metrics)
- 66 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 67 |       res.status(500).json({ error: 'Failed to fetch business metrics' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:77:14]
- 76 |       res.json({ success: true })
- 77 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 78 |       res.status(500).json({ error: 'Failed to add business metric' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/routes/businessIntelligenceRoutes.ts:93:14]
- 92 |       res.json(alerts)
- 93 |     } catch (error) {
-    :              ^^|^^
-    :                `-- 'error' is declared here
- 94 |       res.status(500).json({ error: 'Failed to fetch business alerts' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/routes/businessIntelligenceRoutes.ts:104:14]
- 103 |       res.json({ success: true })
- 104 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 105 |       res.status(500).json({ error: 'Failed to create business alert' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/routes/businessIntelligenceRoutes.ts:120:14]
- 119 |       res.json(forecast)
- 120 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 121 |       res.status(500).json({ error: 'Failed to generate market forecast' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/routes/businessIntelligenceRoutes.ts:131:14]
- 130 |       res.json(analysis)
- 131 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 132 |       res.status(500).json({ error: 'Failed to generate industry analysis' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/routes/businessIntelligenceRoutes.ts:153:14]
- 152 |       })
- 153 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 154 |       res.status(500).json({ error: 'Failed to fetch dashboard data' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/routes/businessIntelligenceRoutes.ts:176:14]
- 175 |       })
- 176 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 177 |       res.status(500).json({ error: 'Failed to fetch market insights' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
-     ,-[src/lib/ai/mental-llama/routing/MentalHealthTaskRouter.ts:286:14]
- 285 |       }
- 286 |     } catch (err) {
-     :              ^|^
-     :               `-- 'err' is declared here
- 287 |       // Parsing failed - return a conservative fallback decision
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Identifier 'Request' is imported but never used.
-   ,-[src/api/server.ts:4:28]
- 3 | 
- 4 | import express, { Express, Request, Response, NextFunction } from 'express'
-   :                            ^^^|^^^
-   :                               `-- 'Request' is imported here
- 5 | import cors from 'cors'
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Identifier 'Response' is imported but never used.
-   ,-[src/api/server.ts:4:37]
- 3 | 
- 4 | import express, { Express, Request, Response, NextFunction } from 'express'
-   :                                     ^^^^|^^^
-   :                                         `-- 'Response' is imported here
- 5 | import cors from 'cors'
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Identifier 'NextFunction' is imported but never used.
-   ,-[src/api/server.ts:4:47]
- 3 | 
- 4 | import express, { Express, Request, Response, NextFunction } from 'express'
-   :                                               ^^^^^^|^^^^^
-   :                                                     `-- 'NextFunction' is imported here
- 5 | import cors from 'cors'
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/hooks/useTherapistAnalytics.ts:33:18]
- 32 |           fn(...args)
- 33 |         } catch (error) {
-    :                  ^^|^^
-    :                    `-- 'error' is declared here
- 34 |           /* swallow */
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/hooks/useTherapistAnalytics.ts:40:18]
- 39 |           fn(...args)
- 40 |         } catch (error) {
-    :                  ^^|^^
-    :                    `-- 'error' is declared here
- 41 |           /* swallow */
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/hooks/useTherapistAnalytics.ts:47:18]
- 46 |           fn(...args)
- 47 |         } catch (error) {
-    :                  ^^|^^
-    :                    `-- 'error' is declared here
- 48 |           /* swallow */
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-    ,-[src/hooks/useTherapistAnalytics.ts:54:18]
- 53 |           fn(...args)
- 54 |         } catch (error) {
-    :                  ^^|^^
-    :                    `-- 'error' is declared here
- 55 |           /* swallow */
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'userId' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/api/routes/users.ts:146:13]
- 145 | router.post('/:userId/permissions', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
- 146 |     const { userId } = req.params
-     :             ^^^|^^
-     :                `-- 'userId' is declared here
- 147 |     const { permission } = req.body
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'userId' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/api/routes/users.ts:167:13]
- 166 | router.delete('/:userId/permissions/:permissionId', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
- 167 |     const { userId, permissionId } = req.params
-     :             ^^^|^^
-     :                `-- 'userId' is declared here
- 168 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'permissionId' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/api/routes/users.ts:167:21]
- 166 | router.delete('/:userId/permissions/:permissionId', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
- 167 |     const { userId, permissionId } = req.params
-     :                     ^^^^^^|^^^^^
-     :                           `-- 'permissionId' is declared here
- 168 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'metrics' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/hooks/usePixelConversationIntegration.ts:224:19]
- 223 |         if (integration) {
- 224 |             const metrics = integration.getEQMetricsTrend()
-     :                   ^^^|^^^
-     :                      `-- 'metrics' is declared here
- 225 |             // State would be updated via the hook's internal mechanism
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'integration' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/hooks/usePixelConversationIntegration.ts:251:27]
- 250 | } {
- 251 |     const { crisisStatus, integration } = usePixelConversationIntegration({
-     :                           ^^^^^|^^^^^
-     :                                `-- 'integration' is declared here
- 252 |         sessionId,
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
-    ,-[src/lib/threat-detection/threat-hunting/utils/threat-data-utils.ts:24:12]
- 23 |     }
- 24 |   } catch (_err) {
-    :            ^^|^
-    :              `-- '_err' is declared here
- 25 |     // ignore and fall through to fallback
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
-    ,-[src/hooks/usePipelineWebSocket.ts:78:22]
- 77 |               ws.send(JSON.stringify(message))
- 78 |             } catch (_e) {
-    :                      ^|
-    :                       `-- '_e' is declared here
- 79 |               // If send fails, push back and break to avoid busy loop
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Interface 'SocketAuth' is declared but never used.
-   ,-[src/services/websocketClient.ts:4:11]
- 3 | 
- 4 | interface SocketAuth {
-   :           ^^^^^|^^^^
-   :                `-- 'SocketAuth' is declared here
- 5 |   token: string
-   `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Parameter 'profile' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/lib/ai/services/contextual-enhancer.ts:329:5]
- 328 |     history: SessionContext[],
- 329 |     profile: PatientPsiProfile,
-     :     ^^^|^^^
-     :        `-- 'profile' is declared here
- 330 |   ): number {
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
-    ,-[src/lib/threat-detection/predictive/predictive-threat-intelligence.ts:17:12]
- 16 |     }
- 17 |   } catch (_e) {
-    :            ^|
-    :             `-- '_e' is declared here
- 18 |     // ignore errors when crypto is unavailable
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Parameter 'buffer' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/DocumentVersioningService.ts:390:34]
- 389 | 
- 390 |   private async generateChecksum(buffer: Buffer): Promise<string> {
-     :                                  ^^^|^^
-     :                                     `-- 'buffer' is declared here
- 391 |     // In a real implementation, you'd use crypto.createHash('sha256')
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Parameter 'change' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/hooks/useCollaboration.ts:164:42]
- 163 | 
- 164 |   const applyRemoteChange = useCallback((change: DocumentChangeEvent) => {
-     :                                          ^^^|^^
-     :                                             `-- 'change' is declared here
- 165 |     // This would be used for more complex change application
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Variable 'opportunities' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:339:13]
- 338 |       const competitors = await this.getCompetitorAnalysis(industry)
- 339 |       const opportunities = await this.getMarketOpportunities(industry)
-     :             ^^^^^^|^^^^^^
-     :                   `-- 'opportunities' is declared here
- 340 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:375:31]
- 374 | 
- 375 |   private getDemoMarketTrends(industry: string): MarketData[] {
-     :                               ^^^^|^^^
-     :                                   `-- 'industry' is declared here
- 376 |     const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'META']
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:380:37]
- 379 | 
- 380 |   private getDemoCompetitorAnalysis(industry: string): CompetitorAnalysis[] {
-     :                                     ^^^^|^^^
-     :                                         `-- 'industry' is declared here
- 381 |     return [
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:405:38]
- 404 | 
- 405 |   private getDemoMarketOpportunities(industry: string): MarketOpportunity[] {
-     :                                      ^^^^|^^^
-     :                                          `-- 'industry' is declared here
- 406 |     return [
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:526:5]
- 525 |   private async fetchCompetitorsFromAPI(
- 526 |     industry: string,
-     :     ^^^^|^^^
-     :         `-- 'industry' is declared here
- 527 |   ): Promise<CompetitorAnalysis[]> {
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/services/BusinessIntelligenceService.ts:534:5]
- 533 |   private async analyzeMarketOpportunities(
- 534 |     industry: string,
-     :     ^^^^|^^^
-     :         `-- 'industry' is declared here
- 535 |   ): Promise<MarketOpportunity[]> {
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
-     ,-[src/lib/threat-detection/ml-model-serving/model-server.ts:529:14]
- 528 |       }
- 529 |     } catch (_e) {
-     :              ^|
-     :               `-- '_e' is declared here
- 530 |       // ignore errors generating crypto bytes; fallback below
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[business-strategy-cms/src/routes/workflow.ts:15:12]
- 14 |     res.json(templates)
- 15 |   } catch (_error) {
-    :            ^^^|^^
-    :               `-- '_error' is declared here
- 16 |     res.status(500).json({ error: 'Failed to fetch workflow templates' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[business-strategy-cms/src/routes/workflow.ts:28:12]
- 27 |     res.json(template)
- 28 |   } catch (_error) {
-    :            ^^^|^^
-    :               `-- '_error' is declared here
- 29 |     res.status(500).json({ error: 'Failed to fetch workflow template' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[business-strategy-cms/src/routes/workflow.ts:70:14]
- 69 |       res.json(instances)
- 70 |     } catch (_error) {
-    :              ^^^|^^
-    :                 `-- '_error' is declared here
- 71 |       res.status(500).json({ error: 'Failed to fetch workflow instances' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[business-strategy-cms/src/routes/workflow.ts:84:12]
- 83 |     res.json(instance)
- 84 |   } catch (_error) {
-    :            ^^^|^^
-    :               `-- '_error' is declared here
- 85 |     res.status(500).json({ error: 'Failed to fetch workflow instance' })
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[business-strategy-cms/src/routes/workflow.ts:109:12]
- 108 |     res.json(instances)
- 109 |   } catch (_error) {
-     :            ^^^|^^
-     :               `-- '_error' is declared here
- 110 |     res.status(500).json({ error: 'Failed to search workflow instances' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[business-strategy-cms/src/routes/workflow.ts:180:12]
- 179 |     res.json(comments)
- 180 |   } catch (_error) {
-     :            ^^^|^^
-     :               `-- '_error' is declared here
- 181 |     res.status(500).json({ error: 'Failed to fetch comments' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[business-strategy-cms/src/routes/workflow.ts:190:12]
- 189 |     res.json(approvals)
- 190 |   } catch (_error) {
-     :            ^^^|^^
-     :               `-- '_error' is declared here
- 191 |     res.status(500).json({ error: 'Failed to fetch approvals' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[business-strategy-cms/src/routes/workflow.ts:204:14]
- 203 |       res.json(analytics)
- 204 |     } catch (_error) {
-     :              ^^^|^^
-     :                 `-- '_error' is declared here
- 205 |       res.status(500).json({ error: 'Failed to fetch analytics' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[business-strategy-cms/src/routes/workflow.ts:219:14]
- 218 |       res.json(overdue)
- 219 |     } catch (_error) {
-     :              ^^^|^^
-     :                 `-- '_error' is declared here
- 220 |       res.status(500).json({ error: 'Failed to fetch overdue workflows' })
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[business-strategy-cms/src/middleware/auth.ts:41:12]
- 40 |     next()
- 41 |   } catch (_error) {
-    :            ^^^|^^
-    :               `-- '_error' is declared here
- 42 |     res.status(401).json({
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-   ,-[src/pages/admin/dashboard.astro:3:1]
- 2 | 'Admin Dashboard'
- 3 | undefined
-   : ^^^^^^^^^
- 4 | ---
-   `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Variable 'delta' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/ai/privacyEngine.ts:162:22]
- 161 |   ): Promise<ModelUpdate> {
- 162 |     const { epsilon, delta, sensitivity, mechanism } = this.dpConfig
-     :                      ^^|^^
-     :                        `-- 'delta' is declared here
- 163 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[business-strategy-cms/src/services/authService.ts:155:14]
- 154 |       return tokens
- 155 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 156 |       throw new Error('Invalid refresh token')
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[business-strategy-cms/src/services/authService.ts:183:14]
- 182 |       }
- 183 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 184 |       return null
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'marketAnalysis' is declared but never used. Unused variables should start with a '_'.
-     ,-[business-strategy-cms/src/services/marketAnalyticsService.ts:103:11]
- 102 |   }> {
- 103 |     const marketAnalysis = await this.analyzeTargetMarkets(
-     :           ^^^^^^^|^^^^^^
-     :                  `-- 'marketAnalysis' is declared here
- 104 |       currentMarket,
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Parameter 'market' is declared but never used. Unused parameters should start with a '_'.
-     ,-[business-strategy-cms/src/services/marketAnalyticsService.ts:392:43]
- 391 | 
- 392 |   private async fetchMarketSaturationData(market: string): Promise<any> {
-     :                                           ^^^|^^
-     :                                              `-- 'market' is declared here
- 393 |     // Mock data - replace with actual market data
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-constant-condition): Unexpected constant condition
-    ,-[.vite/deps/react_jsx-dev-runtime.js:18:9]
- 17 |   "node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-dev-runtime.js"(exports, module) {
- 18 |     if (true) {
-    :         ^^^^
- 19 |       module.exports = require_react_jsx_dev_runtime_production();
-    `----
-  help: Constant expression as a test condition is not allowed
 
   ! eslint(no-constant-condition): Unexpected constant condition
      ,-[.vite/deps/chunk-Z77PBXP5.js:164:11]
@@ -1109,6 +592,272 @@
      `----
   help: Consider using this expression or removing it
 
+  ! eslint(no-func-assign): '_typeof' is a function.
+    ,-[.vite/deps/astro___axobject-query.js:56:14]
+ 55 |       "@babel/helpers - typeof";
+ 56 |       return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    :              ^^^|^^^
+    :                 `-- _typeof is re-assigned here
+ 57 |         return typeof obj2;
+    `----
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3141:19]
+ 3140 |         } finally {
+ 3141 |           if (_d) throw _e;
+      :                   ^^^^^^^^^
+ 3142 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3226:19]
+ 3225 |         } finally {
+ 3226 |           if (_d) throw _e;
+      :                   ^^^^^^^^^
+ 3227 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3265:23]
+ 3264 |         } finally {
+ 3265 |           if (didErr) throw err;
+      :                       ^^^^^^^^^^
+ 3266 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3395:19]
+ 3394 |         } finally {
+ 3395 |           if (_d) throw _e;
+      :                   ^^^^^^^^^
+ 3396 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3434:23]
+ 3433 |         } finally {
+ 3434 |           if (didErr) throw err;
+      :                       ^^^^^^^^^^
+ 3435 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3564:19]
+ 3563 |         } finally {
+ 3564 |           if (_d) throw _e;
+      :                   ^^^^^^^^^
+ 3565 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___axobject-query.js:3603:23]
+ 3602 |         } finally {
+ 3603 |           if (didErr) throw err;
+      :                       ^^^^^^^^^^
+ 3604 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+      ,-[.vite/deps/astro___axobject-query.js:3117:30]
+ 3116 |       if (len == null || len > arr.length) len = arr.length;
+ 3117 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
+      :                              ^^^^^^^^^^^^^^
+ 3118 |         arr2[i] = arr[i];
+      `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+      ,-[.vite/deps/astro___axobject-query.js:3279:30]
+ 3278 |       if (len == null || len > arr.length) len = arr.length;
+ 3279 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
+      :                              ^^^^^^^^^^^^^^
+ 3280 |         arr2[i] = arr[i];
+      `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+      ,-[.vite/deps/astro___axobject-query.js:3448:30]
+ 3447 |       if (len == null || len > arr.length) len = arr.length;
+ 3448 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
+      :                              ^^^^^^^^^^^^^^
+ 3449 |         arr2[i] = arr[i];
+      `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+      ,-[.vite/deps/astro___axobject-query.js:3617:30]
+ 3616 |       if (len == null || len > arr.length) len = arr.length;
+ 3617 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
+      :                              ^^^^^^^^^^^^^^
+ 3618 |         arr2[i] = arr[i];
+      `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint(no-constant-condition): Unexpected constant condition
+    ,-[.vite/deps/react_jsx-dev-runtime.js:18:9]
+ 17 |   "node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-dev-runtime.js"(exports, module) {
+ 18 |     if (true) {
+    :         ^^^^
+ 19 |       module.exports = require_react_jsx_dev_runtime_production();
+    `----
+  help: Constant expression as a test condition is not allowed
+
+  ! eslint(no-control-regex): Unexpected control character
+    ,-[.vite/deps/astro___cssesc.js:55:22]
+ 54 |             }
+ 55 |           } else if (/[\t\n\f\r\x0B]/.test(character)) {
+    :                      ^^^^^^^^^^^^^^^^
+ 56 |             value = "\\" + codePoint.toString(16).toUpperCase() + " ";
+    `----
+  help: '\x0B' is a control character.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '.'
+    ,-[.vite/deps/astro___cssesc.js:20:37]
+ 19 |     };
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+    :                                     ^^
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    `----
+  help: Replace `\.` with `.`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '/'
+    ,-[.vite/deps/astro___cssesc.js:20:39]
+ 19 |     };
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+    :                                       ^^
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    `----
+  help: Replace `\/` with `/`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '['
+    ,-[.vite/deps/astro___cssesc.js:20:44]
+ 19 |     };
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+    :                                            ^^
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    `----
+  help: Replace `\[` with `[`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '^'
+    ,-[.vite/deps/astro___cssesc.js:20:47]
+ 19 |     };
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+    :                                               ^^
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    `----
+  help: Replace `\^` with `^`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '{'
+    ,-[.vite/deps/astro___cssesc.js:20:50]
+ 19 |     };
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+    :                                                  ^^
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    `----
+  help: Replace `\{` with `{`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '.'
+    ,-[.vite/deps/astro___cssesc.js:21:34]
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    :                                  ^^
+ 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
+    `----
+  help: Replace `\.` with `.`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '/'
+    ,-[.vite/deps/astro___cssesc.js:21:36]
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    :                                    ^^
+ 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
+    `----
+  help: Replace `\/` with `/`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '['
+    ,-[.vite/deps/astro___cssesc.js:21:41]
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    :                                         ^^
+ 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
+    `----
+  help: Replace `\[` with `[`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '^'
+    ,-[.vite/deps/astro___cssesc.js:21:45]
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    :                                             ^^
+ 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
+    `----
+  help: Replace `\^` with `^`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '{'
+    ,-[.vite/deps/astro___cssesc.js:21:48]
+ 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+ 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
+    :                                                ^^
+ 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
+    `----
+  help: Replace `\{` with `{`.
+
+  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
+    ,-[src/lib/threat-detection/predictive/predictive-threat-intelligence.ts:17:12]
+ 16 |     }
+ 17 |   } catch (_e) {
+    :            ^|
+    :             `-- '_e' is declared here
+ 18 |     // ignore errors when crypto is unavailable
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
+   ,-[src/components/layout/Navigation.tsx:5:10]
+ 4 | import { authClient } from '@/lib/auth-client'
+ 5 | import { useStore } from 'nanostores'
+   :          ^^^^|^^^
+   :              `-- 'useStore' is imported here
+ 6 | import { cn } from '@/lib/utils'
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'loading' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/layout/Navigation.tsx:47:34]
+ 46 | }: NavigationProps) {
+ 47 |   const { data: user, isPending: loading } = authClient.useSession()
+    :                                  ^^^|^^^
+    :                                     `-- 'loading' is declared here
+ 48 |   const isAuthenticated = !!user?.user
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
+     ,-[src/lib/threat-detection/ml-model-serving/model-server.ts:529:14]
+ 528 |       }
+ 529 |     } catch (_e) {
+     :              ^|
+     :               `-- '_e' is declared here
+ 530 |       // ignore errors generating crypto bytes; fallback below
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
+   ,-[src/components/auth/RegisterForm.tsx:3:10]
+ 2 | import { authClient } from '@/lib/auth-client'
+ 3 | import { useStore } from 'nanostores'
+   :          ^^^^|^^^
+   :              `-- 'useStore' is imported here
+ 4 | import { AccessibilityAnnouncer } from '../ui/AccessibilityAnnouncer'
+   `----
+  help: Consider removing this import.
+
   ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
      ,-[src/lib/testing/test-helpers.ts:421:16]
  420 |         }
@@ -1128,6 +877,317 @@
  473 |         // Service not ready yet
      `----
   help: Consider handling this error.
+
+  ! eslint(no-func-assign): '_typeof' is a function.
+    ,-[.vite/deps/astro___aria-query.js:55:14]
+ 54 |       "@babel/helpers - typeof";
+ 55 |       return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+    :              ^^^|^^^
+    :                 `-- _typeof is re-assigned here
+ 56 |         return typeof o2;
+    `----
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+     ,-[.vite/deps/astro___aria-query.js:115:78]
+ 114 |           try {
+ 115 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+     :                                                                              ^^^^^^^
+ 116 |           } finally {
+     `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+     ,-[.vite/deps/astro___aria-query.js:117:20]
+ 116 |           } finally {
+ 117 |             if (o) throw n;
+     :                    ^^^^^^^^
+ 118 |           }
+     `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+     ,-[.vite/deps/astro___aria-query.js:322:78]
+ 321 |           try {
+ 322 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+     :                                                                              ^^^^^^^
+ 323 |           } finally {
+     `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+     ,-[.vite/deps/astro___aria-query.js:324:20]
+ 323 |           } finally {
+ 324 |             if (o) throw n;
+     :                    ^^^^^^^^
+ 325 |           }
+     `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6301:18]
+ 6300 |         } finally {
+ 6301 |           if (u) throw o;
+      :                  ^^^^^^^^
+ 6302 |         }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6336:78]
+ 6335 |           try {
+ 6336 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      :                                                                              ^^^^^^^
+ 6337 |           } finally {
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6338:20]
+ 6337 |           } finally {
+ 6338 |             if (o) throw n;
+      :                    ^^^^^^^^
+ 6339 |           }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6478:78]
+ 6477 |           try {
+ 6478 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      :                                                                              ^^^^^^^
+ 6479 |           } finally {
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6480:20]
+ 6479 |           } finally {
+ 6480 |             if (o) throw n;
+      :                    ^^^^^^^^
+ 6481 |           }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6675:78]
+ 6674 |           try {
+ 6675 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      :                                                                              ^^^^^^^
+ 6676 |           } finally {
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unsafe-finally): Unsafe `finally` block.
+      ,-[.vite/deps/astro___aria-query.js:6677:20]
+ 6676 |           } finally {
+ 6677 |             if (o) throw n;
+      :                    ^^^^^^^^
+ 6678 |           }
+      `----
+  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.vite/deps/astro___aria-query.js:98:7]
+ 97 |     function _arrayLikeToArray(r, a) {
+ 98 |       (null == a || a > r.length) && (a = r.length);
+    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 99 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[.vite/deps/astro___aria-query.js:112:11]
+ 111 |         } catch (r2) {
+ 112 |           o = true, n = r2;
+     :           ^^^^^^^^^^^^^^^^^
+ 113 |         } finally {
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[.vite/deps/astro___aria-query.js:305:7]
+ 304 |     function _arrayLikeToArray(r, a) {
+ 305 |       (null == a || a > r.length) && (a = r.length);
+     :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 306 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[.vite/deps/astro___aria-query.js:319:11]
+ 318 |         } catch (r2) {
+ 319 |           o = true, n = r2;
+     :           ^^^^^^^^^^^^^^^^^
+ 320 |         } finally {
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6278:11]
+ 6277 |         if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
+ 6278 |           t && (r = t);
+      :           ^^^^^^^^^^^^^
+ 6279 |           var _n = 0, F = function F2() {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6296:9]
+ 6295 |       }, e: function e2(r2) {
+ 6296 |         u = true, o = r2;
+      :         ^^^^^^^^^^^^^^^^^
+ 6297 |       }, f: function f() {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6299:11]
+ 6298 |         try {
+ 6299 |           a || null == t.return || t.return();
+      :           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 6300 |         } finally {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6319:7]
+ 6318 |     function _arrayLikeToArray(r, a) {
+ 6319 |       (null == a || a > r.length) && (a = r.length);
+      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 6320 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6333:11]
+ 6332 |         } catch (r2) {
+ 6333 |           o = true, n = r2;
+      :           ^^^^^^^^^^^^^^^^^
+ 6334 |         } finally {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6461:7]
+ 6460 |     function _arrayLikeToArray(r, a) {
+ 6461 |       (null == a || a > r.length) && (a = r.length);
+      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 6462 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6475:11]
+ 6474 |         } catch (r2) {
+ 6475 |           o = true, n = r2;
+      :           ^^^^^^^^^^^^^^^^^
+ 6476 |         } finally {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6658:7]
+ 6657 |     function _arrayLikeToArray(r, a) {
+ 6658 |       (null == a || a > r.length) && (a = r.length);
+      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 6659 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+      ,-[.vite/deps/astro___aria-query.js:6672:11]
+ 6671 |         } catch (r2) {
+ 6672 |           o = true, n = r2;
+      :           ^^^^^^^^^^^^^^^^^
+ 6673 |         } finally {
+      `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Variable 'aria' is declared but never used. Unused variables should start with a '_'.
+      ,-[.vite/deps/astro___aria-query.js:6768:9]
+ 6767 |     }
+ 6768 |     var aria = exports.aria = _ariaPropsMap.default;
+      :         ^^|^
+      :           `-- 'aria' is declared here
+ 6769 |     var dom = exports.dom = _domMap.default;
+      `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'dom' is declared but never used. Unused variables should start with a '_'.
+      ,-[.vite/deps/astro___aria-query.js:6769:9]
+ 6768 |     var aria = exports.aria = _ariaPropsMap.default;
+ 6769 |     var dom = exports.dom = _domMap.default;
+      :         ^|^
+      :          `-- 'dom' is declared here
+ 6770 |     var roles = exports.roles = _rolesMap.default;
+      `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'roles' is declared but never used. Unused variables should start with a '_'.
+      ,-[.vite/deps/astro___aria-query.js:6770:9]
+ 6769 |     var dom = exports.dom = _domMap.default;
+ 6770 |     var roles = exports.roles = _rolesMap.default;
+      :         ^^|^^
+      :           `-- 'roles' is declared here
+ 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
+      `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'elementRoles' is declared but never used. Unused variables should start with a '_'.
+      ,-[.vite/deps/astro___aria-query.js:6771:9]
+ 6770 |     var roles = exports.roles = _rolesMap.default;
+ 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
+      :         ^^^^^^|^^^^^
+      :               `-- 'elementRoles' is declared here
+ 6772 |     var roleElements = exports.roleElements = _roleElementMap.default;
+      `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'roleElements' is declared but never used. Unused variables should start with a '_'.
+      ,-[.vite/deps/astro___aria-query.js:6772:9]
+ 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
+ 6772 |     var roleElements = exports.roleElements = _roleElementMap.default;
+      :         ^^^^^^|^^^^^
+      :               `-- 'roleElements' is declared here
+ 6773 |   }
+      `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-constant-condition): Unexpected constant condition
+    ,-[.vite/deps/react_jsx-runtime.js:38:9]
+ 37 |   "node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-runtime.js"(exports, module) {
+ 38 |     if (true) {
+    :         ^^^^
+ 39 |       module.exports = require_react_jsx_runtime_production();
+    `----
+  help: Constant expression as a test condition is not allowed
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.vite/deps/react_jsx-runtime.js:13:7]
+ 12 |       var key = null;
+ 13 |       void 0 !== maybeKey && (key = "" + maybeKey);
+    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 14 |       void 0 !== config.key && (key = "" + config.key);
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.vite/deps/react_jsx-runtime.js:14:7]
+ 13 |       void 0 !== maybeKey && (key = "" + maybeKey);
+ 14 |       void 0 !== config.key && (key = "" + config.key);
+    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 15 |       if ("key" in config) {
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.vite/deps/react_jsx-runtime.js:18:11]
+ 17 |         for (var propName in config)
+ 18 |           "key" !== propName && (maybeKey[propName] = config[propName]);
+    :           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 19 |       } else maybeKey = config;
+    `----
+  help: Consider using this expression or removing it
 
   ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
      ,-[src/lib/testing/performance-benchmarks.ts:283:14]
@@ -1275,6 +1335,146 @@
      `----
   help: Consider using this expression or removing it
 
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:16:14]
+ 15 |       res.json(marketData)
+ 16 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 17 |       res.status(500).json({ error: 'Failed to fetch market data' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:27:14]
+ 26 |       res.json(trends)
+ 27 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 28 |       res.status(500).json({ error: 'Failed to fetch market trends' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:38:14]
+ 37 |       res.json(analysis)
+ 38 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 39 |       res.status(500).json({ error: 'Failed to fetch competitor analysis' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:49:14]
+ 48 |       res.json(opportunities)
+ 49 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 50 |       res.status(500).json({ error: 'Failed to fetch market opportunities' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:66:14]
+ 65 |       res.json(metrics)
+ 66 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 67 |       res.status(500).json({ error: 'Failed to fetch business metrics' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:77:14]
+ 76 |       res.json({ success: true })
+ 77 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 78 |       res.status(500).json({ error: 'Failed to add business metric' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/routes/businessIntelligenceRoutes.ts:93:14]
+ 92 |       res.json(alerts)
+ 93 |     } catch (error) {
+    :              ^^|^^
+    :                `-- 'error' is declared here
+ 94 |       res.status(500).json({ error: 'Failed to fetch business alerts' })
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/routes/businessIntelligenceRoutes.ts:104:14]
+ 103 |       res.json({ success: true })
+ 104 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 105 |       res.status(500).json({ error: 'Failed to create business alert' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/routes/businessIntelligenceRoutes.ts:120:14]
+ 119 |       res.json(forecast)
+ 120 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 121 |       res.status(500).json({ error: 'Failed to generate market forecast' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/routes/businessIntelligenceRoutes.ts:131:14]
+ 130 |       res.json(analysis)
+ 131 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 132 |       res.status(500).json({ error: 'Failed to generate industry analysis' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/routes/businessIntelligenceRoutes.ts:153:14]
+ 152 |       })
+ 153 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 154 |       res.status(500).json({ error: 'Failed to fetch dashboard data' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/routes/businessIntelligenceRoutes.ts:176:14]
+ 175 |       })
+ 176 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 177 |       res.status(500).json({ error: 'Failed to fetch market insights' })
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
+   ,-[src/components/training/TrainingSessionComponent.tsx:4:10]
+ 3 | import { authClient } from '@/lib/auth-client'
+ 4 | import { useStore } from 'nanostores'
+   :          ^^^^|^^^
+   :              `-- 'useStore' is imported here
+ 5 | import { getJournalResearchAuthToken } from '../../lib/api/journal-research/auth'
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
+   ,-[src/components/ui/UserMenu.tsx:4:10]
+ 3 | import { Avatar } from './avatar'
+ 4 | import { useStore } from 'nanostores'
+   :          ^^^^|^^^
+   :              `-- 'useStore' is imported here
+ 5 |
+   `----
+  help: Consider removing this import.
+
   ! eslint(no-unused-vars): Variable 'metrics' is declared but never used. Unused variables should start with a '_'.
      ,-[src/pages/api/auth/auth0-enhanced-treatment-plans.ts:407:19]
  406 |         goals: plan.goals.map((goal) => {
@@ -1285,13 +1485,20 @@
      `----
   help: Consider removing this declaration.
 
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[src/lib/rate-limiting/index.ts:140:12]
- 139 |     return { status, details }
- 140 |   } catch (_error) {
-     :            ^^^|^^
-     :               `-- '_error' is declared here
- 141 |     return {
+  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
+   ,-[src/components/dashboard/__tests__/simple-accessibility.test.ts:1:1]
+ 1 | // This file was replaced with a minimal .tsx test; keep as placeholder to avoid accidental execution of old malformed content.
+   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   `----
+  help: Delete this file or add some code to it.
+
+  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+     ,-[src/components/TrainingSession.tsx:103:14]
+ 102 |       }
+ 103 |     } catch (err) {
+     :              ^|^
+     :               `-- 'err' is declared here
+ 104 |       setClientResponse('Error getting response')
      `----
   help: Consider handling this error.
 
@@ -1301,8 +1508,26 @@
  10 | import { requireRole } from '@/lib/auth/auth0-middleware'
     :          ^^^^^|^^^^^
     :               `-- 'requireRole' is imported here
- 11 | 
+ 11 |
     `----
+  help: Consider removing this import.
+
+  ! eslint-plugin-unicorn(no-invalid-fetch-options): "body" is not allowed when method is "GET"
+     ,-[src/pages/api/ai/pixel/infer.ts:111:13]
+ 110 |             headers,
+ 111 |             body: body ? JSON.stringify(body) : undefined,
+     :             ^^^^
+ 112 |             signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+     `----
+
+  ! eslint(no-unused-vars): Identifier 'getAIServiceByProvider' is imported but never used.
+   ,-[src/pages/api/ai/auth0-crisis-detection.ts:3:10]
+ 2 | import { CrisisDetectionService } from '@/lib/ai/services/crisis-detection'
+ 3 | import { getAIServiceByProvider } from '@/lib/ai/providers'
+   :          ^^^^^^^^^^^|^^^^^^^^^^
+   :                     `-- 'getAIServiceByProvider' is imported here
+ 4 | import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
+   `----
   help: Consider removing this import.
 
   ! eslint(no-unused-vars): Type 'AICompletion' is imported but never used.
@@ -1335,42 +1560,110 @@
      `----
   help: Consider removing this parameter.
 
-  ! eslint-plugin-unicorn(no-invalid-fetch-options): "body" is not allowed when method is "GET"
-     ,-[src/pages/api/ai/pixel/infer.ts:111:13]
- 110 |             headers,
- 111 |             body: body ? JSON.stringify(body) : undefined,
-     :             ^^^^
- 112 |             signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  ! eslint(no-unused-vars): Type 'CrisisTestCase' is imported but never used.
+    ,-[tests/crisis-detection/crisis-unit.test.ts:23:10]
+ 22 |     NON_CRISIS_TESTS,
+ 23 |     type CrisisTestCase,
+    :          ^^^^^^^|^^^^^^
+    :                 `-- 'CrisisTestCase' is imported here
+ 24 | } from './crisis-test-scenarios'
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Type 'CrisisProtocolConfig' is imported but never used.
+    ,-[tests/crisis-detection/crisis-integration.test.ts:16:15]
+ 15 | import { CrisisProtocol } from '../../src/lib/ai/crisis/CrisisProtocol'
+ 16 | import type { CrisisProtocolConfig } from '../../src/lib/ai/crisis/types'
+    :               ^^^^^^^^^^|^^^^^^^^^
+    :                         `-- 'CrisisProtocolConfig' is imported here
+ 17 | import {
+    `----
+  help: Consider removing this import.
+
+  x Unexpected token
+     ,-[tests/hooks/useMultimodalPixel-unit.test.ts:853:1]
+ 852 | })
+ 853 | })
+     : ^
      `----
 
-  ! eslint(no-unused-vars): Identifier 'getAIServiceByProvider' is imported but never used.
-   ,-[src/pages/api/ai/auth0-crisis-detection.ts:3:10]
- 2 | import { CrisisDetectionService } from '@/lib/ai/services/crisis-detection'
- 3 | import { getAIServiceByProvider } from '@/lib/ai/providers'
-   :          ^^^^^^^^^^^|^^^^^^^^^^
-   :                     `-- 'getAIServiceByProvider' is imported here
- 4 | import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
+  ! eslint(no-unused-expressions): Expected expression to be used
+   ,-[src/pages/admin/dashboard.astro:3:1]
+ 2 | 'Admin Dashboard'
+ 3 | undefined
+   : ^^^^^^^^^
+ 4 | ---
+   `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
+    ,-[tests/hooks/useMultimodalPixel.test.ts:33:10]
+ 32 |
+ 33 |     send(data: string) {
+    :          ^^|^
+    :            `-- 'data' is declared here
+ 34 |         // Mock sending
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'sendSpy' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/hooks/useMultimodalPixel.test.ts:237:19]
+ 236 |             const { result } = renderHook(() => useMultimodalPixel())
+ 237 |             const sendSpy = vi.fn()
+     :                   ^^^|^^^
+     :                      `-- 'sendSpy' is declared here
+ 238 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'mockResponse' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/hooks/useMultimodalPixel.test.ts:276:19]
+ 275 |         it('should finalize stream and trigger inference', async () => {
+ 276 |             const mockResponse = {
+     :                   ^^^^^^|^^^^^
+     :                         `-- 'mockResponse' is declared here
+ 277 |                 response: 'Stream response',
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'mockResponse' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/hooks/useMultimodalPixel.test.ts:336:19]
+ 335 |         it('should parse stream result messages', async () => {
+ 336 |             const mockResponse = {
+     :                   ^^^^^^|^^^^^
+     :                         `-- 'mockResponse' is declared here
+ 337 |                 response: 'Stream result',
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'inferencePromise' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/hooks/useMultimodalPixel.test.ts:406:19]
+ 405 |             // Start inference
+ 406 |             const inferencePromise = act(async () => {
+     :                   ^^^^^^^^|^^^^^^^
+     :                           `-- 'inferencePromise' is declared here
+ 407 |                 result.current.infer({ text: 'Test' })
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
+   ,-[src/components/demo/ChatDemo.tsx:6:10]
+ 5 | import { authClient } from '@/lib/auth-client'
+ 6 | import { useStore } from 'nanostores'
+   :          ^^^^|^^^
+   :              `-- 'useStore' is imported here
+ 7 | import {
    `----
   help: Consider removing this import.
 
-  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
-     ,-[src/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts:531:14]
- 530 |       return { cert, key, ca }
- 531 |     } catch (_e) {
-     :              ^|
-     :               `-- '_e' is declared here
- 532 |       logger.warn('Invalid certificate credentials provided')
-     `----
-  help: Consider handling this error.
-
   ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-      ,-[src/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts:1976:14]
- 1975 |       }
- 1976 |     } catch (_error) {
-      :              ^^^|^^
-      :                 `-- '_error' is declared here
- 1977 |       return false
-      `----
+     ,-[tests/helpers/test-utils.ts:159:12]
+ 158 |     await mkdir(path, { recursive: true })
+ 159 |   } catch (_error) {
+     :            ^^^|^^
+     :               `-- '_error' is declared here
+ 160 |     // Directory might already exist, ignore error
+     `----
   help: Consider handling this error.
 
   ! eslint(no-cond-assign): Expected a conditional expression and instead saw an assignment
@@ -8515,863 +8808,84 @@
       `----
   help: If an object is defined as 'thenable', once it's accidentally used in an await expression, it may cause problems
 
-  ! eslint(no-func-assign): '_typeof' is a function.
-    ,-[.vite/deps/astro___axobject-query.js:56:14]
- 55 |       "@babel/helpers - typeof";
- 56 |       return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-    :              ^^^|^^^
-    :                 `-- _typeof is re-assigned here
- 57 |         return typeof obj2;
+  ! eslint(no-unused-vars): Variable 'lastAnalysis' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/chat/PixelEnhancedChat.tsx:45:9]
+ 44 |         biasFlags,
+ 45 |         lastAnalysis,
+    :         ^^^^^^|^^^^^
+    :               `-- 'lastAnalysis' is declared here
+ 46 |         isAnalyzing,
     `----
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3141:19]
- 3140 |         } finally {
- 3141 |           if (_d) throw _e;
-      :                   ^^^^^^^^^
- 3142 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3226:19]
- 3225 |         } finally {
- 3226 |           if (_d) throw _e;
-      :                   ^^^^^^^^^
- 3227 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3265:23]
- 3264 |         } finally {
- 3265 |           if (didErr) throw err;
-      :                       ^^^^^^^^^^
- 3266 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3395:19]
- 3394 |         } finally {
- 3395 |           if (_d) throw _e;
-      :                   ^^^^^^^^^
- 3396 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3434:23]
- 3433 |         } finally {
- 3434 |           if (didErr) throw err;
-      :                       ^^^^^^^^^^
- 3435 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3564:19]
- 3563 |         } finally {
- 3564 |           if (_d) throw _e;
-      :                   ^^^^^^^^^
- 3565 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___axobject-query.js:3603:23]
- 3602 |         } finally {
- 3603 |           if (didErr) throw err;
-      :                       ^^^^^^^^^^
- 3604 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
-      ,-[.vite/deps/astro___axobject-query.js:3117:30]
- 3116 |       if (len == null || len > arr.length) len = arr.length;
- 3117 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
-      :                              ^^^^^^^^^^^^^^
- 3118 |         arr2[i] = arr[i];
-      `----
-  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
-      ,-[.vite/deps/astro___axobject-query.js:3279:30]
- 3278 |       if (len == null || len > arr.length) len = arr.length;
- 3279 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
-      :                              ^^^^^^^^^^^^^^
- 3280 |         arr2[i] = arr[i];
-      `----
-  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
-      ,-[.vite/deps/astro___axobject-query.js:3448:30]
- 3447 |       if (len == null || len > arr.length) len = arr.length;
- 3448 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
-      :                              ^^^^^^^^^^^^^^
- 3449 |         arr2[i] = arr[i];
-      `----
-  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
-      ,-[.vite/deps/astro___axobject-query.js:3617:30]
- 3616 |       if (len == null || len > arr.length) len = arr.length;
- 3617 |       for (var i = 0, arr2 = new Array(len); i < len; i++) {
-      :                              ^^^^^^^^^^^^^^
- 3618 |         arr2[i] = arr[i];
-      `----
-  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint(no-control-regex): Unexpected control character
-    ,-[.vite/deps/astro___cssesc.js:55:22]
- 54 |             }
- 55 |           } else if (/[\t\n\f\r\x0B]/.test(character)) {
-    :                      ^^^^^^^^^^^^^^^^
- 56 |             value = "\\" + codePoint.toString(16).toUpperCase() + " ";
-    `----
-  help: '\x0B' is a control character.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '.'
-    ,-[.vite/deps/astro___cssesc.js:20:37]
- 19 |     };
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-    :                                     ^^
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    `----
-  help: Replace `\.` with `.`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '/'
-    ,-[.vite/deps/astro___cssesc.js:20:39]
- 19 |     };
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-    :                                       ^^
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    `----
-  help: Replace `\/` with `/`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '['
-    ,-[.vite/deps/astro___cssesc.js:20:44]
- 19 |     };
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-    :                                            ^^
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    `----
-  help: Replace `\[` with `[`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '^'
-    ,-[.vite/deps/astro___cssesc.js:20:47]
- 19 |     };
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-    :                                               ^^
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    `----
-  help: Replace `\^` with `^`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '{'
-    ,-[.vite/deps/astro___cssesc.js:20:50]
- 19 |     };
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-    :                                                  ^^
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    `----
-  help: Replace `\{` with `{`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '.'
-    ,-[.vite/deps/astro___cssesc.js:21:34]
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    :                                  ^^
- 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-    `----
-  help: Replace `\.` with `.`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '/'
-    ,-[.vite/deps/astro___cssesc.js:21:36]
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    :                                    ^^
- 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-    `----
-  help: Replace `\/` with `/`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '['
-    ,-[.vite/deps/astro___cssesc.js:21:41]
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    :                                         ^^
- 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-    `----
-  help: Replace `\[` with `[`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '^'
-    ,-[.vite/deps/astro___cssesc.js:21:45]
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    :                                             ^^
- 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-    `----
-  help: Replace `\^` with `^`.
-
-  ! eslint(no-useless-escape): Unnecessary escape character '{'
-    ,-[.vite/deps/astro___cssesc.js:21:48]
- 20 |     var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
- 21 |     var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-    :                                                ^^
- 22 |     var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-    `----
-  help: Replace `\{` with `{`.
-
-  ! eslint(no-unused-vars): Parameter 'get' is declared but never used. Unused parameters should start with a '_'.
-    ,-[src/lib/stores/journal-research/notificationStore.ts:44:11]
- 43 |   persist(
- 44 |     (set, get) => ({
-    :           ^|^
-    :            `-- 'get' is declared here
- 45 |       notifications: [],
-    `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/lib/polyfills/node-net.js:30:1]
- 29 |     }
- 30 | ,-> !(function () {
- 31 | |     try {
- 32 | |       var e =
- 33 | |           'undefined' != typeof window
- 34 | |             ? window
- 35 | |             : 'undefined' != typeof global
- 36 | |               ? global
- 37 | |               : 'undefined' != typeof globalThis
- 38 | |                 ? globalThis
- 39 | |                 : 'undefined' != typeof self
- 40 | |                   ? self
- 41 | |                   : {},
- 42 | |         n = new e.Error().stack
- 43 | |       n &&
- 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 45 | |         (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
- 46 | |     } catch (e) {}
- 47 | `-> })()
- 48 |     //# debugId=9efc4c05-f9eb-5fc8-b1d6-84263e6e1224
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/lib/polyfills/node-net.js:43:5]
- 42 |           n = new e.Error().stack
- 43 | ,->     n &&
- 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 45 | `->       (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
- 46 |       } catch (e) {}
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-    ,-[src/lib/polyfills/node-net.js:46:12]
- 45 |       (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
- 46 |   } catch (e) {}
-    :            |
-    :            `-- 'e' is declared here
- 47 | })()
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/lib/polyfills/node-tls.js:30:1]
- 29 |     }
- 30 | ,-> !(function () {
- 31 | |     try {
- 32 | |       var e =
- 33 | |           'undefined' != typeof window
- 34 | |             ? window
- 35 | |             : 'undefined' != typeof global
- 36 | |               ? global
- 37 | |               : 'undefined' != typeof globalThis
- 38 | |                 ? globalThis
- 39 | |                 : 'undefined' != typeof self
- 40 | |                   ? self
- 41 | |                   : {},
- 42 | |         n = new e.Error().stack
- 43 | |       n &&
- 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 45 | |         (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
- 46 | |     } catch (e) {}
- 47 | `-> })()
- 48 |     //# debugId=e1d9bda2-7732-5efa-9aba-1335e2d51c4c
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/lib/polyfills/node-tls.js:43:5]
- 42 |           n = new e.Error().stack
- 43 | ,->     n &&
- 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 45 | `->       (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
- 46 |       } catch (e) {}
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-    ,-[src/lib/polyfills/node-tls.js:46:12]
- 45 |       (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
- 46 |   } catch (e) {}
-    :            |
-    :            `-- 'e' is declared here
- 47 | })()
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'buildKey' is declared but never used. Unused variables should start with a '_'.
-     ,-[src/lib/api/journal-research/react-query.tsx:99:7]
-  98 | 
-  99 | const buildKey =
-     :       ^^^^|^^^
-     :           `-- 'buildKey' is declared here
- 100 |   (...parts: unknown[]): QueryKeyFactory =>
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-func-assign): '_typeof' is a function.
-    ,-[.vite/deps/astro___aria-query.js:55:14]
- 54 |       "@babel/helpers - typeof";
- 55 |       return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    :              ^^^|^^^
-    :                 `-- _typeof is re-assigned here
- 56 |         return typeof o2;
-    `----
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-     ,-[.vite/deps/astro___aria-query.js:115:78]
- 114 |           try {
- 115 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
-     :                                                                              ^^^^^^^
- 116 |           } finally {
-     `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-     ,-[.vite/deps/astro___aria-query.js:117:20]
- 116 |           } finally {
- 117 |             if (o) throw n;
-     :                    ^^^^^^^^
- 118 |           }
-     `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-     ,-[.vite/deps/astro___aria-query.js:322:78]
- 321 |           try {
- 322 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
-     :                                                                              ^^^^^^^
- 323 |           } finally {
-     `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-     ,-[.vite/deps/astro___aria-query.js:324:20]
- 323 |           } finally {
- 324 |             if (o) throw n;
-     :                    ^^^^^^^^
- 325 |           }
-     `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6301:18]
- 6300 |         } finally {
- 6301 |           if (u) throw o;
-      :                  ^^^^^^^^
- 6302 |         }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6336:78]
- 6335 |           try {
- 6336 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
-      :                                                                              ^^^^^^^
- 6337 |           } finally {
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6338:20]
- 6337 |           } finally {
- 6338 |             if (o) throw n;
-      :                    ^^^^^^^^
- 6339 |           }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6478:78]
- 6477 |           try {
- 6478 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
-      :                                                                              ^^^^^^^
- 6479 |           } finally {
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6480:20]
- 6479 |           } finally {
- 6480 |             if (o) throw n;
-      :                    ^^^^^^^^
- 6481 |           }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6675:78]
- 6674 |           try {
- 6675 |             if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
-      :                                                                              ^^^^^^^
- 6676 |           } finally {
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unsafe-finally): Unsafe `finally` block.
-      ,-[.vite/deps/astro___aria-query.js:6677:20]
- 6676 |           } finally {
- 6677 |             if (o) throw n;
-      :                    ^^^^^^^^
- 6678 |           }
-      `----
-  help: Control flow inside `try` or `catch` blocks will be overwritten by this statement.
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[.vite/deps/astro___aria-query.js:98:7]
- 97 |     function _arrayLikeToArray(r, a) {
- 98 |       (null == a || a > r.length) && (a = r.length);
-    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 99 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[.vite/deps/astro___aria-query.js:112:11]
- 111 |         } catch (r2) {
- 112 |           o = true, n = r2;
-     :           ^^^^^^^^^^^^^^^^^
- 113 |         } finally {
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[.vite/deps/astro___aria-query.js:305:7]
- 304 |     function _arrayLikeToArray(r, a) {
- 305 |       (null == a || a > r.length) && (a = r.length);
-     :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 306 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-     ,-[.vite/deps/astro___aria-query.js:319:11]
- 318 |         } catch (r2) {
- 319 |           o = true, n = r2;
-     :           ^^^^^^^^^^^^^^^^^
- 320 |         } finally {
-     `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6278:11]
- 6277 |         if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
- 6278 |           t && (r = t);
-      :           ^^^^^^^^^^^^^
- 6279 |           var _n = 0, F = function F2() {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6296:9]
- 6295 |       }, e: function e2(r2) {
- 6296 |         u = true, o = r2;
-      :         ^^^^^^^^^^^^^^^^^
- 6297 |       }, f: function f() {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6299:11]
- 6298 |         try {
- 6299 |           a || null == t.return || t.return();
-      :           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 6300 |         } finally {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6319:7]
- 6318 |     function _arrayLikeToArray(r, a) {
- 6319 |       (null == a || a > r.length) && (a = r.length);
-      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 6320 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6333:11]
- 6332 |         } catch (r2) {
- 6333 |           o = true, n = r2;
-      :           ^^^^^^^^^^^^^^^^^
- 6334 |         } finally {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6461:7]
- 6460 |     function _arrayLikeToArray(r, a) {
- 6461 |       (null == a || a > r.length) && (a = r.length);
-      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 6462 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6475:11]
- 6474 |         } catch (r2) {
- 6475 |           o = true, n = r2;
-      :           ^^^^^^^^^^^^^^^^^
- 6476 |         } finally {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6658:7]
- 6657 |     function _arrayLikeToArray(r, a) {
- 6658 |       (null == a || a > r.length) && (a = r.length);
-      :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 6659 |       for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-      ,-[.vite/deps/astro___aria-query.js:6672:11]
- 6671 |         } catch (r2) {
- 6672 |           o = true, n = r2;
-      :           ^^^^^^^^^^^^^^^^^
- 6673 |         } finally {
-      `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Variable 'aria' is declared but never used. Unused variables should start with a '_'.
-      ,-[.vite/deps/astro___aria-query.js:6768:9]
- 6767 |     }
- 6768 |     var aria = exports.aria = _ariaPropsMap.default;
-      :         ^^|^
-      :           `-- 'aria' is declared here
- 6769 |     var dom = exports.dom = _domMap.default;
-      `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'dom' is declared but never used. Unused variables should start with a '_'.
-      ,-[.vite/deps/astro___aria-query.js:6769:9]
- 6768 |     var aria = exports.aria = _ariaPropsMap.default;
- 6769 |     var dom = exports.dom = _domMap.default;
-      :         ^|^
-      :          `-- 'dom' is declared here
- 6770 |     var roles = exports.roles = _rolesMap.default;
-      `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'roles' is declared but never used. Unused variables should start with a '_'.
-      ,-[.vite/deps/astro___aria-query.js:6770:9]
- 6769 |     var dom = exports.dom = _domMap.default;
- 6770 |     var roles = exports.roles = _rolesMap.default;
-      :         ^^|^^
-      :           `-- 'roles' is declared here
- 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
-      `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'elementRoles' is declared but never used. Unused variables should start with a '_'.
-      ,-[.vite/deps/astro___aria-query.js:6771:9]
- 6770 |     var roles = exports.roles = _rolesMap.default;
- 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
-      :         ^^^^^^|^^^^^
-      :               `-- 'elementRoles' is declared here
- 6772 |     var roleElements = exports.roleElements = _roleElementMap.default;
-      `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'roleElements' is declared but never used. Unused variables should start with a '_'.
-      ,-[.vite/deps/astro___aria-query.js:6772:9]
- 6771 |     var elementRoles = exports.elementRoles = _elementRoleMap.default;
- 6772 |     var roleElements = exports.roleElements = _roleElementMap.default;
-      :         ^^^^^^|^^^^^
-      :               `-- 'roleElements' is declared here
- 6773 |   }
-      `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-constant-condition): Unexpected constant condition
-    ,-[.vite/deps/react_jsx-runtime.js:38:9]
- 37 |   "node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-runtime.js"(exports, module) {
- 38 |     if (true) {
-    :         ^^^^
- 39 |       module.exports = require_react_jsx_runtime_production();
-    `----
-  help: Constant expression as a test condition is not allowed
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[.vite/deps/react_jsx-runtime.js:13:7]
- 12 |       var key = null;
- 13 |       void 0 !== maybeKey && (key = "" + maybeKey);
-    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 14 |       void 0 !== config.key && (key = "" + config.key);
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[.vite/deps/react_jsx-runtime.js:14:7]
- 13 |       void 0 !== maybeKey && (key = "" + maybeKey);
- 14 |       void 0 !== config.key && (key = "" + config.key);
-    :       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 15 |       if ("key" in config) {
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[.vite/deps/react_jsx-runtime.js:18:11]
- 17 |         for (var propName in config)
- 18 |           "key" !== propName && (maybeKey[propName] = config[propName]);
-    :           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 19 |       } else maybeKey = config;
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/integrations/react/utils.js:58:1]
- 57 |     }
- 58 | ,-> !(function () {
- 59 | |     try {
- 60 | |       var e =
- 61 | |           'undefined' != typeof window
- 62 | |             ? window
- 63 | |             : 'undefined' != typeof global
- 64 | |               ? global
- 65 | |               : 'undefined' != typeof globalThis
- 66 | |                 ? globalThis
- 67 | |                 : 'undefined' != typeof self
- 68 | |                   ? self
- 69 | |                   : {},
- 70 | |         n = new e.Error().stack
- 71 | |       n &&
- 72 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 73 | |         (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
- 74 | |     } catch (e) {}
- 75 | `-> })()
- 76 |     //# debugId=44a74ecd-27a6-5286-b0ba-e74237a5e4e4
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-expressions): Expected expression to be used
-    ,-[src/integrations/react/utils.js:71:5]
- 70 |           n = new e.Error().stack
- 71 | ,->     n &&
- 72 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
- 73 | `->       (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
- 74 |       } catch (e) {}
-    `----
-  help: Consider using this expression or removing it
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-    ,-[src/integrations/react/utils.js:74:12]
- 73 |       (e._sentryDebugIds[n] = '44a74ecd-27a6-5286-b0ba-e74237a5e4e4'))
- 74 |   } catch (e) {}
-    :            |
-    :            `-- 'e' is declared here
- 75 | })()
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'name' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/performance/k6-websocket-streaming-load.js:246:17]
- 245 |     const thresholds = data.metrics
- 246 |     for (const [name, metric] of Object.entries(thresholds)) {
-     :                 ^^|^
-     :                   `-- 'name' is declared here
- 247 |         if (metric.thresholds) {
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
-     ,-[tests/performance/k6-rest-inference-load.js:199:26]
- 198 | // Teardown function
- 199 | export function teardown(data) {
-     :                          ^^|^
-     :                            `-- 'data' is declared here
- 200 |     console.log('Load test completed')
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Variable 'colors' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/performance/k6-rest-inference-load.js:214:11]
- 213 |     const indent = options.indent || ''
- 214 |     const colors = options.enableColors
-     :           ^^^|^^
-     :              `-- 'colors' is declared here
- 215 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'name' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/performance/k6-rest-inference-load.js:273:17]
- 272 |     const thresholds = data.metrics
- 273 |     for (const [name, metric] of Object.entries(thresholds)) {
-     :                 ^^|^
-     :                   `-- 'name' is declared here
- 274 |         if (metric.thresholds) {
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'rendered' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/components/PixelMultimodalChat-unit.test.ts:153:19]
- 152 |         it('should render waveform visualization', () => {
- 153 |             const rendered = component.render()
-     :                   ^^^^|^^^
-     :                       `-- 'rendered' is declared here
- 154 |             const waveform = { className: 'w-full h-16 bg-muted rounded' }
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'rendered' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/components/PixelMultimodalChat-unit.test.ts:160:19]
- 159 |         it('should render emotion indicators', () => {
- 160 |             const rendered = component.render()
-     :                   ^^^^|^^^
-     :                       `-- 'rendered' is declared here
- 161 |             const emotionDisplay = {
-     `----
   help: Consider removing this declaration.
 
   ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
-   ,-[src/components/dashboard/__tests__/simple-accessibility.test.ts:1:1]
- 1 | // This file was replaced with a minimal .tsx test; keep as placeholder to avoid accidental execution of old malformed content.
-   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ,-[src/components/chat/TherapyChatWithMemory.tsx:1:1]
    `----
   help: Delete this file or add some code to it.
 
-  ! eslint(no-unused-vars): Identifier 'fireEvent' is imported but never used.
-    ,-[tests/components/PixelMultimodalChat.test.tsx:14:26]
- 13 | import { describe, it, expect, beforeEach, vi } from 'vitest'
- 14 | import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
-    :                          ^^^^|^^^^
-    :                              `-- 'fireEvent' is imported here
- 15 | import userEvent from '@testing-library/user-event'
-    `----
-  help: Consider removing this import.
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[src/scripts/preload-auth.js:200:1]
+ 199 |     }
+ 200 | ,-> !(function () {
+ 201 | |     try {
+ 202 | |       var e =
+ 203 | |           'undefined' != typeof window
+ 204 | |             ? window
+ 205 | |             : 'undefined' != typeof global
+ 206 | |               ? global
+ 207 | |               : 'undefined' != typeof globalThis
+ 208 | |                 ? globalThis
+ 209 | |                 : 'undefined' != typeof self
+ 210 | |                   ? self
+ 211 | |                   : {},
+ 212 | |         n = new e.Error().stack
+ 213 | |       n &&
+ 214 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 215 | |         (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
+ 216 | |     } catch (e) {}
+ 217 | `-> })()
+ 218 |     //# debugId=2cc628ec-2a7b-516a-8129-de92553dbdb7
+     `----
+  help: Consider using this expression or removing it
 
-  ! eslint(no-unused-vars): Identifier 'within' is imported but never used.
-    ,-[tests/components/PixelMultimodalChat.test.tsx:14:46]
- 13 | import { describe, it, expect, beforeEach, vi } from 'vitest'
- 14 | import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
-    :                                              ^^^|^^
-    :                                                 `-- 'within' is imported here
- 15 | import userEvent from '@testing-library/user-event'
-    `----
-  help: Consider removing this import.
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[src/scripts/preload-auth.js:213:5]
+ 212 |           n = new e.Error().stack
+ 213 | ,->     n &&
+ 214 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 215 | `->       (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
+ 216 |       } catch (e) {}
+     `----
+  help: Consider using this expression or removing it
 
-  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
-     ,-[src/components/security/FHEDemo.tsx:138:14]
- 137 |       }
- 138 |     } catch (_err) {
-     :              ^^|^
-     :                `-- '_err' is declared here
- 139 |       setOperations((prev) =>
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[src/scripts/preload-auth.js:216:12]
+ 215 |       (e._sentryDebugIds[n] = '2cc628ec-2a7b-516a-8129-de92553dbdb7'))
+ 216 |   } catch (e) {}
+     :            |
+     :            `-- 'e' is declared here
+ 217 | })()
      `----
   help: Consider handling this error.
 
-  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
-     ,-[tests/cross-browser/browser-compatibility.spec.ts:206:20]
- 205 |             return Object.is(retrieved, 'value')
- 206 |           } catch (_err) {
-     :                    ^^|^
-     :                      `-- '_err' is declared here
- 207 |             return false
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
-     ,-[tests/cross-browser/browser-compatibility.spec.ts:225:24]
- 224 |                 return true
- 225 |               } catch (_err) {
-     :                        ^^|^
-     :                          `-- '_err' is declared here
- 226 |                 return false
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[ai/docs/api/clients/javascript_client.js:115:26]
+ 114 |                     data = JSON.parse(response.body);
+ 115 |                 } catch (e) {
+     :                          |
+     :                          `-- 'e' is declared here
+ 116 |                     data = { success: false, message: 'Invalid JSON response' };
      `----
   help: Consider handling this error.
 
   ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[tests/api/utils/APITestUtils.ts:189:14]
- 188 |       })
- 189 |     } catch (error: unknown) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 190 |       // User might already exist, try to login
+     ,-[ai/docs/api/clients/javascript_client.js:444:18]
+ 443 |             return response.success;
+ 444 |         } catch (error) {
+     :                  ^^|^^
+     :                    `-- 'error' is declared here
+ 445 |             return false;
      `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Variable 'result' is declared but never used. Unused variables should start with a '_'.
-    ,-[tests/api/pixel/infer-multimodal-unit.test.ts:82:19]
- 81 | 
- 82 |             const result = await mockApplyRateLimit('student123', 'pixel-infer-multimodal', studentLimit)
-    :                   ^^^|^^
-    :                      `-- 'result' is declared here
- 83 |             expect(mockApplyRateLimit).toHaveBeenCalledWith('student123', 'pixel-infer-multimodal', studentLimit)
-    `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'result' is declared but never used. Unused variables should start with a '_'.
-    ,-[tests/api/pixel/infer-multimodal-unit.test.ts:91:19]
- 90 | 
- 91 |             const result = await mockApplyRateLimit('therapist123', 'pixel-infer-multimodal', therapistLimit)
-    :                   ^^^|^^
-    :                      `-- 'result' is declared here
- 92 |             expect(mockApplyRateLimit).toHaveBeenCalledWith('therapist123', 'pixel-infer-multimodal', therapistLimit)
-    `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unassigned-vars): 'wss' is always 'undefined' because it's never assigned.
-    ,-[tests/api/websocket/pixel-multimodal.test.ts:29:9]
- 28 | describe('WebSocket /api/websocket/pixel-multimodal', () => {
- 29 |     let wss: WebSocketServer
-    :         ^^^
- 30 |     let wsPort = 8091
-    `----
-  help: Variable declared without assignment. Either assign a value or remove the declaration.
-
-  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
-     ,-[tests/api/websocket/pixel-multimodal.test.ts:236:31]
- 235 |             let messageCount = 0
- 236 |             ws.on('message', (data) => {
-     :                               ^^|^
-     :                                 `-- 'data' is declared here
- 237 |                 messageCount++
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-    ,-[scripts/utils/create-auth0-jira-issues.js:53:18]
- 52 |           }
- 53 |         } catch (e) {
-    :                  |
-    :                  `-- 'e' is declared here
- 54 |           if (res.statusCode >= 200 && res.statusCode < 300) {
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-    ,-[scripts/utils/create-auth0-enhanced-jira-issues.js:53:18]
- 52 |           }
- 53 |         } catch (e) {
-    :                  |
-    :                  `-- 'e' is declared here
- 54 |           if (res.statusCode >= 200 && res.statusCode < 300) {
-    `----
   help: Consider handling this error.
 
   ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
@@ -9383,51 +8897,6 @@
  463 |     console.log(`Please open your browser to: ${url}`)
      `----
   help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Parameter 'scenario' is declared but never used. Unused parameters should start with a '_'.
-     ,-[scripts/testing/run-performance-benchmarks.cjs:213:25]
- 212 | 
- 213 |   async makeTestRequest(scenario) {
-     :                         ^^^^|^^^
-     :                             `-- 'scenario' is declared here
- 214 |     const startTime = performance.now()
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[scripts/testing/run-performance-benchmarks.cjs:237:14]
- 236 | 
- 237 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 238 |       const endTime = performance.now()
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Function 'createMockAPIRoute' is declared but never used.
-    ,-[scripts/testing/test-health-endpoints.js:9:10]
-  8 | // Mock the Astro APIRoute behavior
-  9 | function createMockAPIRoute(handler) {
-    :          ^^^^^^^^^|^^^^^^^^
-    :                   `-- 'createMockAPIRoute' is declared here
- 10 |   return async () => {
-    `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
-     ,-[src/components/TrainingSession.tsx:103:14]
- 102 |       }
- 103 |     } catch (err) {
-     :              ^|^
-     :               `-- 'err' is declared here
- 104 |       setClientResponse('Error getting response')
-     `----
-  help: Consider handling this error.
-
-  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
-   ,-[src/lib/utils/code-splitting.ts:1:1]
-   `----
-  help: Delete this file or add some code to it.
 
   ! eslint(no-unused-expressions): Expected expression to be used
     ,-[src/hello.js:4:1]
@@ -9474,47 +8943,634 @@
     `----
   help: Consider handling this error.
 
-  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
-   ,-[src/client-entry.js:1:1]
- 1 | ,-> /**
- 2 | |    * Client entry point
- 3 | |    * This file loads polyfills before all other client-side code
- 4 | |    */
- 5 | |   
- 6 | `-> // No Node.js built-in polyfills should be present in Astro client-side code.
- 7 |     // If you need browser API polyfills, add them here explicitly.
-   `----
-  help: Delete this file or add some code to it.
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[tests/browser/theme-performance.spec.ts:363:20]
+ 362 |             })
+ 363 |           } catch (e) {
+     :                    |
+     :                    `-- 'e' is declared here
+ 364 |             // Cross-origin stylesheets might not be accessible
+     `----
+  help: Consider handling this error.
 
-  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
-   ,-[src/components/layout/Navigation.tsx:5:10]
- 4 | import { authClient } from '@/lib/auth-client'
- 5 | import { useStore } from 'nanostores'
-   :          ^^^^|^^^
-   :              `-- 'useStore' is imported here
- 6 | import { cn } from '@/lib/utils'
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[scripts/utils/create-auth0-jira-issues.js:53:18]
+ 52 |           }
+ 53 |         } catch (e) {
+    :                  |
+    :                  `-- 'e' is declared here
+ 54 |           if (res.statusCode >= 200 && res.statusCode < 300) {
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[scripts/utils/create-auth0-enhanced-jira-issues.js:53:18]
+ 52 |           }
+ 53 |         } catch (e) {
+    :                  |
+    :                  `-- 'e' is declared here
+ 54 |           if (res.statusCode >= 200 && res.statusCode < 300) {
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'userId' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/api/routes/users.ts:146:13]
+ 145 | router.post('/:userId/permissions', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
+ 146 |     const { userId } = req.params
+     :             ^^^|^^
+     :                `-- 'userId' is declared here
+ 147 |     const { permission } = req.body
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'userId' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/api/routes/users.ts:167:13]
+ 166 | router.delete('/:userId/permissions/:permissionId', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
+ 167 |     const { userId, permissionId } = req.params
+     :             ^^^|^^
+     :                `-- 'userId' is declared here
+ 168 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'permissionId' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/api/routes/users.ts:167:21]
+ 166 | router.delete('/:userId/permissions/:permissionId', requireRole(['admin']), asyncHandler(async (req: Request, res: Response) => {
+ 167 |     const { userId, permissionId } = req.params
+     :                     ^^^^^^|^^^^^
+     :                           `-- 'permissionId' is declared here
+ 168 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
+    ,-[tests/browser/browser-compatibility.spec.ts:48:14]
+ 47 |       fs.mkdirSync('./test-results/browser-compat', { recursive: true })
+ 48 |     } catch (_e) {
+    :              ^|
+    :               `-- '_e' is declared here
+ 49 |       // Directory might already exist
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Function 'createMockAPIRoute' is declared but never used.
+    ,-[scripts/testing/test-health-endpoints.js:9:10]
+  8 | // Mock the Astro APIRoute behavior
+  9 | function createMockAPIRoute(handler) {
+    :          ^^^^^^^^^|^^^^^^^^
+    :                   `-- 'createMockAPIRoute' is declared here
+ 10 |   return async () => {
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'Request' is imported but never used.
+   ,-[src/api/server.ts:4:28]
+ 3 |
+ 4 | import express, { Express, Request, Response, NextFunction } from 'express'
+   :                            ^^^|^^^
+   :                               `-- 'Request' is imported here
+ 5 | import cors from 'cors'
    `----
   help: Consider removing this import.
 
-  ! eslint(no-unused-vars): Variable 'loading' is declared but never used. Unused variables should start with a '_'.
-    ,-[src/components/layout/Navigation.tsx:47:34]
- 46 | }: NavigationProps) {
- 47 |   const { data: user, isPending: loading } = authClient.useSession()
-    :                                  ^^^|^^^
-    :                                     `-- 'loading' is declared here
- 48 |   const isAuthenticated = !!user?.user
+  ! eslint(no-unused-vars): Identifier 'Response' is imported but never used.
+   ,-[src/api/server.ts:4:37]
+ 3 |
+ 4 | import express, { Express, Request, Response, NextFunction } from 'express'
+   :                                     ^^^^|^^^
+   :                                         `-- 'Response' is imported here
+ 5 | import cors from 'cors'
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'NextFunction' is imported but never used.
+   ,-[src/api/server.ts:4:47]
+ 3 |
+ 4 | import express, { Express, Request, Response, NextFunction } from 'express'
+   :                                               ^^^^^^|^^^^^
+   :                                                     `-- 'NextFunction' is imported here
+ 5 | import cors from 'cors'
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Parameter 'scenario' is declared but never used. Unused parameters should start with a '_'.
+     ,-[scripts/testing/run-performance-benchmarks.cjs:213:25]
+ 212 |
+ 213 |   async makeTestRequest(scenario) {
+     :                         ^^^^|^^^
+     :                             `-- 'scenario' is declared here
+ 214 |     const startTime = performance.now()
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[scripts/testing/run-performance-benchmarks.cjs:237:14]
+ 236 |
+ 237 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 238 |       const endTime = performance.now()
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+    ,-[tests/memory-optimization.test.ts:82:16]
+ 81 |         expect(isExecutable).toBe(true)
+ 82 |       } catch (_error) {
+    :                ^^^|^^
+    :                   `-- '_error' is declared here
+ 83 |         // If stat fails, at least verify file exists
     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
+     ,-[tests/cross-browser/browser-compatibility.spec.ts:206:20]
+ 205 |             return Object.is(retrieved, 'value')
+ 206 |           } catch (_err) {
+     :                    ^^|^
+     :                      `-- '_err' is declared here
+ 207 |             return false
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
+     ,-[tests/cross-browser/browser-compatibility.spec.ts:225:24]
+ 224 |                 return true
+ 225 |               } catch (_err) {
+     :                        ^^|^
+     :                          `-- '_err' is declared here
+ 226 |                 return false
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
+     ,-[tests/performance/k6-rest-inference-load.js:199:26]
+ 198 | // Teardown function
+ 199 | export function teardown(data) {
+     :                          ^^|^
+     :                            `-- 'data' is declared here
+ 200 |     console.log('Load test completed')
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'colors' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/performance/k6-rest-inference-load.js:214:11]
+ 213 |     const indent = options.indent || ''
+ 214 |     const colors = options.enableColors
+     :           ^^^|^^
+     :              `-- 'colors' is declared here
+ 215 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'name' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/performance/k6-rest-inference-load.js:273:17]
+ 272 |     const thresholds = data.metrics
+ 273 |     for (const [name, metric] of Object.entries(thresholds)) {
+     :                 ^^|^
+     :                   `-- 'name' is declared here
+ 274 |         if (metric.thresholds) {
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'name' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/performance/k6-websocket-streaming-load.js:246:17]
+ 245 |     const thresholds = data.metrics
+ 246 |     for (const [name, metric] of Object.entries(thresholds)) {
+     :                 ^^|^
+     :                   `-- 'name' is declared here
+ 247 |         if (metric.thresholds) {
+     `----
   help: Consider removing this declaration.
 
   ! eslint(no-unused-vars): Identifier 'vi' is imported but never used.
     ,-[tests/bias-detection/accuracy-unit.test.ts:11:44]
- 10 | 
+ 10 |
  11 | import { describe, it, expect, beforeEach, vi } from 'vitest'
     :                                            ^|
     :                                             `-- 'vi' is imported here
  12 | import {
     `----
   help: Consider removing this import.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+     ,-[tests/regression/regression-suite.spec.ts:332:21]
+ 331 |       for (let i = 0; i < 100; i++) {
+ 332 |         arrays.push(new Array(10000).fill('memory-pressure-test'))
+     :                     ^^^^^^^^^^^^^^^^
+ 333 |       }
+     `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[tests/regression/utils/RegressionUtils.ts:193:14]
+ 192 |       results.xssProtection = !xssExecuted
+ 193 |     } catch (error: unknown) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 194 |       results.xssProtection = true // Error means XSS was blocked
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[tests/regression/utils/RegressionUtils.ts:209:14]
+ 208 |       results.inputSanitization = !messageContent?.includes('<img')
+ 209 |     } catch (error: unknown) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 210 |       results.inputSanitization = true
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
+    ,-[src/hooks/usePipelineWebSocket.ts:78:22]
+ 77 |               ws.send(JSON.stringify(message))
+ 78 |             } catch (_e) {
+    :                      ^|
+    :                       `-- '_e' is declared here
+ 79 |               // If send fails, push back and break to avoid busy loop
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'metrics' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/hooks/usePixelConversationIntegration.ts:224:19]
+ 223 |         if (integration) {
+ 224 |             const metrics = integration.getEQMetricsTrend()
+     :                   ^^^|^^^
+     :                      `-- 'metrics' is declared here
+ 225 |             // State would be updated via the hook's internal mechanism
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'integration' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/hooks/usePixelConversationIntegration.ts:251:27]
+ 250 | } {
+ 251 |     const { crisisStatus, integration } = usePixelConversationIntegration({
+     :                           ^^^^^|^^^^^
+     :                                `-- 'integration' is declared here
+ 252 |         sessionId,
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unassigned-vars): 'wss' is always 'undefined' because it's never assigned.
+    ,-[tests/api/websocket/pixel-multimodal.test.ts:29:9]
+ 28 | describe('WebSocket /api/websocket/pixel-multimodal', () => {
+ 29 |     let wss: WebSocketServer
+    :         ^^^
+ 30 |     let wsPort = 8091
+    `----
+  help: Variable declared without assignment. Either assign a value or remove the declaration.
+
+  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
+     ,-[tests/api/websocket/pixel-multimodal.test.ts:236:31]
+ 235 |             let messageCount = 0
+ 236 |             ws.on('message', (data) => {
+     :                               ^^|^
+     :                                 `-- 'data' is declared here
+ 237 |                 messageCount++
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'result' is declared but never used. Unused variables should start with a '_'.
+    ,-[tests/api/pixel/infer-multimodal-unit.test.ts:82:19]
+ 81 |
+ 82 |             const result = await mockApplyRateLimit('student123', 'pixel-infer-multimodal', studentLimit)
+    :                   ^^^|^^
+    :                      `-- 'result' is declared here
+ 83 |             expect(mockApplyRateLimit).toHaveBeenCalledWith('student123', 'pixel-infer-multimodal', studentLimit)
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'result' is declared but never used. Unused variables should start with a '_'.
+    ,-[tests/api/pixel/infer-multimodal-unit.test.ts:91:19]
+ 90 |
+ 91 |             const result = await mockApplyRateLimit('therapist123', 'pixel-infer-multimodal', therapistLimit)
+    :                   ^^^|^^
+    :                      `-- 'result' is declared here
+ 92 |             expect(mockApplyRateLimit).toHaveBeenCalledWith('therapist123', 'pixel-infer-multimodal', therapistLimit)
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
+     ,-[src/components/security/FHEDemo.tsx:138:14]
+ 137 |       }
+ 138 |     } catch (_err) {
+     :              ^^|^
+     :                `-- '_err' is declared here
+ 139 |       setOperations((prev) =>
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[tests/api/utils/APITestUtils.ts:189:14]
+ 188 |       })
+ 189 |     } catch (error: unknown) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 190 |       // User might already exist, try to login
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'fireEvent' is imported but never used.
+    ,-[tests/components/PixelMultimodalChat.test.tsx:14:26]
+ 13 | import { describe, it, expect, beforeEach, vi } from 'vitest'
+ 14 | import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
+    :                          ^^^^|^^^^
+    :                              `-- 'fireEvent' is imported here
+ 15 | import userEvent from '@testing-library/user-event'
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'within' is imported but never used.
+    ,-[tests/components/PixelMultimodalChat.test.tsx:14:46]
+ 13 | import { describe, it, expect, beforeEach, vi } from 'vitest'
+ 14 | import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
+    :                                              ^^^|^^
+    :                                                 `-- 'within' is imported here
+ 15 | import userEvent from '@testing-library/user-event'
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+     ,-[src/lib/rate-limiting/index.ts:140:12]
+ 139 |     return { status, details }
+ 140 |   } catch (_error) {
+     :            ^^^|^^
+     :               `-- '_error' is declared here
+ 141 |     return {
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'rendered' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/components/PixelMultimodalChat-unit.test.ts:153:19]
+ 152 |         it('should render waveform visualization', () => {
+ 153 |             const rendered = component.render()
+     :                   ^^^^|^^^
+     :                       `-- 'rendered' is declared here
+ 154 |             const waveform = { className: 'w-full h-16 bg-muted rounded' }
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'rendered' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/components/PixelMultimodalChat-unit.test.ts:160:19]
+ 159 |         it('should render emotion indicators', () => {
+ 160 |             const rendered = component.render()
+     :                   ^^^^|^^^
+     :                       `-- 'rendered' is declared here
+ 161 |             const emotionDisplay = {
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/hooks/useTherapistAnalytics.ts:33:18]
+ 32 |           fn(...args)
+ 33 |         } catch (error) {
+    :                  ^^|^^
+    :                    `-- 'error' is declared here
+ 34 |           /* swallow */
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/hooks/useTherapistAnalytics.ts:40:18]
+ 39 |           fn(...args)
+ 40 |         } catch (error) {
+    :                  ^^|^^
+    :                    `-- 'error' is declared here
+ 41 |           /* swallow */
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/hooks/useTherapistAnalytics.ts:47:18]
+ 46 |           fn(...args)
+ 47 |         } catch (error) {
+    :                  ^^|^^
+    :                    `-- 'error' is declared here
+ 48 |           /* swallow */
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+    ,-[src/hooks/useTherapistAnalytics.ts:54:18]
+ 53 |           fn(...args)
+ 54 |         } catch (error) {
+    :                  ^^|^^
+    :                    `-- 'error' is declared here
+ 55 |           /* swallow */
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Parameter 'change' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/hooks/useCollaboration.ts:164:42]
+ 163 |
+ 164 |   const applyRemoteChange = useCallback((change: DocumentChangeEvent) => {
+     :                                          ^^^|^^
+     :                                             `-- 'change' is declared here
+ 165 |     // This would be used for more complex change application
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Interface 'SocketAuth' is declared but never used.
+   ,-[src/services/websocketClient.ts:4:11]
+ 3 |
+ 4 | interface SocketAuth {
+   :           ^^^^^|^^^^
+   :                `-- 'SocketAuth' is declared here
+ 5 |   token: string
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'get' is declared but never used. Unused parameters should start with a '_'.
+    ,-[src/lib/stores/journal-research/notificationStore.ts:44:11]
+ 43 |   persist(
+ 44 |     (set, get) => ({
+    :           ^|^
+    :            `-- 'get' is declared here
+ 45 |       notifications: [],
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'buffer' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/DocumentVersioningService.ts:390:34]
+ 389 |
+ 390 |   private async generateChecksum(buffer: Buffer): Promise<string> {
+     :                                  ^^^|^^
+     :                                     `-- 'buffer' is declared here
+ 391 |     // In a real implementation, you'd use crypto.createHash('sha256')
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
+     ,-[src/lib/deployment/multi-region/ServiceDiscoveryManager.ts:325:14]
+ 324 |       }
+ 325 |     } catch (error) {
+     :              ^^|^^
+     :                `-- 'error' is declared here
+ 326 |       return false
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'opportunities' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:339:13]
+ 338 |       const competitors = await this.getCompetitorAnalysis(industry)
+ 339 |       const opportunities = await this.getMarketOpportunities(industry)
+     :             ^^^^^^|^^^^^^
+     :                   `-- 'opportunities' is declared here
+ 340 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:375:31]
+ 374 |
+ 375 |   private getDemoMarketTrends(industry: string): MarketData[] {
+     :                               ^^^^|^^^
+     :                                   `-- 'industry' is declared here
+ 376 |     const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'META']
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:380:37]
+ 379 |
+ 380 |   private getDemoCompetitorAnalysis(industry: string): CompetitorAnalysis[] {
+     :                                     ^^^^|^^^
+     :                                         `-- 'industry' is declared here
+ 381 |     return [
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:405:38]
+ 404 |
+ 405 |   private getDemoMarketOpportunities(industry: string): MarketOpportunity[] {
+     :                                      ^^^^|^^^
+     :                                          `-- 'industry' is declared here
+ 406 |     return [
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:526:5]
+ 525 |   private async fetchCompetitorsFromAPI(
+ 526 |     industry: string,
+     :     ^^^^|^^^
+     :         `-- 'industry' is declared here
+ 527 |   ): Promise<CompetitorAnalysis[]> {
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'industry' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/services/BusinessIntelligenceService.ts:534:5]
+ 533 |   private async analyzeMarketOpportunities(
+ 534 |     industry: string,
+     :     ^^^^|^^^
+     :         `-- 'industry' is declared here
+ 535 |   ): Promise<MarketOpportunity[]> {
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
+   ,-[src/client-entry.js:1:1]
+ 1 | ,-> /**
+ 2 | |    * Client entry point
+ 3 | |    * This file loads polyfills before all other client-side code
+ 4 | |    */
+ 5 | |
+ 6 | `-> // No Node.js built-in polyfills should be present in Astro client-side code.
+ 7 |     // If you need browser API polyfills, add them here explicitly.
+   `----
+  help: Delete this file or add some code to it.
+
+  ! eslint(no-unused-vars): Type 'Page' is imported but never used.
+    ,-[tests/e2e/pixel-multimodal-integration.spec.ts:15:29]
+ 14 |
+ 15 | import { test, expect, type Page } from '@playwright/test'
+    :                             ^^|^
+    :                               `-- 'Page' is imported here
+ 16 |
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'API_BASE_URL' is declared but never used. Unused variables should start with a '_'.
+    ,-[tests/e2e/pixel-multimodal-integration.spec.ts:18:7]
+ 17 | const CHAT_PAGE_URL = '/chat' // Adjust to your actual route
+ 18 | const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5173'
+    :       ^^^^^^|^^^^^
+    :             `-- 'API_BASE_URL' is declared here
+ 19 |
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'focusedElement' is declared but never used. Unused variables should start with a '_'.
+     ,-[tests/e2e/pixel-multimodal-integration.spec.ts:509:17]
+ 508 |             await page.keyboard.press('Tab')
+ 509 |             let focusedElement = await page.evaluate(() => document.activeElement?.getAttribute('data-testid'))
+     :                 ^^^^^^^|^^^^^^
+     :                        `-- 'focusedElement' is declared here
+ 510 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'page' is declared but never used. Unused parameters should start with a '_'.
+    ,-[tests/e2e/pixel-multimodal-flows.spec.ts:84:55]
+ 83 |
+ 84 |         test('record audio with permission', async ({ page }) => {
+    :                                                       ^^|^
+    :                                                         `-- 'page' is declared here
+ 85 |             await chatPage.grantMicrophonePermission()
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'buildKey' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/api/journal-research/react-query.tsx:99:7]
+  98 |
+  99 | const buildKey =
+     :       ^^^^|^^^
+     :           `-- 'buildKey' is declared here
+ 100 |   (...parts: unknown[]): QueryKeyFactory =>
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-control-regex): Unexpected control characters
+    ,-[src/utils/path-security.ts:93:34]
+ 92 |   // Using explicit character codes for control characters to avoid regex warnings
+ 93 |   const unsafeChars = new RegExp('[<>:"|?*\x00-\x1F]', 'g')
+    :                                  ^^^^^^^^^^^^^^^^^^^^
+ 94 |
+    `----
+  help: ' , ' are control characters.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[src/lib/ai/bias-detection/python-bridge.ts:271:22]
+ 270 |               controller.abort()
+ 271 |             } catch (e) {
+     :                      |
+     :                      `-- 'e' is declared here
+ 272 |               /* ignore */
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'ObjectiveId' is imported but never used.
+    ,-[src/lib/metaaligner/core/dynamic-weighting.ts:10:10]
+  9 | import { getContextMapperService } from '../config/context-mapper-service'
+ 10 | import { ObjectiveId } from '../config/mapping-config'
+    :          ^^^^^|^^^^^
+    :               `-- 'ObjectiveId' is imported here
+ 11 | import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Parameter 'response' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/lib/auth/auth0-webauthn-service.ts:439:52]
+ 438 |    */
+ 439 |   async validateCredentialResponse(userId: string, response: any): Promise<boolean> {
+     :                                                    ^^^^|^^^
+     :                                                        `-- 'response' is declared here
+ 440 |     try {
+     `----
+  help: Consider removing this parameter.
 
   ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
      ,-[src/lib/auth/auth0-social-auth-service.ts:232:14]
@@ -9525,6 +9581,150 @@
  233 |       return false
      `----
   help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'vi' is imported but never used.
+   ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:1:44]
+ 1 | import { describe, it, expect, beforeEach, vi } from 'vitest'
+   :                                            ^|
+   :                                             `-- 'vi' is imported here
+ 2 | import {
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'DEFAULT_DYNAMIC_WEIGHTING_CONFIG' is imported but never used.
+   ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:4:3]
+ 3 |   DynamicWeightingEngine,
+ 4 |   DEFAULT_DYNAMIC_WEIGHTING_CONFIG,
+   :   ^^^^^^^^^^^^^^^^|^^^^^^^^^^^^^^^
+   :                   `-- 'DEFAULT_DYNAMIC_WEIGHTING_CONFIG' is imported here
+ 5 |   getDynamicWeightingEngine,
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'result1' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:204:13]
+ 203 |
+ 204 |       const result1 = engine.calculateDynamicWeights(context1)
+     :             ^^^|^^^
+     :                `-- 'result1' is declared here
+ 205 |       const result2 = engine.calculateDynamicWeights(context2)
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'key' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/metaaligner/core/dynamic-weighting.test.ts:426:21]
+ 425 |
+ 426 |         for (const [key, weight] of Object.entries(result.weights)) {
+     :                     ^|^
+     :                      `-- 'key' is declared here
+ 427 |           expect(weight).toBeGreaterThanOrEqual(0)
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'ObjectiveId' is imported but never used.
+   ,-[src/lib/metaaligner/core/dynamic-weighting-benchmark.ts:8:10]
+ 7 | import { ContextType, type AlignmentContext } from './objectives'
+ 8 | import { ObjectiveId } from '../config/mapping-config'
+   :          ^^^^^|^^^^^
+   :               `-- 'ObjectiveId' is imported here
+ 9 |
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'jsonData' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/metaaligner/core/dynamic-weighting-benchmark.ts:463:13]
+ 462 |     .then((suite) => {
+ 463 |       const jsonData = exportVisualizationDataForGraphing(suite)
+     :             ^^^^|^^^
+     :                 `-- 'jsonData' is declared here
+ 464 |       console.log('\n📁 Visualization data available (JSON):')
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
+   ,-[src/lib/utils/code-splitting.ts:1:1]
+   `----
+  help: Delete this file or add some code to it.
+
+  ! eslint(no-unused-vars): Catch parameter '_err' is caught but never used.
+    ,-[src/lib/ai/bias-detection/job-queue.ts:95:14]
+ 94 |       // Job processing logic would go here
+ 95 |     } catch (_err: any) {
+    :              ^^|^
+    :                `-- '_err' is declared here
+ 96 |       console.error(`[JobQueue] Job failed`, {
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Parameter 'riskFactors' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/lib/ai/validation/clinical-validator.ts:322:5]
+ 321 |     level: 'low' | 'medium' | 'high' | 'critical',
+ 322 |     riskFactors: string[],
+     :     ^^^^^|^^^^^
+     :          `-- 'riskFactors' is declared here
+ 323 |   ): string[] {
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+    ,-[src/lib/server-only/mongodb-types.ts:49:12]
+ 48 |     return await import('mongodb')
+ 49 |   } catch (err) {
+    :            ^|^
+    :             `-- 'err' is declared here
+ 50 |     console.warn('MongoDB not available, using mock ObjectId')
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
+     ,-[src/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts:531:14]
+ 530 |       return { cert, key, ca }
+ 531 |     } catch (_e) {
+     :              ^|
+     :               `-- '_e' is declared here
+ 532 |       logger.warn('Invalid certificate credentials provided')
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
+      ,-[src/lib/security/threat-intelligence/ExternalThreatFeedIntegration.ts:1976:14]
+ 1975 |       }
+ 1976 |     } catch (_error) {
+      :              ^^^|^^
+      :                 `-- '_error' is declared here
+ 1977 |       return false
+      `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+     ,-[src/lib/ai/mental-llama/routing/MentalHealthTaskRouter.ts:286:14]
+ 285 |       }
+ 286 |     } catch (err) {
+     :              ^|^
+     :               `-- 'err' is declared here
+ 287 |       // Parsing failed - return a conservative fallback decision
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'delta' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/ai/privacyEngine.ts:162:22]
+ 161 |   ): Promise<ModelUpdate> {
+ 162 |     const { epsilon, delta, sensitivity, mechanism } = this.dpConfig
+     :                      ^^|^^
+     :                        `-- 'delta' is declared here
+ 163 |
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'startTime' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/lib/ai/realTimeProcessor.ts:306:13]
+ 305 |     try {
+ 306 |       const startTime = Date.now()
+     :             ^^^^|^^^^
+     :                 `-- 'startTime' is declared here
+ 307 |
+     `----
+  help: Consider removing this declaration.
 
   ! eslint(no-unused-vars): Parameter 'userId' is declared but never used. Unused parameters should start with a '_'.
     ,-[src/lib/business-strategy/services/base-service.ts:43:9]
@@ -9566,35 +9766,95 @@
     `----
   help: Consider removing this parameter.
 
-  ! eslint(no-unused-vars): Type 'CrisisProtocolConfig' is imported but never used.
-    ,-[tests/crisis-detection/crisis-integration.test.ts:16:15]
- 15 | import { CrisisProtocol } from '../../src/lib/ai/crisis/CrisisProtocol'
- 16 | import type { CrisisProtocolConfig } from '../../src/lib/ai/crisis/types'
-    :               ^^^^^^^^^^|^^^^^^^^^
-    :                         `-- 'CrisisProtocolConfig' is imported here
- 17 | import {
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/lib/polyfills/node-tls.js:30:1]
+ 29 |     }
+ 30 | ,-> !(function () {
+ 31 | |     try {
+ 32 | |       var e =
+ 33 | |           'undefined' != typeof window
+ 34 | |             ? window
+ 35 | |             : 'undefined' != typeof global
+ 36 | |               ? global
+ 37 | |               : 'undefined' != typeof globalThis
+ 38 | |                 ? globalThis
+ 39 | |                 : 'undefined' != typeof self
+ 40 | |                   ? self
+ 41 | |                   : {},
+ 42 | |         n = new e.Error().stack
+ 43 | |       n &&
+ 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 45 | |         (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
+ 46 | |     } catch (e) {}
+ 47 | `-> })()
+ 48 |     //# debugId=e1d9bda2-7732-5efa-9aba-1335e2d51c4c
     `----
-  help: Consider removing this import.
+  help: Consider using this expression or removing it
 
-  ! eslint(no-unused-vars): Type 'CrisisTestCase' is imported but never used.
-    ,-[tests/crisis-detection/crisis-unit.test.ts:23:10]
- 22 |     NON_CRISIS_TESTS,
- 23 |     type CrisisTestCase,
-    :          ^^^^^^^|^^^^^^
-    :                 `-- 'CrisisTestCase' is imported here
- 24 | } from './crisis-test-scenarios'
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/lib/polyfills/node-tls.js:43:5]
+ 42 |           n = new e.Error().stack
+ 43 | ,->     n &&
+ 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 45 | `->       (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
+ 46 |       } catch (e) {}
     `----
-  help: Consider removing this import.
+  help: Consider using this expression or removing it
 
-  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
-   ,-[src/components/auth/RegisterForm.tsx:3:10]
- 2 | import { authClient } from '@/lib/auth-client'
- 3 | import { useStore } from 'nanostores'
-   :          ^^^^|^^^
-   :              `-- 'useStore' is imported here
- 4 | import { AccessibilityAnnouncer } from '../ui/AccessibilityAnnouncer'
-   `----
-  help: Consider removing this import.
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[src/lib/polyfills/node-tls.js:46:12]
+ 45 |       (e._sentryDebugIds[n] = 'e1d9bda2-7732-5efa-9aba-1335e2d51c4c'))
+ 46 |   } catch (e) {}
+    :            |
+    :            `-- 'e' is declared here
+ 47 | })()
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/lib/polyfills/node-net.js:30:1]
+ 29 |     }
+ 30 | ,-> !(function () {
+ 31 | |     try {
+ 32 | |       var e =
+ 33 | |           'undefined' != typeof window
+ 34 | |             ? window
+ 35 | |             : 'undefined' != typeof global
+ 36 | |               ? global
+ 37 | |               : 'undefined' != typeof globalThis
+ 38 | |                 ? globalThis
+ 39 | |                 : 'undefined' != typeof self
+ 40 | |                   ? self
+ 41 | |                   : {},
+ 42 | |         n = new e.Error().stack
+ 43 | |       n &&
+ 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 45 | |         (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
+ 46 | |     } catch (e) {}
+ 47 | `-> })()
+ 48 |     //# debugId=9efc4c05-f9eb-5fc8-b1d6-84263e6e1224
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[src/lib/polyfills/node-net.js:43:5]
+ 42 |           n = new e.Error().stack
+ 43 | ,->     n &&
+ 44 | |         ((e._sentryDebugIds = e._sentryDebugIds || {}),
+ 45 | `->       (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
+ 46 |       } catch (e) {}
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[src/lib/polyfills/node-net.js:46:12]
+ 45 |       (e._sentryDebugIds[n] = '9efc4c05-f9eb-5fc8-b1d6-84263e6e1224'))
+ 46 |   } catch (e) {}
+    :            |
+    :            `-- 'e' is declared here
+ 47 | })()
+    `----
+  help: Consider handling this error.
 
   ! eslint(require-yield): This generator function does not have `yield`
      ,-[src/lib/data/auth0-bulk-import-export-service.ts:268:9]
@@ -9608,99 +9868,14 @@
      `----
 
   ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
-     ,-[tests/browser/theme-performance.spec.ts:363:20]
- 362 |             })
- 363 |           } catch (e) {
-     :                    |
-     :                    `-- 'e' is declared here
- 364 |             // Cross-origin stylesheets might not be accessible
+     ,-[src/lib/threat-intelligence/global/GlobalThreatIntelligenceNetwork.ts:489:14]
+ 488 |       }
+ 489 |     } catch (e) {
+     :              |
+     :              `-- 'e' is declared here
+ 490 |       // Fallback to timestamp-based ID
      `----
   help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Parameter 'response' is declared but never used. Unused parameters should start with a '_'.
-     ,-[src/lib/auth/auth0-webauthn-service.ts:439:52]
- 438 |    */
- 439 |   async validateCredentialResponse(userId: string, response: any): Promise<boolean> {
-     :                                                    ^^^^|^^^
-     :                                                        `-- 'response' is declared here
- 440 |     try {
-     `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Catch parameter '_e' is caught but never used.
-    ,-[tests/browser/browser-compatibility.spec.ts:48:14]
- 47 |       fs.mkdirSync('./test-results/browser-compat', { recursive: true })
- 48 |     } catch (_e) {
-    :              ^|
-    :               `-- '_e' is declared here
- 49 |       // Directory might already exist
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
-   ,-[src/components/demo/ChatDemo.tsx:6:10]
- 5 | import { authClient } from '@/lib/auth-client'
- 6 | import { useStore } from 'nanostores'
-   :          ^^^^|^^^
-   :              `-- 'useStore' is imported here
- 7 | import {
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[src/lib/deployment/multi-region/ServiceDiscoveryManager.ts:325:14]
- 324 |       }
- 325 |     } catch (error) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 326 |       return false
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Parameter 'page' is declared but never used. Unused parameters should start with a '_'.
-    ,-[tests/e2e/pixel-multimodal-flows.spec.ts:84:55]
- 83 | 
- 84 |         test('record audio with permission', async ({ page }) => {
-    :                                                       ^^|^
-    :                                                         `-- 'page' is declared here
- 85 |             await chatPage.grantMicrophonePermission()
-    `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Type 'Page' is imported but never used.
-    ,-[tests/e2e/pixel-multimodal-integration.spec.ts:15:29]
- 14 | 
- 15 | import { test, expect, type Page } from '@playwright/test'
-    :                             ^^|^
-    :                               `-- 'Page' is imported here
- 16 | 
-    `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Variable 'API_BASE_URL' is declared but never used. Unused variables should start with a '_'.
-    ,-[tests/e2e/pixel-multimodal-integration.spec.ts:18:7]
- 17 | const CHAT_PAGE_URL = '/chat' // Adjust to your actual route
- 18 | const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5173'
-    :       ^^^^^^|^^^^^
-    :             `-- 'API_BASE_URL' is declared here
- 19 | 
-    `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'focusedElement' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/e2e/pixel-multimodal-integration.spec.ts:509:17]
- 508 |             await page.keyboard.press('Tab')
- 509 |             let focusedElement = await page.evaluate(() => document.activeElement?.getAttribute('data-testid'))
-     :                 ^^^^^^^|^^^^^^
-     :                        `-- 'focusedElement' is declared here
- 510 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
-   ,-[src/lib/fhe/dynamic-fhe.ts:1:1]
-   `----
-  help: Delete this file or add some code to it.
 
   ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
      ,-[src/lib/fhe/seal-operations.ts:251:39]
@@ -9729,185 +9904,11 @@
      `----
   help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
 
-  ! eslint(no-unused-vars): Parameter 'data' is declared but never used. Unused parameters should start with a '_'.
-    ,-[tests/hooks/useMultimodalPixel.test.ts:33:10]
- 32 | 
- 33 |     send(data: string) {
-    :          ^^|^
-    :            `-- 'data' is declared here
- 34 |         // Mock sending
-    `----
-  help: Consider removing this parameter.
-
-  ! eslint(no-unused-vars): Variable 'sendSpy' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/hooks/useMultimodalPixel.test.ts:237:19]
- 236 |             const { result } = renderHook(() => useMultimodalPixel())
- 237 |             const sendSpy = vi.fn()
-     :                   ^^^|^^^
-     :                      `-- 'sendSpy' is declared here
- 238 | 
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'mockResponse' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/hooks/useMultimodalPixel.test.ts:276:19]
- 275 |         it('should finalize stream and trigger inference', async () => {
- 276 |             const mockResponse = {
-     :                   ^^^^^^|^^^^^
-     :                         `-- 'mockResponse' is declared here
- 277 |                 response: 'Stream response',
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'mockResponse' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/hooks/useMultimodalPixel.test.ts:336:19]
- 335 |         it('should parse stream result messages', async () => {
- 336 |             const mockResponse = {
-     :                   ^^^^^^|^^^^^
-     :                         `-- 'mockResponse' is declared here
- 337 |                 response: 'Stream result',
-     `----
-  help: Consider removing this declaration.
-
-  ! eslint(no-unused-vars): Variable 'inferencePromise' is declared but never used. Unused variables should start with a '_'.
-     ,-[tests/hooks/useMultimodalPixel.test.ts:406:19]
- 405 |             // Start inference
- 406 |             const inferencePromise = act(async () => {
-     :                   ^^^^^^^^|^^^^^^^
-     :                           `-- 'inferencePromise' is declared here
- 407 |                 result.current.infer({ text: 'Test' })
-     `----
-  help: Consider removing this declaration.
-
-  x Unexpected token
-     ,-[tests/hooks/useMultimodalPixel-unit.test.ts:853:1]
- 852 | })
- 853 | })
-     : ^
-     `----
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-    ,-[tests/memory-optimization.test.ts:82:16]
- 81 |         expect(isExecutable).toBe(true)
- 82 |       } catch (_error) {
-    :                ^^^|^^
-    :                   `-- '_error' is declared here
- 83 |         // If stat fails, at least verify file exists
-    `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter '_error' is caught but never used.
-     ,-[tests/helpers/test-utils.ts:159:12]
- 158 |     await mkdir(path, { recursive: true })
- 159 |   } catch (_error) {
-     :            ^^^|^^
-     :               `-- '_error' is declared here
- 160 |     // Directory might already exist, ignore error
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[tests/regression/utils/RegressionUtils.ts:193:14]
- 192 |       results.xssProtection = !xssExecuted
- 193 |     } catch (error: unknown) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 194 |       results.xssProtection = true // Error means XSS was blocked
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'error' is caught but never used.
-     ,-[tests/regression/utils/RegressionUtils.ts:209:14]
- 208 |       results.inputSanitization = !messageContent?.includes('<img')
- 209 |     } catch (error: unknown) {
-     :              ^^|^^
-     :                `-- 'error' is declared here
- 210 |       results.inputSanitization = true
-     `----
-  help: Consider handling this error.
-
-  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
-    ,-[src/lib/server-only/mongodb-types.ts:49:12]
- 48 |     return await import('mongodb')
- 49 |   } catch (err) {
-    :            ^|^
-    :             `-- 'err' is declared here
- 50 |     console.warn('MongoDB not available, using mock ObjectId')
-    `----
-  help: Consider handling this error.
-
-  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
-     ,-[tests/regression/regression-suite.spec.ts:332:21]
- 331 |       for (let i = 0; i < 100; i++) {
- 332 |         arrays.push(new Array(10000).fill('memory-pressure-test'))
-     :                     ^^^^^^^^^^^^^^^^
- 333 |       }
-     `----
-  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
-
-  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
-   ,-[src/components/training/TrainingSessionComponent.tsx:4:10]
- 3 | import { authClient } from '@/lib/auth-client'
- 4 | import { useStore } from 'nanostores'
-   :          ^^^^|^^^
-   :              `-- 'useStore' is imported here
- 5 | import { getJournalResearchAuthToken } from '../../lib/api/journal-research/auth'
-   `----
-  help: Consider removing this import.
-
-  ! eslint(no-unused-vars): Variable 'lastAnalysis' is declared but never used. Unused variables should start with a '_'.
-    ,-[src/components/chat/PixelEnhancedChat.tsx:45:9]
- 44 |         biasFlags,
- 45 |         lastAnalysis,
-    :         ^^^^^^|^^^^^
-    :               `-- 'lastAnalysis' is declared here
- 46 |         isAnalyzing,
-    `----
-  help: Consider removing this declaration.
-
   ! eslint-plugin-unicorn(no-empty-file): Empty files are not allowed.
-   ,-[src/components/chat/TherapyChatWithMemory.tsx:1:1]
+   ,-[src/lib/fhe/dynamic-fhe.ts:1:1]
    `----
   help: Delete this file or add some code to it.
 
-  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
-     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:125:9]
- 124 |       [category]: {
- 125 |         ...((options[category] as Record<string, unknown>) || {}),
-     :         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 126 |         [key]: value,
-     `----
-  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
-
-  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
-     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:141:9]
- 140 |       [category]: {
- 141 |         ...((options[category] as Record<string, unknown>) || {}),
-     :         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 142 |         [parentKey]: {
-     `----
-  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
-
-  ! eslint-plugin-unicorn(no-useless-fallback-in-spread): Empty fallbacks in spreads are unnecessary
-     ,-[src/components/analytics/AdvancedFilteringComponent.tsx:143:11]
- 142 |             [parentKey]: {
- 143 | ,->           ...(((options[category] as Record<string, unknown>)?.[
- 144 | |               parentKey
- 145 | `->           ] as Record<string, unknown>) || {}),
- 146 |               [key]: value,
-     `----
-  help: Spreading falsy values in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
-
-  ! eslint(no-unused-vars): Identifier 'useStore' is imported but never used.
-   ,-[src/components/ui/UserMenu.tsx:4:10]
- 3 | import { Avatar } from './avatar'
- 4 | import { useStore } from 'nanostores'
-   :          ^^^^|^^^
-   :              `-- 'useStore' is imported here
- 5 | 
-   `----
-  help: Consider removing this import.
-
 Found 992 warnings and 1 error.
-Finished in 1.8s on 2389 files with 90 rules using 4 threads.
+Finished in 2.6s on 2389 files with 90 rules using 4 threads.
  ELIFECYCLE  Command failed with exit code 1.
