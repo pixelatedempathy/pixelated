@@ -59,7 +59,7 @@ services:
       WS_PORT: 3001
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-secure_password}@postgres:5432/${POSTGRES_DB:-pixelated_business}
       REDIS_URL: redis://:${REDIS_PASSWORD:-secure_password}@redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key}
+      JWT_SECRET: ${JWT_SECRET:-jwt_secret_placeholder_change_in_prod}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-your-refresh-secret}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
