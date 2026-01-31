@@ -42,7 +42,7 @@
     "typecheck": "astro check && tsc --noEmit",
     "typecheck:strict": "tsx scripts/validate-typescript.ts",
     "type-check": "pnpm run typecheck",
-    "check": "astro check",
+    "check": "NODE_OPTIONS='--max-old-space-size=8192' astro check",
     "check:all": "pnpm run check && pnpm run typecheck",
     "test": "node ./scripts/local-test-runner.cjs",
     "test:unit": "vitest run -c config/vitest.config.ts --coverage",

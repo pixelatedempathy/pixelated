@@ -6,7 +6,7 @@ import Layout from '@/layouts/Layout.astro';
 import { getSession } from '@/lib/auth';
 
 const { sessionId } = Astro.params;
-const session = await getSession(Astro.request);
+const session = await getSession(Astro.request as any);
 
 if (!session) {
   return Astro.redirect('/auth/login');
@@ -40,7 +40,7 @@ if (!sessionData) {
 // Map MongoDB roles to training context
 // In a real implementation, this would check specific training permissions
 // For now: therapists are trainees by default, admins can supervise
-const userRole = session.user.role;
+const userRole = (session as any).user.role;
 const isTrainee = userRole === 'therapist' || userRole === 'user';
 const isSupervisor = userRole === 'admin';
 ---
