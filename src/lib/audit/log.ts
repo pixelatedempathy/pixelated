@@ -1,6 +1,5 @@
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
 import { auditLogDAO } from '../../services/mongodb.dao'
-import { ObjectId } from 'mongodb'
 
 const logger = createBuildSafeLogger('audit-log')
 
@@ -60,14 +59,13 @@ export async function logAuditEvent(
       metadata,
     })
 
-    await auditLogDAO.create({
-      userId: new ObjectId(userId),
+    await auditLogDAO.createLog(
+      userId,
       action,
       resourceId,
       resourceType,
       metadata,
-      timestamp: new Date(),
-    })
+    )
   } catch (error: unknown) {
     logger.error('Error logging audit event:', error)
   }
