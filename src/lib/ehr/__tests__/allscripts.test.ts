@@ -22,7 +22,7 @@ describe('allscripts Provider', () => {
     name: 'Test Allscripts Provider',
     baseUrl: 'https://fhir.allscriptscloud.com/fhir/r4',
     clientId: 'test-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'test-client-secret',
+    clientSecret: process.env.CLIENT_SECRET || 'mock_secret',
     scopes: ['user/Patient.read', 'user/Observation.read'],
   }
 
@@ -323,7 +323,7 @@ describe('allscripts Provider', () => {
       // Ensure credentials are not easily exposed (e.g., in logs or toString)
       // TODO: Re-evaluate this test. Stringifying the provider might not be the right check.
       // The assertion below is likely incorrect if the secret is stored internally.
-      // expect(JSON.stringify(allscriptsProvider)).not.toContain('test-client-secret');
+      // expect(JSON.stringify(allscriptsProvider)).not.toContain('mock_secret');
       // Placeholder assertion to keep the test structure
       expect(allscriptsProvider.clientId).toBe(providerConfig.clientId)
     })

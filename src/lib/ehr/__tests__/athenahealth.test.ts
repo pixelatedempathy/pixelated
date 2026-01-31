@@ -14,7 +14,7 @@ describe('athenahealth Provider', () => {
     name: 'Test Athenahealth Provider',
     baseUrl: 'https://api.athenahealth.com/fhir/r4',
     clientId: testId || 'test-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'test-client-secret',
+    clientSecret: process.env.CLIENT_SECRET || 'mock_secret',
     scopes: [
       'user/Patient.read',
       'user/Observation.read',
