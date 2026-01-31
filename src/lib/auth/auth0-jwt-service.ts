@@ -3,12 +3,8 @@
  * Replaces the previous custom JWT service with Auth0 integration
  */
 
-<<<<<<< HEAD
 import { AuthenticationClient, UserInfoClient } from 'auth0'
 import * as jwt from 'jsonwebtoken'
-=======
-import { AuthenticationClient } from 'auth0'
->>>>>>> backup-manager-storage-loading-4805050224540675022
 import { setInCache } from '../redis'
 import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
@@ -24,6 +20,7 @@ const AUTH0_CONFIG = {
 
 // Initialize Auth0 authentication client
 let auth0Authentication: AuthenticationClient | null = null
+let auth0UserInfo: UserInfoClient | null = null
 
 /**
  * Initialize Auth0 authentication client
@@ -38,6 +35,12 @@ function initializeAuth0Client() {
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
       clientSecret: AUTH0_CONFIG.clientSecret
+    })
+  }
+
+  if (!auth0UserInfo) {
+    auth0UserInfo = new UserInfoClient({
+      domain: AUTH0_CONFIG.domain
     })
   }
 }
@@ -165,7 +168,6 @@ export async function validateToken(
       throw new AuthenticationError('Auth0 authentication client not initialized')
     }
 
-<<<<<<< HEAD
     if (!auth0UserInfo) {
       throw new AuthenticationError('Auth0 user info client not initialized')
     }
@@ -210,10 +212,6 @@ export async function validateToken(
     if (payload.exp && payload.exp < currentTimestamp()) {
       throw new AuthenticationError('Token has expired')
     }
-=======
-    // Decode token to get payload (this doesn't validate the signature yet)
-    const decoded = await auth0Authentication.getProfile(token)
->>>>>>> backup-manager-storage-loading-4805050224540675022
 
     // Validate token type matches expected (access tokens only for now)
     // Check this before expensive UserInfo call to fail fast
@@ -221,16 +219,8 @@ export async function validateToken(
       throw new AuthenticationError('Refresh token validation not supported with this method')
     }
 
-<<<<<<< HEAD
     // Now verify with UserInfo (acts as online signature/revocation check)
     const { data: userInfo } = await auth0UserInfo.getUserInfo(token) as { data: any }
-=======
-    // Check if token has expired
-    const {exp} = decoded
-    if (exp && exp < currentTimestamp()) {
-      throw new AuthenticationError('Token has expired')
-    }
->>>>>>> backup-manager-storage-loading-4805050224540675022
 
     // Extract user information
     const userId = userInfo.sub || payload.sub
