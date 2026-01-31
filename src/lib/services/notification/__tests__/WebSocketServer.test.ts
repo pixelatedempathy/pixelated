@@ -50,12 +50,12 @@ vi.mock('../../../logging/build-safe-logger', () => ({
   })),
 }))
 
-// Mock Auth0 Service
-vi.mock('../../../../services/auth0.service', () => ({
-  verifyToken: vi.fn().mockResolvedValue({
+// Mock Auth0 JWT Service
+vi.mock('../../../auth/auth0-jwt-service', () => ({
+  validateToken: vi.fn().mockResolvedValue({
+    valid: true,
     userId: 'test-user',
     role: 'user',
-    email: 'test@example.com',
   }),
 }))
 
@@ -183,10 +183,11 @@ describe('WebSocketServer', () => {
 
     it('should handle authentication failure', async () => {
       // Mock failed authentication
-      const authService = await import('../../../../services/auth0.service')
-      vi.mocked(authService.verifyToken).mockRejectedValueOnce(
-        new Error('Invalid token'),
-      )
+      const authService = await import('../../../auth/auth0-jwt-service')
+      vi.mocked(authService.validateToken).mockResolvedValueOnce({
+        valid: false,
+        error: 'Invalid token',
+      })
 
       const mockWs = new WebSocket(null) as unknown as WebSocket & {
         send: MockFn

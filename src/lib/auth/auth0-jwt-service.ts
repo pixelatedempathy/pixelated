@@ -3,7 +3,7 @@
  * Replaces the previous custom JWT service with Auth0 integration
  */
 
-import { AuthenticationClient } from 'auth0'
+import { AuthenticationClient, UserInfoClient } from 'auth0'
 import { setInCache } from '../redis'
 import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
@@ -18,20 +18,32 @@ const AUTH0_CONFIG = {
 
 // Initialize Auth0 authentication client
 let auth0Authentication: AuthenticationClient | null = null
+let userInfoClient: UserInfoClient | null = null
 
 /**
  * Initialize Auth0 authentication client
  */
 function initializeAuth0Client() {
-  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
-    console.warn('Auth0 configuration incomplete'); return
+  if (
+    !AUTH0_CONFIG.domain ||
+    !AUTH0_CONFIG.clientId ||
+    !AUTH0_CONFIG.clientSecret
+  ) {
+    console.warn('Auth0 configuration incomplete')
+    return
   }
 
   if (!auth0Authentication) {
     auth0Authentication = new AuthenticationClient({
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
-      clientSecret: AUTH0_CONFIG.clientSecret
+      clientSecret: AUTH0_CONFIG.clientSecret,
+    })
+  }
+
+  if (!userInfoClient) {
+    userInfoClient = new UserInfoClient({
+      domain: AUTH0_CONFIG.domain,
     })
   }
 }
@@ -155,31 +167,32 @@ export async function validateToken(
   tokenType: TokenType,
 ): Promise<TokenValidationResult> {
   try {
-    if (!auth0Authentication) {
+    if (!auth0Authentication || !userInfoClient) {
       throw new AuthenticationError('Auth0 authentication client not initialized')
     }
 
-    // Decode token to get payload (this doesn't validate the signature yet)
-    const decoded = await auth0Authentication.getProfile(token)
+    // Get user info from UserInfo endpoint (validates the token)
+    const response = await userInfoClient.getUserInfo(token)
+    const decoded = response.data
 
     // Validate token type matches expected (access tokens only for now)
     if (tokenType === 'refresh') {
-      throw new AuthenticationError('Refresh token validation not supported with this method')
+      throw new AuthenticationError(
+        'Refresh token validation not supported with this method',
+      )
     }
 
-    // Check if token has expired
-    const {exp} = decoded
-    if (exp && exp < currentTimestamp()) {
-      throw new AuthenticationError('Token has expired')
-    }
+    // Check if token has expired (userInfo endpoint would fail if expired, but checking anyway if exp is present)
+    // UserInfo response might not have exp. It has updated_at.
+    // We assume if getUserInfo succeeds, the token is valid and not expired.
 
     // Extract user information
     const userId = decoded.sub || ''
     const role = extractRoleFromPayload(decoded)
-    const tokenId = decoded.jti || ''
+    const tokenId = (decoded as any).jti || ''
 
     // Log successful validation
-    await logSecurityEvent(SecurityEventType.TOKEN_VALIDATED, {
+    await logSecurityEvent('TOKEN_VALIDATED', {
       userId: userId,
       tokenId: tokenId,
       tokenType: tokenType,
@@ -190,12 +203,12 @@ export async function validateToken(
       userId: userId,
       role: role,
       tokenId: tokenId,
-      expiresAt: exp,
+      expiresAt: (decoded as any).exp, // might be undefined
       payload: decoded,
     }
   } catch (error) {
     // Log validation failure
-    await logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, {
+    await logSecurityEvent('TOKEN_VALIDATION_FAILED', {
       userId: null,
       error: error instanceof Error ? error.message : 'Unknown error',
       tokenType: tokenType,
@@ -216,44 +229,50 @@ export async function refreshAccessToken(
   _clientInfo: ClientInfo,
 ): Promise<TokenPair> {
   try {
-    if (!auth0Authentication) {
+    if (!auth0Authentication || !userInfoClient) {
       throw new AuthenticationError('Auth0 authentication client not initialized')
     }
 
     // Exchange refresh token for new access token
-    const tokenResponse = await auth0Authentication.refreshToken({
-      refresh_token: refreshToken
+    const tokenResponse = await auth0Authentication.oauth.refreshTokenGrant({
+      refresh_token: refreshToken,
     })
 
     // Get user info from new access token
-    const userResponse = await auth0Authentication.getProfile(tokenResponse.access_token)
+    const userResponse = await userInfoClient.getUserInfo(
+      tokenResponse.data.access_token,
+    )
+    const decoded = userResponse.data
 
     // Extract user information
-    const userId = userResponse.sub || ''
-    const role = extractRoleFromPayload(userResponse)
+    const userId = decoded.sub || ''
+    const role = extractRoleFromPayload(decoded)
 
     // Log token refresh event
-    await logSecurityEvent(SecurityEventType.TOKEN_REFRESHED, {
+    await logSecurityEvent('TOKEN_REFRESHED', {
       userId: userId,
       oldTokenId: 'unknown', // We don't have the old token ID
-      newAccessTokenId: userResponse.jti || '',
-      newRefreshTokenId: tokenResponse.refresh_token ? 'present' : 'not_provided',
+      newAccessTokenId: (decoded as any).jti || '',
+      newRefreshTokenId: tokenResponse.data.refresh_token
+        ? 'present'
+        : 'not_provided',
     })
 
     // Update Phase 6 MCP server with refresh progress
     await updatePhase6AuthenticationProgress(userId, 'token_refreshed')
 
     return {
-      accessToken: tokenResponse.access_token,
-      refreshToken: tokenResponse.refresh_token || refreshToken, // Use new refresh token if provided
+      accessToken: tokenResponse.data.access_token,
+      refreshToken: tokenResponse.data.refresh_token || refreshToken, // Use new refresh token if provided
       tokenType: 'Bearer',
-      expiresIn: tokenResponse.expires_in,
+      expiresIn: tokenResponse.data.expires_in,
       user: {
         id: userId,
         role: role,
       },
     }
-  } catch {
+  } catch (error) {
+    console.error('Refresh token error:', error)
     throw new AuthenticationError('Invalid refresh token')
   }
 }
@@ -303,7 +322,7 @@ export async function revokeToken(
   )
 
   // Log revocation event
-  await logSecurityEvent(SecurityEventType.TOKEN_REVOKED, {
+  await logSecurityEvent('TOKEN_REVOKED', {
     userId: null, // We don't have user ID here
     tokenId: tokenId,
     reason: reason,

@@ -4,7 +4,7 @@ import type { WebSocket } from 'ws'
 import { WebSocketServer as WSServer } from 'ws'
 import type { IncomingMessage } from 'http'
 import { z } from 'zod'
-import { verifyToken } from '../../../services/auth0.service'
+import { validateToken } from '../../auth/auth0-jwt-service'
 
 // Define message types using Zod for runtime validation
 const BaseMessageSchema = z.object({
@@ -117,15 +117,19 @@ export class WebSocketServer {
    */
   private async verifyToken(token: string): Promise<string> {
     try {
-      const { userId, role } = await verifyToken(token)
+      const result = await validateToken(token, 'access')
+
+      if (!result.valid || !result.userId) {
+        throw new Error(result.error || 'Invalid token')
+      }
 
       logger
         .createBuildSafeLogger('websocket')
         .info('Token verified successfully', {
-          userId,
-          role,
+          userId: result.userId,
+          role: result.role,
         })
-      return userId
+      return result.userId
     } catch (error: unknown) {
       logger
         .createBuildSafeLogger('websocket')
