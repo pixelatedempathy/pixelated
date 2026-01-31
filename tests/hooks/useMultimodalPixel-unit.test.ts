@@ -34,7 +34,7 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
             removeEventListener: vi.fn(),
             readyState: 1, // OPEN
         }
-            ; (global as any).WebSocket = vi.fn(() => mockWebSocket)
+            ; (global as any).WebSocket = vi.fn(function() { return mockWebSocket })
     })
 
     afterEach(() => {
@@ -224,10 +224,10 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
             const data = await response.json()
 
             expect(data.fused_emotion).toBeDefined()
-            expect(data.fused_emotion.valence).toBeBetween(
-                Math.min(data.text_emotion.valence, data.audio_emotion.valence),
-                Math.max(data.text_emotion.valence, data.audio_emotion.valence)
-            )
+            const minVal = Math.min(data.text_emotion.valence, data.audio_emotion.valence)
+            const maxVal = Math.max(data.text_emotion.valence, data.audio_emotion.valence)
+            expect(data.fused_emotion.valence).toBeGreaterThanOrEqual(minVal)
+            expect(data.fused_emotion.valence).toBeLessThanOrEqual(maxVal)
         })
 
         it('should detect conflict between modalities', async () => {
@@ -250,7 +250,7 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
             const data = await response.json()
 
             expect(data.modality_conflict).toBeDefined()
-            expect(data.modality_conflict.detected).toBeBoolean()
+            expect(data.modality_conflict.detected).toBeTypeOf('boolean')
         })
     })
 
@@ -432,7 +432,6 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
             expect(state.emotionMetrics.valence).toBeGreaterThan(0)
         })
     })
-})
 
 describe('Initialization', () => {
     it('should initialize with default state', () => {
