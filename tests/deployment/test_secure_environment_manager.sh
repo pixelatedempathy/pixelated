@@ -54,8 +54,8 @@ case "$1" in
             if [[ -f "$input_file" ]]; then
                 echo "# Decrypted environment variables" > "$output_file"
                 echo "DATABASE_URL=postgresql://user:pass@localhost/db" >> "$output_file"
-                echo "API_KEY=test-api-key-12345" >> "$output_file"
-                echo "JWT_SECRET=super-secret-jwt-key" >> "$output_file"
+                echo "API_KEY=test-api-key-placeholder" >> "$output_file"
+                echo "JWT_SECRET=test-jwt-secret-placeholder" >> "$output_file"
                 exit 0
             else
                 echo "Error: input file not found"
@@ -138,8 +138,8 @@ case "$1" in
         if [[ -f "$input_file" ]]; then
             echo "# Decrypted environment variables" > "$output_file"
             echo "DATABASE_URL=postgresql://user:pass@localhost/db" >> "$output_file"
-            echo "API_KEY=test-api-key-12345" >> "$output_file"
-            echo "JWT_SECRET=super-secret-jwt-key" >> "$output_file"
+            echo "API_KEY=test-api-key-placeholder" >> "$output_file"
+            echo "JWT_SECRET=test-jwt-secret-placeholder" >> "$output_file"
             exit 0
         else
             echo "Error: input file not found"
@@ -186,10 +186,10 @@ setup_test_environment() {
     cat > .env << 'EOF'
 # Test environment variables
 DATABASE_URL=postgresql://user:pass@localhost/db
-API_KEY=test-api-key-12345
-JWT_SECRET=super-secret-jwt-key
+API_KEY=test-api-key-placeholder
+JWT_SECRET=test-jwt-secret-placeholder
 REDIS_URL=redis://localhost:6379
-SMTP_PASSWORD=email-password-123
+SMTP_PASSWORD=test-email-password-placeholder
 GITHUB_TOKEN=ghp_test_token_12345
 EOF
     
@@ -403,10 +403,10 @@ test_sensitive_variable_masking() {
         echo "$masked_message"
     }
     
-    local test_message="Setting API_KEY=secret123 and JWT_SECRET=supersecret for deployment"
+    local test_message="Setting API_KEY=test-secret-placeholder and JWT_SECRET=test-supersecret-placeholder for deployment"
     local masked_message=$(mask_sensitive_variables "$test_message")
     
-    if [[ "$masked_message" =~ \*\*\*MASKED\*\*\* ]] && [[ ! "$masked_message" =~ secret123 ]]; then
+    if [[ "$masked_message" =~ \*\*\*MASKED\*\*\* ]] && [[ ! "$masked_message" =~ test-secret-placeholder ]]; then
         print_test_pass "mask_sensitive_variables correctly masks sensitive values"
     else
         print_test_fail "mask_sensitive_variables failed to mask sensitive values: $masked_message"
@@ -532,7 +532,7 @@ test_environment_backup_restoration() {
     
     # Set some test environment variables
     export DATABASE_URL="postgresql://test@localhost/test"
-    export API_KEY="test-key-123"
+    export API_KEY="test-key-placeholder"
     
     local backup_file="$TEST_DIR/env-backup.txt"
     if backup_environment_state "$backup_file"; then
