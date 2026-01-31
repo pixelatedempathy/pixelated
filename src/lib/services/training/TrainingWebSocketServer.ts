@@ -7,6 +7,7 @@ import { validateToken } from '../../auth/jwt-service'
 import type { UserRole } from '../../auth/roles'
 
 const logger = createBuildSafeLogger('TrainingWebSocketServer')
+const WS_OPEN = 1
 
 /**
  * Training WebSocket Server - Real-time collaboration for clinical training sessions
@@ -286,7 +287,7 @@ export class TrainingWebSocketServer {
    * Send error message to client
    */
   private sendError(ws: WebSocket, message: string) {
-    if (ws.readyState === 1) { // 1 = WebSocket.OPEN
+    if (ws.readyState === WS_OPEN) {
       ws.send(JSON.stringify({
         type: 'error',
         payload: { message }
@@ -435,7 +436,7 @@ export class TrainingWebSocketServer {
 
   private broadcastToSession(sessionId: string, message: WebSocketMessage) {
     for (const client of this.clients.values()) {
-      if (client.sessionId === sessionId && client.ws.readyState === 1) { // 1 = WebSocket.OPEN
+      if (client.sessionId === sessionId && client.ws.readyState === WS_OPEN) {
         client.ws.send(JSON.stringify(message))
       }
     }
@@ -456,7 +457,7 @@ export class TrainingWebSocketServer {
     for (const client of this.clients.values()) {
       if (
         client.sessionId === sessionId &&
-        client.ws.readyState === 1 && // 1 = WebSocket.OPEN
+        client.ws.readyState === WS_OPEN &&
         allowedRoles.includes(client.role)
       ) {
         client.ws.send(JSON.stringify(message))
