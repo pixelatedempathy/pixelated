@@ -1,4 +1,5 @@
-import { WebSocket, WebSocketServer } from 'ws'
+import { WebSocketServer } from 'ws'
+import type { WebSocket } from 'ws'
 import { IncomingMessage } from 'http'
 import { randomUUID } from 'crypto'
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
@@ -285,7 +286,7 @@ export class TrainingWebSocketServer {
    * Send error message to client
    */
   private sendError(ws: WebSocket, message: string) {
-    if (ws.readyState === WebSocket.OPEN) {
+    if (ws.readyState === 1) { // 1 = WebSocket.OPEN
       ws.send(JSON.stringify({
         type: 'error',
         payload: { message }
@@ -434,7 +435,7 @@ export class TrainingWebSocketServer {
 
   private broadcastToSession(sessionId: string, message: WebSocketMessage) {
     for (const client of this.clients.values()) {
-      if (client.sessionId === sessionId && client.ws.readyState === WebSocket.OPEN) {
+      if (client.sessionId === sessionId && client.ws.readyState === 1) { // 1 = WebSocket.OPEN
         client.ws.send(JSON.stringify(message))
       }
     }
@@ -455,7 +456,7 @@ export class TrainingWebSocketServer {
     for (const client of this.clients.values()) {
       if (
         client.sessionId === sessionId &&
-        client.ws.readyState === WebSocket.OPEN &&
+        client.ws.readyState === 1 && // 1 = WebSocket.OPEN
         allowedRoles.includes(client.role)
       ) {
         client.ws.send(JSON.stringify(message))
