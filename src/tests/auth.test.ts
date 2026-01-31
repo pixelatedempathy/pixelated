@@ -16,7 +16,7 @@ describe('POST /register', () => {
   it('should reject a request missing the email field', async () => {
     const response = await request(app)
       .post('/register')
-      .send({ password: 'secret123' });
+      .send({ password: 'test-password-123' });
     expect(response.status).toBe(400);
     expect(response.body.errors[0]).toMatch(/email/);
   });
