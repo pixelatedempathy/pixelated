@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { PasswordInputWithStrength } from '../PasswordInputWithStrength'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
 
 describe('PasswordInputWithStrength', () => {
   it('renders correctly', () => {
