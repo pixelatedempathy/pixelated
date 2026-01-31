@@ -485,6 +485,28 @@ export class AuditLogDAO {
     return { ...createdLog, id: createdLog._id?.toString() }
   }
 
+  async createLog(
+    userId: string,
+    action: string,
+    resourceId: string,
+    resourceType?: string,
+    metadata?: Record<string, unknown>,
+  ): Promise<AuditLog> {
+    await initializeDependencies()
+    if (!ObjectId) {
+      throw new Error('ObjectId not available')
+    }
+
+    return this.create({
+      userId: new ObjectId(userId),
+      action,
+      resourceId,
+      resourceType,
+      metadata,
+      timestamp: new Date(),
+    })
+  }
+
   async findByUserId(
     userId: string,
     limit = 100,
