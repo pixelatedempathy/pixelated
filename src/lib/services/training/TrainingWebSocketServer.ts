@@ -32,8 +32,8 @@ const logger = createBuildSafeLogger('TrainingWebSocketServer')
  * 4. Audit logging for all authentication and authorization events
  *
  * Clients authenticate via:
- * - Query string: ?token=<jwt>
- * - First message: { type: 'authenticate', token: '<jwt>' }
+ * - Query string: ?token=[jwt]
+ * - First message: { type: 'authenticate', token: '[jwt]' }
  */
 
 interface TrainingSessionClient {
@@ -221,7 +221,7 @@ export class TrainingWebSocketServer {
       // In development, extract userId from token if it looks like a JWT or use a default
       // For now, use a simple default for development
       return {
-        userId: token || 'dev-user',
+        userId: token || 'development-user',
         role: 'trainee' // Default role, can be overridden by client in development
       }
     }
