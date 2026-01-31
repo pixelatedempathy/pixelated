@@ -35,7 +35,7 @@ describe('Audit Log Service', () => {
           action: 'LOGIN',
           resourceId: 'session-123',
           resourceType: 'session',
-          metadata: { ip: '127.0.0.1' },
+          metadata: { ip: 'localhost' },
           timestamp: new Date(),
         },
       ]
