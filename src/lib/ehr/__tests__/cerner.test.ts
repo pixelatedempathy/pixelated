@@ -14,8 +14,8 @@ describe('cerner Provider', () => {
     name: 'Test Cerner Provider',
     baseUrl:
       'https://fhir-open.cerner.com/r4/ec2458f2-1e24-41c8-b71b-0e701af7583d',
-    clientId: testId || 'example-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'example-client-secret',
+    clientId: testId || 'test-client-id',
+    clientSecret: process.env.CLIENT_SECRET || 'test-client-secret',
     scopes: ['system/Patient.read', 'system/Observation.read'],
   }
 

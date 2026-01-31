@@ -13,8 +13,8 @@ describe('athenahealth Provider', () => {
     id: 'test-athenahealth',
     name: 'Test Athenahealth Provider',
     baseUrl: 'https://api.athenahealth.com/fhir/r4',
-    clientId: testId || 'example-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'example-client-secret',
+    clientId: testId || 'test-client-id',
+    clientSecret: process.env.CLIENT_SECRET || 'test-client-secret',
     scopes: [
       'user/Patient.read',
       'user/Observation.read',
@@ -69,11 +69,11 @@ describe('athenahealth Provider', () => {
                   extension: [
                     {
                       url: 'authorize',
-                      valueUri: 'https://auth.example.com/authorize',
+                      valueUri: 'http://localhost/authorize',
                     },
                     {
                       url: 'token',
-                      valueUri: 'https://auth.example.com/token',
+                      valueUri: 'http://localhost/token',
                     },
                   ],
                 },
@@ -155,11 +155,11 @@ describe('athenahealth Provider', () => {
                           extension: [
                             {
                               url: 'authorize',
-                              valueUri: 'https://auth.example.com/authorize',
+                              valueUri: 'http://localhost/authorize',
                             },
                             {
                               url: 'token',
-                              valueUri: 'https://auth.example.com/token',
+                              valueUri: 'http://localhost/token',
                             },
                           ],
                         },
