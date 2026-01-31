@@ -284,3 +284,4 @@ AGENTS.md
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+.vite/
