@@ -28,3 +28,4 @@ describe('POST /register', () => {
     expect(response.status).toBe(400);
     expect(response.body.errors[0]).toMatch(/minlength/);
   });
+});
