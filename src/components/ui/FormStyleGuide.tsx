@@ -37,7 +37,7 @@ export function FormStyleGuide() {
             <Input
               id="error-input"
               placeholder="Invalid input"
-              className="border-destructive focus-visible:ring-destructive"
+              aria-invalid="true"
             />
 
             <p className="text-sm text-destructive">This field is required</p>

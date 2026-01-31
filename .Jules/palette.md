@@ -5,3 +5,7 @@
 ## 2024-05-24 - Hiding Interactive Elements
 **Learning:** Using `opacity-0` and `pointer-events-none` is not enough to hide elements from keyboard users (who can still tab to them) or screen readers. You must also manage `tabindex="-1"` and `aria-hidden="true"`, or use `visibility: hidden`.
 **Action:** When implementing "fade in" elements like a "Scroll to Top" button, ensure you toggle `tabindex` and `aria-hidden` states alongside the visual transition.
+
+## 2026-01-31 - Native Invalid States
+**Learning:** Relying on manual classes for error states (e.g., `border-destructive`) is error-prone and disconnects the visual state from the semantic state (`aria-invalid`).
+**Action:** Always bake `aria-invalid` styling into base input components using `aria-invalid:` selectors so accessibility attributes drive the visual feedback automatically.
