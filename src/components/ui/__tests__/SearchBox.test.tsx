@@ -1,24 +1,26 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest'
 import SearchBox from '../SearchBox'
-
-// Extend window interface for searchClient
-declare global {
-  interface Window {
-    searchClient: any
-  }
-}
 
 describe('SearchBox', () => {
   beforeEach(() => {
     // Mock searchClient
-    window.searchClient = {
-      search: vi.fn().mockReturnValue([]),
-    }
+    // Use type assertion to bypass strict type checking for the mock
+    Object.defineProperty(window, 'searchClient', {
+      writable: true,
+      configurable: true,
+      value: {
+        search: vi.fn().mockReturnValue([]),
+        importDocuments: vi.fn(),
+      },
+    })
   })
 
   afterEach(() => {
+    cleanup() // Explicit cleanup required in this environment
     vi.clearAllMocks()
+    // Clean up global mock
+    // @ts-ignore
     delete window.searchClient
   })
 
