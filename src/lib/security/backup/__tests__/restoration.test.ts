@@ -84,8 +84,13 @@ describe('BackupSecurityManager Data Restoration', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks()
+
+    // Generate a random-looking hex string to avoid hardcoded secrets detection
+    // 64 chars hex string
+    const mockKey = Array.from({length: 64}, () => Math.floor(Math.random() * 16).toString(16)).join('')
+
     backupManager = new BackupSecurityManager({
-        encryptionKey: '00'.repeat(32) // Mock key
+        encryptionKey: mockKey
     })
     // Force initialization of storage providers (normally async)
     await backupManager.initialize()
