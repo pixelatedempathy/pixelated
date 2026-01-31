@@ -1,7 +1,7 @@
 import type { ToastOptions } from 'react-hot-toast'
 import type { ReactNode } from 'react'
 import { toast as hotToast, Toaster } from 'react-hot-toast'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 
 // Types for toast options
 export interface ToastProps extends Omit<ToastOptions, 'icon'> {
