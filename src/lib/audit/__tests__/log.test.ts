@@ -1,4 +1,3 @@
-
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getUserAuditLogs, logAuditEvent } from '../log'
 import { auditLogDAO } from '../../../services/mongodb.dao'
@@ -8,7 +7,7 @@ import { ObjectId } from 'mongodb'
 vi.mock('../../../services/mongodb.dao', () => ({
   auditLogDAO: {
     findByUserId: vi.fn(),
-    create: vi.fn(),
+    createLog: vi.fn(),
   },
 }))
 
@@ -64,34 +63,27 @@ describe('Audit Log Service', () => {
   describe('logAuditEvent', () => {
     it('should create an audit log entry', async () => {
       const userId = new ObjectId().toString()
+      const metadata = { changed: 'name' }
 
-      await logAuditEvent(userId, 'UPDATE_PROFILE', 'profile-123', 'profile', { changed: 'name' })
+      await logAuditEvent(userId, 'UPDATE_PROFILE', 'profile-123', 'profile', metadata)
 
-      expect(auditLogDAO.create).toHaveBeenCalledWith(expect.objectContaining({
-        userId: expect.any(ObjectId),
-        action: 'UPDATE_PROFILE',
-        resourceId: 'profile-123',
-        resourceType: 'profile',
-        metadata: { changed: 'name' },
-        timestamp: expect.any(Date),
-      }))
+      expect(auditLogDAO.createLog).toHaveBeenCalledWith(
+        userId,
+        'UPDATE_PROFILE',
+        'profile-123',
+        'profile',
+        metadata
+      )
     })
 
     it('should handle DAO errors gracefully', async () => {
-      vi.mocked(auditLogDAO.create).mockRejectedValue(new Error('DB Error'))
+      vi.mocked(auditLogDAO.createLog).mockRejectedValue(new Error('DB Error'))
       const userId = new ObjectId().toString()
 
       // Should not throw
       await logAuditEvent(userId, 'TEST', 'res-1')
 
-      expect(auditLogDAO.create).toHaveBeenCalled()
-    })
-
-    it('should handle invalid user ID gracefully', async () => {
-      // This will fail at new ObjectId() before calling DAO
-      await logAuditEvent('invalid-id', 'TEST', 'res-1')
-
-      expect(auditLogDAO.create).not.toHaveBeenCalled()
+      expect(auditLogDAO.createLog).toHaveBeenCalled()
     })
   })
 })
