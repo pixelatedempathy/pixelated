@@ -27,6 +27,11 @@ export class WebSocketService {
    * @param url The WebSocket server URL
    */
   public connect(url: string): Promise<void> {
+    if (typeof WebSocket === 'undefined') {
+      logger.warn('WebSocket is not defined. Skipping connection (likely SSR or non-browser environment).')
+      return Promise.resolve()
+    }
+
     // If already connected to the same URL, do nothing
     if (this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) {
       if (this.url === url) {
