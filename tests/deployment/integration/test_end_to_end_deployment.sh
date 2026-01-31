@@ -238,8 +238,8 @@ EOF
     # Create .env file for testing
     cat > project/.env << 'EOF'
 DATABASE_URL=postgresql://user:pass@localhost/pixelated
-API_KEY=test-api-key-12345
-JWT_SECRET=super-secret-jwt-key
+API_KEY=test-api-key-placeholder
+JWT_SECRET=test-jwt-secret-placeholder
 REDIS_URL=redis://localhost:6379
 EOF
 
