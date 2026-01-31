@@ -169,6 +169,11 @@ function startBatchTimer() {
       processBatch()
     }
   }, 60000)
+
+  // Allow the process to exit even if the timer is running
+  if (batchTimer && typeof batchTimer.unref === 'function') {
+    batchTimer.unref()
+  }
 }
 
 /**
