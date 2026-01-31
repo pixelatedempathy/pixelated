@@ -27,14 +27,13 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
   // Memoize onMessage to avoid reconnect loop
   const handleMessage = useCallback((message: ChatMessage) => {
     try {
+      if (!message.content) {
+        return
+      }
       // The server sends messages wrapped in ChatMessage if possible, or we might need to handle raw content.
       // However, useWebSocket forces ChatMessage structure on received data (JSON.parse -> type check).
-      // If the server sends raw JSON that doesn't match ChatMessage, useWebSocket might ignore it or error.
-      // But based on the task description "parsing and handling logic... const data = JSON.parse(message.content)",
-      // we assume the server sends a ChatMessage where `content` is a JSON string containing the actual notification data.
-      // OR, maybe we are simulating this wrapper.
 
-      // Let's assume the "message.content" holds the JSON payload.
+      // We assume the "message.content" holds the JSON payload.
       const data = JSON.parse(message.content) as ServerMessage
 
       switch (data.type) {
@@ -51,11 +50,11 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
           }
           break
         case 'error':
-          console.error('Notification server error:', data.message)
+          // Log error or handle gracefully
           break
       }
-    } catch (e) {
-      console.error('Error parsing notification message:', e)
+    } catch {
+      // Ignore parsing errors
     }
   }, [])
 
