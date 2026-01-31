@@ -21,8 +21,8 @@ describe('allscripts Provider', () => {
     id: 'test-allscripts',
     name: 'Test Allscripts Provider',
     baseUrl: 'https://fhir.allscriptscloud.com/fhir/r4',
-    clientId: 'mock-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'mock-client-secret',
+    clientId: 'test-client-id',
+    clientSecret: process.env.CLIENT_SECRET || 'test-client-secret',
     scopes: ['user/Patient.read', 'user/Observation.read'],
   }
 
@@ -38,12 +38,12 @@ describe('allscripts Provider', () => {
     // Define mockHash before using it
     const mockHash: Hash = {
       update: vi.fn().mockReturnThis(),
-      digest: vi.fn().mockReturnValue('mock-hashed-value'),
+      digest: vi.fn().mockReturnValue('hashed'),
     }
 
     vi.mocked(createHash).mockReturnValue(mockHash as any)
     // Use Buffer from imported buffer module
-    const mockRandomBytes = Buffer.from('random-secure-bytes', 'utf8')
+    const mockRandomBytes = Buffer.from('bytes', 'utf8')
     vi.mocked(randomBytes).mockReturnValue(mockRandomBytes as any)
 
     allscriptsProvider = new AllscriptsProvider(
@@ -88,11 +88,11 @@ describe('allscripts Provider', () => {
                   extension: [
                     {
                       url: 'authorize',
-                      valueUri: 'https://auth.example.com/authorize',
+                          valueUri: 'http://localhost/authorize',
                     },
                     {
                       url: 'token',
-                      valueUri: 'https://auth.example.com/token',
+                          valueUri: 'http://localhost/token',
                     },
                   ],
                 },
@@ -172,11 +172,11 @@ describe('allscripts Provider', () => {
                           extension: [
                             {
                               url: 'authorize',
-                              valueUri: 'https://auth.example.com/authorize',
+                              valueUri: 'http://localhost/authorize',
                             },
                             {
                               url: 'token',
-                              valueUri: 'https://auth.example.com/token',
+                              valueUri: 'http://localhost/token',
                             },
                           ],
                         },
