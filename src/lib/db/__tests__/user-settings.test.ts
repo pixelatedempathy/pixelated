@@ -76,14 +76,17 @@ describe('User Settings DB', () => {
 
   describe('getUserSettings', () => {
     it('should return user settings if found', async () => {
-      const mockSettings = { user_id: 'user123', theme: 'light' }
+      const mockSettings = { user_id: 'user123', theme: 'light', _id: '507f1f77bcf86cd799439011' }
       mockCollection.findOne.mockResolvedValue(mockSettings)
 
       const result = await getUserSettings('user123')
 
       expect(mongoClient.db.collection).toHaveBeenCalledWith('user_settings')
       expect(mockCollection.findOne).toHaveBeenCalledWith({ user_id: 'user123' })
-      expect(result).toEqual(mockSettings)
+      expect(result).toEqual(expect.objectContaining({
+        ...mockSettings,
+        _id: '507f1f77bcf86cd799439011'
+      }))
     })
 
     it('should return null if not found', async () => {
@@ -98,7 +101,7 @@ describe('User Settings DB', () => {
   describe('updateUserSettings', () => {
     it('should update user settings and log audit event', async () => {
       const updates = { theme: 'dark' }
-      const updatedSettings = { user_id: 'user123', theme: 'dark' }
+      const updatedSettings = { user_id: 'user123', theme: 'dark', _id: '507f1f77bcf86cd799439011' }
 
       mockCollection.findOneAndUpdate.mockResolvedValue({ value: updatedSettings })
 

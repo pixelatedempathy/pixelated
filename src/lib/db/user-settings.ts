@@ -3,8 +3,6 @@ import type { ObjectId } from '@/lib/server-only/mongodb-types'
 import { mongoClient } from './mongoClient'
 import { createAuditLog, AuditEventType } from '../audit'
 
-let ObjectId: unknown
-
 // MongoDB-based user settings types
 
 export interface UserSettings {
@@ -61,7 +59,15 @@ export async function getUserSettings(
     .collection('user_settings')
     .findOne({ user_id: userId })
 
-  return settings as UserSettings | null
+  if (!settings) {
+    return null
+  }
+
+  // Ensure _id is a string (it comes as ObjectId from MongoDB)
+  return {
+    ...settings,
+    _id: settings._id.toString(),
+  } as unknown as UserSettings
 }
 
 /**
@@ -84,7 +90,7 @@ export async function createUserSettings(
 
   const newUserSettings = {
     ...settingsToInsert,
-    _id: result.insertedId,
+    _id: result.insertedId.toString(),
   }
 
   // Log the event
@@ -100,7 +106,7 @@ export async function createUserSettings(
     }
   )
 
-  return newUserSettings as UserSettings
+  return newUserSettings as unknown as UserSettings
 }
 
 /**
@@ -142,7 +148,10 @@ export async function updateUserSettings(
     }
   )
 
-  return result.value as UserSettings
+  return {
+    ...result.value,
+    _id: result.value._id.toString()
+  } as unknown as UserSettings
 }
 
 /**
