@@ -1,7 +1,7 @@
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
-import { mongoClient } from './mongoClient'
-import { createAuditLog, AuditEventType } from '../audit'
+import type { mongoClient } from './mongoClient'
+import type { createAuditLog } from '../audit'
 
 // MongoDB-based user settings types
 
@@ -55,6 +55,7 @@ export interface UpdateUserSettings {
 export async function getUserSettings(
   userId: string,
 ): Promise<UserSettings | null> {
+  const { mongoClient } = await import('./mongoClient')
   const settings = await mongoClient.db
     .collection('user_settings')
     .findOne({ user_id: userId })
@@ -77,6 +78,9 @@ export async function createUserSettings(
   settings: NewUserSettings,
   request?: Request,
 ): Promise<UserSettings> {
+  const { mongoClient } = await import('./mongoClient')
+  const { createAuditLog, AuditEventType } = await import('../audit')
+
   const now = new Date()
   const settingsToInsert = {
     ...settings,
@@ -117,6 +121,9 @@ export async function updateUserSettings(
   updates: UpdateUserSettings,
   request?: Request,
 ): Promise<UserSettings> {
+  const { mongoClient } = await import('./mongoClient')
+  const { createAuditLog, AuditEventType } = await import('../audit')
+
   const now = new Date()
   const result = await mongoClient.db
     .collection('user_settings')
