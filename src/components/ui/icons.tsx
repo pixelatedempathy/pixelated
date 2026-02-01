@@ -1,4 +1,4 @@
-import { Download, Filter, RefreshCw, X } from 'lucide-react'
+import { Download, Eye, EyeOff, Filter, RefreshCw, X } from 'lucide-react'
 
 // Icon props interface
 interface IconProps {
@@ -33,6 +33,22 @@ export const IconFilter = (props: IconProps) => (
 
 export const IconX = (props: IconProps) => (
   <X
+    className={props.className}
+    size={props.size}
+    strokeWidth={props.strokeWidth}
+  />
+)
+
+export const IconEye = (props: IconProps) => (
+  <Eye
+    className={props.className}
+    size={props.size}
+    strokeWidth={props.strokeWidth}
+  />
+)
+
+export const IconEyeOff = (props: IconProps) => (
+  <EyeOff
     className={props.className}
     size={props.size}
     strokeWidth={props.strokeWidth}

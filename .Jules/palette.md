@@ -5,3 +5,7 @@
 ## 2024-05-24 - Hiding Interactive Elements
 **Learning:** Using `opacity-0` and `pointer-events-none` is not enough to hide elements from keyboard users (who can still tab to them) or screen readers. You must also manage `tabindex="-1"` and `aria-hidden="true"`, or use `visibility: hidden`.
 **Action:** When implementing "fade in" elements like a "Scroll to Top" button, ensure you toggle `tabindex` and `aria-hidden` states alongside the visual transition.
+
+## 2025-02-27 - Icon Consistency & Reliability
+**Learning:** Relying on font-based icons (like `material-symbols-outlined`) is fragile as it depends on external stylesheets loading. If they fail, users see text like "visibility" instead of an icon.
+**Action:** Always prefer SVG icons (e.g., from `lucide-react`) imported via `src/components/ui/icons.tsx` to ensure icons render reliably without external dependencies.
