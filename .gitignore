@@ -233,3 +233,4 @@ config/secrets/*
 docker/.env
 docker/config/secrets/
 business-strategy-cms/.env.netlify/
+.netlify
