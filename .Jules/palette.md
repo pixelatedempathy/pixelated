@@ -5,3 +5,7 @@
 ## 2024-05-24 - Hiding Interactive Elements
 **Learning:** Using `opacity-0` and `pointer-events-none` is not enough to hide elements from keyboard users (who can still tab to them) or screen readers. You must also manage `tabindex="-1"` and `aria-hidden="true"`, or use `visibility: hidden`.
 **Action:** When implementing "fade in" elements like a "Scroll to Top" button, ensure you toggle `tabindex` and `aria-hidden` states alongside the visual transition.
+
+## 2024-05-25 - Accordion Accessibility
+**Learning:** The `Accordion` component lacked critical ARIA attributes (`aria-expanded`, `aria-controls`, `role="region"`, `aria-labelledby`) despite being a core UI component. Using `React.useId()` is essential for robustly linking triggers and content panels without manual ID management.
+**Action:** When working with disclosure components (Accordion, Tabs, Dialogs), always verify ARIA linkage between the trigger and the content panel using `aria-controls` and `aria-labelledby`.
