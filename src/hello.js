@@ -1,5 +1,6 @@
 export function hello() {
   console.log('Hello Rolldown!')
+<<<<<<< HEAD
 }
 !(function () {
   try {
@@ -20,3 +21,6 @@ export function hello() {
   } catch (e) {}
 })()
 //# debugId=13850518-1122-527e-8edd-f180e2dfef0c
+=======
+}
+>>>>>>> origin/master

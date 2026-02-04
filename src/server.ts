@@ -1,9 +1,26 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import express from 'express'
 import { createServer } from 'http'
 import Redis from 'ioredis'
 import { Pool } from 'pg'
 import cors from 'cors'
 import { SocketService } from './services/socketService.js'
+<<<<<<< HEAD
+=======
+=======
+import "dotenv/config";
+import express from 'express'
+import { createServer } from 'http'
+import Redis from 'ioredis'
+import { EventEmitter } from "events";
+import { Pool } from 'pg'
+import cors from 'cors'
+import { SocketService } from "./services/socketService";
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 
 const app = express()
@@ -26,7 +43,57 @@ const db = new Pool({
 })
 
 // Redis connection
+<<<<<<< HEAD
 const redis = new Redis(REDIS_URL)
+=======
+<<<<<<< HEAD
+const redis = new Redis(REDIS_URL)
+=======
+const redisOptions = REDIS_URL.startsWith("rediss://")
+  ? {
+      tls: {
+        rejectUnauthorized: false,
+      },
+      lazyConnect: true,
+    }
+  : { lazyConnect: true };
+
+let redis = new Redis(REDIS_URL, redisOptions);
+
+// Prevent unhandled error events during connection attempts
+redis.on("error", (err) => {
+  // We handle connection errors in the connect().catch() block below
+  // This listener prevents the "Unhandled error event" warning
+  console.debug("Redis connection error (handled):", err.message);
+});
+
+// Attempt connection with fallback for development
+redis.connect().catch((err) => {
+  if (process.env.NODE_ENV === "development") {
+    console.warn(
+      "Failed to connect to Redis in development, using mock:",
+      err.message,
+    );
+    // Create a simple mock compatible with ioredis interface
+    redis = new EventEmitter() as any;
+    Object.assign(redis, {
+      status: "ready",
+      quit: async () => "OK",
+      get: async () => null,
+      set: async () => "OK",
+      del: async () => 1,
+      on: (event: string, cb: any) => {
+        if (event === "connect" || event === "ready") cb();
+        return redis;
+      },
+      // Add other necessary methods as no-ops
+    });
+  } else {
+    console.error("Failed to connect to Redis:", err);
+  }
+});
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 // Middleware
 app.use(

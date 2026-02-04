@@ -1,7 +1,20 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import {
   DynamicWeightingEngine,
   DEFAULT_DYNAMIC_WEIGHTING_CONFIG,
+<<<<<<< HEAD
+=======
+=======
+import { describe, it, expect, beforeEach } from 'vitest'
+import {
+  DynamicWeightingEngine,
+
+>>>>>>> origin/master
+>>>>>>> origin/master
   getDynamicWeightingEngine,
   resetDynamicWeightingEngine,
   type DynamicWeightingConfig,
@@ -13,7 +26,15 @@ describe('DynamicWeightingEngine', () => {
   let engine: DynamicWeightingEngine
 
   beforeEach(() => {
+<<<<<<< HEAD
     engine = new DynamicWeightingEngine()
+=======
+<<<<<<< HEAD
+    engine = new DynamicWeightingEngine()
+=======
+    engine = new DynamicWeightingEngine({ enableCaching: false })
+>>>>>>> origin/master
+>>>>>>> origin/master
     resetDynamicWeightingEngine()
   })
 
@@ -34,7 +55,15 @@ describe('DynamicWeightingEngine', () => {
       }
       const customEngine = new DynamicWeightingEngine(customConfig)
       const config = customEngine.getConfiguration()
+<<<<<<< HEAD
       
+=======
+<<<<<<< HEAD
+      
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
       expect(config.blendingAlpha).toBe(0.5)
       expect(config.hysteresisThreshold).toBe(0.1)
     })
@@ -48,6 +77,18 @@ describe('DynamicWeightingEngine', () => {
         confidence: 0.95,
       }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      // Ensure config is correct
+      engine.updateConfiguration({
+        crisisOverrideEnabled: true,
+        crisisOverrideThreshold: 0.8
+      })
+
+>>>>>>> origin/master
+>>>>>>> origin/master
       const result = engine.calculateDynamicWeights(crisisContext)
 
       expect(result.crisisOverrideApplied).toBe(true)
@@ -177,7 +218,15 @@ describe('DynamicWeightingEngine', () => {
       const context2: AlignmentContext = {
         userQuery: 'What is anxiety?',
         detectedContext: ContextType.EDUCATIONAL, // Same context
+<<<<<<< HEAD
         confidence: 0.86, // Slightly different confidence
+=======
+<<<<<<< HEAD
+        confidence: 0.86, // Slightly different confidence
+=======
+        confidence: 0.85, // Same confidence
+>>>>>>> origin/master
+>>>>>>> origin/master
       }
 
       const result1 = engine.calculateDynamicWeights(context1)
@@ -201,7 +250,15 @@ describe('DynamicWeightingEngine', () => {
         confidence: 0.85,
       }
 
+<<<<<<< HEAD
       const result1 = engine.calculateDynamicWeights(context1)
+=======
+<<<<<<< HEAD
+      const result1 = engine.calculateDynamicWeights(context1)
+=======
+      engine.calculateDynamicWeights(context1)
+>>>>>>> origin/master
+>>>>>>> origin/master
       const result2 = engine.calculateDynamicWeights(context2)
 
       // Change should be significant, hysteresis not applied
@@ -238,7 +295,15 @@ describe('DynamicWeightingEngine', () => {
 
       for (const key in newWeights) {
         const change = Math.abs(newWeights[key] - prevWeights[key])
+<<<<<<< HEAD
         expect(change).toBeLessThanOrEqual(0.11) // 10% + small tolerance
+=======
+<<<<<<< HEAD
+        expect(change).toBeLessThanOrEqual(0.11) // 10% + small tolerance
+=======
+        expect(change).toBeLessThanOrEqual(0.12) // 10% + small tolerance
+>>>>>>> origin/master
+>>>>>>> origin/master
       }
     })
 
@@ -358,6 +423,13 @@ describe('DynamicWeightingEngine', () => {
     })
 
     it('should benefit from caching for repeated contexts', () => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      engine.updateConfiguration({ enableCaching: true })
+>>>>>>> origin/master
+>>>>>>> origin/master
       const context: AlignmentContext = {
         userQuery: 'What is therapy?',
         detectedContext: ContextType.EDUCATIONAL,
@@ -373,6 +445,13 @@ describe('DynamicWeightingEngine', () => {
     })
 
     it('should invalidate cache when context changes', () => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      engine.updateConfiguration({ enableCaching: true })
+>>>>>>> origin/master
+>>>>>>> origin/master
       const context1: AlignmentContext = {
         userQuery: 'What is therapy?',
         detectedContext: ContextType.EDUCATIONAL,
@@ -423,7 +502,15 @@ describe('DynamicWeightingEngine', () => {
 
         const result = engine.calculateDynamicWeights(context)
 
+<<<<<<< HEAD
         for (const [key, weight] of Object.entries(result.weights)) {
+=======
+<<<<<<< HEAD
+        for (const [key, weight] of Object.entries(result.weights)) {
+=======
+        for (const [_, weight] of Object.entries(result.weights)) {
+>>>>>>> origin/master
+>>>>>>> origin/master
           expect(weight).toBeGreaterThanOrEqual(0)
           expect(weight).toBeLessThanOrEqual(1)
         }
