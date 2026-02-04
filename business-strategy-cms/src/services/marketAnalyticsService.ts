@@ -3,6 +3,10 @@ import {
   MarketPenetration,
   MarketOpportunity,
 } from '../types/business-intelligence'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { DatabaseService } from './databaseService'
 
 export class MarketAnalyticsService {
@@ -12,6 +16,17 @@ export class MarketAnalyticsService {
   constructor() {
     this.logger = new Logger('MarketAnalyticsService')
     this.db = new DatabaseService()
+<<<<<<< HEAD
+=======
+=======
+// import { DatabaseService } from './databaseService'
+
+export class MarketAnalyticsService {
+  private logger: Logger
+  constructor() {
+    this.logger = new Logger('MarketAnalyticsService')
+>>>>>>> origin/master
+>>>>>>> origin/master
   }
 
   /**
@@ -48,7 +63,15 @@ export class MarketAnalyticsService {
         error,
         targetSegments,
       })
+<<<<<<< HEAD
       throw new Error(`Market penetration analysis failed: ${error}`)
+=======
+<<<<<<< HEAD
+      throw new Error(`Market penetration analysis failed: ${error}`)
+=======
+      throw new Error(`Market penetration analysis failed: ${String(error)}`)
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
   }
 
@@ -100,7 +123,15 @@ export class MarketAnalyticsService {
     resourceRequirements: ResourceRequirements
     riskAssessment: RiskAssessment
   }> {
+<<<<<<< HEAD
     const marketAnalysis = await this.analyzeTargetMarkets(
+=======
+<<<<<<< HEAD
+    const marketAnalysis = await this.analyzeTargetMarkets(
+=======
+    await this.analyzeTargetMarkets(
+>>>>>>> origin/master
+>>>>>>> origin/master
       currentMarket,
       targetMarkets,
     )
@@ -389,7 +420,15 @@ export class MarketAnalyticsService {
     ]
   }
 
+<<<<<<< HEAD
   private async fetchMarketSaturationData(market: string): Promise<any> {
+=======
+<<<<<<< HEAD
+  private async fetchMarketSaturationData(market: string): Promise<any> {
+=======
+  private async fetchMarketSaturationData(_market: string): Promise<any> {
+>>>>>>> origin/master
+>>>>>>> origin/master
     // Mock data - replace with actual market data
     return {
       currentCustomers: 450,
@@ -399,7 +438,15 @@ export class MarketAnalyticsService {
   }
 
   private async fetchHistoricalData(
+<<<<<<< HEAD
     market: string,
+=======
+<<<<<<< HEAD
+    market: string,
+=======
+    _market: string,
+>>>>>>> origin/master
+>>>>>>> origin/master
     months: number,
   ): Promise<any[]> {
     // Mock historical data - replace with actual data

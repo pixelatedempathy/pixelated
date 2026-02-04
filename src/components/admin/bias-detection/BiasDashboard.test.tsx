@@ -15,7 +15,11 @@ import '@testing-library/jest-dom'
 let BiasDashboard: (typeof import('./BiasDashboard'))['BiasDashboard']
 
 // Keep original fetch to restore after tests
+<<<<<<< HEAD
 let __originalFetch: typeof fetch | undefined = global.fetch as typeof fetch
+=======
+const __originalFetch: typeof fetch | undefined = global.fetch as typeof fetch
+>>>>>>> origin/master
 
 // Mock the logger
 vi.mock('@/lib/logging/build-safe-logger', () => ({
@@ -109,7 +113,7 @@ const createMockWebSocket = (): MockWebSocketInstance => ({
 const MockWebSocketConstructor = vi.fn(createMockWebSocket) as ReturnType<
   typeof vi.fn
 > & {
-  new (url: string | URL, protocols?: string | string[]): MockWebSocketInstance
+  new(url: string | URL, protocols?: string | string[]): MockWebSocketInstance
   prototype: WebSocket
   readonly CONNECTING: 0
   readonly OPEN: 1
@@ -120,11 +124,19 @@ const MockWebSocketConstructor = vi.fn(createMockWebSocket) as ReturnType<
 // Mock WebSocket using Vitest's stubGlobal
 vi.stubGlobal('WebSocket', MockWebSocketConstructor)
 
+<<<<<<< HEAD
 // Define standard readyState constants on the mock constructor
 ;(MockWebSocketConstructor as any).CONNECTING = 0
 ;(MockWebSocketConstructor as any).OPEN = 1
 ;(MockWebSocketConstructor as any).CLOSING = 2
 ;(MockWebSocketConstructor as any).CLOSED = 3
+=======
+  // Define standard readyState constants on the mock constructor
+  ; (MockWebSocketConstructor as any).CONNECTING = 0
+  ; (MockWebSocketConstructor as any).OPEN = 1
+  ; (MockWebSocketConstructor as any).CLOSING = 2
+  ; (MockWebSocketConstructor as any).CLOSED = 3
+>>>>>>> origin/master
 
 // --- GLOBAL MOCKS FOR BROWSER APIS ---
 // Ensure matchMedia is always mocked for all tests
@@ -145,7 +157,11 @@ beforeAll(async () => {
     })
   }
   // Mock window.alert and window.prompt to prevent test failures
+<<<<<<< HEAD
   vi.spyOn(window, 'alert').mockImplementation(() => {})
+=======
+  vi.spyOn(window, 'alert').mockImplementation(() => { })
+>>>>>>> origin/master
   vi.spyOn(window, 'prompt').mockImplementation(() => '')
   // Mock URL.createObjectURL if not present
   if (!global.URL.createObjectURL) {
@@ -169,10 +185,23 @@ describe('BiasDashboard', () => {
     vi.stubGlobal('WebSocket', MockWebSocketConstructor)
     // Ensure the constructor has a default implementation after reset
     MockWebSocketConstructor.mockImplementation(createMockWebSocket)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     ;(MockWebSocketConstructor as any).CONNECTING = 0
     ;(MockWebSocketConstructor as any).OPEN = 1
     ;(MockWebSocketConstructor as any).CLOSING = 2
     ;(MockWebSocketConstructor as any).CLOSED = 3
+<<<<<<< HEAD
+=======
+=======
+      ; (MockWebSocketConstructor as any).CONNECTING = 0
+      ; (MockWebSocketConstructor as any).OPEN = 1
+      ; (MockWebSocketConstructor as any).CLOSING = 2
+      ; (MockWebSocketConstructor as any).CLOSED = 3
+>>>>>>> origin/master
+>>>>>>> origin/master
     // Default fetch mock for initial dashboard load unless a test overrides it
     global.fetch = vi
       .fn()
@@ -225,8 +254,12 @@ describe('BiasDashboard', () => {
     if (__originalFetch) {
       global.fetch = __originalFetch
     } else {
+<<<<<<< HEAD
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(global as any).fetch = undefined
+=======
+      ; (global as any).fetch = undefined
+>>>>>>> origin/master
     }
     // Ensure global WebSocket remains our mock after tests that might override it
     vi.stubGlobal('WebSocket', MockWebSocketConstructor)
@@ -293,10 +326,7 @@ describe('BiasDashboard', () => {
   })
 
   it('handles WebSocket errors gracefully', async () => {
-    let mockWebSocket: MockWebSocketInstance
-
-    // Use the same pattern as the working Enhanced WebSocket tests
-    mockWebSocket = {
+    const mockWebSocket: MockWebSocketInstance = {
       send: vi.fn(),
       close: vi.fn(),
       readyState: WebSocket.OPEN,
@@ -481,18 +511,16 @@ describe('BiasDashboard', () => {
     })
 
     // Simulate connection and heartbeat setup
-    const openCall = mockWs.addEventListener.mock.calls.find(
+    const _openCall = mockWs.addEventListener.mock.calls.find(
       (call: unknown[]) => call[0] === 'open',
     )
-    if (openCall && typeof openCall[1] === 'function') {
-      openCall[1]()
-      // Set up heartbeat interval to simulate real behavior
-      mockWs.heartbeatInterval = setInterval(() => {}, 30000) as any
-    }
+    const intervalId = setInterval(() => { }, 30000)
+    mockWs.heartbeatInterval = intervalId as any
 
     unmount()
 
     expect(mockWs.close).toHaveBeenCalledWith(1000, 'Component unmounting')
+    clearInterval(intervalId)
   })
 
   it('renders filtering controls', async () => {
@@ -781,7 +809,7 @@ describe('BiasDashboard', () => {
     fireEvent.click(screen.getByTestId('notifications-button'))
 
     // Mock window.alert
-    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => { })
 
     // Click send test button
     const sendTestButton = screen.getByText(/send test/i)
@@ -1068,7 +1096,11 @@ describe('BiasDashboard', () => {
       global.URL.revokeObjectURL = vi.fn()
       const clickSpy = vi
         .spyOn(HTMLAnchorElement.prototype, 'click')
+<<<<<<< HEAD
         .mockImplementation(() => {})
+=======
+        .mockImplementation(() => { })
+>>>>>>> origin/master
       const originalFetch = globalThis.fetch
       globalThis.fetch = vi.fn(async (input: any, init?: any) => {
         const url = typeof input === 'string' ? input : input?.url
@@ -1103,8 +1135,13 @@ describe('BiasDashboard', () => {
       // Cleanup
       clickSpy.mockRestore()
       globalThis.fetch = originalFetch
+<<<<<<< HEAD
       ;(global.URL.createObjectURL as any) = vi.fn()
       ;(global.URL.revokeObjectURL as any) = vi.fn()
+=======
+        ; (global.URL.createObjectURL as any) = vi.fn()
+        ; (global.URL.revokeObjectURL as any) = vi.fn()
+>>>>>>> origin/master
     })
 
     it('closes export dialog when cancel is clicked', async () => {
@@ -1487,8 +1524,12 @@ describe('BiasDashboard', () => {
       if (originalFetch) {
         global.fetch = originalFetch
       } else {
+<<<<<<< HEAD
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ;(global as any).fetch = undefined
+=======
+        ; (global as any).fetch = undefined
+>>>>>>> origin/master
       }
       if (container && container.parentNode) {
         container.parentNode.removeChild(container)
@@ -1883,7 +1924,8 @@ describe('BiasDashboard', () => {
       })
 
       // Set up heartbeat interval
-      mockWebSocket.heartbeatInterval = setInterval(() => {}, 30000) as any
+      const intervalId = setInterval(() => { }, 30000)
+      mockWebSocket.heartbeatInterval = intervalId as any
 
       // Unmount component
       unmount()
@@ -1893,6 +1935,7 @@ describe('BiasDashboard', () => {
         1000,
         'Component unmounting',
       )
+      clearInterval(intervalId)
     })
 
     it('handles unknown message types gracefully', async () => {

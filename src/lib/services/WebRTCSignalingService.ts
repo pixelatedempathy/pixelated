@@ -1,6 +1,5 @@
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
-// TODO: Implement WebSocketService or use existing WebSocket implementation
-// import { WebSocketService } from './WebSocketService'
+import { WebSocketService } from './WebSocketService'
 
 const logger = createBuildSafeLogger('WebRTCSignaling')
 
@@ -13,17 +12,28 @@ export interface SignalingMessage {
 
 class WebRTCSignalingService {
   private static instance: WebRTCSignalingService
-  // TODO: Implement WebSocketService integration
-  // private wsService: WebSocketService
+  private wsService: WebSocketService
   private messageHandlers: Map<string, (message: SignalingMessage) => void>
 
   private constructor() {
-    // TODO: Initialize WebSocketService when available
-    // this.wsService = WebSocketService.getInstance()
+    this.wsService = WebSocketService.getInstance()
     this.messageHandlers = new Map()
 
-    // TODO: Listen for WebRTC signaling messages when WebSocketService is available
-    // this.wsService.on('webrtc', this.handleSignalingMessage.bind(this))
+    // Connect to WebSocket server if not already connected
+    // Defaulting to relative /ws endpoint or env var
+    const wsUrl =
+      process.env.NEXT_PUBLIC_WEBSOCKET_URL ||
+      (typeof window !== 'undefined'
+        ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${
+            window.location.host
+          }/ws`
+        : 'ws://localhost:8084')
+
+    this.wsService.connect(wsUrl).catch((err) => {
+      logger.error('Failed to connect to signaling server', { error: err })
+    })
+
+    this.wsService.on('webrtc', this.handleSignalingMessage.bind(this))
   }
 
   public static getInstance(): WebRTCSignalingService {
@@ -42,14 +52,12 @@ class WebRTCSignalingService {
     offer: RTCSessionDescriptionInit,
   ): Promise<void> {
     try {
-      // TODO: Implement WebSocket sending when WebSocketService is available
-      // await this.wsService.send('webrtc', {
-      //   type: 'offer',
-      //   sessionId,
-      //   userId,
-      //   data: offer,
-      // })
-      logger.info('WebRTC offer would be sent', { sessionId, userId, offer })
+      await this.wsService.send('webrtc', {
+        type: 'offer',
+        sessionId,
+        userId,
+        data: offer,
+      })
       logger.debug('Sent offer', { sessionId, userId })
     } catch (error: unknown) {
       logger.error('Failed to send offer', { error, sessionId, userId })
@@ -66,14 +74,12 @@ class WebRTCSignalingService {
     answer: RTCSessionDescriptionInit,
   ): Promise<void> {
     try {
-      // TODO: Implement WebSocket sending when WebSocketService is available
-      // await this.wsService.send('webrtc', {
-      //   type: 'answer',
-      //   sessionId,
-      //   userId,
-      //   data: answer,
-      // })
-      logger.info('WebRTC answer would be sent', { sessionId, userId, answer })
+      await this.wsService.send('webrtc', {
+        type: 'answer',
+        sessionId,
+        userId,
+        data: answer,
+      })
       logger.debug('Sent answer', { sessionId, userId })
     } catch (error: unknown) {
       logger.error('Failed to send answer', { error, sessionId, userId })
@@ -90,17 +96,11 @@ class WebRTCSignalingService {
     candidate: RTCIceCandidateInit,
   ): Promise<void> {
     try {
-      // TODO: Implement WebSocket sending when WebSocketService is available
-      // await this.wsService.send('webrtc', {
-      //   type: 'ice-candidate',
-      //   sessionId,
-      //   userId,
-      //   data: candidate,
-      // })
-      logger.info('WebRTC ICE candidate would be sent', {
+      await this.wsService.send('webrtc', {
+        type: 'ice-candidate',
         sessionId,
         userId,
-        candidate,
+        data: candidate,
       })
       logger.debug('Sent ICE candidate', { sessionId, userId })
     } catch (error: unknown) {
@@ -122,21 +122,20 @@ class WebRTCSignalingService {
 
   /**
    * Handle incoming signaling messages
-   * TODO: Uncomment when WebSocketService is implemented
    */
-  // private handleSignalingMessage(message: SignalingMessage): void {
-  //   const handler = this.messageHandlers.get(message.sessionId)
-  //   if (handler) {
-  //     try {
-  //       handler(message)
-  //     } catch (error: unknown) {
-  //       logger.error('Error in signaling message handler', {
-  //         error,
-  //         sessionId: message.sessionId,
-  //       })
-  //     }
-  //   }
-  // }
+  private handleSignalingMessage(message: SignalingMessage): void {
+    const handler = this.messageHandlers.get(message.sessionId)
+    if (handler) {
+      try {
+        handler(message)
+      } catch (error: unknown) {
+        logger.error('Error in signaling message handler', {
+          error,
+          sessionId: message.sessionId,
+        })
+      }
+    }
+  }
 }
 
 export const signalingService = WebRTCSignalingService.getInstance()
