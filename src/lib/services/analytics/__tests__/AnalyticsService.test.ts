@@ -66,7 +66,7 @@ class MockWebSocket {
   public readyState: number = 1
   private eventHandlers: Map<string, ((...args: any[]) => void)[]> = new Map()
 
-  constructor(url: string): void {
+  constructor(url: string) {
     this.url = url
   }
 

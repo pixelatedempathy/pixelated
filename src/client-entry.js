@@ -8,3 +8,4 @@
 
 // No exports needed for client entry
 // This file simply sets up the environment
+export {}

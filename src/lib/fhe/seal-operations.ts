@@ -248,7 +248,7 @@ export class SealOperations {
 
           const { slotCount } = batchEncoder
           // Ensure the array has enough elements or pad with zeros
-          const coefArray: number[] = new Array<number>(slotCount).fill(0)
+          const coefArray: number[] = Array.from({ length: slotCount }).fill(0) as number[]
           for (let i = 0; i < Math.min(bAsNumberArray.length, slotCount); i++) {
             if (typeof bAsNumberArray[i] !== 'number') {
               throw new TypeError(
@@ -567,9 +567,9 @@ export class SealOperations {
       } else {
         const batchEncoder = getBatchEncoder() // Already destructured
         const { slotCount } = batchEncoder
-        const coefArray: number[] = new Array<number>(slotCount).fill(
+        const coefArray: number[] = Array.from({ length: slotCount }).fill(
           coefficients[n],
-        )
+        ) as number[]
         batchEncoder.encode(coefArray, highestCoef as unknown as SealPlainText)
       }
 
@@ -600,9 +600,9 @@ export class SealOperations {
         } else {
           const batchEncoder = getBatchEncoder()
           const { slotCount } = batchEncoder
-          const coefArray: number[] = new Array<number>(slotCount).fill(
+          const coefArray: number[] = Array.from({ length: slotCount }).fill(
             coefficients[i],
-          )
+          ) as number[]
           batchEncoder.encode(coefArray, nextCoef as unknown as SealPlainText)
         }
 

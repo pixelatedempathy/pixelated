@@ -93,7 +93,6 @@ export default function RegisterForm() {
                       />
                     </>
                   );
-                }
                 case 'email':
                   return (
                     <>
