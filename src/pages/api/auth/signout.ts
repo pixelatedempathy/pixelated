@@ -1,8 +1,21 @@
 export const prerender = false
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { auth0UserService } from '@/services/auth0.service'
 import { AuditEventType, createAuditLog } from '@/lib/audit'
 import { updatePhase6AuthenticationProgress } from '@/lib/mcp/phase6-integration'
 import { extractTokenFromRequest } from '@/lib/auth/auth0-middleware'
+<<<<<<< HEAD
+=======
+=======
+import { auth0UserService } from '../../../services/auth0.service'
+import { AuditEventType, createAuditLog } from '../../../lib/audit'
+import { updatePhase6AuthenticationProgress } from '../../../lib/mcp/phase6-integration'
+import { extractTokenFromRequest } from '../../../lib/auth/auth0-middleware'
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 /**
  * Unified Sign out endpoint using Auth0

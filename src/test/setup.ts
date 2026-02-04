@@ -29,12 +29,15 @@ declare module 'vitest' {
   }
 }
 
+<<<<<<< HEAD
 // Cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
   if (typeof document !== 'undefined') {
     document.body.innerHTML = ''
   }
 })
+=======
+>>>>>>> origin/master
 
 // Mock window.matchMedia
 if (typeof window !== 'undefined') {

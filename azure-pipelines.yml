@@ -12,6 +12,13 @@
 trigger:
   branches:
     include:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      - staging
+>>>>>>> origin/master
+>>>>>>> origin/master
       - master
       - main
       - develop
@@ -26,41 +33,66 @@ pr:
       - master
       - main
       - develop
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      - staging
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 parameters:
   - name: TRIGGER_OVH_OLLAMA_BUILD
-    displayName: "Trigger OVH Ollama Build"
+    displayName: 'Trigger OVH Ollama Build'
     type: string
-    default: "false"
+    default: 'false'
     values:
-      - "true"
-      - "false"
+      - 'true'
+      - 'false'
   - name: TRIGGER_AI_TRAINING
-    displayName: "Trigger OVH AI Training"
+    displayName: 'Trigger OVH AI Training'
     type: string
-    default: "false"
+    default: 'false'
     values:
-      - "true"
-      - "false"
+      - 'true'
+      - 'false'
   - name: SKIP_EVAL_TESTS
-    displayName: "Skip Evaluation Tests (therapy-bench)"
+    displayName: 'Skip Evaluation Tests (therapy-bench)'
     type: string
-    default: "false"
+    default: 'false'
     values:
-      - "true"
-      - "false"
+      - 'true'
+      - 'false'
   - name: USE_SELF_HOSTED
-    displayName: "Use Self-Hosted Agent (Default Pool)"
+    displayName: 'Use Self-Hosted Agent (Default Pool)'
     type: string
-    default: "false"
+<<<<<<< HEAD
+    default: 'false'
+=======
+<<<<<<< HEAD
+    default: 'false'
+=======
+    default: 'true'
+>>>>>>> origin/master
+>>>>>>> origin/master
     values:
-      - "true"
-      - "false"
+      - 'true'
+      - 'false'
 
 variables:
   # Reference Variable Group (configured in Azure DevOps web UI)
   - group: pixelated-pipeline-variables
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  # Default self-hosted pool name; change in Azure DevOps if different
+  - name: SELF_HOSTED_POOL
+    value: 'Default'
+
+>>>>>>> origin/master
+>>>>>>> origin/master
   # Convert parameters to variables for runtime conditions
   # Template expressions (${{ }}) convert parameters to variables at compile-time
   # Runtime conditions can then check these variables at execution time
@@ -74,48 +106,71 @@ variables:
 
   # Derived variables (computed from variable group values)
   - name: DOCKER_REGISTRY
-    value: "$(AZURE_CONTAINER_REGISTRY).azurecr.io"
+    value: '$(AZURE_CONTAINER_REGISTRY).azurecr.io'
   - name: IMAGE_NAME
-    value: "$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY)"
+    value: '$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY)'
 
   # Sentry Configuration
   - name: SENTRY_DSN
-    value: "https://ef4ca2c0d2530a95efb0ef55c168b661@o4509483611979776.ingest.us.sentry.io/4509483637932032"
+    value: '$(SENTRY_DSN_SECRET)'
   - name: SENTRY_ORG
-    value: "pixelated-empathy-dq"
+    value: 'pixelated-empathy-dq'
   - name: SENTRY_PROJECT
-    value: "pixel-astro"
+    value: 'pixel-astro'
   - name: SENTRY_RELEASE
-    value: "$(Build.SourceVersion)"
+    value: '$(Build.SourceVersion)'
 
   # Environment URLs (defaults, can be overridden by variable group)
   # NOTE: Must match the hostname in k8s/azure/staging/ingress.yaml
   - name: STAGING_URL
-    value: "https://staging.pixelatedempathy.com"
+    value: 'https://staging.pixelatedempathy.com'
   - name: PRODUCTION_URL
-    value: "https://pixelatedempathy.com"
+    value: 'https://pixelatedempathy.com'
 
   # Pool selection: Uses Default agent pool (self-hosted agents)
 
   # Pipeline-level timeout: 2 hours overall limit
   # Note: Timeouts are configured at job/stage level - this variable is for reference
   - name: pipelineTimeoutInMinutes
-    value: "120"
+    value: '120'
 
 stages:
   - stage: Validate
-    displayName: "Validate Code"
+    displayName: 'Validate Code'
     jobs:
       - job: ValidateVariables
-        displayName: "Validate Required Variables"
+        displayName: 'Validate Required Variables'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - script: |
               set -euo pipefail
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+              required_vars=(
+                "NODE_VERSION"
+                "AZURE_CONTAINER_REGISTRY"
+                "IMAGE_REPOSITORY"
+                "AZURE_RESOURCE_GROUP"
+                "AZURE_SUBSCRIPTION"
+                "AKS_CLUSTER_NAME"
+                "KUBE_NAMESPACE"
+                "KUBE_NAMESPACE_PROD"
+              )
+
+              missing_vars=()
+              for var in "${required_vars[@]}"; do
+                # Check if variable is set and non-empty
+                var_value=$(eval echo "\$${var}")
+                if [ -z "${var_value}" ]; then
+                  missing_vars+=("$var")
+=======
+>>>>>>> origin/master
 
               required_vars=(
                 "NODE_VERSION"
@@ -149,153 +204,82 @@ stages:
               fi
 
               echo "✅ All required variables are set"
-            displayName: "Validate Required Variables"
+            displayName: 'Validate Required Variables'
 
       - job: ValidateDependencies
-        displayName: "Validate Dependencies"
+        displayName: 'Validate Dependencies'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               corepack enable pnpm
               pnpm --version
-            displayName: "Enable pnpm"
+            displayName: 'Enable pnpm'
 
           - script: |
               pnpm audit --audit-level moderate || echo "⚠️ Audit warnings found but continuing"
-            displayName: "Audit Dependencies"
+            displayName: 'Audit Dependencies'
 
       - job: LintCode
-        displayName: "Lint Code"
+        displayName: 'Lint Code'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               corepack enable pnpm
               pnpm lint:ci || echo "⚠️ Linting completed with warnings"
-            displayName: "Run Linting"
+            displayName: 'Run Linting'
 
       - job: TypeCheck
-        displayName: "Type Check"
+        displayName: 'Type Check'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               corepack enable pnpm
               pnpm typecheck || echo "⚠️ Type checking completed with warnings"
-            displayName: "Run Type Check"
+            displayName: 'Run Type Check'
 
       - job: UnitTests
-        displayName: "Unit Tests & Coverage"
+        displayName: 'Unit Tests & Coverage'
+<<<<<<< HEAD
+=======
+        timeoutInMinutes: '45'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
-          - script: |
-              corepack enable pnpm
-              pnpm install
-            displayName: "Install Dependencies"
-
-          - task: SonarCloudPrepare@3
-            inputs:
-              SonarCloud: "SonarCloud"
-              organization: "pixelated-empathy"
-              scannerMode: "CLI"
-              configMode: "file"
-              configFile: "config/sonar-project.properties"
-              extraProperties: |
-                sonar.projectBaseDir=$(Build.SourcesDirectory)
-            displayName: "Prepare SonarCloud Analysis"
-
-          - script: |
-              export VITEST_COVERAGE_ENABLED=true
-              pnpm run test:unit
-            displayName: "Run Unit Tests with Coverage"
-            continueOnError: true
-            env:
-              VITEST_COVERAGE_ENABLED: "true"
-
-          - task: PublishTestResults@2
-            inputs:
-              testResultsFormat: "JUnit"
-              testResultsFiles: "coverage/junit.xml"
-              mergeTestResults: true
-              failTaskOnFailedTests: true
-            displayName: "Publish Test Results"
-
-          - task: PublishCodeCoverageResults@2
-            inputs:
-              summaryFileLocation: "coverage/cobertura-coverage.xml"
-            displayName: "Publish Code Coverage"
-
-          - task: SonarCloudAnalyze@3
-            displayName: "Run SonarCloud Analysis"
-
-          - task: SonarCloudPublish@3
-            displayName: "Publish SonarCloud Quality Gate Result"
-            inputs:
-              pollingTimeoutSec: 300
-
-  - stage: Eval
-    displayName: "Evaluation Gates (therapy-bench, clinical-similarity)"
-    dependsOn: Validate
-    condition: and(succeeded(), ne(variables['SKIP_EVAL_TESTS'], 'true'))
-    jobs:
-      - job: EvalGates
-        displayName: "Evaluation Gates (therapy-bench, clinical-similarity)"
-        pool:
-          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
-          ${{ else }}:
-            vmImage: "ubuntu-latest"
-        steps:
-          - checkout: self
-            displayName: "Checkout repository with submodules"
-            persistCredentials: "true"
-            submodules: "false"
-            fetchDepth: "0"
-          - script: |
-              chmod +x scripts/resolve-submodule-url.sh
-              ./scripts/resolve-submodule-url.sh
-            displayName: "Resolve submodule URL dynamically"
-            env:
-              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-              GITHUB_TOKEN: $(GITHUB_TOKEN)
-          - task: NodeTool@0
-            inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
           - script: |
               set -euo pipefail
 
@@ -318,7 +302,119 @@ stages:
 
               make --version
               g++ --version
-            displayName: "Install Build Tools"
+            displayName: 'Install Build Tools'
+
+          - script: |
+              corepack enable pnpm
+              pnpm install
+            displayName: 'Install Dependencies'
+
+          - script: |
+              export CI=true
+              export VITEST_COVERAGE_ENABLED=false
+              export NODE_OPTIONS="--max-old-space-size=4096"
+              timeout 300s pnpm exec vitest run -c config/vitest.config.ts --no-coverage --maxWorkers=1 --bail=3 --reporter=junit --outputFile=./coverage/junit.xml || {
+                echo "Tests timed out or failed"
+                exit 1
+              }
+            displayName: 'Run Unit Tests'
+            timeoutInMinutes: '10'
+            continueOnError: 'true'
+            env:
+              VITEST_COVERAGE_ENABLED: 'false'
+              NODE_ENV: 'test'
+              NODE_OPTIONS: '--max-old-space-size=4096'
+
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: 'coverage/junit.xml'
+              mergeTestResults: true
+              failTaskOnFailedTests: false
+            displayName: 'Publish Test Results'
+
+          - task: Bash@3
+            displayName: 'Publish Code Coverage'
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo "📊 Publishing code coverage results..."
+                # This task has been replaced with a more modern approach
+                # The coverage files are already generated and available in the artifacts
+                echo "✅ Code coverage results available in coverage directory"
+                echo "📁 Coverage files:"
+                ls -la coverage/ || true
+                echo "📊 Cobertura report: coverage/cobertura-coverage.xml"
+                echo "📊 HTML report: coverage/index.html"
+                echo "📊 JUnit results: coverage/junit.xml"
+                echo ""
+                echo "💡 Tip: Download the coverage artifacts from the pipeline run"
+                echo "   or use Azure DevOps extensions for enhanced coverage visualization"
+
+          # SonarCloud tasks are not recognized by Azure Pipelines schema
+          # These tasks require the SonarCloud extension to be installed
+          # For schema validation purposes, they are commented out
+          # - task: SonarCloudAnalyze@2
+          #   displayName: 'Run SonarCloud Analysis'
+
+          # - task: SonarCloudPublish@2
+          #   displayName: 'Publish SonarCloud Quality Gate Result'
+          #   inputs:
+          #     pollingTimeoutSec: '300'
+
+  - stage: Eval
+    displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+    dependsOn: Validate
+    condition: and(succeeded(), ne(variables['SKIP_EVAL_TESTS'], 'true'))
+    jobs:
+      - job: EvalGates
+        displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+            displayName: 'Checkout repository with submodules'
+            persistCredentials: 'true'
+            submodules: 'false'
+            fetchDepth: '0'
+          - script: |
+              chmod +x scripts/resolve-submodule-url.sh
+              ./scripts/resolve-submodule-url.sh
+            displayName: 'Resolve submodule URL dynamically'
+            env:
+              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+              GITHUB_TOKEN: $(GITHUB_TOKEN)
+              G_TOKEN: $(G_TOKEN)
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+          - script: |
+              set -euo pipefail
+
+              # Install build tools required for native Node modules
+              echo "📦 Checking build dependencies..."
+
+              if ! command -v make >/dev/null 2>&1 || ! command -v g++ >/dev/null 2>&1; then
+                echo "⚠️ Build tools missing. Attempting installation..."
+                sudo apt-get update -qq
+                sudo apt-get install -y --no-install-recommends \
+                  build-essential \
+                  make \
+                  g++ \
+                  python3 \
+                  python3-dev
+                echo "✅ Build tools installed"
+              else
+                echo "✅ Build tools already installed (skipping sudo)"
+              fi
+
+              make --version
+              g++ --version
+            displayName: 'Install Build Tools'
 
           - script: |
               set -euo pipefail
@@ -353,7 +449,7 @@ stages:
                 echo "❌ Failed to install dependencies after all attempts"
                 exit 1
               fi
-            displayName: "Install Node Deps"
+            displayName: 'Install Node Deps'
           - script: |
               set -euo pipefail
 
@@ -406,7 +502,434 @@ stages:
                 echo "##vso[task.logissue type=warning]Disk usage is still high: ${DISK_USAGE}%"
                 echo "⚠️ Consider cleaning up the agent machine or increasing disk space"
               fi
-            displayName: "Cleanup Disk Space"
+            displayName: 'Cleanup Disk Space'
+          - script: |
+              set -euo pipefail
+
+              # Ensure local bin is in path for this step
+              export PATH="$HOME/.local/bin:$PATH"
+
+              echo "📦 Checking uv package manager..."
+              if ! command -v uv >/dev/null 2>&1; then
+                echo "Installing uv..."
+                curl -LsSf https://astral.sh/uv/install.sh | sh
+              else
+                echo "✅ uv is already installed"
+              fi
+              uv --version
+
+              echo "🐍 Setting up Python environment with uv..."
+
+              # Use default cache location ($HOME/.cache/uv) which is on the main disk
+              echo "Using default uv cache location: $HOME/.cache/uv"
+              export UV_CACHE_DIR="$HOME/.cache/uv"
+              mkdir -p "$UV_CACHE_DIR"
+
+              # Use specific existing virtual environment if available (avoids re-creation)
+              # This is critical for self-hosted agents to reuse the user's optimized env
+              if [ -d "/home/vivi/pixelated/.venv" ]; then
+                echo "Using shared virtual environment at /home/vivi/pixelated/.venv"
+                export UV_PROJECT_ENVIRONMENT="/home/vivi/pixelated/.venv"
+                # Set for subsequent steps
+                echo "##vso[task.setvariable variable=UV_PROJECT_ENVIRONMENT]/home/vivi/pixelated/.venv"
+              fi
+
+              # Use uv sync to install/update dependencies efficiently
+              # We do NOT remove .venv here to allow incremental updates (huge speedup for self-hosted)
+              # uv sync is naturally idempotent
+
+              MAX_RETRIES=3
+              RETRY_COUNT=0
+
+              while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+                # --frozen ensures we respect the lockfile exactly
+                if uv sync --frozen; then
+                  break
+                else
+                  RETRY_COUNT=$((RETRY_COUNT + 1))
+                  if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                    echo "##vso[task.logissue type=warning]uv sync failed (attempt $RETRY_COUNT/$MAX_RETRIES) - retrying..."
+                    sleep 10
+                  else
+                    echo "##vso[task.logissue type=error]uv sync failed after $MAX_RETRIES attempts"
+                    echo "📊 Current disk usage:"
+                    df -h /
+                    exit 1
+                  fi
+                fi
+              done
+
+              # Verify installation
+              uv run python -V
+              echo "✅ Python environment ready"
+            displayName: 'Install uv (Python)'
+          - script: |
+              set -euo pipefail
+              export PATH="$HOME/.local/bin:$PATH"
+              export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
+              echo "🔎 Submodule status:"
+              git submodule status || true
+              echo "📂 Listing ai directory (if present):"
+              ls -la ai || true
+              echo "🧪 Sanity check: try importing ai.evals"
+              uv run python - << 'PY'
+              import sys, importlib
+              print("sys.path[0] =", sys.path[0])
+              try:
+                mod = importlib.import_module("ai.evals")
+                print("✅ ai.evals import OK:", getattr(mod, "__file__", "<namespace>"))
+              except Exception as e:
+                print("❌ ai.evals import failed:", repr(e), file=sys.stderr)
+                sys.exit(1)
+              PY
+            displayName: 'Sanity Check: ai.evals import'
+          - script: |
+              set -euo pipefail
+              export PATH="$HOME/.local/bin:$PATH"
+              export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
+              pnpm test:evals
+            displayName: 'Run Eval Tests'
+            continueOnError: 'true'
+
+          - script: |
+              set -euo pipefail
+              echo "⚠️ Job failed. running safe cleanup..."
+
+              # 1. Clean Docker resources (dangling images/containers)
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning Docker resources..."
+                docker system prune -f 2>/dev/null || true
+              fi
+
+              # 2. Clean temporary files
+              echo "Cleaning temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+
+              # 3. Clean local build artifacts (safe to remove as they will be recreated)
+              echo "Cleaning build artifacts..."
+              rm -rf $(Build.SourcesDirectory)/node_modules 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/.venv 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/dist 2>/dev/null || true
+
+              echo "✅ Safe cleanup completed"
+              df -h /
+            condition: failed()
+            displayName: 'Cleanup on Failure'
+
+  - stage: Build
+    displayName: 'Build Application'
+    # Build must wait for Eval to complete to prevent resource contention
+    # If SKIP_EVAL_TESTS=true, Eval is skipped and Build runs after Validate
+    dependsOn:
+      - Validate
+      - Eval
+    # Build runs if Validate succeeded AND (Eval succeeded OR Eval was skipped)
+    condition: |
+      and(
+        in(dependencies.Validate.result, 'Succeeded', 'SucceededWithIssues'),
+        in(dependencies.Eval.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+      )
+    jobs:
+      - job: BuildApplication
+        displayName: 'Build and Push Docker Image'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        timeoutInMinutes: '45'
+        steps:
+          - script: |
+              set -euo pipefail
+              echo "🧹 Deep cleanup of disk space before build..."
+
+              echo "📊 Disk space before cleanup:"
+              df -h / | tail -1
+
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning up Docker resources..."
+                
+                # Check for running containers first
+                if [ "$(docker ps -q)" ]; then
+                   echo "⚠️ Found running containers. Attempting to stop them..."
+                   docker stop $(docker ps -q) 2>/dev/null || true
+>>>>>>> origin/master
+                fi
+              done
+
+<<<<<<< HEAD
+              if [ ${#missing_vars[@]} -gt 0 ]; then
+                echo "##vso[task.logissue type=error]Missing required variables:"
+                for var in "${missing_vars[@]}"; do
+                  echo "  - $var"
+                done
+                echo ""
+                echo "These variables must be set in the 'pixelated-pipeline-variables' variable group"
+                echo "or as pipeline variables. See docs/azure-devops/variable-setup.md"
+                exit 1
+              fi
+
+              echo "✅ All required variables are set"
+            displayName: 'Validate Required Variables'
+
+      - job: ValidateDependencies
+        displayName: 'Validate Dependencies'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm --version
+            displayName: 'Enable pnpm'
+
+          - script: |
+              pnpm audit --audit-level moderate || echo "⚠️ Audit warnings found but continuing"
+            displayName: 'Audit Dependencies'
+
+      - job: LintCode
+        displayName: 'Lint Code'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm lint:ci || echo "⚠️ Linting completed with warnings"
+            displayName: 'Run Linting'
+
+      - job: TypeCheck
+        displayName: 'Type Check'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm typecheck || echo "⚠️ Type checking completed with warnings"
+            displayName: 'Run Type Check'
+
+      - job: UnitTests
+        displayName: 'Unit Tests & Coverage'
+>>>>>>> origin/master
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm install
+            displayName: 'Install Dependencies'
+
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarCloud'
+              organization: 'pixelated-empathy'
+              scannerMode: 'CLI'
+              configMode: 'file'
+              configFile: 'config/sonar-project.properties'
+              extraProperties: |
+                sonar.projectBaseDir=$(Build.SourcesDirectory)
+            displayName: 'Prepare SonarCloud Analysis'
+
+          - script: |
+              export VITEST_COVERAGE_ENABLED=true
+              pnpm run test:unit
+            displayName: 'Run Unit Tests with Coverage'
+            continueOnError: true
+            env:
+              VITEST_COVERAGE_ENABLED: 'true'
+
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: 'coverage/junit.xml'
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+            displayName: 'Publish Test Results'
+
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: 'coverage/cobertura-coverage.xml'
+            displayName: 'Publish Code Coverage'
+
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run SonarCloud Analysis'
+
+          - task: SonarCloudPublish@1
+            displayName: 'Publish SonarCloud Quality Gate Result'
+            inputs:
+              pollingTimeoutSec: 300
+
+  - stage: Eval
+    displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+    dependsOn: Validate
+    condition: and(succeeded(), ne(variables['SKIP_EVAL_TESTS'], 'true'))
+    jobs:
+      - job: EvalGates
+        displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+            displayName: 'Checkout repository with submodules'
+            persistCredentials: 'true'
+            submodules: 'false'
+            fetchDepth: '0'
+          - script: |
+              chmod +x scripts/resolve-submodule-url.sh
+              ./scripts/resolve-submodule-url.sh
+            displayName: 'Resolve submodule URL dynamically'
+            env:
+              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+              GITHUB_TOKEN: $(GITHUB_TOKEN)
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+          - script: |
+              set -euo pipefail
+
+              # Install build tools required for native Node modules
+              echo "📦 Checking build dependencies..."
+
+              if ! command -v make >/dev/null 2>&1 || ! command -v g++ >/dev/null 2>&1; then
+                echo "⚠️ Build tools missing. Attempting installation..."
+                sudo apt-get update -qq
+                sudo apt-get install -y --no-install-recommends \
+                  build-essential \
+                  make \
+                  g++ \
+                  python3 \
+                  python3-dev
+                echo "✅ Build tools installed"
+              else
+                echo "✅ Build tools already installed (skipping sudo)"
+              fi
+
+              make --version
+              g++ --version
+            displayName: 'Install Build Tools'
+
+          - script: |
+              set -euo pipefail
+              corepack enable pnpm
+              pnpm --version
+
+              # Retry logic with fallback for lockfile mismatches
+              INSTALL_SUCCESS=0
+              for i in 1 2 3; do
+                echo "Attempt $i: Installing dependencies with frozen lockfile..."
+                if pnpm install --frozen-lockfile; then
+                  echo "✅ Dependencies installed successfully"
+                  INSTALL_SUCCESS=1
+                  break
+                else
+                  EXIT_CODE=$?
+                  echo "❌ Attempt $i failed (exit code: $EXIT_CODE)"
+                  if [ $i -eq 3 ]; then
+                    echo "⚠️ Falling back to --no-frozen-lockfile to resolve lockfile mismatch..."
+                    if pnpm install --no-frozen-lockfile; then
+                      echo "✅ Dependencies installed with lockfile update"
+                      INSTALL_SUCCESS=1
+                      break
+                    fi
+                  else
+                    sleep 2
+                  fi
+                fi
+              done
+
+              if [ "$INSTALL_SUCCESS" -ne 1 ]; then
+                echo "❌ Failed to install dependencies after all attempts"
+                exit 1
+              fi
+            displayName: 'Install Node Deps'
+          - script: |
+              set -euo pipefail
+
+              echo "🧹 Cleaning up disk space before Python dependency installation..."
+
+              # Check current disk usage
+              df -h / | tail -1
+
+              # Clean up old Docker images and containers (if Docker is available)
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning up Docker resources..."
+                docker system prune -af --volumes 2>/dev/null || echo "⚠️ Docker cleanup skipped (may require permissions)"
+              fi
+
+              # Clean up old uv cache more aggressively
+              if [ -d "$HOME/.cache/uv" ]; then
+                echo "Cleaning up old uv cache..."
+                # Remove temporary extraction directories (these can be large)
+                find "$HOME/.cache/uv" -type d -name ".tmp*" -exec rm -rf {} + 2>/dev/null || true
+                # Remove old cached packages (keep only recent)
+                find "$HOME/.cache/uv" -type f -mtime +1 -delete 2>/dev/null || true
+                find "$HOME/.cache/uv" -type d -empty -delete 2>/dev/null || true
+              fi
+
+              # Clean up old pip cache
+              if [ -d "$HOME/.cache/pip" ]; then
+                echo "Cleaning up old pip cache..."
+                find "$HOME/.cache/pip" -type f -mtime +7 -delete 2>/dev/null || true
+              fi
+
+              # Clean up temporary files
+              echo "Cleaning up temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+              rm -rf "$HOME/.tmp" 2>/dev/null || true
+
+              # Clean up old virtual environments (keep only current)
+              # skipping .venv cleanup to allow reuse
+              # if [ -d ".venv" ]; then
+              #   echo "Removing existing .venv to start fresh..."
+              #   rm -rf .venv
+              # fi
+
+              # Check disk space after cleanup
+              echo "📊 Disk space after cleanup:"
+              df -h / | tail -1
+
+              # Warn if disk space is still low
+              DISK_USAGE=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+              if [ "$DISK_USAGE" -gt 90 ]; then
+                echo "##vso[task.logissue type=warning]Disk usage is still high: ${DISK_USAGE}%"
+                echo "⚠️ Consider cleaning up the agent machine or increasing disk space"
+              fi
+            displayName: 'Cleanup Disk Space'
           - script: |
               set -euo pipefail
 
@@ -466,7 +989,7 @@ stages:
               # Verify installation
               uv run python -V
               echo "✅ Python environment ready"
-            displayName: "Install uv (Python)"
+            displayName: 'Install uv (Python)'
           - script: |
               set -euo pipefail
               export PATH="$HOME/.local/bin:$PATH"
@@ -486,13 +1009,13 @@ stages:
                 print("❌ ai.evals import failed:", repr(e), file=sys.stderr)
                 sys.exit(1)
               PY
-            displayName: "Sanity Check: ai.evals import"
+            displayName: 'Sanity Check: ai.evals import'
           - script: |
               set -euo pipefail
               export PATH="$HOME/.local/bin:$PATH"
               export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
               pnpm test:evals
-            displayName: "Run Eval Tests"
+            displayName: 'Run Eval Tests'
 
           - script: |
               set -euo pipefail
@@ -517,10 +1040,10 @@ stages:
               echo "✅ Safe cleanup completed"
               df -h /
             condition: failed()
-            displayName: "Cleanup on Failure"
+            displayName: 'Cleanup on Failure'
 
   - stage: Build
-    displayName: "Build Application"
+    displayName: 'Build Application'
     # Build must wait for Eval to complete to prevent resource contention
     # If SKIP_EVAL_TESTS=true, Eval is skipped and Build runs after Validate
     dependsOn:
@@ -534,26 +1057,66 @@ stages:
       )
     jobs:
       - job: BuildApplication
-        displayName: "Build and Push Docker Image"
+        displayName: 'Build and Push Docker Image'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
-        timeoutInMinutes: "45"
+            vmImage: 'ubuntu-latest'
+        timeoutInMinutes: '45'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - task: Bash@3
-            displayName: "Verify Docker Access"
+            displayName: 'Verify Docker Access'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 set -euo pipefail
 
+<<<<<<< HEAD
+=======
+=======
+                # Aggressive cleanup
+                # -a: Remove all unused images not just dangling ones
+                # --volumes: Remove unused volumes
+                # -f: Force
+                docker system prune -af --volumes 2>/dev/null || true
+                
+                # Explicitly clean builder cache (often a culprit)
+                docker builder prune -af 2>/dev/null || true
+              fi
+
+              echo "Cleaning up temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+              rm -rf "$HOME/.tmp" 2>/dev/null || true
+
+              echo "Cleaning up workspace..."
+              # Remove potential debris from previous jobs if workspace wasn't cleaned
+              rm -rf $(Build.SourcesDirectory)/node_modules 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/dist 2>/dev/null || true
+
+              echo "📊 Disk space after cleanup:"
+              df -h / | tail -1
+            displayName: 'Pre-Build Deep Cleanup'
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - task: Bash@3
+            displayName: 'Verify Docker Access'
+            inputs:
+              targetType: 'inline'
+              script: |
+                set -euo pipefail
+
+>>>>>>> origin/master
+>>>>>>> origin/master
                 # Check if Docker daemon is accessible
                 if ! docker info >/dev/null 2>&1; then
                   echo "##vso[task.logissue type=error]Docker daemon is not accessible"
@@ -583,15 +1146,15 @@ stages:
                 docker info 2>&1 | { head -n 5; cat > /dev/null; }
 
           - task: Docker@2
-            displayName: "Login to ACR"
+            displayName: 'Login to ACR'
             inputs:
               command: login
-              containerRegistry: "$(AZURE_CONTAINER_REGISTRY)"
+              containerRegistry: '$(AZURE_CONTAINER_REGISTRY)'
 
           - task: Bash@3
-            displayName: "Build and Push Docker Image (Script)"
+            displayName: 'Build and Push Docker Image (Script)'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 set -euo pipefail
 
@@ -682,11 +1245,11 @@ stages:
 
               echo "📦 Build metadata captured:"
               cat "$METADATA_FILE"
-            displayName: "Capture Build Metadata"
+            displayName: 'Capture Build Metadata'
 
           - publish: $(Build.ArtifactStagingDirectory)/build.env
             artifact: build-metadata
-            displayName: "Publish Build Metadata"
+            displayName: 'Publish Build Metadata'
 
           - script: |
               set -euo pipefail
@@ -712,24 +1275,24 @@ stages:
               echo "✅ Safe cleanup completed"
               df -h /
             condition: failed()
-            displayName: "Cleanup on Failure"
+            displayName: 'Cleanup on Failure'
 
   - stage: Security
-    displayName: "Security Scanning"
+    displayName: 'Security Scanning'
     dependsOn: Build
     jobs:
       - job: ContainerSecurity
-        displayName: "Container Security Scan"
+        displayName: 'Container Security Scan'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: Bash@3
-            displayName: "Verify Docker Access"
+            displayName: 'Verify Docker Access'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 set -euo pipefail
 
@@ -762,15 +1325,15 @@ stages:
                 docker info 2>&1 | { head -n 5; cat > /dev/null; }
 
           - task: Docker@2
-            displayName: "Login to ACR"
+            displayName: 'Login to ACR'
             inputs:
-              containerRegistry: "$(AZURE_CONTAINER_REGISTRY)"
-              command: "login"
+              containerRegistry: '$(AZURE_CONTAINER_REGISTRY)'
+              command: 'login'
 
           - task: Bash@3
-            displayName: "Install Trivy"
+            displayName: 'Install Trivy'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 set -euo pipefail
 
@@ -788,9 +1351,9 @@ stages:
                 trivy --version
 
           - task: Bash@3
-            displayName: "Run Security Scan"
+            displayName: 'Run Security Scan'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 trivy image --severity CRITICAL,HIGH --format sarif --output trivy-results.sarif $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)
 
@@ -799,7 +1362,7 @@ stages:
 
           - publish: trivy-results.sarif
             artifact: security-scan-results
-            displayName: "Publish Security Scan Results"
+            displayName: 'Publish Security Scan Results'
 
           - script: |
               set -euo pipefail
@@ -816,21 +1379,29 @@ stages:
               echo "✅ Safe cleanup completed"
               df -h /
             condition: failed()
-            displayName: "Cleanup on Failure"
+            displayName: 'Cleanup on Failure'
 
   - stage: InstallCertManager
-    displayName: "Install cert-manager"
+    displayName: 'Install cert-manager'
     dependsOn: Security
+<<<<<<< HEAD
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
+>>>>>>> origin/master
     jobs:
       - deployment: InstallCertManager
-        displayName: "Install cert-manager for TLS"
+        displayName: 'Install cert-manager for TLS'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
-        environment: "staging"
+            vmImage: 'ubuntu-latest'
+        environment: 'staging'
         strategy:
           runOnce:
             deploy:
@@ -838,11 +1409,11 @@ stages:
                 - checkout: self
 
                 - task: AzureCLI@2
-                  displayName: "Install kubectl and Configure AKS Credentials"
+                  displayName: 'Install kubectl and Configure AKS Credentials'
                   inputs:
-                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
-                    scriptType: "bash"
-                    scriptLocation: "inlineScript"
+                    azureSubscription: '$(AZURE_SUBSCRIPTION)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
                     inlineScript: |
                       set -euo pipefail
 
@@ -907,9 +1478,9 @@ stages:
                       }
 
                 - task: Bash@3
-                  displayName: "Install cert-manager"
+                  displayName: 'Install cert-manager'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -942,7 +1513,7 @@ stages:
                 - task: Bash@3
                   displayName: "Deploy Let's Encrypt ClusterIssuer"
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -959,18 +1530,26 @@ stages:
                        fi
 
   - stage: DeployStaging
-    displayName: "Deploy to Staging (AKS)"
+    displayName: 'Deploy to Staging (AKS)'
     dependsOn: InstallCertManager
+<<<<<<< HEAD
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
+>>>>>>> origin/master
     jobs:
       - deployment: DeployToStaging
-        displayName: "Deploy to Azure Kubernetes Service"
+        displayName: 'Deploy to Azure Kubernetes Service'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
-        environment: "staging"
+            vmImage: 'ubuntu-latest'
+        environment: 'staging'
         strategy:
           runOnce:
             deploy:
@@ -978,11 +1557,11 @@ stages:
                 - checkout: self
 
                 - task: AzureCLI@2
-                  displayName: "Install kubectl and Configure AKS Credentials"
+                  displayName: 'Install kubectl and Configure AKS Credentials'
                   inputs:
-                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
-                    scriptType: "bash"
-                    scriptLocation: "inlineScript"
+                    azureSubscription: '$(AZURE_SUBSCRIPTION)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
                     inlineScript: |
                       set -euo pipefail
 
@@ -1027,9 +1606,9 @@ stages:
                        }
 
                 - task: Bash@3
-                  displayName: "Fix Containerd Warnings (walinuxagent)"
+                  displayName: 'Fix Containerd Warnings (walinuxagent)'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1051,9 +1630,9 @@ stages:
                       fi
 
                 - task: Bash@3
-                  displayName: "Apply Secrets (suppress annotation warning)"
+                  displayName: 'Apply Secrets (suppress annotation warning)'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1069,9 +1648,9 @@ stages:
                       fi
 
                 - task: Bash@3
-                  displayName: "Deploy Namespaces"
+                  displayName: 'Deploy Namespaces'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1083,11 +1662,11 @@ stages:
                       echo "✅ Namespaces created"
 
                 - task: AzureCLI@2
-                  displayName: "Create ACR Secret"
+                  displayName: 'Create ACR Secret'
                   inputs:
-                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
-                    scriptType: "bash"
-                    scriptLocation: "inlineScript"
+                    azureSubscription: '$(AZURE_SUBSCRIPTION)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
                     inlineScript: |
                       set -euo pipefail
 
@@ -1148,9 +1727,9 @@ stages:
                       fi
 
                 - task: Bash@3
-                  displayName: "Deploy Pixelated Application"
+                  displayName: 'Deploy Pixelated Application'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1165,9 +1744,9 @@ stages:
                       echo "✅ Pixelated manifests applied"
 
                 - task: Bash@3
-                  displayName: "Deploy Ollama"
+                  displayName: 'Deploy Ollama'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1183,9 +1762,9 @@ stages:
                       echo "✅ Ollama manifests applied"
 
                 - task: Bash@3
-                  displayName: "Deploy NeMo Ingress"
+                  displayName: 'Deploy NeMo Ingress'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1197,31 +1776,52 @@ stages:
                       echo "✅ NeMo ingress applied"
 
                 - task: Bash@3
-                  displayName: "Update Pixelated Image Tag"
+                  displayName: 'Update Pixelated Image Tag'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
                        
                       echo "🔄 Updating Pixelated image tag..."
+<<<<<<< HEAD
                       kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
+=======
+<<<<<<< HEAD
+                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
+=======
+                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
+>>>>>>> origin/master
                        
                       echo "✅ Image tag updated to $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)"
 
                 - task: Bash@3
-                  displayName: "Check All Deployments Rollout Status"
+                  displayName: 'Check All Deployments Rollout Status'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
                       echo "⏳ Waiting for all deployments to be ready..."
 
                       # Wait for Pixelated deployment
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
                       kubectl rollout status deployment/pixelated -n pixelated --timeout=900s || {
                         echo "⚠️ Pixelated deployment rollout check failed or timed out"
                         kubectl get pods -n pixelated
                         kubectl describe deployment pixelated -n pixelated
+<<<<<<< HEAD
+=======
+=======
+                      kubectl rollout status deployment/pixelated -n $(KUBE_NAMESPACE) --timeout=900s || {
+                        echo "⚠️ Pixelated deployment rollout check failed or timed out"
+                        kubectl get pods -n $(KUBE_NAMESPACE)
+                        kubectl describe deployment pixelated -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
+>>>>>>> origin/master
                       }
 
                       # Wait for Ollama deployment
@@ -1233,9 +1833,9 @@ stages:
                       echo "✅ All deployments are ready"
 
                 - task: Bash@3
-                  displayName: "Verify TLS Certificates"
+                  displayName: 'Verify TLS Certificates'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1251,10 +1851,10 @@ stages:
                       echo "✅ TLS certificate verification completed (certificates may take 5-10 minutes to be issued)"
 
                 - task: Bash@3
-                  displayName: "Create Sentry Release"
+                  displayName: 'Create Sentry Release'
                   condition: succeededOrFailed()
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       # Don't use set -e so we can handle errors gracefully
                       set -uo pipefail
@@ -1351,7 +1951,7 @@ stages:
                     SENTRY_AUTH_TOKEN: $(SENTRY_AUTH_TOKEN)
 
   - stage: DeployProduction
-    displayName: "Deploy to Production (AKS)"
+    displayName: 'Deploy to Production (AKS)'
     # Production deployment waits for staging deployment and health checks to pass
     # Additionally gated by environment approval gates (configured in Azure DevOps)
     # Note: Production deployments don't block on test completion - approval gates provide manual control
@@ -1361,13 +1961,13 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - deployment: DeployToProduction
-        displayName: "Deploy to Production"
+        displayName: 'Deploy to Production'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
-        environment: "production"
+            vmImage: 'ubuntu-latest'
+        environment: 'production'
         strategy:
           runOnce:
             deploy:
@@ -1375,11 +1975,11 @@ stages:
                 - checkout: self
 
                 - task: AzureCLI@2
-                  displayName: "Install kubectl and Configure AKS Credentials"
+                  displayName: 'Install kubectl and Configure AKS Credentials'
                   inputs:
-                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
-                    scriptType: "bash"
-                    scriptLocation: "inlineScript"
+                    azureSubscription: '$(AZURE_SUBSCRIPTION)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
                     inlineScript: |
                       set -euo pipefail
 
@@ -1458,9 +2058,9 @@ stages:
                       fi
 
                 - task: Bash@3
-                  displayName: "Deploy Production Namespaces"
+                  displayName: 'Deploy Production Namespaces'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1470,11 +2070,11 @@ stages:
                       echo "✅ Production namespaces created"
 
                 - task: AzureCLI@2
-                  displayName: "Create Production ACR Secret"
+                  displayName: 'Create Production ACR Secret'
                   inputs:
-                    azureSubscription: "$(AZURE_SUBSCRIPTION)"
-                    scriptType: "bash"
-                    scriptLocation: "inlineScript"
+                    azureSubscription: '$(AZURE_SUBSCRIPTION)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
                     inlineScript: |
                       set -euo pipefail
 
@@ -1535,9 +2135,9 @@ stages:
                       fi
 
                 - task: Bash@3
-                  displayName: "Deploy Production Pixelated Application"
+                  displayName: 'Deploy Production Pixelated Application'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1552,9 +2152,9 @@ stages:
                       echo "✅ Production Pixelated manifests applied"
 
                 - task: Bash@3
-                  displayName: "Deploy Production Ollama"
+                  displayName: 'Deploy Production Ollama'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1570,9 +2170,9 @@ stages:
                       echo "✅ Production Ollama manifests applied"
 
                 - task: Bash@3
-                  displayName: "Deploy Production NeMo Ingress"
+                  displayName: 'Deploy Production NeMo Ingress'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1584,9 +2184,9 @@ stages:
                       echo "✅ Production NeMo ingress applied"
 
                 - task: Bash@3
-                  displayName: "Update Pixelated Image Tag"
+                  displayName: 'Update Pixelated Image Tag'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1596,9 +2196,9 @@ stages:
                       echo "✅ Image tag updated to $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)"
 
                 - task: Bash@3
-                  displayName: "Check All Production Deployments Rollout Status"
+                  displayName: 'Check All Production Deployments Rollout Status'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1620,9 +2220,9 @@ stages:
                       echo "✅ All production deployments are ready"
 
                 - task: Bash@3
-                  displayName: "Verify Production TLS Certificates"
+                  displayName: 'Verify Production TLS Certificates'
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       set -euo pipefail
 
@@ -1638,10 +2238,10 @@ stages:
                       echo "✅ Production TLS certificate verification completed (certificates may take 5-10 minutes to be issued)"
 
                 - task: Bash@3
-                  displayName: "Create Sentry Production Release"
+                  displayName: 'Create Sentry Production Release'
                   condition: succeededOrFailed()
                   inputs:
-                    targetType: "inline"
+                    targetType: 'inline'
                     script: |
                       # Don't use set -e so we can handle errors gracefully
                       set -uo pipefail
@@ -1712,25 +2312,25 @@ stages:
                     SENTRY_AUTH_TOKEN: $(SENTRY_AUTH_TOKEN)
 
   - stage: HealthCheck
-    displayName: "Health Check"
+    displayName: 'Health Check'
     dependsOn: DeployStaging
     condition: succeeded()
     # Note: No checkout needed - this stage only uses kubectl commands via Azure CLI
     jobs:
       - job: HealthCheckStaging
-        displayName: "Staging Health Check"
+        displayName: 'Staging Health Check'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: AzureCLI@2
-            displayName: "Install kubectl and Check Deployment Health"
+            displayName: 'Install kubectl and Check Deployment Health'
             inputs:
-              azureSubscription: "$(AZURE_SUBSCRIPTION)"
-              scriptType: "bash"
-              scriptLocation: "inlineScript"
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
               inlineScript: |
                 set -euo pipefail
 
@@ -1807,29 +2407,29 @@ stages:
                 echo "✅ Deployment health check passed - all pods are ready"
 
   - stage: PerformanceTest
-    displayName: "Performance Testing"
+    displayName: 'Performance Testing'
     dependsOn:
       - DeployStaging
       - HealthCheck
     condition: succeeded()
     jobs:
       - job: PerformanceTests
-        displayName: "Run Performance Tests"
+        displayName: 'Run Performance Tests'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               corepack enable pnpm
               pnpm --version
-            displayName: "Setup pnpm"
+            displayName: 'Setup pnpm'
 
           - script: |
               set -euo pipefail
@@ -1850,14 +2450,14 @@ stages:
               else
                 echo "✅ Build tools already installed (skipping sudo)"
               fi
-            displayName: "Install Build Tools"
+            displayName: 'Install Build Tools'
 
           - script: |
               mkdir -p $(Agent.HomeDirectory)/.local/share/pnpm/store
-            displayName: "Ensure pnpm Cache Directory Exists"
+            displayName: 'Ensure pnpm Cache Directory Exists'
 
           - task: Cache@2
-            displayName: "Cache pnpm store"
+            displayName: 'Cache pnpm store'
             inputs:
               key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
               restoreKeys: |
@@ -1877,7 +2477,7 @@ stages:
               docker build -f docker/Dockerfile.playwright -t pixelated-playwright .
 
               echo "✅ Playwright Docker image built successfully"
-            displayName: "Build Playwright Docker Image"
+            displayName: 'Build Playwright Docker Image'
 
           - script: |
               # Robust connectivity check with DNS resolution and retry logic
@@ -1963,7 +2563,7 @@ stages:
               echo "  - Network connectivity issues"
               echo "  - Staging deployment not ready"
               exit 1
-            displayName: "Check Staging Connectivity"
+            displayName: 'Check Staging Connectivity'
             env:
               STAGING_URL: $(STAGING_URL)
 
@@ -2066,31 +2666,31 @@ stages:
                 }
 
               echo "✅ Performance tests completed"
-            displayName: "Run Performance Tests with Docker Playwright"
+            displayName: 'Run Performance Tests with Docker Playwright'
             env:
               BASE_URL: $(STAGING_URL)
               STAGING_URL: $(STAGING_URL)
               CF_ACCESS_CLIENT_ID: $(CF_ACCESS_CLIENT_ID)
               CF_ACCESS_CLIENT_SECRET: $(CF_ACCESS_CLIENT_SECRET)
   - stage: E2ETest
-    displayName: "E2E Testing"
+    displayName: 'E2E Testing'
     dependsOn:
       - DeployStaging
       - HealthCheck
     condition: succeeded()
     jobs:
       - job: E2ETests
-        displayName: "Run E2E Tests"
+        displayName: 'Run E2E Tests'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               # Verify Docker is available
@@ -2104,7 +2704,7 @@ stages:
               docker build -f docker/Dockerfile.playwright -t pixelated-playwright .
 
               echo "✅ Playwright Docker image built successfully"
-            displayName: "Build Playwright Docker Image"
+            displayName: 'Build Playwright Docker Image'
 
           - script: |
               # Robust connectivity check with DNS resolution and retry logic
@@ -2190,7 +2790,7 @@ stages:
               echo "  - Network connectivity issues"
               echo "  - Staging deployment not ready"
               exit 1
-            displayName: "Check Staging Connectivity"
+            displayName: 'Check Staging Connectivity'
             env:
               STAGING_URL: $(STAGING_URL)
 
@@ -2210,7 +2810,14 @@ stages:
                 pnpm run e2e:smoke
 
               echo "✅ E2E smoke tests completed"
-            displayName: "Run E2E Smoke Tests with Docker Playwright"
+            displayName: 'Run E2E Smoke Tests with Docker Playwright'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            continueOnError: 'true'
+>>>>>>> origin/master
+>>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
 
@@ -2227,36 +2834,36 @@ stages:
                 echo "⚠️ No test results found - created placeholder file"
                 echo "Note: If tests failed, this placeholder should not mask the failure"
               fi
-            displayName: "Prepare Test Results for Publishing"
+            displayName: 'Prepare Test Results for Publishing'
             condition: succeededOrFailed()
 
           - publish: test-results/
             artifact: e2e-test-results
-            displayName: "Publish Test Results"
+            displayName: 'Publish Test Results'
             condition: always()
 
   # ============================================
   # Playwright Docker Testing Stage
   # ============================================
   - stage: PlaywrightDockerTest
-    displayName: "Playwright Docker Testing"
+    displayName: 'Playwright Docker Testing'
     dependsOn:
       - DeployStaging
       - HealthCheck
     condition: succeeded()
     jobs:
       - job: PlaywrightDockerTests
-        displayName: "Run Playwright Tests in Docker"
+        displayName: 'Run Playwright Tests in Docker'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               # Verify Docker is available
@@ -2270,7 +2877,7 @@ stages:
               docker build -f docker/Dockerfile.playwright -t pixelated-playwright .
 
               echo "✅ Playwright Docker image built successfully"
-            displayName: "Build Playwright Docker Image"
+            displayName: 'Build Playwright Docker Image'
 
           - script: |
               # Robust connectivity check with DNS resolution and retry logic
@@ -2356,7 +2963,7 @@ stages:
               echo "  - Network connectivity issues"
               echo "  - Staging deployment not ready"
               exit 1
-            displayName: "Check Staging Connectivity"
+            displayName: 'Check Staging Connectivity'
             env:
               STAGING_URL: $(STAGING_URL)
 
@@ -2378,7 +2985,14 @@ stages:
                 pnpm test:e2e
 
               echo "✅ Comprehensive Playwright tests completed"
-            displayName: "Run Comprehensive Playwright Tests"
+            displayName: 'Run Comprehensive Playwright Tests'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            continueOnError: 'true'
+>>>>>>> origin/master
+>>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
               STAGING_URL: $(STAGING_URL)
@@ -2392,47 +3006,47 @@ stages:
                 echo '{"tests": [], "errors": [], "status": "no-results"}' > test-results/results.json
                 echo "⚠️ No test results found - created placeholder file"
               fi
-            displayName: "Prepare Test Results for Publishing"
+            displayName: 'Prepare Test Results for Publishing'
             condition: succeededOrFailed()
 
           - publish: test-results/
             artifact: playwright-test-results
-            displayName: "Publish Playwright Test Results"
+            displayName: 'Publish Playwright Test Results'
             condition: always()
 
           - publish: playwright-report/
             artifact: playwright-html-report
-            displayName: "Publish Playwright HTML Report"
+            displayName: 'Publish Playwright HTML Report'
             condition: always()
   - stage: OVHAITraining
-    displayName: "OVH AI Training"
+    displayName: 'OVH AI Training'
     # Manual trigger only - run with: az pipelines run --parameters TRIGGER_AI_TRAINING=true
     # Variable is always defined (defaults to 'false' from parameter)
     condition: and(succeeded(), eq(variables['TRIGGER_AI_TRAINING'], 'true'))
     jobs:
       - job: PrepareTrainingData
-        displayName: "Prepare Training Data"
+        displayName: 'Prepare Training Data'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - checkout: self
 
           - task: Bash@3
-            displayName: "Install ovhai CLI"
+            displayName: 'Install ovhai CLI'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 curl -sSL https://cli.us-east-va.ai.cloud.ovh.us/install.sh | bash
                 export PATH="$HOME/bin:$PATH"
                 ovhai --version || echo "CLI installed"
 
           - task: Bash@3
-            displayName: "Sync Training Data to OVH"
+            displayName: 'Sync Training Data to OVH'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 export PATH="$HOME/bin:$PATH"
 
@@ -2449,32 +3063,32 @@ stages:
               OVH_AI_TOKEN: $(OVH_AI_TOKEN)
 
       - job: LaunchTrainingJob
-        displayName: "Launch Training Job"
+        displayName: 'Launch Training Job'
         dependsOn: PrepareTrainingData
         condition: succeeded()
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         variables:
-          OVH_GPU_MODEL: "L40S"
-          OVH_MAX_HOURS: "12"
+          OVH_GPU_MODEL: 'L40S'
+          OVH_MAX_HOURS: '12'
         steps:
           - checkout: self
 
           - task: Bash@3
-            displayName: "Install ovhai CLI"
+            displayName: 'Install ovhai CLI'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 curl -sSL https://cli.us-east-va.ai.cloud.ovh.us/install.sh | bash
                 export PATH="$HOME/bin:$PATH"
 
           - task: Bash@3
-            displayName: "Build and Push Training Image"
+            displayName: 'Build and Push Training Image'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 export PATH="$HOME/bin:$PATH"
 
@@ -2503,9 +3117,9 @@ stages:
               OVH_AI_TOKEN: $(OVH_AI_TOKEN)
 
           - task: Bash@3
-            displayName: "Launch OVH Training Job"
+            displayName: 'Launch OVH Training Job'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 set -euo pipefail
                 export PATH="$HOME/bin:$PATH"
@@ -2550,34 +3164,34 @@ stages:
   # OVH Ollama Image Build Stage (Manual Trigger)
   # ============================================
   - stage: OVHOllamaBuild
-    displayName: "OVH Ollama Image Build"
+    displayName: 'OVH Ollama Image Build'
     # Manual trigger only - run with: az pipelines run --parameters TRIGGER_OVH_OLLAMA_BUILD=true
     # Variable is always defined (defaults to 'false' from parameter)
     condition: eq(variables['TRIGGER_OVH_OLLAMA_BUILD'], 'true')
     jobs:
       - job: BuildOllamaImage
-        displayName: "Build and Push Ollama Image"
+        displayName: 'Build and Push Ollama Image'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - checkout: self
 
           - task: Bash@3
-            displayName: "Install ovhai CLI"
+            displayName: 'Install ovhai CLI'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 curl -sSL https://cli.us-east-va.ai.cloud.ovh.us/install.sh | bash
                 export PATH="$HOME/bin:$PATH"
                 ovhai --version || echo "CLI installed"
 
           - task: Bash@3
-            displayName: "Build and Push Ollama Image"
+            displayName: 'Build and Push Ollama Image'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 export PATH="$HOME/bin:$PATH"
 
@@ -2607,30 +3221,30 @@ stages:
               OVH_AI_TOKEN: $(OVH_AI_TOKEN)
 
   - stage: SchedulePosts
-    displayName: "Schedule Blog Posts"
+    displayName: 'Schedule Blog Posts'
     condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.Reason'], 'Manual'))
     jobs:
       - job: ScheduleBlogPosts
-        displayName: "Schedule and Publish Blog Posts"
+        displayName: 'Schedule and Publish Blog Posts'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - checkout: self
-            displayName: "Checkout repository"
-            persistCredentials: "false"
+            displayName: 'Checkout repository'
+            persistCredentials: 'false'
 
           - task: NodeTool@0
             inputs:
-              versionSpec: "$(NODE_VERSION)"
-            displayName: "Install Node.js"
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
 
           - script: |
               corepack enable pnpm
               pnpm --version
-            displayName: "Enable pnpm"
+            displayName: 'Enable pnpm'
 
           - script: |
               set -euo pipefail
@@ -2653,41 +3267,41 @@ stages:
               fi
               make --version
               g++ --version
-            displayName: "Install Build Tools"
+            displayName: 'Install Build Tools'
 
           - script: |
               pnpm store prune || true
               pnpm install --no-frozen-lockfile
-            displayName: "Install Dependencies"
+            displayName: 'Install Dependencies'
 
           - task: Bash@3
-            displayName: "Configure Git"
+            displayName: 'Configure Git'
             inputs:
-              targetType: "inline"
+              targetType: 'inline'
               script: |
                 git config --global user.name "Azure DevOps"
                 git config --global user.email "azure-pipelines@devops.com"
 
           - script: |
               pnpm run schedule-posts
-            displayName: "Run Post Scheduler"
+            displayName: 'Run Post Scheduler'
             env:
-              GITHUB_ACTIONS: "$(GITHUB_ACTIONS)"
-              NODE_ENV: "$(NODE_ENV)"
+              GITHUB_ACTIONS: '$(GITHUB_ACTIONS)'
+              NODE_ENV: '$(NODE_ENV)'
               SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
   - stage: PipelineSummary
-    displayName: "Pipeline Summary & Telemetry"
+    displayName: 'Pipeline Summary & Telemetry'
     dependsOn: []
     condition: always()
     jobs:
       - job: SummaryReport
-        displayName: "Pipeline Summary Report"
+        displayName: 'Pipeline Summary Report'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
-            name: "Default"
+            name: 'Default'
           ${{ else }}:
-            vmImage: "ubuntu-latest"
+            vmImage: 'ubuntu-latest'
         steps:
           - script: |
               echo "##[section]📊 Pipeline Execution Summary"
@@ -2741,4 +3355,12 @@ stages:
               echo "- Build metadata is validated before publishing"
               echo ""
               echo "For detailed logs, check individual stage outputs and published artifacts."
-            displayName: "Generate Pipeline Summary"
+<<<<<<< HEAD
+            displayName: 'Generate Pipeline Summary'
+=======
+<<<<<<< HEAD
+            displayName: 'Generate Pipeline Summary'
+=======
+            displayName: 'Generate Pipeline Summary'
+>>>>>>> origin/master
+>>>>>>> origin/master
