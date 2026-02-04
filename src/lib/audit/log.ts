@@ -1,5 +1,8 @@
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
+<<<<<<< HEAD
 import { auditLogDAO } from '../../services/mongodb.dao'
+=======
+>>>>>>> origin/master
 
 const logger = createBuildSafeLogger('audit-log')
 
@@ -24,6 +27,7 @@ export async function getUserAuditLogs(
   try {
     logger.info('Getting user audit logs', { userId, limit, offset })
 
+<<<<<<< HEAD
     const logs = await auditLogDAO.findByUserId(userId, limit, offset)
 
     return logs.map((log) => ({
@@ -37,6 +41,11 @@ export async function getUserAuditLogs(
       metadata: log.metadata || {},
       timestamp: log.timestamp,
     }))
+=======
+    // TODO: Replace with actual database implementation
+    // For now, return empty array to prevent build errors
+    return []
+>>>>>>> origin/master
   } catch (error: unknown) {
     logger.error('Error getting user audit logs:', error)
     return []
@@ -59,6 +68,7 @@ export async function logAuditEvent(
       metadata,
     })
 
+<<<<<<< HEAD
     await auditLogDAO.createLog(
       userId,
       action,
@@ -66,6 +76,10 @@ export async function logAuditEvent(
       resourceType,
       metadata,
     )
+=======
+    // TODO: Replace with actual database implementation
+    // For now, just log to console to prevent build errors
+>>>>>>> origin/master
   } catch (error: unknown) {
     logger.error('Error logging audit event:', error)
   }

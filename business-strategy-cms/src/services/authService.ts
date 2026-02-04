@@ -18,12 +18,21 @@ const JWT_EXPIRES_IN = process.env['JWT_EXPIRES_IN'] || '15m'
 const JWT_REFRESH_EXPIRES_IN = process.env['JWT_REFRESH_EXPIRES_IN'] || '7d'
 
 export class AuthService {
+<<<<<<< HEAD
   private static generateTokens(payload: JwtPayload): AuthTokens {
     const accessToken = jwt.sign(payload, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN as string,
     })
     const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
       expiresIn: JWT_REFRESH_EXPIRES_IN as string,
+=======
+  public static generateTokens(payload: JwtPayload): AuthTokens {
+    const accessToken = jwt.sign(payload, JWT_SECRET, {
+      expiresIn: JWT_EXPIRES_IN as any, // expiresIn requires a specific StringValue | number type
+    })
+    const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
+      expiresIn: JWT_REFRESH_EXPIRES_IN as any, // expiresIn requires a specific StringValue | number type
+>>>>>>> origin/master
     })
 
     return {
@@ -55,13 +64,21 @@ export class AuthService {
       firstName: userData.firstName,
       lastName: userData.lastName,
       password: hashedPassword,
+<<<<<<< HEAD
       role: UserRole.VIEWER,
+=======
+      role: userData.role || UserRole.VIEWER,
+>>>>>>> origin/master
       isActive: true,
       isEmailVerified: false,
     })
 
     const payload: JwtPayload = {
+<<<<<<< HEAD
       userId: user.id,
+=======
+      userId: user.id!,
+>>>>>>> origin/master
       email: user.email,
       role: user.role,
     }
@@ -69,7 +86,11 @@ export class AuthService {
     const tokens = this.generateTokens(payload)
 
     await redisClient.setEx(
+<<<<<<< HEAD
       `refresh_token:${user.id}`,
+=======
+      `refresh_token:${user.id!}`,
+>>>>>>> origin/master
       7 * 24 * 60 * 60,
       tokens.refreshToken,
     )
@@ -101,10 +122,17 @@ export class AuthService {
       throw new Error('Invalid credentials')
     }
 
+<<<<<<< HEAD
     await UserModel.update(user.id, { lastLoginAt: new Date() })
 
     const payload: JwtPayload = {
       userId: user.id,
+=======
+    await UserModel.update(user.id!, { lastLoginAt: new Date() })
+
+    const payload: JwtPayload = {
+      userId: user.id!,
+>>>>>>> origin/master
       email: user.email,
       role: user.role,
     }
@@ -112,7 +140,11 @@ export class AuthService {
     const tokens = this.generateTokens(payload)
 
     await redisClient.setEx(
+<<<<<<< HEAD
       `refresh_token:${user.id}`,
+=======
+      `refresh_token:${user.id!}`,
+>>>>>>> origin/master
       7 * 24 * 60 * 60,
       tokens.refreshToken,
     )
@@ -138,7 +170,11 @@ export class AuthService {
       }
 
       const newPayload: JwtPayload = {
+<<<<<<< HEAD
         userId: user.id,
+=======
+        userId: user.id!,
+>>>>>>> origin/master
         email: user.email,
         role: user.role,
       }
@@ -146,13 +182,21 @@ export class AuthService {
       const tokens = this.generateTokens(newPayload)
 
       await redisClient.setEx(
+<<<<<<< HEAD
         `refresh_token:${user.id}`,
+=======
+        `refresh_token:${user.id!}`,
+>>>>>>> origin/master
         7 * 24 * 60 * 60,
         tokens.refreshToken,
       )
 
       return tokens
+<<<<<<< HEAD
     } catch (error) {
+=======
+    } catch {
+>>>>>>> origin/master
       throw new Error('Invalid refresh token')
     }
   }
@@ -176,11 +220,19 @@ export class AuthService {
       }
 
       return {
+<<<<<<< HEAD
         userId: user.id,
         email: user.email,
         role: user.role,
       }
     } catch (error) {
+=======
+        userId: user.id!,
+        email: user.email,
+        role: user.role,
+      }
+    } catch {
+>>>>>>> origin/master
       return null
     }
   }
@@ -223,7 +275,12 @@ export class AuthService {
     const saltRounds = parseInt(process.env['BCRYPT_ROUNDS'] || '12')
     const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds)
 
+<<<<<<< HEAD
     await UserModel.update(user.id, { password: hashedNewPassword })
     await redisClient.del(`refresh_token:${user.id}`)
+=======
+    await UserModel.update(user.id!, { password: hashedNewPassword })
+    await redisClient.del(`refresh_token:${user.id!}`)
+>>>>>>> origin/master
   }
 }

@@ -5,9 +5,15 @@ import { baselineAnxietyScenario, ageBiasYoungPatient } from './fixtures'
 
 // Mock the Python bridge to avoid network calls
 vi.mock('../python-bridge', () => ({
+<<<<<<< HEAD
   PythonBiasDetectionBridge: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     analyzeSession: vi.fn().mockImplementation(async () => {
+=======
+  PythonBiasDetectionBridge: class {
+    initialize = vi.fn().mockResolvedValue(undefined)
+    analyzeSession = vi.fn().mockImplementation(async () => {
+>>>>>>> origin/master
       // Simulate realistic API response time (50-150ms)
       const delay = 50 + Math.random() * 100
       await new Promise((resolve) => setTimeout(resolve, delay))
@@ -22,17 +28,30 @@ vi.mock('../python-bridge', () => ({
           evaluation: { biasScore: 0.3 + Math.random() * 0.3 },
         },
       }
+<<<<<<< HEAD
     }),
     checkHealth: vi.fn().mockResolvedValue({ status: 'healthy' }),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+    })
+    checkHealth = vi.fn().mockResolvedValue({ status: 'healthy' })
+    dispose = vi.fn().mockResolvedValue(undefined)
+  },
+>>>>>>> origin/master
 }))
 
 // Mock the metrics collector
 vi.mock('../metrics-collector', () => ({
+<<<<<<< HEAD
   BiasMetricsCollector: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     getMetrics: vi.fn().mockResolvedValue({
+=======
+  BiasMetricsCollector: class {
+    initialize = vi.fn().mockResolvedValue(undefined)
+    getMetrics = vi.fn().mockResolvedValue({
+>>>>>>> origin/master
       overall_stats: {
         total_sessions: 100,
         average_bias_score: 0.3,
@@ -43,18 +62,32 @@ vi.mock('../metrics-collector', () => ({
           critical: 5,
         },
       },
+<<<<<<< HEAD
     }),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+    })
+    dispose = vi.fn().mockResolvedValue(undefined)
+  },
+>>>>>>> origin/master
 }))
 
 // Mock the alert system
 vi.mock('../alerts-system', () => ({
+<<<<<<< HEAD
   BiasAlertSystem: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     processAlert: vi.fn().mockResolvedValue(undefined),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+  BiasAlertSystem: class {
+    initialize = vi.fn().mockResolvedValue(undefined)
+    processAlert = vi.fn().mockResolvedValue(undefined)
+    dispose = vi.fn().mockResolvedValue(undefined)
+  },
+>>>>>>> origin/master
 }))
 
 /**

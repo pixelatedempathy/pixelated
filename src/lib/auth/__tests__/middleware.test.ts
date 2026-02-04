@@ -14,12 +14,18 @@ import {
   type AuthenticatedRequest,
   type UserRole,
 } from '../middleware'
+<<<<<<< HEAD
 import { validateToken } from '../jwt-service'
 import { auth0UserService } from '../../services/auth0.service'
+=======
+import { validateToken } from '../auth0-jwt-service'
+import { auth0UserService } from '../../../services/auth0.service'
+>>>>>>> origin/master
 import { logSecurityEvent } from '../../security'
 import { updatePhase6AuthenticationProgress } from '../../mcp/phase6-integration'
 
 // Mock dependencies
+<<<<<<< HEAD
 vi.mock('../jwt-service', () => ({
   validateToken: vi.fn(),
 }))
@@ -27,6 +33,16 @@ vi.mock('../jwt-service', () => ({
 vi.mock('../../services/auth0.service', () => ({
   auth0UserService: {
     getUserById: vi.fn(),
+=======
+vi.mock('../auth0-jwt-service', () => ({
+  validateToken: vi.fn(),
+}))
+
+vi.mock('../../../services/auth0.service', () => ({
+  auth0UserService: {
+    getUserById: vi.fn(),
+    userHasMFA: vi.fn(),
+>>>>>>> origin/master
   },
 }))
 
@@ -104,7 +120,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       const result = await authenticateRequest(mockRequest)
 
@@ -180,7 +200,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue({
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue({
+>>>>>>> origin/master
         id: 'user123',
         email: 'test@example.com',
         role: 'admin',
@@ -203,7 +227,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(null)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(null)
+>>>>>>> origin/master
 
       const result = await authenticateRequest(mockRequest)
 
@@ -228,7 +256,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -276,7 +308,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -295,11 +331,17 @@ describe('Authentication Middleware', () => {
         role: 'admin' as UserRole,
       }
 
+<<<<<<< HEAD
       const authenticatedRequest = {
         ...mockRequest,
         user: mockUser,
         tokenId: 'token123',
       } as AuthenticatedRequest
+=======
+      const authenticatedRequest = mockRequest as AuthenticatedRequest
+      authenticatedRequest.user = mockUser
+      authenticatedRequest.tokenId = 'token123'
+>>>>>>> origin/master
 
       const result = await requireRole(authenticatedRequest, [
         'admin',
@@ -317,11 +359,17 @@ describe('Authentication Middleware', () => {
         role: 'patient' as UserRole,
       }
 
+<<<<<<< HEAD
       const authenticatedRequest = {
         ...mockRequest,
         user: mockUser,
         tokenId: 'token123',
       } as AuthenticatedRequest
+=======
+      const authenticatedRequest = mockRequest as AuthenticatedRequest
+      authenticatedRequest.user = mockUser
+      authenticatedRequest.tokenId = 'token123'
+>>>>>>> origin/master
 
       const result = await requireRole(authenticatedRequest, [
         'admin',
@@ -340,11 +388,17 @@ describe('Authentication Middleware', () => {
         role: 'admin' as UserRole,
       }
 
+<<<<<<< HEAD
       const authenticatedRequest = {
         ...mockRequest,
         user: mockUser,
         tokenId: 'token123',
       } as AuthenticatedRequest
+=======
+      const authenticatedRequest = mockRequest as AuthenticatedRequest
+      authenticatedRequest.user = mockUser
+      authenticatedRequest.tokenId = 'token123'
+>>>>>>> origin/master
 
       // Admin should have access to patient-level resources
       const result = await requireRole(authenticatedRequest, ['patient'])
@@ -359,11 +413,17 @@ describe('Authentication Middleware', () => {
         role: 'patient' as UserRole,
       }
 
+<<<<<<< HEAD
       const authenticatedRequest = {
         ...mockRequest,
         user: mockUser,
         tokenId: 'token123',
       } as AuthenticatedRequest
+=======
+      const authenticatedRequest = mockRequest as AuthenticatedRequest
+      authenticatedRequest.user = mockUser
+      authenticatedRequest.tokenId = 'token123'
+>>>>>>> origin/master
 
       await requireRole(authenticatedRequest, ['admin'])
 
@@ -815,7 +875,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       const start = performance.now()
 
@@ -850,7 +914,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(null)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(null)
+>>>>>>> origin/master
 
       const start1 = performance.now()
       await authenticateRequest(mockRequest)
@@ -886,7 +954,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -966,7 +1038,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -1006,7 +1082,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -1034,7 +1114,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -1067,7 +1151,11 @@ describe('Authentication Middleware', () => {
         expiresAt: Date.now() + 3600000,
       })
 
+<<<<<<< HEAD
       vi.mocked(getUserById).mockResolvedValue(mockUser)
+=======
+      vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
 
@@ -1084,11 +1172,17 @@ describe('Authentication Middleware', () => {
         role: 'patient',
       }
 
+<<<<<<< HEAD
       const authenticatedRequest = {
         ...mockRequest,
         user: mockUser,
         tokenId: 'token123',
       } as AuthenticatedRequest
+=======
+      const authenticatedRequest = mockRequest as AuthenticatedRequest
+      authenticatedRequest.user = mockUser
+      authenticatedRequest.tokenId = 'token123'
+>>>>>>> origin/master
 
       await requireRole(authenticatedRequest, ['admin'])
 

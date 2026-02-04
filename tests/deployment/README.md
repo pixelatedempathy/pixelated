@@ -136,8 +136,13 @@ Test results are saved to `/tmp/deployment-*-results/` directories with:
 The test suite validates all requirements from the deployment pipeline improvement specification:
 
 ### Requirement 1: Node.js Environment Modernization
+<<<<<<< HEAD
 - ✓ Node.js 24.8.0 installation and verification
 - ✓ pnpm 10.28.0 installation and verification
+=======
+- ✓ Node.js 24.11.0 installation and verification
+- ✓ pnpm 10.28.2 installation and verification
+>>>>>>> origin/master
 - ✓ Version validation and error handling
 
 ### Requirement 2: Safe Pipeline-Style Deployment

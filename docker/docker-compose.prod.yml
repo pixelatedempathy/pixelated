@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 version: '3.8'
+=======
+>>>>>>> origin/master
 
 services:
   # PostgreSQL Database for Business Strategy CMS

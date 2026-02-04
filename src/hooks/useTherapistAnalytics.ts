@@ -14,6 +14,7 @@ import type {
 } from '@/types/analytics'
 import type { TherapistSession } from '@/types/dashboard'
 
+<<<<<<< HEAD
 // Normalize logger shape because tests sometimes mock createBuildSafeLogger to return
 // a bare function (vi.fn()) or a partial object. Ensure we always have an object
 // with callable info/warn/error/debug methods to avoid runtime TypeErrors.
@@ -21,10 +22,17 @@ const _rawLogger = createBuildSafeLogger('use-therapist-analytics')
 const normalizeLogger = (raw: unknown) => {
   const safeFn = (fn: unknown, fallback: (...args: any[]) => void) =>
     typeof fn === 'function' ? (fn as (...args: any[]) => any) : fallback
+=======
+const _rawLogger = createBuildSafeLogger('use-therapist-analytics')
+const normalizeLogger = (raw: unknown) => {
+  const safeFn = (fn: unknown, fallback: (...args: unknown[]) => void) =>
+    typeof fn === 'function' ? (fn as (...args: unknown[]) => unknown) : fallback
+>>>>>>> origin/master
 
   // If the module mock returned a bare function (e.g. vi.fn()), call it for all
   // log levels but still provide the standard method names.
   if (typeof raw === 'function') {
+<<<<<<< HEAD
     const fn = raw as (...args: any[]) => any
     return {
       info: (...args: any[]) => {
@@ -52,6 +60,35 @@ const normalizeLogger = (raw: unknown) => {
         try {
           fn(...args)
         } catch (error) {
+=======
+    const fn = raw as (...args: unknown[]) => unknown
+    return {
+      info: (...args: unknown[]) => {
+        try {
+          fn(...args)
+        } catch {
+          /* swallow */
+        }
+      },
+      warn: (...args: unknown[]) => {
+        try {
+          fn(...args)
+        } catch {
+          /* swallow */
+        }
+      },
+      error: (...args: unknown[]) => {
+        try {
+          fn(...args)
+        } catch {
+          /* swallow */
+        }
+      },
+      debug: (...args: unknown[]) => {
+        try {
+          fn(...args)
+        } catch {
+>>>>>>> origin/master
           /* swallow */
         }
       },
@@ -228,7 +265,14 @@ export function useTherapistAnalytics(
             return 0
         }
       })()
+<<<<<<< HEAD
       out = out.filter((s) => new Date(s.startTime).getTime() >= cutoff)
+=======
+      out = out.filter((s) => {
+        const t = new Date(s.startTime).getTime()
+        return t >= cutoff
+      })
+>>>>>>> origin/master
     }
 
     // skillCategory placeholder - if provided, filter sessions practicing skills in that category.
@@ -256,20 +300,35 @@ export function useTherapistAnalytics(
       const avgProgress =
         sessions.length > 0
           ? Math.round(
+<<<<<<< HEAD
               sessions.reduce((sum, s) => sum + s.progress, 0) /
                 sessions.length,
             )
+=======
+            sessions.reduce((sum, s) => sum + s.progress, 0) /
+            sessions.length,
+          )
+>>>>>>> origin/master
           : 0
 
       const avgDuration =
         sessions.length > 0
           ? Math.round(
+<<<<<<< HEAD
               sessions.reduce((sum, s) => {
                 const start = new Date(s.startTime)
                 const end = s.endTime ? new Date(s.endTime) : new Date()
                 return sum + (end.getTime() - start.getTime()) / 1000
               }, 0) / sessions.length,
             )
+=======
+            sessions.reduce((sum, s) => {
+              const start = new Date(s.startTime)
+              const end = s.endTime ? new Date(s.endTime) : new Date()
+              return sum + (end.getTime() - start.getTime()) / 1000
+            }, 0) / sessions.length,
+          )
+>>>>>>> origin/master
           : 0
 
       return [
@@ -449,6 +508,7 @@ export function useTherapistAnalytics(
    * Load data when sessions change
    */
   useEffect(() => {
+<<<<<<< HEAD
     // If sessions is empty, ensure loading state is cleared and no analytics are generated.
     // This prevents indefinite loading for empty datasets.
     if (sessions.length === 0) {
@@ -459,10 +519,15 @@ export function useTherapistAnalytics(
     } else {
       loadData(true)
     }
+=======
+    // Always load data, even if sessions is empty (will result in empty data structure)
+    void loadData(true)
+>>>>>>> origin/master
   }, [sessions, loadData])
 
   // Auto-refresh (silent) based on options passed in via filters.config (if present)
   useEffect(() => {
+<<<<<<< HEAD
     // Securely extract config from _filters, avoiding unsafe dynamic access
     let config: { enableAutoRefresh?: boolean; refreshInterval?: number } = {}
     if (
@@ -486,12 +551,30 @@ export function useTherapistAnalytics(
     }
 
     if (!config.enableAutoRefresh || !config.refreshInterval) {
+=======
+    const config = _filters.config
+
+    if (!config?.enableAutoRefresh || !config?.refreshInterval) {
+      return
+    }
+
+    // Only allow safe, finite numbers for refreshInterval
+    if (
+      !Number.isFinite(config.refreshInterval) ||
+      config.refreshInterval <= 0 ||
+      config.refreshInterval >= 3600000 // max 1 hour
+    ) {
+>>>>>>> origin/master
       return
     }
 
     refreshIntervalRef.current = setInterval(() => {
       // silent refresh: do not toggle isLoading
+<<<<<<< HEAD
       loadData(false)
+=======
+      void loadData(false)
+>>>>>>> origin/master
     }, config.refreshInterval)
 
     return () => {
@@ -500,7 +583,11 @@ export function useTherapistAnalytics(
         refreshIntervalRef.current = null
       }
     }
+<<<<<<< HEAD
   }, [(_filters as any).config, loadData, _filters])
+=======
+  }, [_filters.config, loadData])
+>>>>>>> origin/master
 
   /**
    * Cleanup on unmount

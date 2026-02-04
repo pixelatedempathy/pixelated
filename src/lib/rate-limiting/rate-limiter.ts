@@ -74,6 +74,10 @@ export class DistributedRateLimiter {
         retryAfter: null,
       }
     } catch (error) {
+<<<<<<< HEAD
+=======
+      console.error('DEBUG RATE LIMITER ERROR:', error)
+>>>>>>> origin/master
       logger.error('Rate limit check failed:', {
         error,
         identifier,

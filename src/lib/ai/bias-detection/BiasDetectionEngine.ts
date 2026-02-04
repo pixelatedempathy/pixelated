@@ -88,6 +88,7 @@ export class BiasDetectionEngine {
     }
 
     this.config = {
+<<<<<<< HEAD
       pythonServiceUrl: cfg['pythonServiceUrl'] ?? 'http://localhost:8000',
       pythonServiceTimeout: cfg['pythonServiceTimeout'] ?? 30000,
       thresholds: normalizedThresholds,
@@ -104,6 +105,24 @@ export class BiasDetectionEngine {
         exportFormats: ['json'],
       },
       alertConfig: cfg['alertConfig'] ?? {
+=======
+      pythonServiceUrl: cfg["pythonServiceUrl"] ?? "http://localhost:5000",
+      pythonServiceTimeout: cfg["pythonServiceTimeout"] ?? 30000,
+      thresholds: normalizedThresholds,
+      layerWeights: cfg["layerWeights"] ?? DEFAULT_WEIGHTS,
+      evaluationMetrics: cfg["evaluationMetrics"] ?? [
+        "demographic_parity",
+        "equalized_odds",
+      ],
+      metricsConfig: cfg["metricsConfig"] ?? {
+        enableRealTimeMonitoring: true,
+        metricsRetentionDays: 30,
+        aggregationIntervals: ["1h", "1d"],
+        dashboardRefreshRate: 60,
+        exportFormats: ["json"],
+      },
+      alertConfig: cfg["alertConfig"] ?? {
+>>>>>>> origin/master
         enableSlackNotifications: false,
         enableEmailNotifications: false,
         emailRecipients: [],
@@ -113,21 +132,34 @@ export class BiasDetectionEngine {
           highResponseTimeMinutes: 30,
         },
       },
+<<<<<<< HEAD
       reportConfig: cfg['reportConfig'] ?? {
+=======
+      reportConfig: cfg["reportConfig"] ?? {
+>>>>>>> origin/master
         includeConfidentialityAnalysis: true,
         includeDemographicBreakdown: true,
         includeTemporalTrends: true,
         includeRecommendations: true,
+<<<<<<< HEAD
         reportTemplate: 'standard',
         exportFormats: ['json'],
       },
       explanationConfig: cfg['explanationConfig'] ?? {
         explanationMethod: 'shap',
+=======
+        reportTemplate: "standard",
+        exportFormats: ["json"],
+      },
+      explanationConfig: cfg["explanationConfig"] ?? {
+        explanationMethod: "shap",
+>>>>>>> origin/master
         maxFeatures: 10,
         includeCounterfactuals: true,
         generateVisualization: false,
       },
       pythonServiceConfig: {},
+<<<<<<< HEAD
       cacheConfig: cfg['cacheConfig'] ?? {},
       batchProcessingConfig: cfg['batchProcessingConfig'] ?? {},
       securityConfig: {},
@@ -136,6 +168,16 @@ export class BiasDetectionEngine {
       dataMaskingEnabled: cfg['dataMaskingEnabled'] ?? true,
       auditLogging: cfg['auditLogging'] ?? true,
     }
+=======
+      cacheConfig: cfg["cacheConfig"] ?? {},
+      batchProcessingConfig: cfg["batchProcessingConfig"] ?? {},
+      securityConfig: {},
+      performanceConfig: {},
+      hipaaCompliant: cfg["hipaaCompliant"] ?? true,
+      dataMaskingEnabled: cfg["dataMaskingEnabled"] ?? true,
+      auditLogging: cfg["auditLogging"] ?? true,
+    };
+>>>>>>> origin/master
 
     // Validate thresholds configuration
     this.config.thresholds = this.validateThresholds(this.config.thresholds)
@@ -551,6 +593,7 @@ export class BiasDetectionEngine {
           : { age: '', gender: '', ethnicity: '', primaryLanguage: '' },
     }
 
+<<<<<<< HEAD
     // Only collect metrics when auditLogging is turned OFF (per tests)
     if (!this.config.auditLogging) {
       try {
@@ -558,6 +601,13 @@ export class BiasDetectionEngine {
       } catch (err) {
         console.warn('storeAnalysisResult failed:', err)
       }
+=======
+    // Collect metrics regardless of audit logging state
+    try {
+      await this.metricsCollector.storeAnalysisResult?.(result)
+    } catch (err) {
+      console.warn('storeAnalysisResult failed:', err)
+>>>>>>> origin/master
     }
 
     // Store result in distributed cache for future retrieval
@@ -879,6 +929,16 @@ export class BiasDetectionEngine {
       /* swallow */
     }
     try {
+<<<<<<< HEAD
+=======
+      if (this.pythonService) {
+        await this.pythonService.dispose()
+      }
+    } catch {
+      /* swallow */
+    }
+    try {
+>>>>>>> origin/master
       if (this.performanceOptimizer) {
         await this.performanceOptimizer.dispose()
       }

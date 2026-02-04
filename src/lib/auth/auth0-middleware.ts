@@ -298,7 +298,11 @@ export async function csrfProtection(request: Request): Promise<{
 
   if (!storedToken) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
+    await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -326,7 +330,11 @@ export async function csrfProtection(request: Request): Promise<{
   // Check if token matches stored token
   if (storedToken.token && storedToken.token !== csrfToken) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
+    await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -354,7 +362,11 @@ export async function csrfProtection(request: Request): Promise<{
   // Check if token has expired
   if (storedToken.expiresAt && storedToken.expiresAt < Date.now()) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
+    await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'expired_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -468,8 +480,21 @@ export interface AuthenticatedRequest extends Request {
     id: string
     email: string
     role: string
+<<<<<<< HEAD
   }
   tokenId?: string
+=======
+    emailVerified?: boolean
+    fullName?: string
+    avatarUrl?: string
+    createdAt?: string
+    lastLogin?: string
+    appMetadata?: Record<string, unknown>
+    userMetadata?: Record<string, unknown>
+  }
+  tokenId?: string
+  sessionId?: string
+>>>>>>> origin/master
 }
 
 /**
@@ -576,6 +601,7 @@ export async function authenticateRequest(request: Request): Promise<{
     }
   }
 
+<<<<<<< HEAD
   // Check if user has MFA enabled
   const hasMFA = await auth0UserService.userHasMFA(user.id)
 
@@ -584,6 +610,67 @@ export async function authenticateRequest(request: Request): Promise<{
     try {
       // Get client information for risk assessment
       const clientInfo = getClientInfo(request)
+=======
+  // Check if user is active
+  if (user.isActive === false) {
+    const { logSecurityEvent, SecurityEventType } = await import('../security')
+    await logSecurityEvent(SecurityEventType.AUTHENTICATION_FAILED, null, {
+      error: 'User account is inactive',
+      endpoint: new URL(request.url).pathname,
+    })
+
+    return {
+      success: false,
+      response: new Response(JSON.stringify({ error: 'User account is inactive' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+      error: 'User account is inactive',
+    }
+  }
+
+  // Check if user has MFA enabled
+  const hasMFA = await auth0UserService.userHasMFA(user.id)
+
+  // Device/Session Binding Check
+  const sid = validation.payload?.sid;
+  if (sid) {
+    const { getFromCache, setInCache } = await import('../redis');
+    const bindingKey = `session_binding:${user.id}:${sid}`;
+    const clientInfo = getClientInfo(request);
+    const storedBinding = await getFromCache(bindingKey);
+
+    if (storedBinding) {
+      // Verify IP binding (allow some flexibility if needed, but strict for now)
+      if (storedBinding.ip !== clientInfo.ip) {
+        const { logSecurityEvent, SecurityEventType } = await import('../security');
+        await logSecurityEvent(SecurityEventType.AUTHENTICATION_FAILED, user.id, {
+          reason: 'ip_mismatch',
+          storedIp: storedBinding.ip,
+          currentIp: clientInfo.ip,
+          endpoint: new URL(request.url).pathname
+        });
+
+        // We could block here, but for now we'll just log and maybe require MFA
+        // If we wanted to block:
+        // return { success: false, response: ..., error: 'Session IP mismatch' }
+      }
+    } else {
+      // Trust On First Use (TOFU) - Bind session to this IP
+      await setInCache(bindingKey, {
+        ip: clientInfo.ip,
+        userAgent: clientInfo.userAgent,
+        boundAt: Date.now()
+      }, 24 * 60 * 60); // 24 hours
+    }
+  }
+
+  // If user doesn't have MFA enabled, check if adaptive MFA requires it
+  if (!hasMFA) {
+    try {
+      // Get client information for risk assessment (already fetched above if sid exists, but reliable here)
+      const clientInfo = getClientInfo(request);
+>>>>>>> origin/master
 
       // Create login context for risk assessment
       const loginContext = {
@@ -660,8 +747,21 @@ export async function authenticateRequest(request: Request): Promise<{
     id: user.id,
     email: user.email,
     role: user.role,
+<<<<<<< HEAD
   }
   authenticatedRequest.tokenId = validation.tokenId
+=======
+    emailVerified: user.emailVerified,
+    fullName: user.fullName,
+    avatarUrl: user.avatarUrl,
+    createdAt: user.createdAt,
+    lastLogin: user.lastLogin,
+    appMetadata: user.appMetadata,
+    userMetadata: user.userMetadata,
+  }
+  authenticatedRequest.tokenId = validation.tokenId
+  authenticatedRequest.sessionId = sid
+>>>>>>> origin/master
 
   return { success: true, request: authenticatedRequest }
 }
@@ -716,7 +816,11 @@ export async function requireRole(
     // Log authorization failure
     try {
       const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
       logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+=======
+      await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+>>>>>>> origin/master
         requiredRoles: roles,
         userRole: request.user.role,
       })
