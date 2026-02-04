@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 version: '3.8'
+=======
+>>>>>>> origin/master
 
 services:
   # Main Application
   app:
     build:
+<<<<<<< HEAD
       context: .
+=======
+      context: ..
+>>>>>>> origin/master
       dockerfile: Dockerfile.production
     container_name: pixelated-app
     restart: unless-stopped
@@ -21,12 +28,28 @@ services:
       - REDIS_URL=redis://redis:6379
       - REDIS_PASSWORD_FILE=/run/secrets/redis_password
       - JWT_SECRET_FILE=/run/secrets/jwt_secret
+<<<<<<< HEAD
+=======
+      - AUTH0_DOMAIN_FILE=/run/secrets/auth0_domain
+      - AUTH0_CLIENT_ID_FILE=/run/secrets/auth0_client_id
+      - AUTH0_CLIENT_SECRET_FILE=/run/secrets/auth0_client_secret
+      - AUTH0_MANAGEMENT_CLIENT_ID_FILE=/run/secrets/auth0_management_client_id
+      - AUTH0_MANAGEMENT_CLIENT_SECRET_FILE=/run/secrets/auth0_management_client_secret
+>>>>>>> origin/master
       - PUBLIC_SITE_URL=${PUBLIC_SITE_URL:-https://pixelatedempathy.com}
       - CDN_BASE_URL=${CDN_BASE_URL:-https://cdn.pixelatedempathy.com}
     secrets:
       - db_password
       - redis_password
       - jwt_secret
+<<<<<<< HEAD
+=======
+      - auth0_domain
+      - auth0_client_id
+      - auth0_client_secret
+      - auth0_management_client_id
+      - auth0_management_client_secret
+>>>>>>> origin/master
     depends_on:
       postgres:
         condition: service_healthy
@@ -41,11 +64,24 @@ services:
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '1.0'
           memory: 1G
         reservations:
           cpus: '0.5'
           memory: 512M
+=======
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`${DOMAIN:-pixelatedempathy.com}`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls.certresolver=letsencrypt"
+>>>>>>> origin/master
 
   # PostgreSQL Database
   postgres:
@@ -60,16 +96,30 @@ services:
       - db_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
+<<<<<<< HEAD
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-pixelated_user} -d ${DB_NAME:-pixelated}"]
+=======
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DB_USER:-pixelated_user} -d ${DB_NAME:-pixelated}",
+        ]
+>>>>>>> origin/master
       interval: 10s
       timeout: 5s
       retries: 5
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.5'
+=======
+          cpus: "0.5"
+>>>>>>> origin/master
           memory: 512M
 
   # Redis Cache
@@ -77,20 +127,36 @@ services:
     image: redis:7
     container_name: pixelated-redis
     restart: unless-stopped
+<<<<<<< HEAD
     command: redis-server --requirepass "$(cat /run/secrets/redis_password)" --appendonly yes
+=======
+    command: sh -c 'redis-server --requirepass "$$(cat /run/secrets/redis_password)" --appendonly yes'
+>>>>>>> origin/master
     secrets:
       - redis_password
     volumes:
       - redis_data:/data
     healthcheck:
+<<<<<<< HEAD
       test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+=======
+      test:
+        [
+          "CMD-SHELL",
+          'redis-cli -a "$$(cat /run/secrets/redis_password)" ping | grep -q PONG',
+        ]
+>>>>>>> origin/master
       interval: 10s
       timeout: 5s
       retries: 3
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.25'
+=======
+          cpus: "0.25"
+>>>>>>> origin/master
           memory: 256M
 
   # Reverse Proxy & Load Balancer
@@ -101,10 +167,17 @@ services:
     ports:
       - "80:80"
       - "443:443"
+<<<<<<< HEAD
       - "8080:8080"  # Dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./docker/traefik:/etc/traefik
+=======
+      - "8080:8080" # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik:/etc/traefik
+>>>>>>> origin/master
       - ssl_certs:/ssl-certs
     environment:
       - TRAEFIK_PROVIDERS_DOCKER=true
@@ -113,6 +186,10 @@ services:
       - TRAEFIK_ENTRYPOINTS_websecure_ADDRESS=:443
       - TRAEFIK_CERTIFICATESRESOLVERS_letsencrypt_ACME_EMAIL=${SSL_EMAIL}
       - TRAEFIK_CERTIFICATESRESOLVERS_letsencrypt_ACME_STORAGE=/ssl-certs/acme.json
+<<<<<<< HEAD
+=======
+      - TRAEFIK_CERTIFICATESRESOLVERS_letsencrypt_ACME_HTTPCHALLENGE_ENTRYPOINT=web
+>>>>>>> origin/master
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN:-pixelatedempathy.com}`)"
@@ -122,7 +199,11 @@ services:
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.25'
+=======
+          cpus: "0.25"
+>>>>>>> origin/master
           memory: 128M
 
   # Monitoring & Observability
@@ -131,6 +212,7 @@ services:
     container_name: pixelated-prometheus
     restart: unless-stopped
     volumes:
+<<<<<<< HEAD
       - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
@@ -139,12 +221,26 @@ services:
       - '--web.console.libraries=/etc/prometheus/console_libraries'
       - '--web.console.templates=/etc/prometheus/consoles'
       - '--web.enable-lifecycle'
+=======
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+>>>>>>> origin/master
     ports:
       - "9090:9090"
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.25'
+=======
+          cpus: "0.25"
+>>>>>>> origin/master
           memory: 256M
 
   grafana:
@@ -156,8 +252,14 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
       - grafana_data:/var/lib/grafana
+<<<<<<< HEAD
       - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./docker/grafana/grafana.ini:/etc/grafana/grafana.ini
+=======
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+>>>>>>> origin/master
     ports:
       - "3000:3000"
     depends_on:
@@ -165,7 +267,11 @@ services:
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.5'
+=======
+          cpus: "0.5"
+>>>>>>> origin/master
           memory: 256M
 
   # Log Aggregation
@@ -175,14 +281,22 @@ services:
     restart: unless-stopped
     volumes:
       - loki_data:/loki
+<<<<<<< HEAD
       - ./docker/loki/config.yml:/etc/loki/local-config.yaml
+=======
+      - ./loki/config.yml:/etc/loki/local-config.yaml
+>>>>>>> origin/master
     command: -config.file=/etc/loki/local-config.yaml
     ports:
       - "3100:3100"
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.25'
+=======
+          cpus: "0.25"
+>>>>>>> origin/master
           memory: 256M
 
   promtail:
@@ -190,7 +304,11 @@ services:
     container_name: pixelated-promtail
     restart: unless-stopped
     volumes:
+<<<<<<< HEAD
       - ./docker/promtail/config.yml:/etc/promtail/config.yml
+=======
+      - ./promtail/config.yml:/etc/promtail/config.yml
+>>>>>>> origin/master
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command: -config.file=/etc/promtail/config.yml
@@ -199,9 +317,35 @@ services:
     deploy:
       resources:
         limits:
+<<<<<<< HEAD
           cpus: '0.1'
           memory: 128M
 
+=======
+          cpus: "0.1"
+          memory: 128M
+
+  # Therapeutic AI API
+  ai-api:
+    build:
+      context: ..
+      dockerfile: ai-services/Dockerfile
+    container_name: pixelated-ai-api
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+
+>>>>>>> origin/master
 volumes:
   postgres_data:
     driver: local
@@ -218,11 +362,29 @@ volumes:
 
 secrets:
   db_password:
+<<<<<<< HEAD
     file: ./config/secrets/db-password
   redis_password:
     file: ./config/secrets/redis-password
   jwt_secret:
     file: ./config/secrets/jwt-secret
+=======
+    file: ../config/secrets/db-password
+  redis_password:
+    file: ../config/secrets/redis-password
+  jwt_secret:
+    file: ../config/secrets/jwt-secret
+  auth0_domain:
+    file: ../config/secrets/auth0-domain
+  auth0_client_id:
+    file: ../config/secrets/auth0-client-id
+  auth0_client_secret:
+    file: ../config/secrets/auth0-client-secret
+  auth0_management_client_id:
+    file: ../config/secrets/auth0-management-client-id
+  auth0_management_client_secret:
+    file: ../config/secrets/auth0-management-client-secret
+>>>>>>> origin/master
 
 networks:
   default:
