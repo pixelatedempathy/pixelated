@@ -1,10 +1,4 @@
 [submodule "ai"]
-<<<<<<< HEAD
- path = ai
- url = https://github.com/pixelatedempathy/ai.git
- ignore = all
-=======
 	path = ai
 	url = https://github.com/pixelatedempathy/ai.git
 	ignore = all
->>>>>>> origin/master

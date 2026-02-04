@@ -54,6 +54,7 @@ async function initializeDependencies() {
   }
   return serverDepsPromise
 }
+
 import type {
   AIMetrics,
   AuditLog,
@@ -62,9 +63,6 @@ import type {
   CrisisSessionFlag,
   Todo,
   TreatmentPlan,
-<<<<<<< HEAD
-} from '../types/mongodb.types'
-=======
   DataExport,
 } from '../types/mongodb.types'
 
@@ -152,7 +150,6 @@ export class DataExportDAO {
     })
   }
 }
->>>>>>> origin/master
 
 export class TodoDAO {
   private async getCollection(): Promise<MongoCollection<Todo>> {
@@ -294,10 +291,10 @@ export class AIMetricsDAO {
     const result = await collection.aggregate(pipeline).toArray()
     const stats = result[0] as
       | {
-          totalRequests: number
-          totalTokens: number
-          averageResponseTime: number
-        }
+        totalRequests: number
+        totalTokens: number
+        averageResponseTime: number
+      }
       | undefined
 
     return stats || { totalRequests: 0, totalTokens: 0, averageResponseTime: 0 }
@@ -621,8 +618,5 @@ export const biasDetectionDAO = new BiasDetectionDAO()
 export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
-<<<<<<< HEAD
 export const auditLogDAO = new AuditLogDAO()
-=======
 export const dataExportDAO = new DataExportDAO()
->>>>>>> origin/master

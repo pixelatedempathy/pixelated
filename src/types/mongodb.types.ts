@@ -114,7 +114,6 @@ export interface ConsentManagement {
   ipAddress?: string
 }
 
-<<<<<<< HEAD
 export interface AuditLog {
   _id?: MongoObjectId
   id?: string
@@ -124,7 +123,8 @@ export interface AuditLog {
   resourceType?: string
   metadata?: Record<string, unknown>
   timestamp: Date
-=======
+}
+
 export interface ExportFile {
   id: string
   exportId: string
@@ -150,5 +150,4 @@ export interface DataExport {
   completedAt?: Date
   files?: ExportFile[]
   error?: string
->>>>>>> origin/master
 }
