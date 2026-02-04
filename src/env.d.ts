@@ -9,9 +9,27 @@ declare namespace App {
     user: {
       id: string
       email: string
+<<<<<<< HEAD
       role: string
       fullName?: string
       avatarUrl?: string
+=======
+<<<<<<< HEAD
+      role: string
+      fullName?: string
+      avatarUrl?: string
+=======
+      emailVerified: boolean
+      role: string
+      fullName?: string
+      avatarUrl?: string
+      createdAt?: string
+      updatedAt?: string
+      lastLogin?: string
+      appMetadata?: Record<string, unknown>
+      userMetadata?: Record<string, unknown>
+>>>>>>> origin/master
+>>>>>>> origin/master
     } | null
     session: {
       id: string

@@ -60,7 +60,14 @@ export function TherapistProgressTracker({
     <div
       className={cn('space-y-6', className)}
       aria-label="Therapist Progress Tracker"
+<<<<<<< HEAD
       role="region"
+=======
+<<<<<<< HEAD
+      role="region"
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
       tabIndex={0}
     >
       {/* Session Overview */}
@@ -89,7 +96,11 @@ export function TherapistProgressTracker({
         {expandedSections['overview'] && (
           <SessionMetrics
             metrics={[
+<<<<<<< HEAD
               { label: 'Session ID', value: session.id.slice(0, 8) },
+=======
+              { label: 'Session ID', value: session.id },
+>>>>>>> origin/master
               { label: 'Status', value: session.status },
               {
                 label: 'Duration',
@@ -252,7 +263,15 @@ export function TherapistProgressTracker({
               <p>{session.notes}</p>
             ) : (
               <p className="text-muted-foreground italic">
+<<<<<<< HEAD
                 No notes available for this session.
+=======
+<<<<<<< HEAD
+                No notes available for this session.
+=======
+                Session notes and observations will appear here...
+>>>>>>> origin/master
+>>>>>>> origin/master
               </p>
             )}
           </div>
