@@ -14,6 +14,21 @@ on:
     workflows: ["Deploy to Staging", "Deploy to Production"]
 
   workflow_dispatch:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    inputs:
+      ENV_NAME:
+        description: "Environment to validate (staging/production)"
+        required: false
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+>>>>>>> origin/master
+>>>>>>> origin/master
 jobs:
   validate-ai-models:
     name: AI Model Validation
@@ -29,7 +44,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
+<<<<<<< HEAD
           node-version: "24.8.0"
+=======
+<<<<<<< HEAD
+          node-version: "24.8.0"
+=======
+          node-version: "24.11.0"
+>>>>>>> origin/master
+>>>>>>> origin/master
 
       - name: Enable Corepack
         run: corepack enable
@@ -37,7 +60,15 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
+<<<<<<< HEAD
           version: "10.28.0"
+=======
+<<<<<<< HEAD
+          version: "10.28.0"
+=======
+          version: "10.28.2"
+>>>>>>> origin/master
+>>>>>>> origin/master
           run_install: false
 
       - name: Get pnpm store directory

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+>>>>>>> origin/master
 /// <reference types="vitest/globals" />
 import { BiasAlertSystem } from '../alerts-system'
 import { PythonBiasDetectionBridge } from '../python-bridge'
@@ -5,10 +9,17 @@ import type { BiasAnalysisResult, AlertLevel } from '../types'
 
 // Mock the Python bridge
 vi.mock('../python-bridge', () => ({
+<<<<<<< HEAD
   PythonBiasDetectionBridge: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     checkHealth: vi.fn().mockResolvedValue({ status: 'healthy' }),
   })),
+=======
+  PythonBiasDetectionBridge: class {
+    initialize = vi.fn().mockResolvedValue(undefined)
+    checkHealth = vi.fn().mockResolvedValue({ status: 'healthy' })
+  },
+>>>>>>> origin/master
 }))
 
 // Mock performance monitor
@@ -225,7 +236,11 @@ describe('BiasAlertSystem', () => {
 
     it('should initialize Python bridge', async () => {
       await alertSystem.initialize?.()
+<<<<<<< HEAD
       expect(mockPythonBridge.initialize).toHaveBeenCalled()
+=======
+      expect(mockPythonBridge['initialize']).toHaveBeenCalled()
+>>>>>>> origin/master
     })
   })
 
@@ -482,9 +497,16 @@ describe('BiasAlertSystem', () => {
       }
 
       // Mock a notification failure
+<<<<<<< HEAD
       const originalProcess = alertSystem.processAlert
       alertSystem.processAlert = vi
         .fn()
+<<<<<<< HEAD
+=======
+=======
+      const processSpy = vi.spyOn(alertSystem, 'processAlert')
+>>>>>>> origin/master
+>>>>>>> origin/master
         .mockRejectedValue(new Error('Notification failed'))
 
       await expect(
@@ -497,7 +519,11 @@ describe('BiasAlertSystem', () => {
       ).rejects.toThrow()
 
       // Restore original method
+<<<<<<< HEAD
       alertSystem.processAlert = originalProcess
+=======
+      processSpy.mockRestore()
+>>>>>>> origin/master
     })
 
     it('should handle callback failures gracefully', () => {

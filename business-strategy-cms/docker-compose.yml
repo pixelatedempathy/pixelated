@@ -1,13 +1,34 @@
+<<<<<<< HEAD
 version: '3.8'
 
+=======
+<<<<<<< HEAD
+version: '3.8'
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 services:
   app:
     build: .
     ports:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       - '3000:3000'
     environment:
       - NODE_ENV=development
       - MONGODB_URI=mongodb://mongodb:27017/business-strategy-cms
+<<<<<<< HEAD
+=======
+=======
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=${MONGODB_URI}
+>>>>>>> origin/master
+>>>>>>> origin/master
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
       - POSTGRES_DB=business_strategy_cms
@@ -16,7 +37,14 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
+<<<<<<< HEAD
       - mongodb
+=======
+<<<<<<< HEAD
+      - mongodb
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
       - postgres
       - redis
     volumes:
@@ -25,6 +53,10 @@ services:
     networks:
       - business-strategy-network
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   mongodb:
     image: mongo:6.0
     ports:
@@ -43,6 +75,15 @@ services:
     image: postgres:15
     ports:
       - '5432:5432'
+<<<<<<< HEAD
+=======
+=======
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+>>>>>>> origin/master
+>>>>>>> origin/master
     environment:
       - POSTGRES_DB=business_strategy_cms
       - POSTGRES_USER=admin
@@ -56,13 +97,25 @@ services:
   redis:
     image: redis:7-alpine
     ports:
+<<<<<<< HEAD
       - '6379:6379'
+=======
+<<<<<<< HEAD
+      - '6379:6379'
+=======
+      - "6379:6379"
+>>>>>>> origin/master
+>>>>>>> origin/master
     volumes:
       - redis_data:/data
     command: redis-server --appendonly yes
     networks:
       - business-strategy-network
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   mongodb-express:
     image: mongo-express:latest
     ports:
@@ -78,6 +131,12 @@ services:
 
 volumes:
   mongodb_data:
+<<<<<<< HEAD
+=======
+=======
+volumes:
+>>>>>>> origin/master
+>>>>>>> origin/master
   postgres_data:
   redis_data:
 

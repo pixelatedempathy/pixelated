@@ -1,5 +1,13 @@
 export interface User {
+<<<<<<< HEAD
   id: string
+=======
+<<<<<<< HEAD
+  id: string
+=======
+  id?: string
+>>>>>>> origin/master
+>>>>>>> origin/master
   email: string
   username: string
   firstName: string
@@ -31,6 +39,13 @@ export interface UserRegistration {
   firstName: string
   lastName: string
   password: string
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  role?: UserRole
+>>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 export interface AuthTokens {

@@ -2,7 +2,17 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "commonjs",
+<<<<<<< HEAD
     "lib": ["ES2022"],
+=======
+<<<<<<< HEAD
+    "lib": ["ES2022"],
+=======
+    "lib": [
+      "ES2022"
+    ],
+>>>>>>> origin/master
+>>>>>>> origin/master
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -10,8 +20,18 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+<<<<<<< HEAD
     "declaration": true,
     "declarationMap": true,
+=======
+<<<<<<< HEAD
+    "declaration": true,
+    "declarationMap": true,
+=======
+    "declaration": false,
+    "declarationMap": false,
+>>>>>>> origin/master
+>>>>>>> origin/master
     "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": true,
@@ -19,6 +39,10 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -39,3 +63,51 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "tests"]
 }
+<<<<<<< HEAD
+=======
+=======
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/controllers/*": [
+        "./src/controllers/*"
+      ],
+      "@/models/*": [
+        "./src/models/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/middleware/*": [
+        "./src/middleware/*"
+      ],
+      "@/routes/*": [
+        "./src/routes/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests"
+  ]
+}
+>>>>>>> origin/master
+>>>>>>> origin/master
