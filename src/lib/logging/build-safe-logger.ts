@@ -4,7 +4,7 @@
  */
 export function createBuildSafeLogger(prefix: string = 'app') {
   const tag = `[build-safe-logger][${prefix}]`
-<<<<<<< HEAD
+
   // Ensure we always return functions for each expected method. Tests may
   // mock this module and provide partial shapes; defensive defaults prevent
   // "logger.error is not a function" runtime errors.
@@ -23,14 +23,6 @@ export function createBuildSafeLogger(prefix: string = 'app') {
     warn: safeFn(console.warn, console.warn),
     error: safeFn(console.error, console.error),
     debug: safeFn(console.debug, console.debug),
-=======
-
-  return {
-    info: (...args: unknown[]) => (console.info || console.log)(tag, ...args),
-    warn: (...args: unknown[]) => (console.warn || console.log)(tag, ...args),
-    error: (...args: unknown[]) => (console.error || console.log)(tag, ...args),
-    debug: (...args: unknown[]) => (console.debug || console.log)(tag, ...args),
->>>>>>> origin/master
   }
 }
 
