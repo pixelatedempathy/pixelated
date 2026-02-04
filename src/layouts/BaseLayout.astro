@@ -4,6 +4,10 @@ import "@/styles/main.css";
 import "@/styles/prose.css";
 import "@/styles/markdown.css";
 import "@/styles/page.css";
+<<<<<<< HEAD
+=======
+import { Analytics } from "@vercel/analytics/astro";
+>>>>>>> origin/master
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 import Head from "@/components/base/Head.astro";
@@ -30,6 +34,10 @@ interface Props {
   pathname?: string;
   showNavBar?: boolean;
   showFooter?: boolean;
+<<<<<<< HEAD
+=======
+  showBackLink?: boolean;
+>>>>>>> origin/master
 }
 
 const {
@@ -42,6 +50,10 @@ const {
   pathname,
   showNavBar = true,
   showFooter = true,
+<<<<<<< HEAD
+=======
+  showBackLink = true,
+>>>>>>> origin/master
 } = Astro.props;
 
 // Use provided pathname for prerendered pages, fall back to Astro.url.pathname for server-rendered
@@ -68,6 +80,27 @@ if (hasCustomCursor) style["--external-link-cursor"] = cursorType;
 <html lang={SITE.lang} class="dark scroll-smooth">
   <head>
     <Head {title} {description} {ogImage} {pubDate} {lastModDate} />
+<<<<<<< HEAD
+=======
+
+    <Analytics />
+
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <link rel="stylesheet" href="/css/unified-dark-theme-v3.css" />
+    <link rel="stylesheet" href="/css/design-system.css" />
+    <link rel="stylesheet" href="/css/unified-blended-theme.css" />
+
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/font-fix.css" />
+
+    <link rel="stylesheet" href="/css/background-fixes.css" />
+
+    <script src="/js/polyfill-detector.js" is:inline></script>
+    <script src="/js/module-loader.js" defer is:inline></script>
+    <script src="/js/background-loader.js" defer is:inline></script>
+>>>>>>> origin/master
     <style is:global>
       /* Mizu theme dark colors - default for all pages */
       :root {
@@ -120,7 +153,11 @@ if (hasCustomCursor) style["--external-link-cursor"] = cursorType;
       <slot />
       <!-- Share -->
       {
+<<<<<<< HEAD
         currentPathname !== withBasePath("/") && (
+=======
+        currentPathname !== withBasePath("/") && showBackLink && (
+>>>>>>> origin/master
           <footer class="slide-enter animate-delay-1000! prose mx-auto mt-8 print:hidden">
             <slot name="share" />
             <br />

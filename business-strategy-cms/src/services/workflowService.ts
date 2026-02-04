@@ -440,12 +440,21 @@ export class WorkflowService {
     const averageReviewTime =
       completedInstances.length > 0
         ? completedInstances.reduce(
+<<<<<<< HEAD
             (sum, i) =>
               sum + (i.completedAt!.getTime() - i.createdAt.getTime()),
             0,
           ) /
           completedInstances.length /
           (1000 * 60 * 60) // Convert to hours
+=======
+          (sum, i) =>
+            sum + (i.completedAt!.getTime() - i.createdAt.getTime()),
+          0,
+        ) /
+        completedInstances.length /
+        (1000 * 60 * 60) // Convert to hours
+>>>>>>> origin/master
         : 0
 
     // Calculate approval/rejection rates
@@ -550,7 +559,11 @@ export class WorkflowService {
   }
 
   private static async notifyMentions(
+<<<<<<< HEAD
     workflowInstanceId: string,
+=======
+    _workflowInstanceId: string,
+>>>>>>> origin/master
     mentions: string[],
     content: string,
   ): Promise<void> {

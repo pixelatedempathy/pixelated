@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM node:18-alpine AS builder
+=======
+FROM node:24-alpine AS builder
+>>>>>>> origin/master
 
 WORKDIR /app
 
@@ -18,7 +22,11 @@ COPY . .
 RUN pnpm build
 
 # Production stage
+<<<<<<< HEAD
 FROM node:18-alpine AS production
+=======
+FROM node:24-alpine AS production
+>>>>>>> origin/master
 
 WORKDIR /app
 

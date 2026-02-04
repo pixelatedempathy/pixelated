@@ -1,7 +1,11 @@
 # 🌌 Pixelated Empathy: GEMINI.md
 
 > **"Beyond the screen, lies a deeper connection."**
+<<<<<<< HEAD
 > 
+=======
+>
+>>>>>>> origin/master
 > We don't just process conversations. We understand them. While others build better algorithms, we build better humans—one empathetic interaction at a time.
 
 ---
@@ -10,6 +14,13 @@
 
 **Pixelated Empathy** is an enterprise-grade platform engineered to translate human emotion into actionable intelligence. Our cornerstone, **The Empathy Gym™**, provides mental health professionals with a high-fidelity, risk-free AI environment to master complex therapeutic dialogues.
 
+<<<<<<< HEAD
+=======
+### Container Orchestration
+- **Docker Compose**: Primary deployment method (Development, Staging, Production).
+- **Kubernetes**: Future/Secondary infrastructure (Helm charts available in `/helm`).
+
+>>>>>>> origin/master
 ### Core Goals:
 - **Forge Empathy**: Transform difficult conversations into safe practice.
 - **Architect Understanding**: Map the "Emotional Cartography" of human interaction.
@@ -21,6 +32,7 @@
 ## 🧰 Quick Reference (Top Info)
 
 ### 📦 Package Management
+<<<<<<< HEAD
 | Domain | Tool | Critical Rule |
 | :--- | :--- | :--- |
 | **Frontend/Node** | `pnpm` | Never use `npm` or `yarn`. |
@@ -28,6 +40,19 @@
 
 ### 🚀 Essential Commands
 - `pnpm dev:all-services` — Start everything (Frontend, AI, Worker, WebSocket).
+=======
+| Domain            | Tool   | Critical Rule                        |
+| :---------------- | :----- | :----------------------------------- |
+| **Frontend/Node** | `pnpm` | Never use `npm` or `yarn`.           |
+| **AI/Python**     | `uv`   | Never use `pip`, `conda`, or `venv`. |
+
+
+
+
+### 🚀 Essential Commands
+- `pnpm dev:all-services` — Start everything (Frontend, AI, Worker, WebSocket).
+- `pnpm docker:up` — Deploy locally with Docker Compose.
+>>>>>>> origin/master
 - `pnpm check:all` — Lint + Typecheck + Format check.
 - `pnpm test:all` — Run the full test suite.
 - `pnpm security:scan` — Deep security audit.
@@ -38,7 +63,11 @@
 - `/ai` — (Submodule) The core Emotional Intelligence engine.
 - `.kiro/steering/` — Critical domain and style guidelines.
 - `/docs` — Comprehensive architecture and research documentation.
+<<<<<<< HEAD
 - `/memory-bank` — Project state and historical context.
+=======
+- `/.memory` — Project state and historical context.
+>>>>>>> origin/master
 
 ---
 
@@ -55,8 +84,11 @@ We utilize a sophisticated hybrid model to understand the human psyche:
 ## 🤖 Agent Ecosystem (MCP)
 
 This repository is built for **Agentic Development** through the Model Context Protocol (MCP).
+<<<<<<< HEAD
 - **Skills**: Located in `.openskills/`. Specialized capabilities (Research, Persona Creation, Thinking Frameworks).
 - **Agents**: Located in `.openagents/`. Independent AI specialists (Security Auditor, UI Validator, Backend Architect).
+=======
+>>>>>>> origin/master
 - **Journal Research Pipeline**: Integrated system for therapeutic dataset discovery and acquisition.
 
 ---
@@ -69,5 +101,9 @@ This repository is built for **Agentic Development** through the Model Context P
 4. **Confidentiality**: Respect HIPAA-level standards for sensitive mental health data.
 
 ---
+<<<<<<< HEAD
 
 *© 2025 Pixelated Empathy • Engineered with Purpose.*
+=======
+* © 2026 Pixelated Empathy • Engineered with Purpose.
+>>>>>>> origin/master

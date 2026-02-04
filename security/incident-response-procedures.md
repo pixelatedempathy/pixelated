@@ -105,8 +105,13 @@ We sincerely apologize for any inconvenience...
 
 ## Contact Information
 - **Emergency Hotline**: +1-XXX-XXX-XXXX
+<<<<<<< HEAD
 - **Security Team**: security@pixelated-empathy.com
 - **Legal Team**: legal@pixelated-empathy.com
+=======
+- **Security Team**: security@pixelatedempathy.com
+- **Legal Team**: legal@pixelatedempathy.com
+>>>>>>> origin/master
 - **External IR Firm**: [Contact details]
 
 ## Compliance Requirements

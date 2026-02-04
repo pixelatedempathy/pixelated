@@ -58,8 +58,13 @@ This document outlines all variables and secrets that must be configured in Azur
 
 | Variable Name | Value | Secret? | Description |
 |--------------|-------|---------|-------------|
+<<<<<<< HEAD
 | `NODE_VERSION` | `24.8.0` | ❌ No | Node.js version to use |
 | `PNPM_VERSION` | `10.28.0` | ❌ No | pnpm version to use |
+=======
+| `NODE_VERSION` | `24.11.0` | ❌ No | Node.js version to use |
+| `PNPM_VERSION` | `10.28.2` | ❌ No | pnpm version to use |
+>>>>>>> origin/master
 | `PYTHON_VERSION` | `3.11` | ❌ No | Python version (if needed) |
 | `NODE_ENV` | `production` | ❌ No | Node environment |
 | `GITHUB_ACTIONS` | `false` | ❌ No | Set to false for Azure Pipelines |
@@ -169,8 +174,13 @@ For the Schedule Posts pipeline to work, you need to:
 Create a variable group named `pixelated-pipeline-variables` with:
 
 **Non-secret variables:**
+<<<<<<< HEAD
 - `NODE_VERSION`: `24.8.0`
 - `PNPM_VERSION`: `10.28.0`
+=======
+- `NODE_VERSION`: `24.11.0`
+- `PNPM_VERSION`: `10.28.2`
+>>>>>>> origin/master
 - `PYTHON_VERSION`: `3.11`
 - `NODE_ENV`: `production`
 - `GITHUB_ACTIONS`: `false`
