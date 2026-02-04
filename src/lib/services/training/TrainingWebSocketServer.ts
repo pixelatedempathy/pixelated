@@ -1,4 +1,5 @@
-import { WebSocket, WebSocketServer } from 'ws'
+import { WebSocketServer } from 'ws'
+import type { WebSocket } from 'ws'
 import { IncomingMessage } from 'http'
 import { randomUUID } from 'crypto'
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
@@ -6,6 +7,7 @@ import { validateToken } from '../../auth/jwt-service'
 import type { UserRole } from '../../auth/roles'
 
 const logger = createBuildSafeLogger('TrainingWebSocketServer')
+const WS_OPEN = 1
 
 /**
  * Training WebSocket Server - Real-time collaboration for clinical training sessions
@@ -31,8 +33,8 @@ const logger = createBuildSafeLogger('TrainingWebSocketServer')
  * 4. Audit logging for all authentication and authorization events
  *
  * Clients authenticate via:
- * - Query string: ?token=<jwt>
- * - First message: { type: 'authenticate', token: '<jwt>' }
+ * - Query string: ?token=[jwt]
+ * - First message: { type: 'authenticate', token: '[jwt]' }
  */
 
 interface TrainingSessionClient {
@@ -224,7 +226,7 @@ export class TrainingWebSocketServer {
       // In development, extract userId from token if it looks like a JWT or use a default
       // For now, use a simple default for development
       return {
-        userId: token || 'dev-user',
+        userId: token || 'development-user',
         role: 'trainee' // Default role, can be overridden by client in development
       }
     }
@@ -289,7 +291,7 @@ export class TrainingWebSocketServer {
    * Send error message to client
    */
   private sendError(ws: WebSocket, message: string) {
-    if (ws.readyState === WebSocket.OPEN) {
+    if (ws.readyState === WS_OPEN) {
       ws.send(JSON.stringify({
         type: 'error',
         payload: { message }
@@ -425,16 +427,14 @@ export class TrainingWebSocketServer {
       return
     }
 
-    // TODO: Validate user has permission to send coaching notes
-    // - Only supervisors/observers should be able to send coaching notes
-    // - Verify role matches 'supervisor' or 'observer'
-
+    // Validate user has permission to send coaching notes
     if (client.role !== 'supervisor' && client.role !== 'observer') {
       logger.warn('Unauthorized coaching note attempt', {
         clientId,
         userId: client.userId,
         role: client.role
       })
+      this.sendError(client.ws, 'Permission denied: Only supervisors and observers can send coaching notes')
       return
     }
 
@@ -466,7 +466,7 @@ export class TrainingWebSocketServer {
 
   private broadcastToSession(sessionId: string, message: WebSocketMessage) {
     for (const client of this.clients.values()) {
-      if (client.sessionId === sessionId && client.ws.readyState === WebSocket.OPEN) {
+      if (client.sessionId === sessionId && client.ws.readyState === WS_OPEN) {
         client.ws.send(JSON.stringify(message))
       }
     }
@@ -487,7 +487,7 @@ export class TrainingWebSocketServer {
     for (const client of this.clients.values()) {
       if (
         client.sessionId === sessionId &&
-        client.ws.readyState === WebSocket.OPEN &&
+        client.ws.readyState === WS_OPEN &&
         allowedRoles.includes(client.role)
       ) {
         client.ws.send(JSON.stringify(message))

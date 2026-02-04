@@ -108,7 +108,15 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Resource allocation
 - Communication coordination
 
+<<<<<<< HEAD
 **Contact**: incident-commander@pixelated-empathy.com  
+=======
+<<<<<<< HEAD
+**Contact**: incident-commander@pixelated-empathy.com  
+=======
+**Contact**: incident-commander@pixelatedempathy.com  
+>>>>>>> origin/master
+>>>>>>> origin/master
 **On-Call**: 24/7 during launch period
 
 #### **Technical Lead**
@@ -118,7 +126,15 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Solution implementation
 - System recovery
 
+<<<<<<< HEAD
 **Contact**: tech-lead@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+**Contact**: tech-lead@pixelated-empathy.com
+=======
+**Contact**: tech-lead@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 #### **Security Officer**
 **Responsibilities**:
@@ -127,7 +143,15 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Compliance notification
 - Security remediation
 
+<<<<<<< HEAD
 **Contact**: security@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+**Contact**: security@pixelated-empathy.com
+=======
+**Contact**: security@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 #### **Clinical Safety Officer**
 **Responsibilities**:
@@ -136,7 +160,15 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Professional referral coordination
 - User safety monitoring
 
+<<<<<<< HEAD
 **Contact**: safety@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+**Contact**: safety@pixelated-empathy.com
+=======
+**Contact**: safety@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 #### **Communications Lead**
 **Responsibilities**:
@@ -145,7 +177,15 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Public relations (if needed)
 - Stakeholder notifications
 
+<<<<<<< HEAD
 **Contact**: comms@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+**Contact**: comms@pixelated-empathy.com
+=======
+**Contact**: comms@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### On-Call Schedule
 
@@ -180,8 +220,18 @@ This document outlines comprehensive incident response procedures for Pixelated 
 **Reporting Channels**:
 - **P0/P1**: Direct call/Slack/SMS to on-call
 - **P2/P3**: Support ticket system
+<<<<<<< HEAD
 - **Security**: security@pixelated-empathy.com
 - **Safety**: safety@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+- **Security**: security@pixelated-empathy.com
+- **Safety**: safety@pixelated-empathy.com
+=======
+- **Security**: security@pixelatedempathy.com
+- **Safety**: safety@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### Response Phase (0-15 minutes)
 
@@ -462,10 +512,23 @@ Level 3: Legal Counsel + Insurance
 
 ### Support Channels
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 - **Support Email**: support@pixelated-empathy.com
 - **Support Phone**: [Phone Number]
 - **Security Email**: security@pixelated-empathy.com
 - **Safety Email**: safety@pixelated-empathy.com
+<<<<<<< HEAD
+=======
+=======
+- **Support Email**: support@pixelatedempathy.com
+- **Support Phone**: [Phone Number]
+- **Security Email**: security@pixelatedempathy.com
+- **Safety Email**: safety@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ---
 

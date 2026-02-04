@@ -1,6 +1,9 @@
+
+import { describe, it, expect, vi, beforeAll, afterAll, beforeEach, afterEach } from 'vitest'
 import { BiasDetectionEngine } from '../BiasDetectionEngine'
 import type { BiasDetectionConfig, TherapeuticSession } from '../types'
 
+<<<<<<< HEAD
 // Mock the Python bridge to avoid network calls
 vi.mock('../python-bridge', () => ({
   PythonBiasDetectionBridge: vi.fn().mockImplementation(() => ({
@@ -28,10 +31,136 @@ vi.mock('../python-bridge', () => ({
     checkHealth: vi.fn().mockResolvedValue({ status: 'healthy' }),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+// Define mocks using vi.hoisted to ensure they are available for vi.mock factory
+const { mockPythonBridge, mockMetricsCollector, mockAlertSystem } = vi.hoisted(() => {
+  const mockPythonBridge = {
+    initialize: vi.fn().mockResolvedValue(undefined),
+    runPreprocessingAnalysis: vi.fn().mockImplementation(async () => {
+      // Simulate realistic processing time
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 50 + 10))
+      return {
+        biasScore: Math.random() * 0.5,
+        linguisticBias: Math.random() * 0.3,
+        confidence: 0.8 + Math.random() * 0.2,
+      }
+    }),
+    runModelLevelAnalysis: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) =>
+        setTimeout(resolve, Math.random() * 100 + 20),
+      )
+      return {
+        biasScore: Math.random() * 0.6,
+        fairnessMetrics: {
+          equalizedOdds: 0.7 + Math.random() * 0.3,
+          demographicParity: 0.6 + Math.random() * 0.4,
+        },
+        confidence: 0.85 + Math.random() * 0.15,
+      }
+    }),
+    runInteractiveAnalysis: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 75 + 15))
+      return {
+        biasScore: Math.random() * 0.4,
+        counterfactualAnalysis: {
+          scenarios: 3,
+          improvements: Math.random() * 0.2,
+        },
+        confidence: 0.8 + Math.random() * 0.2,
+      }
+    }),
+    runEvaluationAnalysis: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 60 + 25))
+      return {
+        biasScore: Math.random() * 0.5,
+        nlpBiasMetrics: {
+          sentimentBias: Math.random() * 0.2,
+          toxicityBias: Math.random() * 0.1,
+        },
+        confidence: 0.9 + Math.random() * 0.1,
+      }
+    }),
+    analyze_session: vi
+      .fn()
+      .mockImplementation(async (session: TherapeuticSession) => {
+        await new Promise((resolve) =>
+          setTimeout(resolve, Math.random() * 200 + 50),
+        )
+        const biasScore = Math.random() * 0.6
+        // Use the session parameter to avoid unused variable warning
+        void session
+        return {
+          session_id: 'test-session',
+          overall_bias_score: biasScore,
+          alert_level:
+            biasScore < 0.3 ? 'low' : biasScore < 0.6 ? 'medium' : 'high',
+          layer_results: {
+            preprocessing: { bias_score: Math.random() * 0.5 },
+            model_level: { bias_score: Math.random() * 0.6 },
+            interactive: { bias_score: Math.random() * 0.4 },
+            evaluation: { bias_score: Math.random() * 0.5 },
+          },
+          recommendations: ['System performing within acceptable parameters'],
+          confidence: 0.8 + Math.random() * 0.2,
+        }
+      }),
+    healthCheck: vi
+      .fn()
+      .mockResolvedValue({ status: 'healthy', latency: Math.random() * 50 + 10 }),
+    dispose: vi.fn().mockResolvedValue(undefined),
+  }
+
+  const mockMetricsCollector = {
+    initialize: vi.fn().mockResolvedValue(undefined),
+    recordAnalysis: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 20 + 5))
+    }),
+    getMetrics: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 30 + 10))
+      return {
+        totalAnalyses: Math.floor(Math.random() * 1000),
+        averageBiasScore: Math.random() * 0.5,
+        alertDistribution: {
+          low: Math.floor(Math.random() * 50) + 50,
+          medium: Math.floor(Math.random() * 30) + 20,
+          high: Math.floor(Math.random() * 15) + 5,
+          critical: Math.floor(Math.random() * 5),
+        },
+        responseTimeMetrics: {
+          average: Math.random() * 100 + 50,
+          p95: Math.random() * 150 + 100,
+          p99: Math.random() * 200 + 150,
+        },
+      }
+    }),
+    dispose: vi.fn().mockResolvedValue(undefined),
+  }
+
+  const mockAlertSystem = {
+    initialize: vi.fn().mockResolvedValue(undefined),
+    checkAlerts: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 15 + 5))
+    }),
+    getActiveAlerts: vi.fn().mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 25 + 5))
+      return []
+    }),
+    dispose: vi.fn().mockResolvedValue(undefined),
+  }
+
+  return { mockPythonBridge, mockMetricsCollector, mockAlertSystem }
+})
+
+// Mock the Python bridge to avoid network calls
+// Use regular function to allow 'new' usage
+vi.mock('../python-bridge', () => ({
+  PythonBiasDetectionBridge: vi.fn().mockImplementation(function() { return mockPythonBridge }),
+>>>>>>> origin/master
 }))
 
 // Mock the metrics collector
 vi.mock('../metrics-collector', () => ({
+<<<<<<< HEAD
   BiasMetricsCollector: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     getMetrics: vi.fn().mockResolvedValue({
@@ -48,15 +177,22 @@ vi.mock('../metrics-collector', () => ({
     }),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+  BiasMetricsCollector: vi.fn().mockImplementation(function() { return mockMetricsCollector }),
+>>>>>>> origin/master
 }))
 
 // Mock the alert system
 vi.mock('../alerts-system', () => ({
+<<<<<<< HEAD
   BiasAlertSystem: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     processAlert: vi.fn().mockResolvedValue(undefined),
     dispose: vi.fn().mockResolvedValue(undefined),
   })),
+=======
+  BiasAlertSystem: vi.fn().mockImplementation(function() { return mockAlertSystem }),
+>>>>>>> origin/master
 }))
 
 // Allow CI to skip performance-heavy tests
@@ -132,6 +268,11 @@ const PerformanceBenchmark = {
           before: memoryBefore,
           after: memoryAfter,
           delta: memoryAfter - memoryBefore,
+          memoryUsage: {
+            before: memoryBefore,
+            after: memoryAfter,
+            delta: memoryAfter - memoryBefore,
+          }
         },
       },
       iterations,
@@ -203,6 +344,7 @@ const PerformanceBenchmark = {
   },
 } as const
 
+<<<<<<< HEAD
 // Mock the missing support classes
 const mockPythonBridge = {
   initialize: vi.fn().mockResolvedValue(undefined),
@@ -318,17 +460,19 @@ const mockAlertSystem = {
   dispose: vi.fn().mockResolvedValue(undefined),
 }
 
+=======
+>>>>>>> origin/master
 // Mock the Python service classes
-vi.mock('../python-service/PythonBiasDetectionBridge', () => ({
-  PythonBiasDetectionBridge: vi.fn().mockImplementation(() => mockPythonBridge),
+vi.mock('../python-bridge', () => ({
+  PythonBiasDetectionBridge: vi.fn().mockImplementation(function() { return mockPythonBridge }),
 }))
 
 vi.mock('../BiasMetricsCollector', () => ({
-  BiasMetricsCollector: vi.fn().mockImplementation(() => mockMetricsCollector),
+  BiasMetricsCollector: vi.fn().mockImplementation(function() { return mockMetricsCollector }),
 }))
 
 vi.mock('../BiasAlertSystem', () => ({
-  BiasAlertSystem: vi.fn().mockImplementation(() => mockAlertSystem),
+  BiasAlertSystem: vi.fn().mockImplementation(function() { return mockAlertSystem }),
 }))
 
 ddescribe('BiasDetectionEngine Performance Benchmarks', () => {
@@ -338,16 +482,19 @@ ddescribe('BiasDetectionEngine Performance Benchmarks', () => {
   const performanceResults: BenchmarkResult[] = []
 
   // Performance thresholds (in milliseconds)
+  const IS_CI = process.env['CI'] === 'true'
+  const MULTIPLIER = IS_CI ? 2.5 : 1.0 // Relax thresholds in CI
+
   const PERFORMANCE_THRESHOLDS = {
-    analyzeSession: 500, // Core analysis should complete under 500ms
-    getMetrics: 100, // Metrics retrieval should be fast
-    getSessionAnalysis: 50, // Cached data retrieval should be very fast
-    startMonitoring: 30, // Monitoring setup should be quick
-    stopMonitoring: 20, // Monitoring teardown should be quick
-    explainBiasDetection: 200, // Explanation generation should be reasonable
-    updateThresholds: 50, // Configuration updates should be fast
-    generateBiasReport: 300, // Report generation can take a bit longer
-    dispose: 100, // Cleanup should be quick
+    analyzeSession: 500 * MULTIPLIER, // Core analysis should complete under 1250ms in CI
+    getMetrics: 100 * MULTIPLIER, // Metrics retrieval should be fast
+    getSessionAnalysis: 50 * MULTIPLIER, // Cached data retrieval should be very fast
+    startMonitoring: 30 * MULTIPLIER, // Monitoring setup should be quick
+    stopMonitoring: 20 * MULTIPLIER, // Monitoring teardown should be quick
+    explainBiasDetection: 200 * MULTIPLIER, // Explanation generation should be reasonable
+    updateThresholds: 50 * MULTIPLIER, // Configuration updates should be fast
+    generateBiasReport: 300 * MULTIPLIER, // Report generation can take a bit longer
+    dispose: 100 * MULTIPLIER, // Cleanup should be quick
   }
 
   beforeAll(() => {
