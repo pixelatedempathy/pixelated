@@ -17,6 +17,10 @@ import (
 
 // Styles using lipgloss (Bubble Tea's styling library)
 var (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 	pinkStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("212"))
 	purpleStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("57"))
 	greenStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("10"))
@@ -25,40 +29,93 @@ var (
 	whiteStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("255"))
 	boldStyle    = lipgloss.NewStyle().Bold(true)
 	
+<<<<<<< HEAD
+=======
+=======
+	pinkStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("212"))
+	purpleStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("57"))
+	greenStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("10"))
+	yellowStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("11"))
+	redStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("9"))
+	whiteStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("255"))
+	boldStyle   = lipgloss.NewStyle().Bold(true)
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	doubleBoxStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderForeground(lipgloss.Color("212")).
 			Padding(1, 2).
 			Margin(1, 0)
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	infoBoxStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("57")).
 			Foreground(lipgloss.Color("255")).
 			Padding(1, 2).
 			Margin(1, 0)
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	successBoxStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("10")).
 			Foreground(lipgloss.Color("10")).
 			Padding(1, 2).
 			Margin(1, 0)
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	warningBoxStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("11")).
 			Foreground(lipgloss.Color("255")).
 			Padding(1, 2).
 			Margin(1, 0)
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	errorBoxStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("9")).
 			Foreground(lipgloss.Color("255")).
 			Padding(1, 2).
 			Margin(1, 0)
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	headerStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("212")).
@@ -67,6 +124,10 @@ var (
 			Margin(1, 0)
 )
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 // Configuration
 type config struct {
 	remoteName      string
@@ -77,6 +138,23 @@ type config struct {
 	exclusionFile   string
 	logDir          string
 	sshKey          string
+<<<<<<< HEAD
+=======
+=======
+var _ = []lipgloss.Style{pinkStyle, yellowStyle, redStyle, whiteStyle, boldStyle, warningBoxStyle}
+
+// Configuration
+type config struct {
+	remoteName     string
+	remoteHost     string
+	remoteUser     string
+	localDir       string
+	remoteBasePath string
+	exclusionFile  string
+	logDir         string
+	sshKey         string
+>>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 func defaultConfig() config {
@@ -99,7 +177,15 @@ func defaultConfig() config {
 			}
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	scriptDir := filepath.Dir(os.Args[0])
 	if scriptDir == "." {
 		execPath, err := os.Executable()
@@ -107,7 +193,15 @@ func defaultConfig() config {
 			scriptDir = filepath.Dir(execPath)
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 	return config{
 		remoteName:     "planet",
 		remoteHost:     "146.71.78.184",
@@ -122,6 +216,10 @@ func defaultConfig() config {
 
 // Model represents the application state
 type model struct {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 	config        config
 	state         string // "init", "checking", "configuring", "generating", "syncing", "done", "error"
 	messages      []string
@@ -133,6 +231,22 @@ type model struct {
 	spinnerFrame  int
 	exclusionCount int
 	gitCount      int
+<<<<<<< HEAD
+=======
+=======
+	config           config
+	state            string // "init", "checking", "configuring", "generating", "syncing", "done", "error"
+	messages         []string
+	currentFile      string
+	progress         string
+	err              error
+	width            int
+	height           int
+	spinnerFrame     int
+	exclusionCount   int
+	gitCount         int
+>>>>>>> origin/master
+>>>>>>> origin/master
 	nodeModulesCount int
 }
 
@@ -146,11 +260,25 @@ func initialModel(cfg config) model {
 
 // Messages
 type (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 	errMsg        struct{ err error }
 	statusMsg     struct{ msg string }
 	progressMsg   struct{ file, progress string }
 	stateChangeMsg struct{ state string }
 	spinnerTickMsg struct{}
+<<<<<<< HEAD
+=======
+=======
+	errMsg            struct{ err error }
+	statusMsg         struct{ msg string }
+	progressMsg       struct{ file, progress string }
+	stateChangeMsg    struct{ state string }
+	spinnerTickMsg    struct{}
+>>>>>>> origin/master
+>>>>>>> origin/master
 	exclusionCountMsg struct{ git, nodeModules int }
 )
 
@@ -166,8 +294,16 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+<<<<<<< HEAD
 	var cmd tea.Cmd
 	
+=======
+<<<<<<< HEAD
+	var cmd tea.Cmd
+	
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
@@ -218,8 +354,16 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	default:
 		return m, nil
 	}
+<<<<<<< HEAD
 	
 	return m, cmd
+=======
+<<<<<<< HEAD
+	
+	return m, cmd
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 func (m model) handleStateTransitions() tea.Cmd {
@@ -235,15 +379,35 @@ func (m model) handleStateTransitions() tea.Cmd {
 	case "checking":
 		// Check if remote needs configuration or is already configured
 		allMessages := strings.Join(m.messages, " ")
+<<<<<<< HEAD
 		if strings.Contains(allMessages, "Remote connection test successful") || 
 		   strings.Contains(allMessages, "already configured and connected") {
+=======
+<<<<<<< HEAD
+		if strings.Contains(allMessages, "Remote connection test successful") || 
+		   strings.Contains(allMessages, "already configured and connected") {
+=======
+		if strings.Contains(allMessages, "Remote connection test successful") ||
+			strings.Contains(allMessages, "already configured and connected") {
+>>>>>>> origin/master
+>>>>>>> origin/master
 			// Remote is ready, generate exclusions
 			return tea.Sequence(
 				func() tea.Msg { return stateChangeMsg{"generating"} },
 				generateExclusions(m.config),
 			)
+<<<<<<< HEAD
 		} else if strings.Contains(allMessages, "Reconfiguring") || 
 		          strings.Contains(allMessages, "not found. Need to configure") {
+=======
+<<<<<<< HEAD
+		} else if strings.Contains(allMessages, "Reconfiguring") || 
+		          strings.Contains(allMessages, "not found. Need to configure") {
+=======
+		} else if strings.Contains(allMessages, "Reconfiguring") ||
+			strings.Contains(allMessages, "not found. Need to configure") {
+>>>>>>> origin/master
+>>>>>>> origin/master
 			// Need to configure remote
 			return tea.Sequence(
 				func() tea.Msg { return stateChangeMsg{"configuring"} },
@@ -254,8 +418,18 @@ func (m model) handleStateTransitions() tea.Cmd {
 	case "configuring":
 		// After configuring successfully, test connection
 		allMessages := strings.Join(m.messages, " ")
+<<<<<<< HEAD
 		if strings.Contains(allMessages, "configured successfully") && 
 		   !strings.Contains(allMessages, "Remote connection test") {
+=======
+<<<<<<< HEAD
+		if strings.Contains(allMessages, "configured successfully") && 
+		   !strings.Contains(allMessages, "Remote connection test") {
+=======
+		if strings.Contains(allMessages, "configured successfully") &&
+			!strings.Contains(allMessages, "Remote connection test") {
+>>>>>>> origin/master
+>>>>>>> origin/master
 			// Just configured, now test it
 			return testRemote(m.config)
 		} else if strings.Contains(allMessages, "Remote connection test successful") {
@@ -270,7 +444,15 @@ func (m model) handleStateTransitions() tea.Cmd {
 		// After generating exclusions, add status message then start sync
 		if m.exclusionCount > 0 {
 			return tea.Sequence(
+<<<<<<< HEAD
 				func() tea.Msg { return generateExclusionsStatus(m.config, m.gitCount, m.nodeModulesCount) },
+=======
+<<<<<<< HEAD
+				func() tea.Msg { return generateExclusionsStatus(m.config, m.gitCount, m.nodeModulesCount) },
+=======
+				func() tea.Msg { return generateExclusionsStatus(m.gitCount, m.nodeModulesCount) },
+>>>>>>> origin/master
+>>>>>>> origin/master
 				func() tea.Msg {
 					time.Sleep(200 * time.Millisecond)
 					return stateChangeMsg{"syncing"}
@@ -418,10 +600,23 @@ func checkRclone() tea.Msg {
 func checkSSHKey(cfg config) tea.Cmd {
 	return func() tea.Msg {
 		if cfg.sshKey == "" {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 			return errMsg{fmt.Errorf("SSH key not found. Please set SSH_KEY or PLANET_KEY environment variable")}
 		}
 		if _, err := os.Stat(cfg.sshKey); os.IsNotExist(err) {
 			return errMsg{fmt.Errorf("SSH key file not found: %s", cfg.sshKey)}
+<<<<<<< HEAD
+=======
+=======
+			return errMsg{fmt.Errorf("ssh key not found. please set SSH_KEY or PLANET_KEY environment variable")}
+		}
+		if _, err := os.Stat(cfg.sshKey); os.IsNotExist(err) {
+			return errMsg{fmt.Errorf("ssh key file not found: %s", cfg.sshKey)}
+>>>>>>> origin/master
+>>>>>>> origin/master
 		}
 		return statusMsg{fmt.Sprintf("✓ Using SSH key: %s", cfg.sshKey)}
 	}
@@ -433,15 +628,31 @@ func checkRemote(cfg config) tea.Cmd {
 		cmd := exec.Command("rclone", "listremotes")
 		output, err := cmd.Output()
 		if err != nil {
+<<<<<<< HEAD
 			return statusMsg{fmt.Sprintf("Checking remote configuration...")}
 		}
 		
+=======
+<<<<<<< HEAD
+			return statusMsg{fmt.Sprintf("Checking remote configuration...")}
+		}
+		
+=======
+			return statusMsg{"Checking remote configuration..."}
+		}
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		remotePattern := cfg.remoteName + ":"
 		if strings.Contains(string(output), remotePattern) {
 			// Test connection
 			testCmd := exec.Command("rclone", "lsd", remotePattern)
 			testCmd.Stderr = nil
 			testCmd.Stdout = nil
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 		if err := testCmd.Run(); err == nil {
 			return statusMsg{"✓ Remote '" + cfg.remoteName + "' already configured and connected"}
 		} else {
@@ -450,6 +661,19 @@ func checkRemote(cfg config) tea.Cmd {
 		}
 		}
 		
+<<<<<<< HEAD
+=======
+=======
+			if err := testCmd.Run(); err == nil {
+				return statusMsg{"✓ Remote '" + cfg.remoteName + "' already configured and connected"}
+			} else {
+				// Trigger reconfiguration
+				return statusMsg{"⚠ Remote exists but connection failed. Reconfiguring..."}
+			}
+		}
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		// Need to create remote - trigger configuration
 		return statusMsg{"Remote '" + cfg.remoteName + "' not found. Need to configure..."}
 	}
@@ -458,7 +682,15 @@ func checkRemote(cfg config) tea.Cmd {
 func configureRemote(cfg config) tea.Cmd {
 	return func() tea.Msg {
 		logFile := filepath.Join(cfg.logDir, "remote-config.log")
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+		
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		cmd := exec.Command("rclone", "config", "create",
 			cfg.remoteName, "sftp",
 			"host", cfg.remoteHost,
@@ -468,17 +700,42 @@ func configureRemote(cfg config) tea.Cmd {
 			"md5sum_command", "md5sum",
 			"sha1sum_command", "sha1sum",
 		)
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+		
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		file, err := os.Create(logFile)
 		if err == nil {
 			cmd.Stdout = file
 			cmd.Stderr = file
 		}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 		
 		if err := cmd.Run(); err != nil {
 			return errMsg{fmt.Errorf("Failed to configure remote: %v", err)}
 		}
 		
+<<<<<<< HEAD
+=======
+=======
+
+		if err := cmd.Run(); err != nil {
+			return errMsg{fmt.Errorf("failed to configure remote: %v", err)}
+		}
+		if file != nil {
+			_ = file.Close()
+		}
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		return statusMsg{"✓ Remote '" + cfg.remoteName + "' configured successfully"}
 	}
 }
@@ -501,6 +758,10 @@ func generateExclusions(cfg config) tea.Cmd {
 	return func() tea.Msg {
 		gitCount := 0
 		nodeModulesCount := 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 		
 		// Create exclusion file
 		file, err := os.Create(cfg.exclusionFile)
@@ -516,11 +777,43 @@ func generateExclusions(cfg config) tea.Cmd {
 		
 		// Find .git directories
 		err = filepath.Walk(cfg.localDir, func(path string, info os.FileInfo, err error) error {
+<<<<<<< HEAD
+=======
+=======
+
+		// Create exclusion file
+		file, err := os.Create(cfg.exclusionFile)
+		if err != nil {
+			return errMsg{fmt.Errorf("failed to create exclusion file: %v", err)}
+		}
+
+		writer := bufio.NewWriter(file)
+		if _, err := writer.WriteString("# Rclone SSH Sync Exclusion List\n"); err != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to write exclusion file: %v", err)}
+		}
+		if _, err := writer.WriteString("# Generated: " + time.Now().UTC().Format(time.RFC3339) + "\n"); err != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to write exclusion file: %v", err)}
+		}
+		if _, err := writer.WriteString("# Repository: " + cfg.localDir + "\n\n"); err != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to write exclusion file: %v", err)}
+		}
+
+		// Find .git directories
+		if walkErr := filepath.Walk(cfg.localDir, func(path string, info os.FileInfo, err error) error {
+>>>>>>> origin/master
+>>>>>>> origin/master
 			if err != nil {
 				return nil
 			}
 			if info.IsDir() && info.Name() == ".git" {
 				relPath, _ := filepath.Rel(cfg.localDir, path)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 				writer.WriteString(relPath + "\n")
 				gitCount++
 			}
@@ -529,11 +822,33 @@ func generateExclusions(cfg config) tea.Cmd {
 		
 		// Find node_modules directories
 		err = filepath.Walk(cfg.localDir, func(path string, info os.FileInfo, err error) error {
+<<<<<<< HEAD
+=======
+=======
+				if _, err := writer.WriteString(relPath + "\n"); err != nil {
+					return err
+				}
+				gitCount++
+			}
+			return nil
+		}); walkErr != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to scan for .git directories: %v", walkErr)}
+		}
+
+		// Find node_modules directories
+		if walkErr := filepath.Walk(cfg.localDir, func(path string, info os.FileInfo, err error) error {
+>>>>>>> origin/master
+>>>>>>> origin/master
 			if err != nil {
 				return nil
 			}
 			if info.IsDir() && info.Name() == "node_modules" {
 				relPath, _ := filepath.Rel(cfg.localDir, path)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 				writer.WriteString(relPath + "\n")
 				nodeModulesCount++
 			}
@@ -542,6 +857,30 @@ func generateExclusions(cfg config) tea.Cmd {
 		
 		writer.Flush()
 		
+<<<<<<< HEAD
+=======
+=======
+				if _, err := writer.WriteString(relPath + "\n"); err != nil {
+					return err
+				}
+				nodeModulesCount++
+			}
+			return nil
+		}); walkErr != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to scan for node_modules directories: %v", walkErr)}
+		}
+
+		if err := writer.Flush(); err != nil {
+			_ = file.Close()
+			return errMsg{fmt.Errorf("failed to flush exclusion file: %v", err)}
+		}
+		if err := file.Close(); err != nil {
+			return errMsg{fmt.Errorf("failed to close exclusion file: %v", err)}
+		}
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		// Return both messages using tea.Batch
 		// For now, return the exclusion count as the primary message
 		// The status message will be added separately
@@ -549,7 +888,15 @@ func generateExclusions(cfg config) tea.Cmd {
 	}
 }
 
+<<<<<<< HEAD
 func generateExclusionsStatus(cfg config, gitCount, nodeModulesCount int) tea.Msg {
+=======
+<<<<<<< HEAD
+func generateExclusionsStatus(cfg config, gitCount, nodeModulesCount int) tea.Msg {
+=======
+func generateExclusionsStatus(gitCount, nodeModulesCount int) tea.Msg {
+>>>>>>> origin/master
+>>>>>>> origin/master
 	return statusMsg{fmt.Sprintf("✓ Exclusion list generated: %d .git, %d node_modules", gitCount, nodeModulesCount)}
 }
 
@@ -559,7 +906,15 @@ func startSync(cfg config) tea.Cmd {
 		go func() {
 			// Build rclone command
 			logFile := filepath.Join(cfg.logDir, "rclone.log")
+<<<<<<< HEAD
 			
+=======
+<<<<<<< HEAD
+			
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 			args := []string{
 				"copy",
 				cfg.localDir,
@@ -580,11 +935,25 @@ func startSync(cfg config) tea.Cmd {
 				"--log-level=NOTICE",
 				"--log-file=" + logFile,
 			}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 			
 			cmd := exec.Command("rclone", args...)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			
+<<<<<<< HEAD
+=======
+=======
+
+			cmd := exec.Command("rclone", args...)
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 			if err := cmd.Run(); err != nil {
 				if exitErr, ok := err.(*exec.ExitError); ok {
 					if exitErr.ExitCode() == 1 {
@@ -594,12 +963,27 @@ func startSync(cfg config) tea.Cmd {
 				return
 			}
 		}()
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+		
+=======
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 		return statusMsg{"Sync started in background. Check log file for progress."}
 	}
 }
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 func spinnerTick() tea.Msg {
 	time.Sleep(100 * time.Millisecond)
 	return spinnerTickMsg{}
@@ -628,7 +1012,21 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error running program: %v\n", err)
 		os.Exit(1)
 	}
+<<<<<<< HEAD
 	
 	// Cleanup
 	os.RemoveAll(cfg.logDir)
+=======
+<<<<<<< HEAD
+	
+	// Cleanup
+	os.RemoveAll(cfg.logDir)
+=======
+
+	// Cleanup
+	if err := os.RemoveAll(cfg.logDir); err != nil {
+		fmt.Fprintf(os.Stderr, "Error cleaning up log directory: %v\n", err)
+	}
+>>>>>>> origin/master
+>>>>>>> origin/master
 }

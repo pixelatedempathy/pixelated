@@ -36,13 +36,29 @@ router.get('/quote/:symbol', async (req: AuthenticatedRequest, res) => {
       })
     }
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Quote error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get quote' },
     })
@@ -66,13 +82,29 @@ router.post('/bulk', async (req: AuthenticatedRequest, res) => {
 
     const data = await marketDataService.getBulkMarketData(symbols)
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Bulk data error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get bulk market data' },
     })
@@ -103,13 +135,29 @@ router.get('/technical/:symbol', async (req: AuthenticatedRequest, res) => {
       })
     }
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Technical analysis error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get technical analysis' },
     })
@@ -124,13 +172,29 @@ router.get('/sectors', async (_req: AuthenticatedRequest, res) => {
   try {
     const data = await marketDataService.getSectorPerformance()
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Sectors error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get sector data' },
     })
@@ -145,13 +209,29 @@ router.get('/economic', async (_req: AuthenticatedRequest, res) => {
   try {
     const data = await marketDataService.getEconomicIndicators()
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Economic indicators error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get economic indicators' },
     })
@@ -175,13 +255,29 @@ router.get('/sentiment/:symbol', async (req: AuthenticatedRequest, res) => {
 
     const data = await marketDataService.getMarketSentiment(symbol)
 
+<<<<<<< HEAD
     res.json({
+=======
+<<<<<<< HEAD
+    res.json({
+=======
+    return res.json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: true,
       data,
     })
   } catch (error) {
     logger.error('Sentiment error:', error)
+<<<<<<< HEAD
     res.status(500).json({
+=======
+<<<<<<< HEAD
+    res.status(500).json({
+=======
+    return res.status(500).json({
+>>>>>>> origin/master
+>>>>>>> origin/master
       success: false,
       error: { message: 'Failed to get market sentiment' },
     })

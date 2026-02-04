@@ -3,6 +3,10 @@ import { Pool } from 'pg'
 import { createClient } from 'redis'
 import { logger } from '@/utils/logger'
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 // MongoDB connection
 export const connectMongoDB = async (): Promise<void> => {
   try {
@@ -29,6 +33,50 @@ export const connectMongoDB = async (): Promise<void> => {
   } catch (error) {
     logger.error('MongoDB connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
+=======
+// Constants for retry logic
+const MAX_RETRIES = 10
+const RETRY_DELAY = 3000
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// MongoDB connection
+export const connectMongoDB = async (): Promise<void> => {
+  let retries = 0
+  while (retries < MAX_RETRIES) {
+    try {
+      const mongoUri =
+        process.env.MONGODB_URI ||
+        'mongodb://localhost:27017/business-strategy-cms'
+
+      await mongoose.connect(mongoUri)
+
+      logger.info('MongoDB connected successfully')
+
+      // Handle connection events
+      mongoose.connection.on('error', (err) => {
+        logger.error('MongoDB connection error:', err)
+      })
+
+      mongoose.connection.on('disconnected', () => {
+        logger.warn('MongoDB disconnected')
+      })
+
+      mongoose.connection.on('reconnected', () => {
+        logger.info('MongoDB reconnected')
+      })
+
+      return
+    } catch (error) {
+      retries++
+      logger.error(`MongoDB connection attempt ${retries} failed:`, error)
+      if (retries >= MAX_RETRIES) throw error
+      await sleep(RETRY_DELAY)
+    }
+>>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
@@ -41,11 +89,23 @@ export const postgresPool = new Pool({
   password: process.env.POSTGRES_PASSWORD || 'password',
   max: 20, // Maximum number of clients in the pool
   idleTimeoutMillis: 30000,
+<<<<<<< HEAD
   connectionTimeoutMillis: 2000,
+=======
+<<<<<<< HEAD
+  connectionTimeoutMillis: 2000,
+=======
+  connectionTimeoutMillis: 5000,
+>>>>>>> origin/master
+>>>>>>> origin/master
 })
 
 // Test PostgreSQL connection
 export const testPostgresConnection = async (): Promise<void> => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   try {
     const client = await postgresPool.connect()
     logger.info('PostgreSQL connected successfully')
@@ -53,11 +113,33 @@ export const testPostgresConnection = async (): Promise<void> => {
   } catch (error) {
     logger.error('PostgreSQL connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
+=======
+  let retries = 0
+  while (retries < MAX_RETRIES) {
+    try {
+      const client = await postgresPool.connect()
+      logger.info('PostgreSQL connected successfully')
+      client.release()
+      return
+    } catch (error) {
+      retries++
+      logger.error(`PostgreSQL connection attempt ${retries} failed:`, error)
+      if (retries >= MAX_RETRIES) throw error
+      await sleep(RETRY_DELAY)
+    }
+>>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
 // Redis connection
 export const redisClient = createClient({
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   url: process.env.REDIS_URL || 'redis://localhost:6379',
 })
 
@@ -77,6 +159,40 @@ export const connectRedis = async (): Promise<void> => {
   } catch (error) {
     logger.error('Redis connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
+=======
+  url:
+    process.env.REDIS_URL ||
+    `redis://${process.env.REDIS_HOST || 'localhost'}:${process.env.REDIS_PORT || '6379'}`,
+})
+
+export const connectRedis = async (): Promise<void> => {
+  let retries = 0
+  while (retries < MAX_RETRIES) {
+    try {
+      if (!redisClient.isOpen) {
+        await redisClient.connect()
+      }
+      logger.info('Redis connected successfully')
+
+      // Handle connection events
+      redisClient.on('error', (err) => {
+        logger.error('Redis connection error:', err)
+      })
+
+      redisClient.on('end', () => {
+        logger.warn('Redis disconnected')
+      })
+      return
+    } catch (error) {
+      retries++
+      logger.error(`Redis connection attempt ${retries} failed:`, error)
+      if (retries >= MAX_RETRIES) throw error
+      await sleep(RETRY_DELAY)
+    }
+>>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
