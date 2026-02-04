@@ -6,7 +6,15 @@
 
 ---
 
+<<<<<<< HEAD
 ## 🎯 **EVALUATION SESSION STRUCTURE**
+=======
+<<<<<<< HEAD
+## 🎯 **EVALUATION SESSION STRUCTURE**
+=======
+## **EVALUATION SESSION STRUCTURE**
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### **Pre-Evaluation Packet (Sent 48 hours prior)**
 ```yaml
@@ -62,7 +70,15 @@ Wrap-Up & Next Steps (5 minutes):
 
 ---
 
+<<<<<<< HEAD
 ## 📊 **CLINICAL ASSESSMENT FORMS**
+=======
+<<<<<<< HEAD
+## 📊 **CLINICAL ASSESSMENT FORMS**
+=======
+## **CLINICAL ASSESSMENT FORMS**
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### **Form 1: Platform Overview Assessment**
 ```yaml
@@ -176,7 +192,15 @@ Usability Recommendations: [Text field]
 
 ---
 
+<<<<<<< HEAD
 ## 🔍 **TESTING SCENARIOS**
+=======
+<<<<<<< HEAD
+## 🔍 **TESTING SCENARIOS**
+=======
+## **TESTING SCENARIOS**
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### **Standard Conversation Scenarios**
 ```yaml
@@ -291,7 +315,15 @@ Expected Response:
 
 ---
 
+<<<<<<< HEAD
 ## 📝 **FEEDBACK IMPLEMENTATION FRAMEWORK**
+=======
+<<<<<<< HEAD
+## 📝 **FEEDBACK IMPLEMENTATION FRAMEWORK**
+=======
+## **FEEDBACK IMPLEMENTATION FRAMEWORK**
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### **Feedback Categorization System**
 ```yaml
@@ -367,7 +399,15 @@ Ongoing Relationship:
 
 ---
 
+<<<<<<< HEAD
 ## 📊 **EVALUATION SUCCESS METRICS**
+=======
+<<<<<<< HEAD
+## 📊 **EVALUATION SUCCESS METRICS**
+=======
+## **EVALUATION SUCCESS METRICS**
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### **Professional Satisfaction Targets**
 ```yaml
