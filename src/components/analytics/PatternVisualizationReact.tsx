@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+<<<<<<< HEAD
 /**
  * TEMP LOCAL PATCH: Placeholder types for TrendPattern, CrossSessionPattern, RiskCorrelation.
  * Remove when project types module is restored.
@@ -21,6 +22,16 @@ export interface RiskCorrelation {
   description: string
   strength: number
 }
+<<<<<<< HEAD
+=======
+=======
+import type {
+  TrendPattern,
+  CrossSessionPattern,
+  RiskCorrelation,
+} from '@/lib/fhe/pattern-recognition'
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 export interface PatternVisualizationProps {
   trends?: TrendPattern[]
@@ -100,8 +111,18 @@ export const PatternVisualization: FC<PatternVisualizationProps> = ({
                 >
                   <div className="font-medium">{pattern.description}</div>
                   <div className="text-xs text-gray-500">
+<<<<<<< HEAD
                     Sessions: {pattern.sessionIds.length}, Span:{' '}
                     {pattern.timeSpanDays} days
+=======
+<<<<<<< HEAD
+                    Sessions: {pattern.sessionIds.length}, Span:{' '}
+                    {pattern.timeSpanDays} days
+=======
+                    Sessions: {pattern.sessions.length}
+                    {pattern.timeSpanDays && `, Span: ${pattern.timeSpanDays} days`}
+>>>>>>> origin/master
+>>>>>>> origin/master
                   </div>
                 </button>
               ))}
@@ -129,11 +150,21 @@ export const PatternVisualization: FC<PatternVisualizationProps> = ({
                       handleSelect(correlation)
                     }
                   }}
+<<<<<<< HEAD
                   aria-label={`Select risk correlation: ${correlation.description}`}
                 >
                   <div className="font-medium">{correlation.description}</div>
                   <div className="text-xs text-gray-500">
                     Strength: {correlation.strength.toFixed(2)}
+=======
+                  aria-label={`Select risk correlation: ${correlation.description || correlation.riskFactor}`}
+                >
+                  <div className="font-medium">
+                    {correlation.description || correlation.riskFactor}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    Strength: {correlation.severityScore.toFixed(2)}
+>>>>>>> origin/master
                   </div>
                 </button>
               ))}
