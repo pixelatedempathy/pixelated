@@ -15,12 +15,24 @@ describe('analysis methods', () => {
     // Reset all mocks
     vi.clearAllMocks()
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     // Mock successful responses by default
     ;(global.fetch as any).mockResolvedValue({
       ok: true,
       status: 200,
       json: () => Promise.resolve({ status: 'healthy', timestamp: Date.now() }),
     })
+=======
+      // Mock successful responses by default
+      ; (global.fetch as any).mockResolvedValue({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve({ status: 'healthy', timestamp: Date.now() }),
+      })
+>>>>>>> origin/master
 
     // Create a fresh bridge instance for each test
     bridge = new PythonBiasDetectionBridge(
@@ -105,6 +117,13 @@ describe('analysis methods', () => {
       const originalRequest = global.fetch
       global.fetch = vi.fn().mockRejectedValue(new Error('Network error'))
 
+<<<<<<< HEAD
+=======
+        // Reduce retries and delay for testing
+        ; (bridge as any).retryAttempts = 1
+        ; (bridge as any).retryDelay = 0
+
+>>>>>>> origin/master
       const result = await bridge.runPreprocessingAnalysis(mockSession)
 
       // Should return fallback result instead of throwing
@@ -128,6 +147,13 @@ describe('analysis methods', () => {
         1, // 1ms timeout
       )
 
+<<<<<<< HEAD
+=======
+        // Reduce retries and delay for testing
+        ; (timeoutBridge as any).retryAttempts = 1
+        ; (timeoutBridge as any).retryDelay = 0
+
+>>>>>>> origin/master
       const result = await timeoutBridge.runPreprocessingAnalysis(mockSession)
 
       // Should return fallback result for timeout

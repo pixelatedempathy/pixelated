@@ -380,15 +380,36 @@ health professionals for clinical assessment, diagnosis, and treatment.
 ### Legal Counsel
 - **Firm**: [Legal Firm Name]
 - **Contact**: [Attorney Name]
+<<<<<<< HEAD
 - **Email**: legal@pixelated-empathy.com
+=======
+<<<<<<< HEAD
+- **Email**: legal@pixelated-empathy.com
+=======
+- **Email**: legal@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ### Insurance Broker
 - **Firm**: [Insurance Broker Name]
 - **Contact**: [Broker Name]
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 - **Email**: insurance@pixelated-empathy.com
 
 ### Risk Management
 - **Email**: risk-management@pixelated-empathy.com
+<<<<<<< HEAD
+=======
+=======
+- **Email**: insurance@pixelatedempathy.com
+
+### Risk Management
+- **Email**: risk-management@pixelatedempathy.com
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 ---
 
