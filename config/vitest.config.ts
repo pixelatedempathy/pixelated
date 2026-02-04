@@ -20,6 +20,9 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, '../src'),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       'react-dom/test-utils': path.resolve(
         __dirname,
         '../__mocks__/react-dom/test-utils.js',
@@ -34,7 +37,10 @@ export default defineConfig({
       ),
       'react': path.resolve(__dirname, '../node_modules/react/index.js'),
       'react-dom': path.resolve(__dirname, '../node_modules/react-dom/index.js'),
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
     },
     conditions: ['node', 'import', 'module', 'default'],
@@ -45,11 +51,15 @@ export default defineConfig({
 <<<<<<< HEAD
     setupFiles: ['./src/test/setup.ts', './config/vitest.setup.ts'],
 =======
+<<<<<<< HEAD
+    setupFiles: ['./src/test/setup.ts', './config/vitest.setup.ts'],
+=======
     setupFiles: ['./src/test/setup-react19.ts', './src/test/setup.ts', './config/vitest.setup.ts'],
     env: {
       RTL_SKIP_AUTO_CLEANUP: 'true',
       NODE_ENV: 'development',
     },
+>>>>>>> origin/master
 >>>>>>> origin/master
     css: {
       modules: {
@@ -70,8 +80,11 @@ export default defineConfig({
       'src/e2e/breach-notification.spec.ts',
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       'tests/integration/complete-system.integration.test.ts',
       'src/lib/threat-detection/__tests__/phase8-integration.test.ts',
+>>>>>>> origin/master
 >>>>>>> origin/master
       'tests/e2e/**/*',
       'tests/browser/**/*',
@@ -91,6 +104,9 @@ export default defineConfig({
         : []),
     ],
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     testTimeout: process.env['CI'] ? 15_000 : 30_000,
     hookTimeout: process.env['CI'] ? 10_000 : 30_000,
     ...(process.env['CI']
@@ -103,9 +119,12 @@ export default defineConfig({
         },
       }
       : {}),
+<<<<<<< HEAD
+=======
 =======
     testTimeout: process.env['CI'] ? 30_000 : 15_000,
     hookTimeout: process.env['CI'] ? 15_000 : 10_000,
+>>>>>>> origin/master
 >>>>>>> origin/master
     environmentOptions: {
       jsdom: {
@@ -124,7 +143,12 @@ export default defineConfig({
       enabled:
         !process.env['CI'] || process.env['VITEST_COVERAGE_ENABLED'] === 'true',
 =======
+<<<<<<< HEAD
+      enabled:
+        !process.env['CI'] || process.env['VITEST_COVERAGE_ENABLED'] === 'true',
+=======
       enabled: !process.env['CI'],
+>>>>>>> origin/master
 >>>>>>> origin/master
       reporter: ['text', 'json', 'html', 'cobertura', 'lcov'],
       reportsDirectory: './coverage',
@@ -141,6 +165,11 @@ export default defineConfig({
         'backups/**/*',
       ],
     },
+<<<<<<< HEAD
+    isolate: !process.env['CI'],
+    ...(process.env['CI'] ? { watch: false } : {}),
+    ...(process.env['CI'] ? { bail: 10 } : {}),
+=======
 <<<<<<< HEAD
     isolate: !process.env['CI'],
     ...(process.env['CI'] ? { watch: false } : {}),
@@ -168,6 +197,7 @@ export default defineConfig({
         hookTimeout: 60000, // Increase hook timeout for CI
       }
       : {}),
+>>>>>>> origin/master
 >>>>>>> origin/master
   },
   build: {

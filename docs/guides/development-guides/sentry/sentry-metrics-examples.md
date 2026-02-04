@@ -8,7 +8,11 @@ Sentry Metrics are already configured and enabled in this project. This document
 <<<<<<< HEAD
 ✅ **SDK Version**: `@sentry/astro@^10.28.0` (requires >= 10.28.0)  
 =======
+<<<<<<< HEAD
+✅ **SDK Version**: `@sentry/astro@^10.28.0` (requires >= 10.28.0)  
+=======
 ✅ **SDK Version**: `@sentry/astro@^10.28.2` (requires >= 10.28.2)  
+>>>>>>> origin/master
 >>>>>>> origin/master
 ✅ **DSN**: Configured and matches Sentry project  
 ✅ **Utilities**: Available in `src/lib/sentry/utils.ts`

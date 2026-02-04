@@ -73,6 +73,10 @@ describe('Enhanced Monitoring Service', () => {
     service = new EnhancedMonitoringService(
       mockRedis,
 =======
+<<<<<<< HEAD
+    service = new EnhancedMonitoringService(
+      mockRedis,
+=======
     const config = {
       enabled: true,
       aiInsightsEnabled: true,
@@ -86,6 +90,7 @@ describe('Enhanced Monitoring Service', () => {
       config,
       mockRedis,
       { db: () => ({ collection: () => ({ countDocuments: vi.fn(), find: () => ({ sort: () => ({ limit: () => ({ toArray: () => [] }) }), toArray: () => [] }), findOne: vi.fn(), insertOne: vi.fn(), insertMany: vi.fn(), updateOne: vi.fn() }) }) } as any, // mockMongo
+>>>>>>> origin/master
 >>>>>>> origin/master
       mockOrchestrator,
       mockAIService,
@@ -110,6 +115,9 @@ describe('Enhanced Monitoring Service', () => {
     it('should use default configuration when none provided', () => {
       const defaultService = new EnhancedMonitoringService(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         mockRedis,
         mockOrchestrator,
         mockAIService,
@@ -147,6 +155,9 @@ describe('Enhanced Monitoring Service', () => {
         metricsRetention: 86400000, // 24 hours
         enableRealTimeAlerting: true,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       })
 =======
       }))
@@ -174,6 +185,9 @@ describe('Enhanced Monitoring Service', () => {
 
       const customService = new EnhancedMonitoringService(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         mockRedis,
         mockOrchestrator,
         mockAIService,
@@ -227,11 +241,14 @@ describe('Enhanced Monitoring Service', () => {
         `alert:alert_1`,
         expect.any(String),
         expect.any(Number),
+<<<<<<< HEAD
+=======
 =======
         expect.stringMatching(/^alert:/),
         expect.any(String),
         'EX',
         86400
+>>>>>>> origin/master
 >>>>>>> origin/master
       )
     })
@@ -444,7 +461,10 @@ describe('Enhanced Monitoring Service', () => {
           threat_intelligence: 40,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
           system_monitoring: 50,
+>>>>>>> origin/master
 >>>>>>> origin/master
         },
         avgResolutionTime: 3600000,
@@ -467,8 +487,11 @@ describe('Enhanced Monitoring Service', () => {
         threat_intelligence: '40',
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         system_monitoring: '50',
         avgResolutionTime: '3600000',
+>>>>>>> origin/master
 >>>>>>> origin/master
       })
 
@@ -530,8 +553,12 @@ describe('Enhanced Monitoring Service', () => {
 <<<<<<< HEAD
         expect.any(Number),
 =======
+<<<<<<< HEAD
+        expect.any(Number),
+=======
         'EX',
         86400
+>>>>>>> origin/master
 >>>>>>> origin/master
       )
     })

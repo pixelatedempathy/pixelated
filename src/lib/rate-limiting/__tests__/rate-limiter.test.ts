@@ -241,7 +241,10 @@ describe('DistributedRateLimiter', () => {
     it('should check if identifier is blocked', async () => {
 <<<<<<< HEAD
       const { redis } = await import('../redis')
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
       vi.mocked(redis.get).mockResolvedValueOnce(
         JSON.stringify({
@@ -350,6 +353,8 @@ describe('Rate Limit Configuration', () => {
     delete process.env.RATE_LIMIT_DEFAULT_WINDOW_MS
   })
 })
+<<<<<<< HEAD
+=======
 =======
       vi.mocked(redis.hgetall).mockResolvedValueOnce({
         total_requests: '100',
@@ -366,4 +371,5 @@ describe('Rate Limit Configuration', () => {
     })
   })
 })
+>>>>>>> origin/master
 >>>>>>> origin/master

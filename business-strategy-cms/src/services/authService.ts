@@ -19,12 +19,17 @@ const JWT_REFRESH_EXPIRES_IN = process.env['JWT_REFRESH_EXPIRES_IN'] || '7d'
 
 export class AuthService {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   private static generateTokens(payload: JwtPayload): AuthTokens {
     const accessToken = jwt.sign(payload, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN as string,
     })
     const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
       expiresIn: JWT_REFRESH_EXPIRES_IN as string,
+<<<<<<< HEAD
+=======
 =======
   public static generateTokens(payload: JwtPayload): AuthTokens {
     const accessToken = jwt.sign(payload, JWT_SECRET, {
@@ -32,6 +37,7 @@ export class AuthService {
     })
     const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
       expiresIn: JWT_REFRESH_EXPIRES_IN as any, // expiresIn requires a specific StringValue | number type
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
 
@@ -67,7 +73,11 @@ export class AuthService {
 <<<<<<< HEAD
       role: UserRole.VIEWER,
 =======
+<<<<<<< HEAD
+      role: UserRole.VIEWER,
+=======
       role: userData.role || UserRole.VIEWER,
+>>>>>>> origin/master
 >>>>>>> origin/master
       isActive: true,
       isEmailVerified: false,
@@ -77,7 +87,11 @@ export class AuthService {
 <<<<<<< HEAD
       userId: user.id,
 =======
+<<<<<<< HEAD
+      userId: user.id,
+=======
       userId: user.id!,
+>>>>>>> origin/master
 >>>>>>> origin/master
       email: user.email,
       role: user.role,
@@ -89,7 +103,11 @@ export class AuthService {
 <<<<<<< HEAD
       `refresh_token:${user.id}`,
 =======
+<<<<<<< HEAD
+      `refresh_token:${user.id}`,
+=======
       `refresh_token:${user.id!}`,
+>>>>>>> origin/master
 >>>>>>> origin/master
       7 * 24 * 60 * 60,
       tokens.refreshToken,
@@ -123,15 +141,21 @@ export class AuthService {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     await UserModel.update(user.id, { lastLoginAt: new Date() })
 
     const payload: JwtPayload = {
       userId: user.id,
+<<<<<<< HEAD
+=======
 =======
     await UserModel.update(user.id!, { lastLoginAt: new Date() })
 
     const payload: JwtPayload = {
       userId: user.id!,
+>>>>>>> origin/master
 >>>>>>> origin/master
       email: user.email,
       role: user.role,
@@ -143,7 +167,11 @@ export class AuthService {
 <<<<<<< HEAD
       `refresh_token:${user.id}`,
 =======
+<<<<<<< HEAD
+      `refresh_token:${user.id}`,
+=======
       `refresh_token:${user.id!}`,
+>>>>>>> origin/master
 >>>>>>> origin/master
       7 * 24 * 60 * 60,
       tokens.refreshToken,
@@ -173,7 +201,11 @@ export class AuthService {
 <<<<<<< HEAD
         userId: user.id,
 =======
+<<<<<<< HEAD
+        userId: user.id,
+=======
         userId: user.id!,
+>>>>>>> origin/master
 >>>>>>> origin/master
         email: user.email,
         role: user.role,
@@ -185,7 +217,11 @@ export class AuthService {
 <<<<<<< HEAD
         `refresh_token:${user.id}`,
 =======
+<<<<<<< HEAD
+        `refresh_token:${user.id}`,
+=======
         `refresh_token:${user.id!}`,
+>>>>>>> origin/master
 >>>>>>> origin/master
         7 * 24 * 60 * 60,
         tokens.refreshToken,
@@ -195,7 +231,11 @@ export class AuthService {
 <<<<<<< HEAD
     } catch (error) {
 =======
+<<<<<<< HEAD
+    } catch (error) {
+=======
     } catch {
+>>>>>>> origin/master
 >>>>>>> origin/master
       throw new Error('Invalid refresh token')
     }
@@ -221,17 +261,23 @@ export class AuthService {
 
       return {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         userId: user.id,
         email: user.email,
         role: user.role,
       }
     } catch (error) {
+<<<<<<< HEAD
+=======
 =======
         userId: user.id!,
         email: user.email,
         role: user.role,
       }
     } catch {
+>>>>>>> origin/master
 >>>>>>> origin/master
       return null
     }
@@ -279,8 +325,13 @@ export class AuthService {
     await UserModel.update(user.id, { password: hashedNewPassword })
     await redisClient.del(`refresh_token:${user.id}`)
 =======
+<<<<<<< HEAD
+    await UserModel.update(user.id, { password: hashedNewPassword })
+    await redisClient.del(`refresh_token:${user.id}`)
+=======
     await UserModel.update(user.id!, { password: hashedNewPassword })
     await redisClient.del(`refresh_token:${user.id!}`)
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 }

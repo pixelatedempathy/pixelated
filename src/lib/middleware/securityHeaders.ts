@@ -58,9 +58,15 @@ export const securityHeaders = async (
         ? `script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' https://*.sentry.io https://cdn.jsdelivr.net https://giscus.app`
         : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sentry.io https://cdn.jsdelivr.net https://giscus.app",
 =======
+<<<<<<< HEAD
+      nonce
+        ? `script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' https://*.sentry.io https://cdn.jsdelivr.net https://giscus.app`
+        : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sentry.io https://cdn.jsdelivr.net https://giscus.app",
+=======
       // In development, we need 'unsafe-inline' and 'unsafe-eval' for Vite/Astro to work.
       // We explicitly DO NOT use the nonce here because 'unsafe-inline' is ignored if a nonce is present.
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sentry.io https://cdn.jsdelivr.net https://giscus.app",
+>>>>>>> origin/master
 >>>>>>> origin/master
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
       "style-src-attr 'unsafe-inline'",
@@ -78,7 +84,11 @@ export const securityHeaders = async (
 <<<<<<< HEAD
   response.headers.set('X-Frame-Options', 'DENY')
 =======
+<<<<<<< HEAD
+  response.headers.set('X-Frame-Options', 'DENY')
+=======
   response.headers.set('X-Frame-Options', 'SAMEORIGIN')
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   // Only set HSTS header in production to avoid issues during local development

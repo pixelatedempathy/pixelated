@@ -8,7 +8,11 @@ ENV NODE_ENV=production
 <<<<<<< HEAD
 ARG PNPM_VERSION=10.28.0
 =======
+<<<<<<< HEAD
+ARG PNPM_VERSION=10.28.0
+=======
 ARG PNPM_VERSION=10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
 WORKDIR /app
 
@@ -105,7 +109,11 @@ WORKDIR /app
 <<<<<<< HEAD
 ARG PNPM_VERSION=10.28.0
 =======
+<<<<<<< HEAD
+ARG PNPM_VERSION=10.28.0
+=======
 ARG PNPM_VERSION=10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \

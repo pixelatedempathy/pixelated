@@ -26,7 +26,12 @@
 import { useState, useRef, useEffect } from 'react'
 import { useSessionTimingMetrics } from './useSessionTimingMetrics'
 =======
+<<<<<<< HEAD
+import { useState, useRef, useEffect } from 'react'
+import { useSessionTimingMetrics } from './useSessionTimingMetrics'
+=======
 import { useState, useRef, useEffect, useCallback } from 'react'
+>>>>>>> origin/master
 >>>>>>> origin/master
 import { useSessionProgressMilestones } from './useSessionProgressMilestones'
 import type { SessionProgressMetrics } from '@/types/dashboard'
@@ -101,6 +106,8 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
     ...DEFAULT_MEMORY,
     ...initialState,
   } as MemoryState)
+<<<<<<< HEAD
+=======
 =======
   // Base memory state for history, context, and basic session state
   const [baseMemory, setBaseMemory] = useState<ConversationMemory>({
@@ -108,6 +115,7 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
     context: initialState?.context ?? DEFAULT_MEMORY.context,
     sessionState: initialState?.sessionState ?? DEFAULT_MEMORY.sessionState,
   })
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   // Extracted session timing and metrics logic
@@ -118,6 +126,9 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
   const lastMessageTimeRef = useRef<number | null>(null)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   useSessionTimingMetrics(
     memory.sessionState,
     setMemory,
@@ -156,10 +167,17 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
     const currentTime = Date.now()
     // If there's no previous message recorded, skip response-time calculation so
     // the first message doesn't produce a skewed response time.
+<<<<<<< HEAD
+    const responseTime =
+      lastMessageTimeRef.current === null
+        ? null
+        : (currentTime - lastMessageTimeRef.current) / 1000 // in seconds
+=======
 =======
   // Actually, useSessionTimingMetrics is very simple, we can just inline its logic or update it.
   // Given we can't easily change useSessionTimingMetrics without affecting other things,
   // let's just inline the active time update effect here for clarity and correct state management.
+>>>>>>> origin/master
 
   useEffect(() => {
     if (baseMemory.sessionState !== 'active') {
@@ -212,11 +230,14 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
       const prevMetrics =
         prevState?.progressMetrics ??
         (DEFAULT_MEMORY.progressMetrics as typeof prevState.progressMetrics)
+<<<<<<< HEAD
+=======
 =======
     setProgressState((prevState: any) => {
       const prevMetrics =
         prevState?.progressMetrics ??
         (DEFAULT_MEMORY.progressMetrics as SessionProgressMetrics)
+>>>>>>> origin/master
 >>>>>>> origin/master
       const prevResponses = (prevMetrics.responsesCount ?? 0) as number
       const prevAvg = (prevMetrics.responseTime ?? 0) as number
@@ -235,7 +256,11 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
 <<<<<<< HEAD
       } as typeof prevMetrics
 =======
+<<<<<<< HEAD
+      } as typeof prevMetrics
+=======
       } as SessionProgressMetrics
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       if (responseTime !== null) {
@@ -419,8 +444,11 @@ export function useConversationMemory(initialState?: Partial<MemoryState>) {
     resetSession,
 <<<<<<< HEAD
     setMemory,
+<<<<<<< HEAD
+=======
 =======
     setMemory: setBaseMemory,
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 }

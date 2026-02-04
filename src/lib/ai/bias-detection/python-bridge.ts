@@ -270,6 +270,9 @@ export class PythonBiasDetectionBridge {
         this.activeRequests < this.maxConcurrentRequests
       ) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         const queuedRequest = this.requestQueue.shift()!
         this.activeRequests++
 =======
@@ -282,6 +285,9 @@ export class PythonBiasDetectionBridge {
           .request()
           .then((result) => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             queuedRequest.resolve(result)
           })
           .catch((error) => {
@@ -302,7 +308,11 @@ export class PythonBiasDetectionBridge {
 <<<<<<< HEAD
       await new Promise((resolve) => setTimeout(resolve, 10))
 =======
+<<<<<<< HEAD
+      await new Promise((resolve) => setTimeout(resolve, 10))
+=======
       await new Promise((resolve) => setTimeout(resolve, 10));
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
 
@@ -339,8 +349,11 @@ export class PythonBiasDetectionBridge {
     // We'll create a per-request AbortController if AbortSignal.timeout is not available.
 <<<<<<< HEAD
     let timeoutId: NodeJS.Timeout | null = null
+<<<<<<< HEAD
+=======
 =======
     let timeoutId: NodeJS.Timeout | null = null;
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     const fetchOptions: RequestInit = {
@@ -376,7 +389,11 @@ export class PythonBiasDetectionBridge {
 <<<<<<< HEAD
           typeof (this.connectionPool as any).acquireConnection === 'function'
 =======
+<<<<<<< HEAD
+          typeof (this.connectionPool as any).acquireConnection === 'function'
+=======
           typeof (this.connectionPool as any).acquireConnection === "function"
+>>>>>>> origin/master
 >>>>>>> origin/master
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -384,6 +401,9 @@ export class PythonBiasDetectionBridge {
           pooledConnection = await (
             this.connectionPool as any
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           ).acquireConnection()
         }
         // Simplified signal handling for test compatibility
@@ -393,6 +413,8 @@ export class PythonBiasDetectionBridge {
         } else {
           // Always create a fresh AbortController to avoid identity issues
           const controller = new AbortController()
+<<<<<<< HEAD
+=======
 =======
           ).acquireConnection();
         }
@@ -404,12 +426,16 @@ export class PythonBiasDetectionBridge {
           // Always create a fresh AbortController to avoid identity issues
           const controller = new AbortController();
 >>>>>>> origin/master
+>>>>>>> origin/master
 
           // Set up timeout
           timeoutId = setTimeout(() => {
             try {
               controller.abort()
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             } catch (e) {
               /* ignore */
             }
@@ -433,6 +459,11 @@ export class PythonBiasDetectionBridge {
 
         const response = await fetch(url, fetchOptions);
 
+<<<<<<< HEAD
+        const response = await fetch(url, fetchOptions)
+
+=======
+>>>>>>> origin/master
         // Clear timeout
         if (timeoutId) {
 <<<<<<< HEAD
@@ -491,6 +522,8 @@ export class PythonBiasDetectionBridge {
         if (
           pooledConnection &&
           this.connectionPool &&
+<<<<<<< HEAD
+=======
           typeof (this.connectionPool as any).releaseConnection === "function"
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -508,6 +541,7 @@ export class PythonBiasDetectionBridge {
         if (
           pooledConnection &&
           this.connectionPool &&
+>>>>>>> origin/master
           typeof (this.connectionPool as any).releaseConnection === 'function'
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -535,6 +569,9 @@ export class PythonBiasDetectionBridge {
       // Should call another method, like makeRequest, to get the analysis from Python service
       const result = (await this.makeRequest(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         '/analyze/preprocessing',
         'POST',
         sessionData,
@@ -553,6 +590,9 @@ export class PythonBiasDetectionBridge {
         // Defensively hydrate all intermediate metric objects to avoid undefined access errors
         const metrics =
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           typeof layerResult.metrics === 'object' && layerResult.metrics
             ? (layerResult.metrics as Record<string, any>)
             : {}
@@ -800,12 +840,19 @@ export class PythonBiasDetectionBridge {
       serviceError:
         error instanceof Error
           ? error.message
+<<<<<<< HEAD
+          : error
+            ? String(error)
+            : 'Python service unavailable',
+    } as PreprocessingLayerResult
+=======
           : error && typeof error === 'object'
             ? JSON.stringify(error)
             : error
               ? String(error)
               : "Python service unavailable",
     } as PreprocessingLayerResult;
+>>>>>>> origin/master
   }
 
   async runModelLevelAnalysis(
@@ -813,6 +860,28 @@ export class PythonBiasDetectionBridge {
   ): Promise<ModelLevelLayerResult> {
     try {
       const result = (await this.makeRequest(
+<<<<<<< HEAD
+        '/analyze/model_level',
+        'POST',
+        sessionData,
+      )) as PythonAnalysisResult
+      const layerResult = result?.layer_results?.model_level
+      if (layerResult) {
+        const metrics = layerResult.metrics || ({} as Record<string, any>)
+        const fairness = (metrics['fairness_metrics'] ?? {}) as Record<
+          string,
+          any
+        >
+        const performance = (metrics['performance_metrics'] ?? {}) as Record<
+          string,
+          any
+        >
+        const groupComp = (metrics['group_performance_comparison'] ??
+          []) as any[]
+
+        return {
+          biasScore:
+=======
         "/analyze/model_level",
         "POST",
         sessionData,
@@ -1116,6 +1185,7 @@ export class PythonBiasDetectionBridge {
 
         return {
           biasScore:
+>>>>>>> origin/master
             typeof layerResult.bias_score === 'number'
               ? layerResult.bias_score
               : 0.5,
@@ -1356,6 +1426,8 @@ export class PythonBiasDetectionBridge {
         message: 'Service unavailable',
         timestamp: new Date().toISOString(),
       }
+<<<<<<< HEAD
+=======
 =======
     };
   }
@@ -1373,6 +1445,7 @@ export class PythonBiasDetectionBridge {
         message: "Service unavailable",
         timestamp: new Date().toISOString(),
       };
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   }
@@ -1397,9 +1470,15 @@ export class PythonBiasDetectionBridge {
     lastCheck: Date
     consecutiveFailures: number
 =======
+<<<<<<< HEAD
+    status: string
+    lastCheck: Date
+    consecutiveFailures: number
+=======
     status: string;
     lastCheck: Date;
     consecutiveFailures: number;
+>>>>>>> origin/master
 >>>>>>> origin/master
   } {
     return {

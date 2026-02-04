@@ -204,8 +204,11 @@ describe('BiasMetricsCollector', () => {
       const originalStore = metricsCollector.storeAnalysisResult
       metricsCollector.storeAnalysisResult = vi
         .fn()
+<<<<<<< HEAD
+=======
 =======
       const storeSpy = vi.spyOn(metricsCollector, 'storeAnalysisResult')
+>>>>>>> origin/master
 >>>>>>> origin/master
         .mockRejectedValue(new Error('Storage failed'))
 
@@ -234,8 +237,11 @@ describe('BiasMetricsCollector', () => {
       const originalPerf = metricsCollector.getCurrentPerformanceMetrics
       metricsCollector.getCurrentPerformanceMetrics = vi
         .fn()
+<<<<<<< HEAD
+=======
 =======
       const perfSpy = vi.spyOn(metricsCollector, 'getCurrentPerformanceMetrics')
+>>>>>>> origin/master
 >>>>>>> origin/master
         .mockRejectedValue(new Error('Performance metrics failed'))
 
@@ -314,8 +320,11 @@ describe('BiasMetricsCollector', () => {
       const originalStore = metricsCollector.storeAnalysisResult
       metricsCollector.storeAnalysisResult = vi
         .fn()
+<<<<<<< HEAD
+=======
 =======
       const storeSpy = vi.spyOn(metricsCollector, 'storeAnalysisResult')
+>>>>>>> origin/master
 >>>>>>> origin/master
         .mockRejectedValue(new Error('Network error'))
 

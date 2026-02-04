@@ -102,7 +102,11 @@ echo "  1. Ensure Node $(grep -oP '\"node\": \">=\K[0-9.]+' package.json || echo
 <<<<<<< HEAD
 echo "  2. Ensure pnpm $(grep -oP 'pnpm@\K[0-9.]+' package.json || echo '10.28.0') is installed"
 =======
+<<<<<<< HEAD
+echo "  2. Ensure pnpm $(grep -oP 'pnpm@\K[0-9.]+' package.json || echo '10.28.0') is installed"
+=======
 echo "  2. Ensure pnpm $(grep -oP 'pnpm@\K[0-9.]+' package.json || echo '10.28.2') is installed"
+>>>>>>> origin/master
 >>>>>>> origin/master
 echo "  3. Clear pnpm cache: pnpm store prune"
 echo "  4. Remove node_modules: rm -rf node_modules"

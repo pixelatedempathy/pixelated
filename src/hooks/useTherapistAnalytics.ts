@@ -22,17 +22,23 @@ const _rawLogger = createBuildSafeLogger('use-therapist-analytics')
 const normalizeLogger = (raw: unknown) => {
   const safeFn = (fn: unknown, fallback: (...args: any[]) => void) =>
     typeof fn === 'function' ? (fn as (...args: any[]) => any) : fallback
+<<<<<<< HEAD
+=======
 =======
 const _rawLogger = createBuildSafeLogger('use-therapist-analytics')
 const normalizeLogger = (raw: unknown) => {
   const safeFn = (fn: unknown, fallback: (...args: unknown[]) => void) =>
     typeof fn === 'function' ? (fn as (...args: unknown[]) => unknown) : fallback
 >>>>>>> origin/master
+>>>>>>> origin/master
 
   // If the module mock returned a bare function (e.g. vi.fn()), call it for all
   // log levels but still provide the standard method names.
   if (typeof raw === 'function') {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     const fn = raw as (...args: any[]) => any
     return {
       info: (...args: any[]) => {
@@ -60,6 +66,8 @@ const normalizeLogger = (raw: unknown) => {
         try {
           fn(...args)
         } catch (error) {
+<<<<<<< HEAD
+=======
 =======
     const fn = raw as (...args: unknown[]) => unknown
     return {
@@ -88,6 +96,7 @@ const normalizeLogger = (raw: unknown) => {
         try {
           fn(...args)
         } catch {
+>>>>>>> origin/master
 >>>>>>> origin/master
           /* swallow */
         }
@@ -268,10 +277,14 @@ export function useTherapistAnalytics(
 <<<<<<< HEAD
       out = out.filter((s) => new Date(s.startTime).getTime() >= cutoff)
 =======
+<<<<<<< HEAD
+      out = out.filter((s) => new Date(s.startTime).getTime() >= cutoff)
+=======
       out = out.filter((s) => {
         const t = new Date(s.startTime).getTime()
         return t >= cutoff
       })
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
 
@@ -305,9 +318,15 @@ export function useTherapistAnalytics(
                 sessions.length,
             )
 =======
+<<<<<<< HEAD
+              sessions.reduce((sum, s) => sum + s.progress, 0) /
+                sessions.length,
+            )
+=======
             sessions.reduce((sum, s) => sum + s.progress, 0) /
             sessions.length,
           )
+>>>>>>> origin/master
 >>>>>>> origin/master
           : 0
 
@@ -315,12 +334,17 @@ export function useTherapistAnalytics(
         sessions.length > 0
           ? Math.round(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
               sessions.reduce((sum, s) => {
                 const start = new Date(s.startTime)
                 const end = s.endTime ? new Date(s.endTime) : new Date()
                 return sum + (end.getTime() - start.getTime()) / 1000
               }, 0) / sessions.length,
             )
+<<<<<<< HEAD
+=======
 =======
             sessions.reduce((sum, s) => {
               const start = new Date(s.startTime)
@@ -328,6 +352,7 @@ export function useTherapistAnalytics(
               return sum + (end.getTime() - start.getTime()) / 1000
             }, 0) / sessions.length,
           )
+>>>>>>> origin/master
 >>>>>>> origin/master
           : 0
 
@@ -519,9 +544,12 @@ export function useTherapistAnalytics(
     } else {
       loadData(true)
     }
+<<<<<<< HEAD
+=======
 =======
     // Always load data, even if sessions is empty (will result in empty data structure)
     void loadData(true)
+>>>>>>> origin/master
 >>>>>>> origin/master
   }, [sessions, loadData])
 
@@ -551,6 +579,8 @@ export function useTherapistAnalytics(
     }
 
     if (!config.enableAutoRefresh || !config.refreshInterval) {
+<<<<<<< HEAD
+=======
 =======
     const config = _filters.config
 
@@ -565,6 +595,7 @@ export function useTherapistAnalytics(
       config.refreshInterval >= 3600000 // max 1 hour
     ) {
 >>>>>>> origin/master
+>>>>>>> origin/master
       return
     }
 
@@ -573,7 +604,11 @@ export function useTherapistAnalytics(
 <<<<<<< HEAD
       loadData(false)
 =======
+<<<<<<< HEAD
+      loadData(false)
+=======
       void loadData(false)
+>>>>>>> origin/master
 >>>>>>> origin/master
     }, config.refreshInterval)
 
@@ -586,7 +621,11 @@ export function useTherapistAnalytics(
 <<<<<<< HEAD
   }, [(_filters as any).config, loadData, _filters])
 =======
+<<<<<<< HEAD
+  }, [(_filters as any).config, loadData, _filters])
+=======
   }, [_filters.config, loadData])
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   /**

@@ -18,6 +18,9 @@ You MUST read the Core Context Files before writing a single line of code. Actin
 The `.memory/` directory is a structured graph of knowledge. All files use **Token-Efficient Markdown** (dense, high-signal, low-fluff).
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 | Priority | file                | Role               | Update Frequency         |
 | :------- | :------------------ | :----------------- | :----------------------- |
 | **P0**   | `00-alpha.md`       | **System Kernel**  | Read-Only (Meta-Docs)    |
@@ -30,6 +33,8 @@ The `.memory/` directory is a structured graph of knowledge. All files use **Tok
 | **P3**   | `10-product.md`     | **UX/Spec**        | Medium (Feature Adds)    |
 | **P4**   | `60-decisions.md`   | **Decision Log**   | Ad-hoc (Big Choices)     |
 | **P4**   | `70-knowledge.md`   | **Library**        | Ad-hoc (Learnings)       |
+<<<<<<< HEAD
+=======
 =======
 | Priority | File                | Role               | Update Frequency         |
 | :---:    | :------------------ | :----------------- | :----------------------- |
@@ -46,6 +51,7 @@ The `.memory/` directory is a structured graph of knowledge. All files use **Tok
 
 
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ---

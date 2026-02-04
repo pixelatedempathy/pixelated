@@ -4,6 +4,9 @@ import { createClient } from 'redis'
 import { logger } from '@/utils/logger'
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 // MongoDB connection
 export const connectMongoDB = async (): Promise<void> => {
   try {
@@ -30,6 +33,8 @@ export const connectMongoDB = async (): Promise<void> => {
   } catch (error) {
     logger.error('MongoDB connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
 =======
 // Constants for retry logic
 const MAX_RETRIES = 10
@@ -71,6 +76,7 @@ export const connectMongoDB = async (): Promise<void> => {
       await sleep(RETRY_DELAY)
     }
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
@@ -86,13 +92,20 @@ export const postgresPool = new Pool({
 <<<<<<< HEAD
   connectionTimeoutMillis: 2000,
 =======
+<<<<<<< HEAD
+  connectionTimeoutMillis: 2000,
+=======
   connectionTimeoutMillis: 5000,
+>>>>>>> origin/master
 >>>>>>> origin/master
 })
 
 // Test PostgreSQL connection
 export const testPostgresConnection = async (): Promise<void> => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   try {
     const client = await postgresPool.connect()
     logger.info('PostgreSQL connected successfully')
@@ -100,6 +113,8 @@ export const testPostgresConnection = async (): Promise<void> => {
   } catch (error) {
     logger.error('PostgreSQL connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
 =======
   let retries = 0
   while (retries < MAX_RETRIES) {
@@ -115,12 +130,16 @@ export const testPostgresConnection = async (): Promise<void> => {
       await sleep(RETRY_DELAY)
     }
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
 // Redis connection
 export const redisClient = createClient({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   url: process.env.REDIS_URL || 'redis://localhost:6379',
 })
 
@@ -140,6 +159,8 @@ export const connectRedis = async (): Promise<void> => {
   } catch (error) {
     logger.error('Redis connection failed:', error)
     throw error
+<<<<<<< HEAD
+=======
 =======
   url:
     process.env.REDIS_URL ||
@@ -170,6 +191,7 @@ export const connectRedis = async (): Promise<void> => {
       if (retries >= MAX_RETRIES) throw error
       await sleep(RETRY_DELAY)
     }
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 }

@@ -2,6 +2,17 @@
   "mcp": {
     "servers": {
       "atlassian": {
+<<<<<<< HEAD
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote",
+          "https://mcp.atlassian.com/v1/sse"
+        ],
+        "description": "Atlassian MCP Server for Jira and Confluence integration",
+        "tool_prefix": "atlassian_"
+      },
+=======
         "command": "pnpm dlx",
         "args": [
           "mcp-remote",
@@ -19,6 +30,7 @@
         "description": "Atlassian MCP Server for Jira and Confluence integration (ratchetaf)",
         "tool_prefix": "atlassian_meta_"
       },
+>>>>>>> origin/master
       "graphiti-context": {
         "command": "uv",
         "args": [

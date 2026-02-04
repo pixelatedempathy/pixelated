@@ -14,15 +14,21 @@ const optionalIsoDateSchema = z
   .transform((value) => (value || null))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 export const SearchKeywordMapSchema = z.record(z.array(z.string()))
 export type SearchKeywordMap = z.infer<typeof SearchKeywordMapSchema>
 
 export const WeeklyTargetsSchema = z.record(z.number())
+<<<<<<< HEAD
+=======
 =======
 export const SearchKeywordMapSchema = z.record(z.string(), z.array(z.string()))
 export type SearchKeywordMap = z.infer<typeof SearchKeywordMapSchema>
 
 export const WeeklyTargetsSchema = z.record(z.string(), z.number())
+>>>>>>> origin/master
 >>>>>>> origin/master
 export type WeeklyTargets = z.infer<typeof WeeklyTargetsSchema>
 
@@ -55,7 +61,11 @@ export const SessionSchema = z
 <<<<<<< HEAD
     progress_metrics: z.record(z.number()),
 =======
+<<<<<<< HEAD
+    progress_metrics: z.record(z.number()),
+=======
     progress_metrics: z.record(z.string(), z.number()),
+>>>>>>> origin/master
 >>>>>>> origin/master
   })
   .transform((data) => ({
@@ -181,7 +191,11 @@ export const IntegrationPlanSchema = z
 <<<<<<< HEAD
     schema_mapping: z.record(z.string()),
 =======
+<<<<<<< HEAD
+    schema_mapping: z.record(z.string()),
+=======
     schema_mapping: z.record(z.string(), z.string()),
+>>>>>>> origin/master
 >>>>>>> origin/master
     created_date: isoDateSchema,
   })
@@ -205,7 +219,11 @@ export const ProgressSchema = z
 <<<<<<< HEAD
     progress_metrics: z.record(z.number()),
 =======
+<<<<<<< HEAD
+    progress_metrics: z.record(z.number()),
+=======
     progress_metrics: z.record(z.string(), z.number()),
+>>>>>>> origin/master
 >>>>>>> origin/master
     weekly_targets: WeeklyTargetsSchema,
     progress_percentage: z.number(),

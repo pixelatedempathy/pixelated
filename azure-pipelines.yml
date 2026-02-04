@@ -14,7 +14,10 @@ trigger:
     include:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       - staging
+>>>>>>> origin/master
 >>>>>>> origin/master
       - master
       - main
@@ -32,7 +35,10 @@ pr:
       - develop
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       - staging
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 parameters:
@@ -63,7 +69,11 @@ parameters:
 <<<<<<< HEAD
     default: 'false'
 =======
+<<<<<<< HEAD
+    default: 'false'
+=======
     default: 'true'
+>>>>>>> origin/master
 >>>>>>> origin/master
     values:
       - 'true'
@@ -75,10 +85,13 @@ variables:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   # Default self-hosted pool name; change in Azure DevOps if different
   - name: SELF_HOSTED_POOL
     value: 'Default'
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   # Convert parameters to variables for runtime conditions
   # Template expressions (${{ }}) convert parameters to variables at compile-time
@@ -136,6 +149,8 @@ stages:
           - script: |
               set -euo pipefail
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
               required_vars=(
                 "NODE_VERSION"
@@ -155,6 +170,7 @@ stages:
                 if [ -z "${var_value}" ]; then
                   missing_vars+=("$var")
 =======
+>>>>>>> origin/master
 
               required_vars=(
                 "NODE_VERSION"
@@ -250,6 +266,8 @@ stages:
 
       - job: UnitTests
         displayName: 'Unit Tests & Coverage'
+<<<<<<< HEAD
+=======
         timeoutInMinutes: '45'
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
@@ -714,6 +732,7 @@ stages:
 
       - job: UnitTests
         displayName: 'Unit Tests & Coverage'
+>>>>>>> origin/master
         pool:
           ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
             name: 'Default'
@@ -1058,6 +1077,8 @@ stages:
               script: |
                 set -euo pipefail
 
+<<<<<<< HEAD
+=======
 =======
                 # Aggressive cleanup
                 # -a: Remove all unused images not just dangling ones
@@ -1094,6 +1115,7 @@ stages:
               script: |
                 set -euo pipefail
 
+>>>>>>> origin/master
 >>>>>>> origin/master
                 # Check if Docker daemon is accessible
                 if ! docker info >/dev/null 2>&1; then
@@ -1365,7 +1387,11 @@ stages:
 <<<<<<< HEAD
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 =======
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
 >>>>>>> origin/master
     jobs:
       - deployment: InstallCertManager
@@ -1509,7 +1535,11 @@ stages:
 <<<<<<< HEAD
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 =======
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
 >>>>>>> origin/master
     jobs:
       - deployment: DeployToStaging
@@ -1756,7 +1786,11 @@ stages:
 <<<<<<< HEAD
                       kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
 =======
+<<<<<<< HEAD
+                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
+=======
                       kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
 >>>>>>> origin/master
                        
                       echo "✅ Image tag updated to $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)"
@@ -1772,15 +1806,21 @@ stages:
 
                       # Wait for Pixelated deployment
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
                       kubectl rollout status deployment/pixelated -n pixelated --timeout=900s || {
                         echo "⚠️ Pixelated deployment rollout check failed or timed out"
                         kubectl get pods -n pixelated
                         kubectl describe deployment pixelated -n pixelated
+<<<<<<< HEAD
+=======
 =======
                       kubectl rollout status deployment/pixelated -n $(KUBE_NAMESPACE) --timeout=900s || {
                         echo "⚠️ Pixelated deployment rollout check failed or timed out"
                         kubectl get pods -n $(KUBE_NAMESPACE)
                         kubectl describe deployment pixelated -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
 >>>>>>> origin/master
                       }
 
@@ -2773,7 +2813,10 @@ stages:
             displayName: 'Run E2E Smoke Tests with Docker Playwright'
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             continueOnError: 'true'
+>>>>>>> origin/master
 >>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
@@ -2945,7 +2988,10 @@ stages:
             displayName: 'Run Comprehensive Playwright Tests'
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             continueOnError: 'true'
+>>>>>>> origin/master
 >>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
@@ -3312,5 +3358,9 @@ stages:
 <<<<<<< HEAD
             displayName: 'Generate Pipeline Summary'
 =======
+<<<<<<< HEAD
             displayName: 'Generate Pipeline Summary'
+=======
+            displayName: 'Generate Pipeline Summary'
+>>>>>>> origin/master
 >>>>>>> origin/master

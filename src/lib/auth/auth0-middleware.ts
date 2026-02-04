@@ -301,7 +301,11 @@ export async function csrfProtection(request: Request): Promise<{
 <<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
 =======
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
 >>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
@@ -333,7 +337,11 @@ export async function csrfProtection(request: Request): Promise<{
 <<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
 =======
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
 >>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
@@ -365,7 +373,11 @@ export async function csrfProtection(request: Request): Promise<{
 <<<<<<< HEAD
     logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
 =======
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
 >>>>>>> origin/master
       reason: 'expired_token',
       endpoint: new URL(request.url).pathname,
@@ -484,6 +496,10 @@ export interface AuthenticatedRequest extends Request {
   }
   tokenId?: string
 =======
+<<<<<<< HEAD
+  }
+  tokenId?: string
+=======
     emailVerified?: boolean
     fullName?: string
     avatarUrl?: string
@@ -494,6 +510,7 @@ export interface AuthenticatedRequest extends Request {
   }
   tokenId?: string
   sessionId?: string
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -602,6 +619,9 @@ export async function authenticateRequest(request: Request): Promise<{
   }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   // Check if user has MFA enabled
   const hasMFA = await auth0UserService.userHasMFA(user.id)
 
@@ -610,6 +630,8 @@ export async function authenticateRequest(request: Request): Promise<{
     try {
       // Get client information for risk assessment
       const clientInfo = getClientInfo(request)
+<<<<<<< HEAD
+=======
 =======
   // Check if user is active
   if (user.isActive === false) {
@@ -670,6 +692,7 @@ export async function authenticateRequest(request: Request): Promise<{
     try {
       // Get client information for risk assessment (already fetched above if sid exists, but reliable here)
       const clientInfo = getClientInfo(request);
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       // Create login context for risk assessment
@@ -751,6 +774,10 @@ export async function authenticateRequest(request: Request): Promise<{
   }
   authenticatedRequest.tokenId = validation.tokenId
 =======
+<<<<<<< HEAD
+  }
+  authenticatedRequest.tokenId = validation.tokenId
+=======
     emailVerified: user.emailVerified,
     fullName: user.fullName,
     avatarUrl: user.avatarUrl,
@@ -761,6 +788,7 @@ export async function authenticateRequest(request: Request): Promise<{
   }
   authenticatedRequest.tokenId = validation.tokenId
   authenticatedRequest.sessionId = sid
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   return { success: true, request: authenticatedRequest }
@@ -819,7 +847,11 @@ export async function requireRole(
 <<<<<<< HEAD
       logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
 =======
+<<<<<<< HEAD
+      logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+=======
       await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+>>>>>>> origin/master
 >>>>>>> origin/master
         requiredRoles: roles,
         userRole: request.user.role,

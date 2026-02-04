@@ -105,6 +105,8 @@ export class BiasDetectionEngine {
         exportFormats: ['json'],
       },
       alertConfig: cfg['alertConfig'] ?? {
+<<<<<<< HEAD
+=======
 =======
       pythonServiceUrl: cfg["pythonServiceUrl"] ?? "http://localhost:5000",
       pythonServiceTimeout: cfg["pythonServiceTimeout"] ?? 30000,
@@ -123,6 +125,7 @@ export class BiasDetectionEngine {
       },
       alertConfig: cfg["alertConfig"] ?? {
 >>>>>>> origin/master
+>>>>>>> origin/master
         enableSlackNotifications: false,
         enableEmailNotifications: false,
         emailRecipients: [],
@@ -135,24 +138,34 @@ export class BiasDetectionEngine {
 <<<<<<< HEAD
       reportConfig: cfg['reportConfig'] ?? {
 =======
+<<<<<<< HEAD
+      reportConfig: cfg['reportConfig'] ?? {
+=======
       reportConfig: cfg["reportConfig"] ?? {
+>>>>>>> origin/master
 >>>>>>> origin/master
         includeConfidentialityAnalysis: true,
         includeDemographicBreakdown: true,
         includeTemporalTrends: true,
         includeRecommendations: true,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         reportTemplate: 'standard',
         exportFormats: ['json'],
       },
       explanationConfig: cfg['explanationConfig'] ?? {
         explanationMethod: 'shap',
+<<<<<<< HEAD
+=======
 =======
         reportTemplate: "standard",
         exportFormats: ["json"],
       },
       explanationConfig: cfg["explanationConfig"] ?? {
         explanationMethod: "shap",
+>>>>>>> origin/master
 >>>>>>> origin/master
         maxFeatures: 10,
         includeCounterfactuals: true,
@@ -931,6 +944,8 @@ export class BiasDetectionEngine {
     try {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       if (this.pythonService) {
         await this.pythonService.dispose()
       }
@@ -938,6 +953,7 @@ export class BiasDetectionEngine {
       /* swallow */
     }
     try {
+>>>>>>> origin/master
 >>>>>>> origin/master
       if (this.performanceOptimizer) {
         await this.performanceOptimizer.dispose()

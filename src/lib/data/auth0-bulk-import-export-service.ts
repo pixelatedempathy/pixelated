@@ -257,6 +257,9 @@ export class Auth0BulkImportExportService {
     try {
       // Parse CSV data
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       const records: any[] = []
       const parseAsync = promisify(parse)
 
@@ -272,6 +275,8 @@ export class Auth0BulkImportExportService {
           }
         }
       )
+<<<<<<< HEAD
+=======
 =======
       const records = await new Promise<any[]>((resolve, reject) => {
         parse(csvData, {
@@ -282,6 +287,7 @@ export class Auth0BulkImportExportService {
           else resolve(output)
         })
       })
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       // Convert CSV records to UserImportData format

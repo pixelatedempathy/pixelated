@@ -25,7 +25,11 @@ jobs:
 <<<<<<< HEAD
           version: 10.28.0
 =======
+<<<<<<< HEAD
+          version: 10.28.0
+=======
           version: 10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       - name: Setup Node.js

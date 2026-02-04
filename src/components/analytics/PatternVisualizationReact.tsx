@@ -22,12 +22,15 @@ export interface RiskCorrelation {
   description: string
   strength: number
 }
+<<<<<<< HEAD
+=======
 =======
 import type {
   TrendPattern,
   CrossSessionPattern,
   RiskCorrelation,
 } from '@/lib/fhe/pattern-recognition'
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 export interface PatternVisualizationProps {
@@ -112,8 +115,13 @@ export const PatternVisualization: FC<PatternVisualizationProps> = ({
                     Sessions: {pattern.sessionIds.length}, Span:{' '}
                     {pattern.timeSpanDays} days
 =======
+<<<<<<< HEAD
+                    Sessions: {pattern.sessionIds.length}, Span:{' '}
+                    {pattern.timeSpanDays} days
+=======
                     Sessions: {pattern.sessions.length}
                     {pattern.timeSpanDays && `, Span: ${pattern.timeSpanDays} days`}
+>>>>>>> origin/master
 >>>>>>> origin/master
                   </div>
                 </button>

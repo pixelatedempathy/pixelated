@@ -1,8 +1,11 @@
 import { authenticateRequest } from './auth0-middleware'
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 import { getRolePermissions, type UserRole } from './auth0-rbac-service'
 import type { AuthUser } from './types'
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -16,6 +19,9 @@ export async function protectApi(request: Request) {
     const result = await authenticateRequest(request)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     if (!result.success) {
         return {
             success: false,
@@ -27,6 +33,10 @@ export async function protectApi(request: Request) {
         success: true,
         userId: result.request?.user?.id,
         user: result.request?.user,
+<<<<<<< HEAD
+        tokenId: result.request?.tokenId
+    }
+=======
 =======
     if (!result.success || !result.request?.user) {
         return {
@@ -51,4 +61,5 @@ export async function protectApi(request: Request) {
 >>>>>>> origin/master
         tokenId: result.request?.tokenId
     }
+>>>>>>> origin/master
 }

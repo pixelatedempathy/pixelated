@@ -62,8 +62,13 @@ This document outlines all variables and secrets that must be configured in Azur
 | `NODE_VERSION` | `24.8.0` | ❌ No | Node.js version to use |
 | `PNPM_VERSION` | `10.28.0` | ❌ No | pnpm version to use |
 =======
+<<<<<<< HEAD
+| `NODE_VERSION` | `24.8.0` | ❌ No | Node.js version to use |
+| `PNPM_VERSION` | `10.28.0` | ❌ No | pnpm version to use |
+=======
 | `NODE_VERSION` | `24.11.0` | ❌ No | Node.js version to use |
 | `PNPM_VERSION` | `10.28.2` | ❌ No | pnpm version to use |
+>>>>>>> origin/master
 >>>>>>> origin/master
 | `PYTHON_VERSION` | `3.11` | ❌ No | Python version (if needed) |
 | `NODE_ENV` | `production` | ❌ No | Node environment |
@@ -178,8 +183,13 @@ Create a variable group named `pixelated-pipeline-variables` with:
 - `NODE_VERSION`: `24.8.0`
 - `PNPM_VERSION`: `10.28.0`
 =======
+<<<<<<< HEAD
+- `NODE_VERSION`: `24.8.0`
+- `PNPM_VERSION`: `10.28.0`
+=======
 - `NODE_VERSION`: `24.11.0`
 - `PNPM_VERSION`: `10.28.2`
+>>>>>>> origin/master
 >>>>>>> origin/master
 - `PYTHON_VERSION`: `3.11`
 - `NODE_ENV`: `production`

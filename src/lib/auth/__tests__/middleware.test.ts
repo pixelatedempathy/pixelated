@@ -17,9 +17,12 @@ import {
 <<<<<<< HEAD
 import { validateToken } from '../jwt-service'
 import { auth0UserService } from '../../services/auth0.service'
+<<<<<<< HEAD
+=======
 =======
 import { validateToken } from '../auth0-jwt-service'
 import { auth0UserService } from '../../../services/auth0.service'
+>>>>>>> origin/master
 >>>>>>> origin/master
 import { logSecurityEvent } from '../../security'
 import { updatePhase6AuthenticationProgress } from '../../mcp/phase6-integration'
@@ -33,6 +36,8 @@ vi.mock('../jwt-service', () => ({
 vi.mock('../../services/auth0.service', () => ({
   auth0UserService: {
     getUserById: vi.fn(),
+<<<<<<< HEAD
+=======
 =======
 vi.mock('../auth0-jwt-service', () => ({
   validateToken: vi.fn(),
@@ -42,6 +47,7 @@ vi.mock('../../../services/auth0.service', () => ({
   auth0UserService: {
     getUserById: vi.fn(),
     userHasMFA: vi.fn(),
+>>>>>>> origin/master
 >>>>>>> origin/master
   },
 }))
@@ -123,7 +129,11 @@ describe('Authentication Middleware', () => {
 <<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
 =======
+<<<<<<< HEAD
+      vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       const result = await authenticateRequest(mockRequest)
@@ -203,7 +213,11 @@ describe('Authentication Middleware', () => {
 <<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue({
 =======
+<<<<<<< HEAD
+      vi.mocked(auth0UserService.getUserById).mockResolvedValue({
+=======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue({
+>>>>>>> origin/master
 >>>>>>> origin/master
         id: 'user123',
         email: 'test@example.com',
@@ -230,7 +244,11 @@ describe('Authentication Middleware', () => {
 <<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(null)
 =======
+<<<<<<< HEAD
+      vi.mocked(auth0UserService.getUserById).mockResolvedValue(null)
+=======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue(null)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       const result = await authenticateRequest(mockRequest)
@@ -259,7 +277,11 @@ describe('Authentication Middleware', () => {
 <<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
 =======
+<<<<<<< HEAD
+      vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
@@ -311,7 +333,11 @@ describe('Authentication Middleware', () => {
 <<<<<<< HEAD
       vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
 =======
+<<<<<<< HEAD
+      vi.mocked(auth0UserService.getUserById).mockResolvedValue(mockUser)
+=======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue(mockUser)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       await authenticateRequest(mockRequest)
@@ -915,6 +941,9 @@ describe('Authentication Middleware', () => {
       })
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       vi.mocked(getUserById).mockResolvedValue(null)
 =======
       vi.mocked(auth0UserService).getUserById.mockResolvedValue(null)
