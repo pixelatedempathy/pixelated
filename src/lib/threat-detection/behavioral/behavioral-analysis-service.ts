@@ -6,7 +6,11 @@
 import { Redis } from 'ioredis'
 import { MongoClient } from 'mongodb'
 import * as tf from '@tensorflow/tfjs'
+<<<<<<< HEAD
+import crypto from 'crypto'
+=======
 import * as crypto from 'crypto'
+>>>>>>> origin/master
 import { EventEmitter } from 'events'
 
 export interface SecurityEvent {
@@ -92,7 +96,12 @@ export interface BehavioralAnalysisService {
 
 export class AdvancedBehavioralAnalysisService
   extends EventEmitter
+<<<<<<< HEAD
+  implements BehavioralAnalysisService
+{
+=======
   implements BehavioralAnalysisService {
+>>>>>>> origin/master
   private redis: Redis
   private mongoClient: MongoClient
   private anomalyDetector: AnomalyDetector
@@ -111,9 +120,13 @@ export class AdvancedBehavioralAnalysisService
     },
   ) {
     super()
+<<<<<<< HEAD
+    this.initializeServices()
+=======
     this.initializeServices().catch((error) => {
       this.emit('error', error)
     })
+>>>>>>> origin/master
   }
 
   private async initializeServices(): Promise<void> {
@@ -452,6 +465,8 @@ export class AdvancedBehavioralAnalysisService
     return anomalies
   }
 
+<<<<<<< HEAD
+=======
   private calculateTimeIntervals(timestamps: number[]): number[] {
     if (timestamps.length < 2) return []
     const sorted = [...timestamps].sort((a, b) => a - b)
@@ -572,6 +587,7 @@ export class AdvancedBehavioralAnalysisService
     })
   }
 
+>>>>>>> origin/master
   private async detectSpatialAnomalies(
     profile: BehaviorProfile,
     events: SecurityEvent[],
@@ -602,6 +618,8 @@ export class AdvancedBehavioralAnalysisService
     return anomalies
   }
 
+<<<<<<< HEAD
+=======
   private async classifyPatterns(
     patterns: BehavioralPattern[],
   ): Promise<BehavioralPattern[]> {
@@ -673,6 +691,7 @@ export class AdvancedBehavioralAnalysisService
     return 'stable'
   }
 
+>>>>>>> origin/master
   private filterAndRankAnomalies(anomalies: Anomaly[]): Anomaly[] {
     const uniqueAnomalies = this.removeDuplicateAnomalies(anomalies)
 
@@ -821,7 +840,11 @@ export class AdvancedBehavioralAnalysisService
       std ||
       Math.sqrt(
         data.reduce((sum, val) => sum + Math.pow(val - dataMean, 2), 0) /
+<<<<<<< HEAD
+          data.length,
+=======
         data.length,
+>>>>>>> origin/master
       )
 
     if (dataStd === 0) {
@@ -987,6 +1010,8 @@ interface RiskFactor {
   evidence: unknown[]
 }
 
+<<<<<<< HEAD
+=======
 export interface RiskIndicator {
   type: string
   severity: 'low' | 'medium' | 'high' | 'critical'
@@ -995,6 +1020,7 @@ export interface RiskIndicator {
   metadata?: Record<string, unknown>
 }
 
+>>>>>>> origin/master
 interface RiskComponent {
   type: string
   score: number
@@ -1006,7 +1032,10 @@ interface BaselineMetrics {
   geographicThreshold: number
   frequencyThreshold: number
   sequentialThreshold: number
+<<<<<<< HEAD
+=======
   deviceDiversityThreshold: number
+>>>>>>> origin/master
 }
 
 abstract class AnomalyDetector {
@@ -1050,6 +1079,8 @@ abstract class GraphAnalyzer {
   abstract identifyBehavioralClusters(graph: BehaviorGraph): Promise<Cluster[]>
 }
 
+<<<<<<< HEAD
+=======
 // Placeholder class for IsolationForest to resolve type errors
 class IsolationForest {
   constructor(
@@ -1062,6 +1093,7 @@ class IsolationForest {
   }
 }
 
+>>>>>>> origin/master
 class MLAnomalyDetector extends AnomalyDetector {
   private model: tf.Sequential | null = null
   private isolationForest: IsolationForest | null = null
@@ -1513,7 +1545,11 @@ class SequentialPatternMiner extends PatternMiner {
     const itemCounts: Record<string, number> = {}
 
     for (const sequence of sequences) {
+<<<<<<< HEAD
+      const uniqueItems = [...new Set(sequence)]
+=======
       const uniqueItems = Array.from(new Set(sequence))
+>>>>>>> origin/master
       for (const item of uniqueItems) {
         itemCounts[item] = (itemCounts[item] || 0) + 1
       }

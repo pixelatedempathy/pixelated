@@ -37,7 +37,11 @@ entryPoints:
 certificatesResolvers:
   letsencrypt:
     acme:
+<<<<<<< HEAD
+      email: admin@pixelated-empathy.com
+=======
       email: admin@pixelatedempathy.com
+>>>>>>> origin/master
       storage: /letsencrypt/acme.json
       httpChallenge:
         entryPoint: web
@@ -72,6 +76,10 @@ metrics:
     addEntryPointsLabels: true
     addRoutersLabels: true
     addServicesLabels: true
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 # Tracing (optional - for debugging)
 # tracing:
 #   jaeger:

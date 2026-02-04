@@ -4,12 +4,25 @@
  */
 
 import { AuthenticationClient } from 'auth0'
+<<<<<<< HEAD
+=======
 import * as jwt from 'jsonwebtoken'
+>>>>>>> origin/master
 import { setInCache } from '../redis'
 import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
 
+<<<<<<< HEAD
+// Auth0 Configuration
+const AUTH0_CONFIG = {
+  domain: process.env.AUTH0_DOMAIN || '',
+  clientId: process.env.AUTH0_CLIENT_ID || '',
+  clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
+  audience: process.env.AUTH0_AUDIENCE || '',
+}
+=======
 import { auth0Config, isAuth0Configured } from './auth0-config'
+>>>>>>> origin/master
 
 // Initialize Auth0 authentication client
 let auth0Authentication: AuthenticationClient | null = null
@@ -18,15 +31,25 @@ let auth0Authentication: AuthenticationClient | null = null
  * Initialize Auth0 authentication client
  */
 function initializeAuth0Client() {
+<<<<<<< HEAD
+  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
+=======
   if (!isAuth0Configured()) {
+>>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
 
   if (!auth0Authentication) {
     auth0Authentication = new AuthenticationClient({
+<<<<<<< HEAD
+      domain: AUTH0_CONFIG.domain,
+      clientId: AUTH0_CONFIG.clientId,
+      clientSecret: AUTH0_CONFIG.clientSecret
+=======
       domain: auth0Config.domain,
       clientId: auth0Config.clientId,
       clientSecret: auth0Config.clientSecret
+>>>>>>> origin/master
     })
   }
 }
@@ -154,6 +177,12 @@ export async function validateToken(
       throw new AuthenticationError('Auth0 authentication client not initialized')
     }
 
+<<<<<<< HEAD
+    // Decode token to get payload (this doesn't validate the signature yet)
+    const decoded = await auth0Authentication.getProfile(token)
+
+    // Validate token type matches expected (access tokens only for now)
+=======
     // Decode token to check standard claims (aud, iss) before expensive UserInfo call
     const decodedToken = jwt.decode(token, { complete: true }) as { payload: jwt.JwtPayload; header: any } | null
 
@@ -197,10 +226,31 @@ export async function validateToken(
 
     // Validate token type matches expected (access tokens only for now)
     // Check this before expensive UserInfo call to fail fast
+>>>>>>> origin/master
     if (tokenType === 'refresh') {
       throw new AuthenticationError('Refresh token validation not supported with this method')
     }
 
+<<<<<<< HEAD
+    // Check if token has expired
+    const {exp} = decoded
+    if (exp && exp < currentTimestamp()) {
+      throw new AuthenticationError('Token has expired')
+    }
+
+    // Extract user information
+    const userId = decoded.sub || ''
+    const role = extractRoleFromPayload(decoded)
+    const tokenId = decoded.jti || ''
+
+    // Log successful validation
+    await logSecurityEvent(SecurityEventType.TOKEN_VALIDATED, {
+      userId: userId,
+      tokenId: tokenId,
+      tokenType: tokenType,
+    })
+
+=======
     // Now verify with UserInfo (acts as online signature/revocation check)
     // Using auth0Authentication.getProfile instead of auth0UserInfo.getUserInfo
     const userInfo = await auth0Authentication.getProfile(token)
@@ -227,17 +277,27 @@ export async function validateToken(
     const { email: _email, name: _name, picture: _picture, nickname: _nickname, given_name: _given_name, family_name: _family_name, ...filteredUserInfo } = userInfo
     const safePayload = { ...filteredUserInfo, ...payload }
 
+>>>>>>> origin/master
     return {
       valid: true,
       userId: userId,
       role: role,
       tokenId: tokenId,
+<<<<<<< HEAD
+      expiresAt: exp,
+      payload: decoded,
+    }
+  } catch (error) {
+    // Log validation failure
+    await logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, {
+=======
       expiresAt: payload.exp,
       payload: safePayload,
     }
   } catch (error) {
     // Log validation failure
     logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, {
+>>>>>>> origin/master
       userId: null,
       error: error instanceof Error ? error.message : 'Unknown error',
       tokenType: tokenType,
@@ -275,7 +335,11 @@ export async function refreshAccessToken(
     const role = extractRoleFromPayload(userResponse)
 
     // Log token refresh event
+<<<<<<< HEAD
+    await logSecurityEvent(SecurityEventType.TOKEN_REFRESHED, {
+=======
     logSecurityEvent(SecurityEventType.TOKEN_REFRESHED, {
+>>>>>>> origin/master
       userId: userId,
       oldTokenId: 'unknown', // We don't have the old token ID
       newAccessTokenId: userResponse.jti || '',
@@ -345,7 +409,11 @@ export async function revokeToken(
   )
 
   // Log revocation event
+<<<<<<< HEAD
+  await logSecurityEvent(SecurityEventType.TOKEN_REVOKED, {
+=======
   logSecurityEvent(SecurityEventType.TOKEN_REVOKED, {
+>>>>>>> origin/master
     userId: null, // We don't have user ID here
     tokenId: tokenId,
     reason: reason,

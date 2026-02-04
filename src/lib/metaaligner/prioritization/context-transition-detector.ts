@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+// Context Transition Detection & Handling
+// Tracks changes between detected context types (e.g., crisis, support, info, clinical) and invokes handlers.
+
+import { ContextType } from '../core/objectives'
+
+// Represents metadata associated with each context detection event
+export interface ContextEvent {
+  turnId: string | number
+  contextType: ContextType
+  meta?: Record<string, unknown>
+  timestamp?: number
+}
+
+// Describes a transition between two context detection events
+=======
 /**
  * Context Transition Detection & Handling System for MetaAligner
  * 
@@ -32,10 +48,16 @@ export interface ContextEvent {
 /**
  * Describes a transition between two context detection events
  */
+>>>>>>> origin/master
 export interface ContextTransition {
   from: ContextEvent
   to: ContextEvent
   detected: boolean
+<<<<<<< HEAD
+}
+
+// Handler signature for responding to transitions (extensible)
+=======
   transitionType: 'crisis_elevation' | 'standard' | 'none'
   shouldSmooth: boolean
   confidence: number
@@ -44,11 +66,16 @@ export interface ContextTransition {
 /**
  * Handler signature for responding to transitions (extensible)
  */
+>>>>>>> origin/master
 export type ContextTransitionHandler = (
   transition: ContextTransition,
 ) => void | Promise<void>
 
 /**
+<<<<<<< HEAD
+ * Detects context transition between consecutive events.
+ * Returns transition object with detected=true if type changed.
+=======
  * Configuration for transition detection behavior
  */
 export interface TransitionDetectorConfig {
@@ -267,32 +294,48 @@ export class ContextTransitionDetector {
 /**
  * Detect context transition between consecutive events (legacy function)
  * @deprecated Use ContextTransitionDetector class instead
+>>>>>>> origin/master
  */
 export function detectContextTransition(
   prev: ContextEvent,
   curr: ContextEvent,
 ): ContextTransition {
   const detected = prev.contextType !== curr.contextType
+<<<<<<< HEAD
+=======
   const isCrisis = curr.contextType === ContextType.CRISIS
+>>>>>>> origin/master
 
   return {
     from: prev,
     to: curr,
     detected,
+<<<<<<< HEAD
+=======
     transitionType: isCrisis ? 'crisis_elevation' : detected ? 'standard' : 'none',
     shouldSmooth: !isCrisis && detected,
     confidence: curr.confidence,
+>>>>>>> origin/master
   }
 }
 
 /**
+<<<<<<< HEAD
+ * Example transition handling: logs, triggers pipeline, or adapts objectives.
+ * Replace with appropriate logic for MetaAligner pipeline.
+=======
  * Handle context transition with custom handler
  * @deprecated Use ContextTransitionDetector with event listeners instead
+>>>>>>> origin/master
  */
 export async function handleContextTransition(
   transition: ContextTransition,
   handler: ContextTransitionHandler,
+<<<<<<< HEAD
+) {
+=======
 ): Promise<void> {
+>>>>>>> origin/master
   if (transition.detected) {
     await handler(transition)
   }

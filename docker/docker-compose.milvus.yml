@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+version: '3.5'
+=======
+>>>>>>> origin/master
 
 services:
   etcd:

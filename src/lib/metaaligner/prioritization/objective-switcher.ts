@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+// Objective Switching Mechanism for Real-Time Adaptation
+// Updates system objectives upon context transition using mapping and weighting functions.
+
+import { ContextEvent, ContextTransition } from './context-transition-detector'
+import {
+  getContextObjectives,
+  ObjectivePriority,
+} from './context-objective-mapping'
+import { defaultWeightingStrategy } from './objective-weighting-strategy'
+
+// Tracks the current stack/objectives for use by downstream modules
+export class ObjectiveSwitcher {
+  private currentObjectives: ObjectivePriority[] = []
+  private lastContext?: ContextEvent
+
+  constructor(initialContext?: ContextEvent) {
+    if (initialContext) {
+      this.currentObjectives = getContextObjectives(initialContext.contextType)
+      this.lastContext = initialContext
+=======
 /**
  * Objective Switching Mechanism for Real-Time Adaptation
  * 
@@ -124,10 +145,20 @@ export class ObjectiveSwitcher {
 
     if (config.initialContext) {
       this.initializeFromContext(config.initialContext)
+>>>>>>> origin/master
     }
   }
 
   /**
+<<<<<<< HEAD
+   * Handles a context transition and updates current objectives.
+   * Custom weighting params/strategies can be injected as needed.
+   */
+  public onContextTransition(
+    transition: ContextTransition,
+    weightingParams?: Record<string, any>,
+  ) {
+=======
    * Initialize objectives from a context event
    */
   private initializeFromContext(context: ContextEvent): void {
@@ -163,10 +194,24 @@ export class ObjectiveSwitcher {
     transition: ContextTransition,
     weightingParams?: WeightingParams,
   ): Promise<void> {
+>>>>>>> origin/master
     if (!transition.detected) {
       return
     }
 
+<<<<<<< HEAD
+    const objectivesList = getContextObjectives(transition.to.contextType)
+    this.currentObjectives = defaultWeightingStrategy(
+      objectivesList,
+      weightingParams || {},
+    )
+    this.lastContext = transition.to
+  }
+
+  /** Returns the currently prioritized objectives with weights */
+  public getObjectives(): ObjectivePriority[] {
+    return this.currentObjectives
+=======
     // Handle concurrent switch attempts
     if (this.switchInProgress) {
       this.pendingSwitch = transition
@@ -387,5 +432,6 @@ export class ObjectiveSwitcher {
    */
   public isSwitching(): boolean {
     return this.switchInProgress
+>>>>>>> origin/master
   }
 }

@@ -8,7 +8,11 @@ import {
   deleteSession,
   type CreateSessionPayload,
   type UpdateSessionPayload,
+<<<<<<< HEAD
+} from '@/lib/api/journal-research'
+=======
 } from '../../../src/lib/api/journal-research'
+>>>>>>> origin/master
 
 
 /**
@@ -24,6 +28,27 @@ import {
  */
 
 describe('Journal Research API Integration', () => {
+<<<<<<< HEAD
+  
+  let createdSessionId: string | null = null
+
+  beforeAll(() => {
+    // Setup: Ensure API client is configured
+    // In a real scenario, you might want to check if backend is available
+    // and skip tests if it's not running
+  })
+
+  afterAll(async () => {
+    // Cleanup: Delete test session if it was created
+    if (createdSessionId) {
+      try {
+        await deleteSession(createdSessionId)
+      } catch (error) {
+        // Ignore cleanup errors
+        console.warn('Failed to cleanup test session:', error)
+      }
+    }
+=======
 
   let createdSessionId: string | null = null
 
@@ -126,6 +151,7 @@ describe('Journal Research API Integration', () => {
 
   afterAll(() => {
     vi.restoreAllMocks()
+>>>>>>> origin/master
   })
 
   describe('Session Management', () => {

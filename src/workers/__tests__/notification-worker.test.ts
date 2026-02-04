@@ -74,8 +74,13 @@ describe('notification-worker', () => {
     vi.clearAllMocks()
     vi.resetModules()
 
+<<<<<<< HEAD
+    // Reset environment variables
+    ;(vi.mocked(env) as any).NOTIFICATION_WS_PORT = '8082'
+=======
       // Reset environment variables
       ; (vi.mocked(env) as any).NOTIFICATION_WS_PORT = '8082'
+>>>>>>> origin/master
 
     // Reset default mock implementations
     startProcessingMock.mockResolvedValue(undefined)
@@ -100,7 +105,11 @@ describe('notification-worker', () => {
       await vi.runAllTimersAsync()
 
       expect(
+<<<<<<< HEAD
+        createBuildSafeLogger({ prefix: 'notification-worker' }).info,
+=======
         mockLoggerInstance.info,
+>>>>>>> origin/master
       ).toHaveBeenCalledWith(
         expect.stringContaining('Starting notification worker'),
         expect.objectContaining({ workerId: expect.any(String) }),
@@ -120,7 +129,11 @@ describe('notification-worker', () => {
       await import('../notification-worker.js')
 
       expect(
+<<<<<<< HEAD
+        createBuildSafeLogger({ prefix: 'notification-worker' }).error,
+=======
         mockLoggerInstance.error,
+>>>>>>> origin/master
       ).toHaveBeenCalledWith(
         expect.stringContaining('Failed to start notification worker'),
         expect.objectContaining({
@@ -144,7 +157,11 @@ describe('notification-worker', () => {
       await vi.runAllTimersAsync()
 
       expect(
+<<<<<<< HEAD
+        createBuildSafeLogger({ prefix: 'notification-worker' }).error,
+=======
         mockLoggerInstance.error,
+>>>>>>> origin/master
       ).toHaveBeenCalledWith(
         expect.stringContaining('Notification worker failed'),
         expect.objectContaining({
@@ -165,11 +182,19 @@ describe('notification-worker', () => {
       const newListeners = process.listeners('SIGTERM').filter(l => !sigtermListeners.includes(l))
       const handler = newListeners[newListeners.length - 1]
 
+<<<<<<< HEAD
+      expect(
+        createBuildSafeLogger({ prefix: 'notification-worker' }).info,
+      ).toHaveBeenCalledWith(
+        expect.stringContaining('Shutting down notification worker'),
+      )
+=======
       expect(handler).toBeDefined()
       if (handler) handler('SIGTERM')
 
       // Just verify info logger was called essentially
       expect(mockLoggerInstance.info).toHaveBeenCalled()
+>>>>>>> origin/master
       expect(mockExit).toHaveBeenCalledWith(0)
     })
 
@@ -185,6 +210,14 @@ describe('notification-worker', () => {
       expect(handler).toBeDefined()
       if (handler) handler('SIGINT')
 
+<<<<<<< HEAD
+      expect(
+        createBuildSafeLogger({ prefix: 'notification-worker' }).info,
+      ).toHaveBeenCalledWith(
+        expect.stringContaining('Shutting down notification worker'),
+      )
+=======
+>>>>>>> origin/master
       expect(mockExit).toHaveBeenCalledWith(0)
     })
 
@@ -210,21 +243,67 @@ describe('notification-worker', () => {
 
   describe('environment configuration', () => {
     it('should use default WebSocket port if not configured', async () => {
+<<<<<<< HEAD
+      // Remove port from environment
+      ;(vi.mocked(env) as any).NOTIFICATION_WS_PORT = undefined
+
+      // Import worker module
+=======
+>>>>>>> origin/master
       await import('../notification-worker.js')
       // Implicitly passes if no error
     })
 
     it('should use configured WebSocket port', async () => {
+<<<<<<< HEAD
+      // Set custom port in environment
+      ;(vi.mocked(env) as any).NOTIFICATION_WS_PORT = '8090'
+
+      // Import worker module
+=======
+>>>>>>> origin/master
       await import('../notification-worker.js')
       // Implicitly passes if no error
     })
   })
 
   describe('error handling', () => {
+<<<<<<< HEAD
+    it('should continue processing after non-fatal errors', async () => {
+      // Mock processQueue to throw error once then succeed
+      vi.mocked(mockNotificationService.processQueue)
+        .mockRejectedValueOnce(new Error('Temporary error'))
+        .mockResolvedValueOnce(undefined)
+
+      // Import worker module
+      await import('../notification-worker.js')
+
+      // Wait for multiple processing cycles
+      await vi.runAllTimersAsync()
+
+      expect(mockNotificationService.processQueue).toHaveBeenCalledTimes(2)
+      expect(
+        createBuildSafeLogger({ prefix: 'notification-worker' }).error,
+      ).toHaveBeenCalledWith(
+        expect.stringContaining('Error processing notifications'),
+        expect.any(Error),
+      )
+    })
+
+=======
+>>>>>>> origin/master
     it('should handle WebSocket server errors', async () => {
       // Setup: When .on('error', handler) is called, we will retrieve it from mock calls later
       await import('../notification-worker.js')
 
+<<<<<<< HEAD
+      expect(
+        createBuildSafeLogger({ prefix: 'notification-worker' }).error,
+      ).toHaveBeenCalledWith(
+        expect.stringContaining('WebSocket server error'),
+        mockError,
+      )
+=======
       // Verify listener was attached
       // expect(onMock).toHaveBeenCalledWith('error', expect.any(Function))
 
@@ -249,6 +328,7 @@ describe('notification-worker', () => {
           )
         }
       }
+>>>>>>> origin/master
     })
   })
 })

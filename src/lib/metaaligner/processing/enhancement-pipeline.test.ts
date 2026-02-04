@@ -11,6 +11,16 @@ import {
 import { ContextType } from '../core/objectives'
 
 // Mock the logger
+<<<<<<< HEAD
+vi.mock('../../logging/build-safe-logger', () => ({
+  createBuildSafeLogger: () => ({
+    info: vi.fn(),
+    error: vi.fn(),
+    warn: vi.fn(),
+    debug: vi.fn(),
+  }),
+}))
+=======
 vi.mock('../../logging/build-safe-logger', async () => {
   const { vi } = await import('vitest')
   return {
@@ -56,6 +66,7 @@ vi.mock('../api/alignment-api', async () => {
     })
   }
 })
+>>>>>>> origin/master
 
 describe('EnhancementPipeline', () => {
   let pipeline: EnhancementPipeline
@@ -154,6 +165,13 @@ describe('EnhancementPipeline', () => {
     })
 
     it('should handle error during processing', async () => {
+<<<<<<< HEAD
+      // Create a pipeline that will fail
+      const failingPipeline = new EnhancementPipeline({
+        // Invalid config that would cause failure
+        maxRetries: -1,
+      })
+=======
       // Create a pipeline
       const failingPipeline = new EnhancementPipeline()
 
@@ -161,6 +179,7 @@ describe('EnhancementPipeline', () => {
       // We need to ensure metaAligner exists and spy on it
       const metaAligner = (failingPipeline as any).metaAligner
       vi.spyOn(metaAligner, 'evaluateResponse').mockRejectedValue(new Error('Simulated API failure'))
+>>>>>>> origin/master
 
       const input: PipelineInput = {
         response: 'Test response',
@@ -171,7 +190,12 @@ describe('EnhancementPipeline', () => {
         },
       }
 
+<<<<<<< HEAD
+      // Depending on implementation, this might throw or handle gracefully
+      await expect(failingPipeline.process(input)).rejects.toThrow()
+=======
       await expect(failingPipeline.process(input)).rejects.toThrow('Simulated API failure')
+>>>>>>> origin/master
     })
   })
 

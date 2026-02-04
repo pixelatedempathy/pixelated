@@ -145,11 +145,12 @@
     "source.fixAll.eslint": "explicit"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "python-envs.defaultEnvManager": "ms-python.python:uv",
-  "python-envs.defaultPackageManager": "ms-python.python:uv",
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
+  "python-envs.defaultPackageManager": "ms-python.python:pip",
+  "python-envs.pythonProjects": [],
   "files.autoSave": "afterDelay",
   "workbench.editor.enablePreview": false,
-  "python.defaultInterpreterPath": ".venv/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.terminal.activateEnvironment": false,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -159,7 +160,16 @@
       "source.fixAll.ruff": "explicit"
     }
   },
+  "eslint.options": {
+    "configFile": "config/eslint.config.js"
+  },
   "prettier.configPath": "config/.prettierrc",
+  "cubent.autocomplete.allowWithCopilot": true,
+  "cubent.autocomplete.enabled": true,
+  "cubent.cubentCloudEnabled": true,
+  "cubent.mcp.alwaysAllow": true,
+  "cubent.mcp.enabled": true,
+  "cubent.mcp.serverCreationEnabled": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.shellIntegration.enabled": true,
   "terminal.integrated.automationProfile.linux": {
@@ -169,7 +179,15 @@
     "FIG_DISABLE": "1"
   },
   "python.languageServer": "None",
+  "sonarlint.connectedMode.project": {
+    "connectionId": "pixelatedempathy",
+    "projectKey": "pixelatedempathy_pixelated"
+  },
   "oxc.enable": true,
+  "specstory.cloudSync.enabled": "always",
+  "claude-history.dashboard.enableButton": true,
+  "claude-history.leaderboard.enableSharing": true,
+  "claude-history.statusBar.showUsage": true,
   "claudeCode.allowDangerouslySkipPermissions": true,
   "claudeCode.respectGitIgnore": false,
   "git.autofetch": "all",
@@ -177,15 +195,16 @@
   "git.defaultBranchName": "master",
   "git.detectSubmodules": true,
   "git.detectWorktrees": true,
+  "git.diagnosticsCommitHook.Enabled": true,
+  "kaggle.cliPath": "/home/vivi/pixelated/.venv/bin/kaggle",
   "editor.fontFamily": "JetBrains Mono",
   "scm.inputFontFamily": "editor",
   "extensions.experimental.deferredStartupFinishedActivation": false,
+  "kaggle.defaultInternet": true,
   "npm.packageManager": "pnpm",
   "markdown.validate.enabled": true,
   "terminal.integrated.developer.devMode": true,
-  "chat.mcp.serverSampling": {
-    "pixelated/.vscode/mcp.json: contextstream": {
-      "allowedModels": []
-    }
+  "[azure-pipelines]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

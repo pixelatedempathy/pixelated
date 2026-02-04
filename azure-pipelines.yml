@@ -12,7 +12,10 @@
 trigger:
   branches:
     include:
+<<<<<<< HEAD
+=======
       - staging
+>>>>>>> origin/master
       - master
       - main
       - develop
@@ -27,7 +30,10 @@ pr:
       - master
       - main
       - develop
+<<<<<<< HEAD
+=======
       - staging
+>>>>>>> origin/master
 
 parameters:
   - name: TRIGGER_OVH_OLLAMA_BUILD
@@ -54,7 +60,11 @@ parameters:
   - name: USE_SELF_HOSTED
     displayName: 'Use Self-Hosted Agent (Default Pool)'
     type: string
+<<<<<<< HEAD
+    default: 'false'
+=======
     default: 'true'
+>>>>>>> origin/master
     values:
       - 'true'
       - 'false'
@@ -63,10 +73,13 @@ variables:
   # Reference Variable Group (configured in Azure DevOps web UI)
   - group: pixelated-pipeline-variables
 
+<<<<<<< HEAD
+=======
   # Default self-hosted pool name; change in Azure DevOps if different
   - name: SELF_HOSTED_POOL
     value: 'Default'
 
+>>>>>>> origin/master
   # Convert parameters to variables for runtime conditions
   # Template expressions (${{ }}) convert parameters to variables at compile-time
   # Runtime conditions can then check these variables at execution time
@@ -122,6 +135,26 @@ stages:
         steps:
           - script: |
               set -euo pipefail
+<<<<<<< HEAD
+
+              required_vars=(
+                "NODE_VERSION"
+                "AZURE_CONTAINER_REGISTRY"
+                "IMAGE_REPOSITORY"
+                "AZURE_RESOURCE_GROUP"
+                "AZURE_SUBSCRIPTION"
+                "AKS_CLUSTER_NAME"
+                "KUBE_NAMESPACE"
+                "KUBE_NAMESPACE_PROD"
+              )
+
+              missing_vars=()
+              for var in "${required_vars[@]}"; do
+                # Check if variable is set and non-empty
+                var_value=$(eval echo "\$${var}")
+                if [ -z "${var_value}" ]; then
+                  missing_vars+=("$var")
+=======
 
               required_vars=(
                 "NODE_VERSION"
@@ -602,8 +635,430 @@ stages:
                 if [ "$(docker ps -q)" ]; then
                    echo "⚠️ Found running containers. Attempting to stop them..."
                    docker stop $(docker ps -q) 2>/dev/null || true
+>>>>>>> origin/master
                 fi
+              done
 
+<<<<<<< HEAD
+              if [ ${#missing_vars[@]} -gt 0 ]; then
+                echo "##vso[task.logissue type=error]Missing required variables:"
+                for var in "${missing_vars[@]}"; do
+                  echo "  - $var"
+                done
+                echo ""
+                echo "These variables must be set in the 'pixelated-pipeline-variables' variable group"
+                echo "or as pipeline variables. See docs/azure-devops/variable-setup.md"
+                exit 1
+              fi
+
+              echo "✅ All required variables are set"
+            displayName: 'Validate Required Variables'
+
+      - job: ValidateDependencies
+        displayName: 'Validate Dependencies'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm --version
+            displayName: 'Enable pnpm'
+
+          - script: |
+              pnpm audit --audit-level moderate || echo "⚠️ Audit warnings found but continuing"
+            displayName: 'Audit Dependencies'
+
+      - job: LintCode
+        displayName: 'Lint Code'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm lint:ci || echo "⚠️ Linting completed with warnings"
+            displayName: 'Run Linting'
+
+      - job: TypeCheck
+        displayName: 'Type Check'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm typecheck || echo "⚠️ Type checking completed with warnings"
+            displayName: 'Run Type Check'
+
+      - job: UnitTests
+        displayName: 'Unit Tests & Coverage'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - script: |
+              corepack enable pnpm
+              pnpm install
+            displayName: 'Install Dependencies'
+
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarCloud'
+              organization: 'pixelated-empathy'
+              scannerMode: 'CLI'
+              configMode: 'file'
+              configFile: 'config/sonar-project.properties'
+              extraProperties: |
+                sonar.projectBaseDir=$(Build.SourcesDirectory)
+            displayName: 'Prepare SonarCloud Analysis'
+
+          - script: |
+              export VITEST_COVERAGE_ENABLED=true
+              pnpm run test:unit
+            displayName: 'Run Unit Tests with Coverage'
+            continueOnError: true
+            env:
+              VITEST_COVERAGE_ENABLED: 'true'
+
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: 'coverage/junit.xml'
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+            displayName: 'Publish Test Results'
+
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: 'coverage/cobertura-coverage.xml'
+            displayName: 'Publish Code Coverage'
+
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run SonarCloud Analysis'
+
+          - task: SonarCloudPublish@1
+            displayName: 'Publish SonarCloud Quality Gate Result'
+            inputs:
+              pollingTimeoutSec: 300
+
+  - stage: Eval
+    displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+    dependsOn: Validate
+    condition: and(succeeded(), ne(variables['SKIP_EVAL_TESTS'], 'true'))
+    jobs:
+      - job: EvalGates
+        displayName: 'Evaluation Gates (therapy-bench, clinical-similarity)'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+            displayName: 'Checkout repository with submodules'
+            persistCredentials: 'true'
+            submodules: 'false'
+            fetchDepth: '0'
+          - script: |
+              chmod +x scripts/resolve-submodule-url.sh
+              ./scripts/resolve-submodule-url.sh
+            displayName: 'Resolve submodule URL dynamically'
+            env:
+              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+              GITHUB_TOKEN: $(GITHUB_TOKEN)
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+          - script: |
+              set -euo pipefail
+
+              # Install build tools required for native Node modules
+              echo "📦 Checking build dependencies..."
+
+              if ! command -v make >/dev/null 2>&1 || ! command -v g++ >/dev/null 2>&1; then
+                echo "⚠️ Build tools missing. Attempting installation..."
+                sudo apt-get update -qq
+                sudo apt-get install -y --no-install-recommends \
+                  build-essential \
+                  make \
+                  g++ \
+                  python3 \
+                  python3-dev
+                echo "✅ Build tools installed"
+              else
+                echo "✅ Build tools already installed (skipping sudo)"
+              fi
+
+              make --version
+              g++ --version
+            displayName: 'Install Build Tools'
+
+          - script: |
+              set -euo pipefail
+              corepack enable pnpm
+              pnpm --version
+
+              # Retry logic with fallback for lockfile mismatches
+              INSTALL_SUCCESS=0
+              for i in 1 2 3; do
+                echo "Attempt $i: Installing dependencies with frozen lockfile..."
+                if pnpm install --frozen-lockfile; then
+                  echo "✅ Dependencies installed successfully"
+                  INSTALL_SUCCESS=1
+                  break
+                else
+                  EXIT_CODE=$?
+                  echo "❌ Attempt $i failed (exit code: $EXIT_CODE)"
+                  if [ $i -eq 3 ]; then
+                    echo "⚠️ Falling back to --no-frozen-lockfile to resolve lockfile mismatch..."
+                    if pnpm install --no-frozen-lockfile; then
+                      echo "✅ Dependencies installed with lockfile update"
+                      INSTALL_SUCCESS=1
+                      break
+                    fi
+                  else
+                    sleep 2
+                  fi
+                fi
+              done
+
+              if [ "$INSTALL_SUCCESS" -ne 1 ]; then
+                echo "❌ Failed to install dependencies after all attempts"
+                exit 1
+              fi
+            displayName: 'Install Node Deps'
+          - script: |
+              set -euo pipefail
+
+              echo "🧹 Cleaning up disk space before Python dependency installation..."
+
+              # Check current disk usage
+              df -h / | tail -1
+
+              # Clean up old Docker images and containers (if Docker is available)
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning up Docker resources..."
+                docker system prune -af --volumes 2>/dev/null || echo "⚠️ Docker cleanup skipped (may require permissions)"
+              fi
+
+              # Clean up old uv cache more aggressively
+              if [ -d "$HOME/.cache/uv" ]; then
+                echo "Cleaning up old uv cache..."
+                # Remove temporary extraction directories (these can be large)
+                find "$HOME/.cache/uv" -type d -name ".tmp*" -exec rm -rf {} + 2>/dev/null || true
+                # Remove old cached packages (keep only recent)
+                find "$HOME/.cache/uv" -type f -mtime +1 -delete 2>/dev/null || true
+                find "$HOME/.cache/uv" -type d -empty -delete 2>/dev/null || true
+              fi
+
+              # Clean up old pip cache
+              if [ -d "$HOME/.cache/pip" ]; then
+                echo "Cleaning up old pip cache..."
+                find "$HOME/.cache/pip" -type f -mtime +7 -delete 2>/dev/null || true
+              fi
+
+              # Clean up temporary files
+              echo "Cleaning up temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+              rm -rf "$HOME/.tmp" 2>/dev/null || true
+
+              # Clean up old virtual environments (keep only current)
+              # skipping .venv cleanup to allow reuse
+              # if [ -d ".venv" ]; then
+              #   echo "Removing existing .venv to start fresh..."
+              #   rm -rf .venv
+              # fi
+
+              # Check disk space after cleanup
+              echo "📊 Disk space after cleanup:"
+              df -h / | tail -1
+
+              # Warn if disk space is still low
+              DISK_USAGE=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+              if [ "$DISK_USAGE" -gt 90 ]; then
+                echo "##vso[task.logissue type=warning]Disk usage is still high: ${DISK_USAGE}%"
+                echo "⚠️ Consider cleaning up the agent machine or increasing disk space"
+              fi
+            displayName: 'Cleanup Disk Space'
+          - script: |
+              set -euo pipefail
+
+              # Ensure local bin is in path for this step
+              export PATH="$HOME/.local/bin:$PATH"
+
+              echo "📦 Checking uv package manager..."
+              if ! command -v uv >/dev/null 2>&1; then
+                echo "Installing uv..."
+                curl -LsSf https://astral.sh/uv/install.sh | sh
+              else
+                echo "✅ uv is already installed"
+              fi
+              uv --version
+
+              echo "🐍 Setting up Python environment with uv..."
+
+              # Use default cache location ($HOME/.cache/uv) which is on the main disk
+              echo "Using default uv cache location: $HOME/.cache/uv"
+              export UV_CACHE_DIR="$HOME/.cache/uv"
+              mkdir -p "$UV_CACHE_DIR"
+
+              # Use specific existing virtual environment if available (avoids re-creation)
+              # This is critical for self-hosted agents to reuse the optimized env
+              if [ -d "$(Build.SourcesDirectory)/.venv" ]; then
+                echo "Using shared virtual environment at $(Build.SourcesDirectory)/.venv"
+                export UV_PROJECT_ENVIRONMENT="$(Build.SourcesDirectory)/.venv"
+                # Set for subsequent steps
+                echo "##vso[task.setvariable variable=UV_PROJECT_ENVIRONMENT]$(Build.SourcesDirectory)/.venv"
+              fi
+
+              # Use uv sync to install/update dependencies efficiently
+              # We do NOT remove .venv here to allow incremental updates (huge speedup for self-hosted)
+              # uv sync is naturally idempotent
+
+              MAX_RETRIES=3
+              RETRY_COUNT=0
+
+              while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+                # --frozen ensures we respect the lockfile exactly
+                if uv sync --frozen; then
+                  break
+                else
+                  RETRY_COUNT=$((RETRY_COUNT + 1))
+                  if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                    echo "##vso[task.logissue type=warning]uv sync failed (attempt $RETRY_COUNT/$MAX_RETRIES) - retrying..."
+                    sleep 10
+                  else
+                    echo "##vso[task.logissue type=error]uv sync failed after $MAX_RETRIES attempts"
+                    echo "📊 Current disk usage:"
+                    df -h /
+                    exit 1
+                  fi
+                fi
+              done
+
+              # Verify installation
+              uv run python -V
+              echo "✅ Python environment ready"
+            displayName: 'Install uv (Python)'
+          - script: |
+              set -euo pipefail
+              export PATH="$HOME/.local/bin:$PATH"
+              export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
+              echo "🔎 Submodule status:"
+              git submodule status || true
+              echo "📂 Listing ai directory (if present):"
+              ls -la ai || true
+              echo "🧪 Sanity check: try importing ai.evals"
+              uv run python - << 'PY'
+              import sys, importlib
+              print("sys.path[0] =", sys.path[0])
+              try:
+                mod = importlib.import_module("ai.evals")
+                print("✅ ai.evals import OK:", getattr(mod, "__file__", "<namespace>"))
+              except Exception as e:
+                print("❌ ai.evals import failed:", repr(e), file=sys.stderr)
+                sys.exit(1)
+              PY
+            displayName: 'Sanity Check: ai.evals import'
+          - script: |
+              set -euo pipefail
+              export PATH="$HOME/.local/bin:$PATH"
+              export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
+              pnpm test:evals
+            displayName: 'Run Eval Tests'
+
+          - script: |
+              set -euo pipefail
+              echo "⚠️ Job failed. running safe cleanup..."
+
+              # 1. Clean Docker resources (dangling images/containers)
+              if command -v docker >/dev/null 2>&1; then
+                echo "Cleaning Docker resources..."
+                docker system prune -f 2>/dev/null || true
+              fi
+
+              # 2. Clean temporary files
+              echo "Cleaning temporary files..."
+              rm -rf /tmp/* 2>/dev/null || true
+
+              # 3. Clean local build artifacts (safe to remove as they will be recreated)
+              echo "Cleaning build artifacts..."
+              rm -rf $(Build.SourcesDirectory)/node_modules 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/.venv 2>/dev/null || true
+              rm -rf $(Build.SourcesDirectory)/dist 2>/dev/null || true
+
+              echo "✅ Safe cleanup completed"
+              df -h /
+            condition: failed()
+            displayName: 'Cleanup on Failure'
+
+  - stage: Build
+    displayName: 'Build Application'
+    # Build must wait for Eval to complete to prevent resource contention
+    # If SKIP_EVAL_TESTS=true, Eval is skipped and Build runs after Validate
+    dependsOn:
+      - Validate
+      - Eval
+    # Build runs if Validate succeeded AND (Eval succeeded OR Eval was skipped)
+    condition: |
+      and(
+        in(dependencies.Validate.result, 'Succeeded'),
+        in(dependencies.Eval.result, 'Succeeded', 'Skipped')
+      )
+    jobs:
+      - job: BuildApplication
+        displayName: 'Build and Push Docker Image'
+        pool:
+          ${{ if eq(parameters.USE_SELF_HOSTED, 'true') }}:
+            name: 'Default'
+          ${{ else }}:
+            vmImage: 'ubuntu-latest'
+        timeoutInMinutes: '45'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '$(NODE_VERSION)'
+            displayName: 'Install Node.js'
+
+          - task: Bash@3
+            displayName: 'Verify Docker Access'
+            inputs:
+              targetType: 'inline'
+              script: |
+                set -euo pipefail
+
+=======
                 # Aggressive cleanup
                 # -a: Remove all unused images not just dangling ones
                 # --volumes: Remove unused volumes
@@ -639,6 +1094,7 @@ stages:
               script: |
                 set -euo pipefail
 
+>>>>>>> origin/master
                 # Check if Docker daemon is accessible
                 if ! docker info >/dev/null 2>&1; then
                   echo "##vso[task.logissue type=error]Docker daemon is not accessible"
@@ -906,7 +1362,11 @@ stages:
   - stage: InstallCertManager
     displayName: 'Install cert-manager'
     dependsOn: Security
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
     jobs:
       - deployment: InstallCertManager
         displayName: 'Install cert-manager for TLS'
@@ -1046,7 +1506,11 @@ stages:
   - stage: DeployStaging
     displayName: 'Deploy to Staging (AKS)'
     dependsOn: InstallCertManager
+<<<<<<< HEAD
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+=======
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/staging')))
+>>>>>>> origin/master
     jobs:
       - deployment: DeployToStaging
         displayName: 'Deploy to Azure Kubernetes Service'
@@ -1289,7 +1753,11 @@ stages:
                       set -euo pipefail
                        
                       echo "🔄 Updating Pixelated image tag..."
+<<<<<<< HEAD
+                      kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n pixelated-staging
+=======
                       kubectl set image deployment/pixelated pixelated=$(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber) -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
                        
                       echo "✅ Image tag updated to $(DOCKER_REGISTRY)/$(IMAGE_REPOSITORY):$(Build.BuildNumber)"
 
@@ -1303,10 +1771,17 @@ stages:
                       echo "⏳ Waiting for all deployments to be ready..."
 
                       # Wait for Pixelated deployment
+<<<<<<< HEAD
+                      kubectl rollout status deployment/pixelated -n pixelated --timeout=900s || {
+                        echo "⚠️ Pixelated deployment rollout check failed or timed out"
+                        kubectl get pods -n pixelated
+                        kubectl describe deployment pixelated -n pixelated
+=======
                       kubectl rollout status deployment/pixelated -n $(KUBE_NAMESPACE) --timeout=900s || {
                         echo "⚠️ Pixelated deployment rollout check failed or timed out"
                         kubectl get pods -n $(KUBE_NAMESPACE)
                         kubectl describe deployment pixelated -n $(KUBE_NAMESPACE)
+>>>>>>> origin/master
                       }
 
                       # Wait for Ollama deployment
@@ -2296,7 +2771,10 @@ stages:
 
               echo "✅ E2E smoke tests completed"
             displayName: 'Run E2E Smoke Tests with Docker Playwright'
+<<<<<<< HEAD
+=======
             continueOnError: 'true'
+>>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
 
@@ -2465,7 +2943,10 @@ stages:
 
               echo "✅ Comprehensive Playwright tests completed"
             displayName: 'Run Comprehensive Playwright Tests'
+<<<<<<< HEAD
+=======
             continueOnError: 'true'
+>>>>>>> origin/master
             env:
               BASE_URL: $(STAGING_URL)
               STAGING_URL: $(STAGING_URL)
@@ -2828,4 +3309,8 @@ stages:
               echo "- Build metadata is validated before publishing"
               echo ""
               echo "For detailed logs, check individual stage outputs and published artifacts."
+<<<<<<< HEAD
             displayName: 'Generate Pipeline Summary'
+=======
+            displayName: 'Generate Pipeline Summary'
+>>>>>>> origin/master

@@ -140,11 +140,19 @@ export function SessionControls({
                   'hover:bg-muted/50',
                 )}
                 role="listitem"
+<<<<<<< HEAD
+                aria-label={`Session ${session.id.slice(0, 8)}, status: ${session.status}`}
+              >
+                <div>
+                  <div className="text-sm font-medium">
+                    Session {session.id.slice(0, 8)}
+=======
                 aria-label={`Session ${session.id}, status: ${session.status}`}
               >
                 <div>
                   <div className="text-sm font-medium">
                     Session {session.id}
+>>>>>>> origin/master
                   </div>
                   <div className="text-xs text-muted-foreground">
                     {new Date(session.startTime).toLocaleTimeString([], {
@@ -166,11 +174,19 @@ export function SessionControls({
                   className={cn(
                     'px-2 py-1 text-xs rounded-full whitespace-nowrap',
                     session.status === 'active' &&
+<<<<<<< HEAD
+                      'bg-green-100 text-green-800',
+                    session.status === 'paused' &&
+                      'bg-yellow-100 text-yellow-800',
+                    session.status === 'completed' &&
+                      'bg-blue-100 text-blue-800',
+=======
                     'bg-green-100 text-green-800',
                     session.status === 'paused' &&
                     'bg-yellow-100 text-yellow-800',
                     session.status === 'completed' &&
                     'bg-blue-100 text-blue-800',
+>>>>>>> origin/master
                     session.status === 'cancelled' && 'bg-red-100 text-red-800',
                   )}
                 >

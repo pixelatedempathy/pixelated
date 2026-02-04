@@ -24,11 +24,19 @@ export function getContextualObjectiveWeights(
   switch (context) {
     case ContextType.CRISIS:
       return {
+<<<<<<< HEAD
+        safety: 0.6,
+        empathy: 0.2,
+        professionalism: 0.15,
+        correctness: 0.1,
+        informativeness: 0.05,
+=======
         safety: 0.9,
         empathy: 0.1,
         professionalism: 0.05,
         correctness: 0.05,
         informativeness: 0.0,
+>>>>>>> origin/master
       }
 
     case ContextType.SUPPORT:

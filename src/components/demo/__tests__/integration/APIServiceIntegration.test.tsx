@@ -17,12 +17,16 @@ const safeFetch = async (
   input: RequestInfo | URL,
   init?: RequestInit,
 ): Promise<Response> => {
+<<<<<<< HEAD
+  const url = input.toString()
+=======
   const url =
     typeof input === 'string'
       ? input
       : input instanceof URL
         ? input.toString()
         : input.url
+>>>>>>> origin/master
   if (url.startsWith('http')) {
     const hostnameMatch = url.match(
       /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/im,

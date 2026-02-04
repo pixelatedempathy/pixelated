@@ -58,7 +58,10 @@ export interface AuthUser {
   email: string
   emailVerified: boolean
   name?: string
+<<<<<<< HEAD
+=======
   fullName?: string
+>>>>>>> origin/master
   role: AuthRole
   permissions: string[]
   metadata?: Record<string, unknown>

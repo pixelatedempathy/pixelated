@@ -6,7 +6,11 @@ import Layout from '@/layouts/Layout.astro';
 import { getSession } from '@/lib/auth';
 
 const { sessionId } = Astro.params;
+<<<<<<< HEAD
+const session = await getSession(Astro.request);
+=======
 const session = await getSession();
+>>>>>>> origin/master
 
 if (!session) {
   return Astro.redirect('/auth/login');

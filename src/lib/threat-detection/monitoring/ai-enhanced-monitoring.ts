@@ -32,11 +32,14 @@ export interface MonitoringConfig {
     confidenceThreshold: number
     predictionWindow: number
   }
+<<<<<<< HEAD
+=======
   escalationRules?: Record<string, { minutes: number; levels: string[] }>
   maxAlertHistory?: number
   metricsRetention?: number
   enableRealTimeAlerting?: boolean
   enableAIInsights?: boolean
+>>>>>>> origin/master
 }
 
 export interface NotificationChannelConfig {
@@ -75,7 +78,11 @@ export interface AIInsight {
 }
 
 export interface Alert {
+<<<<<<< HEAD
+  alertId: string
+=======
   id: string
+>>>>>>> origin/master
   type: 'threat' | 'anomaly' | 'system' | 'ai_insight'
   severity: 'low' | 'medium' | 'high' | 'critical'
   title: string
@@ -85,6 +92,13 @@ export interface Alert {
   aiInsights?: AIInsight[]
   notifiedChannels: string[]
   acknowledged: boolean
+<<<<<<< HEAD
+  createdAt: Date
+  updatedAt: Date
+}
+
+export class AIEnhancedMonitoringService extends EventEmitter {
+=======
   status?: 'active' | 'investigating' | 'escalated' | 'resolved'
   notes?: string
   resolvedBy?: string
@@ -106,6 +120,7 @@ export interface IAIService {
 
 export class AIEnhancedMonitoringService extends EventEmitter {
   // ... existing props
+>>>>>>> origin/master
   private redis: Redis
   private mongoClient: MongoClient
   private config: MonitoringConfig
@@ -114,6 +129,13 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   private alertBuffer: Alert[] = []
   private monitoringIntervals: NodeJS.Timeout[] = []
   private isMonitoring: boolean = false
+<<<<<<< HEAD
+
+  constructor(config: MonitoringConfig) {
+    super()
+    this.config = config
+    this.initializeServices()
+=======
   public aiService: IAIService | undefined;
   public orchestrator: unknown;
 
@@ -164,6 +186,7 @@ export class AIEnhancedMonitoringService extends EventEmitter {
     if (!this.redis || !this.mongoClient) {
       void this.initializeServices()
     }
+>>>>>>> origin/master
   }
 
   private async initializeServices(): Promise<void> {
@@ -283,7 +306,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       // Generate AI insights if enabled
       let aiInsights: AIInsight[] = []
       if (this.config.aiInsightsEnabled && this.anomalyDetectionModel) {
+<<<<<<< HEAD
+        aiInsights = await this.generateAIInsights(processedMetrics)
+=======
         aiInsights = await this.generateInternalAIInsights(processedMetrics)
+>>>>>>> origin/master
       }
 
       // Store metrics
@@ -503,6 +530,16 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       const features = this.extractAnomalyFeatures(metrics)
 
       // Predict anomaly score
+<<<<<<< HEAD
+      return await tf.tidy(async () => {
+        const inputTensor = tf.tensor2d([features])
+        const result = (await this.anomalyDetectionModel.predict(
+          inputTensor,
+        )) as tf.Tensor
+        const score = await result.data()
+        return score[0]
+      })
+=======
       const inputTensor = tf.tensor2d([features])
       try {
         const result = this.anomalyDetectionModel.predict(inputTensor) as tf.Tensor
@@ -511,6 +548,7 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       } finally {
         inputTensor.dispose()
       }
+>>>>>>> origin/master
     } catch (error) {
       logger.error('Failed to calculate anomaly score:', { error })
       return 0
@@ -562,7 +600,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
     return totalThreats > 0 ? blockedRequests / totalThreats : 0
   }
 
+<<<<<<< HEAD
+  private async generateAIInsights(
+=======
   private async generateInternalAIInsights(
+>>>>>>> origin/master
     metrics: SecurityMetrics,
   ): Promise<AIInsight[]> {
     const insights: AIInsight[] = []
@@ -724,7 +766,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       // Check for threat-based alerts
       if (metrics.threatCount > this.config.alertThresholds.critical) {
         alerts.push(
+<<<<<<< HEAD
+          this.createAlert(
+=======
           this.createAlertInternal(
+>>>>>>> origin/master
             'threat',
             'critical',
             'High Threat Count',
@@ -737,7 +783,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       // Check for anomaly-based alerts
       if (metrics.anomalyScore > 0.8) {
         alerts.push(
+<<<<<<< HEAD
+          this.createAlert(
+=======
           this.createAlertInternal(
+>>>>>>> origin/master
             'anomaly',
             'high',
             'High Anomaly Score',
@@ -750,7 +800,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       // Check for system-based alerts
       if (metrics.systemHealth.cpu > 80 || metrics.systemHealth.memory > 80) {
         alerts.push(
+<<<<<<< HEAD
+          this.createAlert(
+=======
           this.createAlertInternal(
+>>>>>>> origin/master
             'system',
             'medium',
             'High System Resource Usage',
@@ -764,7 +818,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       for (const insight of aiInsights) {
         if (insight.severity === 'high' || insight.severity === 'critical') {
           alerts.push(
+<<<<<<< HEAD
+            this.createAlert(
+=======
             this.createAlertInternal(
+>>>>>>> origin/master
               'ai_insight',
               insight.severity,
               insight.title,
@@ -785,17 +843,27 @@ export class AIEnhancedMonitoringService extends EventEmitter {
     }
   }
 
+<<<<<<< HEAD
+  private createAlert(
+=======
   private createAlertInternal(
+>>>>>>> origin/master
     type: Alert['type'],
     severity: Alert['severity'],
     title: string,
     description: string,
     metrics: SecurityMetrics,
     aiInsights: AIInsight[] = [],
+<<<<<<< HEAD
+  ): Alert {
+    return {
+      alertId: `alert_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`,
+=======
     metadata: Record<string, unknown> = {},
   ): Alert {
     return {
       id: `alert_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`,
+>>>>>>> origin/master
       type,
       severity,
       title,
@@ -803,10 +871,15 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       source: 'ai_enhanced_monitoring',
       metrics,
       aiInsights,
+<<<<<<< HEAD
+      notifiedChannels: [],
+      acknowledged: false,
+=======
       metadata,
       notifiedChannels: [],
       acknowledged: false,
       status: 'active',
+>>>>>>> origin/master
       createdAt: new Date(),
       updatedAt: new Date(),
     }
@@ -822,6 +895,16 @@ export class AIEnhancedMonitoringService extends EventEmitter {
 
       this.emit('alert_generated', alert)
       logger.info('Alert generated', {
+<<<<<<< HEAD
+        alertId: alert.alertId,
+        severity: alert.severity,
+      })
+    } catch (error) {
+      logger.error('Failed to process alert:', {
+        error,
+        alertId: alert.alertId,
+      })
+=======
         alertId: alert.id,
         severity: alert.severity,
       })
@@ -834,6 +917,7 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       // Alert is reference.
       alert.errors = alert.errors || [];
       alert.errors.push((error as Error).message || 'Processing failed');
+>>>>>>> origin/master
     }
   }
 
@@ -842,6 +926,8 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       const db = this.mongoClient.db('threat_detection')
       await db.collection('alerts').insertOne(alert)
 
+<<<<<<< HEAD
+=======
       // Also store in Redis for real-time access/tests
       if (this.redis) {
         await this.redis.set(
@@ -856,13 +942,18 @@ export class AIEnhancedMonitoringService extends EventEmitter {
         }
       }
 
+>>>>>>> origin/master
       // Update alert buffer
       this.alertBuffer.push(alert)
       if (this.alertBuffer.length > 100) {
         this.alertBuffer = this.alertBuffer.slice(-100)
       }
     } catch (error) {
+<<<<<<< HEAD
+      logger.error('Failed to store alert:', { error, alertId: alert.alertId })
+=======
       logger.error('Failed to store alert:', { error, alertId: alert.id })
+>>>>>>> origin/master
       throw error
     }
   }
@@ -881,11 +972,19 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       }
 
       // Update alert with notified channels
+<<<<<<< HEAD
+      await this.updateAlert(alert)
+    } catch (error) {
+      logger.error('Failed to send alert notifications:', {
+        error,
+        alertId: alert.alertId,
+=======
       await this.saveAlertToDb(alert)
     } catch (error) {
       logger.error('Failed to send alert notifications:', {
         error,
         alertId: alert.id,
+>>>>>>> origin/master
       })
     }
   }
@@ -930,7 +1029,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
     } catch (error) {
       logger.error(`Failed to send ${channel.type} notification:`, {
         error,
+<<<<<<< HEAD
+        alertId: alert.alertId,
+=======
         alertId: alert.id,
+>>>>>>> origin/master
       })
     }
   }
@@ -941,7 +1044,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   ): Promise<void> {
     // Implement email notification logic
     logger.info(
+<<<<<<< HEAD
+      `Email notification would be sent for alert ${alert.alertId} to channel ${channel.name}`,
+=======
       `Email notification would be sent for alert ${alert.id} to channel ${channel.name}`,
+>>>>>>> origin/master
     )
   }
 
@@ -951,7 +1058,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   ): Promise<void> {
     // Implement Slack notification logic
     logger.info(
+<<<<<<< HEAD
+      `Slack notification would be sent for alert ${alert.alertId} to channel ${channel.name}`,
+=======
       `Slack notification would be sent for alert ${alert.id} to channel ${channel.name}`,
+>>>>>>> origin/master
     )
   }
 
@@ -961,7 +1072,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   ): Promise<void> {
     // Implement webhook notification logic
     logger.info(
+<<<<<<< HEAD
+      `Webhook notification would be sent for alert ${alert.alertId} to channel ${channel.name}`,
+=======
       `Webhook notification would be sent for alert ${alert.id} to channel ${channel.name}`,
+>>>>>>> origin/master
     )
   }
 
@@ -971,7 +1086,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   ): Promise<void> {
     // Implement SMS notification logic
     logger.info(
+<<<<<<< HEAD
+      `SMS notification would be sent for alert ${alert.alertId} to channel ${channel.name}`,
+=======
       `SMS notification would be sent for alert ${alert.id} to channel ${channel.name}`,
+>>>>>>> origin/master
     )
   }
 
@@ -981,20 +1100,34 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   ): Promise<void> {
     // Implement dashboard update logic
     logger.info(
+<<<<<<< HEAD
+      `Dashboard would be updated for alert ${alert.alertId} on channel ${channel.name}`,
+    )
+  }
+
+  private async updateAlert(alert: Alert): Promise<void> {
+=======
       `Dashboard would be updated for alert ${alert.id} on channel ${channel.name}`,
     )
   }
 
   private async saveAlertToDb(alert: Alert): Promise<void> {
+>>>>>>> origin/master
     try {
       const db = this.mongoClient.db('threat_detection')
       alert.updatedAt = new Date()
 
       await db
         .collection('alerts')
+<<<<<<< HEAD
+        .updateOne({ alertId: alert.alertId }, { $set: alert })
+    } catch (error) {
+      logger.error('Failed to update alert:', { error, alertId: alert.alertId })
+=======
         .updateOne({ id: alert.id }, { $set: alert })
     } catch (error) {
       logger.error('Failed to update alert:', { error, alertId: alert.id })
+>>>>>>> origin/master
       throw error
     }
   }
@@ -1061,7 +1194,11 @@ export class AIEnhancedMonitoringService extends EventEmitter {
     try {
       const db = this.mongoClient.db('threat_detection')
       const result = await db.collection('alerts').updateOne(
+<<<<<<< HEAD
+        { alertId },
+=======
         { id: alertId },
+>>>>>>> origin/master
         {
           $set: {
             acknowledged: true,
@@ -1302,6 +1439,8 @@ export class AIEnhancedMonitoringService extends EventEmitter {
       throw error
     }
   }
+<<<<<<< HEAD
+=======
   // Public wrapper for createAlert
   public async createAlert(alertData: Partial<Alert>): Promise<Alert> {
     const errors: string[] = [];
@@ -1595,6 +1734,7 @@ export class AIEnhancedMonitoringService extends EventEmitter {
   // Renaming implicit private createAlert to avoid conflict if I can, OR rename this one.
   // The private one was named createAlert. I'll rename the private one to createAlertInternal in a separate call or now.
   // I will check if I can rename the existing private method.
+>>>>>>> origin/master
 }
 
 export type { MonitoringConfig, SecurityMetrics, AIInsight, Alert }

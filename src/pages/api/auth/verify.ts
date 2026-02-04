@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import type { APIContext } from 'astro'
+import { createBuildSafeLogger } from '../../../lib/logging/build-safe-logger'
+import { AuditEventType, createAuditLog } from '../../../lib/audit'
+
+const logger = createBuildSafeLogger('auth-verify')
+
+export const GET = async ({ request }: APIContext) => {
+=======
 
 import { createBuildSafeLogger } from '../../../lib/logging/build-safe-logger'
 import { AuditEventType, createAuditLog } from '../../../lib/audit'
@@ -12,6 +21,7 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
     userAgent: request.headers.get('user-agent') || 'unknown',
     deviceId: request.headers.get('x-device-id') || 'unknown',
   }
+>>>>>>> origin/master
   try {
     const url = new URL(request.url)
     const token = url.searchParams.get('token')
@@ -84,6 +94,8 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
     // Log successful verification
     if (result.data.user) {
       const user = result.data.user as any
+<<<<<<< HEAD
+=======
 
       await logSecurityEvent(SecurityEventType.AUTHENTICATION_SUCCESS, user.id, {
         action: 'user_verified',
@@ -91,6 +103,7 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
         clientInfo
       })
 
+>>>>>>> origin/master
       await createAuditLog(
         AuditEventType.SECURITY,
         'user_verified',
@@ -112,7 +125,11 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
         },
       },
     )
+<<<<<<< HEAD
+  } catch (error: unknown) {
+=======
   } catch (error: any) {
+>>>>>>> origin/master
     logger.error('Verification error:', error)
 
     await logSecurityEvent(SecurityEventType.AUTHENTICATION_FAILED, null, {

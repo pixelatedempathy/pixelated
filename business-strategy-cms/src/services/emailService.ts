@@ -29,6 +29,8 @@ export class EmailService {
     console.log(`Sending password reset email to: ${email}`)
     console.log(`Reset token: ${resetToken}`)
   }
+<<<<<<< HEAD
+=======
 
   static async sendEmail(options: {
     to: string
@@ -39,4 +41,5 @@ export class EmailService {
     console.log(`Subject: ${options.subject}`)
     console.log('Body:', options.body)
   }
+>>>>>>> origin/master
 }

@@ -177,11 +177,19 @@ REDIS_PASSWORD=redis_password
 # Alerting
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
+<<<<<<< HEAD
+SMTP_USERNAME=alerts@pixelated-empathy.com
+SMTP_PASSWORD=smtp_password
+ALERT_EMAIL_FROM=alerts@pixelated-empathy.com
+CRITICAL_ALERT_EMAIL=critical@pixelated-empathy.com
+WARNING_ALERT_EMAIL=warnings@pixelated-empathy.com
+=======
 SMTP_USERNAME=alerts@pixelatedempathy.com
 SMTP_PASSWORD=smtp_password
 ALERT_EMAIL_FROM=alerts@pixelatedempathy.com
 CRITICAL_ALERT_EMAIL=critical@pixelatedempathy.com
 WARNING_ALERT_EMAIL=warnings@pixelatedempathy.com
+>>>>>>> origin/master
 SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
 ```
 

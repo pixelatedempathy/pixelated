@@ -27,6 +27,8 @@ export interface DocumentChange {
 export class CollaborationService {
   private static sessions: Map<string, CollaborationSession[]> = new Map()
   private static changes: Map<string, DocumentChange[]> = new Map()
+<<<<<<< HEAD
+=======
   private static cursorListeners: Map<string, ((update: any) => void)[]> = new Map()
   private static contentListeners: Map<string, ((change: DocumentChange) => void)[]> = new Map()
 
@@ -51,6 +53,7 @@ export class CollaborationService {
     }
     this.contentListeners.get(documentId)?.push(callback)
   }
+>>>>>>> origin/master
 
   static joinSession(
     documentId: string,
@@ -107,6 +110,8 @@ export class CollaborationService {
       session.cursorPosition = position
       session.selection = selection
       session.lastActivity = new Date()
+<<<<<<< HEAD
+=======
 
       // Notify listeners
       const listeners = this.cursorListeners.get(documentId) || []
@@ -118,6 +123,7 @@ export class CollaborationService {
           timestamp: new Date(),
         }),
       )
+>>>>>>> origin/master
     }
   }
 
@@ -135,10 +141,13 @@ export class CollaborationService {
     }
 
     this.changes.set(documentId, changes)
+<<<<<<< HEAD
+=======
 
     // Notify listeners
     const listeners = this.contentListeners.get(documentId) || []
     listeners.forEach((callback) => callback(change))
+>>>>>>> origin/master
   }
 
   static getChanges(documentId: string, since?: Date): DocumentChange[] {

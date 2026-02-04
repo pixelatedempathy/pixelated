@@ -44,6 +44,15 @@
     "ultrahtml": "^1.6.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.5",
+    "cheerio": "^1.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "vite": "^7.2.7"
+=======
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.15",
@@ -51,6 +60,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "vite": "^7.3.1"
+>>>>>>> origin/master
   },
   "peerDependencies": {
     "@types/react": "^17.0.50 || ^18.0.21 || ^19.2.5",

@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+import express from 'express'
+import { createServer } from 'http'
+import Redis from 'ioredis'
+import { Pool } from 'pg'
+import cors from 'cors'
+import { SocketService } from './services/socketService.js'
+=======
 import "dotenv/config";
 import express from 'express'
 import { createServer } from 'http'
@@ -6,6 +14,7 @@ import { EventEmitter } from "events";
 import { Pool } from 'pg'
 import cors from 'cors'
 import { SocketService } from "./services/socketService";
+>>>>>>> origin/master
 
 
 const app = express()
@@ -28,6 +37,9 @@ const db = new Pool({
 })
 
 // Redis connection
+<<<<<<< HEAD
+const redis = new Redis(REDIS_URL)
+=======
 const redisOptions = REDIS_URL.startsWith("rediss://")
   ? {
       tls: {
@@ -71,6 +83,7 @@ redis.connect().catch((err) => {
     console.error("Failed to connect to Redis:", err);
   }
 });
+>>>>>>> origin/master
 
 // Middleware
 app.use(

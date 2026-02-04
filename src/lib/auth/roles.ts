@@ -438,7 +438,10 @@ export interface RoleTransition {
   requiresApproval: boolean
   requiresMFA: boolean
   auditRequired: boolean
+<<<<<<< HEAD
+=======
   canTransition: boolean
+>>>>>>> origin/master
 }
 
 export function validateRoleTransition(
@@ -457,11 +460,16 @@ export function validateRoleTransition(
     throw new Error('Cannot transition to same role')
   }
 
+<<<<<<< HEAD
+  // Check if target role requires approval
+  const requiresApproval = toDef.requiresApproval
+=======
   // Check if target role requires approval or is sensitive
   const requiresApproval =
     toDef.requiresApproval ||
     toDef.hierarchyLevel >= 80 || // Therapist and Admin
     toDef.permissions.includes('manage:roles');
+>>>>>>> origin/master
 
   // MFA required for sensitive role transitions
   const requiresMFA =
@@ -478,6 +486,9 @@ export function validateRoleTransition(
     requiresApproval,
     requiresMFA,
     auditRequired,
+<<<<<<< HEAD
+=======
     canTransition: true,
+>>>>>>> origin/master
   }
 }

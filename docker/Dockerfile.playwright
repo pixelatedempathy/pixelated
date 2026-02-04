@@ -5,7 +5,11 @@ FROM mcr.microsoft.com/playwright:v1.57.0-jammy
 WORKDIR /app
 
 # Install pnpm
+<<<<<<< HEAD
+RUN npm install -g pnpm@10.28.0
+=======
 RUN npm install -g pnpm@10.28.2
+>>>>>>> origin/master
 
 # Create app directory and set permissions
 RUN mkdir -p /app && chown -R pwuser:pwuser /app

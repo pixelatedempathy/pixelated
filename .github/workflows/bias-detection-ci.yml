@@ -30,9 +30,15 @@ on:
       - tests/**/*bias-detection*
 
 env:
+<<<<<<< HEAD
+  NODE_VERSION: 24.8.0
+  PYTHON_VERSION: 3.11
+  PNPM_VERSION: 10.28.0
+=======
   NODE_VERSION: 24.11.0
   PYTHON_VERSION: 3.11
   PNPM_VERSION: 10.28.2
+>>>>>>> origin/master
 
 jobs:
   security-scan:
@@ -305,7 +311,11 @@ jobs:
           uv python -m pytest test_bias_detection_service.py -v --cov=bias_detection_service --cov-report=xml
         env:
           ENV: ci
+<<<<<<< HEAD
+          FLASK_SECRET_KEY: test-flask-secret
+=======
           FLASK_SECRET_KEY: test-secret-key
+>>>>>>> origin/master
           JWT_SECRET_KEY: test-jwt-secret
 
       - name: Upload Python coverage
@@ -438,7 +448,11 @@ jobs:
         env:
           FLASK_ENV: testing
           ENV: ci
+<<<<<<< HEAD
+          FLASK_SECRET_KEY: test-flask-secret
+=======
           FLASK_SECRET_KEY: test-secret-key
+>>>>>>> origin/master
           JWT_SECRET_KEY: test-jwt-secret
 
       - name: Build application

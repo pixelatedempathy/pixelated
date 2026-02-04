@@ -1,10 +1,17 @@
 ---
 export const prerender = false
 
+<<<<<<< HEAD
+import DashboardLayout from '@/layouts/DashboardLayout.astro'
+import { LazyDashboardPage } from '@/components/journal-research/lazy'
+
+// @ts-expect-error Astro.props is injected at runtime
+=======
 import { LazyDashboardPage } from '@/components/journal-research/lazy'
 import DashboardLayout from '@/layouts/DashboardLayout.astro'
 
 // @ts-ignore Astro.props is injected at runtime
+>>>>>>> origin/master
 const { user } = Astro.props as { user: any }
 ---
 
@@ -14,3 +21,7 @@ const { user } = Astro.props as { user: any }
 >
   <LazyDashboardPage client:load />
 </DashboardLayout>
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master

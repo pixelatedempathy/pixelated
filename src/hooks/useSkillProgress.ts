@@ -32,6 +32,52 @@ export function useSkillProgress(
 
     setLoading(true)
     setError(null)
+<<<<<<< HEAD
+    ;(async () => {
+      try {
+        if (!session) {
+          if (mounted) {
+            setData([])
+          }
+          return
+        }
+
+        // If session directly contains skill progress, use it.
+        if ((session as any).skills && Array.isArray((session as any).skills)) {
+          const normalized = (session as any).skills.map((s: any) => ({
+            skill: String(s.skill || s.name || 'Unknown'),
+            score: Number(s.score ?? 0),
+            trend: s.trend === 'up' || s.trend === 'down' ? s.trend : 'stable',
+          })) as SkillProgress[]
+
+          if (mounted) {
+            setData(normalized)
+          }
+        } else {
+          // Placeholder: simulate fetching derived metrics from a local calculation or service
+          // In production, replace with an API call or a call to a context/service.
+          await new Promise((r) => setTimeout(r, 250))
+          const derived: SkillProgress[] = [
+            { skill: 'Active Listening', score: 0, trend: 'stable' },
+            { skill: 'Empathy', score: 0, trend: 'stable' },
+            { skill: 'Questioning', score: 0, trend: 'stable' },
+          ]
+
+          if (mounted) {
+            setData(derived)
+          }
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err instanceof Error ? err : new Error(String(err)))
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false)
+        }
+      }
+    })()
+=======
       ; (async () => {
         try {
           if (!session) {
@@ -87,6 +133,7 @@ export function useSkillProgress(
           }
         }
       })()
+>>>>>>> origin/master
 
     return () => {
       mounted = false

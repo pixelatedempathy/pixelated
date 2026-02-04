@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+// User Preferences Module for MetaAligner Objective Personalization
+// Allows contextual adaptation of objective mapping and weighting with user-defined or inferred settings.
+
+import { ObjectivePriority } from './context-objective-mapping'
+
+export interface UserPreferences {
+  preferredSupportStyle?: 'pragmatic' | 'empathic' | 'direct' | 'reflective'
+  responseFormality?: 'formal' | 'informal'
+  riskSensitivity?: 'low' | 'medium' | 'high'
+  customObjectiveWeights?: Partial<Record<string, number>>
+  disableObjectives?: string[]
+=======
 /**
  * User Preferences Module for MetaAligner Objective Personalization
  * 
@@ -69,10 +82,16 @@ export interface UserPreferences {
   }
 
   /** Additional custom preferences */
+>>>>>>> origin/master
   [key: string]: unknown
 }
 
 /**
+<<<<<<< HEAD
+ * Applies user preferences to weighting parameters for objectives.
+ * - Merges custom weights, disables, or boosts objectives as needed
+ * - Can be utilized by weighting strategies or the objective switcher
+=======
  * Default user preferences
  */
 export const DEFAULT_PREFERENCES: Required<Pick<UserPreferences,
@@ -268,12 +287,23 @@ export class UserPreferenceManager {
  * - Disabled objectives
  * - Prioritized objectives
  * - Risk sensitivity
+>>>>>>> origin/master
  */
 export function applyUserPreferences(
   objectives: ObjectivePriority[],
   prefs: UserPreferences,
 ): ObjectivePriority[] {
   let result = [...objectives]
+<<<<<<< HEAD
+  // Disable objectives if specified
+  if (prefs.disableObjectives && prefs.disableObjectives.length) {
+    result = result.filter((obj) => !prefs.disableObjectives!.includes(obj.key))
+  }
+  // Custom weights override
+  if (prefs.customObjectiveWeights) {
+    result = result.map((obj) =>
+      prefs.customObjectiveWeights![obj.key]
+=======
 
   // Step 1: Filter out disabled objectives
   if (prefs.disableObjectives && prefs.disableObjectives.length > 0) {
@@ -284,10 +314,17 @@ export function applyUserPreferences(
   if (prefs.customObjectiveWeights) {
     result = result.map((obj) =>
       prefs.customObjectiveWeights![obj.key] !== undefined
+>>>>>>> origin/master
         ? { ...obj, weight: prefs.customObjectiveWeights![obj.key]! }
         : obj,
     )
   }
+<<<<<<< HEAD
+  // Example: preference-driven boost (e.g., empathy for empathic style)
+  if (prefs.preferredSupportStyle === 'empathic') {
+    result = result.map((obj) =>
+      obj.key === 'empathy'
+=======
 
   // Step 3: Apply support style adjustments
   if (prefs.preferredSupportStyle) {
@@ -432,10 +469,21 @@ function applyInteractionPreferenceAdjustments(
   if (preferences.preferStepByStep) {
     result = result.map((obj) =>
       obj.key === 'clarity'
+>>>>>>> origin/master
         ? { ...obj, weight: Math.min(obj.weight * 1.15, 1) }
         : obj,
     )
   }
+<<<<<<< HEAD
+  // Normalize weights to sum=1
+  const sum = result.reduce((acc, obj) => acc + obj.weight, 0) || 1
+  result = result.map((obj) => ({
+    ...obj,
+    weight: Number((obj.weight / sum).toFixed(4)),
+  }))
+  return result
+}
+=======
 
   // Boost informativeness if user prefers examples
   if (preferences.preferExamples) {
@@ -480,3 +528,4 @@ function normalizeWeights(objectives: ObjectivePriority[]): ObjectivePriority[] 
  * Create a default preference manager instance
  */
 export const defaultPreferenceManager = new UserPreferenceManager()
+>>>>>>> origin/master

@@ -172,6 +172,8 @@ export class BiasMetricsCollector {
         include_details: options?.include_details || false,
         aggregation_type: options?.aggregation_type || 'hourly',
       })
+<<<<<<< HEAD
+=======
 
       // Map Python service response to expected TypeScript structure
       return {
@@ -213,6 +215,7 @@ export class BiasMetricsCollector {
           cpu_usage: 0,
         },
       }
+>>>>>>> origin/master
     } catch (error: unknown) {
       logger.warn('Failed to get metrics from Python service, using fallback', {
         error,

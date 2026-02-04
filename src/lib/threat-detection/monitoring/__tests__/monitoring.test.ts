@@ -45,8 +45,11 @@ describe('Enhanced Monitoring Service', () => {
       hgetall: vi.fn(),
       hdel: vi.fn(),
       hincrby: vi.fn(),
+<<<<<<< HEAD
+=======
       hGetAll: vi.fn(),
       hIncrBy: vi.fn(),
+>>>>>>> origin/master
       lpush: vi.fn(),
       lrange: vi.fn(),
       rpop: vi.fn(),
@@ -66,6 +69,10 @@ describe('Enhanced Monitoring Service', () => {
       generateInsights: vi.fn(),
     }
 
+<<<<<<< HEAD
+    service = new EnhancedMonitoringService(
+      mockRedis,
+=======
     const config = {
       enabled: true,
       aiInsightsEnabled: true,
@@ -79,6 +86,7 @@ describe('Enhanced Monitoring Service', () => {
       config,
       mockRedis,
       { db: () => ({ collection: () => ({ countDocuments: vi.fn(), find: () => ({ sort: () => ({ limit: () => ({ toArray: () => [] }) }), toArray: () => [] }), findOne: vi.fn(), insertOne: vi.fn(), insertMany: vi.fn(), updateOne: vi.fn() }) }) } as any, // mockMongo
+>>>>>>> origin/master
       mockOrchestrator,
       mockAIService,
     )
@@ -101,6 +109,13 @@ describe('Enhanced Monitoring Service', () => {
 
     it('should use default configuration when none provided', () => {
       const defaultService = new EnhancedMonitoringService(
+<<<<<<< HEAD
+        mockRedis,
+        mockOrchestrator,
+        mockAIService,
+      )
+      expect(defaultService.config).toEqual({
+=======
         {},
         mockRedis,
         { db: () => ({ collection: () => ({ countDocuments: vi.fn(), find: () => ({ sort: () => ({ limit: () => ({ toArray: () => [] }) }), toArray: () => [] }), findOne: vi.fn(), insertOne: vi.fn(), insertMany: vi.fn() }) }) } as any, // mockMongo
@@ -113,6 +128,7 @@ describe('Enhanced Monitoring Service', () => {
       // "this.config = config".
       // I need to update implementation to default config.
       expect(defaultService.config).toEqual(expect.objectContaining({
+>>>>>>> origin/master
         enabled: true,
         alertThresholds: {
           critical: 0.9,
@@ -130,7 +146,11 @@ describe('Enhanced Monitoring Service', () => {
         maxAlertHistory: 1000,
         metricsRetention: 86400000, // 24 hours
         enableRealTimeAlerting: true,
+<<<<<<< HEAD
+      })
+=======
       }))
+>>>>>>> origin/master
     })
 
     it('should use custom configuration when provided', () => {
@@ -153,6 +173,14 @@ describe('Enhanced Monitoring Service', () => {
       }
 
       const customService = new EnhancedMonitoringService(
+<<<<<<< HEAD
+        mockRedis,
+        mockOrchestrator,
+        mockAIService,
+        customConfig,
+      )
+      expect(customService.config).toEqual(customConfig)
+=======
         customConfig as any,
         mockRedis,
         { db: () => ({}) } as any,
@@ -160,6 +188,7 @@ describe('Enhanced Monitoring Service', () => {
         mockAIService,
       )
       expect(customService.config).toEqual(expect.objectContaining(customConfig))
+>>>>>>> origin/master
     })
   })
 
@@ -184,16 +213,26 @@ describe('Enhanced Monitoring Service', () => {
       const alert = await service.createAlert(alertData)
 
       expect(alert).toBeDefined()
+<<<<<<< HEAD
+      expect(alert.id).toBe('alert_1')
+=======
       expect(alert.id).toBeDefined()
+>>>>>>> origin/master
       expect(alert.title).toBe(alertData.title)
       expect(alert.severity).toBe(alertData.severity)
       expect(alert.status).toBe('active')
       expect(alert.createdAt).toBeDefined()
       expect(mockRedis.set).toHaveBeenCalledWith(
+<<<<<<< HEAD
+        `alert:alert_1`,
+        expect.any(String),
+        expect.any(Number),
+=======
         expect.stringMatching(/^alert:/),
         expect.any(String),
         'EX',
         86400
+>>>>>>> origin/master
       )
     })
 
@@ -403,12 +442,19 @@ describe('Enhanced Monitoring Service', () => {
           rate_limiting: 60,
           behavioral_analysis: 50,
           threat_intelligence: 40,
+<<<<<<< HEAD
+=======
           system_monitoring: 50,
+>>>>>>> origin/master
         },
         avgResolutionTime: 3600000,
       }
 
+<<<<<<< HEAD
+      mockRedis.hgetall.mockResolvedValue({
+=======
       mockRedis.hGetAll = vi.fn().mockResolvedValue({
+>>>>>>> origin/master
         total: '150',
         active: '45',
         resolved: '105',
@@ -419,8 +465,11 @@ describe('Enhanced Monitoring Service', () => {
         rate_limiting: '60',
         behavioral_analysis: '50',
         threat_intelligence: '40',
+<<<<<<< HEAD
+=======
         system_monitoring: '50',
         avgResolutionTime: '3600000',
+>>>>>>> origin/master
       })
 
       const stats = await getAlertStatistics(mockRedis)
@@ -478,8 +527,12 @@ describe('Enhanced Monitoring Service', () => {
       expect(mockRedis.set).toHaveBeenCalledWith(
         `metric:response_time:${Date.now()}`,
         expect.any(String),
+<<<<<<< HEAD
+        expect.any(Number),
+=======
         'EX',
         86400
+>>>>>>> origin/master
       )
     })
 
@@ -552,11 +605,19 @@ describe('Enhanced Monitoring Service', () => {
         }, // Anomaly
       ]
 
+<<<<<<< HEAD
+      mockAIService.predictAnomaly.mockResolvedValue({
+        isAnomaly: true,
+        confidence: 0.9,
+        severity: 'high',
+      })
+=======
       mockAIService.predictAnomaly.mockResolvedValue([
         { isAnomaly: false, confidence: 0.1, severity: 'low' },
         { isAnomaly: false, confidence: 0.1, severity: 'low' },
         { isAnomaly: true, confidence: 0.9, severity: 'high' }
       ])
+>>>>>>> origin/master
 
       const anomalies = await detectMetricAnomalies(metrics, mockAIService)
 
@@ -584,6 +645,9 @@ describe('Enhanced Monitoring Service', () => {
         },
       }
 
+<<<<<<< HEAD
+      mockRedis.hgetall.mockResolvedValue(JSON.stringify(performanceMetrics))
+=======
       mockRedis.hGetAll = vi.fn().mockResolvedValue({
         ...performanceMetrics.system,
         ...performanceMetrics.application,
@@ -605,6 +669,7 @@ describe('Enhanced Monitoring Service', () => {
         queryTime: '50',
         cacheHitRate: '0.85'
       }))
+>>>>>>> origin/master
 
       const result = await getPerformanceMetrics(mockRedis)
 
@@ -790,7 +855,11 @@ describe('Enhanced Monitoring Service', () => {
       }
 
       // Simulate timeout by not resolving AI service promise
+<<<<<<< HEAD
+      mockAIService.generateInsights.mockReturnValue(new Promise(() => {}))
+=======
       mockAIService.generateInsights.mockReturnValue(new Promise(() => { }))
+>>>>>>> origin/master
 
       const result = await service.performRealTimeMonitoring(monitoringData)
 
@@ -810,7 +879,11 @@ describe('Enhanced Monitoring Service', () => {
         source: 'test',
       }
 
+<<<<<<< HEAD
+      mockRedis.incr.mockRejectedValue(new Error('Redis connection failed'))
+=======
       mockRedis.set.mockRejectedValue(new Error('Redis connection failed'))
+>>>>>>> origin/master
 
       const alert = await service.createAlert(alertData)
 

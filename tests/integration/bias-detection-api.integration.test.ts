@@ -467,13 +467,17 @@ describe('Bias Detection API Integration Tests', () => {
   })
 
   describe('POST /api/bias-detection/analyze', () => {
+<<<<<<< HEAD
+=======
     let analyzeEndpoint: string
 
     beforeEach(() => {
       analyzeEndpoint = `${testServer.baseUrl}/api/bias-detection/analyze`
     })
 
+>>>>>>> origin/master
     it('should successfully analyze a valid session', async () => {
+      const analyzeEndpoint = `${testServer.baseUrl}/api/bias-detection/analyze`
       const requestBody = {
         session: testSession,
         options: {

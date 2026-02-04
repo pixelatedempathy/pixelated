@@ -2,9 +2,13 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "commonjs",
+<<<<<<< HEAD
+    "lib": ["ES2022"],
+=======
     "lib": [
       "ES2022"
     ],
+>>>>>>> origin/master
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -12,8 +16,13 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+<<<<<<< HEAD
+    "declaration": true,
+    "declarationMap": true,
+=======
     "declaration": false,
     "declarationMap": false,
+>>>>>>> origin/master
     "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": true,
@@ -21,6 +30,28 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+<<<<<<< HEAD
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@/controllers/*": ["controllers/*"],
+      "@/models/*": ["models/*"],
+      "@/services/*": ["services/*"],
+      "@/middleware/*": ["middleware/*"],
+      "@/routes/*": ["routes/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"],
+      "@/config/*": ["config/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
+}
+=======
     "exactOptionalPropertyTypes": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
@@ -64,3 +95,4 @@
     "tests"
   ]
 }
+>>>>>>> origin/master

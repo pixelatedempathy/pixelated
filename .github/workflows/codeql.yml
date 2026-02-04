@@ -15,9 +15,15 @@ on:
     - cron: "0 2 * * 1"
 
 env:
+<<<<<<< HEAD
+  NODE_VERSION: 24.8.0
+  PYTHON_VERSION: 3.11
+  PNPM_VERSION: 10.28.0
+=======
   NODE_VERSION: 24.11.0
   PYTHON_VERSION: 3.11
   PNPM_VERSION: 10.28.2
+>>>>>>> origin/master
 
 jobs:
   analyze:
@@ -145,6 +151,11 @@ jobs:
           category: "/language:${{ matrix.language }}"
           # Upload SARIF file to GitHub Security tab
           upload: true
+<<<<<<< HEAD
+          # Add source location prefix for better error reporting
+          add-snippets: true
+=======
+>>>>>>> origin/master
           # Configure output format
           output: sarif-latest
           # Fail the workflow if critical vulnerabilities are found
