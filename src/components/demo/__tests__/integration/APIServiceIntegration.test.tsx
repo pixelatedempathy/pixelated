@@ -17,7 +17,16 @@ const safeFetch = async (
   input: RequestInfo | URL,
   init?: RequestInit,
 ): Promise<Response> => {
+<<<<<<< HEAD
   const url = input.toString()
+=======
+  const url =
+    typeof input === 'string'
+      ? input
+      : input instanceof URL
+        ? input.toString()
+        : input.url
+>>>>>>> origin/master
   if (url.startsWith('http')) {
     const hostnameMatch = url.match(
       /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/im,
@@ -441,7 +450,7 @@ describe('APIService Integration Tests', () => {
       }
 
       // Mock WebSocket constructor
-      global.WebSocket = vi.fn(() => mockWebSocket) as any
+      global.WebSocket = vi.fn(function() { return mockWebSocket }) as any
 
       const ws = new WebSocket('ws://localhost:3000/pipeline-updates')
 
@@ -460,7 +469,7 @@ describe('APIService Integration Tests', () => {
         readyState: 1,
       }
 
-      global.WebSocket = vi.fn(() => mockWebSocket) as any
+      global.WebSocket = vi.fn(function() { return mockWebSocket }) as any
 
       const ws = new WebSocket('ws://localhost:3000/pipeline-updates')
 
@@ -468,7 +477,7 @@ describe('APIService Integration Tests', () => {
       const messageHandler = vi.fn()
       ws.addEventListener('message', messageHandler)
 
-      expect(ws.addEventListener).toHaveBeenCalledWith(
+      expect((ws as any).addEventListener).toHaveBeenCalledWith(
         'message',
         messageHandler,
       )

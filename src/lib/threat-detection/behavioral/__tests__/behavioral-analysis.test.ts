@@ -6,7 +6,11 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+<<<<<<< HEAD
 import { BehavioralAnalysisService } from '../behavioral-analysis-service'
+=======
+import { AdvancedBehavioralAnalysisService } from '../behavioral-analysis-service'
+>>>>>>> origin/master
 import {
   detectAnomalies,
   calculateBehavioralScore,
@@ -16,6 +20,7 @@ import {
   getBehavioralInsights,
 } from '../behavioral-utils'
 
+<<<<<<< HEAD
 vi.mock('../../logging/build-safe-logger')
 vi.mock('../../redis')
 vi.mock('../../response-orchestration')
@@ -51,11 +56,114 @@ describe('Behavioral Analysis Service', () => {
 
   afterEach(() => {
     vi.clearAllMocks()
+=======
+// Define mock instances to capture calls
+const mockRedisInstance = {
+  get: vi.fn(),
+  set: vi.fn(),
+  setex: vi.fn(),
+  del: vi.fn(),
+  exists: vi.fn(),
+  incr: vi.fn(),
+  expire: vi.fn(),
+  hget: vi.fn(),
+  hset: vi.fn(),
+  hgetall: vi.fn(),
+  hdel: vi.fn(),
+  hincrby: vi.fn(),
+  quit: vi.fn(),
+}
+
+const mockDb = {
+  collection: vi.fn(() => ({
+    replaceOne: vi.fn().mockResolvedValue({}),
+    insertMany: vi.fn().mockResolvedValue({}),
+    insertOne: vi.fn().mockResolvedValue({}),
+  })),
+}
+
+const mockMongoClientInstance = {
+  connect: vi.fn().mockResolvedValue(undefined),
+  db: vi.fn(() => mockDb),
+  close: vi.fn().mockResolvedValue(undefined),
+}
+
+// Mock external modules
+vi.mock('ioredis', () => {
+  return {
+    Redis: vi.fn(function() { return mockRedisInstance })
+  }
+})
+
+vi.mock('mongodb', () => {
+  return {
+    MongoClient: vi.fn(function() { return mockMongoClientInstance })
+  }
+})
+
+vi.mock('@tensorflow/tfjs', () => {
+  const mockModel = {
+    add: vi.fn(),
+    compile: vi.fn(),
+    predict: vi.fn(() => ({
+      dataSync: () => [0.1],
+      dispose: vi.fn()
+    })),
+  }
+
+  return {
+    sequential: vi.fn(() => mockModel),
+    layers: {
+      dense: vi.fn(),
+      dropout: vi.fn(),
+    },
+    train: {
+      adam: vi.fn(),
+    },
+    tidy: vi.fn((fn: any) => fn()),
+    tensor2d: vi.fn(),
+    mean: vi.fn(() => ({ dataSync: () => [0.1] })),
+    abs: vi.fn(),
+    sub: vi.fn(),
+  }
+})
+
+vi.mock('../../logging/build-safe-logger')
+vi.mock('../../response-orchestration')
+
+describe('Behavioral Analysis Service', () => {
+  let service: AdvancedBehavioralAnalysisService
+  let mockOrchestrator: any
+
+  const defaultConfig = {
+    redisUrl: 'redis://localhost:6379',
+    mongoUrl: 'mongodb://localhost:27017',
+    modelPath: '/tmp/model',
+    privacyConfig: {
+      epsilon: 1,
+      delta: 1e-5,
+      sensitivity: 1,
+      mechanism: 'laplace' as const
+    },
+    anomalyThresholds: {
+      temporal: 0.8,
+      spatial: 0.8,
+      sequential: 0.8,
+      frequency: 0.8
+    }
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+
+    service = new AdvancedBehavioralAnalysisService(defaultConfig)
+>>>>>>> origin/master
   })
 
   describe('Service Initialization', () => {
     it('should initialize with correct configuration', () => {
       expect(service).toBeDefined()
+<<<<<<< HEAD
       expect(service.config).toBeDefined()
       expect(service.redis).toBe(mockRedis)
       expect(service.orchestrator).toBe(mockOrchestrator)
@@ -96,12 +204,18 @@ describe('Behavioral Analysis Service', () => {
         customConfig,
       )
       expect(customService.config).toEqual(customConfig)
+=======
+      // Access private fields via type assertion for testing
+      expect((service as any).redis).toBeDefined() // Should use the mock
+      expect((service as any).mongoClient).toBeDefined()
+>>>>>>> origin/master
     })
   })
 
   describe('User Profile Management', () => {
     it('should create behavioral profile for new user', async () => {
       const userId = 'user_123'
+<<<<<<< HEAD
       const initialData = {
         loginFrequency: 5,
         sessionDuration: 1800,
@@ -366,6 +480,67 @@ describe('Behavioral Analysis Service', () => {
   })
 
   describe('Anomaly Detection', () => {
+=======
+      const events: any[] = [{
+        eventId: 'evt_1',
+        userId,
+        timestamp: new Date(),
+        eventType: 'login',
+        sourceIp: '127.0.0.1',
+        userAgent: 'test-agent',
+        requestMethod: 'POST',
+        endpoint: '/login',
+        responseCode: 200,
+        responseTime: 100,
+        payloadSize: 100,
+        sessionId: 'sess_1'
+      }]
+
+      mockRedisInstance.setex.mockResolvedValue('OK')
+
+      const profile = await service.createBehaviorProfile(userId, events)
+
+      expect(profile).toBeDefined()
+      expect(profile.userId).toBe(userId)
+      expect(mockRedisInstance.setex).toHaveBeenCalled()
+    })
+
+    it('should detect anomalies', async () => {
+      const userId = 'user_123'
+      const events: any[] = [{
+        eventId: 'evt_1',
+        userId,
+        timestamp: new Date(),
+        eventType: 'login',
+        sourceIp: '127.0.0.1',
+        userAgent: 'test-agent',
+        requestMethod: 'POST',
+        endpoint: '/login',
+        responseCode: 200,
+        responseTime: 100,
+        payloadSize: 100,
+        sessionId: 'sess_1'
+      }]
+
+      const profile: any = {
+        userId,
+        profileId: 'pid_1',
+        baselineMetrics: { timeOfDayThreshold: 0.5, geographicThreshold: 0.5 },
+        anomalyThresholds: defaultConfig.anomalyThresholds
+      }
+
+      // Mock internal methods to avoid complex logic if needed, but integration test implies testing logic
+      // We rely on mocks for IO.
+
+      const anomalies = await service.detectAnomalies(profile, events)
+      expect(anomalies).toBeDefined()
+      expect(Array.isArray(anomalies)).toBe(true)
+    })
+  })
+
+  // Keep the utility function tests as they were, they test pure functions
+  describe('Anomaly Detection Utilities', () => {
+>>>>>>> origin/master
     it('should detect unusual login patterns', () => {
       const userProfile = {
         userId: 'user_123',
@@ -391,6 +566,7 @@ describe('Behavioral Analysis Service', () => {
       expect(anomalies.some((a) => a.type === 'unusual_time')).toBe(true)
     })
 
+<<<<<<< HEAD
     it('should detect unusual request patterns', () => {
       const userProfile = {
         userId: 'user_123',
@@ -467,6 +643,8 @@ describe('Behavioral Analysis Service', () => {
   })
 
   describe('Behavioral Scoring', () => {
+=======
+>>>>>>> origin/master
     it('should calculate behavioral score correctly', () => {
       const userProfile = {
         userId: 'user_123',
@@ -494,6 +672,7 @@ describe('Behavioral Analysis Service', () => {
       expect(score).toBeLessThanOrEqual(1)
     })
 
+<<<<<<< HEAD
     it('should give higher score for suspicious behavior', () => {
       const userProfile = {
         userId: 'user_123',
@@ -533,6 +712,8 @@ describe('Behavioral Analysis Service', () => {
   })
 
   describe('Feature Extraction', () => {
+=======
+>>>>>>> origin/master
     it('should extract behavioral features from raw data', () => {
       const rawData = [
         {
@@ -552,10 +733,13 @@ describe('Behavioral Analysis Service', () => {
 
       expect(features).toBeDefined()
       expect(features.loginFrequency).toBe(1)
+<<<<<<< HEAD
       expect(features.logoutFrequency).toBe(1)
       expect(features.dataAccessFrequency).toBe(1)
       expect(features.uniqueIPs).toBe(1)
       expect(features.uniqueEndpoints).toBe(1)
+=======
+>>>>>>> origin/master
     })
 
     it('should normalize behavioral data', () => {
@@ -571,6 +755,7 @@ describe('Behavioral Analysis Service', () => {
 
       expect(normalized.loginFrequency).toBeGreaterThanOrEqual(0)
       expect(normalized.loginFrequency).toBeLessThanOrEqual(1)
+<<<<<<< HEAD
       expect(normalized.sessionDuration).toBeGreaterThanOrEqual(0)
       expect(normalized.sessionDuration).toBeLessThanOrEqual(1)
       expect(
@@ -579,6 +764,11 @@ describe('Behavioral Analysis Service', () => {
       expect(normalized.requestPatterns.avgRequestsPerHour).toBeLessThanOrEqual(
         1,
       )
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     })
 
     it('should detect pattern changes', () => {
@@ -587,6 +777,10 @@ describe('Behavioral Analysis Service', () => {
           timestamp: new Date(Date.now() - 86400000).toISOString(),
           action: 'login',
         },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         {
           timestamp: new Date(Date.now() - 86400000).toISOString(),
           action: 'data_access',
@@ -595,13 +789,23 @@ describe('Behavioral Analysis Service', () => {
           timestamp: new Date(Date.now() - 86400000).toISOString(),
           action: 'logout',
         },
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
       ]
 
       const currentData = [
         { timestamp: new Date().toISOString(), action: 'login' },
+<<<<<<< HEAD
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
+<<<<<<< HEAD
+        { timestamp: new Date().toISOString(), action: 'bulk_download' },
+=======
+>>>>>>> origin/master
       ]
 
       const changes = detectPatternChanges(historicalData, currentData)
@@ -614,14 +818,30 @@ describe('Behavioral Analysis Service', () => {
   })
 
   describe('Behavioral Insights', () => {
+=======
+      ]
+
+      const changes = detectPatternChanges(historicalData, currentData)
+      expect(changes).toBeDefined()
+    })
+
+>>>>>>> origin/master
     it('should generate behavioral insights', () => {
       const userProfile = {
         userId: 'user_123',
         loginFrequency: 5,
         sessionDuration: 1800,
         requestPatterns: {
+<<<<<<< HEAD
           endpoints: ['/api/data', '/api/admin'],
           methods: ['GET', 'POST'],
+<<<<<<< HEAD
+=======
+=======
+          endpoints: ['/api/data'],
+          methods: ['GET'],
+>>>>>>> origin/master
+>>>>>>> origin/master
           avgRequestsPerHour: 15,
         },
         timePatterns: {
@@ -631,6 +851,7 @@ describe('Behavioral Analysis Service', () => {
       }
 
       const insights = getBehavioralInsights(userProfile)
+<<<<<<< HEAD
 
       expect(insights).toBeDefined()
       expect(insights.activityLevel).toBeDefined()
@@ -834,6 +1055,10 @@ describe('Behavioral Analysis Service', () => {
 
       expect(analysis).toBeDefined()
       expect(endTime - startTime).toBeLessThan(5000) // Should complete in under 5 seconds
+=======
+      expect(insights).toBeDefined()
+      expect(insights.riskLevel).toBeDefined()
+>>>>>>> origin/master
     })
   })
 })

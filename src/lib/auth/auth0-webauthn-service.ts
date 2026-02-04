@@ -8,6 +8,10 @@ import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
 
 // Auth0 Configuration
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 const AUTH0_CONFIG = {
   domain: process.env.AUTH0_DOMAIN || '',
   clientId: process.env.AUTH0_CLIENT_ID || '',
@@ -15,6 +19,13 @@ const AUTH0_CONFIG = {
   managementClientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID || '',
   managementClientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || '',
 }
+<<<<<<< HEAD
+=======
+=======
+import { auth0Config } from './auth0-config'
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 // Initialize Auth0 clients
 let auth0Authentication: AuthenticationClient | null = null
@@ -24,12 +35,25 @@ let auth0Management: ManagementClient | null = null
  * Initialize Auth0 clients
  */
 function initializeAuth0Clients() {
+<<<<<<< HEAD
   if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
+=======
+<<<<<<< HEAD
+  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
+=======
+  if (!auth0Config.domain || !auth0Config.clientId || !auth0Config.clientSecret) {
+
+>>>>>>> origin/master
+>>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
 
   if (!auth0Authentication) {
     auth0Authentication = new AuthenticationClient({
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
       clientSecret: AUTH0_CONFIG.clientSecret
@@ -42,6 +66,23 @@ function initializeAuth0Clients() {
       clientId: AUTH0_CONFIG.managementClientId,
       clientSecret: AUTH0_CONFIG.managementClientSecret,
       audience: `https://${AUTH0_CONFIG.domain}/api/v2/`,
+<<<<<<< HEAD
+=======
+=======
+      domain: auth0Config.domain,
+      clientId: auth0Config.clientId,
+      clientSecret: auth0Config.clientSecret
+    })
+  }
+
+  if (!auth0Management && auth0Config.managementClientId && auth0Config.managementClientSecret) {
+    auth0Management = new ManagementClient({
+      domain: auth0Config.domain,
+      clientId: auth0Config.managementClientId,
+      clientSecret: auth0Config.managementClientSecret,
+      audience: `https://${auth0Config.domain}/api/v2/`,
+>>>>>>> origin/master
+>>>>>>> origin/master
       scope: 'read:users update:users create:users read:guardian_factors update:guardian_factors'
     })
   }
@@ -124,12 +165,28 @@ export class Auth0WebAuthnService {
   private readonly rpId: string
 
   constructor() {
+<<<<<<< HEAD
     if (!AUTH0_CONFIG.domain) {
+=======
+<<<<<<< HEAD
+    if (!AUTH0_CONFIG.domain) {
+=======
+    if (!auth0Config.domain) {
+>>>>>>> origin/master
+>>>>>>> origin/master
       console.warn('Auth0 is not properly configured')
     }
 
     // Use the domain as RP ID for WebAuthn
+<<<<<<< HEAD
     this.rpId = AUTH0_CONFIG.domain
+=======
+<<<<<<< HEAD
+    this.rpId = AUTH0_CONFIG.domain
+=======
+    this.rpId = auth0Config.domain
+>>>>>>> origin/master
+>>>>>>> origin/master
   }
 
   /**

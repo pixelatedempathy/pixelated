@@ -205,9 +205,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         // First test the pattern manually to debug
         const testPattern =
@@ -287,9 +299,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'How does cognitive behavioral therapy work at the neurological level?',
@@ -343,9 +367,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         await recognizer.recognizeEducationalContext(
           'How do panic attacks relate to anxiety?',
@@ -395,9 +431,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What does the latest neurobiology research say about depression mechanisms?',
@@ -438,9 +486,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What is depression?',
@@ -480,9 +540,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What is anxiety?',
@@ -499,7 +571,15 @@ describe('EducationalContextRecognizer', () => {
 
     describe('error handling', () => {
       it('should handle AI service errors gracefully', async () => {
+<<<<<<< HEAD
         ;(
+=======
+<<<<<<< HEAD
+        ;(
+=======
+        ; (
+>>>>>>> origin/master
+>>>>>>> origin/master
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockRejectedValue(new Error('AI service error'))
 
@@ -524,9 +604,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(malformedResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(malformedResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(malformedResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What is depression?',
@@ -563,9 +655,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What is depression?',
@@ -599,9 +703,21 @@ describe('EducationalContextRecognizer', () => {
           ],
         }
 
+<<<<<<< HEAD
         ;(
           mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
         ).mockResolvedValue(aiResponse)
+=======
+<<<<<<< HEAD
+        ;(
+          mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+        ).mockResolvedValue(aiResponse)
+=======
+          ; (
+            mockAIService.createChatCompletion as ReturnType<typeof vi.fn>
+          ).mockResolvedValue(aiResponse)
+>>>>>>> origin/master
+>>>>>>> origin/master
 
         const result = await recognizer.recognizeEducationalContext(
           'What is depression?',
@@ -647,10 +763,10 @@ describe('EducationalContextRecognizer', () => {
         ],
       }))
 
-      ;(mockAIService.createChatCompletion as ReturnType<typeof vi.fn>)
-        .mockResolvedValueOnce(aiResponses[0])
-        .mockResolvedValueOnce(aiResponses[1])
-        .mockResolvedValueOnce(aiResponses[2])
+        ; (mockAIService.createChatCompletion as ReturnType<typeof vi.fn>)
+          .mockResolvedValueOnce(aiResponses[0])
+          .mockResolvedValueOnce(aiResponses[1])
+          .mockResolvedValueOnce(aiResponses[2])
 
       const results = await recognizer.recognizeBatch(queries)
 
