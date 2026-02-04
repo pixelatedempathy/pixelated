@@ -19,6 +19,9 @@
   "include": ["./**/*.astro", "./**/*.tsx", "./**/*.ts"],
   "exclude": ["**/*.js", "**/*.astro.ts", "**/*.astro.js", "**/*.bak"]
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 }
 =======
 }

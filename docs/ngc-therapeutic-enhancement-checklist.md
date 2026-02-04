@@ -245,6 +245,11 @@ All identified gaps have been systematically addressed:
 **Phase 2: Data Augmentation (Week 2)**
 =======
 <<<<<<< HEAD
+- [ ] 1.3 Annotation & labeling (Kappa >0.85)
+
+**Phase 2: Data Augmentation (Week 2)**
+=======
+<<<<<<< HEAD
 - [x] 1.3 Annotation & labeling (Kappa > 0.85) - ✅ COMPLETE (Crisis κ=1.0, Emotion κ=0.78)
       **Phase 2: Data Augmentation (Week 2)**
 =======
@@ -252,6 +257,7 @@ All identified gaps have been systematically addressed:
 
 **Phase 2: Data Augmentation (Week 2)**
 >>>>>>> backup-manager-storage-loading-4805050224540675022
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 - [ ] 2.1 Paraphrasing & variations

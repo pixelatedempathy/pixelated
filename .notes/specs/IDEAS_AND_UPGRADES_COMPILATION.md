@@ -387,7 +387,11 @@
 <<<<<<< HEAD
 ## 📊 Summary Statistics
 =======
+<<<<<<< HEAD
+## 📊 Summary Statistics
+=======
 ## Summary Statistics
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ### By Priority Level
@@ -415,7 +419,11 @@
 <<<<<<< HEAD
 ## 🎯 Recommended Next Steps
 =======
+<<<<<<< HEAD
+## 🎯 Recommended Next Steps
+=======
 ## Recommended Next Steps
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 1. **Review High Priority Items** - Focus on current training beast needs

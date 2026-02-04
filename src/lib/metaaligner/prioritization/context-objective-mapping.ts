@@ -32,11 +32,14 @@ const contextObjectiveMap: Record<ContextType, ObjectivePriority[]> = {
     { key: ObjectiveKey.Empathy, priority: 2, weight: 0.8 },
     { key: ObjectiveKey.Correctness, priority: 3, weight: 0.7 },
     { key: ObjectiveKey.Professionalism, priority: 4, weight: 0.6 },
+<<<<<<< HEAD
+=======
 =======
     { key: ObjectiveKey.Empathy, priority: 2, weight: 0.2 },
     { key: ObjectiveKey.Correctness, priority: 3, weight: 0.1 },
     { key: ObjectiveKey.Professionalism, priority: 4, weight: 0.1 },
     { key: ObjectiveKey.Informativeness, priority: 5, weight: 0.0 },
+>>>>>>> origin/master
 >>>>>>> origin/master
   ],
   [ContextType.EDUCATIONAL]: [

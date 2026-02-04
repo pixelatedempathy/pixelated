@@ -4,7 +4,10 @@
  */
 export function createBuildSafeLogger(prefix: string = 'app') {
   const tag = `[build-safe-logger][${prefix}]`
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
   // Ensure we always return functions for each expected method. Tests may
   // mock this module and provide partial shapes; defensive defaults prevent
   // "logger.error is not a function" runtime errors.

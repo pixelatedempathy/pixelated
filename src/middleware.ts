@@ -19,7 +19,11 @@ function isProtectedRoute(request: Request) {
 <<<<<<< HEAD
     const {pathname} = url
 =======
+<<<<<<< HEAD
+    const {pathname} = url
+=======
     const { pathname } = url
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     // Allow public API routes (auth endpoints, health checks, etc.)
@@ -78,10 +82,14 @@ const projectAuthMiddleware = defineMiddleware(async (context, next) => {
 <<<<<<< HEAD
       ; (context.locals as any).user = authResult.request.user
 =======
+<<<<<<< HEAD
+      ; (context.locals as any).user = authResult.request.user
+=======
       context.locals.user = {
         ...authResult.request.user,
         emailVerified: authResult.request.user.emailVerified ?? false
       }
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   } catch (err) {

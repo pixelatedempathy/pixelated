@@ -12,13 +12,20 @@ describe('Business Intelligence Persistence Tests', () => {
 <<<<<<< HEAD
         const marketData: MarketData = {
 =======
+<<<<<<< HEAD
+        const marketData: MarketData = {
+=======
         const marketData: Omit<MarketData, 'id'> = {
+>>>>>>> origin/master
 >>>>>>> origin/master
             industry: 'test-industry-' + Date.now(),
             marketSize: 1000000,
             growthRate: 15.5,
             competitionLevel: 0.4,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             segments: [{ name: 'Test Segment', size: 500000, growth: 10.2 }],
             timestamp: new Date(),
             source: 'test-source'
@@ -28,6 +35,8 @@ describe('Business Intelligence Persistence Tests', () => {
 
         // Verify by retrieving
         const results = await dbService.getMarketData(marketData.industry)
+<<<<<<< HEAD
+=======
 =======
             entryBarriers: 5,
             customerAcquisitionCost: 50,
@@ -40,6 +49,7 @@ describe('Business Intelligence Persistence Tests', () => {
 
         // Verify by retrieving
         const results = await dbService.getMarketData(marketData.industry!)
+>>>>>>> origin/master
 >>>>>>> origin/master
         expect(results).toHaveLength(1)
         const result = results[0]
@@ -78,7 +88,12 @@ describe('Business Intelligence Persistence Tests', () => {
             marketShare: 0.12,
             createdAt: new Date()
 =======
+<<<<<<< HEAD
+            marketShare: 0.12,
+            createdAt: new Date()
+=======
             marketShare: 0.12
+>>>>>>> origin/master
 >>>>>>> origin/master
         }
 

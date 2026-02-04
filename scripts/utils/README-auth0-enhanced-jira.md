@@ -8,7 +8,11 @@ Make sure you have the following environment variables set:
 <<<<<<< HEAD
 - `JIRA_URL` - Your Jira instance URL (defaults to https://pixeldeck.atlassian.net)
 =======
+<<<<<<< HEAD
+- `JIRA_URL` - Your Jira instance URL (defaults to https://pixeldeck.atlassian.net)
+=======
 - `JIRA_URL` - Your Jira instance URL (defaults to https://ratchetaf.atlassian.net)
+>>>>>>> origin/master
 >>>>>>> origin/master
 - `JIRA_USERNAME` - Your Jira username/email
 - `JIRA_API_TOKEN` - Your Jira API token

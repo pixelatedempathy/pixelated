@@ -764,7 +764,10 @@ describe('Behavioral Analysis Service', () => {
       expect(normalized.requestPatterns.avgRequestsPerHour).toBeLessThanOrEqual(
         1,
       )
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
 
@@ -775,6 +778,9 @@ describe('Behavioral Analysis Service', () => {
           action: 'login',
         },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         {
           timestamp: new Date(Date.now() - 86400000).toISOString(),
           action: 'data_access',
@@ -783,7 +789,10 @@ describe('Behavioral Analysis Service', () => {
           timestamp: new Date(Date.now() - 86400000).toISOString(),
           action: 'logout',
         },
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
       ]
 
@@ -793,6 +802,10 @@ describe('Behavioral Analysis Service', () => {
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
         { timestamp: new Date().toISOString(), action: 'bulk_download' },
+<<<<<<< HEAD
+        { timestamp: new Date().toISOString(), action: 'bulk_download' },
+=======
+>>>>>>> origin/master
       ]
 
       const changes = detectPatternChanges(historicalData, currentData)
@@ -822,9 +835,12 @@ describe('Behavioral Analysis Service', () => {
 <<<<<<< HEAD
           endpoints: ['/api/data', '/api/admin'],
           methods: ['GET', 'POST'],
+<<<<<<< HEAD
+=======
 =======
           endpoints: ['/api/data'],
           methods: ['GET'],
+>>>>>>> origin/master
 >>>>>>> origin/master
           avgRequestsPerHour: 15,
         },

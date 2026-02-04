@@ -2,17 +2,23 @@
 // Grouped imports for better organization
 // Style imports
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import "@unocss/reset/tailwind.css";
 import "@/styles/main.css";
 import "@/styles/prose.css";
 import "@/styles/markdown.css";
 import "@/styles/page.css";
+<<<<<<< HEAD
+=======
 =======
 import '@unocss/reset/tailwind.css'
 import '@/styles/main.css'
 import '@/styles/prose.css'
 import '@/styles/markdown.css'
 import '@/styles/page.css'
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Astro components
@@ -25,9 +31,15 @@ import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/mizu/Footer.astro";
 import Sidebar from "@/components/layout/Sidebar.astro";
 =======
+<<<<<<< HEAD
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/mizu/Footer.astro";
+import Sidebar from "@/components/layout/Sidebar.astro";
+=======
 import Header from '@/components/layout/Header.astro'
 import Footer from '@/components/mizu/Footer.astro'
 import Sidebar from '@/components/layout/Sidebar.astro'
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Define a more robust props interface with JSDoc comments
@@ -61,21 +73,29 @@ const {
   showUserMenu = true,
   showSocialLinks = true,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   contentClassName = "",
 } = Astro.props;
 
 const { cspNonce } = Astro.locals;
+<<<<<<< HEAD
+=======
 =======
   contentClassName = '',
 } = Astro.props
 
 const { cspNonce } = Astro.locals
 >>>>>>> origin/master
+>>>>>>> origin/master
 ---
 
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <Head {title} {description} ogImage={metaImage} />
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
   <meta name="color-scheme" content="dark" />
@@ -93,6 +113,7 @@ const { cspNonce } = Astro.locals
   <script src="/js/polyfill-detector.js" is:inline></script>
   <script src="/js/module-loader.js" defer is:inline></script>
   <script src="/js/background-loader.js" defer is:inline></script>
+>>>>>>> origin/master
 >>>>>>> origin/master
   <style is:global>
     /* Mizu theme dark colors - default for all pages */
@@ -208,17 +229,23 @@ const { cspNonce } = Astro.locals
       // Listen for OS theme changes
       window
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (event) => {
           const theme = getTheme();
           if (theme === "system") {
             applyTheme("system");
+<<<<<<< HEAD
+=======
 =======
         .matchMedia('(prefers-color-scheme: dark)')
         .addEventListener('change', (event) => {
           const theme = getTheme()
           if (theme === 'system') {
             applyTheme('system')
+>>>>>>> origin/master
 >>>>>>> origin/master
           }
         });

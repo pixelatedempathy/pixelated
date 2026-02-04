@@ -13,6 +13,9 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -23,6 +26,8 @@
       ],
       "~/*": [
         "src/*"
+<<<<<<< HEAD
+=======
 =======
     "paths": {
       "@/*": [
@@ -33,6 +38,7 @@
       ],
       "~/*": [
         "../src/*"
+>>>>>>> origin/master
 >>>>>>> origin/master
       ]
     },
@@ -77,7 +83,11 @@
 <<<<<<< HEAD
       "./src/types"
 =======
+<<<<<<< HEAD
+      "./src/types"
+=======
       "../src/types"
+>>>>>>> origin/master
 >>>>>>> origin/master
     ],
     "plugins": [
@@ -89,6 +99,9 @@
   },
   "include": [
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.astro",
@@ -135,6 +148,8 @@
     "src/**/*.spec.ts",
     "src/**/__tests__/**",
     "src/data/sample-cognitive-models.ts"
+<<<<<<< HEAD
+=======
 =======
     "../src/**/*.ts",
     "../src/**/*.tsx",
@@ -176,6 +191,7 @@
     "../src/**/*.spec.ts",
     "../src/**/__tests__/**",
     "../src/data/sample-cognitive-models.ts"
+>>>>>>> origin/master
 >>>>>>> origin/master
   ]
 }

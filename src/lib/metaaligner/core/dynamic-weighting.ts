@@ -10,7 +10,11 @@ import { getContextMapperService } from '../config/context-mapper-service'
 <<<<<<< HEAD
 import { ObjectiveId } from '../config/mapping-config'
 =======
+<<<<<<< HEAD
+import { ObjectiveId } from '../config/mapping-config'
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 
@@ -24,17 +28,23 @@ export interface DynamicWeightingConfig {
   blendingEnabled: boolean
   blendingAlpha: number // 0-1, how much new weights blend with previous (0 = no smoothing, 1 = full smoothing)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   
   // Crisis override
   crisisOverrideEnabled: boolean
   crisisOverrideThreshold: number // Confidence threshold for crisis override (0-1)
   
+<<<<<<< HEAD
+=======
 =======
 
   // Crisis override
   crisisOverrideEnabled: boolean
   crisisOverrideThreshold: number // Confidence threshold for crisis override (0-1)
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   // Hysteresis parameters
   hysteresisEnabled: boolean
@@ -43,7 +53,11 @@ export interface DynamicWeightingConfig {
 <<<<<<< HEAD
   
 =======
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   // Stability guards
   stabilityGuardEnabled: boolean
@@ -51,17 +65,23 @@ export interface DynamicWeightingConfig {
   oscillationDetectionWindow: number // Number of turns to check for oscillation
   oscillationThreshold: number // Number of direction changes to consider oscillation
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   
   // Performance
   enableCaching: boolean
   cacheTTLMs: number // Cache time-to-live in milliseconds
   
+<<<<<<< HEAD
+=======
 =======
 
   // Performance
   enableCaching: boolean
   cacheTTLMs: number // Cache time-to-live in milliseconds
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   // Normalization
   normalizeWeights: boolean
@@ -108,6 +128,9 @@ export const DEFAULT_DYNAMIC_WEIGHTING_CONFIG: DynamicWeightingConfig = {
   blendingEnabled: true,
   blendingAlpha: 0.3, // 30% smoothing - responsive but stable
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   
   crisisOverrideEnabled: true,
   crisisOverrideThreshold: 0.8,
@@ -116,6 +139,8 @@ export const DEFAULT_DYNAMIC_WEIGHTING_CONFIG: DynamicWeightingConfig = {
   hysteresisThreshold: 0.05, // 5% minimum change
   hysteresisWindow: 3,
   
+<<<<<<< HEAD
+=======
 =======
 
   crisisOverrideEnabled: true,
@@ -126,20 +151,27 @@ export const DEFAULT_DYNAMIC_WEIGHTING_CONFIG: DynamicWeightingConfig = {
   hysteresisWindow: 3,
 
 >>>>>>> origin/master
+>>>>>>> origin/master
   stabilityGuardEnabled: true,
   maxWeightChangePerTurn: 0.2, // Max 20% change per turn
   oscillationDetectionWindow: 5,
   oscillationThreshold: 3, // 3+ direction changes = oscillation
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   
   enableCaching: true,
   cacheTTLMs: 100, // 100ms cache
   
+<<<<<<< HEAD
+=======
 =======
 
   enableCaching: true,
   cacheTTLMs: 100, // 100ms cache
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   normalizeWeights: true,
 }
@@ -157,15 +189,21 @@ export class DynamicWeightingEngine {
     timestamp: number
   } = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     weights: null,
     context: null,
     timestamp: 0,
   }
+<<<<<<< HEAD
+=======
 =======
       weights: null,
       context: null,
       timestamp: 0,
     }
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   constructor(config?: Partial<DynamicWeightingConfig>) {
@@ -190,9 +228,15 @@ export class DynamicWeightingEngine {
       reasoning.push(`Cached weights used (${updateTime.toFixed(2)}ms)`)
       
 =======
+<<<<<<< HEAD
+      
+      reasoning.push(`Cached weights used (${updateTime.toFixed(2)}ms)`)
+      
+=======
 
       reasoning.push(`Cached weights used (${updateTime.toFixed(2)}ms)`)
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       return {
         weights: cachedWeights,
@@ -215,7 +259,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
     
 =======
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     let newWeights = { ...mappingResult.weights }
     reasoning.push(...mappingResult.reasoning)
@@ -233,6 +281,9 @@ export class DynamicWeightingEngine {
       )
       crisisOverrideApplied = true
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       
       // Update cache and history
       this.updateCache(context.detectedContext, newWeights)
@@ -240,6 +291,8 @@ export class DynamicWeightingEngine {
       
       const updateTime = performance.now() - startTime
       
+<<<<<<< HEAD
+=======
 =======
 
       // Update cache and history
@@ -249,6 +302,7 @@ export class DynamicWeightingEngine {
       const updateTime = performance.now() - startTime
 
 >>>>>>> origin/master
+>>>>>>> origin/master
       logger.info('Crisis override applied', {
         updateTimeMs: updateTime,
         confidence: context.confidence,
@@ -256,7 +310,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
       
 =======
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       return {
         weights: newWeights,
@@ -276,7 +334,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
     
 =======
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     let blendingApplied = false
     let hysteresisApplied = false
@@ -298,7 +360,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
       
 =======
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       if (oscillationDetected) {
         // Increase smoothing to dampen oscillation
@@ -320,7 +386,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
       
 =======
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       if (!this.weightsEqual(guardedWeights, newWeights)) {
         newWeights = guardedWeights
@@ -340,7 +410,11 @@ export class DynamicWeightingEngine {
 <<<<<<< HEAD
       
 =======
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       if (!changeSignificant) {
         newWeights = previousWeights
@@ -476,11 +550,17 @@ export class DynamicWeightingEngine {
       return false
     }
 =======
+<<<<<<< HEAD
+    if (this.weightHistory.length < window) {
+      return false
+    }
+=======
     // We remove the early return here because we want to update trackers cumulatively
     // even before the window is full.
     // if (this.weightHistory.length < window) {
     //   return false
     // }
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     // Track direction changes for each objective

@@ -73,8 +73,14 @@ const redisConfig = {
 - **Kubernetes**: Production deployment
 - **Helm Charts**: Kubernetes package management
 =======
+<<<<<<< HEAD
+- **Docker Compose**: Local development and testing
+- **Kubernetes**: Production deployment
+- **Helm Charts**: Kubernetes package management
+=======
 - **Docker Compose**: Primary deployment method (Development, Staging, Production)
 - **Kubernetes**: Secondary/Future infrastructure (Helm charts in `/helm`)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ### Cloud Providers

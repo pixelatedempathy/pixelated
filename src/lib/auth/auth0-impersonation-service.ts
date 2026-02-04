@@ -10,14 +10,20 @@ import { auth0UserService } from '../../services/auth0.service'
 
 // Auth0 Configuration
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 const AUTH0_CONFIG = {
   domain: process.env.AUTH0_DOMAIN || '',
   managementClientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID || '',
   managementClientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || '',
 }
+<<<<<<< HEAD
+=======
 =======
 import { auth0Config } from './auth0-config'
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Initialize Auth0 management client
@@ -30,8 +36,12 @@ function initializeAuth0Management() {
 <<<<<<< HEAD
   if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.managementClientId || !AUTH0_CONFIG.managementClientSecret) {
 =======
+<<<<<<< HEAD
+  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.managementClientId || !AUTH0_CONFIG.managementClientSecret) {
+=======
   if (!auth0Config.domain || !auth0Config.managementClientId || !auth0Config.managementClientSecret) {
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
@@ -39,15 +49,21 @@ function initializeAuth0Management() {
   if (!auth0Management) {
     auth0Management = new ManagementClient({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.managementClientId,
       clientSecret: AUTH0_CONFIG.managementClientSecret,
       audience: `https://${AUTH0_CONFIG.domain}/api/v2/`,
+<<<<<<< HEAD
+=======
 =======
       domain: auth0Config.domain,
       clientId: auth0Config.managementClientId,
       clientSecret: auth0Config.managementClientSecret,
       audience: `https://${auth0Config.domain}/api/v2/`,
+>>>>>>> origin/master
 >>>>>>> origin/master
       scope: 'read:users update:users create:users impersonate:users'
     })
@@ -103,7 +119,11 @@ export class Auth0ImpersonationService {
 <<<<<<< HEAD
     if (!AUTH0_CONFIG.domain) {
 =======
+<<<<<<< HEAD
+    if (!AUTH0_CONFIG.domain) {
+=======
     if (!auth0Config.domain) {
+>>>>>>> origin/master
 >>>>>>> origin/master
       console.warn('Auth0 is not properly configured')
     }

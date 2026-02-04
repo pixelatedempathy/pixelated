@@ -5,9 +5,13 @@
 <<<<<<< HEAD
     "lib": ["ES2022"],
 =======
+<<<<<<< HEAD
+    "lib": ["ES2022"],
+=======
     "lib": [
       "ES2022"
     ],
+>>>>>>> origin/master
 >>>>>>> origin/master
     "outDir": "./dist",
     "rootDir": "./src",
@@ -20,8 +24,13 @@
     "declaration": true,
     "declarationMap": true,
 =======
+<<<<<<< HEAD
+    "declaration": true,
+    "declarationMap": true,
+=======
     "declaration": false,
     "declarationMap": false,
+>>>>>>> origin/master
 >>>>>>> origin/master
     "sourceMap": true,
     "removeComments": true,
@@ -31,6 +40,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -51,6 +63,8 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "tests"]
 }
+<<<<<<< HEAD
+=======
 =======
     "exactOptionalPropertyTypes": false,
     "noImplicitOverride": true,
@@ -95,4 +109,5 @@
     "tests"
   ]
 }
+>>>>>>> origin/master
 >>>>>>> origin/master

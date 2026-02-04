@@ -381,16 +381,22 @@ const trainingMetrics = {
     const elements = document.querySelectorAll('.animation-delay-1000, .animation-delay-1500, .animation-delay-2000, .animation-delay-3000')
     elements.forEach((el, index) => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       if (el.classList.contains('animation-delay-1000')) el.style.animationDelay = '1s'
       if (el.classList.contains('animation-delay-1500')) el.style.animationDelay = '1.5s'
       if (el.classList.contains('animation-delay-2000')) el.style.animationDelay = '2s'
       if (el.classList.contains('animation-delay-3000')) el.style.animationDelay = '3s'
+<<<<<<< HEAD
+=======
 =======
       const element = el as HTMLElement
       if (element.classList.contains('animation-delay-1000')) element.style.animationDelay = '1s'
       if (element.classList.contains('animation-delay-1500')) element.style.animationDelay = '1.5s'
       if (element.classList.contains('animation-delay-2000')) element.style.animationDelay = '2s'
       if (element.classList.contains('animation-delay-3000')) element.style.animationDelay = '3s'
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
   })
@@ -399,7 +405,11 @@ const trainingMetrics = {
 <<<<<<< HEAD
 <script>
 =======
+<<<<<<< HEAD
+<script>
+=======
 <script define:vars={{ nightmareScenarios }}>
+>>>>>>> origin/master
 >>>>>>> origin/master
   // Demo JavaScript - Interactive Simulation
   let currentScenario = null
@@ -451,6 +461,9 @@ const trainingMetrics = {
 
   // Start Demo
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   startDemoBtn.addEventListener('click', () => {
     welcomeModal.style.display = 'flex'
   })
@@ -470,6 +483,8 @@ const trainingMetrics = {
     alert('Training session declined. Redirecting to safety resources...')
     window.location.href = '/'
   })
+<<<<<<< HEAD
+=======
 =======
   if (startDemoBtn) {
     startDemoBtn.addEventListener('click', () => {
@@ -497,6 +512,7 @@ const trainingMetrics = {
     })
   }
 >>>>>>> origin/master
+>>>>>>> origin/master
 
   // Scenario Selection
   scenarioItems.forEach(item => {
@@ -505,7 +521,11 @@ const trainingMetrics = {
 <<<<<<< HEAD
       loadScenario(scenarioId)
 =======
+<<<<<<< HEAD
+      loadScenario(scenarioId)
+=======
       if (scenarioId) loadScenario(scenarioId)
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
   })
@@ -662,8 +682,13 @@ const trainingMetrics = {
       bar.style.width = `${current}%`
       value.textContent = `${Math.round(current)}%`
 =======
+<<<<<<< HEAD
+      bar.style.width = `${current}%`
+      value.textContent = `${Math.round(current)}%`
+=======
       if (bar) bar.style.width = `${current}%`
       if (value) value.textContent = `${Math.round(current)}%`
+>>>>>>> origin/master
 >>>>>>> origin/master
     }, 100)
   }
@@ -688,6 +713,9 @@ const trainingMetrics = {
   const sendResponseBtn = document.getElementById('sendResponseBtn')
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   sendResponseBtn.addEventListener('click', () => {
     const response = counselorInput.value.trim()
     if (!response || !currentScenario) return
@@ -705,6 +733,8 @@ const trainingMetrics = {
       }
     }, 1500)
   })
+<<<<<<< HEAD
+=======
 =======
   if (sendResponseBtn) {
     sendResponseBtn.addEventListener('click', () => {
@@ -725,6 +755,7 @@ const trainingMetrics = {
       }, 1500)
     })
   }
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   // Add Counselor Response
@@ -773,10 +804,14 @@ const trainingMetrics = {
 <<<<<<< HEAD
     clearInterval(sessionTimer)
 =======
+<<<<<<< HEAD
+    clearInterval(sessionTimer)
+=======
     if (sessionTimer !== null) {
       clearInterval(sessionTimer)
       sessionTimer = null
     }
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     // Show completion modal
@@ -788,6 +823,9 @@ const trainingMetrics = {
 
   // Emergency Button
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   document.getElementById('emergencyBtn').addEventListener('click', () => {
     const alertPanel = document.getElementById('alertPanel')
     const alertText = document.getElementById('alertText')
@@ -831,6 +869,8 @@ const trainingMetrics = {
     counselorInput.style.height = 'auto'
     counselorInput.style.height = counselorInput.scrollHeight + 'px'
   })
+<<<<<<< HEAD
+=======
 =======
   const emergencyBtn = document.getElementById('emergencyBtn')
   if (emergencyBtn) {
@@ -891,6 +931,7 @@ const trainingMetrics = {
       counselorInput.style.height = counselorInput.scrollHeight + 'px'
     })
   }
+>>>>>>> origin/master
 >>>>>>> origin/master
 </script>
 

@@ -484,7 +484,11 @@ export class RealBusinessIntelligenceService {
 <<<<<<< HEAD
     const industryFeaturesList = industryFeatures[industry.toLowerCase()] || []
 =======
+<<<<<<< HEAD
+    const industryFeaturesList = industryFeatures[industry.toLowerCase()] || []
+=======
     const industryFeaturesList = industryFeatures[_industry.toLowerCase()] || []
+>>>>>>> origin/master
 >>>>>>> origin/master
     industryFeaturesList.forEach((feature) => {
       features[feature] = 0.7 + Math.random() * 0.3

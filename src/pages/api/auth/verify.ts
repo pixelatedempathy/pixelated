@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import type { APIContext } from 'astro'
 import { createBuildSafeLogger } from '../../../lib/logging/build-safe-logger'
 import { AuditEventType, createAuditLog } from '../../../lib/audit'
@@ -96,6 +99,8 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
       const user = result.data.user as any
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
       await logSecurityEvent(SecurityEventType.AUTHENTICATION_SUCCESS, user.id, {
         action: 'user_verified',
@@ -103,6 +108,7 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
         clientInfo
       })
 
+>>>>>>> origin/master
 >>>>>>> origin/master
       await createAuditLog(
         AuditEventType.SECURITY,

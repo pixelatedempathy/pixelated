@@ -9,7 +9,11 @@ import * as tf from '@tensorflow/tfjs'
 <<<<<<< HEAD
 import crypto from 'crypto'
 =======
+<<<<<<< HEAD
+import crypto from 'crypto'
+=======
 import * as crypto from 'crypto'
+>>>>>>> origin/master
 >>>>>>> origin/master
 import { EventEmitter } from 'events'
 
@@ -100,7 +104,12 @@ export class AdvancedBehavioralAnalysisService
   implements BehavioralAnalysisService
 {
 =======
+<<<<<<< HEAD
+  implements BehavioralAnalysisService
+{
+=======
   implements BehavioralAnalysisService {
+>>>>>>> origin/master
 >>>>>>> origin/master
   private redis: Redis
   private mongoClient: MongoClient
@@ -123,9 +132,13 @@ export class AdvancedBehavioralAnalysisService
 <<<<<<< HEAD
     this.initializeServices()
 =======
+<<<<<<< HEAD
+    this.initializeServices()
+=======
     this.initializeServices().catch((error) => {
       this.emit('error', error)
     })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -466,6 +479,15 @@ export class AdvancedBehavioralAnalysisService
   }
 
 <<<<<<< HEAD
+  private async detectSpatialAnomalies(
+    profile: BehaviorProfile,
+    events: SecurityEvent[],
+  ): Promise<Anomaly[]> {
+    const anomalies: Anomaly[] = []
+    const spatialFeatures = await this.extractSpatialFeatures(events)
+
+=======
+<<<<<<< HEAD
 =======
   private calculateTimeIntervals(timestamps: number[]): number[] {
     if (timestamps.length < 2) return []
@@ -595,6 +617,7 @@ export class AdvancedBehavioralAnalysisService
     const anomalies: Anomaly[] = []
     const spatialFeatures = await this.extractSpatialFeatures(events)
 
+>>>>>>> origin/master
     if (
       spatialFeatures.geographicSpread >
       profile.baselineMetrics.geographicThreshold
@@ -843,7 +866,11 @@ export class AdvancedBehavioralAnalysisService
 <<<<<<< HEAD
           data.length,
 =======
+<<<<<<< HEAD
+          data.length,
+=======
         data.length,
+>>>>>>> origin/master
 >>>>>>> origin/master
       )
 
@@ -1034,7 +1061,10 @@ interface BaselineMetrics {
   sequentialThreshold: number
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   deviceDiversityThreshold: number
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -1548,7 +1578,11 @@ class SequentialPatternMiner extends PatternMiner {
 <<<<<<< HEAD
       const uniqueItems = [...new Set(sequence)]
 =======
+<<<<<<< HEAD
+      const uniqueItems = [...new Set(sequence)]
+=======
       const uniqueItems = Array.from(new Set(sequence))
+>>>>>>> origin/master
 >>>>>>> origin/master
       for (const item of uniqueItems) {
         itemCounts[item] = (itemCounts[item] || 0) + 1

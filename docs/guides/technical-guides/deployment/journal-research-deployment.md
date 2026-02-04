@@ -29,7 +29,11 @@ This guide covers deployment of the Journal Research system, including both the 
 <<<<<<< HEAD
 - pnpm 10.28.0+
 =======
+<<<<<<< HEAD
+- pnpm 10.28.0+
+=======
 - pnpm 10.28.2+
+>>>>>>> origin/master
 >>>>>>> origin/master
 - 4GB RAM minimum
 - 5GB disk space

@@ -51,8 +51,13 @@ const documentSchema = new Schema<DocumentDocument>(
                 delete ret._id
                 delete ret.__v
 =======
+<<<<<<< HEAD
+                delete ret._id
+                delete ret.__v
+=======
                 delete (ret as any)._id
                 delete (ret as any).__v
+>>>>>>> origin/master
 >>>>>>> origin/master
                 return ret
             },

@@ -29,7 +29,11 @@ jobs:
 <<<<<<< HEAD
           version: 10.28.0
 =======
+<<<<<<< HEAD
+          version: 10.28.0
+=======
           version: 10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
           run_install: false
 
@@ -49,7 +53,11 @@ jobs:
 <<<<<<< HEAD
         run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_ENV
 =======
+<<<<<<< HEAD
+        run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_ENV
+=======
         run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_OUTPUT
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       - name: Check Docker Hub credentials
@@ -109,7 +117,11 @@ jobs:
 <<<<<<< HEAD
             pixelatedempathy/pixelated:build-${{ env.BUILD_TS }}
 =======
+<<<<<<< HEAD
+            pixelatedempathy/pixelated:build-${{ env.BUILD_TS }}
+=======
             pixelatedempathy/pixelated:build-${{ steps.buildts.outputs.BUILD_TS }}
+>>>>>>> origin/master
 >>>>>>> origin/master
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -129,5 +141,9 @@ jobs:
 <<<<<<< HEAD
           fi
 =======
+<<<<<<< HEAD
           fi
+=======
+          fi
+>>>>>>> origin/master
 >>>>>>> origin/master

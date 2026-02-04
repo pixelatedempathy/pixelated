@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useConversationMemory } from '../../hooks/useMemory'
 import { authClient } from '@/lib/auth-client'
@@ -601,6 +604,235 @@ export function TrainingSessionComponent() {
   );
 >>>>>>> origin/master
 
+  // Helper function to analyze bias
+  const analyzeBias = async (
+    sessionId: string,
+    conversation: ConversationEntry[],
+    therapistResponse: string,
+    userId: string,
+  ): Promise<BiasAnalysisResult | null> => {
+    const sessionPayload = {
+      session: {
+        sessionId,
+        timestamp: new Date().toISOString(),
+        participantDemographics: { userId },
+        scenario: 'therapist-training',
+        content: [
+          ...conversation,
+          { role: 'therapist' as const, message: therapistResponse },
+        ],
+        metadata: {},
+      },
+    }
+
+    try {
+      const res = await fetch('/api/bias-detection/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sessionPayload),
+      })
+
+      if (!res.ok) {
+        return null
+      }
+
+      const data = await res.json()
+      if (data?.success && data?.data) {
+        return data.data as BiasAnalysisResult
+      }
+
+      return null
+    } catch (err) {
+      console.error('Bias analysis failed:', err)
+      return null
+    }
+  }
+
+  // Helper function to generate AI response
+  const generateAIResponse = async (
+    conversation: ConversationEntry[],
+    therapistResponse: string,
+  ): Promise<string> => {
+    const payload = {
+      messages: [
+        ...conversation.map((entry) => ({
+          role: entry.role,
+          content: entry.message,
+        })),
+        { role: 'user', content: therapistResponse },
+      ],
+      model: 'mistralai/Mixtral-8x7B-Instruct-v0.2',
+      temperature: 0.7,
+      maxResponseTokens: 256,
+    }
+
+    try {
+      const res = await fetch('/api/ai/response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok) {
+        return 'Thank you for your response.'
+      }
+
+      const data = await res.json()
+      if (data?.content) {
+        return data.content
+      }
+
+      return 'Thank you for your response.'
+    } catch (err) {
+      console.error('AI response generation failed:', err)
+      return 'Thank you for your response.'
+    }
+  }
+
+  // Helper function to format evaluation message
+  const formatEvaluation = (biasResult: BiasAnalysisResult | null): string => {
+    if (!biasResult) {
+      return 'Bias analysis unavailable.'
+    }
+
+    const recommendations = biasResult.recommendations?.join(', ') || 'None'
+    return `Bias Score: ${biasResult.overallScore} | Risk Level: ${biasResult.riskLevel}\nRecommendations: ${recommendations}`
+  }
+
+  // Helper function to handle authentication response
+  const handleAuthenticated = useCallback(
+    (websocket: WebSocket, sessionId: string) => {
+      const currentRole = roleRef.current
+      const currentUserId = userIdRef.current
+      websocket.send(
+        JSON.stringify({
+          type: 'join_session',
+          payload: {
+            sessionId,
+            role: currentRole,
+            userId: currentUserId,
+          },
+        }),
+      )
+    },
+    [],
+  )
+
+  // Helper function to handle session messages
+  const handleSessionMessage = useCallback(
+    (
+      msg: WebSocketMessage,
+      locallyAddedMessages: React.MutableRefObject<Set<string>>,
+      currentRole: 'trainee' | 'observer',
+      setConversation: React.Dispatch<React.SetStateAction<ConversationEntry[]>>,
+    ) => {
+      const messageContent = msg.payload?.content
+      const messageRole = msg.payload?.role
+      const messageUserId = msg.payload?.userId
+
+      if (!messageContent || !messageRole || !messageUserId) {
+        return
+      }
+
+      const messageKey = createMessageKey(messageUserId, messageRole, messageContent)
+
+      if (locallyAddedMessages.current.has(messageKey)) {
+        return
+      }
+
+      setConversation((prev) => [
+        ...prev,
+        { role: messageRole as 'client' | 'therapist', message: messageContent },
+      ])
+    },
+    [],
+  )
+
+  // Helper function to handle coaching notes
+  const handleCoachingNote = useCallback(
+    (
+      msg: WebSocketMessage,
+      locallyAddedMessages: React.MutableRefObject<Set<string>>,
+      setCoachingNotes: React.Dispatch<React.SetStateAction<CoachingNote[]>>,
+    ) => {
+      const noteContent = msg.payload?.content
+      const noteAuthorId = msg.payload?.authorId
+
+      if (!noteContent || !noteAuthorId) {
+        return
+      }
+
+      const noteKey = createNoteKey(noteAuthorId, noteContent)
+
+      if (locallyAddedMessages.current.has(noteKey)) {
+        return
+      }
+
+      // Construct a proper CoachingNote object with all required fields
+      // Ensure timestamp exists (server should provide it, but handle missing case)
+      const coachingNote: CoachingNote = {
+        authorId: noteAuthorId,
+        content: noteContent,
+        timestamp: msg.payload?.timestamp || new Date().toISOString(),
+      }
+
+      setCoachingNotes((prev) => [...prev, coachingNote])
+    },
+    [],
+  )
+
+  // Helper function to handle WebSocket messages
+  const handleWebSocketMessage = useCallback(
+    (
+      event: MessageEvent,
+      sessionId: string,
+      locallyAddedMessages: React.MutableRefObject<Set<string>>,
+      isAuthenticatedRef: React.MutableRefObject<boolean>,
+      websocket: WebSocket,
+      setConversation: React.Dispatch<React.SetStateAction<ConversationEntry[]>>,
+      setCoachingNotes: React.Dispatch<React.SetStateAction<CoachingNote[]>>,
+    ) => {
+      try {
+        const msg = JSON.parse(event.data) as WebSocketMessage
+
+        if (msg.type === 'authenticated') {
+          console.log('Authenticated with Training Server', msg.payload)
+          isAuthenticatedRef.current = true
+          handleAuthenticated(websocket, sessionId)
+          return
+        }
+
+        if (msg.type === 'session_joined') {
+          console.log('Joined session', msg.payload)
+          return
+        }
+
+        if (msg.type === 'error') {
+          console.error('WebSocket error:', msg.payload?.message)
+          return
+        }
+
+        if (msg.type === 'session_message') {
+          handleSessionMessage(
+            msg,
+            locallyAddedMessages,
+            roleRef.current,
+            setConversation,
+          )
+          return
+        }
+
+        if (msg.type === 'coaching_note') {
+          handleCoachingNote(msg, locallyAddedMessages, setCoachingNotes)
+          return
+        }
+      } catch (e) {
+        console.error('Error parsing WS message', e)
+      }
+    },
+    [handleAuthenticated, handleSessionMessage, handleCoachingNote],
+  )
+
   useEffect(() => {
     // Load conversation history from memory
     memory.getConversationHistory().then((history) => {
@@ -608,6 +840,9 @@ export function TrainingSessionComponent() {
         setConversation(
           history.map((m) => ({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             role: (m.metadata?.role || 'client') as 'client' | 'therapist',
             message: m.content,
           })),
@@ -615,6 +850,8 @@ export function TrainingSessionComponent() {
       }
     })
   }, [memory])
+<<<<<<< HEAD
+=======
 =======
             id: `msg-${m.timestamp || ""}-${m.id || m.content}`,
             role: (m.metadata?.role || "client") as "client" | "therapist",
@@ -625,11 +862,15 @@ export function TrainingSessionComponent() {
     });
   }, [memory]);
 >>>>>>> origin/master
+>>>>>>> origin/master
 
   // WebSocket Connection - only reconnect when sessionId or userId changes, not when role changes
   useEffect(() => {
     // Clear deduplication set when reconnecting (new session or user)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     locallyAddedMessages.current.clear()
     // Reset authentication state on reconnect
     isAuthenticatedRef.current = false
@@ -651,6 +892,25 @@ export function TrainingSessionComponent() {
           token: authToken
         }
       }))
+<<<<<<< HEAD
+    }
+
+    websocket.onmessage = (event) => {
+      handleWebSocketMessage(
+        event,
+        sessionId,
+        locallyAddedMessages,
+        isAuthenticatedRef,
+        websocket,
+        setConversation,
+        setCoachingNotes,
+      )
+    }
+
+    websocket.onerror = (error) => {
+      console.error('WebSocket error:', error)
+    }
+=======
     }
 =======
     locallyAddedMessages.current.clear();
@@ -696,6 +956,7 @@ export function TrainingSessionComponent() {
     websocket.onerror = (error) => {
       console.error('WebSocket error:', error)
     }
+>>>>>>> origin/master
 
     websocket.onclose = () => {
       console.log('WebSocket connection closed')
@@ -709,6 +970,8 @@ export function TrainingSessionComponent() {
       ws.current = null
     }
   }, [sessionId, userId, handleWebSocketMessage]) // Removed 'role' from dependencies to prevent reconnection loops
+<<<<<<< HEAD
+=======
 =======
       );
     };
@@ -733,20 +996,27 @@ export function TrainingSessionComponent() {
     };
   }, [sessionId, userId, handleWebSocketMessage]); // Removed 'role' from dependencies to prevent reconnection loops
 >>>>>>> origin/master
+>>>>>>> origin/master
 
   // Helper function to send join session message
   const sendJoinSession = useCallback(
     (websocket: WebSocket, sessionId: string) => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       const currentUserId = userIdRef.current
       websocket.send(
         JSON.stringify({
           type: 'join_session',
+<<<<<<< HEAD
+=======
 =======
       const currentUserId = userIdRef.current;
       websocket.send(
         JSON.stringify({
           type: "join_session",
+>>>>>>> origin/master
 >>>>>>> origin/master
           payload: {
             sessionId,
@@ -755,6 +1025,9 @@ export function TrainingSessionComponent() {
           },
         }),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       )
     },
     [],
@@ -766,6 +1039,8 @@ export function TrainingSessionComponent() {
     websocket.send(
       JSON.stringify({
         type: 'authenticate',
+<<<<<<< HEAD
+=======
 =======
       );
     },
@@ -779,11 +1054,15 @@ export function TrainingSessionComponent() {
       JSON.stringify({
         type: "authenticate",
 >>>>>>> origin/master
+>>>>>>> origin/master
         payload: {
           token: authToken,
         },
       }),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     )
   }, [])
 
@@ -795,6 +1074,8 @@ export function TrainingSessionComponent() {
 
     if (!ws.current) {
       return
+<<<<<<< HEAD
+=======
 =======
     );
   }, []);
@@ -814,6 +1095,7 @@ export function TrainingSessionComponent() {
     if (!ws.current) {
       return;
 >>>>>>> origin/master
+>>>>>>> origin/master
     }
 
     // If WebSocket is not open yet, wait for it to open before sending
@@ -821,6 +1103,9 @@ export function TrainingSessionComponent() {
       const handleOpen = async () => {
         if (isAuthenticatedRef.current) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           sendJoinSession(ws.current!, sessionId)
         } else {
           await sendAuthentication(ws.current!)
@@ -836,6 +1121,8 @@ export function TrainingSessionComponent() {
     // If WebSocket is closed, don't attempt to send (connection will be re-established)
     if (ws.current.readyState === WebSocket.CLOSED || ws.current.readyState === WebSocket.CLOSING) {
       return
+<<<<<<< HEAD
+=======
 =======
           sendJoinSession(ws.current!, sessionId);
         } else {
@@ -856,12 +1143,16 @@ export function TrainingSessionComponent() {
     ) {
       return;
 >>>>>>> origin/master
+>>>>>>> origin/master
     }
 
     // WebSocket is OPEN, send immediately
     if (ws.current.readyState === WebSocket.OPEN) {
       if (isAuthenticatedRef.current) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         sendJoinSession(ws.current, sessionId)
       } else {
         // Fire and forget - authentication will complete asynchronously
@@ -871,6 +1162,8 @@ export function TrainingSessionComponent() {
       }
     }
   }, [role, sessionId, sendJoinSession, sendAuthentication])
+<<<<<<< HEAD
+=======
 =======
         sendJoinSession(ws.current, sessionId);
       } else {
@@ -881,6 +1174,7 @@ export function TrainingSessionComponent() {
       }
     }
   }, [role, sessionId, sendJoinSession, sendAuthentication]);
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   // Handle observer note submission
@@ -895,17 +1189,23 @@ export function TrainingSessionComponent() {
     ) => {
       if (!noteContent.trim()) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         return
       }
 
       const noteKey = createNoteKey(userId, noteContent)
       locallyAddedMessages.current.add(noteKey)
+<<<<<<< HEAD
+=======
 =======
         return;
       }
 
       const noteKey = createNoteKey(userId, noteContent);
       locallyAddedMessages.current.add(noteKey);
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       setCoachingNotes((prev) => [
@@ -916,6 +1216,9 @@ export function TrainingSessionComponent() {
           timestamp: new Date().toISOString(),
         },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       ])
 
       ws.current?.send(
@@ -929,6 +1232,8 @@ export function TrainingSessionComponent() {
     },
     [],
   )
+<<<<<<< HEAD
+=======
 =======
       ]);
 
@@ -944,6 +1249,7 @@ export function TrainingSessionComponent() {
     [],
   );
 >>>>>>> origin/master
+>>>>>>> origin/master
 
   // Handle trainee response submission
   const handleTraineeResponse = useCallback(
@@ -958,15 +1264,22 @@ export function TrainingSessionComponent() {
 <<<<<<< HEAD
       setConversation: React.Dispatch<React.SetStateAction<ConversationEntry[]>>,
 =======
+<<<<<<< HEAD
+      setConversation: React.Dispatch<React.SetStateAction<ConversationEntry[]>>,
+=======
       setConversation: React.Dispatch<
         React.SetStateAction<ConversationEntry[]>
       >,
+>>>>>>> origin/master
 >>>>>>> origin/master
       setEvaluation: React.Dispatch<React.SetStateAction<string | null>>,
       setTherapistResponse: React.Dispatch<React.SetStateAction<string>>,
     ) => {
       const therapistMessage: ConversationEntry = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         role: 'therapist',
         message: response,
       }
@@ -986,6 +1299,8 @@ export function TrainingSessionComponent() {
           payload: { content: response, role: 'therapist' },
         }),
       )
+<<<<<<< HEAD
+=======
 =======
         id: `msg-${Date.now()}-${userId}`,
         role: "therapist",
@@ -1008,6 +1323,7 @@ export function TrainingSessionComponent() {
         }),
       );
 >>>>>>> origin/master
+>>>>>>> origin/master
 
       // Analyze bias and generate AI response in parallel
       // Pass updated conversation that includes the therapist message
@@ -1015,6 +1331,9 @@ export function TrainingSessionComponent() {
         analyzeBias(sessionId, updatedConversation, response, userId),
         generateAIResponse(updatedConversation, response),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       ])
 
       setEvaluation(formatEvaluation(biasResult))
@@ -1047,6 +1366,8 @@ export function TrainingSessionComponent() {
     const currentUserId = userIdRef.current
 
     if (currentRole === 'observer') {
+<<<<<<< HEAD
+=======
 =======
       ]);
 
@@ -1086,6 +1407,7 @@ export function TrainingSessionComponent() {
 
     if (currentRole === "observer") {
 >>>>>>> origin/master
+>>>>>>> origin/master
       handleObserverNote(
         therapistResponse,
         currentUserId,
@@ -1097,8 +1419,13 @@ export function TrainingSessionComponent() {
       )
       return
 =======
+<<<<<<< HEAD
+      )
+      return
+=======
       );
       return;
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
 
@@ -1116,7 +1443,11 @@ export function TrainingSessionComponent() {
 <<<<<<< HEAD
     )
 =======
+<<<<<<< HEAD
+    )
+=======
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }, [
     therapistResponse,
@@ -1128,7 +1459,11 @@ export function TrainingSessionComponent() {
 <<<<<<< HEAD
   ])
 =======
+<<<<<<< HEAD
+  ])
+=======
   ]);
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   return (
@@ -1144,8 +1479,13 @@ export function TrainingSessionComponent() {
               onClick={() => setRole('trainee')}
               className={`px-3 py-1 rounded text-sm ${role === 'trainee' ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300'}`}
 =======
+<<<<<<< HEAD
+              onClick={() => setRole('trainee')}
+              className={`px-3 py-1 rounded text-sm ${role === 'trainee' ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300'}`}
+=======
               onClick={() => setRole("trainee")}
               className={`px-3 py-1 rounded text-sm ${role === "trainee" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-300"}`}
+>>>>>>> origin/master
 >>>>>>> origin/master
             >
               Trainee
@@ -1155,13 +1495,63 @@ export function TrainingSessionComponent() {
               onClick={() => setRole('observer')}
               className={`px-3 py-1 rounded text-sm ${role === 'observer' ? 'bg-purple-600 text-white' : 'bg-gray-700 text-gray-300'}`}
 =======
+<<<<<<< HEAD
+              onClick={() => setRole('observer')}
+              className={`px-3 py-1 rounded text-sm ${role === 'observer' ? 'bg-purple-600 text-white' : 'bg-gray-700 text-gray-300'}`}
+=======
               onClick={() => setRole("observer")}
               className={`px-3 py-1 rounded text-sm ${role === "observer" ? "bg-purple-600 text-white" : "bg-gray-700 text-gray-300"}`}
+>>>>>>> origin/master
 >>>>>>> origin/master
             >
               Observer
             </button>
           </div>
+<<<<<<< HEAD
+        </div>
+
+        <div className="mb-6 space-y-4 max-h-96 overflow-y-auto">
+          {conversation.map((entry, idx) => (
+            <div
+              key={idx}
+              className={`p-4 rounded-lg ${entry.role === 'client'
+                ? 'bg-blue-500/20 border-l-4 border-blue-500'
+                : 'bg-green-500/20 border-l-4 border-green-500'
+                }`}
+            >
+              <div className="font-semibold text-sm text-gray-300 mb-1">
+                {entry.role === 'client' ? 'Client' : 'Therapist'}
+              </div>
+              <div className="text-white">{entry.message}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-4">
+          <textarea
+            value={therapistResponse}
+            onChange={(e) => setTherapistResponse(e.target.value)}
+            rows={3}
+            className={`w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${role === 'observer' ? 'focus:ring-purple-500' : 'focus:ring-blue-500'}`}
+            placeholder={role === 'observer' ? "Add a coaching note..." : "Type your therapeutic response..."}
+          />
+
+          <button
+            onClick={handleResponse}
+            disabled={!therapistResponse.trim()}
+            className={`w-full py-3 px-6 font-medium rounded-lg transition-colors text-white ${role === 'observer'
+              ? 'bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600'
+              : 'bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600'
+              }`}
+          >
+            {role === 'observer' ? 'Send Note' : 'Send Response'}
+          </button>
+        </div>
+
+        {evaluation && (
+          <div className="mt-6 p-4 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
+            <div className="font-semibold text-yellow-300 mb-2">AI Feedback</div>
+=======
         </div>
 
         <div className="mb-6 space-y-4 max-h-96 overflow-y-auto">
@@ -1244,6 +1634,7 @@ export function TrainingSessionComponent() {
               AI Feedback
             </div>
 >>>>>>> origin/master
+>>>>>>> origin/master
             <div className="text-white whitespace-pre-line">{evaluation}</div>
           </div>
         )}
@@ -1254,19 +1645,28 @@ export function TrainingSessionComponent() {
 <<<<<<< HEAD
         <h3 className="text-lg font-semibold text-purple-300 mb-4">Coaching Notes</h3>
 =======
+<<<<<<< HEAD
+        <h3 className="text-lg font-semibold text-purple-300 mb-4">Coaching Notes</h3>
+=======
         <h3 className="text-lg font-semibold text-purple-300 mb-4">
           Coaching Notes
         </h3>
+>>>>>>> origin/master
 >>>>>>> origin/master
         {coachingNotes.length === 0 ? (
           <div className="text-gray-400 text-sm italic">No notes yet.</div>
         ) : (
           <div className="space-y-3 max-h-[500px] overflow-y-auto">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             {coachingNotes.map((note, i) => (
               <div key={i} className="bg-purple-900/30 border border-purple-500/30 p-3 rounded text-sm">
                 <div className="text-purple-200 mb-1">{note.content}</div>
                 <div className="text-purple-400/50 text-xs">{new Date(note.timestamp).toLocaleTimeString()}</div>
+<<<<<<< HEAD
+=======
 =======
             {coachingNotes.map((note) => (
               <div
@@ -1278,6 +1678,7 @@ export function TrainingSessionComponent() {
                   {new Date(note.timestamp).toLocaleTimeString()}
                 </div>
 >>>>>>> origin/master
+>>>>>>> origin/master
               </div>
             ))}
           </div>
@@ -1286,7 +1687,10 @@ export function TrainingSessionComponent() {
     </div>
 <<<<<<< HEAD
   )
+<<<<<<< HEAD
+=======
 =======
   );
+>>>>>>> origin/master
 >>>>>>> origin/master
 }

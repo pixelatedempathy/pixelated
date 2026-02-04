@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 version: '3.8'
 =======
+<<<<<<< HEAD
+version: '3.8'
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 services:

@@ -1,7 +1,11 @@
 <<<<<<< HEAD
 import { render, screen } from '@testing-library/react'
 =======
+<<<<<<< HEAD
+import { render, screen } from '@testing-library/react'
+=======
 import { render, screen, within } from '@testing-library/react'
+>>>>>>> origin/master
 >>>>>>> origin/master
 import TherapyProgressCharts from '../TherapyProgressCharts'
 import type { TherapistAnalyticsChartData } from '@/types/analytics'
@@ -14,7 +18,11 @@ describe('TherapyProgressCharts', () => {
 <<<<<<< HEAD
         date: '2025-01-01',
 =======
+<<<<<<< HEAD
+        date: '2025-01-01',
+=======
         date: '2025-01-01T12:00:00Z',
+>>>>>>> origin/master
 >>>>>>> origin/master
         sessions: 1,
         therapistSessions: 1,
@@ -28,7 +36,11 @@ describe('TherapyProgressCharts', () => {
 <<<<<<< HEAD
         date: '2025-01-02',
 =======
+<<<<<<< HEAD
+        date: '2025-01-02',
+=======
         date: '2025-01-02T12:00:00Z',
+>>>>>>> origin/master
 >>>>>>> origin/master
         sessions: 1,
         therapistSessions: 1,
@@ -86,7 +98,11 @@ describe('TherapyProgressCharts', () => {
 <<<<<<< HEAD
         date: '2025-01-02',
 =======
+<<<<<<< HEAD
+        date: '2025-01-02',
+=======
         date: '2025-01-02T12:00:00Z',
+>>>>>>> origin/master
 >>>>>>> origin/master
         sessions: 1,
         therapistSessions: 1,
@@ -100,7 +116,11 @@ describe('TherapyProgressCharts', () => {
 <<<<<<< HEAD
         date: '2025-01-01',
 =======
+<<<<<<< HEAD
+        date: '2025-01-01',
+=======
         date: '2025-01-01T12:00:00Z',
+>>>>>>> origin/master
 >>>>>>> origin/master
         sessions: 1,
         therapistSessions: 1,
@@ -129,6 +149,9 @@ describe('TherapyProgressCharts', () => {
     const timelineChart = screen
       .getByText('Session Progress Timeline')
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       .closest('div')
     expect(timelineChart).toBeInTheDocument()
 
@@ -139,6 +162,15 @@ describe('TherapyProgressCharts', () => {
     // Check progress percentages
     expect(screen.getByText('75%')).toBeInTheDocument()
     expect(screen.getByText('85%')).toBeInTheDocument()
+<<<<<<< HEAD
+  })
+
+  it('renders skill development radar chart', () => {
+    render(<TherapyProgressCharts data={mockData} />)
+
+    const radarChart = screen
+      .getByText('Skill Development Radar')
+=======
 =======
       .parentElement!
 
@@ -158,12 +190,22 @@ describe('TherapyProgressCharts', () => {
     const radarChart = screen
       .getByText('Skill Development Radar')
 <<<<<<< HEAD
+>>>>>>> origin/master
       .closest('div')
     expect(radarChart).toBeInTheDocument()
 
     // Check that skills are displayed
     expect(screen.getByText('Active Listening')).toBeInTheDocument()
     expect(screen.getByText('Empathy')).toBeInTheDocument()
+<<<<<<< HEAD
+  })
+
+  it('renders session comparison with trend data', () => {
+    render(<TherapyProgressCharts data={mockData} />)
+
+    const comparisonChart = screen
+      .getByText('Session Comparison')
+=======
 =======
       .parentElement!
 
@@ -179,6 +221,7 @@ describe('TherapyProgressCharts', () => {
     const comparisonChart = screen
       .getByText('Session Comparison')
 <<<<<<< HEAD
+>>>>>>> origin/master
       .closest('div')
     expect(comparisonChart).toBeInTheDocument()
 
@@ -188,6 +231,15 @@ describe('TherapyProgressCharts', () => {
     // Check session IDs
     expect(screen.getByText('session-2')).toBeInTheDocument()
     expect(screen.getByText('session-1')).toBeInTheDocument()
+<<<<<<< HEAD
+  })
+
+  it('renders skill improvement timeline', () => {
+    render(<TherapyProgressCharts data={mockData} />)
+
+    const timelineChart = screen
+      .getByText('Skill Practice Timeline')
+=======
 =======
       .parentElement!
 
@@ -206,6 +258,7 @@ describe('TherapyProgressCharts', () => {
     const timelineChart = screen
       .getByText('Skill Practice Timeline')
 <<<<<<< HEAD
+>>>>>>> origin/master
       .closest('div')
     expect(timelineChart).toBeInTheDocument()
 
@@ -216,6 +269,33 @@ describe('TherapyProgressCharts', () => {
     // Check skill scores
     expect(screen.getByText('85%')).toBeInTheDocument()
     expect(screen.getByText('78%')).toBeInTheDocument()
+<<<<<<< HEAD
+  })
+
+  it('handles empty session metrics gracefully', () => {
+    const emptyData = { ...mockData, sessionMetrics: [] }
+    render(<TherapyProgressCharts data={emptyData} />)
+
+    expect(screen.getByText('No session data available')).toBeInTheDocument()
+  })
+
+  it('handles empty skill progress data gracefully', () => {
+    const emptyData = { ...mockData, skillProgress: [] }
+    render(<TherapyProgressCharts data={emptyData} />)
+
+    expect(screen.getByText('No skill data available')).toBeInTheDocument()
+  })
+
+  it('handles missing comparative data gracefully', () => {
+    const noComparisonData = { ...mockData, comparativeData: undefined }
+    render(<TherapyProgressCharts data={noComparisonData} />)
+
+    expect(
+      screen.getByText('Not enough session data for comparison'),
+    ).toBeInTheDocument()
+  })
+
+=======
 =======
       .parentElement!
 
@@ -252,6 +332,7 @@ describe('TherapyProgressCharts', () => {
     ).toBeInTheDocument()
   })
 
+>>>>>>> origin/master
   it('handles missing previous session in comparison', () => {
     const noPreviousSession = {
       ...mockData,
@@ -321,8 +402,13 @@ describe('TherapyProgressCharts', () => {
     expect(screen.getByText('Session Progress Timeline')).toBeInTheDocument()
     expect(screen.getByText('Jan 1')).toBeInTheDocument()
 =======
+<<<<<<< HEAD
+    expect(screen.getByText('Session Progress Timeline')).toBeInTheDocument()
+    expect(screen.getByText('Jan 1')).toBeInTheDocument()
+=======
     const timelineChart = screen.getByText('Session Progress Timeline').parentElement!
     expect(within(timelineChart).getByText('Jan 1')).toBeInTheDocument()
+>>>>>>> origin/master
 >>>>>>> origin/master
   })
 

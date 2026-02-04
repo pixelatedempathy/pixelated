@@ -1,7 +1,11 @@
 <<<<<<< HEAD
 FROM node:18-alpine AS builder
 =======
+<<<<<<< HEAD
+FROM node:18-alpine AS builder
+=======
 FROM node:24-alpine AS builder
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 WORKDIR /app
@@ -25,7 +29,11 @@ RUN pnpm build
 <<<<<<< HEAD
 FROM node:18-alpine AS production
 =======
+<<<<<<< HEAD
+FROM node:18-alpine AS production
+=======
 FROM node:24-alpine AS production
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 WORKDIR /app

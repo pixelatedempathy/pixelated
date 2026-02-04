@@ -39,7 +39,11 @@ export class BusinessIntelligenceService {
 <<<<<<< HEAD
       throw new Error(`Competitive analysis failed: ${error}`)
 =======
+<<<<<<< HEAD
+      throw new Error(`Competitive analysis failed: ${error}`)
+=======
       throw new Error(`Competitive analysis failed: ${String(error)}`)
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   }
@@ -78,15 +82,21 @@ export class BusinessIntelligenceService {
       100,
       marketScore +
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         growthScore +
         competitionScore +
         barrierScore +
         economicScore,
+<<<<<<< HEAD
+=======
 =======
       growthScore +
       competitionScore +
       barrierScore +
       economicScore,
+>>>>>>> origin/master
 >>>>>>> origin/master
     )
   }
@@ -188,7 +198,11 @@ export class BusinessIntelligenceService {
 <<<<<<< HEAD
     }
 =======
+<<<<<<< HEAD
+    }
+=======
     }[]
+>>>>>>> origin/master
 >>>>>>> origin/master
     totalAddressableMarket: number
     serviceableAddressableMarket: number

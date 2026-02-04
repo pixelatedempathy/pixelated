@@ -186,15 +186,21 @@ describe('BiasDashboard', () => {
     // Ensure the constructor has a default implementation after reset
     MockWebSocketConstructor.mockImplementation(createMockWebSocket)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     ;(MockWebSocketConstructor as any).CONNECTING = 0
     ;(MockWebSocketConstructor as any).OPEN = 1
     ;(MockWebSocketConstructor as any).CLOSING = 2
     ;(MockWebSocketConstructor as any).CLOSED = 3
+<<<<<<< HEAD
+=======
 =======
       ; (MockWebSocketConstructor as any).CONNECTING = 0
       ; (MockWebSocketConstructor as any).OPEN = 1
       ; (MockWebSocketConstructor as any).CLOSING = 2
       ; (MockWebSocketConstructor as any).CLOSED = 3
+>>>>>>> origin/master
 >>>>>>> origin/master
     // Default fetch mock for initial dashboard load unless a test overrides it
     global.fetch = vi

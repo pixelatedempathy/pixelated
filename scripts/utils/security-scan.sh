@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+<<<<<<< HEAD
+echo "Running security scan..."
+pnpm audit
+=======
 # Colors for output
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -38,3 +42,4 @@ else
 fi
 
 echo -e "\n${GREEN}✅ Security scan completed.${NC}"
+>>>>>>> origin/master

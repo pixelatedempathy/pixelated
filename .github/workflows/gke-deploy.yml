@@ -17,7 +17,11 @@ env:
 <<<<<<< HEAD
   PNPM_VERSION: "10.28.0"
 =======
+<<<<<<< HEAD
+  PNPM_VERSION: "10.28.0"
+=======
   PNPM_VERSION: "10.28.1"
+>>>>>>> origin/master
 >>>>>>> origin/master
   PYTHON_VERSION: "3.11"
   REGISTRY: ghcr.io

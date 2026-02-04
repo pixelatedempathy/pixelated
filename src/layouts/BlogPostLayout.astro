@@ -7,17 +7,23 @@ import "@/styles/enhanced-theme.css";
 
 interface Props {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   entry: CollectionEntry<"blog"> | CollectionEntry<"docs">;
   basePath?: string;
 }
 
 const { entry, basePath = "blog" } = Astro.props;
+<<<<<<< HEAD
+=======
 =======
   entry: CollectionEntry<'blog'> | CollectionEntry<'docs'>
   basePath?: string
 }
 
 const { entry, basePath = 'blog' } = Astro.props
+>>>>>>> origin/master
 >>>>>>> origin/master
 const {
   title: postTitle,
@@ -50,17 +56,23 @@ const shareConfig: ShareConfig = {
   whatsapp: false,
   email: false,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 };
 
 // Build URL for sharing (works with prerendered pages)
 const shareUrl = `https://pixelated.empathy.dev/${basePath}/${entry.data.slug || entry.slug}`;
 const pathname = `/${basePath}/${entry.data.slug || entry.slug}`;
+<<<<<<< HEAD
+=======
 =======
 }
 
 // Build URL for sharing (works with prerendered pages)
 const shareUrl = `https://pixelated.empathy.dev/${basePath}/${entry.data.slug || entry.slug}`
 const pathname = `/${basePath}/${entry.data.slug || entry.slug}`
+>>>>>>> origin/master
 >>>>>>> origin/master
 ---
 

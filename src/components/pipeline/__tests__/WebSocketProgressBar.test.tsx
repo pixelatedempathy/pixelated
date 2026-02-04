@@ -115,12 +115,15 @@ describe('WebSocketProgressBar', () => {
       const mockSocket = {
         ...mockWebSocket,
         readyState: WebSocket.OPEN,
+<<<<<<< HEAD
+=======
 =======
       const mockWs = {
         ...mockWebSocket,
         readyState: WebSocket.OPEN,
         addEventListener: vi.fn(),
         removeEventListener: vi.fn(),
+>>>>>>> origin/master
 >>>>>>> origin/master
       }
 
@@ -130,13 +133,20 @@ describe('WebSocketProgressBar', () => {
 <<<<<<< HEAD
           webSocket={mockSocket as unknown as WebSocket}
 =======
+<<<<<<< HEAD
+          webSocket={mockSocket as unknown as WebSocket}
+=======
           webSocket={mockWs as unknown as WebSocket}
+>>>>>>> origin/master
 >>>>>>> origin/master
         />,
       )
 
       // Simulate progress update message
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       const messageHandler = mockSocket.addEventListener.mock.calls.find(
         (call: any) => call[0] === 'message',
       )?.[1]
@@ -151,6 +161,8 @@ describe('WebSocketProgressBar', () => {
               stage: 'processing',
             },
           }),
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockWs.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -167,6 +179,7 @@ describe('WebSocketProgressBar', () => {
               },
             }),
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -204,6 +217,8 @@ describe('WebSocketProgressBar', () => {
               message: 'Processing data',
             },
           }),
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -220,6 +235,7 @@ describe('WebSocketProgressBar', () => {
               },
             }),
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -255,6 +271,8 @@ describe('WebSocketProgressBar', () => {
               stage: 'completed',
             },
           }),
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -271,6 +289,7 @@ describe('WebSocketProgressBar', () => {
               },
             }),
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -289,7 +308,11 @@ describe('WebSocketProgressBar', () => {
 <<<<<<< HEAD
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 =======
+<<<<<<< HEAD
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+=======
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { })
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       render(
@@ -307,6 +330,8 @@ describe('WebSocketProgressBar', () => {
       if (messageHandler) {
         messageHandler({
           data: 'invalid json',
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -316,6 +341,7 @@ describe('WebSocketProgressBar', () => {
           messageHandler({
             data: 'invalid json',
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -362,7 +388,10 @@ describe('WebSocketProgressBar', () => {
         openHandler()
       }
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
       render(
         <WebSocketProgressBar
@@ -462,6 +491,8 @@ describe('WebSocketProgressBar', () => {
               stage: 'analyzing',
             },
           }),
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -478,6 +509,7 @@ describe('WebSocketProgressBar', () => {
               },
             }),
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -512,6 +544,8 @@ describe('WebSocketProgressBar', () => {
               executionId: 'test-execution-123',
               data: { progress, stage: 'test' },
             }),
+<<<<<<< HEAD
+=======
 =======
         const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
         const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -525,6 +559,7 @@ describe('WebSocketProgressBar', () => {
                 data: { progress, stage: 'test' },
               }),
             })
+>>>>>>> origin/master
 >>>>>>> origin/master
           })
         }
@@ -574,6 +609,8 @@ describe('WebSocketProgressBar', () => {
               executionId: 'test-execution-123',
               data: { progress: i * 20, stage: 'test' },
             }),
+<<<<<<< HEAD
+=======
 =======
           act(() => {
             messageHandler({
@@ -583,6 +620,7 @@ describe('WebSocketProgressBar', () => {
                 data: { progress: i * 20, stage: 'test' },
               }),
             })
+>>>>>>> origin/master
 >>>>>>> origin/master
           })
           vi.advanceTimersByTime(100)
@@ -625,6 +663,8 @@ describe('WebSocketProgressBar', () => {
               executionId: 'test-execution-123',
               data: { progress: i * 10, stage: 'test' },
             }),
+<<<<<<< HEAD
+=======
 =======
           act(() => {
             messageHandler({
@@ -634,6 +674,7 @@ describe('WebSocketProgressBar', () => {
                 data: { progress: i * 10, stage: 'test' },
               }),
             })
+>>>>>>> origin/master
 >>>>>>> origin/master
           })
           vi.advanceTimersByTime(50)
@@ -707,6 +748,8 @@ describe('WebSocketProgressBar', () => {
             executionId: 'test-execution-123',
             data: { progress: 50, stage: 'processing' },
           }),
+<<<<<<< HEAD
+=======
 =======
       const messageCalls = mockSocket.addEventListener.mock.calls.filter((c: any) => c[0] === 'message')
       const messageHandler = messageCalls[messageCalls.length - 1]?.[1]
@@ -720,6 +763,7 @@ describe('WebSocketProgressBar', () => {
               data: { progress: 50, stage: 'processing' },
             }),
           })
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
       }
@@ -793,7 +837,11 @@ describe('WebSocketProgressBar', () => {
 <<<<<<< HEAD
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 =======
+<<<<<<< HEAD
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+=======
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { })
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       render(
@@ -882,6 +930,9 @@ describe('WebSocketConnectionManager', () => {
       screen.getByText(/websocket connection manager/i),
     ).toBeInTheDocument()
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     expect(screen.getByRole('button', { name: /connect/i })).toBeInTheDocument()
 =======
     expect(screen.getByRole('button', { name: /^connect$/i })).toBeInTheDocument()
@@ -910,7 +961,11 @@ describe('WebSocketConnectionManager', () => {
 <<<<<<< HEAD
     global.WebSocket = vi.fn(() => mockSocket) as any
 =======
+<<<<<<< HEAD
+    global.WebSocket = vi.fn(() => mockSocket) as any
+=======
     global.WebSocket = vi.fn(function() { return mockSocket }) as any
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     render(<WebSocketConnectionManager {...mockProps} />)

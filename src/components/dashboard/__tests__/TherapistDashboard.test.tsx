@@ -3,7 +3,10 @@ import { TherapistDashboard } from '../TherapistDashboard'
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 import type { TherapistSession } from '@/types/dashboard'
+>>>>>>> origin/master
 >>>>>>> origin/master
 import { describe, expect, it, vi } from 'vitest'
 
@@ -20,8 +23,14 @@ vi.mock('../SessionControls', () => ({
     <div data-testid="session-controls">Session Controls</div>
   ),
 =======
+<<<<<<< HEAD
+  SessionControls: () => (
+    <div data-testid="session-controls">Session Controls</div>
+  ),
+=======
   __esModule: true,
   default: () => <div data-testid="session-controls">Session Controls</div>,
+>>>>>>> origin/master
 >>>>>>> origin/master
 }))
 
@@ -37,8 +46,14 @@ vi.mock('../TherapyProgressCharts', () => ({
     <div data-testid="therapy-charts">Therapy Charts</div>
   ),
 =======
+<<<<<<< HEAD
+  TherapyProgressCharts: () => (
+    <div data-testid="therapy-charts">Therapy Charts</div>
+  ),
+=======
   __esModule: true,
   default: () => <div data-testid="therapy-charts">Therapy Charts</div>,
+>>>>>>> origin/master
 >>>>>>> origin/master
 }))
 
@@ -61,6 +76,8 @@ vi.mock('@/hooks/useTherapistAnalytics', () => ({
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 const mockSessions: TherapistSession[] = [
   {
     id: 'session-1',
@@ -73,6 +90,7 @@ const mockSessions: TherapistSession[] = [
   },
 ]
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 describe('TherapistDashboard', () => {
   it('renders dashboard heading', () => {

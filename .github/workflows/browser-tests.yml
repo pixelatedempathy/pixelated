@@ -14,9 +14,12 @@ env:
 <<<<<<< HEAD
   NODE_VERSION: 24.8.0
   PNPM_VERSION: 10.28.0
+<<<<<<< HEAD
+=======
 =======
   NODE_VERSION: 24.11.0
   PNPM_VERSION: 10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
   NODE_ENV: test
   DISABLE_AUTH: "true"
@@ -43,7 +46,11 @@ jobs:
 <<<<<<< HEAD
           version: 10.28.0
 =======
+<<<<<<< HEAD
+          version: 10.28.0
+=======
           version: 10.28.2
+>>>>>>> origin/master
 >>>>>>> origin/master
 
       - name: Setup pnpm cache
