@@ -146,12 +146,17 @@ export class EmbeddingAgentClient {
     )
 
     try {
-      const response = await fetch(url, {
+      const init: RequestInit = {
         method,
         headers,
-        body: body ? JSON.stringify(toSnakeCase(body)) : undefined,
         signal: controller.signal,
-      })
+      }
+
+      if (body && method !== 'GET' && method !== 'HEAD') {
+        init.body = JSON.stringify(toSnakeCase(body))
+      }
+
+      const response = await fetch(url, init)
 
       clearTimeout(timeoutId)
 
@@ -334,4 +339,3 @@ function getDefaultEmbeddingAgentUrl(): string {
   // Default to localhost for development
   return 'http://localhost:8001'
 }
-
