@@ -538,9 +538,18 @@ async function processExportRequest(exportId: string): Promise<void> {
     })
 
     // Mark as failed
+<<<<<<< HEAD
+    await mockDb.dataExport.update({
+      where: { id: exportId },
+      data: {
+        status: 'failed',
+        error: error instanceof Error ? String(error) : String(error),
+      },
+=======
     await dataExportDAO.update(exportId, {
       status: 'failed',
       error: error instanceof Error ? String(error) : String(error),
+>>>>>>> origin/master
     })
   }
 }
@@ -640,8 +649,15 @@ export async function getDataExportRequest(
   id: string,
 ): Promise<DataExportRequest | null> {
   try {
+<<<<<<< HEAD
+    const exportRequest = await mockDb.dataExport.findUnique({
+      where: { id },
+    })
+    return exportRequest as DataExportRequest
+=======
     const exportRequest = await dataExportDAO.findById(id)
     return exportRequest as unknown as DataExportRequest
+>>>>>>> origin/master
   } catch (error: unknown) {
     logger.error('Error in getDataExportRequest', {
       error: error instanceof Error ? String(error) : String(error),
@@ -660,7 +676,15 @@ export async function getAllDataExportRequests(filters?: {
   dateRange?: { start: string; end: string }
 }): Promise<DataExportRequest[]> {
   try {
+<<<<<<< HEAD
+    // TODO: Replace with MongoDB implementation
+    let allExports = await mockDb.dataExport.findUnique({ where: {} }) // This should be a findMany in real MongoDB code
+
+    // Apply filters manually (since mockDb is a stub)
+    let results = Array.isArray(allExports) ? allExports : [allExports]
+=======
     const dbFilters: any = {}
+>>>>>>> origin/master
     if (filters) {
       if (filters.status) {
         dbFilters.status = filters.status
@@ -675,9 +699,13 @@ export async function getAllDataExportRequests(filters?: {
         }
       }
     }
+<<<<<<< HEAD
+    return results as DataExportRequest[]
+=======
 
     const results = await dataExportDAO.findAll(dbFilters)
     return results as unknown as DataExportRequest[]
+>>>>>>> origin/master
   } catch (error: unknown) {
     logger.error('Error in getAllDataExportRequests', {
       error: error instanceof Error ? String(error) : String(error),
@@ -1055,7 +1083,56 @@ const mockDb = {
       })
     },
   },
+<<<<<<< HEAD
+  dataExport: {
+    create: (
+      _params: MockDbCreateParams<Partial<DataExport>>,
+    ): Promise<DataExport> => {
+      return Promise.resolve(_params.data as unknown as DataExport)
+    },
+    update: (_params: MockDbUpdateParams<DataExport>): Promise<DataExport> => {
+      return Promise.resolve({
+        ..._params.data,
+        id: _params.where['id'],
+      } as unknown as DataExport)
+    },
+    findUnique: (_params: MockDbFindParams): Promise<DataExport | null> => {
+      return Promise.resolve({
+        id: _params.where['id'] as string,
+        patientId: process.env['PATIENT_ID'] || 'example-patient-id',
+        requestedBy: 'test-user-id',
+        formats: ['json'],
+        dataTypes: ['profile'],
+        reason: 'Test reason',
+        priority: 'normal',
+        status: 'pending',
+        createdAt: new Date(),
+        files: _params.include?.['files']
+          ? [
+            {
+              id: 'file-1',
+              exportId: _params.where['id'] as string,
+              format: 'json',
+              dataType: 'profile',
+              url: 'https://example.com/file.json',
+              size: 1024,
+              createdAt: new Date(),
+            },
+          ]
+          : undefined,
+      })
+    },
+  },
+  exportFile: {
+    create: (
+      _params: MockDbCreateParams<ExportFileModel>,
+    ): Promise<ExportFileModel> => {
+      return Promise.resolve(_params.data as unknown as ExportFileModel)
+    },
+  },
+=======
   // dataExport and exportFile removed - now using dataExportDAO
+>>>>>>> origin/master
   patientUser: {
     findFirst: (_params: { where: unknown }): Promise<PatientUser | null> => {
       return Promise.resolve(null)

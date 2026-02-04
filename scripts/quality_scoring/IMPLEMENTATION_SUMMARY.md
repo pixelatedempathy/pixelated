@@ -255,7 +255,11 @@ The system has been tested with:
 
 ## Related Documentation
 
+<<<<<<< HEAD
+- **Jira Issue**: [KAN-12](https://metalpixel.atlassian.net/browse/KAN-12)
+=======
 - **Jira Issue**: [KAN-12](https://ratchetaf.atlassian.net/browse/KAN-12)
+>>>>>>> origin/master
 - **Confluence Spec**: Ingestion & Quality Scoring child page
 - **Action Plan**: `.notes/dataset-expansion-decision/01-ACTION-PLAN.md`
 - **Production Validators**: `ai/dataset_pipeline/quality/`

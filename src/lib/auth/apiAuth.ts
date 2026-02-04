@@ -1,6 +1,9 @@
 import { authenticateRequest } from './auth0-middleware'
+<<<<<<< HEAD
+=======
 import { getRolePermissions, type UserRole } from './auth0-rbac-service'
 import type { AuthUser } from './types'
+>>>>>>> origin/master
 
 /**
  * Protect API route by verifying Auth0 token
@@ -12,6 +15,19 @@ import type { AuthUser } from './types'
 export async function protectApi(request: Request) {
     const result = await authenticateRequest(request)
 
+<<<<<<< HEAD
+    if (!result.success) {
+        return {
+            success: false,
+            error: result.error
+        }
+    }
+
+    return {
+        success: true,
+        userId: result.request?.user?.id,
+        user: result.request?.user,
+=======
     if (!result.success || !result.request?.user) {
         return {
             success: false,
@@ -32,6 +48,7 @@ export async function protectApi(request: Request) {
         success: true,
         userId: authUser.id,
         user: authUser,
+>>>>>>> origin/master
         tokenId: result.request?.tokenId
     }
 }

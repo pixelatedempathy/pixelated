@@ -92,8 +92,13 @@ describe('analytics-worker', () => {
     vi.clearAllMocks()
     vi.resetModules()
 
+<<<<<<< HEAD
+    // Reset environment variables
+    ;(env as any).ANALYTICS_WS_PORT = '8083'
+=======
       // Reset environment variables
       ; (env as any).ANALYTICS_WS_PORT = '8083'
+>>>>>>> origin/master
 
     // Initialize mocks for services used BY the worker
     mockAnalyticsService = new AnalyticsService() as any
@@ -227,7 +232,11 @@ describe('analytics-worker', () => {
   describe('environment configuration', () => {
     it('should use default WebSocket port if not configured', async () => {
       // Remove port from environment
+<<<<<<< HEAD
+      ;(env as any).ANALYTICS_WS_PORT = undefined
+=======
       ; (env as any).ANALYTICS_WS_PORT = undefined
+>>>>>>> origin/master
 
       // Import worker module
       await import('../analytics-worker')
@@ -239,7 +248,11 @@ describe('analytics-worker', () => {
 
     it('should use configured WebSocket port', async () => {
       // Set custom port in environment
+<<<<<<< HEAD
+      ;(env as any).ANALYTICS_WS_PORT = '8090'
+=======
       ; (env as any).ANALYTICS_WS_PORT = '8090'
+>>>>>>> origin/master
 
       // Import worker module
       await import('../analytics-worker')

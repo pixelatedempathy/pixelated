@@ -58,6 +58,8 @@ vi.mock('../../mcp/phase6-integration', () => ({
   updatePhase6AuthenticationProgress: vi.fn(),
 }))
 
+<<<<<<< HEAD
+=======
 vi.mock('../jwt-service', () => ({
   generateTokenPair: vi.fn(async (userId, role) => ({
     accessToken: `access-token-${userId}`,
@@ -75,6 +77,7 @@ vi.mock('../jwt-service', () => ({
   }
 }))
 
+>>>>>>> origin/master
 vi.mock('otplib', () => ({
   authenticator: {
     generateSecret: vi.fn(() => 'test-secret'),

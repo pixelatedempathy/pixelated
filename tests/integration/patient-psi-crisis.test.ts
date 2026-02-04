@@ -110,7 +110,11 @@ describe('Patient-Psi Crisis Integration Tests', () => {
       }
 
       // Simulate historical sessions showing improvement
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> origin/master
 
       const currentEmotion: EmotionState = {
         primary: 'frustrated',

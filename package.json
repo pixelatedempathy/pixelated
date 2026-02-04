@@ -87,7 +87,7 @@
     "validate-dialogues": "node src/scripts/validate_dialogues.js",
     "dialogue-pipeline": "node src/scripts/run_full_dialogue_pipeline.js",
     "initialize-models": "tsx src/scripts/initialize-cognitive-models.ts",
-    "security:scan": "bash ./scripts/security-scan.sh",
+    "security:scan": "bash ./security/security-scan.sh",
     "security:check": "node scripts/clean-credentials.js --check-only",
     "security:fix": "node scripts/clean-credentials.js",
     "security:sanitize-logs": "node scripts/sanitize-build-logs.js",

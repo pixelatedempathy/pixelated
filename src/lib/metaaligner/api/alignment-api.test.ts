@@ -471,7 +471,11 @@ describe('IntegratedAIService', () => {
 
     it('should perform enhancement when response quality is low', async () => {
       // Mock a poor quality response first, then a significantly better enhanced response
+<<<<<<< HEAD
+      ;(mockAIService.createChatCompletion as any)
+=======
       ; (mockAIService.createChatCompletion as any)
+>>>>>>> origin/master
         .mockResolvedValueOnce({
           choices: [
             {

@@ -18,4 +18,8 @@
   },
   "include": ["./**/*.astro", "./**/*.tsx", "./**/*.ts"],
   "exclude": ["**/*.js", "**/*.astro.ts", "**/*.astro.js", "**/*.bak"]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

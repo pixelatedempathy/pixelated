@@ -1,15 +1,24 @@
+<<<<<<< HEAD
+import { NotificationService } from '@/lib/services/notification/NotificationService.mock'
+import { WebSocketServer } from '@/lib/services/notification/WebSocketServer.mock'
+import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger.mock'
+=======
 import { NotificationService } from '@/lib/services/notification/NotificationService'
 import { WebSocketServer } from '@/lib/services/notification/WebSocketServer'
 import { createBuildSafeLogger } from '@/lib/logging/build-safe-logger'
+>>>>>>> origin/master
 
 // Create logger
 const logger = createBuildSafeLogger('notification-worker')
 
 const WORKER_ID = crypto.randomUUID()
 const PROCESSING_INTERVAL = 1000 // 1 second
+<<<<<<< HEAD
+=======
 
 // State
 let wsServer: WebSocketServer | undefined
+>>>>>>> origin/master
 
 async function startWorker() {
   logger.info('Starting notification worker', { workerId: WORKER_ID })
@@ -18,6 +27,9 @@ async function startWorker() {
   const notificationService = new NotificationService()
 
   // Create WebSocket server
+<<<<<<< HEAD
+  const wsServer = new WebSocketServer()
+=======
   wsServer = new WebSocketServer()
 
 
@@ -28,6 +40,7 @@ async function startWorker() {
       error: error instanceof Error ? error.message : String(error),
     })
   })
+>>>>>>> origin/master
 
   try {
     // Start processing notifications
