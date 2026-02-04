@@ -76,7 +76,11 @@ http:
   routers:
     # Main Application
     app:
+<<<<<<< HEAD
       rule: "Host(`pixelated-empathy.com`) || Host(`www.pixelated-empathy.com`)"
+=======
+      rule: "Host(`pixelatedempathy.com`) || Host(`www.pixelatedempathy.com`)"
+>>>>>>> origin/master
       entryPoints:
         - websecure
       service: pixelated-backend
@@ -90,7 +94,11 @@ http:
 
     # API Routes
     api:
+<<<<<<< HEAD
       rule: "(Host(`pixelated-empathy.com`) || Host(`www.pixelated-empathy.com`)) && PathPrefix(`/api/`)"
+=======
+      rule: "(Host(`pixelatedempathy.com`) || Host(`www.pixelatedempathy.com`)) && PathPrefix(`/api/`)"
+>>>>>>> origin/master
       entryPoints:
         - websecure
       service: pixelated-backend
@@ -104,7 +112,11 @@ http:
 
     # Auth Routes (stricter rate limiting)
     auth:
+<<<<<<< HEAD
       rule: "(Host(`pixelated-empathy.com`) || Host(`www.pixelated-empathy.com`)) && PathPrefix(`/api/auth/`)"
+=======
+      rule: "(Host(`pixelatedempathy.com`) || Host(`www.pixelatedempathy.com`)) && PathPrefix(`/api/auth/`)"
+>>>>>>> origin/master
       entryPoints:
         - websecure
       service: pixelated-backend
@@ -118,7 +130,11 @@ http:
 
     # WebSocket Routes
     websocket:
+<<<<<<< HEAD
       rule: "(Host(`pixelated-empathy.com`) || Host(`www.pixelated-empathy.com`)) && PathPrefix(`/ws`)"
+=======
+      rule: "(Host(`pixelatedempathy.com`) || Host(`www.pixelatedempathy.com`)) && PathPrefix(`/ws`)"
+>>>>>>> origin/master
       entryPoints:
         - websecure
       service: pixelated-backend

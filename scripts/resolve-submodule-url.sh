@@ -11,6 +11,70 @@ SUBMODULE_PATH="ai"
 # Detect parent repo remote to derive org/owner dynamically
 PARENT_REMOTE_URL="$(git config --get remote.origin.url || echo)"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+# ------------------------------------------------------------------
+# Token Normalization Logic
+# Azure Pipelines leaves $(VAR) as literal text if undefined.
+# We must sanitize this before using it.
+# ------------------------------------------------------------------
+
+sanitize_token() {
+  local val="${1:-}"
+  local name="$2"
+  # If value looks like $(VAR), it's undefined
+  if [[ "$val" == "\$($name)" ]]; then
+    echo ""
+  else
+    echo "$val"
+  fi
+}
+
+# Resolve GITHUB_TOKEN from multiple possible variable names
+RESOLVED_GITHUB_TOKEN=""
+
+# 1. Try GITHUB_TOKEN
+CANDIDATE="$(sanitize_token "${GITHUB_TOKEN:-}" "GITHUB_TOKEN")"
+if [[ -n "$CANDIDATE" ]]; then RESOLVED_GITHUB_TOKEN="$CANDIDATE"; fi
+
+# 2. Try GH_TOKEN
+if [[ -z "$RESOLVED_GITHUB_TOKEN" ]]; then
+  CANDIDATE="$(sanitize_token "${GH_TOKEN:-}" "GH_TOKEN")"
+  if [[ -n "$CANDIDATE" ]]; then RESOLVED_GITHUB_TOKEN="$CANDIDATE"; fi
+fi
+
+# 3. Try GITHUB_PAT
+if [[ -z "$RESOLVED_GITHUB_TOKEN" ]]; then
+  CANDIDATE="$(sanitize_token "${GITHUB_PAT:-}" "GITHUB_PAT")"
+  if [[ -n "$CANDIDATE" ]]; then RESOLVED_GITHUB_TOKEN="$CANDIDATE"; fi
+fi
+
+# 4. Try G_TOKEN
+if [[ -z "$RESOLVED_GITHUB_TOKEN" ]]; then
+  CANDIDATE="$(sanitize_token "${G_TOKEN:-}" "G_TOKEN")"
+  if [[ -n "$CANDIDATE" ]]; then RESOLVED_GITHUB_TOKEN="$CANDIDATE"; fi
+fi
+
+# 5. Try AGENT_GITHUB_TOKEN (Pass-through from agent .env, not mapped in YAML)
+if [[ -z "$RESOLVED_GITHUB_TOKEN" ]]; then
+  if [[ -n "${AGENT_GITHUB_TOKEN:-}" ]]; then
+     RESOLVED_GITHUB_TOKEN="$AGENT_GITHUB_TOKEN"
+  fi
+fi
+
+# Export the winner as GITHUB_TOKEN for the rest of the script
+export GITHUB_TOKEN="$RESOLVED_GITHUB_TOKEN"
+
+if [[ -n "$GITHUB_TOKEN" ]]; then
+  echo "🔑 Found valid GitHub token (length: ${#GITHUB_TOKEN})"
+else
+  echo "ℹ️ No GitHub token found in GITHUB_TOKEN, GH_TOKEN, GITHUB_PAT, or G_TOKEN"
+fi
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 # Helper: extract GitHub owner from parent remote
 extract_github_owner() {
   case "$1" in
@@ -75,7 +139,45 @@ SUBMODULE_URL_AZURE_SSH="git@ssh.dev.azure.com:v3/${AZ_ORG}/${AZ_PROJECT}/ai"
 # Helper: check remote accessibility quickly (HEAD)
 remote_accessible() {
   local url="$1"
+<<<<<<< HEAD
   git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1
+=======
+<<<<<<< HEAD
+  git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1
+=======
+  # Attempt ls-remote. If successful, return 0.
+  if git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1; then
+    return 0
+  fi
+  
+  # If we're here, it failed. debugging with masked secrets
+  local masked_url="$url"
+  if [[ -n "${SYSTEM_ACCESSTOKEN:-}" ]]; then
+    masked_url="${masked_url//$SYSTEM_ACCESSTOKEN/***}"
+  fi
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    masked_url="${masked_url//$GITHUB_TOKEN/***}"
+  fi
+  
+  echo "    ⚠️ Connection check failed for $masked_url"
+  
+  # Capture and log stderr safely
+  local error_output
+  error_output=$(git ls-remote --exit-code "$url" HEAD 2>&1 || true)
+  
+  # Mask secrets in error output
+  if [[ -n "${SYSTEM_ACCESSTOKEN:-}" ]]; then
+    error_output="${error_output//$SYSTEM_ACCESSTOKEN/***}"
+  fi
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    error_output="${error_output//$GITHUB_TOKEN/***}"
+  fi
+  
+  echo "    📄 Error details: $error_output"
+  
+  return 1
+>>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 # Prefer constructing Azure submodule URL by mirroring parent remote scheme and swapping repo name
@@ -92,7 +194,15 @@ build_azure_url_from_parent() {
       ;;
     *)
       # Fall back to dynamically derived SSH URL
+<<<<<<< HEAD
       echo "${SUBMODULE_URL_AZURE_SSH}.git"
+=======
+<<<<<<< HEAD
+      echo "${SUBMODULE_URL_AZURE_SSH}.git"
+=======
+      echo "${SUBMODULE_URL_AZURE_SSH}"
+>>>>>>> origin/master
+>>>>>>> origin/master
       ;;
   esac
 }
@@ -100,6 +210,13 @@ build_azure_url_from_parent() {
 # Detect environment using Azure DevOps built-in variables
 if [[ "${TF_BUILD:-}" == "True" ]] || [[ -n "${SYSTEM_TEAMFOUNDATIONCOLLECTIONURI:-}" ]]; then
   echo "Detected Azure DevOps pipeline environment."
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  echo "Context: Org='$AZ_ORG', Project='$AZ_PROJECT'"
+>>>>>>> origin/master
+>>>>>>> origin/master
 
   # Ensure ssh.dev.azure.com is in known_hosts to avoid interactive prompts
   echo "Ensuring Azure DevOps SSH host keys are recognized..."
@@ -126,10 +243,87 @@ if [[ "${TF_BUILD:-}" == "True" ]] || [[ -n "${SYSTEM_TEAMFOUNDATIONCOLLECTIONUR
 
   # Validate Azure URL accessibility; fall back to GitHub via SSH if not accessible
   if remote_accessible "$SUBMODULE_URL"; then
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     echo "✅ Azure submodule remote is accessible"
   else
     echo "##[warning]⚠️ Azure submodule remote not accessible. Falling back to GitHub (SSH): $SUBMODULE_URL_GITHUB"
     SUBMODULE_URL="$SUBMODULE_URL_GITHUB"
+<<<<<<< HEAD
+=======
+=======
+    echo "✅ Azure submodule remote (SSH) is accessible"
+  else
+    echo "##[warning]⚠️ Azure submodule remote (SSH) not accessible."
+    
+    # Try Azure HTTPS if token is available
+    AZURE_HTTPS_SUCCESS="false"
+    if [[ -n "${SYSTEM_ACCESSTOKEN:-}" ]]; then
+      echo "🔄 Attempting Azure HTTPS with SYSTEM_ACCESSTOKEN..."
+      # Use 'build' as username
+      AZURE_HTTPS_URL="https://build:${SYSTEM_ACCESSTOKEN}@dev.azure.com/${AZ_ORG}/${AZ_PROJECT}/_git/ai"
+      if remote_accessible "$AZURE_HTTPS_URL"; then
+        echo "✅ Azure submodule remote (HTTPS) is accessible"
+        SUBMODULE_URL="$AZURE_HTTPS_URL"
+        AZURE_HTTPS_SUCCESS="true"
+      else
+        echo "⚠️ Azure HTTPS access failed"
+      fi
+    else
+      echo "ℹ️ No SYSTEM_ACCESSTOKEN available for Azure HTTPS fallback"
+    fi
+
+    if [[ "$AZURE_HTTPS_SUCCESS" != "true" ]]; then
+      echo "##[warning]⚠️ Azure remote failed. Falling back to GitHub..."
+      SUBMODULE_URL="$SUBMODULE_URL_GITHUB"
+      
+      # Check GitHub SSH
+      if ! remote_accessible "$SUBMODULE_URL"; then
+         echo "⚠️ GitHub SSH access failed. Checking for GITHUB_TOKEN..."
+         # Try GitHub HTTPS
+         if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+            echo "🔄 Attempting GitHub HTTPS with GITHUB_TOKEN..."
+            GITHUB_HTTPS_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_OWNER}/ai.git"
+            if remote_accessible "$GITHUB_HTTPS_URL"; then
+               echo "✅ GitHub submodule remote (HTTPS) is accessible [x-access-token]"
+               SUBMODULE_URL="$GITHUB_HTTPS_URL"
+            else
+               # Try alternative format: https://<token>@github.com
+               echo "⚠️ 'x-access-token' format failed. Retrying with basic token auth..."
+               GITHUB_HTTPS_URL_ALT="https://${GITHUB_TOKEN}@github.com/${GITHUB_OWNER}/ai.git"
+               if remote_accessible "$GITHUB_HTTPS_URL_ALT"; then
+                 echo "✅ GitHub submodule remote (HTTPS) is accessible [token-only]"
+                 SUBMODULE_URL="$GITHUB_HTTPS_URL_ALT"
+               else
+                 echo "❌ GitHub HTTPS access failed (both formats)"
+               fi
+            fi
+         else
+            echo "ℹ️ No GITHUB_TOKEN available for GitHub HTTPS fallback"
+         fi
+
+         # Final Fallback: Anonymous HTTPS (works if repo is public)
+         # We check if the currently selected SUBMODULE_URL is accessible; if not, try public
+         if ! remote_accessible "$SUBMODULE_URL"; then
+             echo "🔄 Attempting anonymous GitHub HTTPS (check if public)..."
+             GITHUB_PUBLIC_URL="https://github.com/${GITHUB_OWNER}/ai.git"
+             if remote_accessible "$GITHUB_PUBLIC_URL"; then
+                 echo "✅ GitHub submodule remote (Public HTTPS) is accessible"
+                 SUBMODULE_URL="$GITHUB_PUBLIC_URL"
+             else
+                 echo "❌ Public access failed."
+                 echo "##[error]Could not access submodule 'ai' via Azure SSH, Azure HTTPS, GitHub SSH, or GitHub HTTPS."
+                 echo "##[error]Please ensure 'GITHUB_TOKEN' (or GH_TOKEN, GITHUB_PAT) is set in the pipeline variables."
+                 echo "##[error]If the repo is private, a valid PAT with 'repo' scope is required."
+                 # Don't exit yet, let the git submodule update command fail naturally so we see the native error too
+             fi
+         fi
+      fi
+    fi
+>>>>>>> origin/master
+>>>>>>> origin/master
   fi
 
   # Diagnostic check for SSH access if using SSH
@@ -156,7 +350,24 @@ else
 fi
 
 # Update git config for this repo only to override submodule URL
+<<<<<<< HEAD
 echo "Submodule URL selected: $SUBMODULE_URL"
+=======
+<<<<<<< HEAD
+echo "Submodule URL selected: $SUBMODULE_URL"
+=======
+# Update git config for this repo only to override submodule URL
+# Redact token from log output
+SAFE_URL="$SUBMODULE_URL"
+if [[ -n "${SYSTEM_ACCESSTOKEN:-}" ]]; then
+  SAFE_URL="${SAFE_URL//$SYSTEM_ACCESSTOKEN/***}"
+fi
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+  SAFE_URL="${SAFE_URL//$GITHUB_TOKEN/***}"
+fi
+echo "Submodule URL selected: $SAFE_URL"
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 # 1. Sync first to ensure local config matches .gitmodules (resets structure)
 git submodule sync
