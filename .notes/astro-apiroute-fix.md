@@ -36,4 +36,3 @@ export const GET: APIRoute = async (context: AstroAPIContext) => {
 This is the 4th time we've encountered this exact issue.
 Framework: Astro 5.10.1
 Last occurrence: Sun Jul  6 10:51:05 AM EDT 2025
-

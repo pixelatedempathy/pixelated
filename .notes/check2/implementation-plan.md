@@ -2,7 +2,11 @@
 
 ## Development Phases
 
+<<<<<<< HEAD
 ### 🚀 Phase 1: Core MVP (Week 1-2)
+=======
+### Phase 1: Core MVP (Week 1-2)
+>>>>>>> origin/master
 
 #### Goals
 - Basic error capture and grouping
@@ -34,7 +38,11 @@
 - Basic grouping by error type
 - Markdown output with metadata
 
+<<<<<<< HEAD
 ### 🎯 Phase 2: Advanced Features (Week 3)
+=======
+### Phase 2: Advanced Features (Week 3)
+>>>>>>> origin/master
 
 #### Goals
 - ESLint integration
@@ -92,14 +100,22 @@
 
 ## Development Checklist
 
+<<<<<<< HEAD
 ### 🎯 Pre-Development Setup
+=======
+### Pre-Development Setup
+>>>>>>> origin/master
 - [ ] Initialize Node.js project with TypeScript
 - [ ] Set up testing framework (Vitest)
 - [ ] Configure CLI framework (Commander.js)
 - [ ] Create sample projects for testing
 - [ ] Set up CI/CD pipeline
 
+<<<<<<< HEAD
 ### 🛠️ Core Development Tasks
+=======
+### Core Development Tasks
+>>>>>>> origin/master
 - [ ] Implement TypeScript error capture
 - [ ] Build error parsing and classification
 - [ ] Create grouping algorithm
@@ -116,7 +132,11 @@
 - [ ] CLI usability testing
 - [ ] Documentation and examples
 
+<<<<<<< HEAD
 ### 🚀 Release Preparation
+=======
+### Release Preparation
+>>>>>>> origin/master
 - [ ] Package for npm distribution
 - [ ] Create installation and usage guides
 - [ ] Set up project repository and documentation

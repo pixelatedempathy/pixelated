@@ -314,7 +314,6 @@ export class BackupSecurityManager {
 
     // Initialize storage providers
     this.storageProviders = new Map()
-    this.loadStorageProviders()
 
     // Initialize recovery testing manager
     /*
@@ -425,20 +424,7 @@ export class BackupSecurityManager {
       logger.info('Initializing backup security manager')
 
       // Initialize storage providers based on configuration
-      for (const [location, config] of Object.entries(
-        this.config.storageLocations,
-      )) {
-        if (config.enabled) {
-          logger.info(`Initializing storage provider for ${location}`)
-          const providerPromise = getStorageProvider(
-            config.provider,
-            config.providerConfig || config.config,
-          )
-          const provider = await providerPromise
-          await provider.initialize()
-          this.storageProviders.set(location as StorageLocation, provider)
-        }
-      }
+      await this.loadStorageProviders()
 
       this.isInitialized = true
       logger.info('Backup security manager initialized successfully')
@@ -836,6 +822,7 @@ export class BackupSecurityManager {
   private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
     logger.info(`Collecting data for ${type} backup`)
 
+
     try {
       // In a real implementation, 'type' (FULL, INCREMENTAL, etc.) would affect logic.
       // For now, we'll perform a FULL backup for all types as a safe default,
@@ -987,10 +974,28 @@ export class BackupSecurityManager {
    * This is needed to load providers dynamically based on the runtime environment
    */
   private async loadStorageProviders(): Promise<void> {
-    // This would be implemented to dynamically load providers from storage-providers-wrapper.ts
-    // For now, it's a placeholder
-    // TODO: Stop using fucking placeholders
-    logger.debug('Storage providers will be loaded during initialization')
+    logger.debug('Loading storage providers during initialization')
+
+    // Clear existing providers before loading new ones
+    this.storageProviders.clear()
+
+    // Iterate over configured storage locations
+    for (const [location, locationConfig] of Object.entries(
+      this.config.storageLocations,
+    )) {
+      // Default to enabled if not explicitly set to false
+      if (locationConfig.enabled !== false) {
+        logger.info(`Initializing storage provider for ${location}`)
+
+        const provider = await getStorageProvider(
+          locationConfig.provider,
+          locationConfig.providerConfig || locationConfig.config,
+        )
+
+        await provider.initialize()
+        this.storageProviders.set(location as StorageLocation, provider)
+      }
+    }
   }
 
   /**
@@ -1051,6 +1056,7 @@ export class BackupSecurityManager {
    * @param data The restored data object
    */
   private async processRestoredData(data: unknown): Promise<void> {
+
     logger.info('Processing restored data')
 
     // Validate the data structure
@@ -1175,7 +1181,7 @@ async function getStorageProvider(
   try {
     // Import the storage provider dynamically
     const { getStorageProvider: importedGetStorageProvider } = await import(
-      './storage-providers-wrapper'
+      './storage-providers-wrapper.ts'
     )
     // Convert to unknown first, then ensure it has the required type property
     const providerConfig = {

@@ -12,6 +12,10 @@
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -22,6 +26,20 @@
       ],
       "~/*": [
         "src/*"
+<<<<<<< HEAD
+=======
+=======
+    "paths": {
+      "@/*": [
+        "../src/*"
+      ],
+      "@lib/*": [
+        "../src/lib/*"
+      ],
+      "~/*": [
+        "../src/*"
+>>>>>>> origin/master
+>>>>>>> origin/master
       ]
     },
     "allowJs": true,
@@ -62,7 +80,15 @@
     ],
     "typeRoots": [
       "../node_modules/@types",
+<<<<<<< HEAD
       "./src/types"
+=======
+<<<<<<< HEAD
+      "./src/types"
+=======
+      "../src/types"
+>>>>>>> origin/master
+>>>>>>> origin/master
     ],
     "plugins": [
       {
@@ -72,6 +98,10 @@
     "downlevelIteration": true
   },
   "include": [
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.astro",
@@ -118,5 +148,50 @@
     "src/**/*.spec.ts",
     "src/**/__tests__/**",
     "src/data/sample-cognitive-models.ts"
+<<<<<<< HEAD
+=======
+=======
+    "../src/**/*.ts",
+    "../src/**/*.tsx",
+    "../src/**/*.astro",
+    "../src/types/**/*.d.ts",
+    "../src/lib/services/redis/__tests__/jest.d.ts",
+    "../.astro-env.d.ts"
+  ],
+  "exclude": [
+    "../dist",
+    "../node_modules",
+    "../**/node_modules/**",
+    "../src/scripts",
+    "../.astro",
+    "../.local",
+    "../**/test-results/**",
+    "../**/performance-results/**",
+    "../**/youtube-transcription-pipeline/**",
+    "../**/public/test-results/**",
+    "../**/secret-scan-artifacts/**",
+    "../**/security-scan-artifacts/**",
+    "../ai",
+    "../tests",
+    "../scripts",
+    "../docs",
+    "../deploy",
+    "../docker",
+    "../infra",
+    "../lint",
+    "../LogFiles",
+    "../memory",
+    "../patches",
+    "../reports",
+    "../supabase",
+    "../templates",
+    "../test_pixel_logs",
+    "../types",
+    "../src/**/*.test.ts",
+    "../src/**/*.spec.ts",
+    "../src/**/__tests__/**",
+    "../src/data/sample-cognitive-models.ts"
+>>>>>>> origin/master
+>>>>>>> origin/master
   ]
 }
