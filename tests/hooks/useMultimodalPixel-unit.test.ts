@@ -432,7 +432,6 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
             expect(state.emotionMetrics.valence).toBeGreaterThan(0)
         })
     })
-})
 
 describe('Initialization', () => {
     it('should initialize with default state', () => {

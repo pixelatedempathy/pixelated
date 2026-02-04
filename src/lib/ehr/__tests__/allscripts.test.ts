@@ -21,8 +21,8 @@ describe('allscripts Provider', () => {
     id: 'test-allscripts',
     name: 'Test Allscripts Provider',
     baseUrl: 'https://fhir.allscriptscloud.com/fhir/r4',
-    clientId: 'example-client-id',
-    clientSecret: process.env.CLIENT_SECRET || 'example-client-secret',
+    clientId: 'test-client-id',
+    clientSecret: process.env.CLIENT_SECRET || 'mock_secret',
     scopes: ['user/Patient.read', 'user/Observation.read'],
   }
 
@@ -38,12 +38,12 @@ describe('allscripts Provider', () => {
     // Define mockHash before using it
     const mockHash: Hash = {
       update: vi.fn().mockReturnThis(),
-      digest: vi.fn().mockReturnValue('mock-hashed-value'),
+      digest: vi.fn().mockReturnValue('hashed'),
     }
 
     vi.mocked(createHash).mockReturnValue(mockHash as any)
     // Use Buffer from imported buffer module
-    const mockRandomBytes = Buffer.from('random-secure-bytes', 'utf8')
+    const mockRandomBytes = Buffer.from('bytes', 'utf8')
     vi.mocked(randomBytes).mockReturnValue(mockRandomBytes as any)
 
     allscriptsProvider = new AllscriptsProvider(
@@ -88,11 +88,11 @@ describe('allscripts Provider', () => {
                   extension: [
                     {
                       url: 'authorize',
-                      valueUri: 'https://auth.example.com/authorize',
+                          valueUri: 'http://localhost/authorize',
                     },
                     {
                       url: 'token',
-                      valueUri: 'https://auth.example.com/token',
+                          valueUri: 'http://localhost/token',
                     },
                   ],
                 },
@@ -172,11 +172,11 @@ describe('allscripts Provider', () => {
                           extension: [
                             {
                               url: 'authorize',
-                              valueUri: 'https://auth.example.com/authorize',
+                              valueUri: 'http://localhost/authorize',
                             },
                             {
                               url: 'token',
-                              valueUri: 'https://auth.example.com/token',
+                              valueUri: 'http://localhost/token',
                             },
                           ],
                         },
@@ -323,7 +323,7 @@ describe('allscripts Provider', () => {
       // Ensure credentials are not easily exposed (e.g., in logs or toString)
       // TODO: Re-evaluate this test. Stringifying the provider might not be the right check.
       // The assertion below is likely incorrect if the secret is stored internally.
-      // expect(JSON.stringify(allscriptsProvider)).not.toContain('test-client-secret');
+      // expect(JSON.stringify(allscriptsProvider)).not.toContain('mock_secret');
       // Placeholder assertion to keep the test structure
       expect(allscriptsProvider.clientId).toBe(providerConfig.clientId)
     })
@@ -386,13 +386,26 @@ describe('allscripts Provider', () => {
       )
 
       // Simulate a search
-      await mockFhirClient.searchResources('Patient', { _summary: 'true' })
+      const result = await mockFhirClient.searchResources('Patient', {
+        _summary: 'true',
+      })
 
       // Assert that _summary or similar minimization parameter was potentially used
       // This requires knowing how minimization SHOULD be implemented.
-      // For now, just assert the mock was called.
-      expect(mockFhirClient.searchResources).toHaveBeenCalled()
-      // TODO: Add specific assertions about parameters or returned data fields.
+      // For now, just assert the mock was called with the correct parameter.
+      expect(mockFhirClient.searchResources).toHaveBeenCalledWith(
+        'Patient',
+        expect.objectContaining({ _summary: 'true' }),
+      )
+
+      // Add specific assertions about parameters or returned data fields.
+      expect(result).toHaveLength(1)
+      expect(result[0]).toEqual(
+        expect.objectContaining({
+          resourceType: 'Patient',
+          id: '123',
+        }),
+      )
     })
   })
 
