@@ -122,12 +122,15 @@ export async function requestRoleTransition(
     // Validate role transition
     const validation = validateRoleTransition(currentRole, requestedRole)
 
+<<<<<<< HEAD
+=======
     // Check if target role is assignable
     const toRoleDef = ROLE_DEFINITIONS[requestedRole]
     if (!toRoleDef.isAssignable) {
       throw new AuthenticationError('Insufficient permissions')
     }
 
+>>>>>>> origin/master
     if (!validation.requiresApproval) {
       throw new AuthenticationError(
         'Role transition does not require approval process',

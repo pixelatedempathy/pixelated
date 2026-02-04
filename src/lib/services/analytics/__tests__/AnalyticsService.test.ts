@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+import * as loggerModule from '../../../logging/build-safe-logger'
+
+import { WebSocket } from 'ws'
+import { AnalyticsService } from '../AnalyticsService'
+import { EventDataSchema, EventPriority, EventType } from '../analytics-types'
+// Import mocks after they're defined
+import * as redisModule from '@/lib/redis'
+
+// Mock dependencies first to avoid hoisting issues
+vi.mock('@/lib/redis', () => {
+=======
 import * as loggerModule from "../../../logging/build-safe-logger";
 
 import { WebSocket } from "ws";
@@ -8,6 +20,7 @@ import * as redisModule from "@/lib/redis";
 
 // Mock dependencies first to avoid hoisting issues
 vi.mock("@/lib/redis", () => {
+>>>>>>> origin/master
   const mockRedisClient = {
     lpush: vi.fn(),
     rpoplpush: vi.fn(),
@@ -31,7 +44,11 @@ vi.mock("@/lib/redis", () => {
   };
 });
 
+<<<<<<< HEAD
+vi.mock('@/lib/utils/logger', () => {
+=======
 vi.mock("@/lib/utils/logger", () => {
+>>>>>>> origin/master
   const mockLogger = {
     info: vi.fn(),
     error: vi.fn(),
@@ -60,8 +77,45 @@ vi.mock("../../../logging/build-safe-logger", () => {
   };
 });
 
+vi.mock('../../../logging/build-safe-logger', () => {
+  const mockLogger = {
+    info: vi.fn(),
+    error: vi.fn(),
+    warn: vi.fn(),
+    debug: vi.fn(),
+  }
+
+  return {
+    createBuildSafeLogger: vi.fn(() => mockLogger),
+    mockLogger, // Export for test use
+  }
+})
+
 // Mock WebSocket
 class MockWebSocket {
+<<<<<<< HEAD
+  public readonly url: string
+  public readyState: number = 1
+  private eventHandlers: Map<string, ((...args: any[]) => void)[]> = new Map()
+
+  constructor(url: string): void {
+    this.url = url
+  }
+
+  public send = vi.fn()
+
+  public emit = vi.fn((event: string, ...args: any[]) => {
+    const handlers = this.eventHandlers.get(event) || []
+    handlers.forEach((handler) => handler(...args))
+  })
+
+  public on = vi.fn((event: string, handler: (...args: any[]) => void) => {
+    if (!this.eventHandlers.has(event)) {
+      this.eventHandlers.set(event, [])
+    }
+    this.eventHandlers.get(event)!.push(handler)
+  })
+=======
   public readonly url: string;
   public readyState: number = 1;
   private eventHandlers: Map<string, ((...args: any[]) => void)[]> = new Map();
@@ -83,6 +137,7 @@ class MockWebSocket {
     }
     this.eventHandlers.get(event)!.push(handler);
   });
+>>>>>>> origin/master
 }
 
 vi.mock("ws", () => ({
@@ -108,6 +163,18 @@ type MockRedisClient = {
   del: ReturnType<typeof vi.fn>;
 };
 const { mockRedisClient } = vi.mocked(redisModule) as unknown as {
+<<<<<<< HEAD
+  mockRedisClient: MockRedisClient
+}
+const { mockLogger } = vi.mocked(loggerModule) as unknown as {
+  mockLogger: {
+    info: ReturnType<typeof vi.fn>
+    error: ReturnType<typeof vi.fn>
+    warn: ReturnType<typeof vi.fn>
+    debug: ReturnType<typeof vi.fn>
+  }
+}
+=======
   mockRedisClient: MockRedisClient;
 };
 const { mockLogger } = vi.mocked(loggerModule) as unknown as {
@@ -118,6 +185,7 @@ const { mockLogger } = vi.mocked(loggerModule) as unknown as {
     debug: ReturnType<typeof vi.fn>;
   };
 };
+>>>>>>> origin/master
 
 describe("analyticsService", () => {
   let analyticsService: AnalyticsService;
@@ -153,12 +221,34 @@ describe("analyticsService", () => {
     analyticsService = new AnalyticsService();
   });
 
+<<<<<<< HEAD
+  describe('trackEvent', () => {
+    it('should validate schema directly', () => {
+      // Test the schema directly
+      const testData = { type: EventType.USER_ACTION }
+      console.log('EventType.USER_ACTION:', EventType.USER_ACTION)
+      console.log('Test data:', testData)
+
+      try {
+        const result = EventDataSchema.parse(testData)
+        console.log('Schema validation result:', result)
+        expect(result).toBeDefined()
+      } catch (error: unknown) {
+        console.error('Schema validation error:', error)
+        throw error
+      }
+    })
+
+    it('should track an event successfully', async () => {
+      const eventId = await analyticsService.trackEvent(mockEvent)
+=======
   describe("trackEvent", () => {
     it("should validate schema directly", () => {
       // Test the schema directly
       const testData = { type: EventType.USER_ACTION };
       console.log("EventType.USER_ACTION:", EventType.USER_ACTION);
       console.log("Test data:", testData);
+>>>>>>> origin/master
 
       try {
         const result = EventDataSchema.parse(testData);
@@ -302,7 +392,11 @@ describe("analyticsService", () => {
       await analyticsService.processEvents();
 
       expect(mockLogger.error).toHaveBeenCalledWith(
+<<<<<<< HEAD
+        'Error processing event:',
+=======
         "Error processing event:",
+>>>>>>> origin/master
         expect.any(Error),
       );
     });
@@ -432,10 +526,17 @@ describe("analyticsService", () => {
       );
 
       await expect(analyticsService.cleanup()).rejects.toThrow(
+<<<<<<< HEAD
+        'Cleanup operation failed',
+      )
+      expect(mockLogger.error).toHaveBeenCalledWith(
+        'Error in analytics cleanup:',
+=======
         "Cleanup operation failed",
       );
       expect(mockLogger.error).toHaveBeenCalledWith(
         "Error in analytics cleanup:",
+>>>>>>> origin/master
         expect.any(Error),
       );
     });

@@ -16,7 +16,11 @@ const protectedRoutePatterns: RegExp[] = [
 function isProtectedRoute(request: Request) {
   try {
     const url = new URL(request.url)
+<<<<<<< HEAD
+    const {pathname} = url
+=======
     const { pathname } = url
+>>>>>>> origin/master
 
     // Allow public API routes (auth endpoints, health checks, etc.)
     if (pathname.startsWith('/api/auth/')) {
@@ -71,10 +75,14 @@ const projectAuthMiddleware = defineMiddleware(async (context, next) => {
 
     // Store user data in locals for use in routes
     if (context.locals && authResult.request?.user) {
+<<<<<<< HEAD
+      ; (context.locals as any).user = authResult.request.user
+=======
       context.locals.user = {
         ...authResult.request.user,
         emailVerified: authResult.request.user.emailVerified ?? false
       }
+>>>>>>> origin/master
     }
   } catch (err) {
     // If authentication check fails, treat as unauthenticated

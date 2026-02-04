@@ -60,7 +60,11 @@ export class JournalResearchApiError extends Error {
 export class JournalResearchApiClient {
   private readonly baseUrl: string
   private readonly timeout: number
+<<<<<<< HEAD
+  private readonly fetchImpl: typeof fetch
+=======
   private readonly fetchImpl?: typeof fetch
+>>>>>>> origin/master
   private readonly getAuthToken?: () => string | null | Promise<string | null>
   private readonly onUnauthorized?: (
     context: ResponseInterceptorContext,
@@ -81,7 +85,11 @@ export class JournalResearchApiClient {
       import.meta.env.PUBLIC_JOURNAL_RESEARCH_API_URL ??
       fallbackBaseUrl
     this.timeout = options.timeout ?? 30000
+<<<<<<< HEAD
+    this.fetchImpl = options.fetchImpl ?? fetch
+=======
     this.fetchImpl = options.fetchImpl
+>>>>>>> origin/master
     this.getAuthToken = options.getAuthToken
     this.onUnauthorized = options.onUnauthorized
   }
@@ -137,6 +145,14 @@ export class JournalResearchApiClient {
       }
     }
 
+<<<<<<< HEAD
+    const init: RequestInit = {
+      method,
+      headers: {
+        'Content-Type': body ? 'application/json' : 'application/json',
+        ...headers,
+      },
+=======
     const requestHeaders = new Headers(headers)
     if (!requestHeaders.has('Content-Type')) {
       requestHeaders.set('Content-Type', 'application/json')
@@ -145,6 +161,7 @@ export class JournalResearchApiClient {
     const init: RequestInit = {
       method,
       headers: requestHeaders,
+>>>>>>> origin/master
       signal: signal ?? controller.signal,
       credentials: 'include',
     }
@@ -174,8 +191,12 @@ export class JournalResearchApiClient {
         await interceptor(requestContext)
       }
 
+<<<<<<< HEAD
+      const response = await this.fetchImpl(requestContext.url.toString(), {
+=======
       const fetchFn = this.fetchImpl ?? fetch
       const response = await fetchFn(requestContext.url.toString(), {
+>>>>>>> origin/master
         ...requestContext.init,
         signal: requestContext.init.signal ?? controller.signal,
       })
@@ -303,16 +324,28 @@ export class JournalResearchApiClient {
  */
 async function getAuthTokenFromBetterAuth(): Promise<string | null> {
   if (typeof window === 'undefined') return null
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> origin/master
   try {
     // Try to get session from Better Auth client
     const { authClient } = await import('@/lib/auth-client')
     const session = await authClient.getSession()
+<<<<<<< HEAD
+    
+    if (session?.data?.session?.token) {
+      return session.data.session.token
+    }
+    
+=======
 
     if (session?.data?.session?.token) {
       return session.data.session.token
     }
 
+>>>>>>> origin/master
     // Fallback to localStorage for backward compatibility
     return (
       window.localStorage.getItem('auth_token') ??
@@ -321,7 +354,11 @@ async function getAuthTokenFromBetterAuth(): Promise<string | null> {
     )
   } catch (error) {
     logger.warn('Failed to get auth token from Better Auth', { error })
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> origin/master
     // Fallback to localStorage
     try {
       return (
@@ -351,7 +388,11 @@ async function handleUnauthorized(context: {
     url: context.url.toString(),
     status: context.response.status,
   })
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> origin/master
   // Redirect to login if we're in the browser
   if (typeof window !== 'undefined') {
     const currentPath = window.location.pathname

@@ -1,5 +1,8 @@
 /// <reference types="vitest/globals" />
+<<<<<<< HEAD
+=======
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+>>>>>>> origin/master
 import { PythonBiasDetectionBridge } from '../python-bridge'
 import { BiasMetricsCollector } from '../metrics-collector'
 import { BiasAlertSystem } from '../alerts-system'
@@ -7,6 +10,24 @@ import type { BiasDetectionConfig, BiasAnalysisResult } from '../types'
 
 // Mock the entire Python bridge to avoid network calls
 vi.mock('../python-bridge', () => ({
+<<<<<<< HEAD
+  PythonBiasDetectionBridge: vi.fn().mockImplementation(() => ({
+    initialize: vi.fn().mockResolvedValue(undefined),
+    analyzeSession: vi.fn().mockResolvedValue({
+      sessionId: 'test-session',
+      overallBiasScore: 0.3,
+      alertLevel: 'medium',
+      layerResults: {
+        preprocessing: { biasScore: 0.2 },
+        modelLevel: { biasScore: 0.3 },
+        interactive: { biasScore: 0.4 },
+        evaluation: { biasScore: 0.3 },
+      },
+    }),
+    checkHealth: vi.fn().mockResolvedValue({ status: 'healthy' }),
+    dispose: vi.fn().mockResolvedValue(undefined),
+  })),
+=======
   PythonBiasDetectionBridge: vi.fn().mockImplementation(function() {
     return {
       initialize: vi.fn().mockResolvedValue(undefined),
@@ -51,6 +72,7 @@ vi.mock('../python-bridge', () => ({
       getAlertStatistics: vi.fn().mockResolvedValue({ total: 10, resolved: 8 }),
     };
   }),
+>>>>>>> origin/master
 }))
 
 // Mock the connection pool for Python bridge
@@ -537,7 +559,11 @@ describe('Module Integration Tests', () => {
       expect(alertStats).toBeDefined()
 
       // High/critical alerts should be reflected in both systems
+<<<<<<< HEAD
+      expect(metrics?.overall_stats?.total_sessions).toBe(6) // Adjust to match mock data
+=======
       expect(metrics?.overall_stats?.total_sessions).toBe(10) // Adjusted expectation matching mock data
+>>>>>>> origin/master
     })
 
     it('should handle metrics and alert system synchronization', async () => {

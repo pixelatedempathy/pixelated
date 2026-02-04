@@ -7,7 +7,10 @@
 
 import { WebSocketServer, WebSocket } from 'ws'
 import type { IncomingMessage } from 'http'
+<<<<<<< HEAD
+=======
 import { verifyToken } from '../../auth/jwt-service'
+>>>>>>> origin/master
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import type {
   BiasAlert,

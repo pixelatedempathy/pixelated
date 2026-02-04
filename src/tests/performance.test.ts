@@ -146,12 +146,16 @@ describe('performance Tests', () => {
 
   // Skip performance tests in CI environment
   const skipTests = process.env['SKIP_PERFORMANCE_TESTS'] === 'true'
+<<<<<<< HEAD
+  ;(skipTests ? describe.skip : describe)('core Web Vitals', () => {
+=======
   const performanceDescribe = skipTests ? describe.skip : describe
 
   performanceDescribe('core Web Vitals', () => {
     // Increase timeout for these heavy tests
     const testOptions = { timeout: 60000 }
 
+>>>>>>> origin/master
     // Test Core Web Vitals and other metrics for each page
     TEST_PAGES.forEach(({ path, name }) => {
       it(`core Web Vitals - ${name}`, testOptions, async () => {

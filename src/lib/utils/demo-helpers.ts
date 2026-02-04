@@ -497,6 +497,23 @@ export function createExportData(
 export function downloadExportData(exportData: ExportData): void {
   try {
     const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+<<<<<<< HEAD
+      type: 'application/json',
+    })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `bias-analysis-${exportData.sessionId}-${new Date().toISOString().split('T')[0]}.json`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  } catch (error: unknown) {
+    console.error('Export failed:', error)
+    throw new Error('Failed to export analysis results. Please try again.', {
+      cause: error,
+    })
+=======
       type: "application/json",
     });
     const url = URL.createObjectURL(blob);
@@ -512,6 +529,7 @@ export function downloadExportData(exportData: ExportData): void {
     throw new Error("Failed to export analysis results. Please try again.", {
       cause: error,
     });
+>>>>>>> origin/master
   }
 }
 
@@ -565,28 +583,49 @@ export function determineAlertLevel(
  */
 const hasBrowserCrypto = (): boolean => {
   return (
+<<<<<<< HEAD
+    typeof window !== 'undefined' &&
+    window.crypto &&
+    window.crypto.getRandomValues !== undefined
+  )
+}
+=======
     typeof window !== "undefined" &&
     window.crypto &&
     window.crypto.getRandomValues !== undefined
   );
 };
+>>>>>>> origin/master
 
 /**
  * Check if Node.js crypto is available
  */
 const hasNodeCrypto = (): boolean => {
   return (
+<<<<<<< HEAD
+    typeof process !== 'undefined' &&
+    process.versions !== undefined &&
+    process.versions.node !== undefined
+  )
+}
+=======
     typeof process !== "undefined" &&
     process.versions !== undefined &&
     process.versions.node !== undefined
   );
 };
+>>>>>>> origin/master
 
 /**
  * Generate random values using browser crypto API
  */
 const generateBrowserRandomValues = (array: Uint32Array): void => {
   if (hasBrowserCrypto()) {
+<<<<<<< HEAD
+    window.crypto.getRandomValues(array)
+  }
+}
+=======
     window.crypto.getRandomValues(array);
   }
 };
@@ -595,17 +634,32 @@ const generateBrowserRandomValues = (array: Uint32Array): void => {
  * Generate random values using Node.js crypto
  */
 import { tryRequireNode } from "./index";
+>>>>>>> origin/master
 
 /**
  * Generate random values using Node.js crypto
  */
 const generateNodeRandomValues = (array: Uint32Array): void => {
   if (!hasNodeCrypto()) {
+<<<<<<< HEAD
+    return
+=======
     return;
+>>>>>>> origin/master
   }
   // Node.js fallback - use guarded runtime require to avoid bundler issues
   // Use tryRequireNode from utils to avoid bundlers including `crypto` in frontend bundles
   // Import dynamically to prevent circular import at module-eval time
+<<<<<<< HEAD
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { tryRequireNode } =
+    require('@/lib/utils') as typeof import('@/lib/utils')
+  const crypto = tryRequireNode('crypto') || require('crypto')
+  const buf = crypto.randomBytes(8)
+  array[0] = buf.readUInt32LE(0)
+  array[1] = buf.readUInt32LE(4)
+}
+=======
   const crypto = tryRequireNode("crypto") as {
     randomBytes: (size: number) => Buffer;
   } | null;
@@ -616,12 +670,27 @@ const generateNodeRandomValues = (array: Uint32Array): void => {
   array[0] = buf.readUInt32LE(0);
   array[1] = buf.readUInt32LE(4);
 };
+>>>>>>> origin/master
 
 /**
  * Generate session ID
  */
 export function generateSessionId(): string {
   // Use cryptographically secure random values for session ID
+<<<<<<< HEAD
+  const array = new Uint32Array(2)
+  if (hasBrowserCrypto()) {
+    generateBrowserRandomValues(array)
+  } else if (hasNodeCrypto()) {
+    generateNodeRandomValues(array)
+  } else {
+    // Fallback to Math.random (should not happen)
+    array[0] = Math.floor(Math.random() * 0xffffffff)
+    array[1] = Math.floor(Math.random() * 0xffffffff)
+  }
+  const randomStr = (array[0] ?? 0).toString(36) + (array[1] ?? 0).toString(36)
+  return 'demo_' + Date.now() + '_' + randomStr.slice(0, 9)
+=======
   const array = new Uint32Array(2);
   if (hasBrowserCrypto()) {
     generateBrowserRandomValues(array);
@@ -634,4 +703,5 @@ export function generateSessionId(): string {
   }
   const randomStr = (array[0] ?? 0).toString(36) + (array[1] ?? 0).toString(36);
   return "demo_" + Date.now() + "_" + randomStr.slice(0, 9);
+>>>>>>> origin/master
 }

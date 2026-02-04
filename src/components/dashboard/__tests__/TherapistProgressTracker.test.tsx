@@ -72,12 +72,19 @@ describe('TherapistProgressTracker', () => {
     expect(within(progressBarContainer!).getByText('85%')).toBeInTheDocument()
   })
 
+<<<<<<< HEAD
+  it('displays skill development data', () => {
+    render(<TherapistProgressTracker session={mockSession} />)
+
+    expect(screen.getByText('Active Listening')).toBeInTheDocument()
+=======
   it('displays skill development data', async () => {
     render(<TherapistProgressTracker session={mockSession} />)
 
     // Wait for skills to load
     await screen.findByText('Active Listening')
 
+>>>>>>> origin/master
     // Scope the Active Listening percentage to that metric's container
     const activeListeningLabel = screen.getByText('Active Listening')
     const activeListeningContainer =
@@ -93,12 +100,18 @@ describe('TherapistProgressTracker', () => {
     expect(screen.getByText('71%')).toBeInTheDocument()
   })
 
+<<<<<<< HEAD
+  it('shows skill trends with correct indicators', () => {
+    render(<TherapistProgressTracker session={mockSession} />)
+
+=======
   it('shows skill trends with correct indicators', async () => {
     render(<TherapistProgressTracker session={mockSession} />)
 
     // Wait for skills to load
     await screen.findByText('Active Listening')
 
+>>>>>>> origin/master
     // Check trend indicators
     const trendIndicators = screen.getAllByText(/[↗↘→]/)
     expect(trendIndicators.length).toBeGreaterThan(0)

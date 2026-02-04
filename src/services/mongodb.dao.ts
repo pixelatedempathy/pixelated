@@ -54,8 +54,10 @@ async function initializeDependencies() {
   }
   return serverDepsPromise
 }
+
 import type {
   AIMetrics,
+  AuditLog,
   BiasDetection,
   ConsentManagement,
   CrisisSessionFlag,
@@ -289,10 +291,10 @@ export class AIMetricsDAO {
     const result = await collection.aggregate(pipeline).toArray()
     const stats = result[0] as
       | {
-          totalRequests: number
-          totalTokens: number
-          averageResponseTime: number
-        }
+        totalRequests: number
+        totalTokens: number
+        averageResponseTime: number
+      }
       | undefined
 
     return stats || { totalRequests: 0, totalTokens: 0, averageResponseTime: 0 }
@@ -548,6 +550,67 @@ export class ConsentManagementDAO {
   }
 }
 
+export class AuditLogDAO {
+  private async getCollection(): Promise<MongoCollection<AuditLog>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error('MongoDB client not initialized')
+    }
+    const db = await mongodb.connect()
+    return db.collection<AuditLog>('audit_logs')
+  }
+
+  async create(log: Omit<AuditLog, '_id'>): Promise<AuditLog> {
+    const collection = await this.getCollection()
+    const result = await collection.insertOne(log)
+    const createdLog = await collection.findOne({ _id: result.insertedId })
+
+    if (!createdLog) {
+      throw new Error('Failed to create audit log')
+    }
+
+    return { ...createdLog, id: createdLog._id?.toString() }
+  }
+
+  async createLog(
+    userId: string,
+    action: string,
+    resourceId: string,
+    resourceType?: string,
+    metadata?: Record<string, unknown>,
+  ): Promise<AuditLog> {
+    await initializeDependencies()
+    if (!ObjectId) {
+      throw new Error('ObjectId not available')
+    }
+
+    return this.create({
+      userId: new ObjectId(userId),
+      action,
+      resourceId,
+      resourceType,
+      metadata,
+      timestamp: new Date(),
+    })
+  }
+
+  async findByUserId(
+    userId: string,
+    limit = 100,
+    offset = 0,
+  ): Promise<AuditLog[]> {
+    const collection = await this.getCollection()
+    const logs = await collection
+      .find({ userId: new ObjectId!(userId) })
+      .sort({ timestamp: -1 })
+      .skip(offset)
+      .limit(limit)
+      .toArray()
+
+    return logs.map((log) => ({ ...log, id: log._id?.toString() }))
+  }
+}
+
 // Export instances for use throughout the application
 export const todoDAO = new TodoDAO()
 export const aiMetricsDAO = new AIMetricsDAO()
@@ -555,4 +618,5 @@ export const biasDetectionDAO = new BiasDetectionDAO()
 export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
+export const auditLogDAO = new AuditLogDAO()
 export const dataExportDAO = new DataExportDAO()

@@ -1,4 +1,9 @@
 export const prerender = false
+<<<<<<< HEAD
+import type { APIContext } from 'astro'
+import { auth0UserService } from '@/services/auth0.service'
+import { verifyAuthToken, getSessionFromRequest } from '@/utils/auth'
+=======
 import { auth0UserService } from '../../../services/auth0.service'
 import { verifyAuthToken, getSessionFromRequest } from '../../../utils/auth'
 import { logSecurityEvent, SecurityEventType } from '../../../lib/security'
@@ -6,12 +11,17 @@ import { detectAndRedactPHI } from '../../../lib/security/phiDetection'
 import { csrfProtection, rateLimitMiddleware } from '../../../lib/auth/middleware'
 import { AuditEventType, createAuditLog } from '../../../lib/audit'
 import { redactPotentialPhi } from '../../../lib/utils/phi-sanitizer'
+>>>>>>> origin/master
 
 /**
  * User profile endpoint using Auth0
  * GET /api/auth/profile - Get current user profile
  * PUT /api/auth/profile - Update user profile
  */
+<<<<<<< HEAD
+export const GET = async ({ request }: APIContext) => {
+  try {
+=======
 export const GET = async ({ request, clientAddress }: { request: Request; clientAddress: string }) => {
   try {
     // Extract client info for logging
@@ -25,6 +35,7 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
     const rateLimitResult = await rateLimitMiddleware(request, 'profile_read', 60, 60)
     if (!rateLimitResult.success) return rateLimitResult.response!
 
+>>>>>>> origin/master
     // Try to get session first (cookie or header)
     const session = await getSessionFromRequest(request)
     let userId: string | null = null
@@ -51,12 +62,15 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
     }
 
     if (!userId) {
+<<<<<<< HEAD
+=======
       await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, null, {
         action: 'get_profile',
         reason: 'No user ID found in session or token',
         clientInfo,
       })
 
+>>>>>>> origin/master
       return new Response(
         JSON.stringify({ error: 'Unauthorized' }),
         {
@@ -104,7 +118,11 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
         headers: { 'Content-Type': 'application/json' },
       },
     )
+<<<<<<< HEAD
+  } catch (error: unknown) {
+=======
   } catch (error: any) {
+>>>>>>> origin/master
     console.error('Get profile error:', error)
 
     await logSecurityEvent(SecurityEventType.AUTHENTICATION_FAILED, null, {
@@ -125,6 +143,10 @@ export const GET = async ({ request, clientAddress }: { request: Request; client
   }
 }
 
+<<<<<<< HEAD
+export const PUT = async ({ request }: APIContext) => {
+  try {
+=======
 export const PUT = async ({ request, clientAddress }: { request: Request; clientAddress: string }) => {
   let clientInfo;
   try {
@@ -144,6 +166,7 @@ export const PUT = async ({ request, clientAddress }: { request: Request; client
     const rateLimitResult = await rateLimitMiddleware(request, 'profile_update', 5, 60)
     if (!rateLimitResult.success) return rateLimitResult.response!
 
+>>>>>>> origin/master
     const session = await getSessionFromRequest(request)
     let userId: string | null = null
 

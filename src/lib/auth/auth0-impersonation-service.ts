@@ -9,8 +9,16 @@ import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
 import { auth0UserService } from '../../services/auth0.service'
 
 // Auth0 Configuration
+<<<<<<< HEAD
+const AUTH0_CONFIG = {
+  domain: process.env.AUTH0_DOMAIN || '',
+  managementClientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID || '',
+  managementClientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || '',
+}
+=======
 import { auth0Config } from './auth0-config'
 
+>>>>>>> origin/master
 
 // Initialize Auth0 management client
 let auth0Management: ManagementClient | null = null
@@ -19,17 +27,28 @@ let auth0Management: ManagementClient | null = null
  * Initialize Auth0 management client
  */
 function initializeAuth0Management() {
+<<<<<<< HEAD
+  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.managementClientId || !AUTH0_CONFIG.managementClientSecret) {
+=======
   if (!auth0Config.domain || !auth0Config.managementClientId || !auth0Config.managementClientSecret) {
 
+>>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
 
   if (!auth0Management) {
     auth0Management = new ManagementClient({
+<<<<<<< HEAD
+      domain: AUTH0_CONFIG.domain,
+      clientId: AUTH0_CONFIG.managementClientId,
+      clientSecret: AUTH0_CONFIG.managementClientSecret,
+      audience: `https://${AUTH0_CONFIG.domain}/api/v2/`,
+=======
       domain: auth0Config.domain,
       clientId: auth0Config.managementClientId,
       clientSecret: auth0Config.managementClientSecret,
       audience: `https://${auth0Config.domain}/api/v2/`,
+>>>>>>> origin/master
       scope: 'read:users update:users create:users impersonate:users'
     })
   }
@@ -81,7 +100,11 @@ export class Auth0ImpersonationService {
   private impersonationLogs: ImpersonationLogEntry[] = []
 
   constructor() {
+<<<<<<< HEAD
+    if (!AUTH0_CONFIG.domain) {
+=======
     if (!auth0Config.domain) {
+>>>>>>> origin/master
       console.warn('Auth0 is not properly configured')
     }
 

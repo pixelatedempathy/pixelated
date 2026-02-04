@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+// Session handling for authentication
+
+import type { SessionData } from './types'
+import { getSession as getStoredSession } from '@/lib/sessionStore'
+
+/**
+ * Retrieve a session by its ID.
+ * Delegates to the generic sessionStore implementation.
+ */
+export async function getSession(sessionId: string): Promise<SessionData | null> {
+  return await getStoredSession(sessionId)
+}
+
+export type { SessionData }
+=======
 /**
  * Session management utilities for authentication system
  * Handles session verification, user info retrieval, and token management
@@ -120,3 +136,4 @@ export async function getSession(): Promise<Session | null> {
   // In a real app, you would get the session from the request context
   return null;
 }
+>>>>>>> origin/master

@@ -298,7 +298,11 @@ export async function csrfProtection(request: Request): Promise<{
 
   if (!storedToken) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -326,7 +330,11 @@ export async function csrfProtection(request: Request): Promise<{
   // Check if token matches stored token
   if (storedToken.token && storedToken.token !== csrfToken) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'invalid_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -354,7 +362,11 @@ export async function csrfProtection(request: Request): Promise<{
   // Check if token has expired
   if (storedToken.expiresAt && storedToken.expiresAt < Date.now()) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
+    logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+=======
     await logSecurityEvent(SecurityEventType.CSRF_VIOLATION, null, {
+>>>>>>> origin/master
       reason: 'expired_token',
       endpoint: new URL(request.url).pathname,
     })
@@ -468,6 +480,10 @@ export interface AuthenticatedRequest extends Request {
     id: string
     email: string
     role: string
+<<<<<<< HEAD
+  }
+  tokenId?: string
+=======
     emailVerified?: boolean
     fullName?: string
     avatarUrl?: string
@@ -478,6 +494,7 @@ export interface AuthenticatedRequest extends Request {
   }
   tokenId?: string
   sessionId?: string
+>>>>>>> origin/master
 }
 
 /**
@@ -584,6 +601,16 @@ export async function authenticateRequest(request: Request): Promise<{
     }
   }
 
+<<<<<<< HEAD
+  // Check if user has MFA enabled
+  const hasMFA = await auth0UserService.userHasMFA(user.id)
+
+  // If user doesn't have MFA enabled, check if adaptive MFA requires it
+  if (!hasMFA) {
+    try {
+      // Get client information for risk assessment
+      const clientInfo = getClientInfo(request)
+=======
   // Check if user is active
   if (user.isActive === false) {
     const { logSecurityEvent, SecurityEventType } = await import('../security')
@@ -643,6 +670,7 @@ export async function authenticateRequest(request: Request): Promise<{
     try {
       // Get client information for risk assessment (already fetched above if sid exists, but reliable here)
       const clientInfo = getClientInfo(request);
+>>>>>>> origin/master
 
       // Create login context for risk assessment
       const loginContext = {
@@ -719,6 +747,10 @@ export async function authenticateRequest(request: Request): Promise<{
     id: user.id,
     email: user.email,
     role: user.role,
+<<<<<<< HEAD
+  }
+  authenticatedRequest.tokenId = validation.tokenId
+=======
     emailVerified: user.emailVerified,
     fullName: user.fullName,
     avatarUrl: user.avatarUrl,
@@ -729,6 +761,7 @@ export async function authenticateRequest(request: Request): Promise<{
   }
   authenticatedRequest.tokenId = validation.tokenId
   authenticatedRequest.sessionId = sid
+>>>>>>> origin/master
 
   return { success: true, request: authenticatedRequest }
 }
@@ -783,7 +816,11 @@ export async function requireRole(
     // Log authorization failure
     try {
       const { logSecurityEvent, SecurityEventType } = await import('../security')
+<<<<<<< HEAD
+      logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+=======
       await logSecurityEvent(SecurityEventType.AUTHORIZATION_FAILED, request.user.id, {
+>>>>>>> origin/master
         requiredRoles: roles,
         userRole: request.user.role,
       })

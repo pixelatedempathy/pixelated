@@ -15,7 +15,11 @@ import '@testing-library/jest-dom'
 let BiasDashboard: (typeof import('./BiasDashboard'))['BiasDashboard']
 
 // Keep original fetch to restore after tests
+<<<<<<< HEAD
+let __originalFetch: typeof fetch | undefined = global.fetch as typeof fetch
+=======
 const __originalFetch: typeof fetch | undefined = global.fetch as typeof fetch
+>>>>>>> origin/master
 
 // Mock the logger
 vi.mock('@/lib/logging/build-safe-logger', () => ({
@@ -120,11 +124,19 @@ const MockWebSocketConstructor = vi.fn(createMockWebSocket) as ReturnType<
 // Mock WebSocket using Vitest's stubGlobal
 vi.stubGlobal('WebSocket', MockWebSocketConstructor)
 
+<<<<<<< HEAD
+// Define standard readyState constants on the mock constructor
+;(MockWebSocketConstructor as any).CONNECTING = 0
+;(MockWebSocketConstructor as any).OPEN = 1
+;(MockWebSocketConstructor as any).CLOSING = 2
+;(MockWebSocketConstructor as any).CLOSED = 3
+=======
   // Define standard readyState constants on the mock constructor
   ; (MockWebSocketConstructor as any).CONNECTING = 0
   ; (MockWebSocketConstructor as any).OPEN = 1
   ; (MockWebSocketConstructor as any).CLOSING = 2
   ; (MockWebSocketConstructor as any).CLOSED = 3
+>>>>>>> origin/master
 
 // --- GLOBAL MOCKS FOR BROWSER APIS ---
 // Ensure matchMedia is always mocked for all tests
@@ -145,7 +157,11 @@ beforeAll(async () => {
     })
   }
   // Mock window.alert and window.prompt to prevent test failures
+<<<<<<< HEAD
+  vi.spyOn(window, 'alert').mockImplementation(() => {})
+=======
   vi.spyOn(window, 'alert').mockImplementation(() => { })
+>>>>>>> origin/master
   vi.spyOn(window, 'prompt').mockImplementation(() => '')
   // Mock URL.createObjectURL if not present
   if (!global.URL.createObjectURL) {
@@ -169,10 +185,17 @@ describe('BiasDashboard', () => {
     vi.stubGlobal('WebSocket', MockWebSocketConstructor)
     // Ensure the constructor has a default implementation after reset
     MockWebSocketConstructor.mockImplementation(createMockWebSocket)
+<<<<<<< HEAD
+    ;(MockWebSocketConstructor as any).CONNECTING = 0
+    ;(MockWebSocketConstructor as any).OPEN = 1
+    ;(MockWebSocketConstructor as any).CLOSING = 2
+    ;(MockWebSocketConstructor as any).CLOSED = 3
+=======
       ; (MockWebSocketConstructor as any).CONNECTING = 0
       ; (MockWebSocketConstructor as any).OPEN = 1
       ; (MockWebSocketConstructor as any).CLOSING = 2
       ; (MockWebSocketConstructor as any).CLOSED = 3
+>>>>>>> origin/master
     // Default fetch mock for initial dashboard load unless a test overrides it
     global.fetch = vi
       .fn()
@@ -225,7 +248,12 @@ describe('BiasDashboard', () => {
     if (__originalFetch) {
       global.fetch = __originalFetch
     } else {
+<<<<<<< HEAD
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(global as any).fetch = undefined
+=======
       ; (global as any).fetch = undefined
+>>>>>>> origin/master
     }
     // Ensure global WebSocket remains our mock after tests that might override it
     vi.stubGlobal('WebSocket', MockWebSocketConstructor)
@@ -1062,7 +1090,11 @@ describe('BiasDashboard', () => {
       global.URL.revokeObjectURL = vi.fn()
       const clickSpy = vi
         .spyOn(HTMLAnchorElement.prototype, 'click')
+<<<<<<< HEAD
+        .mockImplementation(() => {})
+=======
         .mockImplementation(() => { })
+>>>>>>> origin/master
       const originalFetch = globalThis.fetch
       globalThis.fetch = vi.fn(async (input: any, init?: any) => {
         const url = typeof input === 'string' ? input : input?.url
@@ -1097,8 +1129,13 @@ describe('BiasDashboard', () => {
       // Cleanup
       clickSpy.mockRestore()
       globalThis.fetch = originalFetch
+<<<<<<< HEAD
+      ;(global.URL.createObjectURL as any) = vi.fn()
+      ;(global.URL.revokeObjectURL as any) = vi.fn()
+=======
         ; (global.URL.createObjectURL as any) = vi.fn()
         ; (global.URL.revokeObjectURL as any) = vi.fn()
+>>>>>>> origin/master
     })
 
     it('closes export dialog when cancel is clicked', async () => {
@@ -1481,7 +1518,12 @@ describe('BiasDashboard', () => {
       if (originalFetch) {
         global.fetch = originalFetch
       } else {
+<<<<<<< HEAD
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ;(global as any).fetch = undefined
+=======
         ; (global as any).fetch = undefined
+>>>>>>> origin/master
       }
       if (container && container.parentNode) {
         container.parentNode.removeChild(container)

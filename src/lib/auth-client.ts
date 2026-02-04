@@ -15,7 +15,10 @@ export interface User {
 export interface Session {
   user: User
   expiresAt: string
+<<<<<<< HEAD
+=======
   token?: string
+>>>>>>> origin/master
 }
 
 class AuthClient {
@@ -35,6 +38,8 @@ class AuthClient {
   }
 
   /**
+<<<<<<< HEAD
+=======
    * Get the current session (Promise-based, mimicking better-auth client)
    */
   async getSession() {
@@ -48,6 +53,7 @@ class AuthClient {
   }
 
   /**
+>>>>>>> origin/master
    * Sign in with email and password
    */
   async signInEmail({ email, password, rememberMe }: any) {
@@ -67,8 +73,12 @@ class AuthClient {
 
       this._session = {
         user: data.user,
+<<<<<<< HEAD
+        expiresAt: new Date(Date.now() + 3600000).toISOString() // 1 hour
+=======
         expiresAt: new Date(Date.now() + 3600000).toISOString(), // 1 hour
         token: data.token
+>>>>>>> origin/master
       }
 
       return { data, error: null }

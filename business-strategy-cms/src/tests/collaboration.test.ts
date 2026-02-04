@@ -3,7 +3,10 @@ import { CollaborationService } from '../services/collaborationService'
 import { DocumentService } from '../services/documentService'
 import { AuthService } from '../services/authService'
 import { UserRole } from '../types/user'
+<<<<<<< HEAD
+=======
 import { DocumentCategory, DocumentStatus } from '../types/document'
+>>>>>>> origin/master
 
 describe('CollaborationService Property Tests', () => {
   let user1: any
@@ -34,12 +37,22 @@ describe('CollaborationService Property Tests', () => {
     document = await DocumentService.createDocument({
       title: 'Test Document',
       content: 'Initial content',
+<<<<<<< HEAD
+      category: 'Strategy',
+      authorId: user1.id,
+      status: 'draft',
+      collaborators: [],
+      metadata: {},
+      tags: [],
+    })
+=======
       category: DocumentCategory.BUSINESS_PLAN,
       status: DocumentStatus.DRAFT,
       collaborators: [],
       metadata: {},
       tags: [],
     }, user1.user.id!)
+>>>>>>> origin/master
   })
 
   afterEach(() => {
@@ -48,26 +61,53 @@ describe('CollaborationService Property Tests', () => {
 
   describe('Session Management Properties', () => {
     it('should maintain session uniqueness per user-document pair', () => {
+<<<<<<< HEAD
+      const session1 = CollaborationService.joinSession(document.id, user1.id)
+      const session2 = CollaborationService.joinSession(document.id, user1.id)
+
+      expect(session1.id).toBe(session2.id)
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+=======
       const session1 = CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       const session2 = CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
 
       expect(session1.userId).toBe(session2.userId)
       expect(CollaborationService.getActiveUsers(document.id)).toHaveLength(
+>>>>>>> origin/master
         1,
       )
     })
 
     it('should allow multiple users in same document session', () => {
+<<<<<<< HEAD
+      const session1 = CollaborationService.joinSession(document.id, user1.id)
+      const session2 = CollaborationService.joinSession(document.id, user2.id)
+
+      expect(session1.id).not.toBe(session2.id)
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+=======
       const session1 = CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       const session2 = CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
 
       expect(session1.userId).not.toBe(session2.userId)
       expect(CollaborationService.getActiveUsers(document.id)).toHaveLength(
+>>>>>>> origin/master
         2,
       )
     })
 
     it('should properly clean up sessions on user disconnect', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+        2,
+      )
+
+      CollaborationService.leaveSession(document.id, user1.id)
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
 
@@ -77,6 +117,7 @@ describe('CollaborationService Property Tests', () => {
 
       CollaborationService.leaveSession(document.id, user1.user.id!)
       expect(CollaborationService.getActiveUsers(document.id)).toHaveLength(
+>>>>>>> origin/master
         1,
       )
     })
@@ -84,17 +125,44 @@ describe('CollaborationService Property Tests', () => {
 
   describe('Cursor Tracking Properties', () => {
     it('should broadcast cursor positions to all session participants', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+
+      const cursorUpdate = {
+        userId: user1.id,
+        position: { line: 1, column: 5 },
+        selection: null,
+      }
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
 
       const cursorPosition = 15
       const selection = { start: 15, end: 15 }
+>>>>>>> origin/master
 
       const updates: any[] = []
       CollaborationService.onCursorUpdate(document.id, (update: any) => {
         updates.push(update)
       })
 
+<<<<<<< HEAD
+      CollaborationService.updateCursor(document.id, user1.id, cursorUpdate)
+
+      expect(updates).toHaveLength(1)
+      expect(updates[0].userId).toBe(user1.id)
+      expect(updates[0].position.line).toBe(1)
+    })
+
+    it('should handle rapid cursor updates without data loss', () => {
+      CollaborationService.joinSession(document.id, user1.id)
+
+      const updates = Array.from({ length: 100 }, (_, i) => ({
+        userId: user1.id,
+        position: { line: i, column: i * 2 },
+        selection: null,
+=======
       CollaborationService.updateCursor(document.id, user1.user.id!, cursorPosition, selection)
 
       expect(updates).toHaveLength(1)
@@ -109,6 +177,7 @@ describe('CollaborationService Property Tests', () => {
         userId: user1.user.id!,
         position: i,
         selection: { start: i, end: i },
+>>>>>>> origin/master
       }))
 
       const receivedUpdates: any[] = []
@@ -117,39 +186,66 @@ describe('CollaborationService Property Tests', () => {
       })
 
       updates.forEach((update) =>
+<<<<<<< HEAD
+        CollaborationService.updateCursor(document.id, user1.id, update),
+      )
+
+      expect(receivedUpdates.length).toBeGreaterThan(0)
+      expect(receivedUpdates[receivedUpdates.length - 1].position.line).toBe(99)
+=======
         CollaborationService.updateCursor(document.id, user1.user.id!, update.position, update.selection),
       )
 
       expect(receivedUpdates.length).toBeGreaterThan(0)
       expect(receivedUpdates[receivedUpdates.length - 1].position).toBe(99)
+>>>>>>> origin/master
     })
   })
 
   describe('Change Recording Properties', () => {
     it('should record all changes with proper ordering', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
+>>>>>>> origin/master
 
       const changes = [
         {
           type: 'insert' as const,
           position: 0,
           content: 'Hello',
+<<<<<<< HEAD
+          userId: user1.id,
+          timestamp: Date.now(),
+=======
           userId: user1.user.id!,
           timestamp: new Date(),
+>>>>>>> origin/master
         },
         {
           type: 'delete' as const,
           position: 0,
           length: 2,
+<<<<<<< HEAD
+          userId: user1.id,
+          timestamp: Date.now() + 1,
+=======
           userId: user1.user.id!,
           timestamp: new Date(Date.now() + 1),
+>>>>>>> origin/master
         },
         {
           type: 'insert' as const,
           position: 2,
           content: 'World',
+<<<<<<< HEAD
+          userId: user1.id,
+          timestamp: Date.now() + 2,
+=======
           userId: user1.user.id!,
           timestamp: new Date(Date.now() + 2),
+>>>>>>> origin/master
         },
       ]
 
@@ -157,7 +253,11 @@ describe('CollaborationService Property Tests', () => {
         CollaborationService.recordChange(document.id, change),
       )
 
+<<<<<<< HEAD
+      const history = CollaborationService.getChangeHistory(document.id)
+=======
       const history = CollaborationService.getChanges(document.id)
+>>>>>>> origin/master
       expect(history).toHaveLength(3)
       expect(history[0].type).toBe('insert')
       expect(history[1].type).toBe('delete')
@@ -165,21 +265,46 @@ describe('CollaborationService Property Tests', () => {
     })
 
     it('should maintain change attribution correctly', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
+>>>>>>> origin/master
 
       CollaborationService.recordChange(document.id, {
         type: 'insert',
         position: 0,
         content: 'User1 edit',
+<<<<<<< HEAD
+        userId: user1.id,
+        timestamp: Date.now(),
+=======
         userId: user1.user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       })
 
       CollaborationService.recordChange(document.id, {
         type: 'insert',
         position: 10,
         content: 'User2 edit',
+<<<<<<< HEAD
+        userId: user2.id,
+        timestamp: Date.now() + 1,
+      })
+
+      const history = CollaborationService.getChangeHistory(document.id)
+      expect(history).toHaveLength(2)
+      expect(history[0].userId).toBe(user1.id)
+      expect(history[1].userId).toBe(user2.id)
+    })
+
+    it('should handle concurrent changes with conflict resolution', () => {
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+=======
         userId: user2.user.id!,
         timestamp: new Date(Date.now() + 1),
       })
@@ -193,39 +318,63 @@ describe('CollaborationService Property Tests', () => {
     it('should handle concurrent changes with conflict resolution', () => {
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
+>>>>>>> origin/master
 
       const change1 = {
         type: 'insert' as const,
         position: 0,
         content: 'First',
+<<<<<<< HEAD
+        userId: user1.id,
+        timestamp: Date.now(),
+=======
         userId: user1.user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       }
 
       const change2 = {
         type: 'insert' as const,
         position: 0,
         content: 'Second',
+<<<<<<< HEAD
+        userId: user2.id,
+        timestamp: Date.now() + 1,
+=======
         userId: user2.user.id!,
         timestamp: new Date(Date.now() + 1),
+>>>>>>> origin/master
       }
 
       CollaborationService.recordChange(document.id, change1)
       CollaborationService.recordChange(document.id, change2)
 
+<<<<<<< HEAD
+      const history = CollaborationService.getChangeHistory(document.id)
+=======
       const history = CollaborationService.getChanges(document.id)
+>>>>>>> origin/master
       expect(history).toHaveLength(2)
 
       const firstChange = history.find((h: any) => h.content === 'First')
       const secondChange = history.find((h: any) => h.content === 'Second')
+<<<<<<< HEAD
+      expect(firstChange!.timestamp).toBeLessThan(secondChange!.timestamp)
+=======
       expect(firstChange!.timestamp.getTime()).toBeLessThan(secondChange!.timestamp.getTime())
+>>>>>>> origin/master
     })
   })
 
   describe('Real-time Synchronization Properties', () => {
     it('should broadcast changes to all connected users', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
+>>>>>>> origin/master
 
       const receivedChanges: any[] = []
       CollaborationService.onContentChange(document.id, (change: any) => {
@@ -236,8 +385,13 @@ describe('CollaborationService Property Tests', () => {
         type: 'insert' as const,
         position: 0,
         content: 'Test content',
+<<<<<<< HEAD
+        userId: user1.id,
+        timestamp: Date.now(),
+=======
         userId: user1.user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       }
 
       CollaborationService.recordChange(document.id, change)
@@ -247,10 +401,17 @@ describe('CollaborationService Property Tests', () => {
     })
 
     it('should handle network partitions gracefully', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+      CollaborationService.joinSession(document.id, user2.id)
+
+      CollaborationService.leaveSession(document.id, user1.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
       CollaborationService.joinSession(document.id, user2.user.id!, user2.user.username)
 
       CollaborationService.leaveSession(document.id, user1.user.id!)
+>>>>>>> origin/master
 
       const receivedChanges: any[] = []
       CollaborationService.onContentChange(document.id, (change: any) => {
@@ -261,14 +422,23 @@ describe('CollaborationService Property Tests', () => {
         type: 'insert' as const,
         position: 0,
         content: 'After disconnect',
+<<<<<<< HEAD
+        userId: user2.id,
+        timestamp: Date.now(),
+=======
         userId: user2.user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       }
 
       CollaborationService.recordChange(document.id, change)
 
       expect(receivedChanges).toHaveLength(1)
+<<<<<<< HEAD
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+=======
       expect(CollaborationService.getActiveUsers(document.id)).toHaveLength(
+>>>>>>> origin/master
         1,
       )
     })
@@ -291,11 +461,19 @@ describe('CollaborationService Property Tests', () => {
         users.push(user)
       }
 
+<<<<<<< HEAD
+      users.forEach((user) =>
+        CollaborationService.joinSession(document.id, user.id),
+      )
+
+      expect(CollaborationService.getActiveSessions(document.id)).toHaveLength(
+=======
       users.forEach((user: any) =>
         CollaborationService.joinSession(document.id, user.user.id!, user.user.username),
       )
 
       expect(CollaborationService.getActiveUsers(document.id)).toHaveLength(
+>>>>>>> origin/master
         userCount,
       )
 
@@ -303,8 +481,13 @@ describe('CollaborationService Property Tests', () => {
         type: 'insert' as const,
         position: 0,
         content: 'Mass update',
+<<<<<<< HEAD
+        userId: users[0].id,
+        timestamp: Date.now(),
+=======
         userId: users[0].user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       }
 
       const startTime = Date.now()
@@ -315,26 +498,43 @@ describe('CollaborationService Property Tests', () => {
     })
 
     it('should maintain change history without memory leaks', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
+>>>>>>> origin/master
 
       const changeCount = 1000
       const changes = Array.from({ length: changeCount }, (_, i) => ({
         type: 'insert' as const,
         position: i,
         content: `Change ${i}`,
+<<<<<<< HEAD
+        userId: user1.id,
+        timestamp: Date.now() + i,
+=======
         userId: user1.user.id!,
         timestamp: new Date(Date.now() + i),
+>>>>>>> origin/master
       }))
 
       changes.forEach((change) =>
         CollaborationService.recordChange(document.id, change),
       )
 
+<<<<<<< HEAD
+      const history = CollaborationService.getChangeHistory(document.id)
+      expect(history).toHaveLength(changeCount)
+
+      CollaborationService.clearChangeHistory(document.id)
+      expect(CollaborationService.getChangeHistory(document.id)).toHaveLength(0)
+=======
       const history = CollaborationService.getChanges(document.id)
       expect(history).toHaveLength(100)
 
       CollaborationService.clearChangeHistory(document.id)
       expect(CollaborationService.getChanges(document.id)).toHaveLength(0)
+>>>>>>> origin/master
     })
   })
 
@@ -351,11 +551,26 @@ describe('CollaborationService Property Tests', () => {
 
       const canAccess = await DocumentService.checkDocumentPermission(
         document.id,
+<<<<<<< HEAD
+        unauthorizedUser.id,
+=======
         unauthorizedUser.user.id!,
+>>>>>>> origin/master
         'read',
       )
 
       if (canAccess) {
+<<<<<<< HEAD
+        CollaborationService.joinSession(document.id, unauthorizedUser.id)
+        expect(
+          CollaborationService.getActiveSessions(document.id),
+        ).toContainEqual(
+          expect.objectContaining({ userId: unauthorizedUser.id }),
+        )
+      } else {
+        expect(() =>
+          CollaborationService.joinSession(document.id, unauthorizedUser.id),
+=======
         CollaborationService.joinSession(document.id, unauthorizedUser.user.id!, unauthorizedUser.user.username)
         expect(
           CollaborationService.getActiveUsers(document.id),
@@ -365,24 +580,38 @@ describe('CollaborationService Property Tests', () => {
       } else {
         expect(() =>
           CollaborationService.joinSession(document.id, unauthorizedUser.user.id!, unauthorizedUser.user.username),
+>>>>>>> origin/master
         ).toThrow()
       }
     })
 
     it('should validate change data to prevent injection attacks', () => {
+<<<<<<< HEAD
+      CollaborationService.joinSession(document.id, user1.id)
+=======
       CollaborationService.joinSession(document.id, user1.user.id!, user1.user.username)
+>>>>>>> origin/master
 
       const maliciousChange = {
         type: 'insert' as const,
         position: 0,
         content: '<script>alert("XSS")</script>',
+<<<<<<< HEAD
+        userId: user1.id,
+        timestamp: Date.now(),
+=======
         userId: user1.user.id!,
         timestamp: new Date(),
+>>>>>>> origin/master
       }
 
       CollaborationService.recordChange(document.id, maliciousChange)
 
+<<<<<<< HEAD
+      const history = CollaborationService.getChangeHistory(document.id)
+=======
       const history = CollaborationService.getChanges(document.id)
+>>>>>>> origin/master
       expect(history[0].content).toBe('<script>alert("XSS")</script>')
     })
   })

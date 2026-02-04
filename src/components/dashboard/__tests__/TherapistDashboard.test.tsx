@@ -1,7 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { TherapistDashboard } from '../TherapistDashboard'
 
+<<<<<<< HEAD
+=======
 import type { TherapistSession } from '@/types/dashboard'
+>>>>>>> origin/master
 import { describe, expect, it, vi } from 'vitest'
 
 // Mock child components
@@ -12,8 +15,14 @@ vi.mock('../AnalyticsCharts', () => ({
 }))
 
 vi.mock('../SessionControls', () => ({
+<<<<<<< HEAD
+  SessionControls: () => (
+    <div data-testid="session-controls">Session Controls</div>
+  ),
+=======
   __esModule: true,
   default: () => <div data-testid="session-controls">Session Controls</div>,
+>>>>>>> origin/master
 }))
 
 vi.mock('../TherapistProgressTracker', () => ({
@@ -23,8 +32,14 @@ vi.mock('../TherapistProgressTracker', () => ({
 }))
 
 vi.mock('../TherapyProgressCharts', () => ({
+<<<<<<< HEAD
+  TherapyProgressCharts: () => (
+    <div data-testid="therapy-charts">Therapy Charts</div>
+  ),
+=======
   __esModule: true,
   default: () => <div data-testid="therapy-charts">Therapy Charts</div>,
+>>>>>>> origin/master
 }))
 
 // Mock the useTherapistAnalytics hook
@@ -44,6 +59,8 @@ vi.mock('@/hooks/useTherapistAnalytics', () => ({
   })),
 }))
 
+<<<<<<< HEAD
+=======
 const mockSessions: TherapistSession[] = [
   {
     id: 'session-1',
@@ -56,6 +73,7 @@ const mockSessions: TherapistSession[] = [
   },
 ]
 
+>>>>>>> origin/master
 describe('TherapistDashboard', () => {
   it('renders dashboard heading', () => {
     render(
