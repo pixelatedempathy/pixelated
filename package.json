@@ -291,6 +291,7 @@
   "devDependencies": {
     "@astrojs/cloudflare": "^12.6.11",
     "@astrojs/markdoc": "^0.15.10",
+    "@astrojs/netlify": "^6.6.4",
     "@astrojs/rss": "^4.0.14",
     "@fontsource/inter": "^5.2.8",
     "@iconify-json/ri": "^1.2.7",

@@ -70,7 +70,7 @@ API_KEY=prod-api-key-abc123def456
 JWT_SECRET=super-secure-jwt-production-key
 REDIS_URL=redis://localhost:6379/0
 SMTP_PASSWORD=secure-email-password-xyz789
-GITHUB_TOKEN=ghp_production_token_secure_123
+GITHUB_TOKEN=mock_token_secure_123
 SENTRY_DSN=https://key@sentry.io/project
 ENVEOF
                 exit 0
@@ -317,7 +317,7 @@ API_KEY=prod-api-key-abc123def456
 JWT_SECRET=super-secure-jwt-production-key
 REDIS_URL=redis://localhost:6379/0
 SMTP_PASSWORD=secure-email-password-xyz789
-GITHUB_TOKEN=ghp_production_token_secure_123
+GITHUB_TOKEN=mock_token_secure_123
 SENTRY_DSN=https://key@sentry.io/project
 STRIPE_SECRET_KEY=sk_live_secure_stripe_key_123
 AWS_ACCESS_KEY_ID=AKIA_SECURE_ACCESS_KEY
