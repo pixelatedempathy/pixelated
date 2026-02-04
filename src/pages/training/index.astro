@@ -8,12 +8,20 @@ import Layout from '@/layouts/Layout.astro'
 import { getCurrentUser, isAuthenticated } from '@/lib/auth'
 
 // Check if user is authenticated using the available auth functions
+<<<<<<< HEAD
 const isUserAuthenticated = await isAuthenticated(Astro.cookies)
+=======
+const isUserAuthenticated = await isAuthenticated(Astro.request)
+>>>>>>> origin/master
 if (!isUserAuthenticated) {
   return Astro.redirect('/auth/login')
 }
 
+<<<<<<< HEAD
 const session = await getCurrentUser(Astro.cookies)
+=======
+const session = await getCurrentUser(Astro.request)
+>>>>>>> origin/master
 if (!session) {
   return Astro.redirect('/auth/login')
 }

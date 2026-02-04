@@ -12,10 +12,22 @@ describe('EmotionValidationPipeline', () => {
       confidence: 0.8,
       context: 'conversation',
       responseText: 'Clearly, everyone from group X has the same feelings.',
+<<<<<<< HEAD
     }
     const result = await pipeline.validateEmotionResult(input)
     expect(result.biasScore).toBeGreaterThan(0)
     expect(result.biasAnalysis).toBeDefined()
+=======
+      participantDemographics: {
+        age: '26-35',
+        gender: 'female',
+        ethnicity: 'other',
+        primaryLanguage: 'en',
+      },
+    }
+    const result = await pipeline.validateEmotionResult(input)
+    expect(result.biasScore).toBeDefined()
+>>>>>>> origin/master
     expect(result.isValid).toBe(false)
   })
 
@@ -62,9 +74,15 @@ describe('EmotionValidationPipeline', () => {
   it('produces non-mitigated output when bias not present', async () => {
     const input = {
       sessionId: 'c5',
+<<<<<<< HEAD
       detectedEmotion: 'optimism',
       confidence: 0.8,
       context: 'conversation',
+=======
+      detectedEmotion: 'happy',
+      confidence: 0.8,
+      context: 'positive success',
+>>>>>>> origin/master
       responseText: 'I am feeling optimistic about tomorrow.',
     }
     const result = await pipeline.validateEmotionResult(input)
@@ -88,9 +106,15 @@ describe('EmotionValidationPipeline', () => {
   it('number fields are within [0,1] range when appropriate', async () => {
     const input = {
       sessionId: 'c7',
+<<<<<<< HEAD
       detectedEmotion: 'okay',
       confidence: 0.7,
       context: 'conversation',
+=======
+      detectedEmotion: 'happy',
+      confidence: 0.7,
+      context: 'neutral',
+>>>>>>> origin/master
       responseText: 'I feel okay.',
     }
     const result = await pipeline.validateEmotionResult(input)

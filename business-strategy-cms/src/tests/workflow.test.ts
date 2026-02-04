@@ -2,7 +2,11 @@
 import { WorkflowService } from '../services/workflowService'
 import { DocumentService } from '../services/documentService'
 import { AuthService } from '../services/authService'
+<<<<<<< HEAD
 import { UserRole } from '../types/user'
+=======
+import { DocumentCategory, DocumentStatus } from '../types/document'
+>>>>>>> origin/master
 import {
   WorkflowStatus,
   WorkflowAction,
@@ -26,7 +30,10 @@ describe('WorkflowService Property Tests', () => {
       username: 'user1',
       firstName: 'User',
       lastName: 'One',
+<<<<<<< HEAD
       role: UserRole.CONTENT_CREATOR,
+=======
+>>>>>>> origin/master
     })
 
     user2 = await AuthService.register({
@@ -35,13 +42,17 @@ describe('WorkflowService Property Tests', () => {
       username: 'user2',
       firstName: 'User',
       lastName: 'Two',
+<<<<<<< HEAD
       role: UserRole.ADMINISTRATOR,
+=======
+>>>>>>> origin/master
     })
 
     // Create test document
     document = await DocumentService.createDocument({
       title: 'Test Strategy Document',
       content: 'This is a test strategy document for workflow testing',
+<<<<<<< HEAD
       category: 'Strategy',
       authorId: user1.id,
       status: 'draft',
@@ -49,6 +60,14 @@ describe('WorkflowService Property Tests', () => {
       metadata: {},
       tags: [],
     })
+=======
+      category: DocumentCategory.BUSINESS_PLAN,
+      status: DocumentStatus.DRAFT,
+      collaborators: [],
+      metadata: {},
+      tags: [],
+    }, user1.id)
+>>>>>>> origin/master
   })
 
   afterEach(() => {
@@ -60,8 +79,13 @@ describe('WorkflowService Property Tests', () => {
     it('should initialize default templates', () => {
       const templates = WorkflowService.getWorkflowTemplates()
       expect(templates).toHaveLength(2)
+<<<<<<< HEAD
       expect(templates[0].name).toBe('Strategy Document Review')
       expect(templates[1].name).toBe('Marketing Content Review')
+=======
+      expect(templates[0]!.name).toBe('Strategy Document Review')
+      expect(templates[1]!.name).toBe('Marketing Content Review')
+>>>>>>> origin/master
     })
 
     it('should retrieve template by ID', () => {
@@ -120,6 +144,7 @@ describe('WorkflowService Property Tests', () => {
       const marketingDoc = await DocumentService.createDocument({
         title: 'Marketing Document',
         content: 'Marketing content',
+<<<<<<< HEAD
         category: 'Marketing',
         authorId: user1.id,
         status: 'draft',
@@ -127,6 +152,14 @@ describe('WorkflowService Property Tests', () => {
         metadata: {},
         tags: [],
       })
+=======
+        category: DocumentCategory.MARKETING_STRATEGY,
+        status: DocumentStatus.DRAFT,
+        collaborators: [],
+        metadata: {},
+        tags: [],
+      }, user1.id)
+>>>>>>> origin/master
 
       await expect(
         WorkflowService.createWorkflowInstance(
@@ -157,7 +190,11 @@ describe('WorkflowService Property Tests', () => {
       expect(submitted.status).toBe(WorkflowStatus.IN_REVIEW)
       expect(submitted.currentStep).toBe(1)
       expect(submitted.comments).toHaveLength(1)
+<<<<<<< HEAD
       expect(submitted.comments[0].content).toBe('Ready for review')
+=======
+      expect(submitted.comments[0]!.content).toBe('Ready for review')
+>>>>>>> origin/master
     })
 
     it('should throw error when submitting non-draft document', async () => {
@@ -189,7 +226,11 @@ describe('WorkflowService Property Tests', () => {
 
       expect(approved.currentStep).toBe(2)
       expect(approved.approvals).toHaveLength(1)
+<<<<<<< HEAD
       expect(approved.approvals[0].action).toBe(WorkflowAction.APPROVE)
+=======
+      expect(approved.approvals[0]!.action).toBe(WorkflowAction.APPROVE)
+>>>>>>> origin/master
     })
 
     it('should complete workflow after final approval', async () => {
@@ -251,7 +292,11 @@ describe('WorkflowService Property Tests', () => {
       )
 
       expect(commented.comments).toHaveLength(2) // 1 from submit + 1 from comment
+<<<<<<< HEAD
       expect(commented.comments[1].content).toBe(
+=======
+      expect(commented.comments[1]!.content).toBe(
+>>>>>>> origin/master
         'Consider adding more data on competitors',
       )
     })
@@ -309,7 +354,11 @@ describe('WorkflowService Property Tests', () => {
       })
 
       expect(instances).toHaveLength(1)
+<<<<<<< HEAD
       expect(instances[0].documentId).toBe(document.id)
+=======
+      expect(instances[0]!.documentId).toBe(document.id)
+>>>>>>> origin/master
     })
 
     it('should search workflow instances by status', () => {
@@ -318,7 +367,11 @@ describe('WorkflowService Property Tests', () => {
       })
 
       expect(instances).toHaveLength(1)
+<<<<<<< HEAD
       expect(instances[0].status).toBe(WorkflowStatus.DRAFT)
+=======
+      expect(instances[0]!.status).toBe(WorkflowStatus.DRAFT)
+>>>>>>> origin/master
     })
 
     it('should search workflow instances by priority', () => {
@@ -327,7 +380,11 @@ describe('WorkflowService Property Tests', () => {
       })
 
       expect(instances).toHaveLength(1)
+<<<<<<< HEAD
       expect(instances[0].priority).toBe(ReviewPriority.HIGH)
+=======
+      expect(instances[0]!.priority).toBe(ReviewPriority.HIGH)
+>>>>>>> origin/master
     })
 
     it('should return workflow analytics', () => {
@@ -366,8 +423,13 @@ describe('WorkflowService Property Tests', () => {
         workflowInstance.id,
       )
       expect(approvals).toHaveLength(1)
+<<<<<<< HEAD
       expect(approvals[0].action).toBe(WorkflowAction.APPROVE)
       expect(approvals[0].comment).toBe('Approved for next step')
+=======
+      expect(approvals[0]!.action).toBe(WorkflowAction.APPROVE)
+      expect(approvals[0]!.comment).toBe('Approved for next step')
+>>>>>>> origin/master
     })
   })
 
@@ -415,7 +477,11 @@ describe('WorkflowService Property Tests', () => {
         document.id,
       )
       expect(instances).toHaveLength(1)
+<<<<<<< HEAD
       expect(instances[0].documentId).toBe(document.id)
+=======
+      expect(instances[0]!.documentId).toBe(document.id)
+>>>>>>> origin/master
     })
   })
 })

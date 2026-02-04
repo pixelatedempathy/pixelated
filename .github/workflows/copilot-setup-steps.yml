@@ -29,7 +29,11 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
+<<<<<<< HEAD
           version: 10.28.0
+=======
+          version: 10.28.2
+>>>>>>> origin/master
 
       - name: Validate package.json
         run: |

@@ -6,11 +6,19 @@ import ShareLink from "@/components/widgets/ShareLink.astro";
 import "@/styles/enhanced-theme.css";
 
 interface Props {
+<<<<<<< HEAD
   entry: CollectionEntry<"blog"> | CollectionEntry<"docs">;
   basePath?: string;
 }
 
 const { entry, basePath = "blog" } = Astro.props;
+=======
+  entry: CollectionEntry<'blog'> | CollectionEntry<'docs'>
+  basePath?: string
+}
+
+const { entry, basePath = 'blog' } = Astro.props
+>>>>>>> origin/master
 const {
   title: postTitle,
   description,
@@ -41,11 +49,19 @@ const shareConfig: ShareConfig = {
   telegram: false,
   whatsapp: false,
   email: false,
+<<<<<<< HEAD
 };
 
 // Build URL for sharing (works with prerendered pages)
 const shareUrl = `https://pixelated.empathy.dev/${basePath}/${entry.data.slug || entry.slug}`;
 const pathname = `/${basePath}/${entry.data.slug || entry.slug}`;
+=======
+}
+
+// Build URL for sharing (works with prerendered pages)
+const shareUrl = `https://pixelated.empathy.dev/${basePath}/${entry.data.slug || entry.slug}`
+const pathname = `/${basePath}/${entry.data.slug || entry.slug}`
+>>>>>>> origin/master
 ---
 
 <BaseLayout

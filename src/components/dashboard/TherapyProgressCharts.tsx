@@ -51,10 +51,17 @@ const SessionProgressTimeline: React.FC<
                 height: `${((values[i] ?? 0) / max) * 100}%`,
                 minHeight: '4px',
               }}
+<<<<<<< HEAD
               title={`Session ${s.sessionId.slice(0, 8)}: ${values[i] ?? 0}% progress`}
               tabIndex={0}
               role="presentation"
               aria-label={`Session ${s.sessionId.slice(0, 8)}: ${values[i] ?? 0}% progress`}
+=======
+              title={`Session ${s.sessionId}: ${values[i] ?? 0}% progress`}
+              tabIndex={0}
+              role="presentation"
+              aria-label={`Session ${s.sessionId}: ${values[i] ?? 0}% progress`}
+>>>>>>> origin/master
             />
             <span className="text-xs mt-2 text-gray-600">
               {df.format(new Date(s.date))}
@@ -185,7 +192,11 @@ const SessionComparison: React.FC<{
         <div className="text-sm">
           <div className="font-medium">Current Session</div>
           <div className="text-muted-foreground">
+<<<<<<< HEAD
             {String(currentSession.sessionId).slice(0, 8)}
+=======
+            {String(currentSession.sessionId)}
+>>>>>>> origin/master
           </div>
         </div>
         <div
@@ -207,7 +218,11 @@ const SessionComparison: React.FC<{
         <div className="text-sm text-right">
           <div className="font-medium">Previous Session</div>
           <div className="text-muted-foreground">
+<<<<<<< HEAD
             {String(previousSession.sessionId).slice(0, 8)}
+=======
+            {String(previousSession.sessionId)}
+>>>>>>> origin/master
           </div>
         </div>
       </div>

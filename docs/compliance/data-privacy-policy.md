@@ -162,6 +162,7 @@ We may update this Privacy Policy periodically. We will:
 ## Contact Information
 
 ### Privacy Inquiries
+<<<<<<< HEAD
 - **Email**: privacy@pixelated-empathy.com
 - **Address**: [Your Business Address]
 - **Privacy Officer**: privacy-officer@pixelated-empathy.com
@@ -171,6 +172,17 @@ We may update this Privacy Policy periodically. We will:
 
 ### HIPAA Compliance Officer
 - **Email**: hipaa-compliance@pixelated-empathy.com
+=======
+- **Email**: privacy@pixelatedempathy.com
+- **Address**: [Your Business Address]
+- **Privacy Officer**: privacy-officer@pixelatedempathy.com
+
+### Data Protection Officer (GDPR)
+- **Email**: dpo@pixelatedempathy.com
+
+### HIPAA Compliance Officer
+- **Email**: hipaa-compliance@pixelatedempathy.com
+>>>>>>> origin/master
 
 ## Regional Addendums
 

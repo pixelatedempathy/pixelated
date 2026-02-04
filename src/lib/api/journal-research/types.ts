@@ -13,10 +13,17 @@ const optionalIsoDateSchema = z
   .nullable()
   .transform((value) => (value || null))
 
+<<<<<<< HEAD
 export const SearchKeywordMapSchema = z.record(z.array(z.string()))
 export type SearchKeywordMap = z.infer<typeof SearchKeywordMapSchema>
 
 export const WeeklyTargetsSchema = z.record(z.number())
+=======
+export const SearchKeywordMapSchema = z.record(z.string(), z.array(z.string()))
+export type SearchKeywordMap = z.infer<typeof SearchKeywordMapSchema>
+
+export const WeeklyTargetsSchema = z.record(z.string(), z.number())
+>>>>>>> origin/master
 export type WeeklyTargets = z.infer<typeof WeeklyTargetsSchema>
 
 export const ProgressMetricsSchema = z
@@ -45,7 +52,11 @@ export const SessionSchema = z
     search_keywords: SearchKeywordMapSchema,
     weekly_targets: WeeklyTargetsSchema,
     current_phase: z.string(),
+<<<<<<< HEAD
     progress_metrics: z.record(z.number()),
+=======
+    progress_metrics: z.record(z.string(), z.number()),
+>>>>>>> origin/master
   })
   .transform((data) => ({
     sessionId: data.session_id,
@@ -167,7 +178,11 @@ export const IntegrationPlanSchema = z
     target_format: z.string(),
     required_transformations: z.array(z.string()),
     estimated_effort_hours: z.number(),
+<<<<<<< HEAD
     schema_mapping: z.record(z.string()),
+=======
+    schema_mapping: z.record(z.string(), z.string()),
+>>>>>>> origin/master
     created_date: isoDateSchema,
   })
   .transform((data) => ({
@@ -187,7 +202,11 @@ export const ProgressSchema = z
   .object({
     session_id: z.string(),
     current_phase: z.string(),
+<<<<<<< HEAD
     progress_metrics: z.record(z.number()),
+=======
+    progress_metrics: z.record(z.string(), z.number()),
+>>>>>>> origin/master
     weekly_targets: WeeklyTargetsSchema,
     progress_percentage: z.number(),
   })

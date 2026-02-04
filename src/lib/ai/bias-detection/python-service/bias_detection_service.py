@@ -37,9 +37,15 @@ from typing import Any, Dict, List, Optional
 # Initialize early to capture startup errors
 try:
     from bias_detection.sentry_metrics import (
+<<<<<<< HEAD
         init_sentry,
         bias_metrics,
         api_metrics,
+=======
+        api_metrics,
+        bias_metrics,
+        init_sentry,
+>>>>>>> origin/master
         service_metrics,
         track_latency,
     )
@@ -53,16 +59,31 @@ except ImportError:
     # Create no-op stubs if sentry module isn't available
     class NoOpMetrics:
         def __getattr__(self, name):
+<<<<<<< HEAD
             return lambda *args, **kwargs: None
+=======
+            return lambda *_, **__: None
+>>>>>>> origin/master
 
     bias_metrics = NoOpMetrics()
     api_metrics = NoOpMetrics()
     service_metrics = NoOpMetrics()
 
+<<<<<<< HEAD
     def track_latency(*args, **kwargs):
         def decorator(func):
             return func
 
+=======
+    def track_latency(func_or_name=None, **__):
+        """No-op stub for track_latency decorator"""
+
+        def decorator(func):
+            return func
+
+        if callable(func_or_name):
+            return func_or_name
+>>>>>>> origin/master
         return decorator
 
 
@@ -74,6 +95,10 @@ import pandas as pd
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+<<<<<<< HEAD
+=======
+from dotenv import load_dotenv
+>>>>>>> origin/master
 from fairlearn.metrics import (
     demographic_parity_difference,
     equalized_odds_difference,
@@ -120,9 +145,13 @@ except ImportError:
                 # This ensures consistent test results while maintaining some variance
                 # Use sensitive_features in the calculation to avoid unused parameter warning
                 # (Use top-level numpy imported as np instead of importing here)
+<<<<<<< HEAD
                 feature_sum = (
                     np.sum(sensitive_features) if len(sensitive_features) > 0 else 0
                 )
+=======
+                feature_sum = np.sum(sensitive_features) if len(sensitive_features) > 0 else 0
+>>>>>>> origin/master
                 return np.array(
                     [1 if (i + int(feature_sum)) % 2 == 0 else 0 for i in range(len(y))]
                 )
@@ -237,7 +266,10 @@ logger = logging.getLogger(__name__)
 # Initialize Celery integration after logger setup
 try:
     from celery import Celery
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     from tasks import (
         analyze_session_async,
         batch_analyze_sessions,
@@ -268,6 +300,8 @@ else:
 app = Flask(__name__)
 CORS(app)
 
+load_dotenv()
+
 # Configuration
 ENV_NAME = os.getenv("ENV", "").lower()
 IS_PYTEST = "PYTEST_CURRENT_TEST" in os.environ or os.getenv("PYTEST") == "1"
@@ -280,6 +314,7 @@ if (not flask_secret_key or not jwt_secret_key) and IS_NON_PROD:
     # In non-production environments, fall back to insecure defaults to enable testing and local dev
     if not flask_secret_key:
         flask_secret_key = "insecure-test-flask-secret"
+<<<<<<< HEAD
         logging.warning(
             "Using insecure default FLASK_SECRET_KEY for testing/development."
         )
@@ -288,6 +323,12 @@ if (not flask_secret_key or not jwt_secret_key) and IS_NON_PROD:
         logging.warning(
             "Using insecure default JWT_SECRET_KEY for testing/development."
         )
+=======
+        logging.warning("Using insecure default FLASK_SECRET_KEY for testing/development.")
+    if not jwt_secret_key:
+        jwt_secret_key = "insecure-test-jwt-secret"
+        logging.warning("Using insecure default JWT_SECRET_KEY for testing/development.")
+>>>>>>> origin/master
 
 # Defer hard failure until app actually needs to run in production context
 if (not flask_secret_key or not jwt_secret_key) and not IS_NON_PROD:
@@ -460,9 +501,13 @@ class BiasDetectionService:
                     logger.info("spaCy model loaded")
                 except Exception as e:
                     self.nlp = None
+<<<<<<< HEAD
                     logger.info(
                         f"spaCy model not available, continuing without it: {e}"
                     )
+=======
+                    logger.info(f"spaCy model not available, continuing without it: {e}")
+>>>>>>> origin/master
 
                 # VADER (NLTK)
                 try:
@@ -518,9 +563,13 @@ class BiasDetectionService:
 
             layer_results = await asyncio.gather(*tasks, return_exceptions=True)
             # Filter out exceptions for functions that expect only dict results
+<<<<<<< HEAD
             valid_layer_results = [
                 result for result in layer_results if isinstance(result, dict)
             ]
+=======
+            valid_layer_results = [result for result in layer_results if isinstance(result, dict)]
+>>>>>>> origin/master
 
             (
                 preprocessing_result,
@@ -584,9 +633,13 @@ class BiasDetectionService:
 
             # Track alert level if triggered
             if alert_level in ("warning", "high", "critical"):
+<<<<<<< HEAD
                 bias_metrics.alert_triggered(
                     alert_level, "comprehensive", overall_score
                 )
+=======
+                bias_metrics.alert_triggered(alert_level, "comprehensive", overall_score)
+>>>>>>> origin/master
 
             logger.info(
                 f"Bias analysis completed for session {session_data.session_id} in {time.time() - start_time:.2f}s"
@@ -958,9 +1011,13 @@ class BiasDetectionService:
             logger.error(f"AIF360 preprocessing analysis failed: {e}")
             return {"bias_score": 0.0, "error": str(e)}
 
+<<<<<<< HEAD
     async def _run_fairlearn_analysis(
         self, session_data: SessionData
     ) -> dict[str, Any]:
+=======
+    async def _run_fairlearn_analysis(self, session_data: SessionData) -> dict[str, Any]:
+>>>>>>> origin/master
         """Run Fairlearn analysis with real model predictions"""
         try:
             if not FAIRLEARN_AVAILABLE:
@@ -982,9 +1039,13 @@ class BiasDetectionService:
             # Generate realistic predictions based on the data
             # In a real implementation, this would use an actual trained model
             # For now, we'll use the deterministic placeholder adapter
+<<<<<<< HEAD
             y_pred = placeholder_adapters.fairlearn_placeholder_predictions(
                 y, sensitive_features
             )
+=======
+            y_pred = placeholder_adapters.fairlearn_placeholder_predictions(y, sensitive_features)
+>>>>>>> origin/master
 
             dp_diff = demographic_parity_difference(
                 y, y_pred, sensitive_features=sensitive_features.iloc[:, 0]
@@ -1192,6 +1253,7 @@ class BiasDetectionService:
         try:
             blob = TextBlob(text)
             sentiment_obj = getattr(blob, "sentiment", None)
+<<<<<<< HEAD
             polarity = (
                 float(getattr(sentiment_obj, "polarity", 0.0)) if sentiment_obj else 0.0
             )
@@ -1199,6 +1261,11 @@ class BiasDetectionService:
                 float(getattr(sentiment_obj, "subjectivity", 0.0))
                 if sentiment_obj
                 else 0.0
+=======
+            polarity = float(getattr(sentiment_obj, "polarity", 0.0)) if sentiment_obj else 0.0
+            subjectivity = (
+                float(getattr(sentiment_obj, "subjectivity", 0.0)) if sentiment_obj else 0.0
+>>>>>>> origin/master
             )
             pos = max(0.0, polarity)
             compound = polarity
@@ -1528,6 +1595,7 @@ class BiasDetectionService:
         except Exception as e:
             return {"bias_score": 0.0, "error": str(e)}
 
+<<<<<<< HEAD
     def _extract_ai_response_text(
         self, ai_responses: Optional[List[Dict]]
     ) -> List[str]:
@@ -1547,6 +1615,21 @@ class BiasDetectionService:
         ]
 
     def _extract_content_text(self, content: Optional[Dict]) -> List[str]:
+=======
+    def _extract_ai_response_text(self, ai_responses: list[dict] | None) -> list[str]:
+        """Extract text from AI responses"""
+        if not ai_responses:
+            return []
+        return [response["content"] for response in ai_responses if "content" in response]
+
+    def _extract_transcript_text(self, transcripts: list[dict] | None) -> list[str]:
+        """Extract text from transcripts"""
+        if not transcripts:
+            return []
+        return [transcript["text"] for transcript in transcripts if "text" in transcript]
+
+    def _extract_content_text(self, content: dict | None) -> list[str]:
+>>>>>>> origin/master
         """Extract text from content dictionary"""
         if not content:
             return []
@@ -1750,6 +1833,7 @@ def analyze_session():
             bias_service.analyze_session(session_data, getattr(g, "user_id", "unknown"))
         )
 
+<<<<<<< HEAD
         api_metrics.request_completed(
             "/analyze", "POST", 200, (time.time() - request_start) * 1000
         )
@@ -1764,6 +1848,45 @@ def analyze_session():
             jsonify({"error": "An internal error occurred. Please contact support."}),
             500,
         )
+=======
+        api_metrics.request_completed("/analyze", "POST", 200, (time.time() - request_start) * 1000)
+        return jsonify(result)
+
+    except Exception as e:
+        api_metrics.request_completed("/analyze", "POST", 500, (time.time() - request_start) * 1000)
+        return jsonify({"error": str(e), "traceback": traceback.format_exc()}), 500
+
+
+@app.route("/alerts/register", methods=["POST"])
+@track_latency
+# @requires_auth # Auth temporarily disabled for dev
+def register_alert():
+    """
+    Register an alert configuration for the session.
+    Placeholder implementation to satisfy external calls.
+    """
+    request_start = time.time()
+    api_metrics.request_started("/alerts/register", "POST")
+
+    try:
+        data = request.json
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # In a real implementation, we would store the alert/webhook config here
+        logger.info(f"Registered alert for session {data.get('session_id')}: {data}")
+
+        api_metrics.request_completed(
+            "/alerts/register", "POST", 200, (time.time() - request_start) * 1000
+        )
+        return jsonify({"status": "registered", "id": hashlib.sha256(os.urandom(32)).hexdigest()})
+
+    except Exception as e:
+        api_metrics.request_completed(
+            "/alerts/register", "POST", 500, (time.time() - request_start) * 1000
+        )
+        return jsonify({"error": str(e)}), 500
+>>>>>>> origin/master
 
 
 @app.route("/dashboard", methods=["GET"])
@@ -1885,8 +2008,13 @@ def analyze_session_async_endpoint():
 
 
 def _validate_batch_request(
+<<<<<<< HEAD
     data: Optional[Dict],
 ) -> tuple[Optional[List], Optional[tuple]]:
+=======
+    data: dict | None,
+) -> tuple[list | None, tuple | None]:
+>>>>>>> origin/master
     """Validate batch analysis request"""
     if not data or "sessions" not in data:
         return None, (jsonify({"error": "No sessions data provided"}), 400)
@@ -2007,7 +2135,11 @@ def _get_task_result(task_id: str):
     return celery_app.AsyncResult(task_id) if celery_app else None
 
 
+<<<<<<< HEAD
 def _build_task_response(result) -> Dict[str, Any]:
+=======
+def _build_task_response(result) -> dict[str, Any]:
+>>>>>>> origin/master
     """Build response based on task state"""
     if not result:
         return {"error": "Task result is None"}
@@ -2051,7 +2183,11 @@ def get_task_status(task_id):
         )
 
 
+<<<<<<< HEAD
 def _get_worker_task_counts(inspect_obj) -> tuple[Dict, Dict, Dict]:
+=======
+def _get_worker_task_counts(inspect_obj) -> tuple[dict, dict, dict]:
+>>>>>>> origin/master
     """Get task counts for each worker"""
     if inspect_obj is None:
         return {}, {}, {}
@@ -2062,6 +2198,7 @@ def _get_worker_task_counts(inspect_obj) -> tuple[Dict, Dict, Dict]:
 
     return active_tasks, scheduled_tasks, reserved_tasks
 
+<<<<<<< HEAD
 def _build_worker_status(
     active_tasks: Dict, scheduled_tasks: Dict, reserved_tasks: Dict
 ) -> Dict[str, Dict[str, Any]]:
@@ -2071,6 +2208,16 @@ def _build_worker_status(
         set(active_tasks.keys())
         | set(scheduled_tasks.keys())
         | set(reserved_tasks.keys())
+=======
+
+def _build_worker_status(
+    active_tasks: dict, scheduled_tasks: dict, reserved_tasks: dict
+) -> dict[str, dict[str, Any]]:
+    """Build worker status dictionary"""
+    workers_status = {}
+    all_worker_names = (
+        set(active_tasks.keys()) | set(scheduled_tasks.keys()) | set(reserved_tasks.keys())
+>>>>>>> origin/master
     )
 
     for worker_name in all_worker_names:
@@ -2094,9 +2241,13 @@ def get_workers_status():
     try:
         inspect = celery_app.control.inspect() if celery_app else None
         active_tasks, scheduled_tasks, reserved_tasks = _get_worker_task_counts(inspect)
+<<<<<<< HEAD
         workers_status = _build_worker_status(
             active_tasks, scheduled_tasks, reserved_tasks
         )
+=======
+        workers_status = _build_worker_status(active_tasks, scheduled_tasks, reserved_tasks)
+>>>>>>> origin/master
 
         return jsonify(
             {

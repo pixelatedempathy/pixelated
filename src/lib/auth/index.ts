@@ -124,6 +124,7 @@ export type {
 export {
   authenticateRequest,
   requireRole,
+<<<<<<< HEAD
   requirePermission,
   requireAnyRole,
   requireAnyPermission,
@@ -138,6 +139,13 @@ export {
   csrfProtection,
   securityHeaders,
   createAuthMiddlewareStack,
+=======
+  extractTokenFromRequest,
+  getClientIp,
+  getClientInfo,
+  csrfProtection,
+  securityHeaders,
+>>>>>>> origin/master
 } from './auth0-middleware'
 
 /**

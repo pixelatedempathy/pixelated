@@ -4,10 +4,15 @@
  */
 
 import { AuthenticationClient } from 'auth0'
+<<<<<<< HEAD
+=======
+import * as jwt from 'jsonwebtoken'
+>>>>>>> origin/master
 import { setInCache } from '../redis'
 import { logSecurityEvent, SecurityEventType } from '../security/index'
 import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
 
+<<<<<<< HEAD
 // Auth0 Configuration
 const AUTH0_CONFIG = {
   domain: process.env.AUTH0_DOMAIN || '',
@@ -15,6 +20,9 @@ const AUTH0_CONFIG = {
   clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
   audience: process.env.AUTH0_AUDIENCE || '',
 }
+=======
+import { auth0Config, isAuth0Configured } from './auth0-config'
+>>>>>>> origin/master
 
 // Initialize Auth0 authentication client
 let auth0Authentication: AuthenticationClient | null = null
@@ -23,15 +31,25 @@ let auth0Authentication: AuthenticationClient | null = null
  * Initialize Auth0 authentication client
  */
 function initializeAuth0Client() {
+<<<<<<< HEAD
   if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
+=======
+  if (!isAuth0Configured()) {
+>>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
 
   if (!auth0Authentication) {
     auth0Authentication = new AuthenticationClient({
+<<<<<<< HEAD
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
       clientSecret: AUTH0_CONFIG.clientSecret
+=======
+      domain: auth0Config.domain,
+      clientId: auth0Config.clientId,
+      clientSecret: auth0Config.clientSecret
+>>>>>>> origin/master
     })
   }
 }
@@ -159,14 +177,61 @@ export async function validateToken(
       throw new AuthenticationError('Auth0 authentication client not initialized')
     }
 
+<<<<<<< HEAD
     // Decode token to get payload (this doesn't validate the signature yet)
     const decoded = await auth0Authentication.getProfile(token)
 
     // Validate token type matches expected (access tokens only for now)
+=======
+    // Decode token to check standard claims (aud, iss) before expensive UserInfo call
+    const decodedToken = jwt.decode(token, { complete: true }) as { payload: jwt.JwtPayload; header: any } | null
+
+    if (!decodedToken || !decodedToken.payload) {
+      throw new AuthenticationError('Malformed token')
+    }
+
+    const { payload } = decodedToken
+
+    // Validate Issuer
+    const expectedIssuer = `https://${auth0Config.domain}/`
+    if (!payload.iss) {
+      throw new AuthenticationError('Token missing issuer claim')
+    }
+    if (payload.iss !== expectedIssuer) {
+      throw new AuthenticationError(`Invalid issuer: ${payload.iss}`)
+    }
+
+    // Validate Audience
+    const expectedAudience = auth0Config.audience
+    if (!expectedAudience || expectedAudience.trim() === '') {
+      console.warn('AUTH0_AUDIENCE not configured - audience validation skipped')
+    } else {
+      const { aud } = payload
+      if (!aud) {
+        throw new AuthenticationError('Token missing audience claim')
+      }
+      const audValid = Array.isArray(aud)
+        ? aud.includes(expectedAudience)
+        : aud === expectedAudience
+
+      if (!audValid) {
+        throw new AuthenticationError(`Invalid audience: ${String(aud)}`)
+      }
+    }
+
+    // Validate expiration locally first
+    if (payload.exp && payload.exp < currentTimestamp()) {
+      throw new AuthenticationError('Token has expired')
+    }
+
+    // Validate token type matches expected (access tokens only for now)
+    // Check this before expensive UserInfo call to fail fast
+>>>>>>> origin/master
     if (tokenType === 'refresh') {
       throw new AuthenticationError('Refresh token validation not supported with this method')
     }
 
+<<<<<<< HEAD
     // Check if token has expired
     const {exp} = decoded
     if (exp && exp < currentTimestamp()) {
@@ -185,17 +250,54 @@ export async function validateToken(
       tokenType: tokenType,
     })
 
+=======
+    // Now verify with UserInfo (acts as online signature/revocation check)
+    // Using auth0Authentication.getProfile instead of auth0UserInfo.getUserInfo
+    const userInfo = await auth0Authentication.getProfile(token)
+
+    // Extract user information
+    const userId = userInfo.sub || payload.sub
+    if (!userId) {
+      throw new AuthenticationError('Token missing subject claim')
+    }
+    const role = extractRoleFromPayload(userInfo)
+    const tokenId = payload.jti || ''
+    const sessionId = payload.sid as string | undefined
+
+    // Log successful validation
+    logSecurityEvent(SecurityEventType.TOKEN_VALIDATED, {
+      userId: userId,
+      tokenId: tokenId,
+      tokenType: tokenType,
+      sessionId: sessionId,
+    })
+
+    // Filter out PHI/PII from userInfo before returning
+    // Remove email, name, picture and other identifiable information
+    const { email: _email, name: _name, picture: _picture, nickname: _nickname, given_name: _given_name, family_name: _family_name, ...filteredUserInfo } = userInfo
+    const safePayload = { ...filteredUserInfo, ...payload }
+
+>>>>>>> origin/master
     return {
       valid: true,
       userId: userId,
       role: role,
       tokenId: tokenId,
+<<<<<<< HEAD
       expiresAt: exp,
       payload: decoded,
     }
   } catch (error) {
     // Log validation failure
     await logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, {
+=======
+      expiresAt: payload.exp,
+      payload: safePayload,
+    }
+  } catch (error) {
+    // Log validation failure
+    logSecurityEvent(SecurityEventType.TOKEN_VALIDATION_FAILED, {
+>>>>>>> origin/master
       userId: null,
       error: error instanceof Error ? error.message : 'Unknown error',
       tokenType: tokenType,
@@ -233,7 +335,11 @@ export async function refreshAccessToken(
     const role = extractRoleFromPayload(userResponse)
 
     // Log token refresh event
+<<<<<<< HEAD
     await logSecurityEvent(SecurityEventType.TOKEN_REFRESHED, {
+=======
+    logSecurityEvent(SecurityEventType.TOKEN_REFRESHED, {
+>>>>>>> origin/master
       userId: userId,
       oldTokenId: 'unknown', // We don't have the old token ID
       newAccessTokenId: userResponse.jti || '',
@@ -303,7 +409,11 @@ export async function revokeToken(
   )
 
   // Log revocation event
+<<<<<<< HEAD
   await logSecurityEvent(SecurityEventType.TOKEN_REVOKED, {
+=======
+  logSecurityEvent(SecurityEventType.TOKEN_REVOKED, {
+>>>>>>> origin/master
     userId: null, // We don't have user ID here
     tokenId: tokenId,
     reason: reason,

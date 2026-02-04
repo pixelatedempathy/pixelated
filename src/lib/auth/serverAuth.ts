@@ -5,6 +5,11 @@ import type {
     BaseAPIContext,
     AuthAPIContext
 } from './apiRouteTypes';
+<<<<<<< HEAD
+=======
+import { getRolePermissions, type UserRole } from './auth0-rbac-service';
+import type { AuthUser } from './types';
+>>>>>>> origin/master
 
 /**
  * Implementation of protectRoute higher-order function.
@@ -35,11 +40,26 @@ export function protectRoute(options: ProtectRouteOptions = {}) {
             }
 
             // 3. Attach user to locals for the handler and convert context
+<<<<<<< HEAD
+=======
+            const user = authResult.request.user!;
+            const authUser: AuthUser = {
+                ...user,
+                emailVerified: user.emailVerified ?? false,
+                permissions: getRolePermissions(user.role as UserRole),
+                name: user.fullName
+            };
+
+>>>>>>> origin/master
             const authContext: AuthAPIContext = {
                 ...context,
                 locals: {
                     ...context.locals,
+<<<<<<< HEAD
                     user: authResult.request.user as any
+=======
+                    user: authUser
+>>>>>>> origin/master
                 }
             } as any;
 
