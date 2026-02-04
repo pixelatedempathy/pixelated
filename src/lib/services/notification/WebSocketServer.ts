@@ -4,7 +4,7 @@ import type { WebSocket } from 'ws'
 import { WebSocketServer as WSServer } from 'ws'
 import type { IncomingMessage } from 'http'
 import { z } from 'zod'
-// Supabase admin import removed - migrate to MongoDB/auth provider
+import * as authService from '../../auth/auth0-jwt-service'
 
 // Define message types using Zod for runtime validation
 const BaseMessageSchema = z.object({
@@ -115,19 +115,21 @@ export class WebSocketServer {
   /**
    * Verify the authentication token
    */
-  private async verifyToken(_token: string): Promise<string> {
+  private async verifyToken(token: string): Promise<string> {
     try {
-      // Use Supabase admin client to verify the token and get user information
-      // TODO: Replace with MongoDB/auth provider implementation for token verification and user lookup
-      // For now, simulate a user ID
-      const userId = 'mock-user-id'
+      const result = await authService.validateToken(token, 'access')
+
+      if (!result.valid || !result.userId) {
+        throw new Error(result.error || 'Invalid token')
+      }
+
       logger
         .createBuildSafeLogger('websocket')
-        .info('Token verified successfully (Supabase removed)', {
-          userId,
-          role: 'user',
+        .info('Token verified successfully', {
+          userId: result.userId,
+          role: result.role,
         })
-      return userId
+      return result.userId
     } catch (error: unknown) {
       logger
         .createBuildSafeLogger('websocket')
