@@ -9,7 +9,11 @@
 
 {
     # Global options
+<<<<<<< HEAD
     email admin@pixelated-empathy.com
+=======
+    email admin@pixelatedempathy.com
+>>>>>>> origin/master
     
     # Metrics
     servers {
@@ -18,7 +22,11 @@
 }
 
 # Main site with automatic HTTPS
+<<<<<<< HEAD
 pixelated-empathy.com www.pixelated-empathy.com {
+=======
+pixelatedempathy.com www.pixelatedempathy.com {
+>>>>>>> origin/master
     # Automatic HTTPS with Let's Encrypt
     
     # Security headers

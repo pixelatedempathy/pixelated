@@ -13,16 +13,7 @@ import { auth0WebAuthnService } from '../lib/auth/auth0-webauthn-service'
 import type { MFAFactor, MFAEnrollment, MFAVerification } from '../lib/auth/auth0-mfa-service'
 import type { WebAuthnCredential, WebAuthnRegistrationOptions, WebAuthnAuthenticationOptions } from '../lib/auth/auth0-webauthn-service'
 import { logSecurityEvent, SecurityEventType } from '../lib/security/index'
-
-// Auth0 Configuration
-const AUTH0_CONFIG = {
-  domain: process.env.AUTH0_DOMAIN || '',
-  clientId: process.env.AUTH0_CLIENT_ID || '',
-  clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
-  audience: process.env.AUTH0_AUDIENCE || '',
-  managementClientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID || '',
-  managementClientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || '',
-}
+import { auth0Config } from '../lib/auth/auth0-config'
 
 // Initialize Auth0 clients
 let auth0Management: ManagementClient | null = null
@@ -33,11 +24,7 @@ let auth0UserInfo: UserInfoClient | null = null
  * Initialize Auth0 clients
  */
 function initializeAuth0Clients() {
-  const domain = process.env.AUTH0_DOMAIN || AUTH0_CONFIG.domain
-  const managementClientId = process.env.AUTH0_MANAGEMENT_CLIENT_ID || AUTH0_CONFIG.managementClientId
-  const managementClientSecret = process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || AUTH0_CONFIG.managementClientSecret
-  const clientId = process.env.AUTH0_CLIENT_ID || AUTH0_CONFIG.clientId
-  const clientSecret = process.env.AUTH0_CLIENT_SECRET || AUTH0_CONFIG.clientSecret
+  const { domain, clientId, clientSecret, managementClientId, managementClientSecret } = auth0Config;
 
   if (!domain || !managementClientId || !managementClientSecret) {
     console.warn('Auth0 configuration is incomplete. Authentication features may not work.', { domain, managementClientId, managementClientSecret })
@@ -50,6 +37,7 @@ function initializeAuth0Clients() {
       clientId: managementClientId,
       clientSecret: managementClientSecret,
       audience: `https://${domain}/api/v2/`,
+      scope: 'read:users update:users create:users delete:users read:roles update:roles'
     })
   }
 
@@ -115,7 +103,7 @@ export class Auth0UserService {
         username: email,
         password: password,
         realm: 'Username-Password-Authentication',
-        audience: process.env.AUTH0_AUDIENCE || AUTH0_CONFIG.audience, // Use environment variable or config
+        audience: auth0Config.audience || `https://${auth0Config.domain}/api/v2/`,
         scope: 'openid profile email offline_access',
       });
 
@@ -139,7 +127,7 @@ export class Auth0UserService {
           fullName: userResponse.name,
           avatarUrl: userResponse.picture,
           createdAt: userResponse.created_at,
-          lastLogin: userResponse.updated_at, // Auth0 v5 user info might not have last_login directly
+          lastLogin: userResponse.updated_at,
           appMetadata: userResponse['https://pixelatedempathy.com/app_metadata'], // Custom namespace
           userMetadata: userResponse['https://pixelatedempathy.com/user_metadata'] // Custom namespace
         },
@@ -167,7 +155,7 @@ export class Auth0UserService {
 
     try {
       // Create user in Auth0
-      const auth0User = await auth0Management.users.create({
+      const { data: auth0User } = await auth0Management.users.create({
         connection: 'Username-Password-Authentication',
         email,
         password,
@@ -211,7 +199,7 @@ export class Auth0UserService {
     }
 
     try {
-      const auth0User = await auth0Management.users.get(userId);
+      const { data: auth0User } = await auth0Management.users.get({ id: userId });
 
       return {
         id: auth0User.user_id,
@@ -241,7 +229,7 @@ export class Auth0UserService {
     }
 
     try {
-      const { data: users } = await auth0Management.users.list();
+      const { data: users } = await auth0Management.users.getAll();
       return users.map(user => ({
         id: user.user_id,
         email: user.email,
@@ -271,7 +259,7 @@ export class Auth0UserService {
     }
 
     try {
-      const { data: users } = await auth0Management.users.list({
+      const { data: users } = await auth0Management.users.getAll({
         q: `email:"${email}"`,
         search_engine: 'v3'
       })
@@ -354,8 +342,8 @@ export class Auth0UserService {
         updateParams.app_metadata = appMetadataUpdates
       }
 
-      const auth0User = await auth0Management.users.update(
-        userId,
+      const { data: auth0User } = await auth0Management.users.update(
+        { id: userId },
         updateParams
       )
 
@@ -388,20 +376,19 @@ export class Auth0UserService {
     }
 
     try {
-      // Get role ID from name (this is a simplification, in reality we'd need to look up the ID)
-      // For now, we'll assume the role exists and we map it to its expected name/ID
+      // Get role ID from name
       const auth0RoleName = this.mapRoleToAuth0Role(role)
 
       // Get all roles to find the ID
-      const { data: roles } = await auth0Management.roles.list()
+      const { data: roles } = await auth0Management.roles.getAll()
       const targetRole = roles.find(r => r.name === auth0RoleName)
 
       if (!targetRole || !targetRole.id) {
         throw new Error(`Role ${auth0RoleName} not found in Auth0`)
       }
 
-      await auth0Management.users.roles.assign(
-        userId,
+      await auth0Management.users.assignRoles(
+        { id: userId },
         { roles: [targetRole.id] }
       )
 
@@ -432,7 +419,7 @@ export class Auth0UserService {
 
     try {
       await auth0Management.users.update(
-        userId,
+        { id: userId },
         { password: newPassword }
       )
     } catch (error) {
@@ -495,7 +482,7 @@ export class Auth0UserService {
         },
         session: {
           accessToken: access_token,
-          refreshToken: refreshToken, // Refresh token is not returned by refresh token grant, so we pass the original one
+          refreshToken: refreshToken,
           expiresAt: new Date(Date.now() + expires_in * 1000)
         },
         accessToken: access_token
@@ -543,7 +530,7 @@ export class Auth0UserService {
     }
 
     try {
-      const ticket = await auth0Management.tickets.changePassword({
+      const { data: ticket } = await auth0Management.tickets.changePassword({
         user_id: userId,
         result_url: returnUrl,
         ttl_sec: 3600 // 1 hour
@@ -691,261 +678,60 @@ export class Auth0UserService {
   /**
    * Get user's WebAuthn credentials
    * @param userId Auth0 user ID
-   * @returns Array of WebAuthn credentials
+   * @returns Array of registered WebAuthn credentials
    */
   async getUserWebAuthnCredentials(userId: string): Promise<WebAuthnCredential[]> {
-    return await auth0WebAuthnService.getUserWebAuthnCredentials(userId)
+    return await auth0WebAuthnService.getUserCredentials(userId)
   }
 
   /**
-   * Delete a WebAuthn credential
+   * Delete a user's WebAuthn credential
    * @param userId Auth0 user ID
-   * @param credentialId WebAuthn credential ID
+   * @param credentialId Credential ID to delete
    */
   async deleteWebAuthnCredential(userId: string, credentialId: string): Promise<void> {
     await auth0WebAuthnService.deleteCredential(userId, credentialId)
   }
 
   /**
-   * Rename a WebAuthn credential
-   * @param userId Auth0 user ID
-   * @param credentialId WebAuthn credential ID
-   * @param newName New name for the credential
-   */
-  async renameWebAuthnCredential(userId: string, credentialId: string, newName: string): Promise<void> {
-    await auth0WebAuthnService.renameCredential(userId, credentialId, newName)
-  }
-
-  /**
-   * Check if user has any WebAuthn credentials
-   * @param userId Auth0 user ID
-   * @returns Whether user has WebAuthn credentials
-   */
-  async userHasWebAuthnCredentials(userId: string): Promise<boolean> {
-    return await auth0WebAuthnService.userHasWebAuthnCredentials(userId)
-  }
-
-  /**
-   * Get user's preferred WebAuthn credential
-   * @param userId Auth0 user ID
-   * @returns User's preferred WebAuthn credential or null
-   */
-  async getUserPreferredWebAuthnCredential(userId: string): Promise<WebAuthnCredential | null> {
-    return await auth0WebAuthnService.getUserPreferredCredential(userId)
-  }
-
-  /**
-   * Extract role from Auth0 user
-   * @param user Auth0 user object
-   * @returns User role
-   */
-  private extractRoleFromUser(user: any): string {
-    // Try to get role from app_metadata first
-    if (user.app_metadata?.roles?.length > 0) {
-      const role = user.app_metadata.roles[0]
-      return this.mapAuth0RoleToRole(role)
-    }
-
-    // Try user_metadata
-    if (user.user_metadata?.role) {
-      return user.user_metadata.role
-    }
-
-    // Default to user role
-    return 'user'
-  }
-
-  /**
-   * Map internal role to Auth0 role
-   * @param role Internal role
-   * @returns Auth0 role
+   * Map internal role to Auth0 role name
    */
   private mapRoleToAuth0Role(role: string): string {
-    switch (role) {
+    switch (role.toLowerCase()) {
       case 'admin':
-        return 'Admin'
-      case 'therapist':
-        return 'Therapist'
-      case 'user':
+        return 'Administrator'
+      case 'clinician':
+        return 'Clinician'
+      case 'supervisor':
+        return 'Supervisor'
+      case 'researcher':
+        return 'Researcher'
       default:
-        return 'User'
+        return 'Standard User'
     }
   }
 
   /**
-   * Map Auth0 role to internal role
-   * @param auth0Role Auth0 role
-   * @returns Internal role
+   * Extract role from Auth0 user profile
    */
-  private mapAuth0RoleToRole(auth0Role: string): string {
-    switch (auth0Role) {
-      case 'Admin':
-        return 'admin'
-      case 'Therapist':
-        return 'therapist'
-      case 'User':
-      default:
-        return 'user'
-    }
+  private extractRoleFromUser(user: any): string {
+    // Check custom namespace first
+    const roles = user['https://pixelatedempathy.com/roles'] || 
+                  user.app_metadata?.roles || 
+                  user.user_metadata?.role
+
+    if (!roles) return 'user'
+    
+    const roleList = Array.isArray(roles) ? roles : [roles]
+    const primaryRole = roleList[0]?.toLowerCase()
+
+    if (primaryRole === 'administrator' || primaryRole === 'admin') return 'admin'
+    if (primaryRole === 'clinician') return 'clinician'
+    if (primaryRole === 'supervisor') return 'supervisor'
+    if (primaryRole === 'researcher') return 'researcher'
+    
+    return 'user'
   }
 }
 
-// Export singleton instance
 export const auth0UserService = new Auth0UserService()
-
-// Export individual functions for compatibility with existing adapter
-export async function verifyToken(token: string) {
-  return await auth0UserService.verifyAuthToken(token)
-}
-
-export async function getUserById(userId: string) {
-  return await auth0UserService.getUserById(userId)
-}
-
-export async function createUser(opts: { email: string; password: string; role?: string }) {
-  return await auth0UserService.createUser(opts.email, opts.password, opts.role ?? 'user')
-}
-
-export async function revokeToken(refreshToken: string) {
-  await auth0UserService.signOut(refreshToken)
-}
-
-export async function revokeRefreshToken(refreshToken: string) {
-  await auth0UserService.signOut(refreshToken)
-}
-
-export async function refreshToken(token: string) {
-  return await auth0UserService.refreshSession(token)
-}
-
-export async function findUserByEmail(email: string) {
-  return await auth0UserService.findUserByEmail(email)
-}
-
-export async function signIn(email: string, password: string) {
-  return await auth0UserService.signIn(email, password)
-}
-
-export async function updateUser(userId: string, updates: Record<string, unknown>) {
-  return await auth0UserService.updateUser(userId, updates)
-}
-
-// MFA functions
-export async function getAvailableMFAFactors(userId: string) {
-  return await auth0UserService.getAvailableMFAFactors(userId)
-}
-
-export async function startMFAEnrollment(userId: string, factor: any) {
-  return await auth0UserService.startMFAEnrollment(userId, factor)
-}
-
-export async function completeMFAEnrollment(userId: string, verification: any) {
-  return await auth0UserService.completeMFAEnrollment(userId, verification)
-}
-
-export async function getUserMFAFactors(userId: string) {
-  return await auth0UserService.getUserMFAFactors(userId)
-}
-
-export async function deleteMFAFactor(userId: string, factorId: string) {
-  return await auth0UserService.deleteMFAFactor(userId, factorId)
-}
-
-export async function challengeUserForMFA(userId: string, factorType: string) {
-  return await auth0UserService.challengeUserForMFA(userId, factorType)
-}
-
-export async function verifyMFAChallenge(userId: string, verification: any) {
-  return await auth0UserService.verifyMFAChallenge(userId, verification)
-}
-
-export async function userHasMFA(userId: string) {
-  return await auth0UserService.userHasMFA(userId)
-}
-
-export async function getUserPreferredMFAFactor(userId: string) {
-  return await auth0UserService.getUserPreferredMFAFactor(userId)
-}
-
-export async function setUserPreferredMFAFactor(userId: string, factorId: string) {
-  return await auth0UserService.setUserPreferredMFAFactor(userId, factorId)
-}
-
-// WebAuthn functions
-export async function getWebAuthnRegistrationOptions(registrationOptions: any) {
-  return await auth0UserService.getWebAuthnRegistrationOptions(registrationOptions)
-}
-
-export async function verifyWebAuthnRegistration(userId: string, credential: any) {
-  return await auth0UserService.verifyWebAuthnRegistration(userId, credential)
-}
-
-export async function getWebAuthnAuthenticationOptions(authenticationOptions: any) {
-  return await auth0UserService.getWebAuthnAuthenticationOptions(authenticationOptions)
-}
-
-export async function verifyWebAuthnAuthentication(userId: string, credential: any) {
-  return await auth0UserService.verifyWebAuthnAuthentication(userId, credential)
-}
-
-export async function getUserWebAuthnCredentials(userId: string) {
-  return await auth0UserService.getUserWebAuthnCredentials(userId)
-}
-
-export async function deleteWebAuthnCredential(userId: string, credentialId: string) {
-  return await auth0UserService.deleteWebAuthnCredential(userId, credentialId)
-}
-
-export async function renameWebAuthnCredential(userId: string, credentialId: string, newName: string) {
-  return await auth0UserService.renameWebAuthnCredential(userId, credentialId, newName)
-}
-
-export async function userHasWebAuthnCredentials(userId: string) {
-  return await auth0UserService.userHasWebAuthnCredentials(userId)
-}
-
-export async function getUserPreferredWebAuthnCredential(userId: string) {
-  return await auth0UserService.getUserPreferredWebAuthnCredential(userId)
-}
-
-export async function getAllUsers() {
-  return await auth0UserService.getAllUsers()
-}
-
-// Placeholder for OAuth verification (to be implemented)
-export async function verifyOAuthCode(_code: string) {
-  throw new Error('OAuth verification not implemented yet')
-}
-
-export default {
-  verifyToken,
-  getUserById,
-  createUser,
-  revokeToken,
-  revokeRefreshToken,
-  refreshToken,
-  findUserByEmail,
-  signIn,
-  updateUser,
-  getAvailableMFAFactors,
-  startMFAEnrollment,
-  completeMFAEnrollment,
-  getUserMFAFactors,
-  deleteMFAFactor,
-  challengeUserForMFA,
-  verifyMFAChallenge,
-  userHasMFA,
-  getUserPreferredMFAFactor,
-  setUserPreferredMFAFactor,
-  getWebAuthnRegistrationOptions,
-  verifyWebAuthnRegistration,
-  getWebAuthnAuthenticationOptions,
-  verifyWebAuthnAuthentication,
-  getUserWebAuthnCredentials,
-  deleteWebAuthnCredential,
-  renameWebAuthnCredential,
-  userHasWebAuthnCredentials,
-  getUserPreferredWebAuthnCredential,
-  getAllUsers,
-  verifyOAuthCode,
-}

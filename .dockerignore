@@ -178,6 +178,10 @@ docker-compose*.yml
 !docker-compose.yml
 Dockerfile.*
 !Dockerfile
+<<<<<<< HEAD
+=======
+!Dockerfile.production
+>>>>>>> origin/master
 k8s/
 helm/
 terraform/
@@ -191,6 +195,13 @@ scripts/*
 !scripts/create-prod-package.js
 !scripts/utils/
 !scripts/utils/start-server.mjs
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+!scripts/docker-entrypoint.js
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 # Tools and utilities
 tools/
