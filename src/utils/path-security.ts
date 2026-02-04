@@ -9,8 +9,13 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 =======
+<<<<<<< HEAD
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+=======
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -18,12 +23,17 @@ import { fileURLToPath } from "node:url";
  */
 export function getProjectRoot(): string {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   if (typeof process !== 'undefined' && process.cwd) {
     return process.cwd()
   }
   // Fallback for edge cases
   const __filename = fileURLToPath(import.meta.url)
   return path.dirname(path.dirname(path.dirname(__filename)))
+<<<<<<< HEAD
+=======
 =======
   if (typeof process !== "undefined" && process.cwd) {
     return process.cwd();
@@ -31,6 +41,7 @@ export function getProjectRoot(): string {
   // Fallback for edge cases
   const __filename = fileURLToPath(import.meta.url);
   return path.dirname(path.dirname(path.dirname(__filename)));
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -43,6 +54,9 @@ export function getProjectRoot(): string {
 export function validatePath(filePath: string, allowedDir: string): string {
   // Normalize the allowed directory to absolute path
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   const normalizedAllowedDir = path.resolve(allowedDir)
 
   // Resolve the file path to absolute
@@ -60,6 +74,8 @@ export function validatePath(filePath: string, allowedDir: string): string {
   }
 
   return normalizedPath
+<<<<<<< HEAD
+=======
 =======
   const normalizedAllowedDir = path.resolve(allowedDir);
 
@@ -81,6 +97,7 @@ export function validatePath(filePath: string, allowedDir: string): string {
 
   return normalizedPath;
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -94,12 +111,18 @@ export function safeJoin(allowedDir: string, ...pathSegments: string[]): string 
   const joinedPath = path.join(...pathSegments)
   return validatePath(joinedPath, allowedDir)
 =======
+<<<<<<< HEAD
+export function safeJoin(allowedDir: string, ...pathSegments: string[]): string {
+  const joinedPath = path.join(...pathSegments)
+  return validatePath(joinedPath, allowedDir)
+=======
 export function safeJoin(
   allowedDir: string,
   ...pathSegments: string[]
 ): string {
   const joinedPath = path.join(...pathSegments);
   return validatePath(joinedPath, allowedDir);
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -116,15 +139,21 @@ export function validatePathAgainstMultiple(
   for (const allowedDir of allowedDirs) {
     try {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       return validatePath(filePath, allowedDir)
     } catch {
       // Try next directory
       continue
+<<<<<<< HEAD
+=======
 =======
       return validatePath(filePath, allowedDir);
     } catch {
       // Try next directory
       continue;
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   }
@@ -134,8 +163,13 @@ export function validatePathAgainstMultiple(
     `Path ${filePath} is not within any allowed directories: ${allowedDirs.join(', ')}`,
   )
 =======
+<<<<<<< HEAD
+    `Path ${filePath} is not within any allowed directories: ${allowedDirs.join(', ')}`,
+  )
+=======
     `Path ${filePath} is not within any allowed directories: ${allowedDirs.join(", ")}`,
   );
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -147,6 +181,9 @@ export function validatePathAgainstMultiple(
 export function sanitizeFilename(filename: string): string {
   // Remove path separators and dangerous characters
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   // Using explicit character codes for control characters to avoid regex warnings
   const unsafeChars = new RegExp('[<>:"|?*\x00-\x1F]', 'g')
 
@@ -155,6 +192,8 @@ export function sanitizeFilename(filename: string): string {
     .replace(/\.\./g, '') // Remove parent directory references
     .replace(unsafeChars, '') // Remove unsafe characters including control characters
     .trim()
+<<<<<<< HEAD
+=======
 =======
   const withoutSeparators = filename
     .replace(/[/\\]/g, "") // Remove path separators
@@ -171,6 +210,7 @@ export function sanitizeFilename(filename: string): string {
 
   return filtered.trim();
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -184,8 +224,13 @@ export function createSafeFilePath(baseDir: string, filename: string): string {
   const sanitized = sanitizeFilename(filename)
   return safeJoin(baseDir, sanitized)
 =======
+<<<<<<< HEAD
+  const sanitized = sanitizeFilename(filename)
+  return safeJoin(baseDir, sanitized)
+=======
   const sanitized = sanitizeFilename(filename);
   return safeJoin(baseDir, sanitized);
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -207,6 +252,9 @@ export function validateAndCreateDir(
  */
 // Lazy initialization to avoid issues with import.meta.url in some contexts
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 let _projectRoot: string | null = null
 
 function getCachedProjectRoot(): string {
@@ -214,6 +262,8 @@ function getCachedProjectRoot(): string {
     _projectRoot = getProjectRoot()
   }
   return _projectRoot
+<<<<<<< HEAD
+=======
 =======
 let _projectRoot: string | null = null;
 
@@ -223,11 +273,15 @@ function getCachedProjectRoot(): string {
   }
   return _projectRoot;
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 export const ALLOWED_DIRECTORIES = {
   get PROJECT_ROOT() {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return getCachedProjectRoot()
   },
   get CONTENT() {
@@ -253,6 +307,8 @@ export const ALLOWED_DIRECTORIES = {
   },
 } as const
 
+<<<<<<< HEAD
+=======
 =======
     return getCachedProjectRoot();
   },
@@ -278,4 +334,5 @@ export const ALLOWED_DIRECTORIES = {
     return path.join(getCachedProjectRoot(), "scripts");
   },
 } as const;
+>>>>>>> origin/master
 >>>>>>> origin/master

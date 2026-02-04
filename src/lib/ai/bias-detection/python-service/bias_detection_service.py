@@ -42,9 +42,15 @@ try:
         bias_metrics,
         api_metrics,
 =======
+<<<<<<< HEAD
+        init_sentry,
+        bias_metrics,
+        api_metrics,
+=======
         api_metrics,
         bias_metrics,
         init_sentry,
+>>>>>>> origin/master
 >>>>>>> origin/master
         service_metrics,
         track_latency,
@@ -62,7 +68,11 @@ except ImportError:
 <<<<<<< HEAD
             return lambda *args, **kwargs: None
 =======
+<<<<<<< HEAD
+            return lambda *args, **kwargs: None
+=======
             return lambda *_, **__: None
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     bias_metrics = NoOpMetrics()
@@ -70,10 +80,15 @@ except ImportError:
     service_metrics = NoOpMetrics()
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     def track_latency(*args, **kwargs):
         def decorator(func):
             return func
 
+<<<<<<< HEAD
+=======
 =======
     def track_latency(func_or_name=None, **__):
         """No-op stub for track_latency decorator"""
@@ -83,6 +98,7 @@ except ImportError:
 
         if callable(func_or_name):
             return func_or_name
+>>>>>>> origin/master
 >>>>>>> origin/master
         return decorator
 
@@ -150,7 +166,13 @@ except ImportError:
                     np.sum(sensitive_features) if len(sensitive_features) > 0 else 0
                 )
 =======
+<<<<<<< HEAD
+                feature_sum = (
+                    np.sum(sensitive_features) if len(sensitive_features) > 0 else 0
+                )
+=======
                 feature_sum = np.sum(sensitive_features) if len(sensitive_features) > 0 else 0
+>>>>>>> origin/master
 >>>>>>> origin/master
                 return np.array(
                     [1 if (i + int(feature_sum)) % 2 == 0 else 0 for i in range(len(y))]
@@ -269,6 +291,10 @@ try:
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
     from tasks import (
         analyze_session_async,
@@ -324,10 +350,21 @@ if (not flask_secret_key or not jwt_secret_key) and IS_NON_PROD:
             "Using insecure default JWT_SECRET_KEY for testing/development."
         )
 =======
+<<<<<<< HEAD
+        logging.warning(
+            "Using insecure default FLASK_SECRET_KEY for testing/development."
+        )
+    if not jwt_secret_key:
+        jwt_secret_key = "insecure-test-jwt-secret"
+        logging.warning(
+            "Using insecure default JWT_SECRET_KEY for testing/development."
+        )
+=======
         logging.warning("Using insecure default FLASK_SECRET_KEY for testing/development.")
     if not jwt_secret_key:
         jwt_secret_key = "insecure-test-jwt-secret"
         logging.warning("Using insecure default JWT_SECRET_KEY for testing/development.")
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 # Defer hard failure until app actually needs to run in production context
@@ -506,7 +543,13 @@ class BiasDetectionService:
                         f"spaCy model not available, continuing without it: {e}"
                     )
 =======
+<<<<<<< HEAD
+                    logger.info(
+                        f"spaCy model not available, continuing without it: {e}"
+                    )
+=======
                     logger.info(f"spaCy model not available, continuing without it: {e}")
+>>>>>>> origin/master
 >>>>>>> origin/master
 
                 # VADER (NLTK)
@@ -568,7 +611,13 @@ class BiasDetectionService:
                 result for result in layer_results if isinstance(result, dict)
             ]
 =======
+<<<<<<< HEAD
+            valid_layer_results = [
+                result for result in layer_results if isinstance(result, dict)
+            ]
+=======
             valid_layer_results = [result for result in layer_results if isinstance(result, dict)]
+>>>>>>> origin/master
 >>>>>>> origin/master
 
             (
@@ -638,7 +687,13 @@ class BiasDetectionService:
                     alert_level, "comprehensive", overall_score
                 )
 =======
+<<<<<<< HEAD
+                bias_metrics.alert_triggered(
+                    alert_level, "comprehensive", overall_score
+                )
+=======
                 bias_metrics.alert_triggered(alert_level, "comprehensive", overall_score)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
             logger.info(
@@ -1016,7 +1071,13 @@ class BiasDetectionService:
         self, session_data: SessionData
     ) -> dict[str, Any]:
 =======
+<<<<<<< HEAD
+    async def _run_fairlearn_analysis(
+        self, session_data: SessionData
+    ) -> dict[str, Any]:
+=======
     async def _run_fairlearn_analysis(self, session_data: SessionData) -> dict[str, Any]:
+>>>>>>> origin/master
 >>>>>>> origin/master
         """Run Fairlearn analysis with real model predictions"""
         try:
@@ -1044,7 +1105,13 @@ class BiasDetectionService:
                 y, sensitive_features
             )
 =======
+<<<<<<< HEAD
+            y_pred = placeholder_adapters.fairlearn_placeholder_predictions(
+                y, sensitive_features
+            )
+=======
             y_pred = placeholder_adapters.fairlearn_placeholder_predictions(y, sensitive_features)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
             dp_diff = demographic_parity_difference(
@@ -1262,9 +1329,19 @@ class BiasDetectionService:
                 if sentiment_obj
                 else 0.0
 =======
+<<<<<<< HEAD
+            polarity = (
+                float(getattr(sentiment_obj, "polarity", 0.0)) if sentiment_obj else 0.0
+            )
+            subjectivity = (
+                float(getattr(sentiment_obj, "subjectivity", 0.0))
+                if sentiment_obj
+                else 0.0
+=======
             polarity = float(getattr(sentiment_obj, "polarity", 0.0)) if sentiment_obj else 0.0
             subjectivity = (
                 float(getattr(sentiment_obj, "subjectivity", 0.0)) if sentiment_obj else 0.0
+>>>>>>> origin/master
 >>>>>>> origin/master
             )
             pos = max(0.0, polarity)
@@ -1596,6 +1673,9 @@ class BiasDetectionService:
             return {"bias_score": 0.0, "error": str(e)}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     def _extract_ai_response_text(
         self, ai_responses: Optional[List[Dict]]
     ) -> List[str]:
@@ -1615,6 +1695,13 @@ class BiasDetectionService:
         ]
 
     def _extract_content_text(self, content: Optional[Dict]) -> List[str]:
+<<<<<<< HEAD
+        """Extract text from content dictionary"""
+        if not content:
+            return []
+        return [value for value in content.values() if isinstance(value, str)]
+
+=======
 =======
     def _extract_ai_response_text(self, ai_responses: list[dict] | None) -> list[str]:
         """Extract text from AI responses"""
@@ -1635,6 +1722,7 @@ class BiasDetectionService:
             return []
         return [value for value in content.values() if isinstance(value, str)]
 
+>>>>>>> origin/master
     def _extract_text_content(self, session_data: SessionData) -> str:
         """Extract all text content from session data"""
         text_parts = []
@@ -1834,6 +1922,9 @@ def analyze_session():
         )
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         api_metrics.request_completed(
             "/analyze", "POST", 200, (time.time() - request_start) * 1000
         )
@@ -1848,6 +1939,8 @@ def analyze_session():
             jsonify({"error": "An internal error occurred. Please contact support."}),
             500,
         )
+<<<<<<< HEAD
+=======
 =======
         api_metrics.request_completed("/analyze", "POST", 200, (time.time() - request_start) * 1000)
         return jsonify(result)
@@ -1886,6 +1979,7 @@ def register_alert():
             "/alerts/register", "POST", 500, (time.time() - request_start) * 1000
         )
         return jsonify({"error": str(e)}), 500
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 
@@ -2012,8 +2106,13 @@ def _validate_batch_request(
     data: Optional[Dict],
 ) -> tuple[Optional[List], Optional[tuple]]:
 =======
+<<<<<<< HEAD
+    data: Optional[Dict],
+) -> tuple[Optional[List], Optional[tuple]]:
+=======
     data: dict | None,
 ) -> tuple[list | None, tuple | None]:
+>>>>>>> origin/master
 >>>>>>> origin/master
     """Validate batch analysis request"""
     if not data or "sessions" not in data:
@@ -2138,7 +2237,11 @@ def _get_task_result(task_id: str):
 <<<<<<< HEAD
 def _build_task_response(result) -> Dict[str, Any]:
 =======
+<<<<<<< HEAD
+def _build_task_response(result) -> Dict[str, Any]:
+=======
 def _build_task_response(result) -> dict[str, Any]:
+>>>>>>> origin/master
 >>>>>>> origin/master
     """Build response based on task state"""
     if not result:
@@ -2186,7 +2289,11 @@ def get_task_status(task_id):
 <<<<<<< HEAD
 def _get_worker_task_counts(inspect_obj) -> tuple[Dict, Dict, Dict]:
 =======
+<<<<<<< HEAD
+def _get_worker_task_counts(inspect_obj) -> tuple[Dict, Dict, Dict]:
+=======
 def _get_worker_task_counts(inspect_obj) -> tuple[dict, dict, dict]:
+>>>>>>> origin/master
 >>>>>>> origin/master
     """Get task counts for each worker"""
     if inspect_obj is None:
@@ -2199,6 +2306,9 @@ def _get_worker_task_counts(inspect_obj) -> tuple[dict, dict, dict]:
     return active_tasks, scheduled_tasks, reserved_tasks
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 def _build_worker_status(
     active_tasks: Dict, scheduled_tasks: Dict, reserved_tasks: Dict
 ) -> Dict[str, Dict[str, Any]]:
@@ -2208,6 +2318,8 @@ def _build_worker_status(
         set(active_tasks.keys())
         | set(scheduled_tasks.keys())
         | set(reserved_tasks.keys())
+<<<<<<< HEAD
+=======
 =======
 
 def _build_worker_status(
@@ -2217,6 +2329,7 @@ def _build_worker_status(
     workers_status = {}
     all_worker_names = (
         set(active_tasks.keys()) | set(scheduled_tasks.keys()) | set(reserved_tasks.keys())
+>>>>>>> origin/master
 >>>>>>> origin/master
     )
 
@@ -2246,7 +2359,13 @@ def get_workers_status():
             active_tasks, scheduled_tasks, reserved_tasks
         )
 =======
+<<<<<<< HEAD
+        workers_status = _build_worker_status(
+            active_tasks, scheduled_tasks, reserved_tasks
+        )
+=======
         workers_status = _build_worker_status(active_tasks, scheduled_tasks, reserved_tasks)
+>>>>>>> origin/master
 >>>>>>> origin/master
 
         return jsonify(

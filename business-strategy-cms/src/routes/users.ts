@@ -17,7 +17,11 @@ router.get(
 <<<<<<< HEAD
   async (req: AuthenticatedRequest, res) => {
 =======
+<<<<<<< HEAD
+  async (req: AuthenticatedRequest, res) => {
+=======
   async (_req: AuthenticatedRequest, res) => {
+>>>>>>> origin/master
 >>>>>>> origin/master
     try {
       const users = await UserService.getAllUsers()

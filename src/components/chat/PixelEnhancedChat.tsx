@@ -6,6 +6,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import React, { useState, useCallback, useEffect } from 'react'
 import { usePixelConversationIntegration } from '@/hooks/usePixelConversationIntegration'
 import type { PixelInferenceResponse } from '@/types/pixel'
@@ -26,6 +29,8 @@ interface PixelEnhancedChatProps {
     userId: string
     onMessage?: (message: string) => void
     onCrisisDetected?: () => void
+<<<<<<< HEAD
+=======
 =======
 import React, { useState, useCallback, useEffect } from "react";
 import { usePixelConversationIntegration } from "@/hooks/usePixelConversationIntegration";
@@ -48,6 +53,7 @@ interface PixelEnhancedChatProps {
   onMessage?: (message: string) => void;
   onCrisisDetected?: () => void;
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -55,6 +61,9 @@ interface PixelEnhancedChatProps {
  */
 export function PixelEnhancedChat({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     sessionId,
     userId,
     onMessage,
@@ -370,6 +379,8 @@ export function PixelEnhancedChat({
             )}
         </div>
     )
+<<<<<<< HEAD
+=======
 =======
   sessionId,
   userId,
@@ -692,6 +703,7 @@ export function PixelEnhancedChat({
     </div>
   );
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -699,6 +711,9 @@ export function PixelEnhancedChat({
  */
 function MessageBubble({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     message,
     pixelMetrics,
     showMetrics,
@@ -743,6 +758,8 @@ function MessageBubble({
             </div>
         </div>
     )
+<<<<<<< HEAD
+=======
 =======
   message,
   pixelMetrics,
@@ -792,6 +809,7 @@ function MessageBubble({
     </div>
   );
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -799,6 +817,9 @@ function MessageBubble({
  */
 function MetricBar({ label, value }: { label: string; value: number }) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return (
         <div>
             <div className="flex justify-between items-center mb-1">
@@ -818,6 +839,8 @@ function MetricBar({ label, value }: { label: string; value: number }) {
 }
 
 export default PixelEnhancedChat
+<<<<<<< HEAD
+=======
 =======
   return (
     <div>
@@ -838,4 +861,5 @@ export default PixelEnhancedChat
 }
 
 export default PixelEnhancedChat;
+>>>>>>> origin/master
 >>>>>>> origin/master

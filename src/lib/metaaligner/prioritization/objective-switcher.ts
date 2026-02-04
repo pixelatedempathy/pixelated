@@ -227,6 +227,8 @@ export class ObjectiveSwitcher {
       await this.performSwitch(pending, weightingParams)
     }
   }
+<<<<<<< HEAD
+=======
 
   /**
    * Perform the actual objective switch
@@ -434,4 +436,5 @@ export class ObjectiveSwitcher {
     return this.switchInProgress
 >>>>>>> origin/master
   }
+>>>>>>> origin/master
 }

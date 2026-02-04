@@ -501,8 +501,11 @@ describe('BiasAlertSystem', () => {
       const originalProcess = alertSystem.processAlert
       alertSystem.processAlert = vi
         .fn()
+<<<<<<< HEAD
+=======
 =======
       const processSpy = vi.spyOn(alertSystem, 'processAlert')
+>>>>>>> origin/master
 >>>>>>> origin/master
         .mockRejectedValue(new Error('Notification failed'))
 

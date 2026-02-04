@@ -6,8 +6,11 @@ import { describe, expect, it, vi } from 'vitest'
 // Mock the logger
 <<<<<<< HEAD
 vi.mock('../../lib/logging/build-safe-logger', () => ({
+<<<<<<< HEAD
+=======
 =======
 vi.mock('@/lib/logging/build-safe-logger', () => ({
+>>>>>>> origin/master
 >>>>>>> origin/master
   createBuildSafeLogger: () => vi.fn(),
 }))
@@ -192,8 +195,12 @@ describe('useTherapistAnalytics', () => {
 <<<<<<< HEAD
     const { result } = renderHook(() => useTherapistAnalytics(mockFilters, []))
 =======
+<<<<<<< HEAD
+    const { result } = renderHook(() => useTherapistAnalytics(mockFilters, []))
+=======
     const emptySessions: TherapistSession[] = []
     const { result } = renderHook(() => useTherapistAnalytics(mockFilters, emptySessions))
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     // Wait for data to load

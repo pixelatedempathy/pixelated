@@ -136,7 +136,11 @@ export class SocketService {
 <<<<<<< HEAD
       const session = CollaborationService.joinDocument(
 =======
+<<<<<<< HEAD
+      const session = CollaborationService.joinDocument(
+=======
       const session = CollaborationService.joinSession(
+>>>>>>> origin/master
 >>>>>>> origin/master
         documentId,
         socket.user.userId,
@@ -326,7 +330,11 @@ export class SocketService {
 <<<<<<< HEAD
     const {sockets} = this.io.sockets
 =======
+<<<<<<< HEAD
+    const {sockets} = this.io.sockets
+=======
     const { sockets } = this.io.sockets
+>>>>>>> origin/master
 >>>>>>> origin/master
     for (const [_socketId, socket] of sockets) {
       const authSocket = socket as AuthenticatedSocket

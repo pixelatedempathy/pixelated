@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import path from 'node:path';
 import process from 'node:process';
 
@@ -24,6 +27,8 @@ if (isCloudflareDeploy) {
     cloudflareAdapter = cloudflareModule.default;
   } catch (e) {
     console.warn('⚠️  Cloudflare adapter not available, will use Node adapter:', e.message);
+<<<<<<< HEAD
+=======
 =======
 import path from "node:path";
 import process from "node:process";
@@ -59,12 +64,16 @@ if (isCloudflareDeploy) {
       e.message,
     );
 >>>>>>> origin/master
+>>>>>>> origin/master
     cloudflareAdapter = undefined;
   }
 }
 
 if (isCloudflareDeploy && !cloudflareAdapter) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   console.log('🟡 Cloudflare deployment requested but adapter unavailable, using Node adapter');
 }
 
@@ -79,6 +88,8 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 const isBuildCommand = process.argv.includes('build') || process.env.CI === 'true' || !!process.env.CF_PAGES || !!process.env.VERCEL;
 const shouldAnalyzeBundle = process.env.ANALYZE_BUNDLE === '1';
 const hasSentryDSN = !!process.env.SENTRY_DSN || !!process.env.PUBLIC_SENTRY_DSN; // Only enable if DSN is actually present
+<<<<<<< HEAD
+=======
 =======
   console.log(
     "🟡 Cloudflare deployment requested but adapter unavailable, using Node adapter",
@@ -122,6 +133,7 @@ const shouldAnalyzeBundle = process.env.ANALYZE_BUNDLE === "1";
 const hasSentryDSN =
   !!process.env.SENTRY_DSN || !!process.env.PUBLIC_SENTRY_DSN; // Only enable if DSN is actually present
 >>>>>>> origin/master
+>>>>>>> origin/master
 // const _shouldUseSpotlight = isDevelopment && process.env.SENTRY_SPOTLIGHT === '1';
 const preferredPort = (() => {
   const candidates = [
@@ -147,8 +159,13 @@ function getChunkName(id) {
     if (id.includes('node_modules')) {
       return 'vendor';
 =======
+<<<<<<< HEAD
+    if (id.includes('node_modules')) {
+      return 'vendor';
+=======
     if (id.includes("node_modules")) {
       return "vendor";
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
     // Return null for all other modules to reduce chunk count
@@ -156,6 +173,9 @@ function getChunkName(id) {
   }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   if (id.includes('react') || id.includes('react-dom')) {
     return 'react-vendor';
   }
@@ -173,6 +193,8 @@ function getChunkName(id) {
   }
   if (id.includes('node_modules')) {
     return 'vendor';
+<<<<<<< HEAD
+=======
 =======
   if (id.includes("react") || id.includes("react-dom")) {
     return "react-vendor";
@@ -192,6 +214,7 @@ function getChunkName(id) {
   if (id.includes("node_modules")) {
     return "vendor";
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
   return null;
 }
@@ -199,17 +222,23 @@ function getChunkName(id) {
 const adapter = (() => {
   if (isCloudflareDeploy && cloudflareAdapter) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     console.log('🔵 Using Cloudflare adapter for Pages deployment');
     // Only enable platformProxy for local dev (not during builds)
     // During Cloudflare Pages builds, platformProxy requires Wrangler auth which isn't available
     const adapterConfig = {
       mode: 'directory',
+<<<<<<< HEAD
+=======
 =======
     console.log("🔵 Using Cloudflare adapter for Pages deployment");
     // Only enable platformProxy for local dev (not during builds)
     // During Cloudflare Pages builds, platformProxy requires Wrangler auth which isn't available
     const adapterConfig = {
       mode: "directory",
+>>>>>>> origin/master
 >>>>>>> origin/master
       functionPerRoute: false,
     };
@@ -220,13 +249,22 @@ const adapter = (() => {
         enabled: true,
       };
 =======
+<<<<<<< HEAD
+      adapterConfig.platformProxy = {
+        enabled: true,
+      };
+=======
       adapterConfig.platformProxy = { enabled: true };
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
     return cloudflareAdapter(adapterConfig);
   }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   if (isVercelDeploy) {
     console.log('⚡ Using Vercel adapter for deployment');
     return vercel();
@@ -258,6 +296,8 @@ const adapter = (() => {
   console.log('🟢 Using Node adapter for standard deployment');
   return node({
     mode: 'standalone',
+<<<<<<< HEAD
+=======
 =======
   if (isCloudflareDeploy) {
     console.log("🟡 Cloudflare adapter unavailable, using Node adapter");
@@ -291,18 +331,24 @@ const adapter = (() => {
   return node({
     mode: "standalone",
 >>>>>>> origin/master
+>>>>>>> origin/master
   });
 })();
 
 // https://astro.build/config
 export default defineConfig({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   site: process.env.PUBLIC_SITE_URL || 'https://pixelatedempathy.com',
   output: 'server',
   adapter,
   trailingSlash: 'ignore',
   build: {
     format: 'directory',
+<<<<<<< HEAD
+=======
 =======
   site: process.env.PUBLIC_SITE_URL || "https://pixelatedempathy.com",
   output: "server",
@@ -311,11 +357,15 @@ export default defineConfig({
   build: {
     format: "directory",
 >>>>>>> origin/master
+>>>>>>> origin/master
     // Enable source maps in production for Sentry (hidden, not served to users)
     sourcemap: hasSentryDSN || !isProduction,
     copy: [
       {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         from: 'templates/email',
         to: 'templates/email'
       }
@@ -336,6 +386,8 @@ export default defineConfig({
     cacheDir: isDockerBuild ? false : '.vite',
     // Reduce logging overhead
     logLevel: 'error',
+<<<<<<< HEAD
+=======
 =======
         from: "templates/email",
         to: "templates/email",
@@ -361,11 +413,15 @@ export default defineConfig({
     // Reduce logging overhead
     logLevel: "error",
 >>>>>>> origin/master
+>>>>>>> origin/master
     server: {
       watch: {
         ignored: [
           // Aggressive node_modules exclusion at Vite level
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           (p) => (
             p.includes('/node_modules/') ||
             p.includes('\\node_modules\\') ||
@@ -378,6 +434,8 @@ export default defineConfig({
           '/node_modules/**',
           'node_modules/**',
           './node_modules/**',
+<<<<<<< HEAD
+=======
 =======
           (p) =>
             p.includes("/node_modules/") ||
@@ -391,23 +449,30 @@ export default defineConfig({
           "node_modules/**",
           "./node_modules/**",
 >>>>>>> origin/master
+>>>>>>> origin/master
         ],
       },
     },
     build: {
       // Enable hidden source maps in production for Sentry upload (not served to users)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       sourcemap: (!isProduction || hasSentryDSN) ? 'hidden' : false,
       target: 'node24',
       chunkSizeWarningLimit: isProduction ? 500 : 1500,
       // Memory optimization: Use esbuild for minification (faster, lower memory than terser)
       minify: 'esbuild',
+<<<<<<< HEAD
+=======
 =======
       sourcemap: !isProduction || hasSentryDSN ? "hidden" : false,
       target: "node24",
       chunkSizeWarningLimit: isProduction ? 500 : 1500,
       // Memory optimization: Use esbuild for minification (faster, lower memory than terser)
       minify: "esbuild",
+>>>>>>> origin/master
 >>>>>>> origin/master
       // Limit parallel file operations to prevent resource exhaustion
       maxParallelFileOps: 1,
@@ -416,6 +481,9 @@ export default defineConfig({
       rollupOptions: {
         external: [
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           '@google-cloud/storage',
           '@aws-sdk/client-s3',
           '@aws-sdk/client-dynamodb',
@@ -452,6 +520,8 @@ export default defineConfig({
           '@opentelemetry/sdk-trace-base',
           '@opentelemetry/semantic-conventions',
           'src/config/env.config.ts',
+<<<<<<< HEAD
+=======
 =======
           "@google-cloud/storage",
           "@aws-sdk/client-s3",
@@ -490,11 +560,15 @@ export default defineConfig({
           "@opentelemetry/semantic-conventions",
           "src/config/env.config.ts",
 >>>>>>> origin/master
+>>>>>>> origin/master
         ],
         onwarn(warning, warn) {
           if (
             warning.code === "SOURCEMAP_ERROR" ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             (warning.message && warning.message.includes("didn't generate a sourcemap"))
           ) {
             return
@@ -569,6 +643,8 @@ export default defineConfig({
         'mongodb',
         'recharts',
         'chart.js',
+<<<<<<< HEAD
+=======
 =======
             (warning.message &&
               warning.message.includes("didn't generate a sourcemap"))
@@ -650,6 +726,7 @@ export default defineConfig({
         "recharts",
         "chart.js",
 >>>>>>> origin/master
+>>>>>>> origin/master
       ],
     },
     optimizeDeps: {
@@ -657,6 +734,9 @@ export default defineConfig({
       disabled: isDockerBuild,
       entries: [
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         'src/pages/**/*.{ts,tsx,js,jsx,astro}',
         'src/layouts/**/*.{ts,tsx,js,jsx,astro}',
         'src/components/**/*.{ts,tsx,js,jsx,astro}',
@@ -702,6 +782,8 @@ export default defineConfig({
         '@opentelemetry/sdk-node',
         '@opentelemetry/sdk-trace-base',
         '@opentelemetry/semantic-conventions',
+<<<<<<< HEAD
+=======
 =======
         "src/pages/**/*.{ts,tsx,js,jsx,astro}",
         "src/layouts/**/*.{ts,tsx,js,jsx,astro}",
@@ -749,11 +831,15 @@ export default defineConfig({
         "@opentelemetry/sdk-trace-base",
         "@opentelemetry/semantic-conventions",
 >>>>>>> origin/master
+>>>>>>> origin/master
       ],
     },
   },
   integrations: (() => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     const MIN_DEV = process.env.MIN_DEV === '1'
     const base = [
       react({
@@ -762,6 +848,8 @@ export default defineConfig({
       })
     ]
     if (MIN_DEV) return base
+<<<<<<< HEAD
+=======
 =======
     const MIN_DEV = process.env.MIN_DEV === "1";
     const base = [
@@ -772,6 +860,7 @@ export default defineConfig({
     ];
     if (MIN_DEV) return base;
 >>>>>>> origin/master
+>>>>>>> origin/master
     return [
       ...base,
       UnoCSS({ injectReset: true }),
@@ -779,6 +868,9 @@ export default defineConfig({
         include: {
           lucide: [
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             'calendar', 'user', 'settings', 'heart', 'brain', 'shield-check', 'info', 'arrow-left', 'shield', 'user-plus'
           ]
         },
@@ -811,6 +903,8 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
+<<<<<<< HEAD
+=======
 =======
             "calendar",
             "user",
@@ -861,6 +955,7 @@ export default defineConfig({
     shikiConfig: {
       theme: "github-dark",
 >>>>>>> origin/master
+>>>>>>> origin/master
       wrap: true,
     },
   },
@@ -870,6 +965,9 @@ export default defineConfig({
   server: {
     port: preferredPort,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     host: '0.0.0.0',
     strictPort: true,
     watch: {
@@ -977,26 +1075,35 @@ export default defineConfig({
         '**/.venv/**',
       ],
     },
+<<<<<<< HEAD
+=======
 =======
     host: "0.0.0.0",
     strictPort: true,
+>>>>>>> origin/master
 >>>>>>> origin/master
   },
 
   preview: {
     port: 4322,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     host: '0.0.0.0',
   },
   image: {
     service: passthroughImageService(),
     domains: ['pixelatedempathy.com', 'cdn.pixelatedempathy.com'],
+<<<<<<< HEAD
+=======
 =======
     host: "0.0.0.0",
   },
   image: {
     service: passthroughImageService(),
     domains: ["pixelatedempathy.com", "cdn.pixelatedempathy.com"],
+>>>>>>> origin/master
 >>>>>>> origin/master
   },
   /* redirects: {

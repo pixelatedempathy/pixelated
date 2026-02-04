@@ -40,9 +40,14 @@ export class DocumentService {
       status: DocumentStatus.DRAFT,
       collaborators: [],
 =======
+<<<<<<< HEAD
+      status: DocumentStatus.DRAFT,
+      collaborators: [],
+=======
       status: documentData.status || DocumentStatus.DRAFT,
       collaborators: documentData.collaborators || [],
       tags: documentData.tags || [],
+>>>>>>> origin/master
 >>>>>>> origin/master
       metadata,
     })
@@ -176,7 +181,11 @@ export class DocumentService {
 <<<<<<< HEAD
   ): Promise<any | null> {
 =======
+<<<<<<< HEAD
+  ): Promise<any | null> {
+=======
   ): Promise<any> {
+>>>>>>> origin/master
 >>>>>>> origin/master
     const document = await DocumentModel.findById(documentId)
     if (!document) {
@@ -227,6 +236,8 @@ export class DocumentService {
   }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
   static async getDocumentById(id: string): Promise<Document | null> {
     return DocumentModel.findById(id)
@@ -244,5 +255,6 @@ export class DocumentService {
     // Placeholder implementation
     return true
   }
+>>>>>>> origin/master
 >>>>>>> origin/master
 }

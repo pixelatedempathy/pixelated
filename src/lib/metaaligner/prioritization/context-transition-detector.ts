@@ -303,7 +303,10 @@ export function detectContextTransition(
   const detected = prev.contextType !== curr.contextType
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   const isCrisis = curr.contextType === ContextType.CRISIS
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   return {
@@ -332,6 +335,9 @@ export async function handleContextTransition(
   transition: ContextTransition,
   handler: ContextTransitionHandler,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 ) {
 =======
 ): Promise<void> {

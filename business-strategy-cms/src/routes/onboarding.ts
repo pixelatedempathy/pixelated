@@ -35,12 +35,17 @@ router.post('/complete', async (req, res) => {
     // Generate new tokens for the user
     const tokens = await AuthService.refreshToken('dummy-refresh-token')
 =======
+<<<<<<< HEAD
+    // Generate new tokens for the user
+    const tokens = await AuthService.refreshToken('dummy-refresh-token')
+=======
     // Generate real tokens for the user
     const tokens = AuthService.generateTokens({
       userId: user.id!,
       email: user.email,
       role: user.role,
     })
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     res.json({

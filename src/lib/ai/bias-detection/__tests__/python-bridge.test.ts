@@ -16,6 +16,9 @@ describe('analysis methods', () => {
     vi.clearAllMocks()
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     // Mock successful responses by default
     ;(global.fetch as any).mockResolvedValue({
       ok: true,

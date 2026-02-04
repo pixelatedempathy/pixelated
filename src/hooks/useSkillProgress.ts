@@ -33,6 +33,9 @@ export function useSkillProgress(
     setLoading(true)
     setError(null)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     ;(async () => {
       try {
         if (!session) {
@@ -77,6 +80,8 @@ export function useSkillProgress(
         }
       }
     })()
+<<<<<<< HEAD
+=======
 =======
       ; (async () => {
         try {
@@ -133,6 +138,7 @@ export function useSkillProgress(
           }
         }
       })()
+>>>>>>> origin/master
 >>>>>>> origin/master
 
     return () => {

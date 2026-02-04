@@ -139,9 +139,12 @@ The test suite validates all requirements from the deployment pipeline improveme
 <<<<<<< HEAD
 - ✓ Node.js 24.8.0 installation and verification
 - ✓ pnpm 10.28.0 installation and verification
+<<<<<<< HEAD
+=======
 =======
 - ✓ Node.js 24.11.0 installation and verification
 - ✓ pnpm 10.28.2 installation and verification
+>>>>>>> origin/master
 >>>>>>> origin/master
 - ✓ Version validation and error handling
 

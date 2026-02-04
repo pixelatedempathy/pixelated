@@ -13,6 +13,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Extract Jira variables from .env file
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 ENV_FILE="$SCRIPT_DIR/../../.env"
 if [ ! -f "$ENV_FILE" ]; then
     ENV_FILE="$SCRIPT_DIR/../.env"
@@ -48,6 +51,9 @@ echo "Jira Username: $JIRA_USERNAME"
 # Run the Node.js script
 node "$SCRIPT_DIR/create-auth0-enhanced-jira-issues.js" "$PROJECT_KEY"
 
+<<<<<<< HEAD
+echo "Enhanced Jira issues creation completed!"
+=======
 echo "Enhanced Jira issues creation completed!"
 =======
 ENV_FILE="${SCRIPT_DIR}/../../.env"
@@ -86,4 +92,5 @@ echo "Jira Username: ${JIRA_USERNAME}"
 node "${SCRIPT_DIR}/create-auth0-enhanced-jira-issues.js" "${PROJECT_KEY}"
 
 echo "Enhanced Jira issues creation completed!"
+>>>>>>> origin/master
 >>>>>>> origin/master

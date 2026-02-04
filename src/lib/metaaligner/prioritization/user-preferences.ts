@@ -324,6 +324,9 @@ export function applyUserPreferences(
   if (prefs.preferredSupportStyle === 'empathic') {
     result = result.map((obj) =>
       obj.key === 'empathy'
+<<<<<<< HEAD
+        ? { ...obj, weight: Math.min(obj.weight * 1.15, 1) }
+=======
 =======
 
   // Step 3: Apply support style adjustments
@@ -346,6 +349,7 @@ export function applyUserPreferences(
     result = result.map((obj) =>
       prefs.prioritizeObjectives!.includes(obj.key)
         ? { ...obj, weight: Math.min(obj.weight * 1.2, 1) }
+>>>>>>> origin/master
         : obj,
     )
   }
@@ -483,6 +487,8 @@ function applyInteractionPreferenceAdjustments(
   }))
   return result
 }
+<<<<<<< HEAD
+=======
 =======
 
   // Boost informativeness if user prefers examples
@@ -528,4 +534,5 @@ function normalizeWeights(objectives: ObjectivePriority[]): ObjectivePriority[] 
  * Create a default preference manager instance
  */
 export const defaultPreferenceManager = new UserPreferenceManager()
+>>>>>>> origin/master
 >>>>>>> origin/master

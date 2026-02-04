@@ -2,10 +2,15 @@
 /**
  * useMultimodalPixel Hook Tests
 =======
+<<<<<<< HEAD
+/**
+ * useMultimodalPixel Hook Tests
+=======
 // @vitest-environment jsdom
 /**
  * useMultimodalPixel Hook Tests
 
+>>>>>>> origin/master
 >>>>>>> origin/master
  *
  * Tests for the React hook covering:
@@ -20,9 +25,15 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/react'
 import { useMultimodalPixel } from '@/hooks/useMultimodalPixel'
 =======
+<<<<<<< HEAD
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { renderHook, act, waitFor } from '@testing-library/react'
+import { useMultimodalPixel } from '@/hooks/useMultimodalPixel'
+=======
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderHook, act, waitFor } from '@testing-library/react'
 import { useMultimodalPixel } from "../../src/hooks/useMultimodalPixel";
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Mock dependencies
@@ -31,6 +42,9 @@ import { useMultimodalPixel } from "../../src/hooks/useMultimodalPixel";
 // Mock WebSocket
 class MockWebSocket {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     readyState = WebSocket.CONNECTING
     onopen: (() => void) | null = null
     onmessage: ((event: MessageEvent) => void) | null = null
@@ -57,6 +71,8 @@ class MockWebSocket {
     static OPEN = 1
     static CLOSING = 2
     static CLOSED = 3
+<<<<<<< HEAD
+=======
 =======
   readyState: number = WebSocket.CONNECTING;
   onopen: (() => void) | null = null;
@@ -85,16 +101,22 @@ class MockWebSocket {
   static CLOSING = 2;
   static CLOSED = 3;
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 describe('useMultimodalPixel', () => {
     beforeEach(() => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         vi.clearAllMocks()
         global.fetch = vi.fn()
         global.WebSocket = MockWebSocket as any
     })
 
+<<<<<<< HEAD
+=======
 =======
         vi.resetAllMocks();
         vi.stubGlobal("fetch", vi.fn());
@@ -106,6 +128,7 @@ describe('useMultimodalPixel', () => {
     });
 
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     describe('REST Inference - Text Only', () => {
         it('should perform text-only inference', async () => {
@@ -128,7 +151,11 @@ describe('useMultimodalPixel', () => {
 <<<<<<< HEAD
             let inferenceResult
 =======
+<<<<<<< HEAD
+            let inferenceResult
+=======
             let inferenceResult: any = null;
+>>>>>>> origin/master
 >>>>>>> origin/master
             await act(async () => {
                 inferenceResult = await result.current.infer({
@@ -203,7 +230,11 @@ describe('useMultimodalPixel', () => {
 <<<<<<< HEAD
             let inferenceResult
 =======
+<<<<<<< HEAD
+            let inferenceResult
+=======
             let inferenceResult: any = null;
+>>>>>>> origin/master
 >>>>>>> origin/master
             await act(async () => {
                 inferenceResult = await result.current.infer({
@@ -297,6 +328,9 @@ describe('useMultimodalPixel', () => {
 
         it('should send text chunks to stream', async () => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             const { result } = renderHook(() => useMultimodalPixel())
             const sendSpy = vi.fn()
 
@@ -313,6 +347,8 @@ describe('useMultimodalPixel', () => {
             })
 
             // Verify intent to send (actual send would happen on open WS)
+<<<<<<< HEAD
+=======
 =======
           const { result } = renderHook(() => useMultimodalPixel());
 
@@ -329,6 +365,7 @@ describe('useMultimodalPixel', () => {
           });
 
           // Verify intent to send (actual send would happen on open WS)
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
 
@@ -355,6 +392,9 @@ describe('useMultimodalPixel', () => {
 
         it('should finalize stream and trigger inference', async () => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             const mockResponse = {
                 response: 'Stream response',
                 latency_ms: 180,
@@ -380,6 +420,8 @@ describe('useMultimodalPixel', () => {
 
             // Stream should remain open until server responds
             expect(result.current.streaming).toBe(true)
+<<<<<<< HEAD
+=======
 =======
           const { result } = renderHook(() => useMultimodalPixel());
 
@@ -401,6 +443,7 @@ describe('useMultimodalPixel', () => {
 
           // Stream should remain open until server responds
           expect(result.current.streaming).toBe(true);
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
 
@@ -438,6 +481,9 @@ describe('useMultimodalPixel', () => {
 
         it('should parse stream result messages', async () => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             const mockResponse = {
                 response: 'Stream result',
                 transcription: 'Stream transcription',
@@ -462,6 +508,8 @@ describe('useMultimodalPixel', () => {
 
             // Stream should process result
             expect(result.current.streaming).toBe(true)
+<<<<<<< HEAD
+=======
 =======
           const { result } = renderHook(() => useMultimodalPixel());
 
@@ -483,6 +531,7 @@ describe('useMultimodalPixel', () => {
 
           // Stream should process result
           expect(result.current.streaming).toBe(true);
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
     })
@@ -528,6 +577,9 @@ describe('useMultimodalPixel', () => {
 
         it('should cancel ongoing inference', async () => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             const { result } = renderHook(() => useMultimodalPixel())
 
             // Start inference
@@ -703,6 +755,8 @@ describe('useMultimodalPixel', () => {
 
             expect(vi.mocked(global.fetch)).toHaveBeenCalled()
         })
+<<<<<<< HEAD
+=======
 =======
           const { result } = renderHook(() => useMultimodalPixel());
 
@@ -885,6 +939,7 @@ describe('useMultimodalPixel', () => {
 
           expect(vi.mocked(global.fetch)).toHaveBeenCalled();
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
 })

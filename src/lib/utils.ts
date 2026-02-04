@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+=======
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+>>>>>>> origin/master
 
 /**
  * Standardized error messages for consistent error handling
@@ -7,6 +12,9 @@ import { twMerge } from "tailwind-merge";
 export const ERRORS = {
   /** Node environment detection */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   NOT_NODE_ENVIRONMENT: 'Not in Node.js environment',
 
   /** Crypto utilities */
@@ -42,6 +50,8 @@ export function tryRequireNode(moduleName: string): any | null {
       // Try to access via global scope
       const module = (globalThis as any)[moduleName]
       if (module) return module
+<<<<<<< HEAD
+=======
 =======
   NOT_NODE_ENVIRONMENT: "Not in Node.js environment",
 
@@ -84,11 +94,15 @@ export function tryRequireNode(moduleName: string): unknown | null {
       const module = (globalThis as Record<string, unknown>)[moduleName];
       if (module) return module;
 >>>>>>> origin/master
+>>>>>>> origin/master
     }
   } catch {
     // ignore failures and return null to trigger fallback logic
   }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   return null
 }
 
@@ -169,6 +183,8 @@ export function secureRandomInt(maxExclusive: number): number {
     throw new Error(ERRORS.INVALID_RANDOM_INT_PARAM)
   }
   const maxUint32 = 0xffffffff
+<<<<<<< HEAD
+=======
   // Find rejection sampling threshold: only accept random values < rangeLimit
   const rangeLimit = Math.floor(maxUint32 / maxExclusive) * maxExclusive
   while (true) {
@@ -277,13 +293,14 @@ export function secureRandomInt(maxExclusive: number): number {
     throw new Error(ERRORS.INVALID_RANDOM_INT_PARAM);
   }
   const maxUint32 = 0xffffffff;
+>>>>>>> origin/master
   // Find rejection sampling threshold: only accept random values < rangeLimit
-  const rangeLimit = Math.floor(maxUint32 / maxExclusive) * maxExclusive;
+  const rangeLimit = Math.floor(maxUint32 / maxExclusive) * maxExclusive
   while (true) {
-    const bytes = getRandomBytes(4);
-    const randUint = bytesToUint32BE(bytes);
+    const bytes = getRandomBytes(4)
+    const randUint = bytesToUint32BE(bytes)
     if (randUint < rangeLimit) {
-      return randUint % maxExclusive;
+      return randUint % maxExclusive
     }
     // Otherwise, extremely rare (<<0.5% for small maxExclusive), try again.
   }
@@ -299,7 +316,11 @@ export function secureRandomInt(maxExclusive: number): number {
  * @returns Merged class string
  */
 export function cn(...inputs: ClassValue[]): string {
+<<<<<<< HEAD
+  return twMerge(clsx(inputs))
+=======
   return twMerge(clsx(inputs));
+>>>>>>> origin/master
 }
 
 >>>>>>> origin/master
@@ -316,7 +337,11 @@ export function generateUniqueId(): string {
 <<<<<<< HEAD
     typeof window !== 'undefined' &&
 =======
+<<<<<<< HEAD
+    typeof window !== 'undefined' &&
+=======
     typeof window !== "undefined" &&
+>>>>>>> origin/master
 >>>>>>> origin/master
     window.crypto &&
     window.crypto.randomUUID
@@ -345,6 +370,8 @@ export function generateUniqueId(): string {
         return v.toString(16)
       },
     )
+<<<<<<< HEAD
+=======
 =======
     return window.crypto.randomUUID();
   } else if (
@@ -372,6 +399,7 @@ export function generateUniqueId(): string {
       },
     );
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
@@ -388,6 +416,8 @@ export function generateSimpleId(prefix = 'id'): string {
     byte.toString(16).padStart(2, '0'),
   ).join('')
   return `${prefix}_${Date.now()}_${randPart}`
+<<<<<<< HEAD
+=======
 =======
 export function generateSimpleId(prefix = "id"): string {
   // Use crypto for random value
@@ -396,6 +426,7 @@ export function generateSimpleId(prefix = "id"): string {
     byte.toString(16).padStart(2, "0"),
   ).join("");
   return `${prefix}_${Date.now()}_${randPart}`;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -412,6 +443,10 @@ export function generateShortId(length = 8): string {
   const bytes = getRandomBytes(length)
   for (let i = 0; i < length; i++) {
     const byte = bytes[i]
+<<<<<<< HEAD
+    if (byte === undefined) {
+      throw new Error(ERRORS.GENERATE_SHORT_ID_UNEXPECTED_BYTE)
+=======
     if (byte === undefined) {
       throw new Error(ERRORS.GENERATE_SHORT_ID_UNEXPECTED_BYTE)
     }
@@ -428,8 +463,9 @@ export function generateShortId(length = 8): string {
     const byte = bytes[i];
     if (byte === undefined) {
       throw new Error(ERRORS.GENERATE_SHORT_ID_UNEXPECTED_BYTE);
+>>>>>>> origin/master
     }
-    result += chars.charAt(byte % chars.length);
+    result += chars.charAt(byte % chars.length)
   }
   return result;
 >>>>>>> origin/master
@@ -448,7 +484,11 @@ export function delay(ms: number): Promise<void> {
 <<<<<<< HEAD
   return new Promise((resolve) => setTimeout(resolve, ms))
 =======
+<<<<<<< HEAD
+  return new Promise((resolve) => setTimeout(resolve, ms))
+=======
   return new Promise((resolve) => setTimeout(resolve, ms));
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -641,6 +681,9 @@ export function groupBy<T, K extends string | number | symbol>(
   return array.reduce(
     (groups, item) => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       const key = keyFn(item)
       if (!groups[key]) {
         groups[key] = []
@@ -650,6 +693,8 @@ export function groupBy<T, K extends string | number | symbol>(
     },
     {} as Record<K, T[]>,
   )
+<<<<<<< HEAD
+=======
 =======
       const key = keyFn(item);
       if (!groups[key]) {
@@ -660,6 +705,7 @@ export function groupBy<T, K extends string | number | symbol>(
     },
     {} as Record<K, T[]>,
   );
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -678,10 +724,17 @@ const assertDense: <U>(array: (U | undefined)[]) => asserts array is U[] = <U>(
   }
 }
 =======
+<<<<<<< HEAD
+      throw new Error(ERRORS.SPARSE_ARRAY_DETECTED(i))
+    }
+  }
+}
+=======
       throw new Error(ERRORS.SPARSE_ARRAY_DETECTED(i));
     }
   }
 };
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -692,12 +745,17 @@ const assertDense: <U>(array: (U | undefined)[]) => asserts array is U[] = <U>(
 export function shuffle<T>(input: readonly T[]): T[] {
   if (input.some((_, i, a) => !(i in a))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     throw new Error(ERRORS.CANNOT_SHUFFLE_SPARSE_ARRAY)
   }
   // Defensive copy. Still, TS cannot infer runtime density, so we assert.
   const arr = input.map((x) => x)
   assertDense(arr)
   const denseArr = arr as T[] // TS type-narrow after runtime assertion
+<<<<<<< HEAD
+=======
 
   for (let i = denseArr.length - 1; i > 0; i--) {
     // Secure, bias-free random int between 0 and i (inclusive)
@@ -716,17 +774,22 @@ export function shuffle<T>(input: readonly T[]): T[] {
   const arr = input.map((x) => x);
   assertDense(arr);
   const denseArr = arr as T[]; // TS type-narrow after runtime assertion
+>>>>>>> origin/master
 
   for (let i = denseArr.length - 1; i > 0; i--) {
     // Secure, bias-free random int between 0 and i (inclusive)
-    const j = secureRandomInt(i + 1);
+    const j = secureRandomInt(i + 1)
     // No need for bounds check: arr is dense (checked above)
     // The preceding assertDense() guarantees no holes, safe to non-null '!'.
-    const temp: T = denseArr[i]!;
-    denseArr[i] = denseArr[j]!;
-    denseArr[j] = temp;
+    const temp: T = denseArr[i]!
+    denseArr[i] = denseArr[j]!
+    denseArr[j] = temp
   }
+<<<<<<< HEAD
+  return denseArr
+=======
   return denseArr;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -853,6 +916,37 @@ export function getNestedProperty<T>(
 
   return result as T;
 >>>>>>> origin/master
+}
+
+/**
+ * Safely accesses nested object properties with optional chaining alternative
+ * @param obj - Object to access
+ * @param path - Path to property (e.g., 'a.b.c')
+ * @param defaultValue - Default value if path doesn't exist
+ * @returns Value at path or defaultValue
+ */
+export function getNestedProperty<T>(
+  obj: unknown,
+  path: string,
+  defaultValue: T,
+): T {
+  if (!isNonNullObject(obj)) {
+    return defaultValue
+  }
+
+  // Pre-split path for better performance
+  const keys = path.split('.')
+  let result: unknown = obj
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    if (!isNonNullObject(result) || !(key in (result as Record<string, unknown>))) {
+      return defaultValue
+    }
+    result = (result as Record<string, unknown>)[key]
+  }
+
+  return result as T
 }
 
 /**
@@ -1201,6 +1295,8 @@ export function isYesterday(date: Date): boolean {
   compareDate.setHours(0, 0, 0, 0)
 
   return yesterday.getTime() === compareDate.getTime()
+<<<<<<< HEAD
+=======
 =======
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
@@ -1211,6 +1307,7 @@ export function isYesterday(date: Date): boolean {
   compareDate.setHours(0, 0, 0, 0);
 
   return yesterday.getTime() === compareDate.getTime();
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -1243,6 +1340,9 @@ export function isValidUrl(url: string): boolean {
     // The construction of the URL object is the validation.
     // If it doesn't throw, the URL is valid.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     new URL(url)
     return true
   } catch {
@@ -1265,7 +1365,11 @@ export function isDefined<T>(value: T | null | undefined): value is T {
 <<<<<<< HEAD
   return value != null
 =======
+<<<<<<< HEAD
+  return value != null
+=======
   return value != null;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -1300,6 +1404,9 @@ export function createError(
 ): Error & { code?: string; details?: Record<string, unknown> } {
   const error = new Error(message) as Error & {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     code?: string
     details?: Record<string, unknown>
   }
@@ -1360,7 +1467,11 @@ export function isObject(value: unknown): value is Record<string, unknown> {
 <<<<<<< HEAD
   return isNonNullObject(value) && !Array.isArray(value)
 =======
+<<<<<<< HEAD
+  return isNonNullObject(value) && !Array.isArray(value)
+=======
   return isNonNullObject(value) && !Array.isArray(value);
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -1429,6 +1540,9 @@ export function isBoolean(value: unknown): value is boolean {
 export function getStorageItem<T>(key: string, defaultValue: T): T {
   if (!isBrowserEnvironment()) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return defaultValue
   }
 
@@ -1483,6 +1597,9 @@ export function setStorageItem<T>(key: string, value: T): void {
 export function removeStorageItem(key: string): void {
   if (!isBrowserEnvironment()) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return
   }
 
@@ -1517,6 +1634,9 @@ export function buildUrl(
   const url = new URL(
     baseUrl,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     isBrowserEnvironment() ? window.location.origin : 'http://localhost',
   )
 
@@ -1550,6 +1670,9 @@ export function parseQueryParams(url: string): Record<string, string> {
   const urlObj = new URL(
     url,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     isBrowserEnvironment() ? window.location.origin : 'http://localhost',
   )
   const params: Record<string, string> = {}
@@ -1586,6 +1709,9 @@ export function randomInt(min: number, max: number): number {
   if (min > max) {
 <<<<<<< HEAD
     throw new Error(ERRORS.RANDOM_INT_MIN_MAX)
+=======
+<<<<<<< HEAD
+    throw new Error(ERRORS.RANDOM_INT_MIN_MAX)
   }
   const range = max - min + 1
   // Use crypto to get random integer in range
@@ -1594,12 +1720,19 @@ export function randomInt(min: number, max: number): number {
   return min + (randUint % range)
 =======
     throw new Error(ERRORS.RANDOM_INT_MIN_MAX);
+>>>>>>> origin/master
   }
-  const range = max - min + 1;
+  const range = max - min + 1
   // Use crypto to get random integer in range
+<<<<<<< HEAD
+  const randomBuffer = getRandomBytes(4)
+  const randUint = bytesToUint32BE(randomBuffer)
+  return min + (randUint % range)
+=======
   const randomBuffer = getRandomBytes(4);
   const randUint = bytesToUint32BE(randomBuffer);
   return min + (randUint % range);
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -1651,11 +1784,19 @@ export function randomElement<T>(array: readonly T[]): T | undefined {
   const idx = secureRandomInt(array.length)
   return array[idx]
 =======
+<<<<<<< HEAD
+    return undefined
+  }
+  // Secure, bias-free random index
+  const idx = secureRandomInt(array.length)
+  return array[idx]
+=======
     return undefined;
   }
   // Secure, bias-free random index
   const idx = secureRandomInt(array.length);
   return array[idx];
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 

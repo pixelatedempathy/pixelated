@@ -7,8 +7,11 @@ import type {
 } from './apiRouteTypes';
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 import { getRolePermissions, type UserRole } from './auth0-rbac-service';
 import type { AuthUser } from './types';
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -41,6 +44,16 @@ export function protectRoute(options: ProtectRouteOptions = {}) {
 
             // 3. Attach user to locals for the handler and convert context
 <<<<<<< HEAD
+            const authContext: AuthAPIContext = {
+                ...context,
+                locals: {
+                    ...context.locals,
+                    user: authResult.request.user as any
+                }
+            } as any;
+
+=======
+<<<<<<< HEAD
 =======
             const user = authResult.request.user!;
             const authUser: AuthUser = {
@@ -63,6 +76,7 @@ export function protectRoute(options: ProtectRouteOptions = {}) {
                 }
             } as any;
 
+>>>>>>> origin/master
             return handler(authContext);
         };
     };

@@ -13,6 +13,8 @@ PARENT_REMOTE_URL="$(git config --get remote.origin.url || echo)"
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # ------------------------------------------------------------------
 # Token Normalization Logic
 # Azure Pipelines leaves $(VAR) as literal text if undefined.
@@ -71,6 +73,7 @@ else
   echo "ℹ️ No GitHub token found in GITHUB_TOKEN, GH_TOKEN, GITHUB_PAT, or G_TOKEN"
 fi
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 # Helper: extract GitHub owner from parent remote
 extract_github_owner() {
@@ -139,6 +142,9 @@ remote_accessible() {
 <<<<<<< HEAD
   git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1
 =======
+<<<<<<< HEAD
+  git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1
+=======
   # Attempt ls-remote. If successful, return 0.
   if git ls-remote --exit-code "$url" HEAD >/dev/null 2>&1; then
     return 0
@@ -171,6 +177,7 @@ remote_accessible() {
   
   return 1
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 # Prefer constructing Azure submodule URL by mirroring parent remote scheme and swapping repo name
@@ -190,7 +197,11 @@ build_azure_url_from_parent() {
 <<<<<<< HEAD
       echo "${SUBMODULE_URL_AZURE_SSH}.git"
 =======
+<<<<<<< HEAD
+      echo "${SUBMODULE_URL_AZURE_SSH}.git"
+=======
       echo "${SUBMODULE_URL_AZURE_SSH}"
+>>>>>>> origin/master
 >>>>>>> origin/master
       ;;
   esac
@@ -201,7 +212,10 @@ if [[ "${TF_BUILD:-}" == "True" ]] || [[ -n "${SYSTEM_TEAMFOUNDATIONCOLLECTIONUR
   echo "Detected Azure DevOps pipeline environment."
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   echo "Context: Org='$AZ_ORG', Project='$AZ_PROJECT'"
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   # Ensure ssh.dev.azure.com is in known_hosts to avoid interactive prompts
@@ -230,10 +244,15 @@ if [[ "${TF_BUILD:-}" == "True" ]] || [[ -n "${SYSTEM_TEAMFOUNDATIONCOLLECTIONUR
   # Validate Azure URL accessibility; fall back to GitHub via SSH if not accessible
   if remote_accessible "$SUBMODULE_URL"; then
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     echo "✅ Azure submodule remote is accessible"
   else
     echo "##[warning]⚠️ Azure submodule remote not accessible. Falling back to GitHub (SSH): $SUBMODULE_URL_GITHUB"
     SUBMODULE_URL="$SUBMODULE_URL_GITHUB"
+<<<<<<< HEAD
+=======
 =======
     echo "✅ Azure submodule remote (SSH) is accessible"
   else
@@ -304,6 +323,7 @@ if [[ "${TF_BUILD:-}" == "True" ]] || [[ -n "${SYSTEM_TEAMFOUNDATIONCOLLECTIONUR
       fi
     fi
 >>>>>>> origin/master
+>>>>>>> origin/master
   fi
 
   # Diagnostic check for SSH access if using SSH
@@ -333,6 +353,9 @@ fi
 <<<<<<< HEAD
 echo "Submodule URL selected: $SUBMODULE_URL"
 =======
+<<<<<<< HEAD
+echo "Submodule URL selected: $SUBMODULE_URL"
+=======
 # Update git config for this repo only to override submodule URL
 # Redact token from log output
 SAFE_URL="$SUBMODULE_URL"
@@ -343,6 +366,7 @@ if [[ -n "${GITHUB_TOKEN:-}" ]]; then
   SAFE_URL="${SAFE_URL//$GITHUB_TOKEN/***}"
 fi
 echo "Submodule URL selected: $SAFE_URL"
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 # 1. Sync first to ensure local config matches .gitmodules (resets structure)

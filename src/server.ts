@@ -1,10 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import express from 'express'
 import { createServer } from 'http'
 import Redis from 'ioredis'
 import { Pool } from 'pg'
 import cors from 'cors'
 import { SocketService } from './services/socketService.js'
+<<<<<<< HEAD
+=======
 =======
 import "dotenv/config";
 import express from 'express'
@@ -14,6 +19,7 @@ import { EventEmitter } from "events";
 import { Pool } from 'pg'
 import cors from 'cors'
 import { SocketService } from "./services/socketService";
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 
@@ -37,6 +43,9 @@ const db = new Pool({
 })
 
 // Redis connection
+<<<<<<< HEAD
+const redis = new Redis(REDIS_URL)
+=======
 <<<<<<< HEAD
 const redis = new Redis(REDIS_URL)
 =======
@@ -83,6 +92,7 @@ redis.connect().catch((err) => {
     console.error("Failed to connect to Redis:", err);
   }
 });
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Middleware

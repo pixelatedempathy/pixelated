@@ -291,10 +291,17 @@ export class AIMetricsDAO {
     const result = await collection.aggregate(pipeline).toArray()
     const stats = result[0] as
       | {
+<<<<<<< HEAD
+          totalRequests: number
+          totalTokens: number
+          averageResponseTime: number
+        }
+=======
         totalRequests: number
         totalTokens: number
         averageResponseTime: number
       }
+>>>>>>> origin/master
       | undefined
 
     return stats || { totalRequests: 0, totalTokens: 0, averageResponseTime: 0 }

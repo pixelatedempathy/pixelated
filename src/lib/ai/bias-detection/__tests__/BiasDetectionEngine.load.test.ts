@@ -47,10 +47,13 @@ vi.mock('../metrics-collector', () => ({
   BiasMetricsCollector: vi.fn().mockImplementation(() => ({
     initialize: vi.fn().mockResolvedValue(undefined),
     getMetrics: vi.fn().mockResolvedValue({
+<<<<<<< HEAD
+=======
 =======
   BiasMetricsCollector: class {
     initialize = vi.fn().mockResolvedValue(undefined)
     getMetrics = vi.fn().mockResolvedValue({
+>>>>>>> origin/master
 >>>>>>> origin/master
       overall_stats: {
         total_sessions: 100,

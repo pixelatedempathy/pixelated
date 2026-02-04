@@ -1,7 +1,11 @@
 <<<<<<< HEAD
 import { useCallback, useRef, useState } from 'react'
 =======
+<<<<<<< HEAD
+import { useCallback, useRef, useState } from 'react'
+=======
 import { useCallback, useEffect, useRef, useState } from "react";
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 export type EmotionProbabilities = Record<string, number>
@@ -78,6 +82,9 @@ export interface MultimodalInferArgs {
 
 export interface MultimodalStreamConfig {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     sessionId?: string
     contextType?: string
 }
@@ -421,6 +428,8 @@ export function useMultimodalPixel(
         finalizeStream,
         ...state,
     }
+<<<<<<< HEAD
+=======
 =======
   sessionId?: string;
   contextType?: string;
@@ -797,6 +806,7 @@ export function useMultimodalPixel(options: UseMultimodalPixelOptions = {}) {
     finalizeStream,
     ...state,
   };
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 

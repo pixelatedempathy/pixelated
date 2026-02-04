@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 # NGC Resources for Therapeutic Conversation Enhancement
 
 ## Overview
@@ -240,6 +243,8 @@ This document outlines the comprehensive NGC resource discovery and download str
 ---
 
 _This plan will be updated as downloads complete and implementation progresses._
+<<<<<<< HEAD
+=======
 =======
 # 🔬 NGC Therapeutic Enhancement Plan
 
@@ -544,4 +549,5 @@ All coding agents should:
 ---
 
 Last Updated: 2026-01-30 (Verified completion status against actual work artifacts)
+>>>>>>> origin/master
 >>>>>>> origin/master

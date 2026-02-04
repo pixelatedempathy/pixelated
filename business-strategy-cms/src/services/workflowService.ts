@@ -441,12 +441,17 @@ export class WorkflowService {
       completedInstances.length > 0
         ? completedInstances.reduce(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             (sum, i) =>
               sum + (i.completedAt!.getTime() - i.createdAt.getTime()),
             0,
           ) /
           completedInstances.length /
           (1000 * 60 * 60) // Convert to hours
+<<<<<<< HEAD
+=======
 =======
           (sum, i) =>
             sum + (i.completedAt!.getTime() - i.createdAt.getTime()),
@@ -454,6 +459,7 @@ export class WorkflowService {
         ) /
         completedInstances.length /
         (1000 * 60 * 60) // Convert to hours
+>>>>>>> origin/master
 >>>>>>> origin/master
         : 0
 
@@ -562,7 +568,11 @@ export class WorkflowService {
 <<<<<<< HEAD
     workflowInstanceId: string,
 =======
+<<<<<<< HEAD
+    workflowInstanceId: string,
+=======
     _workflowInstanceId: string,
+>>>>>>> origin/master
 >>>>>>> origin/master
     mentions: string[],
     content: string,

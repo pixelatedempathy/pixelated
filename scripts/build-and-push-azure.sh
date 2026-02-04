@@ -23,6 +23,9 @@ SKIP_BUILD=false
 
 while [[ $# -gt 0 ]]; do
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   case "$1" in
     --tag)
       CUSTOM_TAG="$2"
@@ -55,6 +58,8 @@ while [[ $# -gt 0 ]]; do
       exit 1
       ;;
   esac
+<<<<<<< HEAD
+=======
 =======
 	case "$1" in
 	--tag)
@@ -89,6 +94,7 @@ while [[ $# -gt 0 ]]; do
 		;;
 	esac
 >>>>>>> origin/master
+>>>>>>> origin/master
 done
 
 # Get commit hash
@@ -104,6 +110,9 @@ echo ""
 
 # Check prerequisites
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 if ! command -v docker &> /dev/null; then
   echo -e "${RED}❌ Docker is not installed or not in PATH${NC}"
   exit 1
@@ -119,6 +128,8 @@ fi
 if ! az account show &> /dev/null; then
   echo -e "${YELLOW}⚠️  Not logged into Azure. Attempting to login...${NC}"
   az login
+<<<<<<< HEAD
+=======
 =======
 if ! command -v docker &>/dev/null; then
 	echo -e "${RED}❌ Docker is not installed or not in PATH${NC}"
@@ -136,12 +147,16 @@ if ! az account show &>/dev/null; then
 	echo -e "${YELLOW}⚠️  Not logged into Azure. Attempting to login...${NC}"
 	az login
 >>>>>>> origin/master
+>>>>>>> origin/master
 fi
 
 # Login to ACR
 echo -e "${GREEN}🔐 Logging into Azure Container Registry...${NC}"
 az acr login --name "${ACR_NAME}" || {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   echo -e "${RED}❌ Failed to login to ACR${NC}"
   echo "Make sure you have the 'AcrPull' and 'AcrPush' roles assigned"
   exit 1
@@ -164,6 +179,8 @@ if [ -n "$CUSTOM_TAG" ]; then
   TAG="$CUSTOM_TAG"
 else
   TAG="$COMMIT_HASH"
+<<<<<<< HEAD
+=======
 =======
 	echo -e "${RED}❌ Failed to login to ACR${NC}"
 	echo "Make sure you have the 'AcrPull' and 'AcrPush' roles assigned"
@@ -188,6 +205,7 @@ if [[ -n ${CUSTOM_TAG} ]]; then
 else
 	TAG="${COMMIT_HASH}"
 >>>>>>> origin/master
+>>>>>>> origin/master
 fi
 
 # Tag image for ACR
@@ -202,14 +220,22 @@ docker push "${FULL_IMAGE_TAG}" || {
   echo -e "${RED}❌ Failed to push image${NC}"
   exit 1
 =======
+<<<<<<< HEAD
+  echo -e "${RED}❌ Failed to push image${NC}"
+  exit 1
+=======
 	echo -e "${RED}❌ Failed to push image${NC}"
 	exit 1
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 echo -e "${GREEN}✅ Image pushed successfully: ${FULL_IMAGE_TAG}${NC}"
 
 # Push as 'latest' if requested
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 if [ "$PUSH_LATEST" = true ]; then
   LATEST_TAG="${ACR_FQDN}/${IMAGE_REPOSITORY}:latest"
   echo -e "${GREEN}🏷️  Tagging as latest...${NC}"
@@ -219,6 +245,8 @@ if [ "$PUSH_LATEST" = true ]; then
     echo -e "${YELLOW}⚠️  Failed to push latest tag (continuing)${NC}"
   }
   echo -e "${GREEN}✅ Latest tag pushed: ${LATEST_TAG}${NC}"
+<<<<<<< HEAD
+=======
 =======
 if [[ ${PUSH_LATEST} == "true" ]]; then
 	LATEST_TAG="${ACR_FQDN}/${IMAGE_REPOSITORY}:latest"
@@ -229,6 +257,7 @@ if [[ ${PUSH_LATEST} == "true" ]]; then
 		echo -e "${YELLOW}⚠️  Failed to push latest tag (continuing)${NC}"
 	}
 	echo -e "${GREEN}✅ Latest tag pushed: ${LATEST_TAG}${NC}"
+>>>>>>> origin/master
 >>>>>>> origin/master
 fi
 
@@ -241,8 +270,13 @@ echo "Image: ${FULL_IMAGE_TAG}"
 if [ "$PUSH_LATEST" = true ]; then
   echo "Latest: ${ACR_FQDN}/${IMAGE_REPOSITORY}:latest"
 =======
+<<<<<<< HEAD
+if [ "$PUSH_LATEST" = true ]; then
+  echo "Latest: ${ACR_FQDN}/${IMAGE_REPOSITORY}:latest"
+=======
 if [[ ${PUSH_LATEST} == "true" ]]; then
 	echo "Latest: ${ACR_FQDN}/${IMAGE_REPOSITORY}:latest"
+>>>>>>> origin/master
 >>>>>>> origin/master
 fi
 echo "Commit: ${COMMIT_HASH}"

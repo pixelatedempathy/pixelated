@@ -21,7 +21,11 @@ import type {
 <<<<<<< HEAD
 } from './types'
 =======
+<<<<<<< HEAD
+} from './types'
+=======
 } from "./types";
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -30,6 +34,9 @@ import type {
 export interface EmbeddingAgentClientConfig {
   /** Base URL for the embedding agent API */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   baseUrl: string
   /** Request timeout in milliseconds */
   timeout?: number
@@ -37,6 +44,8 @@ export interface EmbeddingAgentClientConfig {
   authToken?: string
   /** Custom headers */
   headers?: Record<string, string>
+<<<<<<< HEAD
+=======
 =======
   baseUrl: string;
   /** Request timeout in milliseconds */
@@ -45,6 +54,7 @@ export interface EmbeddingAgentClientConfig {
   authToken?: string;
   /** Custom headers */
   headers?: Record<string, string>;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -56,7 +66,11 @@ const DEFAULT_CONFIG: Partial<EmbeddingAgentClientConfig> = {
 <<<<<<< HEAD
 }
 =======
+<<<<<<< HEAD
+}
+=======
 };
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -65,6 +79,9 @@ const DEFAULT_CONFIG: Partial<EmbeddingAgentClientConfig> = {
 function toCamelCase<T>(obj: unknown): T {
   if (obj === null || obj === undefined) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return obj as T
   }
 
@@ -84,6 +101,8 @@ function toCamelCase<T>(obj: unknown): T {
   }
 
   return obj as T
+<<<<<<< HEAD
+=======
 =======
     return obj as T;
   }
@@ -105,6 +124,7 @@ function toCamelCase<T>(obj: unknown): T {
 
   return obj as T;
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 /**
@@ -113,6 +133,9 @@ function toCamelCase<T>(obj: unknown): T {
 function toSnakeCase<T>(obj: unknown): T {
   if (obj === null || obj === undefined) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     return obj as T
   }
 
@@ -122,6 +145,8 @@ function toSnakeCase<T>(obj: unknown): T {
 
   if (typeof obj === 'object') {
     const newObj: Record<string, unknown> = {}
+<<<<<<< HEAD
+=======
 =======
     return obj as T;
   }
@@ -133,11 +158,15 @@ function toSnakeCase<T>(obj: unknown): T {
   if (typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
 >>>>>>> origin/master
+>>>>>>> origin/master
     for (const [key, value] of Object.entries(obj)) {
       const snakeKey = key.replace(
         /[A-Z]/g,
         (letter) => `_${letter.toLowerCase()}`,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       )
       newObj[snakeKey] = toSnakeCase(value)
     }
@@ -145,6 +174,8 @@ function toSnakeCase<T>(obj: unknown): T {
   }
 
   return obj as T
+<<<<<<< HEAD
+=======
 =======
       );
       newObj[snakeKey] = toSnakeCase(value);
@@ -153,6 +184,7 @@ function toSnakeCase<T>(obj: unknown): T {
   }
 
   return obj as T;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -178,15 +210,21 @@ function toSnakeCase<T>(obj: unknown): T {
  */
 export class EmbeddingAgentClient {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   private readonly config: EmbeddingAgentClientConfig
 
   constructor(config: EmbeddingAgentClientConfig) {
     this.config = { ...DEFAULT_CONFIG, ...config }
+<<<<<<< HEAD
+=======
 =======
   private readonly config: EmbeddingAgentClientConfig;
 
   constructor(config: EmbeddingAgentClientConfig) {
     this.config = { ...DEFAULT_CONFIG, ...config };
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -195,6 +233,9 @@ export class EmbeddingAgentClient {
    */
   private async request<T>(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     method: 'GET' | 'POST' | 'DELETE',
     path: string,
     body?: unknown,
@@ -214,6 +255,8 @@ export class EmbeddingAgentClient {
       () => controller.abort(),
       this.config.timeout,
     )
+<<<<<<< HEAD
+=======
 =======
     method: "GET" | "POST" | "DELETE",
     path: string,
@@ -232,12 +275,16 @@ export class EmbeddingAgentClient {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
 >>>>>>> origin/master
+>>>>>>> origin/master
 
     try {
       const response = await fetch(url, {
         method,
         headers,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         body: body ? JSON.stringify(toSnakeCase(body)) : undefined,
         signal: controller.signal,
       })
@@ -249,6 +296,8 @@ export class EmbeddingAgentClient {
         let errorData: { error?: string; message?: string } = {}
         try {
           errorData = JSON.parse(errorBody)
+<<<<<<< HEAD
+=======
 =======
         body:
           method === "GET"
@@ -267,6 +316,7 @@ export class EmbeddingAgentClient {
         try {
           errorData = JSON.parse(errorBody);
 >>>>>>> origin/master
+>>>>>>> origin/master
         } catch {
           // Not JSON
         }
@@ -275,6 +325,9 @@ export class EmbeddingAgentClient {
           response.status,
           errorData,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         )
       }
 
@@ -292,6 +345,8 @@ export class EmbeddingAgentClient {
         error instanceof Error ? error.message : 'Unknown error',
         0,
       )
+<<<<<<< HEAD
+=======
 =======
         );
       }
@@ -311,6 +366,7 @@ export class EmbeddingAgentClient {
         0,
       );
 >>>>>>> origin/master
+>>>>>>> origin/master
     }
   }
 
@@ -326,11 +382,15 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<EmbeddingResponse>('POST', '/api/v1/embeddings/embed', request)
 =======
+<<<<<<< HEAD
+    return this.request<EmbeddingResponse>('POST', '/api/v1/embeddings/embed', request)
+=======
     return this.request<EmbeddingResponse>(
       "POST",
       "/api/v1/embeddings/embed",
       request,
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -344,6 +404,10 @@ export class EmbeddingAgentClient {
   async embedBatch(request: BatchEmbeddingRequest): Promise<BatchEmbeddingResponse> {
     return this.request<BatchEmbeddingResponse>('POST', '/api/v1/embeddings/embed/batch', request)
 =======
+<<<<<<< HEAD
+  async embedBatch(request: BatchEmbeddingRequest): Promise<BatchEmbeddingResponse> {
+    return this.request<BatchEmbeddingResponse>('POST', '/api/v1/embeddings/embed/batch', request)
+=======
   async embedBatch(
     request: BatchEmbeddingRequest,
   ): Promise<BatchEmbeddingResponse> {
@@ -352,6 +416,7 @@ export class EmbeddingAgentClient {
       "/api/v1/embeddings/embed/batch",
       request,
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -365,6 +430,10 @@ export class EmbeddingAgentClient {
   async searchSimilar(request: SimilaritySearchRequest): Promise<SimilaritySearchResponse> {
     return this.request<SimilaritySearchResponse>('POST', '/api/v1/embeddings/search', request)
 =======
+<<<<<<< HEAD
+  async searchSimilar(request: SimilaritySearchRequest): Promise<SimilaritySearchResponse> {
+    return this.request<SimilaritySearchResponse>('POST', '/api/v1/embeddings/search', request)
+=======
   async searchSimilar(
     request: SimilaritySearchRequest,
   ): Promise<SimilaritySearchResponse> {
@@ -373,6 +442,7 @@ export class EmbeddingAgentClient {
       "/api/v1/embeddings/search",
       request,
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -387,7 +457,11 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<HealthCheckResponse>('GET', '/health')
 =======
+<<<<<<< HEAD
+    return this.request<HealthCheckResponse>('GET', '/health')
+=======
     return this.request<HealthCheckResponse>("GET", "/health");
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -400,7 +474,11 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<EmbeddingAgentStatus>('GET', '/status')
 =======
+<<<<<<< HEAD
+    return this.request<EmbeddingAgentStatus>('GET', '/status')
+=======
     return this.request<EmbeddingAgentStatus>("GET", "/status");
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -415,10 +493,14 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<KnowledgeLoadResult>('POST', '/api/v1/embeddings/knowledge/load')
 =======
+<<<<<<< HEAD
+    return this.request<KnowledgeLoadResult>('POST', '/api/v1/embeddings/knowledge/load')
+=======
     return this.request<KnowledgeLoadResult>(
       "POST",
       "/api/v1/embeddings/knowledge/load",
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -433,7 +515,11 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<CacheClearResult>('DELETE', '/api/v1/embeddings/cache')
 =======
+<<<<<<< HEAD
+    return this.request<CacheClearResult>('DELETE', '/api/v1/embeddings/cache')
+=======
     return this.request<CacheClearResult>("DELETE", "/api/v1/embeddings/cache");
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -446,7 +532,11 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<CacheStats>('GET', '/api/v1/embeddings/cache/stats')
 =======
+<<<<<<< HEAD
+    return this.request<CacheStats>('GET', '/api/v1/embeddings/cache/stats')
+=======
     return this.request<CacheStats>("GET", "/api/v1/embeddings/cache/stats");
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -461,10 +551,14 @@ export class EmbeddingAgentClient {
 <<<<<<< HEAD
     return this.request<EmbeddingAgentConfig>('GET', '/api/v1/embeddings/config')
 =======
+<<<<<<< HEAD
+    return this.request<EmbeddingAgentConfig>('GET', '/api/v1/embeddings/config')
+=======
     return this.request<EmbeddingAgentConfig>(
       "GET",
       "/api/v1/embeddings/config",
     );
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 
@@ -474,11 +568,16 @@ export class EmbeddingAgentClient {
    * @returns List of available models
    */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   async listModels(): Promise<{ models: Array<{ id: string; name: string; dimension: number; description: string }> }> {
     return this.request<{ models: Array<{ id: string; name: string; dimension: number; description: string }> }>(
       'GET',
       '/api/v1/embeddings/models',
     )
+<<<<<<< HEAD
+=======
 =======
   async listModels(): Promise<{
     models: Array<{
@@ -497,6 +596,7 @@ export class EmbeddingAgentClient {
       }>;
     }>("GET", "/api/v1/embeddings/models");
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
@@ -513,8 +613,13 @@ export class EmbeddingAgentError extends Error {
     super(message)
     this.name = 'EmbeddingAgentError'
 =======
+<<<<<<< HEAD
+    super(message)
+    this.name = 'EmbeddingAgentError'
+=======
     super(message);
     this.name = "EmbeddingAgentError";
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 }
@@ -531,7 +636,11 @@ export function createEmbeddingAgentClient(
 <<<<<<< HEAD
   return new EmbeddingAgentClient({ baseUrl })
 =======
+<<<<<<< HEAD
+  return new EmbeddingAgentClient({ baseUrl })
+=======
   return new EmbeddingAgentClient({ baseUrl });
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -541,6 +650,9 @@ export function createEmbeddingAgentClient(
 function getDefaultEmbeddingAgentUrl(): string {
   // Check for environment variable - works in Node.js
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   if (typeof process !== 'undefined' && process.env) {
     const envUrl = process.env['EMBEDDING_AGENT_URL'] || process.env['PUBLIC_EMBEDDING_AGENT_URL']
     if (envUrl) {
@@ -551,6 +663,8 @@ function getDefaultEmbeddingAgentUrl(): string {
   return 'http://localhost:8001'
 }
 
+<<<<<<< HEAD
+=======
 =======
   if (typeof process !== "undefined" && process.env) {
     const envUrl =
@@ -563,4 +677,5 @@ function getDefaultEmbeddingAgentUrl(): string {
   // Default to localhost for development
   return "http://localhost:8001";
 }
+>>>>>>> origin/master
 >>>>>>> origin/master

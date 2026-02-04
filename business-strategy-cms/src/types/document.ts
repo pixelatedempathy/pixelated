@@ -80,8 +80,11 @@ export interface DocumentCreate {
   parentDocumentId?: string
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   status?: DocumentStatus
   collaborators?: string[]
+>>>>>>> origin/master
 >>>>>>> origin/master
   metadata?: Partial<DocumentMetadata>
 }

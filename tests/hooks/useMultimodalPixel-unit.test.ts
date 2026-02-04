@@ -11,12 +11,18 @@
 
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { renderHook, act } from '@testing-library/react'
 
 // Mock the actual hook implementation
 const mockUseMultimodalPixel = vi.fn()
+<<<<<<< HEAD
+=======
 =======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 describe('useMultimodalPixel Hook - Unit Tests', () => {
@@ -41,7 +47,11 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
 <<<<<<< HEAD
             ; (global as any).WebSocket = vi.fn(() => mockWebSocket)
 =======
+<<<<<<< HEAD
+            ; (global as any).WebSocket = vi.fn(() => mockWebSocket)
+=======
             ; (global as any).WebSocket = vi.fn(function() { return mockWebSocket })
+>>>>>>> origin/master
 >>>>>>> origin/master
     })
 
@@ -233,16 +243,22 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
 
             expect(data.fused_emotion).toBeDefined()
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             expect(data.fused_emotion.valence).toBeBetween(
                 Math.min(data.text_emotion.valence, data.audio_emotion.valence),
                 Math.max(data.text_emotion.valence, data.audio_emotion.valence)
             )
+<<<<<<< HEAD
+=======
 =======
             // Check that fused emotion valence is between text and audio valence values
             const minValence = Math.min(data.text_emotion.valence, data.audio_emotion.valence)
             const maxValence = Math.max(data.text_emotion.valence, data.audio_emotion.valence)
             expect(data.fused_emotion.valence).toBeGreaterThanOrEqual(minValence)
             expect(data.fused_emotion.valence).toBeLessThanOrEqual(maxValence)
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
 
@@ -269,7 +285,11 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
 <<<<<<< HEAD
             expect(data.modality_conflict.detected).toBeBoolean()
 =======
+<<<<<<< HEAD
+            expect(data.modality_conflict.detected).toBeBoolean()
+=======
             expect(data.modality_conflict.detected).toBeTypeOf('boolean')
+>>>>>>> origin/master
 >>>>>>> origin/master
         })
     })
@@ -453,6 +473,9 @@ describe('useMultimodalPixel Hook - Unit Tests', () => {
         })
     })
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 })
 
 describe('Initialization', () => {
@@ -872,6 +895,8 @@ describe('Context & Type Parameters', () => {
     })
 })
 })
+<<<<<<< HEAD
+=======
 =======
 
 
@@ -1294,4 +1319,5 @@ describe('Context & Type Parameters', () => {
     })
 })
 
+>>>>>>> origin/master
 >>>>>>> origin/master

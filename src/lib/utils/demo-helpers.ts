@@ -513,6 +513,8 @@ export function downloadExportData(exportData: ExportData): void {
     throw new Error('Failed to export analysis results. Please try again.', {
       cause: error,
     })
+<<<<<<< HEAD
+=======
 =======
       type: "application/json",
     });
@@ -529,6 +531,7 @@ export function downloadExportData(exportData: ExportData): void {
     throw new Error("Failed to export analysis results. Please try again.", {
       cause: error,
     });
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 }
@@ -584,17 +587,23 @@ export function determineAlertLevel(
 const hasBrowserCrypto = (): boolean => {
   return (
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     typeof window !== 'undefined' &&
     window.crypto &&
     window.crypto.getRandomValues !== undefined
   )
 }
+<<<<<<< HEAD
+=======
 =======
     typeof window !== "undefined" &&
     window.crypto &&
     window.crypto.getRandomValues !== undefined
   );
 };
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 /**
@@ -603,11 +612,16 @@ const hasBrowserCrypto = (): boolean => {
 const hasNodeCrypto = (): boolean => {
   return (
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     typeof process !== 'undefined' &&
     process.versions !== undefined &&
     process.versions.node !== undefined
   )
 }
+<<<<<<< HEAD
+=======
 =======
     typeof process !== "undefined" &&
     process.versions !== undefined &&
@@ -615,12 +629,18 @@ const hasNodeCrypto = (): boolean => {
   );
 };
 >>>>>>> origin/master
+>>>>>>> origin/master
 
 /**
  * Generate random values using browser crypto API
  */
 const generateBrowserRandomValues = (array: Uint32Array): void => {
   if (hasBrowserCrypto()) {
+<<<<<<< HEAD
+    window.crypto.getRandomValues(array)
+  }
+}
+=======
 <<<<<<< HEAD
     window.crypto.getRandomValues(array)
   }
@@ -635,6 +655,7 @@ const generateBrowserRandomValues = (array: Uint32Array): void => {
  */
 import { tryRequireNode } from "./index";
 >>>>>>> origin/master
+>>>>>>> origin/master
 
 /**
  * Generate random values using Node.js crypto
@@ -644,13 +665,20 @@ const generateNodeRandomValues = (array: Uint32Array): void => {
 <<<<<<< HEAD
     return
 =======
+<<<<<<< HEAD
+    return
+=======
     return;
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
   // Node.js fallback - use guarded runtime require to avoid bundler issues
   // Use tryRequireNode from utils to avoid bundlers including `crypto` in frontend bundles
   // Import dynamically to prevent circular import at module-eval time
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { tryRequireNode } =
     require('@/lib/utils') as typeof import('@/lib/utils')
@@ -659,6 +687,8 @@ const generateNodeRandomValues = (array: Uint32Array): void => {
   array[0] = buf.readUInt32LE(0)
   array[1] = buf.readUInt32LE(4)
 }
+<<<<<<< HEAD
+=======
 =======
   const crypto = tryRequireNode("crypto") as {
     randomBytes: (size: number) => Buffer;
@@ -671,6 +701,7 @@ const generateNodeRandomValues = (array: Uint32Array): void => {
   array[1] = buf.readUInt32LE(4);
 };
 >>>>>>> origin/master
+>>>>>>> origin/master
 
 /**
  * Generate session ID
@@ -678,11 +709,16 @@ const generateNodeRandomValues = (array: Uint32Array): void => {
 export function generateSessionId(): string {
   // Use cryptographically secure random values for session ID
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   const array = new Uint32Array(2)
   if (hasBrowserCrypto()) {
     generateBrowserRandomValues(array)
   } else if (hasNodeCrypto()) {
     generateNodeRandomValues(array)
+<<<<<<< HEAD
+=======
   } else {
     // Fallback to Math.random (should not happen)
     array[0] = Math.floor(Math.random() * 0xffffffff)
@@ -696,12 +732,18 @@ export function generateSessionId(): string {
     generateBrowserRandomValues(array);
   } else if (hasNodeCrypto()) {
     generateNodeRandomValues(array);
+>>>>>>> origin/master
   } else {
     // Fallback to Math.random (should not happen)
-    array[0] = Math.floor(Math.random() * 0xffffffff);
-    array[1] = Math.floor(Math.random() * 0xffffffff);
+    array[0] = Math.floor(Math.random() * 0xffffffff)
+    array[1] = Math.floor(Math.random() * 0xffffffff)
   }
+<<<<<<< HEAD
+  const randomStr = (array[0] ?? 0).toString(36) + (array[1] ?? 0).toString(36)
+  return 'demo_' + Date.now() + '_' + randomStr.slice(0, 9)
+=======
   const randomStr = (array[0] ?? 0).toString(36) + (array[1] ?? 0).toString(36);
   return "demo_" + Date.now() + "_" + randomStr.slice(0, 9);
+>>>>>>> origin/master
 >>>>>>> origin/master
 }

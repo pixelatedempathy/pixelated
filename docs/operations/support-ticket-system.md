@@ -111,7 +111,11 @@ This document outlines the support ticket system configuration for Pixelated Emp
 <<<<<<< HEAD
 - Via email to support@pixelated-empathy.com
 =======
+<<<<<<< HEAD
+- Via email to support@pixelated-empathy.com
+=======
 - Via email to support@pixelatedempathy.com
+>>>>>>> origin/master
 >>>>>>> origin/master
 - Via in-app support widget
 - Via phone (if available)
@@ -459,7 +463,11 @@ Management / On-Call
 <<<<<<< HEAD
 - **Support Email**: support@pixelated-empathy.com
 =======
+<<<<<<< HEAD
+- **Support Email**: support@pixelated-empathy.com
+=======
 - **Support Email**: support@pixelatedempathy.com
+>>>>>>> origin/master
 >>>>>>> origin/master
 - **Support Portal**: [Portal URL]
 - **Emergency**: [Emergency Contact]
@@ -470,9 +478,15 @@ Management / On-Call
 - **Safety Escalation**: safety@pixelated-empathy.com
 - **Security Escalation**: security@pixelated-empathy.com
 =======
+<<<<<<< HEAD
+- **Technical Escalation**: tech-escalation@pixelated-empathy.com
+- **Safety Escalation**: safety@pixelated-empathy.com
+- **Security Escalation**: security@pixelated-empathy.com
+=======
 - **Technical Escalation**: tech-escalation@pixelatedempathy.com
 - **Safety Escalation**: safety@pixelatedempathy.com
 - **Security Escalation**: security@pixelatedempathy.com
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ---

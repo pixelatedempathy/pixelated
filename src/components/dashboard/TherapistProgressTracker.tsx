@@ -63,6 +63,10 @@ export function TherapistProgressTracker({
 <<<<<<< HEAD
       role="region"
 =======
+<<<<<<< HEAD
+      role="region"
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
       tabIndex={0}
     >
@@ -262,7 +266,11 @@ export function TherapistProgressTracker({
 <<<<<<< HEAD
                 No notes available for this session.
 =======
+<<<<<<< HEAD
+                No notes available for this session.
+=======
                 Session notes and observations will appear here...
+>>>>>>> origin/master
 >>>>>>> origin/master
               </p>
             )}

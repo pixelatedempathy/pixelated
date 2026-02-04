@@ -27,7 +27,11 @@ Pixelated Empathy is a therapeutic AI platform that handles Protected Health Inf
 <<<<<<< HEAD
 - **Contact**: hipaa-compliance@pixelated-empathy.com
 =======
+<<<<<<< HEAD
+- **Contact**: hipaa-compliance@pixelated-empathy.com
+=======
 - **Contact**: hipaa-compliance@pixelatedempathy.com
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ### Covered Entity Status
@@ -438,6 +442,9 @@ All Business Associates must:
 ### HIPAA Compliance Officer
 - **Name**: [Officer Name]
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 - **Email**: hipaa-compliance@pixelated-empathy.com
 - **Phone**: [Phone Number]
 
@@ -450,6 +457,8 @@ All Business Associates must:
 ### Reporting Concerns
 - **HIPAA Violations**: hipaa-violations@pixelated-empathy.com
 - **Security Incidents**: security-incidents@pixelated-empathy.com
+<<<<<<< HEAD
+=======
 =======
 - **Email**: hipaa-compliance@pixelatedempathy.com
 - **Phone**: [Phone Number]
@@ -463,6 +472,7 @@ All Business Associates must:
 ### Reporting Concerns
 - **HIPAA Violations**: hipaa-violations@pixelatedempathy.com
 - **Security Incidents**: security-incidents@pixelatedempathy.com
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 ---

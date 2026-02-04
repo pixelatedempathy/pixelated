@@ -6,7 +6,10 @@ import "@/styles/markdown.css";
 import "@/styles/page.css";
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 import { Analytics } from "@vercel/analytics/astro";
+>>>>>>> origin/master
 >>>>>>> origin/master
 import SpeedInsights from "@vercel/speed-insights/astro";
 
@@ -36,7 +39,10 @@ interface Props {
   showFooter?: boolean;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   showBackLink?: boolean;
+>>>>>>> origin/master
 >>>>>>> origin/master
 }
 
@@ -52,7 +58,10 @@ const {
   showFooter = true,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   showBackLink = true,
+>>>>>>> origin/master
 >>>>>>> origin/master
 } = Astro.props;
 
@@ -82,6 +91,8 @@ if (hasCustomCursor) style["--external-link-cursor"] = cursorType;
     <Head {title} {description} {ogImage} {pubDate} {lastModDate} />
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
     <Analytics />
 
@@ -100,6 +111,7 @@ if (hasCustomCursor) style["--external-link-cursor"] = cursorType;
     <script src="/js/polyfill-detector.js" is:inline></script>
     <script src="/js/module-loader.js" defer is:inline></script>
     <script src="/js/background-loader.js" defer is:inline></script>
+>>>>>>> origin/master
 >>>>>>> origin/master
     <style is:global>
       /* Mizu theme dark colors - default for all pages */
@@ -156,7 +168,11 @@ if (hasCustomCursor) style["--external-link-cursor"] = cursorType;
 <<<<<<< HEAD
         currentPathname !== withBasePath("/") && (
 =======
+<<<<<<< HEAD
+        currentPathname !== withBasePath("/") && (
+=======
         currentPathname !== withBasePath("/") && showBackLink && (
+>>>>>>> origin/master
 >>>>>>> origin/master
           <footer class="slide-enter animate-delay-1000! prose mx-auto mt-8 print:hidden">
             <slot name="share" />

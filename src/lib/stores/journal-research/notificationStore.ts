@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -43,6 +46,8 @@ const defaultFilters: NotificationFilters = {}
 export const useNotificationStore = create<NotificationStoreState>()(
   persist(
     (set, get) => ({
+<<<<<<< HEAD
+=======
 =======
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -91,6 +96,7 @@ export const useNotificationStore = create<NotificationStoreState>()(
   persist(
     (set, _get) => ({
 >>>>>>> origin/master
+>>>>>>> origin/master
       notifications: [],
       filters: defaultFilters,
       unreadCount: 0,
@@ -102,6 +108,9 @@ export const useNotificationStore = create<NotificationStoreState>()(
           timestamp: new Date(),
           read: false,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         }
 
         set((state) => {
@@ -110,6 +119,8 @@ export const useNotificationStore = create<NotificationStoreState>()(
 
           // Keep only the last 100 notifications
           const trimmedNotifications = notifications.slice(0, 100)
+<<<<<<< HEAD
+=======
 =======
         };
 
@@ -120,6 +131,7 @@ export const useNotificationStore = create<NotificationStoreState>()(
           // Keep only the last 100 notifications
           const trimmedNotifications = notifications.slice(0, 100);
 >>>>>>> origin/master
+>>>>>>> origin/master
 
           return {
             notifications: trimmedNotifications,
@@ -128,8 +140,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           }
         })
 =======
+<<<<<<< HEAD
+          }
+        })
+=======
           };
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -141,8 +158,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           )
           const unreadCount = notifications.filter((n) => !n.read).length
 =======
+<<<<<<< HEAD
+          )
+          const unreadCount = notifications.filter((n) => !n.read).length
+=======
           );
           const unreadCount = notifications.filter((n) => !n.read).length;
+>>>>>>> origin/master
 >>>>>>> origin/master
 
           return {
@@ -152,8 +174,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           }
         })
 =======
+<<<<<<< HEAD
+          }
+        })
+=======
           };
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -165,7 +192,11 @@ export const useNotificationStore = create<NotificationStoreState>()(
 <<<<<<< HEAD
           }))
 =======
+<<<<<<< HEAD
+          }))
+=======
           }));
+>>>>>>> origin/master
 >>>>>>> origin/master
 
           return {
@@ -175,8 +206,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           }
         })
 =======
+<<<<<<< HEAD
+          }
+        })
+=======
           };
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -186,8 +222,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           const notifications = state.notifications.filter((n) => n.id !== id)
           const unreadCount = notifications.filter((n) => !n.read).length
 =======
+<<<<<<< HEAD
+          const notifications = state.notifications.filter((n) => n.id !== id)
+          const unreadCount = notifications.filter((n) => !n.read).length
+=======
           const notifications = state.notifications.filter((n) => n.id !== id);
           const unreadCount = notifications.filter((n) => !n.read).length;
+>>>>>>> origin/master
 >>>>>>> origin/master
 
           return {
@@ -197,8 +238,13 @@ export const useNotificationStore = create<NotificationStoreState>()(
           }
         })
 =======
+<<<<<<< HEAD
+          }
+        })
+=======
           };
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -209,7 +255,11 @@ export const useNotificationStore = create<NotificationStoreState>()(
 <<<<<<< HEAD
         })
 =======
+<<<<<<< HEAD
+        })
+=======
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -221,7 +271,11 @@ export const useNotificationStore = create<NotificationStoreState>()(
 <<<<<<< HEAD
         })
 =======
+<<<<<<< HEAD
+        })
+=======
         });
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -234,7 +288,11 @@ export const useNotificationStore = create<NotificationStoreState>()(
 <<<<<<< HEAD
         }))
 =======
+<<<<<<< HEAD
+        }))
+=======
         }));
+>>>>>>> origin/master
 >>>>>>> origin/master
       },
 
@@ -242,17 +300,23 @@ export const useNotificationStore = create<NotificationStoreState>()(
         set({
           filters: defaultFilters,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         })
       },
     }),
     {
       name: 'journal-research-notifications',
+<<<<<<< HEAD
+=======
 =======
         });
       },
     }),
     {
       name: "journal-research-notifications",
+>>>>>>> origin/master
 >>>>>>> origin/master
       partialize: (state) => ({
         notifications: state.notifications,
@@ -261,6 +325,9 @@ export const useNotificationStore = create<NotificationStoreState>()(
     },
   ),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 )
 
 // Computed selectors
@@ -282,6 +349,8 @@ export const useFilteredNotifications = () => {
   })
 }
 
+<<<<<<< HEAD
+=======
 =======
 );
 
@@ -303,4 +372,5 @@ export const useFilteredNotifications = () => {
     return true;
   });
 };
+>>>>>>> origin/master
 >>>>>>> origin/master

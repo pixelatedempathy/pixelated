@@ -6,21 +6,32 @@ import { requireRole } from '../middleware/rbac'
 import { UserRole } from '../types/user'
 import { WorkflowAction, ReviewPriority } from '../types/workflow'
 =======
+<<<<<<< HEAD
+import { requireRole } from '../middleware/rbac'
+import { UserRole } from '../types/user'
+import { WorkflowAction, ReviewPriority } from '../types/workflow'
+=======
 import { requireRole } from '../middleware/auth'
 import { UserRole } from '../types/user'
 import { WorkflowAction, ReviewPriority, WorkflowStatus } from '../types/workflow'
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 const router = Router()
 
 // Get all workflow templates
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 router.get('/templates', authenticateToken, async (req, res) => {
   try {
     const templates = WorkflowService.getWorkflowTemplates()
     res.json(templates)
   } catch (_error) {
     res.status(500).json({ error: 'Failed to fetch workflow templates' })
+<<<<<<< HEAD
+=======
 =======
 router.get('/templates', authenticateToken, async (_req, res) => {
   try {
@@ -29,6 +40,7 @@ router.get('/templates', authenticateToken, async (_req, res) => {
   } catch (_error) {
     console.error('Failed to fetch workflow templates:', _error)
     return res.status(500).json({ error: 'Failed to fetch workflow templates' })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -45,10 +57,16 @@ router.get('/templates/:id', authenticateToken, async (req, res) => {
   } catch (_error) {
     res.status(500).json({ error: 'Failed to fetch workflow template' })
 =======
+<<<<<<< HEAD
+    res.json(template)
+  } catch (_error) {
+    res.status(500).json({ error: 'Failed to fetch workflow template' })
+=======
     return res.json(template)
   } catch (_error) {
     console.error('Failed to fetch workflow template:', _error)
     return res.status(500).json({ error: 'Failed to fetch workflow template' })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -71,7 +89,11 @@ router.post('/instances', authenticateToken, async (req, res) => {
 <<<<<<< HEAD
       req.user.id,
 =======
+<<<<<<< HEAD
+      req.user.id,
+=======
       (req as any).user.id,
+>>>>>>> origin/master
 >>>>>>> origin/master
       priority || ReviewPriority.MEDIUM,
       dueDate ? new Date(dueDate) : undefined,
@@ -83,9 +105,15 @@ router.post('/instances', authenticateToken, async (req, res) => {
   } catch (_error) {
     res.status(400).json({ error: _error.message })
 =======
+<<<<<<< HEAD
+    res.status(201).json(instance)
+  } catch (_error) {
+    res.status(400).json({ error: _error.message })
+=======
     return res.status(201).json(instance)
   } catch (_error) {
     return res.status(400).json({ error: (_error as Error).message })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -104,10 +132,16 @@ router.get(
     } catch (_error) {
       res.status(500).json({ error: 'Failed to fetch workflow instances' })
 =======
+<<<<<<< HEAD
+      res.json(instances)
+    } catch (_error) {
+      res.status(500).json({ error: 'Failed to fetch workflow instances' })
+=======
       return res.json(instances)
     } catch (_error) {
       console.error('Failed to fetch workflow instances:', _error)
       return res.status(500).json({ error: 'Failed to fetch workflow instances' })
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   },
@@ -125,10 +159,16 @@ router.get('/instances/:id', authenticateToken, async (req, res) => {
   } catch (_error) {
     res.status(500).json({ error: 'Failed to fetch workflow instance' })
 =======
+<<<<<<< HEAD
+    res.json(instance)
+  } catch (_error) {
+    res.status(500).json({ error: 'Failed to fetch workflow instance' })
+=======
     return res.json(instance)
   } catch (_error) {
     console.error('Failed to fetch workflow instance:', _error)
     return res.status(500).json({ error: 'Failed to fetch workflow instance' })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -139,15 +179,21 @@ router.get('/instances', authenticateToken, async (req, res) => {
     const filters = {
       documentId: req.query.documentId as string,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       status: req.query.status as string,
       assignedTo: req.query.assignedTo as string,
       createdBy: req.query.createdBy as string,
       priority: req.query.priority as string,
+<<<<<<< HEAD
+=======
 =======
       status: req.query.status as unknown as WorkflowStatus,
       assignedTo: req.query.assignedTo as string,
       createdBy: req.query.createdBy as string,
       priority: req.query.priority as unknown as ReviewPriority,
+>>>>>>> origin/master
 >>>>>>> origin/master
       dueBefore: req.query.dueBefore
         ? new Date(req.query.dueBefore as string)
@@ -164,10 +210,16 @@ router.get('/instances', authenticateToken, async (req, res) => {
   } catch (_error) {
     res.status(500).json({ error: 'Failed to search workflow instances' })
 =======
+<<<<<<< HEAD
+    res.json(instances)
+  } catch (_error) {
+    res.status(500).json({ error: 'Failed to search workflow instances' })
+=======
     return res.json(instances)
   } catch (_error) {
     console.error('Failed to search workflow instances:', _error)
     return res.status(500).json({ error: 'Failed to search workflow instances' })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -179,12 +231,17 @@ router.post('/instances/:id/submit', authenticateToken, async (req, res) => {
     const instance = await WorkflowService.submitForReview(
       req.params.id,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       req.user.id,
       comment,
     )
     res.json(instance)
   } catch (_error) {
     res.status(400).json({ error: _error.message })
+<<<<<<< HEAD
+=======
 =======
       (req as any).user.id,
       comment,
@@ -192,6 +249,7 @@ router.post('/instances/:id/submit', authenticateToken, async (req, res) => {
     return res.json(instance)
   } catch (_error) {
     return res.status(400).json({ error: (_error as Error).message })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -208,6 +266,9 @@ router.post('/instances/:id/action', authenticateToken, async (req, res) => {
     const instance = await WorkflowService.processAction(
       req.params.id,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       req.user.id,
       action as WorkflowAction,
       comment,
@@ -215,6 +276,8 @@ router.post('/instances/:id/action', authenticateToken, async (req, res) => {
     res.json(instance)
   } catch (_error) {
     res.status(400).json({ error: _error.message })
+<<<<<<< HEAD
+=======
 =======
       (req as any).user.id,
       action as WorkflowAction,
@@ -223,6 +286,7 @@ router.post('/instances/:id/action', authenticateToken, async (req, res) => {
     return res.json(instance)
   } catch (_error) {
     return res.status(400).json({ error: (_error as Error).message })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -241,7 +305,11 @@ router.post('/instances/:id/comments', authenticateToken, async (req, res) => {
 <<<<<<< HEAD
       req.user.id,
 =======
+<<<<<<< HEAD
+      req.user.id,
+=======
       (req as any).user.id,
+>>>>>>> origin/master
 >>>>>>> origin/master
       content,
       step,
@@ -255,9 +323,15 @@ router.post('/instances/:id/comments', authenticateToken, async (req, res) => {
   } catch (_error) {
     res.status(400).json({ error: _error.message })
 =======
+<<<<<<< HEAD
+    res.status(201).json(comment)
+  } catch (_error) {
+    res.status(400).json({ error: _error.message })
+=======
     return res.status(201).json(comment)
   } catch (_error) {
     return res.status(400).json({ error: (_error as Error).message })
+>>>>>>> origin/master
 >>>>>>> origin/master
   }
 })
@@ -270,7 +344,10 @@ router.get('/instances/:id/comments', authenticateToken, async (req, res) => {
   } catch (_error) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     console.error('Failed to fetch comments:', _error)
+>>>>>>> origin/master
 >>>>>>> origin/master
     res.status(500).json({ error: 'Failed to fetch comments' })
   }
@@ -284,7 +361,10 @@ router.get('/instances/:id/approvals', authenticateToken, async (req, res) => {
   } catch (_error) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     console.error('Failed to fetch approvals:', _error)
+>>>>>>> origin/master
 >>>>>>> origin/master
     res.status(500).json({ error: 'Failed to fetch approvals' })
   }
@@ -296,12 +376,17 @@ router.get(
   authenticateToken,
   requireRole([UserRole.ADMINISTRATOR]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   async (req, res) => {
     try {
       const analytics = WorkflowService.getWorkflowAnalytics()
       res.json(analytics)
     } catch (_error) {
       res.status(500).json({ error: 'Failed to fetch analytics' })
+<<<<<<< HEAD
+=======
 =======
   async (_req, res) => {
     try {
@@ -310,6 +395,7 @@ router.get(
     } catch (_error) {
       console.error('Failed to fetch analytics:', _error)
       return res.status(500).json({ error: 'Failed to fetch analytics' })
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   },
@@ -321,12 +407,17 @@ router.get(
   authenticateToken,
   requireRole([UserRole.ADMINISTRATOR]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   async (req, res) => {
     try {
       const overdue = WorkflowService.getOverdueWorkflows()
       res.json(overdue)
     } catch (_error) {
       res.status(500).json({ error: 'Failed to fetch overdue workflows' })
+<<<<<<< HEAD
+=======
 =======
   async (_req, res) => {
     try {
@@ -335,6 +426,7 @@ router.get(
     } catch (_error) {
       console.error('Failed to fetch overdue workflows:', _error)
       return res.status(500).json({ error: 'Failed to fetch overdue workflows' })
+>>>>>>> origin/master
 >>>>>>> origin/master
     }
   },

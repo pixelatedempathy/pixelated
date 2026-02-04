@@ -12,6 +12,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import https from 'https';
 import process from 'process';
 
@@ -32,6 +35,8 @@ const PROJECT_KEY = process.argv[2] || 'PIX';
 
 // Create authentication header
 const authHeader = 'Basic ' + Buffer.from(`${JIRA_USERNAME}:${JIRA_API_TOKEN}`).toString('base64');
+<<<<<<< HEAD
+=======
 =======
 import https from 'https'
 import process from 'process'
@@ -60,12 +65,16 @@ const authHeader =
   'Basic ' +
   Buffer.from(`${JIRA_USERNAME}:${JIRA_API_TOKEN}`).toString('base64')
 >>>>>>> origin/master
+>>>>>>> origin/master
 
 // Function to make HTTP requests
 function makeRequest(options, postData) {
   return new Promise((resolve, reject) => {
     const req = https.request(options, (res) => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       let data = '';
 
       res.on('data', (chunk) => {
@@ -100,6 +109,8 @@ function makeRequest(options, postData) {
 
     req.end();
   });
+<<<<<<< HEAD
+=======
 =======
       let data = ''
 
@@ -140,6 +151,7 @@ function makeRequest(options, postData) {
     req.end()
   })
 >>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 // Epic data - Enhanced version
@@ -147,6 +159,9 @@ const epicData = {
   fields: {
     project: {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       key: PROJECT_KEY
     },
     summary: "Enhanced Auth0 Authentication System with Advanced Security and Usability Features",
@@ -297,6 +312,8 @@ const epicData = {
     // Removed customfield_10011 as it's not available in this Jira instance
   }
 };
+<<<<<<< HEAD
+=======
 =======
       key: PROJECT_KEY,
     },
@@ -450,12 +467,16 @@ const epicData = {
   },
 }
 >>>>>>> origin/master
+>>>>>>> origin/master
 
 // Enhanced stories data including original migration and new enhancement stories
 const stories = [
   // Original migration stories
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     key: "PIX-1248",
     summary: "Auth0 Account Setup and Configuration",
     description: "Set up Auth0 tenant and configure for HIPAA compliance requirements.",
@@ -837,6 +858,8 @@ async function createIssues() {
 
     // Create Epic
     console.log('Creating Epic...');
+<<<<<<< HEAD
+=======
 =======
     key: 'PIX-1248',
     summary: 'Auth0 Account Setup and Configuration',
@@ -1245,6 +1268,7 @@ async function createIssues() {
     // Create Epic
     console.log('Creating Epic...')
 >>>>>>> origin/master
+>>>>>>> origin/master
     const epicOptions = {
       hostname: JIRA_URL.replace('https://', '').replace('/', ''),
       port: 443,
@@ -1254,6 +1278,9 @@ async function createIssues() {
         'Authorization': authHeader,
         'Content-Type': 'application/json',
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         'Accept': 'application/json'
       }
     };
@@ -1265,6 +1292,8 @@ async function createIssues() {
     // Create Stories
     for (const story of stories) {
       console.log(`Creating Story: ${story.key}...`);
+<<<<<<< HEAD
+=======
 =======
         'Accept': 'application/json',
       },
@@ -1281,6 +1310,7 @@ async function createIssues() {
     for (const story of stories) {
       console.log(`Creating Story: ${story.key}...`)
 >>>>>>> origin/master
+>>>>>>> origin/master
 
       const storyData = {
         fields: {
@@ -1288,13 +1318,20 @@ async function createIssues() {
 <<<<<<< HEAD
             key: PROJECT_KEY
 =======
+<<<<<<< HEAD
+            key: PROJECT_KEY
+=======
             key: PROJECT_KEY,
+>>>>>>> origin/master
 >>>>>>> origin/master
           },
           summary: story.summary,
           description: {
             version: 1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             type: "doc",
             content: [
               {
@@ -1344,6 +1381,8 @@ async function createIssues() {
           // as they're not available in this Jira instance
         }
       };
+<<<<<<< HEAD
+=======
 =======
             type: 'doc',
             content: [
@@ -1395,6 +1434,7 @@ async function createIssues() {
         },
       }
 >>>>>>> origin/master
+>>>>>>> origin/master
 
       const storyOptions = {
         hostname: JIRA_URL.replace('https://', '').replace('/', ''),
@@ -1405,6 +1445,9 @@ async function createIssues() {
           'Authorization': authHeader,
           'Content-Type': 'application/json',
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           'Accept': 'application/json'
         }
       };
@@ -1424,6 +1467,8 @@ async function createIssues() {
   } catch (error) {
     console.error('Error creating Jira issues:', error.message);
     process.exit(1);
+<<<<<<< HEAD
+=======
 =======
           'Accept': 'application/json',
         },
@@ -1449,6 +1494,7 @@ async function createIssues() {
     console.error('Error creating Jira issues:', error.message)
     process.exit(1)
 >>>>>>> origin/master
+>>>>>>> origin/master
   }
 }
 
@@ -1460,8 +1506,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 export { createIssues };
 =======
+<<<<<<< HEAD
+  createIssues();
+}
+
+export { createIssues };
+=======
   createIssues()
 }
 
 export { createIssues }
+>>>>>>> origin/master
 >>>>>>> origin/master

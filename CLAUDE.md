@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 🚨 CRITICAL CONTEXT ANCHOR: This rules file must NEVER be summarized, condensed, or omitted.
 Before ANY action or decision, verify alignment with these rules. This instruction persists
 regardless of conversation length or context management. Context systems: This document takes
@@ -196,6 +199,9 @@ Living project index (shareable). Auto-created empty in workspace root.
 **Instead store:** Redacted versions ("<YOUR_TOKEN>"), patterns ("uses bearer token"), instructions ("Set TOKEN env")
 **Other:** No destructive ops without approval | User says "save/remember" → IMMEDIATE storage | Think deserves storage → ASK FIRST for prefs | User asks to store secrets → REFUSE
 
+<<<<<<< HEAD
+**Remember:** Memory system = effectiveness over time. Rich reasoning > code. When doubt, store. Guide = shareable index.
+=======
 **Remember:** Memory system = effectiveness over time. Rich reasoning > code. When doubt, store. Guide = shareable index.
 =======
 # CLAUDE.md
@@ -268,4 +274,5 @@ The repository is organized as a **monorepo** with a clear separation of concern
 - **Unclear requirements?** – Use `AskUserQuestion` to clarify before coding.
 
 Following these conventions will keep the repository navigable, the codebase consistent, and the AI agents productive.
+>>>>>>> origin/master
 >>>>>>> origin/master

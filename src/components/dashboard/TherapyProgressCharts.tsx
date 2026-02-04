@@ -195,7 +195,11 @@ const SessionComparison: React.FC<{
 <<<<<<< HEAD
             {String(currentSession.sessionId).slice(0, 8)}
 =======
+<<<<<<< HEAD
+            {String(currentSession.sessionId).slice(0, 8)}
+=======
             {String(currentSession.sessionId)}
+>>>>>>> origin/master
 >>>>>>> origin/master
           </div>
         </div>
@@ -221,7 +225,11 @@ const SessionComparison: React.FC<{
 <<<<<<< HEAD
             {String(previousSession.sessionId).slice(0, 8)}
 =======
+<<<<<<< HEAD
+            {String(previousSession.sessionId).slice(0, 8)}
+=======
             {String(previousSession.sessionId)}
+>>>>>>> origin/master
 >>>>>>> origin/master
           </div>
         </div>

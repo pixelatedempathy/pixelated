@@ -197,7 +197,10 @@ scripts/*
 !scripts/utils/start-server.mjs
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 !scripts/docker-entrypoint.js
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 # Tools and utilities

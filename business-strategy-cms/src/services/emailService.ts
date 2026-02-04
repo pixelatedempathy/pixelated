@@ -31,6 +31,8 @@ export class EmailService {
   }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
   static async sendEmail(options: {
     to: string
@@ -41,5 +43,6 @@ export class EmailService {
     console.log(`Subject: ${options.subject}`)
     console.log('Body:', options.body)
   }
+>>>>>>> origin/master
 >>>>>>> origin/master
 }

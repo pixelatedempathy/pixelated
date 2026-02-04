@@ -63,7 +63,11 @@ export class JournalResearchApiClient {
 <<<<<<< HEAD
   private readonly fetchImpl: typeof fetch
 =======
+<<<<<<< HEAD
+  private readonly fetchImpl: typeof fetch
+=======
   private readonly fetchImpl?: typeof fetch
+>>>>>>> origin/master
 >>>>>>> origin/master
   private readonly getAuthToken?: () => string | null | Promise<string | null>
   private readonly onUnauthorized?: (
@@ -88,7 +92,11 @@ export class JournalResearchApiClient {
 <<<<<<< HEAD
     this.fetchImpl = options.fetchImpl ?? fetch
 =======
+<<<<<<< HEAD
+    this.fetchImpl = options.fetchImpl ?? fetch
+=======
     this.fetchImpl = options.fetchImpl
+>>>>>>> origin/master
 >>>>>>> origin/master
     this.getAuthToken = options.getAuthToken
     this.onUnauthorized = options.onUnauthorized
@@ -146,12 +154,17 @@ export class JournalResearchApiClient {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     const init: RequestInit = {
       method,
       headers: {
         'Content-Type': body ? 'application/json' : 'application/json',
         ...headers,
       },
+<<<<<<< HEAD
+=======
 =======
     const requestHeaders = new Headers(headers)
     if (!requestHeaders.has('Content-Type')) {
@@ -161,6 +174,7 @@ export class JournalResearchApiClient {
     const init: RequestInit = {
       method,
       headers: requestHeaders,
+>>>>>>> origin/master
 >>>>>>> origin/master
       signal: signal ?? controller.signal,
       credentials: 'include',
@@ -194,8 +208,12 @@ export class JournalResearchApiClient {
 <<<<<<< HEAD
       const response = await this.fetchImpl(requestContext.url.toString(), {
 =======
+<<<<<<< HEAD
+      const response = await this.fetchImpl(requestContext.url.toString(), {
+=======
       const fetchFn = this.fetchImpl ?? fetch
       const response = await fetchFn(requestContext.url.toString(), {
+>>>>>>> origin/master
 >>>>>>> origin/master
         ...requestContext.init,
         signal: requestContext.init.signal ?? controller.signal,
@@ -327,24 +345,34 @@ async function getAuthTokenFromBetterAuth(): Promise<string | null> {
 <<<<<<< HEAD
   
 =======
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   try {
     // Try to get session from Better Auth client
     const { authClient } = await import('@/lib/auth-client')
     const session = await authClient.getSession()
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     
     if (session?.data?.session?.token) {
       return session.data.session.token
     }
     
+<<<<<<< HEAD
+=======
 =======
 
     if (session?.data?.session?.token) {
       return session.data.session.token
     }
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     // Fallback to localStorage for backward compatibility
     return (
@@ -357,7 +385,11 @@ async function getAuthTokenFromBetterAuth(): Promise<string | null> {
 <<<<<<< HEAD
     
 =======
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     // Fallback to localStorage
     try {
@@ -391,7 +423,11 @@ async function handleUnauthorized(context: {
 <<<<<<< HEAD
   
 =======
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> origin/master
 >>>>>>> origin/master
   // Redirect to login if we're in the browser
   if (typeof window !== 'undefined') {

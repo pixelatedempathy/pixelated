@@ -464,11 +464,16 @@ export function validateRoleTransition(
   // Check if target role requires approval
   const requiresApproval = toDef.requiresApproval
 =======
+<<<<<<< HEAD
+  // Check if target role requires approval
+  const requiresApproval = toDef.requiresApproval
+=======
   // Check if target role requires approval or is sensitive
   const requiresApproval =
     toDef.requiresApproval ||
     toDef.hierarchyLevel >= 80 || // Therapist and Admin
     toDef.permissions.includes('manage:roles');
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   // MFA required for sensitive role transitions

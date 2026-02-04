@@ -9,6 +9,9 @@ import { updatePhase6AuthenticationProgress } from '../mcp/phase6-integration'
 
 // Auth0 Configuration
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 const AUTH0_CONFIG = {
   domain: process.env.AUTH0_DOMAIN || '',
   clientId: process.env.AUTH0_CLIENT_ID || '',
@@ -16,9 +19,12 @@ const AUTH0_CONFIG = {
   managementClientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID || '',
   managementClientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET || '',
 }
+<<<<<<< HEAD
+=======
 =======
 import { auth0Config } from './auth0-config'
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 // Initialize Auth0 clients
@@ -32,8 +38,12 @@ function initializeAuth0Clients() {
 <<<<<<< HEAD
   if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
 =======
+<<<<<<< HEAD
+  if (!AUTH0_CONFIG.domain || !AUTH0_CONFIG.clientId || !AUTH0_CONFIG.clientSecret) {
+=======
   if (!auth0Config.domain || !auth0Config.clientId || !auth0Config.clientSecret) {
 
+>>>>>>> origin/master
 >>>>>>> origin/master
     console.warn('Auth0 configuration incomplete'); return
   }
@@ -41,6 +51,9 @@ function initializeAuth0Clients() {
   if (!auth0Authentication) {
     auth0Authentication = new AuthenticationClient({
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       domain: AUTH0_CONFIG.domain,
       clientId: AUTH0_CONFIG.clientId,
       clientSecret: AUTH0_CONFIG.clientSecret
@@ -53,6 +66,8 @@ function initializeAuth0Clients() {
       clientId: AUTH0_CONFIG.managementClientId,
       clientSecret: AUTH0_CONFIG.managementClientSecret,
       audience: `https://${AUTH0_CONFIG.domain}/api/v2/`,
+<<<<<<< HEAD
+=======
 =======
       domain: auth0Config.domain,
       clientId: auth0Config.clientId,
@@ -66,6 +81,7 @@ function initializeAuth0Clients() {
       clientId: auth0Config.managementClientId,
       clientSecret: auth0Config.managementClientSecret,
       audience: `https://${auth0Config.domain}/api/v2/`,
+>>>>>>> origin/master
 >>>>>>> origin/master
       scope: 'read:users update:users create:users'
     })
@@ -110,8 +126,13 @@ export class Auth0SocialAuthService {
   private readonly domain = AUTH0_CONFIG.domain
   private readonly clientId = AUTH0_CONFIG.clientId
 =======
+<<<<<<< HEAD
+  private readonly domain = AUTH0_CONFIG.domain
+  private readonly clientId = AUTH0_CONFIG.clientId
+=======
   private readonly domain = auth0Config.domain
   private readonly clientId = auth0Config.clientId
+>>>>>>> origin/master
 >>>>>>> origin/master
 
   constructor() {
@@ -183,7 +204,11 @@ export class Auth0SocialAuthService {
 <<<<<<< HEAD
         client_secret: AUTH0_CONFIG.clientSecret,
 =======
+<<<<<<< HEAD
+        client_secret: AUTH0_CONFIG.clientSecret,
+=======
         client_secret: auth0Config.clientSecret,
+>>>>>>> origin/master
 >>>>>>> origin/master
         code,
         redirect_uri: redirectUri

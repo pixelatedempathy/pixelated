@@ -4,6 +4,9 @@
 <<<<<<< HEAD
 import { afterEach, beforeEach, vi } from 'vitest'
 =======
+<<<<<<< HEAD
+import { afterEach, beforeEach, vi } from 'vitest'
+=======
 
 import { afterEach, beforeEach, vi } from 'vitest'
 
@@ -33,6 +36,7 @@ vi.mock('react', async () => {
   }
 })
 
+>>>>>>> origin/master
 >>>>>>> origin/master
 import '@testing-library/jest-dom/vitest'
 import '../src/test/setup-react19'
@@ -212,12 +216,15 @@ function createMockRedis() {
     const entries: [any, number][] = Array.from(
       (z as Map<any, number>).entries(),
     )
+<<<<<<< HEAD
+=======
 =======
     const z = zsetStore.get(key)
     if (!z) {
       return []
     }
     const entries: Array<[RedisMember, number]> = Array.from(z.entries())
+>>>>>>> origin/master
 >>>>>>> origin/master
     const sorted = entries.sort((a, b) => (a[1] as number) - (b[1] as number))
     const slice =
@@ -237,12 +244,15 @@ function createMockRedis() {
     const entries: [any, number][] = Array.from(
       (z as Map<any, number>).entries(),
     )
+<<<<<<< HEAD
+=======
 =======
     const z = zsetStore.get(key)
     if (!z || z.size === 0) {
       return []
     }
     const entries: Array<[RedisMember, number]> = Array.from(z.entries())
+>>>>>>> origin/master
 >>>>>>> origin/master
     const sorted = entries.sort((a, b) => (a[1] as number) - (b[1] as number))
     const [member, score] = sorted[0]!
@@ -305,6 +315,9 @@ function createMockRedis() {
   const _mget = async (...keys: string[]) =>
     keys.map((k) => (store.has(k) ? store.get(k) : null))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   const _mset = async (obj: Record<string, any>) => {
 =======
   const _mset = async (obj: Record<string, unknown>) => {
@@ -461,6 +474,9 @@ function createMockRedis() {
 
       // pipeline alias commonly used in some clients
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       ; (pipeline as any).pipeline = pipeline
     return pipeline
   }
