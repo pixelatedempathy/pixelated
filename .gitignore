@@ -280,3 +280,4 @@ AGENTS.md
 /.cursor/
 /.openagents/
 /.openskills/
+.netlify/

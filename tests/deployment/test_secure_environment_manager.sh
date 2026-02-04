@@ -190,7 +190,7 @@ API_KEY=test-api-key-12345
 JWT_SECRET=super-secret-jwt-key
 REDIS_URL=redis://localhost:6379
 SMTP_PASSWORD=email-password-123
-GITHUB_TOKEN=ghp_test_token_12345
+GITHUB_TOKEN=mock_token_12345
 EOF
     
     # Initialize test log
