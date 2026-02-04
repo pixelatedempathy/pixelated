@@ -307,7 +307,15 @@ Consistent spacing with 8-point increments:
 ```json
 {
   "name": "your-project",
+<<<<<<< HEAD
   "packageManager": "pnpm@10.28.0",
+=======
+<<<<<<< HEAD
+  "packageManager": "pnpm@10.28.0",
+=======
+  "packageManager": "pnpm@10.28.2",
+>>>>>>> origin/master
+>>>>>>> origin/master
   "dependencies": {
     "@pixelated/unified-dark-theme": "^4.0.0"
   }
