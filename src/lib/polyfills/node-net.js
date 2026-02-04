@@ -7,7 +7,7 @@ export function createServer() {
     listen: () => {},
     on: () => {},
     close: () => {},
-  }
+  };
 }
 
 export function connect() {
@@ -15,17 +15,18 @@ export function connect() {
     on: () => {},
     write: () => {},
     end: () => {},
-  }
+  };
 }
 
 export function createConnection() {
-  return connect()
+  return connect();
 }
 
 export default {
   createServer,
   connect,
   createConnection,
+<<<<<<< HEAD
 }
 !(function () {
   try {
@@ -46,3 +47,6 @@ export default {
   } catch (e) {}
 })()
 //# debugId=9efc4c05-f9eb-5fc8-b1d6-84263e6e1224
+=======
+};
+>>>>>>> origin/master

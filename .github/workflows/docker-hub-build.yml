@@ -26,7 +26,15 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
+<<<<<<< HEAD
           version: 10.28.0
+=======
+<<<<<<< HEAD
+          version: 10.28.0
+=======
+          version: 10.28.2
+>>>>>>> origin/master
+>>>>>>> origin/master
           run_install: false
 
       - name: Install dependencies
@@ -42,7 +50,15 @@ jobs:
 
       - name: Generate build timestamp tag
         id: buildts
+<<<<<<< HEAD
         run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_ENV
+=======
+<<<<<<< HEAD
+        run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_ENV
+=======
+        run: echo "BUILD_TS=$(date +%s)" >> $GITHUB_OUTPUT
+>>>>>>> origin/master
+>>>>>>> origin/master
 
       - name: Check Docker Hub credentials
         id: check_creds
@@ -98,7 +114,15 @@ jobs:
           tags: |
             pixelatedempathy/pixelated:latest
             pixelatedempathy/pixelated:${{ github.sha }}
+<<<<<<< HEAD
             pixelatedempathy/pixelated:build-${{ env.BUILD_TS }}
+=======
+<<<<<<< HEAD
+            pixelatedempathy/pixelated:build-${{ env.BUILD_TS }}
+=======
+            pixelatedempathy/pixelated:build-${{ steps.buildts.outputs.BUILD_TS }}
+>>>>>>> origin/master
+>>>>>>> origin/master
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
@@ -114,4 +138,12 @@ jobs:
           else
             echo "❌ Failed to pull image pixelatedempathy/pixelated:${{ github.sha }}"
             exit 1
+<<<<<<< HEAD
           fi
+=======
+<<<<<<< HEAD
+          fi
+=======
+          fi
+>>>>>>> origin/master
+>>>>>>> origin/master

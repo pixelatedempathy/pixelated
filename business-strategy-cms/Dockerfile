@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 FROM node:18-alpine
+=======
+<<<<<<< HEAD
+FROM node:18-alpine
+=======
+FROM node:24-alpine
+
+# Install build dependencies for native modules
+RUN apk add --no-cache python3 make g++
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 WORKDIR /app
 

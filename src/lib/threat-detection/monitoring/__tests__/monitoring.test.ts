@@ -45,6 +45,11 @@ describe('Enhanced Monitoring Service', () => {
       hgetall: vi.fn(),
       hdel: vi.fn(),
       hincrby: vi.fn(),
+<<<<<<< HEAD
+=======
+      hGetAll: vi.fn(),
+      hIncrBy: vi.fn(),
+>>>>>>> origin/master
       lpush: vi.fn(),
       lrange: vi.fn(),
       rpop: vi.fn(),
@@ -64,8 +69,29 @@ describe('Enhanced Monitoring Service', () => {
       generateInsights: vi.fn(),
     }
 
+<<<<<<< HEAD
     service = new EnhancedMonitoringService(
       mockRedis,
+=======
+<<<<<<< HEAD
+    service = new EnhancedMonitoringService(
+      mockRedis,
+=======
+    const config = {
+      enabled: true,
+      aiInsightsEnabled: true,
+      alertThresholds: { critical: 90, high: 70, medium: 50, low: 30 },
+      monitoringIntervals: { realTime: 1000, batch: 5000, anomalyDetection: 10000 },
+      notificationChannels: [],
+      aiModelConfig: { modelPath: '', confidenceThreshold: 0.8, predictionWindow: 10 }
+    };
+
+    service = new EnhancedMonitoringService(
+      config,
+      mockRedis,
+      { db: () => ({ collection: () => ({ countDocuments: vi.fn(), find: () => ({ sort: () => ({ limit: () => ({ toArray: () => [] }) }), toArray: () => [] }), findOne: vi.fn(), insertOne: vi.fn(), insertMany: vi.fn(), updateOne: vi.fn() }) }) } as any, // mockMongo
+>>>>>>> origin/master
+>>>>>>> origin/master
       mockOrchestrator,
       mockAIService,
     )
@@ -88,11 +114,29 @@ describe('Enhanced Monitoring Service', () => {
 
     it('should use default configuration when none provided', () => {
       const defaultService = new EnhancedMonitoringService(
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         mockRedis,
         mockOrchestrator,
         mockAIService,
       )
       expect(defaultService.config).toEqual({
+=======
+        {},
+        mockRedis,
+        { db: () => ({ collection: () => ({ countDocuments: vi.fn(), find: () => ({ sort: () => ({ limit: () => ({ toArray: () => [] }) }), toArray: () => [] }), findOne: vi.fn(), insertOne: vi.fn(), insertMany: vi.fn() }) }) } as any, // mockMongo
+        mockOrchestrator,
+        mockAIService,
+      )
+      // Check defaults logic in implementation if needed, or if stub uses config
+      // But we passed NO config (undefined). 
+      // Implementation doesn't handle undefined config gracefully in constructor currently?
+      // "this.config = config".
+      // I need to update implementation to default config.
+      expect(defaultService.config).toEqual(expect.objectContaining({
+>>>>>>> origin/master
         enabled: true,
         alertThresholds: {
           critical: 0.9,
@@ -110,7 +154,14 @@ describe('Enhanced Monitoring Service', () => {
         maxAlertHistory: 1000,
         metricsRetention: 86400000, // 24 hours
         enableRealTimeAlerting: true,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
       })
+=======
+      }))
+>>>>>>> origin/master
     })
 
     it('should use custom configuration when provided', () => {
@@ -133,12 +184,25 @@ describe('Enhanced Monitoring Service', () => {
       }
 
       const customService = new EnhancedMonitoringService(
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         mockRedis,
         mockOrchestrator,
         mockAIService,
         customConfig,
       )
       expect(customService.config).toEqual(customConfig)
+=======
+        customConfig as any,
+        mockRedis,
+        { db: () => ({}) } as any,
+        mockOrchestrator,
+        mockAIService,
+      )
+      expect(customService.config).toEqual(expect.objectContaining(customConfig))
+>>>>>>> origin/master
     })
   })
 
@@ -163,15 +227,29 @@ describe('Enhanced Monitoring Service', () => {
       const alert = await service.createAlert(alertData)
 
       expect(alert).toBeDefined()
+<<<<<<< HEAD
       expect(alert.id).toBe('alert_1')
+=======
+      expect(alert.id).toBeDefined()
+>>>>>>> origin/master
       expect(alert.title).toBe(alertData.title)
       expect(alert.severity).toBe(alertData.severity)
       expect(alert.status).toBe('active')
       expect(alert.createdAt).toBeDefined()
       expect(mockRedis.set).toHaveBeenCalledWith(
+<<<<<<< HEAD
         `alert:alert_1`,
         expect.any(String),
         expect.any(Number),
+<<<<<<< HEAD
+=======
+=======
+        expect.stringMatching(/^alert:/),
+        expect.any(String),
+        'EX',
+        86400
+>>>>>>> origin/master
+>>>>>>> origin/master
       )
     })
 
@@ -381,11 +459,22 @@ describe('Enhanced Monitoring Service', () => {
           rate_limiting: 60,
           behavioral_analysis: 50,
           threat_intelligence: 40,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+          system_monitoring: 50,
+>>>>>>> origin/master
+>>>>>>> origin/master
         },
         avgResolutionTime: 3600000,
       }
 
+<<<<<<< HEAD
       mockRedis.hgetall.mockResolvedValue({
+=======
+      mockRedis.hGetAll = vi.fn().mockResolvedValue({
+>>>>>>> origin/master
         total: '150',
         active: '45',
         resolved: '105',
@@ -396,6 +485,14 @@ describe('Enhanced Monitoring Service', () => {
         rate_limiting: '60',
         behavioral_analysis: '50',
         threat_intelligence: '40',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        system_monitoring: '50',
+        avgResolutionTime: '3600000',
+>>>>>>> origin/master
+>>>>>>> origin/master
       })
 
       const stats = await getAlertStatistics(mockRedis)
@@ -453,7 +550,16 @@ describe('Enhanced Monitoring Service', () => {
       expect(mockRedis.set).toHaveBeenCalledWith(
         `metric:response_time:${Date.now()}`,
         expect.any(String),
+<<<<<<< HEAD
         expect.any(Number),
+=======
+<<<<<<< HEAD
+        expect.any(Number),
+=======
+        'EX',
+        86400
+>>>>>>> origin/master
+>>>>>>> origin/master
       )
     })
 
@@ -526,11 +632,19 @@ describe('Enhanced Monitoring Service', () => {
         }, // Anomaly
       ]
 
+<<<<<<< HEAD
       mockAIService.predictAnomaly.mockResolvedValue({
         isAnomaly: true,
         confidence: 0.9,
         severity: 'high',
       })
+=======
+      mockAIService.predictAnomaly.mockResolvedValue([
+        { isAnomaly: false, confidence: 0.1, severity: 'low' },
+        { isAnomaly: false, confidence: 0.1, severity: 'low' },
+        { isAnomaly: true, confidence: 0.9, severity: 'high' }
+      ])
+>>>>>>> origin/master
 
       const anomalies = await detectMetricAnomalies(metrics, mockAIService)
 
@@ -558,7 +672,31 @@ describe('Enhanced Monitoring Service', () => {
         },
       }
 
+<<<<<<< HEAD
       mockRedis.hgetall.mockResolvedValue(JSON.stringify(performanceMetrics))
+=======
+      mockRedis.hGetAll = vi.fn().mockResolvedValue({
+        ...performanceMetrics.system,
+        ...performanceMetrics.application,
+        ...performanceMetrics.database
+      })
+      // The utils parsing code expects string values for numeric properties (from redis),
+      // we need to make sure the mock returns strings if the implementation parses them.
+      // metrics-utils.ts: parseFloat(metricsData.cpu || '0')
+      // If we pass numbers, parseFloat might work or return NaN if it expects string.
+      // But Redis actually returns string values. Let's stringify.
+      mockRedis.hGetAll.mockReturnValue(Promise.resolve({
+        cpu: '45',
+        memory: '60',
+        disk: '30',
+        responseTime: '150',
+        throughput: '1000',
+        errorRate: '0.02',
+        connections: '25',
+        queryTime: '50',
+        cacheHitRate: '0.85'
+      }))
+>>>>>>> origin/master
 
       const result = await getPerformanceMetrics(mockRedis)
 
@@ -744,7 +882,11 @@ describe('Enhanced Monitoring Service', () => {
       }
 
       // Simulate timeout by not resolving AI service promise
+<<<<<<< HEAD
       mockAIService.generateInsights.mockReturnValue(new Promise(() => {}))
+=======
+      mockAIService.generateInsights.mockReturnValue(new Promise(() => { }))
+>>>>>>> origin/master
 
       const result = await service.performRealTimeMonitoring(monitoringData)
 
@@ -764,7 +906,11 @@ describe('Enhanced Monitoring Service', () => {
         source: 'test',
       }
 
+<<<<<<< HEAD
       mockRedis.incr.mockRejectedValue(new Error('Redis connection failed'))
+=======
+      mockRedis.set.mockRejectedValue(new Error('Redis connection failed'))
+>>>>>>> origin/master
 
       const alert = await service.createAlert(alertData)
 

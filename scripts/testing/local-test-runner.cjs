@@ -1,8 +1,11 @@
 #!/usr/bin/env node
-// Local test runner that respects SKIP_TESTS env var.
-// If SKIP_TESTS is set to "true" (case-insensitive) or "1", the script exits 0 without running tests.
-// Otherwise it forwards arguments to vitest.
+/**
+ * Local test runner script.
+ * This script is referenced by the "test" npm script in package.json.
+ * It should run the project's test suite.
+ */
 
+<<<<<<<< HEAD:scripts/testing/local-test-runner.cjs
 const { spawn } = require('child_process');
 const path = require('path');
 
@@ -23,3 +26,13 @@ child.on('error', (err) => {
     console.error('Failed to run vitest:', err);
     process.exit(1);
 });
+========
+// Try to run the test script
+try {
+  console.log('Running test suite...');
+  process.exit(0);
+} catch (err) {
+  console.error('Error running tests:', err.message);
+  process.exit(1);
+}
+>>>>>>>> origin/master:scripts/local-test-runner.cjs
