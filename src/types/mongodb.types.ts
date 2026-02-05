@@ -141,7 +141,7 @@ export interface DataExport {
   error?: string
 }
 
-export interface AuditLog {
+export interface AuditLogDb {
   _id?: MongoObjectId
   id?: string
   userId: MongoObjectId
