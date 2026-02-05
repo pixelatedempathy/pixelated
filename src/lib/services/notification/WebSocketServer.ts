@@ -4,6 +4,8 @@ import type { WebSocket } from 'ws'
 import { WebSocketServer as WSServer } from 'ws'
 import type { IncomingMessage } from 'http'
 import { z } from 'zod'
+import { validateToken } from '@/lib/auth'
+import { auth0UserService } from '@/services/auth0.service'
 // Supabase admin import removed - migrate to MongoDB/auth provider
 
 // Define message types using Zod for runtime validation
@@ -115,24 +117,34 @@ export class WebSocketServer {
   /**
    * Verify the authentication token
    */
-  private async verifyToken(_token: string): Promise<string> {
+  private async verifyToken(token: string): Promise<string> {
     try {
-      // Use Supabase admin client to verify the token and get user information
-      // TODO: Replace with MongoDB/auth provider implementation for token verification and user lookup
-      // For now, simulate a user ID
-      const userId = 'mock-user-id'
+      // Validate token using Auth0-native flow
+      const validation = await validateToken(token, 'access')
+
+      if (!validation.valid || !validation.userId) {
+        throw new Error(validation.error || 'Invalid token')
+      }
+
+      // User lookup for additional verification (Auth0 management)
+      const user = await auth0UserService.getUserById(validation.userId)
+      if (!user) {
+        throw new Error('User not found in auth provider')
+      }
+
       logger
         .createBuildSafeLogger('websocket')
-        .info('Token verified successfully (Supabase removed)', {
-          userId,
-          role: 'user',
+        .info('Token verified successfully', {
+          userId: validation.userId,
+          role: user.role,
         })
-      return userId
+
+      return validation.userId
     } catch (error: unknown) {
       logger
         .createBuildSafeLogger('websocket')
         .error('Token verification failed', {
-          error: error instanceof Error ? String(error) : String(error),
+          error: error instanceof Error ? error.message : String(error),
         })
       throw new Error('Invalid token', { cause: error })
     }
