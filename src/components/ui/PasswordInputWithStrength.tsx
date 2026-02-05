@@ -1,5 +1,6 @@
 import React, { useState, forwardRef } from 'react'
 import { usePasswordStrength } from '../../hooks/usePasswordStrength'
+import { IconEye, IconEyeOff } from './icons'
 
 interface PasswordInputWithStrengthProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -149,19 +150,9 @@ export const PasswordInputWithStrength = forwardRef<
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? (
-                  <span
-                    className="material-symbols-outlined"
-                    aria-hidden="true"
-                  >
-                    visibility_off
-                  </span>
+                  <IconEyeOff size={20} aria-hidden="true" />
                 ) : (
-                  <span
-                    className="material-symbols-outlined"
-                    aria-hidden="true"
-                  >
-                    visibility
-                  </span>
+                  <IconEye size={20} aria-hidden="true" />
                 )}
               </button>
             )}
