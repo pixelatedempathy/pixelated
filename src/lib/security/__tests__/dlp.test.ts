@@ -63,6 +63,7 @@ vi.mock('../../audit', () => {
       DLP_BLOCKED: 'dlp_blocked',
       SECURITY_ALERT: 'security_alert',
     },
+    logAuditEvent: vi.fn().mockResolvedValue(undefined),
     AuditLogger: vi.fn(() => ({
       log: vi.fn(),
     })),
@@ -85,6 +86,7 @@ describe('DLP Service', () => {
     }
 
     // Remove existing rules and add our test rule
+    // @ts-ignore
     dlpService['rules'] = []
     dlpService.addRule(testRule)
   })
@@ -101,7 +103,9 @@ describe('DLP Service', () => {
       }
 
       dlpService.addRule(newRule)
+      // @ts-ignore
       expect(dlpService['rules'].length).toBeGreaterThan(1)
+      // @ts-ignore
       expect(dlpService['rules'].find((r) => r.id === 'new-rule')).toBeDefined()
     })
 
@@ -116,13 +120,17 @@ describe('DLP Service', () => {
       }
 
       dlpService.addRule(updatedRule)
+      // @ts-ignore
       expect(dlpService['rules'].length).toBe(1)
+      // @ts-ignore
       expect(dlpService['rules'][0].name).toBe('Updated Test Rule')
+      // @ts-ignore
       expect(dlpService['rules'][0].action).toBe(DLPAction.BLOCK)
     })
 
     it('should remove rules correctly', () => {
       dlpService.removeRule('test-rule')
+      // @ts-ignore
       expect(dlpService['rules'].length).toBe(0)
     })
   })
@@ -130,6 +138,7 @@ describe('DLP Service', () => {
   describe('Content Scanning', () => {
     it('should allow content with no triggered rules', () => {
       // Override rules for this test
+      // @ts-ignore
       dlpService['rules'] = [
         {
           id: 'no-match',
@@ -164,6 +173,7 @@ describe('DLP Service', () => {
 
     it('should block content when rules with BLOCK action are triggered', () => {
       // Override with a blocking rule
+      // @ts-ignore
       dlpService['rules'] = [
         {
           id: 'block-rule',
@@ -202,6 +212,7 @@ describe('DLP Service', () => {
       )
 
       // Override with an alerting rule
+      // @ts-ignore
       dlpService['rules'] = [
         {
           id: 'alert-rule',
@@ -225,6 +236,7 @@ describe('DLP Service', () => {
   describe('PHI Detection Integration', () => {
     it('should use PHI detection for scanning', () => {
       // Create a rule that uses PHI detection
+      // @ts-ignore
       dlpService['rules'] = [
         {
           id: 'phi-rule',
@@ -250,17 +262,21 @@ describe('DLP Service', () => {
   describe('Default Rules', () => {
     beforeEach(() => {
       // Reset to default rules
+      // @ts-ignore
       dlpService['rules'] = []
+      // @ts-ignore
       dlpService['addDefaultRules']()
     })
 
     it('should have PHI detection rule by default', () => {
+      // @ts-ignore
       const phiRule = dlpService['rules'].find((r) => r.id === 'phi-detection')
       expect(phiRule).toBeDefined()
       expect(phiRule?.action).toBe(DLPAction.REDACT)
     })
 
     it('should have large data volume rule by default', () => {
+      // @ts-ignore
       const volumeRule = dlpService['rules'].find(
         (r) => r.id === 'large-data-volume',
       )
@@ -270,7 +286,7 @@ describe('DLP Service', () => {
 
     it('should redact PHI in content with default rules', () => {
       // Set up our PHI detection mock to detect an email
-      ;(detectAndRedactPHI as ReturnType<typeof vi.fn>).mockImplementation(
+      ;(detectAndRedactPHI as any).mockImplementation(
         (text: string) => {
           return text.replace(
             /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,
@@ -293,7 +309,7 @@ describe('DLP Service', () => {
       const largeContent = 'a'.repeat(200 * 1024) + ' patient@example.com'
 
       // Make sure PHI detection works
-      ;(detectAndRedactPHI as ReturnType<typeof vi.fn>).mockImplementation(
+      ;(detectAndRedactPHI as any).mockImplementation(
         (text: string) => {
           return text.replace(
             /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,
@@ -355,6 +371,7 @@ describe('DLP Service', () => {
       )
 
       // Add a blocking rule
+      // @ts-ignore
       dlpService['rules'] = [
         {
           id: 'block-rule',
