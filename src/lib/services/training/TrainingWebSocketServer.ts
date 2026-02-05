@@ -389,22 +389,28 @@ export class TrainingWebSocketServer {
     })
   }
 
+  /**
+   * Check if a client has permission to send coaching notes
+   * Only supervisors and observers are allowed to send coaching notes
+   */
+  private canSendCoachingNote(client: TrainingSessionClient): boolean {
+    return client.isAuthenticated && (client.role === "supervisor" || client.role === "observer")
+  }
+
   private handleCoachingNote(clientId: string, payload: { content: string }) {
     const client = this.clients.get(clientId)
-    if (!client || !client.sessionId || !client.isAuthenticated) {
+    if (!client || !client.sessionId) {
       return
     }
 
-    // TODO: Validate user has permission to send coaching notes
-    // - Only supervisors/observers should be able to send coaching notes
-    // - Verify role matches 'supervisor' or 'observer'
-
-    if (client.role !== 'supervisor' && client.role !== 'observer') {
-      logger.warn('Unauthorized coaching note attempt', {
+    if (!this.canSendCoachingNote(client)) {
+      logger.warn("Unauthorized coaching note attempt", {
         clientId,
         userId: client.userId,
-        role: client.role
+        role: client.role,
+        sessionId: client.sessionId
       })
+      this.sendError(client.ws, "Unauthorized: Only supervisors and observers can send coaching notes")
       return
     }
 
