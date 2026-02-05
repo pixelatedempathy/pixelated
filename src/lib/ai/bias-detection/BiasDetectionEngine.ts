@@ -554,7 +554,7 @@ export class BiasDetectionEngine {
     try {
       await this.metricsCollector.storeAnalysisResult?.(result)
     } catch (err) {
-      console.warn("storeAnalysisResult failed:", err)
+      console.warn('storeAnalysisResult failed:', err)
     }
 
     // Store result in distributed cache for future retrieval
