@@ -76,7 +76,10 @@ export class TrainingWebSocketServer {
     // Extract token from query string if present
     let initialToken: string | null = null
     try {
-      const url = new URL(req.url || '', `http://${req.headers.host || 'localhost'}`)
+      const url = new URL(
+        req.url || '',
+        `http://${req.headers.host || 'localhost'}`,
+      )
       initialToken = url.searchParams.get('token')
     } catch (err) {
       logger.warn('Failed to parse connection URL', { error: err })
@@ -88,7 +91,7 @@ export class TrainingWebSocketServer {
       ws,
       role: 'trainee', // Default, will be validated on join_session
       userId: '', // Will be set after authentication
-      isAuthenticated: false
+      isAuthenticated: false,
     })
 
     // If token provided in query string, attempt immediate authentication
@@ -100,7 +103,9 @@ export class TrainingWebSocketServer {
     const authTimeout = setTimeout(() => {
       const client = this.clients.get(id)
       if (client && !client.isAuthenticated) {
-        logger.warn('Client failed to authenticate within timeout', { clientId: id })
+        logger.warn('Client failed to authenticate within timeout', {
+          clientId: id,
+        })
         this.sendError(ws, 'Authentication timeout - connection closed')
         ws.close(1008, 'Authentication timeout')
         this.clients.delete(id)
@@ -123,7 +128,7 @@ export class TrainingWebSocketServer {
         if (!client || !client.isAuthenticated) {
           logger.warn('Unauthenticated client attempted to send message', {
             clientId: id,
-            messageType: message.type
+            messageType: message.type,
           })
           this.sendError(ws, 'Authentication required')
           return
@@ -144,7 +149,10 @@ export class TrainingWebSocketServer {
   /**
    * Handle authentication message from client
    */
-  private handleAuthenticateMessage(clientId: string, payload: { token?: string }) {
+  private handleAuthenticateMessage(
+    clientId: string,
+    payload: { token?: string },
+  ) {
     const client = this.clients.get(clientId)
     if (!client) return
 
@@ -176,16 +184,18 @@ export class TrainingWebSocketServer {
         logger.info('Client authenticated', {
           clientId,
           userId: authResult.userId,
-          role: authResult.role
+          role: authResult.role,
         })
 
-        client.ws.send(JSON.stringify({
-          type: 'authenticated',
-          payload: {
-            userId: authResult.userId,
-            role: authResult.role
-          }
-        }))
+        client.ws.send(
+          JSON.stringify({
+            type: 'authenticated',
+            payload: {
+              userId: authResult.userId,
+              role: authResult.role,
+            },
+          }),
+        )
       } else {
         logger.warn('Client authentication failed', { clientId })
         this.sendError(client.ws, 'Authentication failed: invalid token')
@@ -202,11 +212,13 @@ export class TrainingWebSocketServer {
 
   /**
    * Validate client authentication token and return user info
-   * 
+   *
    * @param token - Authentication token (JWT access token)
    * @returns ClientAuthResult if valid, null otherwise
    */
-  private async validateClient(token: string): Promise<ClientAuthResult | null> {
+  private async validateClient(
+    token: string,
+  ): Promise<ClientAuthResult | null> {
     const isDevelopment = process.env.NODE_ENV === 'development'
 
     // Development mode: Allow authentication with any token (or no token)
@@ -214,14 +226,14 @@ export class TrainingWebSocketServer {
     if (isDevelopment) {
       logger.warn('Development mode: Authentication bypassed', {
         tokenLength: token.length,
-        warning: 'This should NEVER be enabled in production'
+        warning: 'This should NEVER be enabled in production',
       })
 
       // In development, extract userId from token if it looks like a JWT or use a default
       // For now, use a simple default for development
       return {
         userId: token || 'dev-user',
-        role: 'trainee' // Default role, can be overridden by client in development
+        role: 'trainee', // Default role, can be overridden by client in development
       }
     }
 
@@ -232,7 +244,7 @@ export class TrainingWebSocketServer {
       if (!validationResult.valid || !validationResult.userId) {
         logger.warn('Token validation failed', {
           error: validationResult.error,
-          tokenLength: token.length
+          tokenLength: token.length,
         })
         return null
       }
@@ -243,17 +255,17 @@ export class TrainingWebSocketServer {
       logger.info('Token validated successfully', {
         userId: validationResult.userId,
         authRole: validationResult.role,
-        trainingRole
+        trainingRole,
       })
 
       return {
         userId: validationResult.userId,
-        role: trainingRole
+        role: trainingRole,
       }
     } catch (err) {
       logger.error('Token validation error', {
         error: err instanceof Error ? err.message : String(err),
-        tokenLength: token.length
+        tokenLength: token.length,
       })
       return null
     }
@@ -261,11 +273,13 @@ export class TrainingWebSocketServer {
 
   /**
    * Map authentication UserRole to training session role
-   * 
+   *
    * @param authRole - User role from authentication system
    * @returns Training session role (trainee, observer, or supervisor)
    */
-  private mapAuthRoleToTrainingRole(authRole?: UserRole): 'trainee' | 'observer' | 'supervisor' {
+  private mapAuthRoleToTrainingRole(
+    authRole?: UserRole,
+  ): 'trainee' | 'observer' | 'supervisor' {
     // Admin and therapist can supervise training sessions
     if (authRole === 'admin' || authRole === 'therapist') {
       return 'supervisor'
@@ -286,14 +300,20 @@ export class TrainingWebSocketServer {
    */
   private sendError(ws: WebSocket, message: string) {
     if (ws.readyState === WebSocket.OPEN) {
-      ws.send(JSON.stringify({
-        type: 'error',
-        payload: { message }
-      }))
+      ws.send(
+        JSON.stringify({
+          type: 'error',
+          payload: { message },
+        }),
+      )
     }
   }
 
-  private handleMessage(ws: WebSocket, clientId: string, message: WebSocketMessage) {
+  private handleMessage(
+    ws: WebSocket,
+    clientId: string,
+    message: WebSocketMessage,
+  ) {
     switch (message.type) {
       case 'join_session':
         this.handleJoinSession(ws, clientId, message.payload)
@@ -309,14 +329,22 @@ export class TrainingWebSocketServer {
     }
   }
 
-  private handleJoinSession(ws: WebSocket, clientId: string, payload: { sessionId: string, role: 'trainee' | 'observer' | 'supervisor', userId: string }) {
+  private handleJoinSession(
+    ws: WebSocket,
+    clientId: string,
+    payload: {
+      sessionId: string
+      role: 'trainee' | 'observer' | 'supervisor'
+      userId: string
+    },
+  ) {
     const client = this.clients.get(clientId)
 
     // Require authentication before joining session
     if (!client || !client.isAuthenticated) {
       logger.warn('Unauthenticated client attempted to join session', {
         clientId,
-        sessionId: payload.sessionId
+        sessionId: payload.sessionId,
       })
       this.sendError(ws, 'Authentication required to join session')
       return
@@ -347,27 +375,32 @@ export class TrainingWebSocketServer {
       clientId,
       sessionId: payload.sessionId,
       role: client.role,
-      userId: client.userId
+      userId: client.userId,
     })
 
     // Notify others in the session
     this.broadcastToSession(payload.sessionId, {
       type: 'participant_joined',
-      payload: { userId: client.userId, role: client.role }
+      payload: { userId: client.userId, role: client.role },
     })
 
     // Send confirmation to the client
-    ws.send(JSON.stringify({
-      type: 'session_joined',
-      payload: {
-        sessionId: payload.sessionId,
-        role: client.role,
-        userId: client.userId
-      }
-    }))
+    ws.send(
+      JSON.stringify({
+        type: 'session_joined',
+        payload: {
+          sessionId: payload.sessionId,
+          role: client.role,
+          userId: client.userId,
+        },
+      }),
+    )
   }
 
-  private handleSessionMessage(clientId: string, payload: { content: string, role: string }) {
+  private handleSessionMessage(
+    clientId: string,
+    payload: { content: string; role: string },
+  ) {
     const client = this.clients.get(clientId)
     if (!client || !client.sessionId || !client.isAuthenticated) {
       return
@@ -384,8 +417,8 @@ export class TrainingWebSocketServer {
         userId: client.userId,
         role: payload.role, // 'client' (AI) or 'therapist' (User)
         content: payload.content,
-        timestamp: new Date().toISOString()
-      }
+        timestamp: new Date().toISOString(),
+      },
     })
   }
 
@@ -394,7 +427,10 @@ export class TrainingWebSocketServer {
    * Only supervisors and observers are allowed to send coaching notes
    */
   private canSendCoachingNote(client: TrainingSessionClient): boolean {
-    return client.isAuthenticated && (client.role === "supervisor" || client.role === "observer")
+    return (
+      client.isAuthenticated &&
+      (client.role === 'supervisor' || client.role === 'observer')
+    )
   }
 
   private handleCoachingNote(clientId: string, payload: { content: string }) {
@@ -404,29 +440,28 @@ export class TrainingWebSocketServer {
     }
 
     if (!this.canSendCoachingNote(client)) {
-      logger.warn("Unauthorized coaching note attempt", {
+      logger.warn('Unauthorized coaching note attempt', {
         clientId,
         userId: client.userId,
         role: client.role,
-        sessionId: client.sessionId
+        sessionId: client.sessionId,
       })
-      this.sendError(client.ws, "Unauthorized: Only supervisors and observers can send coaching notes")
+      this.sendError(
+        client.ws,
+        'Unauthorized: Only supervisors and observers can send coaching notes',
+      )
       return
     }
 
     // Coaching notes are "hidden" from trainees - only observers and supervisors receive them
-    this.broadcastToSessionRoles(
-      client.sessionId,
-      ['observer', 'supervisor'],
-      {
-        type: 'coaching_note',
-        payload: {
-          authorId: client.userId,
-          content: payload.content,
-          timestamp: new Date().toISOString()
-        }
-      }
-    )
+    this.broadcastToSessionRoles(client.sessionId, ['observer', 'supervisor'], {
+      type: 'coaching_note',
+      payload: {
+        authorId: client.userId,
+        content: payload.content,
+        timestamp: new Date().toISOString(),
+      },
+    })
   }
 
   private handleDisconnect(clientId: string) {
@@ -434,7 +469,7 @@ export class TrainingWebSocketServer {
     if (client && client.sessionId) {
       this.broadcastToSession(client.sessionId, {
         type: 'participant_left',
-        payload: { userId: client.userId }
+        payload: { userId: client.userId },
       })
     }
     this.clients.delete(clientId)
@@ -442,7 +477,10 @@ export class TrainingWebSocketServer {
 
   private broadcastToSession(sessionId: string, message: WebSocketMessage) {
     for (const client of this.clients.values()) {
-      if (client.sessionId === sessionId && client.ws.readyState === WebSocket.OPEN) {
+      if (
+        client.sessionId === sessionId &&
+        client.ws.readyState === WebSocket.OPEN
+      ) {
         client.ws.send(JSON.stringify(message))
       }
     }
@@ -450,7 +488,7 @@ export class TrainingWebSocketServer {
 
   /**
    * Broadcast message to clients in a session, filtered by role
-   * 
+   *
    * @param sessionId - Session ID to broadcast to
    * @param allowedRoles - Array of roles that should receive the message
    * @param message - Message to broadcast
@@ -458,7 +496,7 @@ export class TrainingWebSocketServer {
   private broadcastToSessionRoles(
     sessionId: string,
     allowedRoles: Array<'trainee' | 'observer' | 'supervisor'>,
-    message: WebSocketMessage
+    message: WebSocketMessage,
   ) {
     for (const client of this.clients.values()) {
       if (
