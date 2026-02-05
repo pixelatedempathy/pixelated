@@ -1,5 +1,5 @@
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
-import { auditLogDAO } from '@/services/mongodb.dao'
+import { auditLogDAO } from '../../services/mongodb.dao'
 
 const logger = createBuildSafeLogger('audit-log')
 
