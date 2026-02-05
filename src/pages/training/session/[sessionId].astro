@@ -412,13 +412,9 @@ const isSupervisor = userRole === 'admin';
   </main>
 
   {/* $1 */}
-  <script type="application/json" id="session-data">
-    {JSON.stringify(sessionData)}
-  </script>
+  <script type="application/json" id="session-data" set:html={JSON.stringify(sessionData)}></script>
   
-  <script type="application/json" id="user-data">
-    {JSON.stringify({ role: userRole, id: session.user.id })}
-  </script>
+  <script type="application/json" id="user-data" set:html={JSON.stringify({ role: userRole, id: session.user.id })}></script>
 </Layout>
 
 <style>
