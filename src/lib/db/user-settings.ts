@@ -1,7 +1,7 @@
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
 import { mongoClient } from './mongoClient'
-import { createAuditLog, AuditEventType } from '../audit'
+import { createAuditLog, AuditEventType } from '@/lib/audit'
 
 // MongoDB-based user settings types
 
@@ -90,6 +90,7 @@ export async function createUserSettings(
   } as UserSettings
 
   // Log the event for HIPAA compliance
+  // Note: createAuditLog uses positional arguments: type, action, userId, resource, details, status
   await createAuditLog(
     AuditEventType.CREATE,
     'user_settings_created',
@@ -136,6 +137,7 @@ export async function updateUserSettings(
   } as UserSettings
 
   // Log the event for HIPAA compliance
+  // Note: createAuditLog uses positional arguments: type, action, userId, resource, details, status
   await createAuditLog(
     AuditEventType.MODIFY,
     'user_settings_updated',
