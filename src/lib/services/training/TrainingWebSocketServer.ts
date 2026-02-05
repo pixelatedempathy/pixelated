@@ -60,6 +60,7 @@ export class TrainingWebSocketServer {
   private mutedUsers: Map<string, Set<string>> = new Map()
   private bannedUsers: Map<string, Set<string>> = new Map()
   private messageCounts: Map<string, Map<string, { count: number, lastReset: number }>> = new Map()
+  private sessionClientCounts: Map<string, number> = new Map()
   private readonly MAX_MESSAGES_PER_MINUTE = 30
 
   constructor(port: number) {
@@ -315,6 +316,7 @@ export class TrainingWebSocketServer {
     }
 
     client.sessionId = payload.sessionId
+    this.sessionClientCounts.set(payload.sessionId, (this.sessionClientCounts.get(payload.sessionId) || 0) + 1)
 
     this.broadcastToSession(payload.sessionId, {
       type: 'participant_joined',
@@ -417,7 +419,7 @@ export class TrainingWebSocketServer {
       if (this.sessionOwners.get(sessionId) === client.userId) {
         this.sessionOwners.delete(sessionId)
         for (const c of this.clients.values()) {
-          if (c.sessionId === sessionId && c.role === 'trainee' && c.userId !== client.userId) {
+          if (c.id !== clientId && c.sessionId === sessionId && c.role === 'trainee') {
             this.sessionOwners.set(sessionId, c.userId)
             break
           }
@@ -426,19 +428,17 @@ export class TrainingWebSocketServer {
 
       this.clients.delete(clientId)
 
-      let hasRemainingClients = false
-      for (const c of this.clients.values()) {
-        if (c.sessionId === sessionId) {
-          hasRemainingClients = true
-          break
-        }
-      }
-
-      if (!hasRemainingClients) {
+      const currentCount = this.sessionClientCounts.get(sessionId) || 0
+      const newCount = Math.max(0, currentCount - 1)
+      if (newCount > 0) {
+        this.sessionClientCounts.set(sessionId, newCount)
+      } else {
+        this.sessionClientCounts.delete(sessionId)
         this.sessionOwners.delete(sessionId)
         this.mutedUsers.delete(sessionId)
         this.bannedUsers.delete(sessionId)
         this.messageCounts.delete(sessionId)
+        logger.info('Cleaning up empty session', { sessionId })
       }
     } else {
       this.clients.delete(clientId)
