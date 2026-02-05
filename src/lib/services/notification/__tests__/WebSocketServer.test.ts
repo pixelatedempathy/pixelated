@@ -2,6 +2,8 @@ import { WebSocket, WebSocketServer as WSServer } from 'ws'
 import { NotificationService } from '../NotificationService'
 import type { IncomingMessage } from 'http'
 import type { Server } from 'ws'
+import * as logger from '../../../logging/build-safe-logger'
+import { WebSocketServer } from '../WebSocketServer'
 
 // Define the mock type correctly based on vi.fn() return type
 type MockFn = ReturnType<typeof vi.fn>
@@ -15,53 +17,45 @@ vi.mock('ws', () => {
     emit: vi.fn(),
   }
 
+  const mockWsInstance = {
+    on: vi.fn().mockReturnThis(),
+    send: vi.fn(),
+    close: vi.fn(),
+  }
+
   return {
-    WebSocketServer: vi.fn(() => mockServer),
-    WebSocket: vi.fn(),
+    WebSocketServer: vi.fn(function() { return mockServer }),
+    WebSocket: vi.fn(function() { return mockWsInstance }),
   }
 })
 
 vi.mock('../NotificationService')
-vi.mock('@/lib/utils/logger', () => ({
-  default: {
-    getLogger: () => ({
-      info: vi.fn(),
-      error: vi.fn(),
-      warn: vi.fn(),
-      debug: vi.fn(),
+vi.mock('../../../logging/build-safe-logger', () => ({
+  createBuildSafeLogger: vi.fn().mockReturnValue({
+    info: vi.fn(),
+    error: vi.fn(),
+    warn: vi.fn(),
+    debug: vi.fn(),
+  }),
+}))
+
+// Mock Auth
+vi.mock('@/lib/auth', () => ({
+  validateToken: vi.fn().mockResolvedValue({
+    valid: true,
+    userId: 'test-user',
+    role: 'user',
+  }),
+}))
+
+vi.mock('@/services/auth0.service', () => ({
+  auth0UserService: {
+    getUserById: vi.fn().mockResolvedValue({
+      id: 'test-user',
+      role: 'user',
     }),
   },
 }))
-
-// Mock Supabase
-vi.mock('@/lib/supabase', () => {
-  const mockUser = { id: 'test-user' }
-  const mockProfile = { role: 'user' }
-  const mockSession = { user_id: 'test-user' }
-
-  return {
-    mongoClient: {
-      auth: {
-        getUser: vi.fn().mockResolvedValue({
-          data: { user: mockUser },
-          error: null,
-        }),
-        getSession: vi.fn().mockResolvedValue({
-          data: { session: mockSession },
-          error: null,
-        }),
-      },
-      from: vi.fn().mockImplementation(() => ({
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        single: vi.fn().mockResolvedValue({
-          data: mockProfile,
-          error: null,
-        }),
-      })),
-    },
-  }
-})
 
 type WSEventHandler = (ws: WebSocket, req: IncomingMessage) => void
 type WSErrorHandler = (error: Error) => void
@@ -94,10 +88,13 @@ describe('WebSocketServer', () => {
   let mockPort: number
   let mockNotificationService: NotificationService
 
+  let server: WebSocketServer
+
   beforeEach(() => {
     vi.clearAllMocks()
     mockPort = 8082
     mockNotificationService = new NotificationService()
+    server = new WebSocketServer(mockPort, mockNotificationService)
   })
 
   describe('constructor', () => {
@@ -174,6 +171,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise(resolve => setTimeout(resolve, 0))
 
       expect(mockNotificationService.registerClient).toHaveBeenCalledWith(
         mockUserId,
@@ -183,10 +181,10 @@ describe('WebSocketServer', () => {
 
     it('should handle authentication failure', async () => {
       // Mock failed authentication
-      const { mongoClient } = await import('@/lib/supabase')
-      vi.mocked(mongoClient.auth.getUser).mockResolvedValueOnce({
-        data: { user: null },
-        error: { message: 'Invalid token', status: 401 },
+      const { validateToken } = await import('@/lib/auth')
+      vi.mocked(validateToken).mockResolvedValueOnce({
+        valid: false,
+        error: 'Invalid token',
       })
 
       const mockWs = new WebSocket(null) as unknown as WebSocket & {
@@ -212,6 +210,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise(resolve => setTimeout(resolve, 0))
 
       // Verify error handling
       expect(mockWs.close).toHaveBeenCalledWith(
@@ -223,7 +222,7 @@ describe('WebSocketServer', () => {
       )
     })
 
-    it('should handle client messages', () => {
+    it('should handle client messages', async () => {
       const wsInstance = vi.mocked(WSServer).mock
         .instances[0] as unknown as MockedWSServer
       const connectionHandler = findMockCall(
@@ -236,6 +235,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise(resolve => setTimeout(resolve, 0))
 
       expect(mockNotificationService.markAsRead).toHaveBeenCalledWith(
         mockUserId,
@@ -243,7 +243,7 @@ describe('WebSocketServer', () => {
       )
     })
 
-    it('should handle client disconnection', () => {
+    it('should handle client disconnection', async () => {
       const wsInstance = vi.mocked(WSServer).mock
         .instances[0] as unknown as MockedWSServer
       const connectionHandler = findMockCall(
@@ -256,6 +256,7 @@ describe('WebSocketServer', () => {
       }
 
       connectionHandler.bind(wsInstance)(mockWs, mockReq)
+      await new Promise(resolve => setTimeout(resolve, 0))
 
       const closeHandler = findMockCall(
         vi.mocked(mockWs.on).mock.calls,
@@ -291,7 +292,7 @@ describe('WebSocketServer', () => {
       expect(
         logger.createBuildSafeLogger('websocket').error,
       ).toHaveBeenCalledWith('WebSocket server error', {
-        error: mockError.message,
+        error: String(mockError),
       })
     })
   })
