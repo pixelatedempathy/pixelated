@@ -25,6 +25,19 @@ export function Header({
     setIsSearchOpen(false)
   }, [])
 
+  // Handle global keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen((prev) => !prev)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
   // Safe check for client-side rendering
   const isBrowser = typeof window !== 'undefined'
 
@@ -120,6 +133,8 @@ export function Header({
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 aria-label="Search"
                 aria-expanded={isSearchOpen}
+                aria-keyshortcuts="Meta+K"
+                title="Search (Cmd+K)"
               >
                 <svg
                   className="w-5 h-5"
@@ -136,6 +151,7 @@ export function Header({
               <button
                 type="button"
                 className="p-2 text-muted-foreground rounded-lg hover:text-foreground hover:bg-accent"
+                aria-label="View notifications"
               >
                 <svg
                   className="w-5 h-5"
@@ -185,6 +201,7 @@ export function Header({
                 minQueryLength={2}
                 showNoResults={true}
                 onResultClick={() => setIsSearchOpen(false)}
+                autoFocus={true}
               />
 
               <div className="mt-4 text-xs text-muted-foreground">
