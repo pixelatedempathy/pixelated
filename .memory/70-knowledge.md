@@ -269,7 +269,7 @@ curl -f http://localhost:4321/api/health
 MONGODB_URI=mongodb://localhost:27017/pixelated
 REDIS_URL=redis://localhost:6379
 AUTH_SECRET=your-jwt-secret
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your-openai-api-key
 
 # Optional for enhanced features
 SENTRY_DSN=https://...

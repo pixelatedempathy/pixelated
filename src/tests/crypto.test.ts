@@ -392,7 +392,7 @@ describe('keyRotationManager', () => {
   })
 
   it('should add a new key', () => {
-    const keyId = 'test-key-12345'
+    const keyId = 'test-key-placeholder'
     // Mock test key - DO NOT USE IN PRODUCTION
     const key = getTestKey('add')
 
@@ -405,7 +405,7 @@ describe('keyRotationManager', () => {
   })
 
   it('should rotate a key', () => {
-    const keyId = 'test-key-12345'
+    const keyId = 'test-key-placeholder'
     // Mock test keys - DO NOT USE IN PRODUCTION
     const key = getTestKey('original')
     const newKey = getTestKey('rotated')
@@ -422,7 +422,7 @@ describe('keyRotationManager', () => {
   })
 
   it('should identify keys that need rotation', () => {
-    const keyId = 'test-key-12345'
+    const keyId = 'test-key-placeholder'
     // Mock test key - DO NOT USE IN PRODUCTION
     const key = getTestKey('rotation-check')
 

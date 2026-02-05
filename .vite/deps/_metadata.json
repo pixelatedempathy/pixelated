@@ -1,55 +1,55 @@
 {
-  "hash": "ca5534e5",
-  "configHash": "c225e12d",
+  "hash": "ddff27a5",
+  "configHash": "3e4fd8b0",
   "lockfileHash": "71c80e0d",
-  "browserHash": "ef88d171",
+  "browserHash": "a8623bbb",
   "optimized": {
     "@astrojs/react/client.js": {
       "src": "../../node_modules/.pnpm/@astrojs+react@4.4.2_@types+node@25.0.3_@types+react-dom@19.2.3_@types+react@19.2.7__@t_0230b8f2fc8da90ce79ebf26b1f9ca13/node_modules/@astrojs/react/dist/client.js",
       "file": "@astrojs_react_client__js.js",
-      "fileHash": "27d27ebc",
+      "fileHash": "b1ad08cd",
       "needsInterop": false
     },
     "react": {
       "src": "../../node_modules/.pnpm/react@19.2.3/node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "801e4c8c",
+      "fileHash": "42a6f6ea",
       "needsInterop": true
     },
     "react-dom": {
       "src": "../../node_modules/.pnpm/react-dom@19.2.3_react@19.2.3/node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "42ef43b2",
+      "fileHash": "686bb581",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "c0f30b54",
+      "fileHash": "456bf015",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "5a41dba2",
+      "fileHash": "06d46de7",
       "needsInterop": true
     },
     "astro > cssesc": {
       "src": "../../node_modules/.pnpm/cssesc@3.0.0/node_modules/cssesc/cssesc.js",
       "file": "astro___cssesc.js",
-      "fileHash": "da58684a",
+      "fileHash": "40f5174c",
       "needsInterop": true
     },
     "astro > aria-query": {
       "src": "../../node_modules/.pnpm/aria-query@5.3.2/node_modules/aria-query/lib/index.js",
       "file": "astro___aria-query.js",
-      "fileHash": "76f13ccf",
+      "fileHash": "6b1c49f0",
       "needsInterop": true
     },
     "astro > axobject-query": {
       "src": "../../node_modules/.pnpm/axobject-query@4.1.0/node_modules/axobject-query/lib/index.js",
       "file": "astro___axobject-query.js",
-      "fileHash": "44fefc7e",
+      "fileHash": "5dcc2cd9",
       "needsInterop": true
     }
   },
