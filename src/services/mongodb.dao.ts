@@ -61,7 +61,7 @@ import type {
   CrisisSessionFlag,
   Todo,
   TreatmentPlan,
-  DataExport,
+  DataExport, User, Session,
 } from '../types/mongodb.types'
 
 export class DataExportDAO {
@@ -75,7 +75,7 @@ export class DataExportDAO {
   }
 
   async create(
-    exportRequest: Omit<DataExport, '_id'>,
+    exportRequest: Omit<DataExport, User, Session, '_id'>,
   ): Promise<DataExport> {
     const collection = await this.getCollection()
     // Ensure files is initialized
