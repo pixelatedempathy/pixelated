@@ -1,3 +1,4 @@
+import { EventEmitter } from "events"
 import type { NotificationService } from './NotificationService'
 import * as logger from '../../logging/build-safe-logger'
 import type { WebSocket } from 'ws'
@@ -49,11 +50,12 @@ interface ServerMessage {
  * Authentication is performed using Supabase JWT tokens passed in the
  * Authorization header as a Bearer token.
  */
-export class WebSocketServer {
+export class WebSocketServer extends EventEmitter {
   private wss: WSServer
   private notificationService: NotificationService
 
   constructor(port: number, notificationService: NotificationService) {
+    super()
     this.notificationService = notificationService
     this.wss = new WSServer({ port })
 
@@ -72,6 +74,7 @@ export class WebSocketServer {
     logger.createBuildSafeLogger('websocket').error('WebSocket server error', {
       error: String(error),
     })
+    this.emit('error', error)
   }
 
   /**
@@ -314,5 +317,12 @@ export class WebSocketServer {
         })
       this.sendError(ws, 'Error processing message')
     }
+  }
+
+  /**
+   * Close the WebSocket server
+   */
+  public close(): void {
+    this.wss.close()
   }
 }
