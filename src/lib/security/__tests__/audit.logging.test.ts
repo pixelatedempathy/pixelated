@@ -49,8 +49,9 @@ describe('auditLoggingService', () => {
   describe('logEvent', () => {
     it('should log an event with sanitized details', async () => {
       const entry = getTestEntry()
+      // Use structuredClone for deep copy instead of JSON stringify/parse
       await expect(
-        auditLoggingService.logEvent(JSON.parse(JSON.stringify(entry))),
+        auditLoggingService.logEvent(structuredClone(entry) as AuditLogEntry),
       ).resolves.not.toThrow()
       expect(mockLogger.info).toHaveBeenCalled()
       const loggedEntry = JSON.parse(
@@ -65,7 +66,7 @@ describe('auditLoggingService', () => {
         auditLoggingService as any,
         'storeLogEntry',
       ).mockRejectedValue(new Error('Storage failed'))
-      await expect(auditLoggingService.logEvent(JSON.parse(JSON.stringify(entry)))).rejects.toThrow(
+      await expect(auditLoggingService.logEvent(structuredClone(entry) as AuditLogEntry)).rejects.toThrow(
         'Failed to log audit event',
       )
       expect(mockLogger.error).toHaveBeenCalled()
@@ -75,10 +76,10 @@ describe('auditLoggingService', () => {
   describe('sanitizeEntry', () => {
     it('should hash sensitive identifiers when PII is not included', () => {
       const entry = getTestEntry()
-      const rawSessionId = entry.metadata.sessionId
+      const rawSessionId = entry.metadata?.sessionId
 
       const sanitizedEntry = (auditLoggingService as any).sanitizeEntry({
-        ...JSON.parse(JSON.stringify(entry)),
+        ...structuredClone(entry),
         timestamp: new Date().toISOString(),
       })
 
