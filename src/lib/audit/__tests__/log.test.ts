@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { logAuditEvent, getUserAuditLogs } from '../log'
-import { auditLogDAO } from '@/services/mongodb.dao'
+import { auditLogDAO } from '../../services/mongodb.dao'
 
-vi.mock('@/services/mongodb.dao', () => ({
+vi.mock('../../services/mongodb.dao', () => ({
   auditLogDAO: {
     createLog: vi.fn(),
     findByUserId: vi.fn(),
