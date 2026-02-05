@@ -287,6 +287,7 @@ describe('WebSocketServer', () => {
       }
 
       const mockError = new Error('Server error')
+      server.on('error', () => {}) // Prevent unhandled error throw
       errorHandler.bind(wsInstance)(mockError)
 
       expect(
