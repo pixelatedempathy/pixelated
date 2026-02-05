@@ -62,7 +62,7 @@ import type {
   Todo,
   TreatmentPlan,
   DataExport,
-  AuditLog,
+  AuditLogDb,
 } from '../types/mongodb.types'
 
 export class DataExportDAO {
@@ -550,13 +550,13 @@ export class ConsentManagementDAO {
 }
 
 export class AuditLogDAO {
-  private async getCollection(): Promise<MongoCollection<AuditLog>> {
+  private async getCollection(): Promise<MongoCollection<AuditLogDb>> {
     await initializeDependencies()
     if (!mongodb) {
       throw new Error("MongoDB client not initialized")
     }
     const db = await mongodb.connect()
-    return db.collection<AuditLog>("audit_logs")
+    return db.collection<AuditLogDb>("audit_logs")
   }
 
   async createLog(
@@ -565,9 +565,9 @@ export class AuditLogDAO {
     resourceId: string,
     resourceType?: string,
     metadata: Record<string, unknown> = {},
-  ): Promise<AuditLog> {
+  ): Promise<AuditLogDb> {
     const collection = await this.getCollection()
-    const log: Omit<AuditLog, "_id"> = {
+    const log: Omit<AuditLogDb, "_id"> = {
       userId: new ObjectId!(userId),
       action,
       resourceId,
@@ -586,7 +586,7 @@ export class AuditLogDAO {
     return { ...created, id: created._id?.toString() }
   }
 
-  async findByUserId(userId: string, limit = 100, offset = 0): Promise<AuditLog[]> {
+  async findByUserId(userId: string, limit = 100, offset = 0): Promise<AuditLogDb[]> {
     const collection = await this.getCollection()
     const logs = await collection
       .find({ userId: new ObjectId!(userId) })
@@ -598,7 +598,7 @@ export class AuditLogDAO {
     return logs.map((log) => ({ ...log, id: log._id?.toString() }))
   }
 
-  async findAll(filter: any = {}): Promise<AuditLog[]> {
+  async findAll(filter: any = {}): Promise<AuditLogDb[]> {
     const collection = await this.getCollection()
     const logs = await collection
       .find(filter)
@@ -613,7 +613,7 @@ export class AuditLogDAO {
     await collection.deleteMany({})
   }
 
-  async insertMany(logs: AuditLog[]): Promise<void> {
+  async insertMany(logs: AuditLogDb[]): Promise<void> {
     const collection = await this.getCollection()
     const logsToInsert = logs.map(({ id, _id, ...log }) => ({
       ...log,
