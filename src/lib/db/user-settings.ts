@@ -59,7 +59,14 @@ export async function getUserSettings(
   const settings = await db
     .collection<UserSettings>('user_settings')
     .findOne({ user_id: userId })
-  return settings as UserSettings | null
+
+  if (!settings) return null
+
+  // Ensure _id is a string to match the interface
+  return {
+    ...settings,
+    _id: settings._id?.toString() as unknown as ObjectId,
+  } as UserSettings
 }
 
 /**
@@ -124,13 +131,18 @@ export async function updateUserSettings(
   )
 
   // Handle both v5 (result.value) and v6+ (result is the document)
-  const updatedSettings = (
+  const updatedDoc = (
     (result as any)?.value !== undefined ? (result as any).value : result
-  ) as UserSettings | null
+  ) as any
 
-  if (!updatedSettings) {
+  if (!updatedDoc) {
     throw new Error('User settings not found')
   }
+
+  const updatedSettings = {
+    ...updatedDoc,
+    _id: updatedDoc._id?.toString() as unknown as ObjectId,
+  } as UserSettings
 
   // Audit log for HIPAA compliance
   await createAuditLog(
