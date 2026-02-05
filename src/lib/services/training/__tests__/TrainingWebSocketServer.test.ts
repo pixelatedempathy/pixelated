@@ -267,39 +267,49 @@ describe('TrainingWebSocketServer', () => {
       const clients = (server as any).clients
       const sessionId = 'session-1'
 
-      // Set up 2 trainees
-      clients.set('c1', { id: 'c1', ws: { send: vi.fn(), readyState: 1 }, userId: 't1', role: 'trainee', sessionId, isAuthenticated: true })
-      clients.set('c2', { id: 'c2', ws: { send: vi.fn(), readyState: 1 }, userId: 't2', role: 'trainee', sessionId, isAuthenticated: true })
+      // Set up 2 trainees using handleJoinSession to ensure counters are correct
+      const mockWs1 = { send: vi.fn(), readyState: 1 } as any
+      const mockWs2 = { send: vi.fn(), readyState: 1 } as any
 
-      // t1 is owner
-      ;(server as any).sessionOwners.set(sessionId, 't1')
+      clients.set('c1', { id: 'c1', ws: mockWs1, userId: 't1', role: 'trainee', isAuthenticated: true })
+      clients.set('c2', { id: 'c2', ws: mockWs2, userId: 't2', role: 'trainee', isAuthenticated: true })
+
+      ;(server as any).handleJoinSession(mockWs1, 'c1', { sessionId, role: 'trainee', userId: 't1' })
+      ;(server as any).handleJoinSession(mockWs2, 'c2', { sessionId, role: 'trainee', userId: 't2' })
+
+      expect((server as any).sessionOwners.get(sessionId)).toBe('t1')
+      expect((server as any).sessionClientCounts.get(sessionId)).toBe(2)
 
       // t1 leaves
       ;(server as any).handleDisconnect('c1')
 
       // t2 should now be owner
       expect((server as any).sessionOwners.get(sessionId)).toBe('t2')
+      expect((server as any).sessionClientCounts.get(sessionId)).toBe(1)
     })
 
     it('should clean up session state when last participant leaves', () => {
       const clientId = 'test-client-id'
       const sessionId = 'session-1'
       const userId = 'user-1'
+      const mockWs = new WebSocket('ws://localhost') as any
 
-      ;(server as any).sessionOwners.set(sessionId, userId)
       const clients = (server as any).clients
       clients.set(clientId, {
         id: clientId,
-        ws: new WebSocket('ws://localhost') as any,
+        ws: mockWs,
         userId: userId,
         role: 'trainee',
-        sessionId: sessionId,
         isAuthenticated: true,
       })
+
+      ;(server as any).handleJoinSession(mockWs, clientId, { sessionId, role: 'trainee', userId })
+      expect((server as any).sessionOwners.has(sessionId)).toBe(true)
 
       ;(server as any).handleDisconnect(clientId)
 
       expect((server as any).sessionOwners.has(sessionId)).toBe(false)
+      expect((server as any).sessionClientCounts.has(sessionId)).toBe(false)
     })
   })
 })
