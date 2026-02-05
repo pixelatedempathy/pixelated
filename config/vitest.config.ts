@@ -46,6 +46,7 @@ export default defineConfig({
       'src/tests/browser-compatibility.test.ts',
       'src/tests/mobile-compatibility.test.ts',
       'src/tests/cross-browser-compatibility.test.ts',
+      'src/components/ui/__tests__/Button.astro.test.ts',
       'src/e2e/breach-notification.spec.ts',
       'tests/integration/complete-system.integration.test.ts',
       'src/lib/threat-detection/__tests__/phase8-integration.test.ts',
