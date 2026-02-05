@@ -1,16 +1,17 @@
+// Export modern database-backed audit functions
 export {
-  type AuditLogEntry,
   getUserAuditLogs,
-  logAuditEvent,
+  logEvent,
   createAuditLog,
   createResourceAuditLog,
 } from './log'
 
+// Export types
+export * from './types'
 export * from './analysis'
 export * from './metrics'
-export * from './types'
 
-// Re-export from legacy HIPAA audit module
+// Export legacy HIPAA audit functions (with database integration)
 export {
   AuditEventType,
   AuditEventStatus,
@@ -20,6 +21,7 @@ export {
   exportAuditLogs,
   configureAuditService,
   createHIPAACompliantAuditLog,
+  logAuditEvent, // This is the legacy 5-arg version
 } from './legacy'
 
 export type { AuditDetails } from './legacy'

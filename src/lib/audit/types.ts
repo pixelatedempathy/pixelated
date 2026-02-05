@@ -59,11 +59,10 @@ export interface AuditLogEntry {
 
 export interface AuditLog {
   id: string
-  timestamp: string
+  timestamp: string | Date
   userId: string
-  resourceId: string
-  action: 'view' | 'create' | 'update' | 'delete'
-  resourceType: string
+  resource: AuditResource
+  action: string
   metadata?: Record<string, unknown>
 }
 

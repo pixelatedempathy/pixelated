@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { logAuditEvent, getUserAuditLogs } from '../log'
+import { logEvent, getUserAuditLogs } from '../log'
 import { auditLogDAO } from '../../../services/mongodb.dao'
 
 vi.mock('../../../services/mongodb.dao', () => ({
@@ -21,7 +21,7 @@ describe('Audit Logging', () => {
   })
 
   it('should call auditLogDAO.createLog when logging an event', async () => {
-    await logAuditEvent(userId, action, resourceId, resourceType, metadata)
+    await logEvent(userId, action, resourceId, resourceType, metadata)
 
     expect(auditLogDAO.createLog).toHaveBeenCalledWith(
       userId,
