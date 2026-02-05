@@ -5,7 +5,7 @@ import type { ButtonProps } from './button-types'
 import { getAriaProps, getButtonClassName, isLinkButton } from './button-types'
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -98,15 +98,31 @@ const Button = React.forwardRef<
 
     // Render as link if href is provided
     if (isLink) {
-      // Remove 'type' from commonProps for anchor
-      const { type: _type, ...anchorProps } = commonProps as { type?: string }
+      // Remove 'type' and 'disabled' from commonProps for anchor
+      const {
+        type: _type,
+        disabled: _disabled,
+        ...anchorProps
+      } = commonProps as { type?: string; disabled?: boolean }
+
+      const isDisabled = disabled || loading
+
       return (
         <a
           ref={ref as React.ForwardedRef<HTMLAnchorElement>}
           href={href}
           target={target}
           rel={target === '_blank' ? 'noopener noreferrer' : rel}
+          aria-disabled={isDisabled}
+          tabIndex={isDisabled ? -1 : undefined}
           {...anchorProps}
+          onClick={(e) => {
+            if (isDisabled) {
+              e.preventDefault()
+              return
+            }
+            props.onClick?.(e as any)
+          }}
         >
           {contentWrapper}
         </a>
