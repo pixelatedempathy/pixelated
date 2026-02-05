@@ -62,6 +62,7 @@ import type {
   Todo,
   TreatmentPlan,
   DataExport,
+  AuditLog,
 } from '../types/mongodb.types'
 
 export class DataExportDAO {
@@ -548,6 +549,80 @@ export class ConsentManagementDAO {
   }
 }
 
+export class AuditLogDAO {
+  private async getCollection(): Promise<MongoCollection<AuditLog>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error("MongoDB client not initialized")
+    }
+    const db = await mongodb.connect()
+    return db.collection<AuditLog>("audit_logs")
+  }
+
+  async createLog(
+    userId: string,
+    action: string,
+    resourceId: string,
+    resourceType?: string,
+    metadata: Record<string, unknown> = {},
+  ): Promise<AuditLog> {
+    const collection = await this.getCollection()
+    const log: Omit<AuditLog, "_id"> = {
+      userId: new ObjectId!(userId),
+      action,
+      resourceId,
+      resourceType: resourceType || "unknown",
+      metadata,
+      timestamp: new Date(),
+    }
+
+    const result = await collection.insertOne(log as any)
+    const created = await collection.findOne({ _id: result.insertedId })
+
+    if (!created) {
+      throw new Error("Failed to create audit log")
+    }
+
+    return { ...created, id: created._id?.toString() }
+  }
+
+  async findByUserId(userId: string, limit = 100, offset = 0): Promise<AuditLog[]> {
+    const collection = await this.getCollection()
+    const logs = await collection
+      .find({ userId: new ObjectId!(userId) })
+      .sort({ timestamp: -1 })
+      .skip(offset)
+      .limit(limit)
+      .toArray()
+
+    return logs.map((log) => ({ ...log, id: log._id?.toString() }))
+  }
+
+  async findAll(filter: any = {}): Promise<AuditLog[]> {
+    const collection = await this.getCollection()
+    const logs = await collection
+      .find(filter)
+      .sort({ timestamp: -1 })
+      .toArray()
+
+    return logs.map((log) => ({ ...log, id: log._id?.toString() }))
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(logs: AuditLog[]): Promise<void> {
+    const collection = await this.getCollection()
+    const logsToInsert = logs.map(({ id, ...log }) => ({
+      ...log,
+      userId: typeof log.userId === "string" ? new ObjectId!(log.userId) : log.userId,
+    }))
+    await collection.insertMany(logsToInsert as any)
+  }
+}
+
 // Export instances for use throughout the application
 export const todoDAO = new TodoDAO()
 export const aiMetricsDAO = new AIMetricsDAO()
@@ -556,3 +631,4 @@ export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
 export const dataExportDAO = new DataExportDAO()
+export const auditLogDAO = new AuditLogDAO()
