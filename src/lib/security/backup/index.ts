@@ -22,6 +22,17 @@ import {
 } from './types'
 import { isBrowser } from '../../browser/is-browser'
 import * as NodeCrypto from 'crypto'
+import {
+  todoDAO,
+  aiMetricsDAO,
+  biasDetectionDAO,
+  treatmentPlanDAO,
+  crisisSessionFlagDAO,
+  consentManagementDAO,
+  dataExportDAO,
+  userDAO,
+  sessionDAO
+} from "@/services/mongodb.dao"
 
 // Import crypto polyfill statically to avoid issues during build
 
@@ -809,15 +820,30 @@ export class BackupSecurityManager {
    * Get data to backup based on backup type
    */
   private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
-    // Implementation would collect app data based on backup type
-    // For now return dummy data for demonstration
-    // [PIX-44] TODO: No more fucking cop-outs
-    const dummyData = {
-      message: `This is a ${type} backup created at ${new Date().toISOString()}`,
+    logger.info(`Collecting data for ${type} backup`)
+
+    // Collect data from all collections
+    // For now, we perform a full data collection regardless of backup type
+    // In a production environment, differential/incremental would only collect changes
+    const data = {
+      users: await userDAO.findAll(),
+      sessions: await sessionDAO.findAll(),
+      todos: await todoDAO.findAll(),
+      aiMetrics: await aiMetricsDAO.findAll(),
+      biasDetections: await biasDetectionDAO.findAll(),
+      treatmentPlans: await treatmentPlanDAO.findAll(),
+      crisisSessionFlags: await crisisSessionFlagDAO.findAll(),
+      consentManagements: await consentManagementDAO.findAll(),
+      dataExports: await dataExportDAO.findAll(),
+      metadata: {
+        type,
+        timestamp: new Date().toISOString(),
+        version: '1.0',
+      },
     }
 
     // Use TextEncoder for cross-environment compatibility
-    return new TextEncoder().encode(JSON.stringify(dummyData))
+    return new TextEncoder().encode(JSON.stringify(data))
   }
 
   /**
@@ -1004,14 +1030,85 @@ export class BackupSecurityManager {
    * Process restored data
    * @param data The restored data object
    */
-  private async processRestoredData(data: unknown): Promise<void> {
-    // This is where you would implement the actual data restoration logic
-    // The implementation would be specific to your application's needs
-    // [PIX-43] TODO: What did I just fucking say?
+  private async processRestoredData(data: any): Promise<void> {
     logger.info('Processing restored data')
 
-    // For now, just log that we received the data
-    logger.debug('Restored data', { data })
+    if (!data || typeof data !== 'object') {
+      throw new Error('Invalid restored data format')
+    }
+
+    // Restoration logic: clear and re-populate each collection
+    try {
+      // 1. Users
+      if (data.users) {
+        logger.debug(`Restoring ${data.users.length} users`)
+        await userDAO.deleteAll()
+        await userDAO.insertMany(data.users)
+      }
+
+      // 2. Sessions
+      if (data.sessions) {
+        logger.debug(`Restoring ${data.sessions.length} sessions`)
+        await sessionDAO.deleteAll()
+        await sessionDAO.insertMany(data.sessions)
+      }
+
+      // 3. Todos
+      if (data.todos) {
+        logger.debug(`Restoring ${data.todos.length} todos`)
+        await todoDAO.deleteAll()
+        await todoDAO.insertMany(data.todos)
+      }
+
+      // 4. AI Metrics
+      if (data.aiMetrics) {
+        logger.debug(`Restoring ${data.aiMetrics.length} AI metrics`)
+        await aiMetricsDAO.deleteAll()
+        await aiMetricsDAO.insertMany(data.aiMetrics)
+      }
+
+      // 5. Bias Detections
+      if (data.biasDetections) {
+        logger.debug(`Restoring ${data.biasDetections.length} bias detections`)
+        await biasDetectionDAO.deleteAll()
+        await biasDetectionDAO.insertMany(data.biasDetections)
+      }
+
+      // 6. Treatment Plans
+      if (data.treatmentPlans) {
+        logger.debug(`Restoring ${data.treatmentPlans.length} treatment plans`)
+        await treatmentPlanDAO.deleteAll()
+        await treatmentPlanDAO.insertMany(data.treatmentPlans)
+      }
+
+      // 7. Crisis Session Flags
+      if (data.crisisSessionFlags) {
+        logger.debug(`Restoring ${data.crisisSessionFlags.length} crisis session flags`)
+        await crisisSessionFlagDAO.deleteAll()
+        await crisisSessionFlagDAO.insertMany(data.crisisSessionFlags)
+      }
+
+      // 8. Consent Managements
+      if (data.consentManagements) {
+        logger.debug(`Restoring ${data.consentManagements.length} consent records`)
+        await consentManagementDAO.deleteAll()
+        await consentManagementDAO.insertMany(data.consentManagements)
+      }
+
+      // 9. Data Exports
+      if (data.dataExports) {
+        logger.debug(`Restoring ${data.dataExports.length} data exports`)
+        await dataExportDAO.deleteAll()
+        await dataExportDAO.insertMany(data.dataExports)
+      }
+
+      logger.info('Data restoration completed successfully')
+    } catch (error) {
+      logger.error('Error during data restoration', { error })
+      throw new Error(
+        `Data restoration failed: ${error instanceof Error ? error.message : String(error)}`,
+      )
+    }
   }
 }
 

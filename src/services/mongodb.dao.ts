@@ -147,6 +147,22 @@ export class DataExportDAO {
       $push: { files: file } as any,
     })
   }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: DataExport[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class TodoDAO {
@@ -216,6 +232,23 @@ export class TodoDAO {
 
     return result.deletedCount > 0
   }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: Todo[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: item.userId && typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class AIMetricsDAO {
@@ -297,6 +330,28 @@ export class AIMetricsDAO {
 
     return stats || { totalRequests: 0, totalTokens: 0, averageResponseTime: 0 }
   }
+
+  async findAll(): Promise<AIMetrics[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: AIMetrics[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class BiasDetectionDAO {
@@ -339,6 +394,28 @@ export class BiasDetectionDAO {
       id: detection._id?.toString(),
     }))
   }
+
+  async findAll(): Promise<BiasDetection[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: BiasDetection[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class TreatmentPlanDAO {
@@ -406,6 +483,29 @@ export class TreatmentPlanDAO {
 
     return result ? { ...result, id: result._id?.toString() } : null
   }
+
+  async findAll(): Promise<TreatmentPlan[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: TreatmentPlan[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId,
+      therapistId: typeof item.therapistId === 'string' ? new ObjectId!(item.therapistId) : item.therapistId
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class CrisisSessionFlagDAO {
@@ -474,6 +574,29 @@ export class CrisisSessionFlagDAO {
 
     return result ? { ...result, id: result._id?.toString() } : null
   }
+
+  async findAll(): Promise<CrisisSessionFlag[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: CrisisSessionFlag[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId,
+      resolvedBy: item.resolvedBy && typeof item.resolvedBy === 'string' ? new ObjectId!(item.resolvedBy) : item.resolvedBy
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
 }
 
 export class ConsentManagementDAO {
@@ -546,6 +669,91 @@ export class ConsentManagementDAO {
 
     return { ...result, id: result._id?.toString() }
   }
+
+  async findAll(): Promise<ConsentManagement[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: ConsentManagement[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId
+    }))
+    await collection.insertMany(processedData as any)
+  }
+
+}
+
+export class UserDAO {
+  private async getCollection(): Promise<MongoCollection<User>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error('MongoDB client not initialized')
+    }
+    const db = await mongodb.connect()
+    return db.collection<User>('users')
+  }
+
+  async findAll(): Promise<User[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: User[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id
+    }))
+    await collection.insertMany(processedData as any)
+  }
+}
+
+export class SessionDAO {
+  private async getCollection(): Promise<MongoCollection<Session>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error('MongoDB client not initialized')
+    }
+    const db = await mongodb.connect()
+    return db.collection<Session>('sessions')
+  }
+
+  async findAll(): Promise<Session[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(data: Session[]): Promise<void> {
+    if (data.length === 0) return
+    const collection = await this.getCollection()
+    const processedData = data.map(item => ({
+      ...item,
+      _id: typeof item._id === 'string' ? new ObjectId!(item._id) : item._id,
+      userId: typeof item.userId === 'string' ? new ObjectId!(item.userId) : item.userId
+    }))
+    await collection.insertMany(processedData as any)
+  }
 }
 
 // Export instances for use throughout the application
@@ -556,3 +764,5 @@ export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
 export const dataExportDAO = new DataExportDAO()
+export const userDAO = new UserDAO()
+export const sessionDAO = new SessionDAO()
