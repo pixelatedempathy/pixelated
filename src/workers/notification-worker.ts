@@ -18,16 +18,8 @@ async function startWorker() {
   const notificationService = new NotificationService()
 
   // Create WebSocket server
-  wsServer = new WebSocketServer()
-
-
-  // Handle WebSocket errors
-  wsServer.on('error', (error: Error) => {
-    logger.error('WebSocket server error', {
-      workerId: WORKER_ID,
-      error: error instanceof Error ? error.message : String(error),
-    })
-  })
+  const PORT = parseInt(process.env.NOTIFICATION_WS_PORT || '3002', 10)
+  wsServer = new WebSocketServer(PORT, notificationService)
 
   try {
     // Start processing notifications
