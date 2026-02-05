@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import { safeJoin, ALLOWED_DIRECTORIES } from '../../utils/path-security'
 
 const AUDIT_LOG_PATH = safeJoin(ALLOWED_DIRECTORIES.LOGS, 'audit.log')
@@ -9,6 +10,11 @@ export function logAudit(action: string, details: Record<string, any>) {
     action,
     details,
   }
+
+  const logDir = path.dirname(AUDIT_LOG_PATH)
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true })
+  }
+
   fs.appendFileSync(AUDIT_LOG_PATH, JSON.stringify(entry) + '\n')
 }
-

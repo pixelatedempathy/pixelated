@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import type { AuditLogConfig, AuditLogEntry } from '../audit.logging'
 import { AuditLoggingService } from '../audit.logging'
 
@@ -15,7 +16,7 @@ const testConfig: AuditLogConfig = {
   redactFields: ['password', 'token', 'secret', 'ssn', 'dob'],
 }
 
-const testEntry: Omit<AuditLogEntry, 'timestamp'> = {
+const getTestEntry = (): Omit<AuditLogEntry, 'timestamp'> => ({
   eventType: 'LOGIN_ATTEMPT',
   userId: 'user123',
   resourceType: 'User',
@@ -28,7 +29,7 @@ const testEntry: Omit<AuditLogEntry, 'timestamp'> = {
     userAgent: 'Mozilla/5.0',
     sessionId: 'session123',
   },
-}
+})
 
 let auditLoggingService: AuditLoggingService
 
@@ -47,22 +48,24 @@ afterEach(() => {
 describe('auditLoggingService', () => {
   describe('logEvent', () => {
     it('should log an event with sanitized details', async () => {
+      const entry = getTestEntry()
       await expect(
-        auditLoggingService.logEvent(testEntry),
+        auditLoggingService.logEvent(JSON.parse(JSON.stringify(entry))),
       ).resolves.not.toThrow()
       expect(mockLogger.info).toHaveBeenCalled()
       const loggedEntry = JSON.parse(
         mockLogger.info.mock.calls[0][0],
-      ) as unknown
+      ) as any
       expect(loggedEntry.details.password).toBe('[REDACTED]')
     })
 
     it('should handle logging errors gracefully', async () => {
+      const entry = getTestEntry()
       vi.spyOn(
-        auditLoggingService as unknown,
+        auditLoggingService as any,
         'storeLogEntry',
       ).mockRejectedValue(new Error('Storage failed'))
-      await expect(auditLoggingService.logEvent(testEntry)).rejects.toThrow(
+      await expect(auditLoggingService.logEvent(JSON.parse(JSON.stringify(entry)))).rejects.toThrow(
         'Failed to log audit event',
       )
       expect(mockLogger.error).toHaveBeenCalled()
@@ -71,22 +74,18 @@ describe('auditLoggingService', () => {
 
   describe('sanitizeEntry', () => {
     it('should hash sensitive identifiers when PII is not included', () => {
-      const hashSpy = vi.spyOn(auditLoggingService as unknown, 'hashValue')
+      const entry = getTestEntry()
+      const rawSessionId = entry.metadata.sessionId
 
-      const sanitizedEntry = (auditLoggingService as unknown).sanitizeEntry({
-        ...testEntry,
+      const sanitizedEntry = (auditLoggingService as any).sanitizeEntry({
+        ...JSON.parse(JSON.stringify(entry)),
         timestamp: new Date().toISOString(),
       })
 
-      expect(hashSpy).toHaveBeenCalledWith(testEntry.userId)
-      expect(hashSpy).toHaveBeenCalledWith(testEntry.metadata.sessionId)
-
-      expect(sanitizedEntry.userId).not.toBe(testEntry.userId)
-      expect(sanitizedEntry.metadata.sessionId).not.toBe(
-        testEntry.metadata.sessionId,
-      )
-
-      hashSpy.mockRestore()
+      expect(sanitizedEntry.userId).not.toBe(entry.userId)
+      expect(sanitizedEntry.userId.length).toBe(64)
+      expect(sanitizedEntry.metadata?.sessionId).not.toBe(rawSessionId)
+      expect(sanitizedEntry.metadata?.sessionId?.length).toBe(64)
     })
   })
 

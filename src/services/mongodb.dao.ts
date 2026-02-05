@@ -615,7 +615,7 @@ export class AuditLogDAO {
 
   async insertMany(logs: AuditLog[]): Promise<void> {
     const collection = await this.getCollection()
-    const logsToInsert = logs.map(({ id, ...log }) => ({
+    const logsToInsert = logs.map(({ id: _id, ...log }) => ({
       ...log,
       userId: typeof log.userId === "string" ? new ObjectId!(log.userId) : log.userId,
     }))
