@@ -1,7 +1,7 @@
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
-
-let ObjectId: unknown
+import { mongoClient } from './mongoClient'
+import { createAuditLog, AuditEventType } from '../audit'
 
 // MongoDB-based user settings types
 
@@ -53,10 +53,18 @@ export interface UpdateUserSettings {
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  const settings = await mongoClient.db
+    .collection('user_settings')
+    .findOne({ user_id: userId })
+
+  if (!settings) return null
+
+  return {
+    ...settings,
+    _id: settings._id?.toString(),
+  } as UserSettings
 }
 
 /**
@@ -64,10 +72,37 @@ export async function getUserSettings(
  */
 export async function createUserSettings(
   settings: NewUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  const settingsWithTimestamps = {
+    ...settings,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }
+
+  const result = await mongoClient.db
+    .collection('user_settings')
+    .insertOne(settingsWithTimestamps)
+
+  const createdSettings = {
+    ...settingsWithTimestamps,
+    _id: result.insertedId.toString(),
+  } as UserSettings
+
+  // Log the event for HIPAA compliance
+  await createAuditLog(
+    AuditEventType.CREATE,
+    'user_settings_created',
+    settings.user_id,
+    'user_settings',
+    {
+      resourceId: result.insertedId.toString(),
+      ipAddress: request?.headers.get('x-forwarded-for') || undefined,
+      userAgent: request?.headers.get('user-agent') || undefined,
+    },
+  )
+
+  return createdSettings
 }
 
 /**
@@ -76,10 +111,45 @@ export async function createUserSettings(
 export async function updateUserSettings(
   userId: string,
   updates: UpdateUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  const result = await mongoClient.db
+    .collection('user_settings')
+    .findOneAndUpdate(
+      { user_id: userId },
+      {
+        $set: {
+          ...updates,
+          updatedAt: new Date(),
+        },
+      },
+      { returnDocument: 'after', upsert: true },
+    )
+
+  if (!result) {
+    throw new Error('Failed to update user settings')
+  }
+
+  const updatedSettings = {
+    ...result,
+    _id: result._id?.toString(),
+  } as UserSettings
+
+  // Log the event for HIPAA compliance
+  await createAuditLog(
+    AuditEventType.MODIFY,
+    'user_settings_updated',
+    userId,
+    'user_settings',
+    {
+      updates: updates as any,
+      resourceId: updatedSettings._id,
+      ipAddress: request?.headers.get('x-forwarded-for') || undefined,
+      userAgent: request?.headers.get('user-agent') || undefined,
+    },
+  )
+
+  return updatedSettings
 }
 
 /**
