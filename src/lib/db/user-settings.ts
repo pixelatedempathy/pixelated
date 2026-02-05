@@ -88,6 +88,10 @@ export async function createUserSettings(
 
   const result = await collection.insertOne(newSettings as any)
 
+  if (!result.insertedId) {
+    throw new Error('Failed to insert user settings')
+  }
+
   const createdSettings = {
     ...newSettings,
     _id: result.insertedId.toString() as unknown as ObjectId,
@@ -119,11 +123,20 @@ export async function updateUserSettings(
   const db = await mongoClient.connect()
   const collection = db.collection<UserSettings>('user_settings')
 
+  // Flatten nested preferences if present to perform partial update
+  const updatePayload: Record<string, any> = { ...updates }
+  if (updates.preferences) {
+    delete updatePayload.preferences
+    for (const [key, value] of Object.entries(updates.preferences)) {
+      updatePayload[`preferences.${key}`] = value
+    }
+  }
+
   const result = await collection.findOneAndUpdate(
     { user_id: userId },
     {
       $set: {
-        ...(updates as any),
+        ...updatePayload,
         updatedAt: new Date(),
       },
     },
