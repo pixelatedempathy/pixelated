@@ -425,7 +425,7 @@ describe('allscripts Provider', () => {
 
       // Performance metrics assertions
       // Total duration should be close to the delay of a single request if running concurrently
-      expect(duration).toBeGreaterThanOrEqual(delay)
+      expect(duration).toBeGreaterThanOrEqual(delay - 10) // Allow for slight timing jitter
       expect(duration).toBeLessThan(delay * 2) // Should be much less than sequential (100ms)
     })
 
