@@ -32,7 +32,7 @@ import {
   dataExportDAO,
   userDAO,
   sessionDAO
-} from "../../../services/mongodb.dao"
+} from "@/services/mongodb.dao"
 
 // Import crypto polyfill statically to avoid issues during build
 

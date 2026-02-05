@@ -292,7 +292,7 @@ export class AIMetricsDAO {
     return metrics.map((metric) => ({ ...metric, id: metric._id?.toString() }))
   }
 
-  async getUsageStats(
+    async getUsageStats(
     userId: string,
     startDate: Date,
     endDate: Date,
@@ -331,7 +331,7 @@ export class AIMetricsDAO {
     return stats || { totalRequests: 0, totalTokens: 0, averageResponseTime: 0 }
   }
 
-  async findAll(): Promise<AIMetrics[]> {
+async findAll(): Promise<AIMetrics[]> {
     const collection = await this.getCollection()
     return collection.find({}).toArray()
   }
