@@ -135,9 +135,10 @@ export function detectSensitiveAccess(logs: AuditLog[]): UnusualPattern[] {
   const patterns: UnusualPattern[] = []
 
   // Filter logs for sensitive resource access
-  const sensitiveLogs = logs.filter((log) =>
-    SENSITIVE_RESOURCES.includes(log.resourceType.toLowerCase()),
-  )
+  const sensitiveLogs = logs.filter((log) => {
+    const resourceType = log.resource?.type;
+    return resourceType && SENSITIVE_RESOURCES.includes(resourceType.toLowerCase());
+  })
 
   if (sensitiveLogs.length === 0) {
     return patterns

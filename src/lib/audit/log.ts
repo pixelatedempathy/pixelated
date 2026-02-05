@@ -1,20 +1,8 @@
 import { createBuildSafeLogger } from '../logging/build-safe-logger'
 import { auditLogDAO } from '../../services/mongodb.dao'
+import type { AuditLogEntry } from './types'
 
 const logger = createBuildSafeLogger('audit-log')
-
-// Define the structure for the audit log entry
-export interface AuditLogEntry {
-  id: string
-  userId: string
-  action: string
-  resource: {
-    id: string
-    type: string | undefined
-  }
-  metadata: Record<string, unknown>
-  timestamp: Date
-}
 
 export async function getUserAuditLogs(
   userId: string,
@@ -43,7 +31,10 @@ export async function getUserAuditLogs(
   }
 }
 
-export async function logAuditEvent(
+/**
+ * Persists an audit event to the database
+ */
+export async function logEvent(
   userId: string,
   action: string,
   resourceId: string,
@@ -72,7 +63,20 @@ export async function logAuditEvent(
 }
 
 /**
- * Create an audit log entry (alias for logAuditEvent)
+ * Legacy support for logAuditEvent (will be replaced by logEvent)
+ */
+export async function logAuditEvent(
+  userId: string,
+  action: string,
+  resourceId: string,
+  resourceType?: string,
+  metadata?: Record<string, unknown>,
+): Promise<void> {
+  return logEvent(userId, action, resourceId, resourceType, metadata)
+}
+
+/**
+ * Create an audit log entry (alias for logEvent)
  */
 export async function createAuditLog(
   userId: string,
@@ -81,7 +85,7 @@ export async function createAuditLog(
   resourceType?: string,
   metadata?: Record<string, unknown>,
 ): Promise<void> {
-  return logAuditEvent(userId, action, resourceId, resourceType, metadata)
+  return logEvent(userId, action, resourceId, resourceType, metadata)
 }
 
 /**
@@ -94,5 +98,5 @@ export async function createResourceAuditLog(
   resourceType: string,
   metadata?: Record<string, unknown>,
 ): Promise<void> {
-  return logAuditEvent(userId, action, resourceId, resourceType, metadata)
+  return logEvent(userId, action, resourceId, resourceType, metadata)
 }
