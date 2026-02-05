@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
-import { IconFilter, IconRefresh } from '@/components/ui/icons'
+import { IconFilter, IconX } from '@/components/ui/icons'
 import { format } from 'date-fns'
 import { cn } from '@/lib/utils'
 
@@ -780,9 +780,8 @@ export function AdvancedFilteringComponent({
                   variant="ghost"
                   onClick={resetFilters}
                   className="h-8 w-8 p-0"
-                  aria-label="Reset filters"
                 >
-                  <IconRefresh className="h-4 w-4" />
+                  <IconX className="h-4 w-4" />
                 </Button>
               </div>
 
