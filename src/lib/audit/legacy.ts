@@ -4,8 +4,6 @@ import { logEvent } from './log'
 let logQueue: AuditLogEntry[] = []
 const MAX_QUEUE_SIZE = 100
 
-export { AuditEventType, AuditEventStatus }
-
 export interface AuditConfig {
   remoteEndpoint?: string
   localRetentionDays?: number
@@ -21,18 +19,30 @@ export async function initializeAuditService(): Promise<void> {
   // Initialization logic for legacy audit service
 }
 
+/**
+ * Legacy HIPAA compliant audit logging (5-argument signature)
+ *
+ * @param type - Event type
+ * @param action - Action performed
+ * @param userId - ID of user who performed action
+ * @param resourceId - ID of resource being accessed
+ * @param details - Additional details (including resourceType)
+ */
 export async function logAuditEvent(
   type: AuditEventType | string,
   action: string,
   userId: string,
-  resourceType: string,
+  resourceId: string,
   details: AuditDetails,
 ): Promise<any> {
+  // Extract resourceType from details or use a default
+  const resourceType = (details.resourceType as string) || 'legacy'
+
   // 1. Log to database using the new system
   await logEvent(
     userId,
     action,
-    details.resourceId || 'unknown',
+    resourceId,
     resourceType,
     {
       type,
@@ -40,11 +50,12 @@ export async function logAuditEvent(
     }
   )
 
-  // 2. Legacy HIPAA compliant logging logic
+  // 2. Legacy HIPAA compliant logging logic (Queue/Local Storage)
   const logEntry = await createHIPAACompliantAuditLog({
-    type: type as any,
+    type,
     action,
     userId,
+    resourceId,
     resourceType,
     ...details
   })
@@ -112,6 +123,9 @@ export function exportAuditLogs(): string {
   return JSON.stringify(getAuditLogs())
 }
 
+/**
+ * Legacy helper for resource audit logging
+ */
 export async function createResourceAuditLog(
   userId: string,
   action: string,
@@ -120,10 +134,10 @@ export async function createResourceAuditLog(
   metadata?: any
 ): Promise<any> {
   return logAuditEvent(
-    'RESOURCE_ACCESS',
+    AuditEventType.DATA_ACCESS,
     action,
     userId,
-    resourceType,
-    { resourceId, ...metadata }
+    resourceId,
+    { resourceType, ...metadata }
   )
 }
