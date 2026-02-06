@@ -286,7 +286,6 @@
     "zustand": "^5.0.10"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "^12.6.11",
     "@astrojs/markdoc": "^0.15.10",
     "@astrojs/rss": "^4.0.15",
     "@fontsource/inter": "^5.2.8",
