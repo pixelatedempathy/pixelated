@@ -1,7 +1,7 @@
 // Use server-only helper for MongoDB types
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
-
-let ObjectId: unknown
+import { mongoClient } from './mongoClient'
+import { createAuditLog, AuditEventType } from '@/lib/audit'
 
 // MongoDB-based user settings types
 
@@ -53,10 +53,20 @@ export interface UpdateUserSettings {
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  const db = await mongoClient.connect()
+  const settings = await db
+    .collection<UserSettings>('user_settings')
+    .findOne({ user_id: userId })
+
+  if (!settings) return null
+
+  // Ensure _id is a string to match the interface
+  return {
+    ...settings,
+    _id: settings._id?.toString() as unknown as ObjectId,
+  } as UserSettings
 }
 
 /**
@@ -64,10 +74,42 @@ export async function getUserSettings(
  */
 export async function createUserSettings(
   settings: NewUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  const db = await mongoClient.connect()
+  const collection = db.collection<UserSettings>('user_settings')
+
+  const now = new Date()
+  const newSettings = {
+    ...settings,
+    createdAt: now,
+    updatedAt: now,
+  }
+
+  const result = await collection.insertOne(newSettings as any)
+
+  if (!result.insertedId) {
+    throw new Error('Failed to insert user settings')
+  }
+
+  const createdSettings = {
+    ...newSettings,
+    _id: result.insertedId.toString() as unknown as ObjectId,
+  } as UserSettings
+
+  // Audit log for HIPAA compliance
+  await createAuditLog(
+    AuditEventType.CREATE,
+    'user_settings_created',
+    settings.user_id,
+    'user_settings',
+    {
+      ipAddress: request?.headers.get('x-forwarded-for') || undefined,
+      userAgent: request?.headers.get('user-agent') || undefined,
+    },
+  )
+
+  return createdSettings
 }
 
 /**
@@ -76,10 +118,59 @@ export async function createUserSettings(
 export async function updateUserSettings(
   userId: string,
   updates: UpdateUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  const db = await mongoClient.connect()
+  const collection = db.collection<UserSettings>('user_settings')
+
+  // Flatten nested preferences if present to perform partial update
+  const updatePayload: Record<string, any> = { ...updates }
+  if (updates.preferences) {
+    delete updatePayload.preferences
+    for (const [key, value] of Object.entries(updates.preferences)) {
+      updatePayload[`preferences.${key}`] = value
+    }
+  }
+
+  const result = await collection.findOneAndUpdate(
+    { user_id: userId },
+    {
+      $set: {
+        ...updatePayload,
+        updatedAt: new Date(),
+      },
+    },
+    { returnDocument: 'after' },
+  )
+
+  // Handle both v5 (result.value) and v6+ (result is the document)
+  const updatedDoc = (
+    (result as any)?.value !== undefined ? (result as any).value : result
+  ) as any
+
+  if (!updatedDoc) {
+    throw new Error('User settings not found')
+  }
+
+  const updatedSettings = {
+    ...updatedDoc,
+    _id: updatedDoc._id?.toString() as unknown as ObjectId,
+  } as UserSettings
+
+  // Audit log for HIPAA compliance
+  await createAuditLog(
+    AuditEventType.MODIFY,
+    'user_settings_updated',
+    userId,
+    'user_settings',
+    {
+      updates: updates as any,
+      ipAddress: request?.headers.get('x-forwarded-for') || undefined,
+      userAgent: request?.headers.get('user-agent') || undefined,
+    },
+  )
+
+  return updatedSettings
 }
 
 /**
