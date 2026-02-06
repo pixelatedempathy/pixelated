@@ -13,8 +13,6 @@ export * from './metrics'
 
 // Export legacy HIPAA audit functions (with database integration)
 export {
-  AuditEventType,
-  AuditEventStatus,
   initializeAuditService,
   getAuditLogs,
   clearAuditLogs,
@@ -23,5 +21,3 @@ export {
   createHIPAACompliantAuditLog,
   logAuditEvent, // This is the legacy 5-arg version
 } from './legacy'
-
-export type { AuditDetails } from './legacy'

@@ -1,3 +1,24 @@
+export enum AuditEventType {
+  SECURITY = 'SECURITY',
+  DATA_ACCESS = 'DATA_ACCESS',
+  USER_ACTION = 'USER_ACTION',
+  SYSTEM = 'SYSTEM',
+}
+
+export enum AuditEventStatus {
+  SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE',
+  WARNING = 'WARNING',
+}
+
+export interface AuditDetails {
+  resourceId?: string
+  status?: AuditEventStatus
+  ipAddress?: string
+  userAgent?: string
+  [key: string]: any
+}
+
 /**
  * Metadata for audit log entries
  */
