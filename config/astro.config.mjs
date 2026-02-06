@@ -242,6 +242,7 @@ export default defineConfig({
       reportCompressedSize: false,
       rollupOptions: {
         external: [
+
           "@google-cloud/storage",
           "@aws-sdk/client-s3",
           "@aws-sdk/client-dynamodb",
@@ -326,6 +327,7 @@ export default defineConfig({
     },
     ssr: {
       external: [
+
         "@google-cloud/storage",
         "@aws-sdk/client-s3",
         "@aws-sdk/client-dynamodb",
@@ -368,6 +370,7 @@ export default defineConfig({
         "src/middleware.ts",
       ],
       exclude: [
+
         "@aws-sdk/client-s3",
         "@aws-sdk/client-kms",
         "sharp",
