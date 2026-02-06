@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen, cleanup } from '@testing-library/react'
 import { PasswordInputWithStrength } from '../PasswordInputWithStrength'
-import { vi, afterEach } from 'vitest'
+import { afterEach } from 'vitest'
 
 describe('PasswordInputWithStrength', () => {
   afterEach(() => {
