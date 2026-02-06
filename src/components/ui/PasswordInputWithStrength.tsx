@@ -197,6 +197,9 @@ export const PasswordInputWithStrength = forwardRef<
                 aria-valuemin={0}
                 aria-valuemax={100}
                 aria-label={`Password strength: ${strength}`}
+                aria-valuetext={
+                  strength.charAt(0).toUpperCase() + strength.slice(1)
+                }
               >
                 <div
                   className={`strength-${strength}`}
