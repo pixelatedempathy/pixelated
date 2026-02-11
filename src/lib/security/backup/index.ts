@@ -12,6 +12,7 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+import { allDAOs } from '../../../services/mongodb.dao'
 import { logAuditEvent, AuditEventType } from '../../audit'
 import { dlpService } from '../dlp'
 import {
@@ -808,13 +809,37 @@ export class BackupSecurityManager {
   /**
    * Get data to backup based on backup type
    */
+  /**
+   * Get data to backup based on backup type
+   */
   private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
-    // Implementation would collect app data based on backup type
-    // For now return dummy data for demonstration
-    // [PIX-44] TODO: No more fucking cop-outs
-    const dummyData = {
-      message: `This is a ${type} backup created at ${new Date().toISOString()}`,
+    logger.info(`Collecting data for ${type} backup`)
+
+    const backupData: Record<string, any[]> = {}
+
+    // Collect data from all registered DAOs
+    const daoEntries = Object.entries(allDAOs)
+    for (const [collectionName, dao] of daoEntries) {
+      try {
+        logger.debug(`Collecting data from collection: ${collectionName}`)
+        const data = await dao.findAll()
+        backupData[collectionName] = data
+      } catch (error) {
+        logger.error(`Failed to collect data from ${collectionName}:`, {
+          error: error instanceof Error ? error.message : String(error),
+        })
+        // For full backups, we fail if any collection fails to ensure data integrity
+        if (type === BackupType.FULL) {
+          throw new Error(
+            `Failed to collect data from ${collectionName} for full backup`,
+          )
+        }
+      }
     }
+
+    // Use TextEncoder for cross-environment compatibility
+    return new TextEncoder().encode(JSON.stringify(backupData))
+  }
 
     // Use TextEncoder for cross-environment compatibility
     return new TextEncoder().encode(JSON.stringify(dummyData))
@@ -1004,14 +1029,57 @@ export class BackupSecurityManager {
    * Process restored data
    * @param data The restored data object
    */
+  /**
+   * Process restored data
+   * @param data The restored data object
+   */
   private async processRestoredData(data: unknown): Promise<void> {
-    // This is where you would implement the actual data restoration logic
-    // The implementation would be specific to your application's needs
-    // [PIX-43] TODO: What did I just fucking say?
     logger.info('Processing restored data')
 
-    // For now, just log that we received the data
-    logger.debug('Restored data', { data })
+    if (!data || typeof data !== 'object') {
+      throw new Error('Invalid restored data format')
+    }
+
+    const restoredData = data as Record<string, any[]>
+
+    // Sort collections if there are dependencies (e.g. users before profiles)
+    // For now, we just process them as they come
+    const collections = Object.keys(restoredData)
+
+    for (const collectionName of collections) {
+      const dao = allDAOs[collectionName]
+      if (!dao) {
+        logger.warn(`No DAO found for restored collection: ${collectionName}`)
+        continue
+      }
+
+      try {
+        logger.info(`Restoring collection: ${collectionName}`)
+
+        // Clear existing data
+        await dao.deleteAll()
+
+        // Insert restored data
+        const records = restoredData[collectionName]
+        if (records && records.length > 0) {
+          await dao.insertMany(records)
+          logger.info(
+            `Successfully restored ${records.length} records to ${collectionName}`,
+          )
+        } else {
+          logger.info(`No records to restore for ${collectionName}`)
+        }
+      } catch (error) {
+        logger.error(`Failed to restore collection ${collectionName}:`, {
+          error: error instanceof Error ? error.message : String(error),
+        })
+        throw new Error(
+          `Data restoration failed for ${collectionName}: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        )
+      }
+    }
   }
 }
 
