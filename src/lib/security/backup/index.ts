@@ -809,9 +809,6 @@ export class BackupSecurityManager {
   /**
    * Get data to backup based on backup type
    */
-  /**
-   * Get data to backup based on backup type
-   */
   private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
     logger.info(`Collecting data for ${type} backup`)
 
@@ -839,10 +836,6 @@ export class BackupSecurityManager {
 
     // Use TextEncoder for cross-environment compatibility
     return new TextEncoder().encode(JSON.stringify(backupData))
-  }
-
-    // Use TextEncoder for cross-environment compatibility
-    return new TextEncoder().encode(JSON.stringify(dummyData))
   }
 
   /**
