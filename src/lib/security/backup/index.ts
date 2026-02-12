@@ -14,6 +14,7 @@
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import { logAuditEvent, AuditEventType } from '../../audit'
 import { dlpService } from '../dlp'
+import { allDAOs } from "../../../services/mongodb.dao"
 import {
   type BackupMetadata as BaseBackupMetadata,
   type StorageProvider,
@@ -808,16 +809,33 @@ export class BackupSecurityManager {
   /**
    * Get data to backup based on backup type
    */
-  private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
-    // Implementation would collect app data based on backup type
-    // For now return dummy data for demonstration
-    // [PIX-44] TODO: No more fucking cop-outs
-    const dummyData = {
-      message: `This is a ${type} backup created at ${new Date().toISOString()}`,
+    private async getDataForBackup(type: BackupType): Promise<Uint8Array> {
+    logger.info(`Collecting data for ${type} backup`)
+
+    const backupData: Record<string, any[]> = {}
+
+    // Collect data from all registered DAOs
+    for (const [collectionName, dao] of Object.entries(allDAOs)) {
+      try {
+        logger.debug(`Backing up collection: ${collectionName}`)
+        const data = await dao.findAll()
+        backupData[collectionName] = data
+      } catch (error) {
+        logger.error(`Failed to back up collection ${collectionName}:`, error)
+        // For full backup, we might want to fail if any collection fails
+        if (type === "full") {
+          throw error
+        }
+      }
     }
 
-    // Use TextEncoder for cross-environment compatibility
-    return new TextEncoder().encode(JSON.stringify(dummyData))
+    const payload = {
+      type,
+      timestamp: new Date().toISOString(),
+      collections: backupData,
+    }
+
+    return new TextEncoder().encode(JSON.stringify(payload))
   }
 
   /**
@@ -1005,15 +1023,46 @@ export class BackupSecurityManager {
    * @param data The restored data object
    */
   private async processRestoredData(data: unknown): Promise<void> {
-    // This is where you would implement the actual data restoration logic
-    // The implementation would be specific to your application's needs
-    // [PIX-43] TODO: What did I just fucking say?
-    logger.info('Processing restored data')
+    logger.info("Processing restored data")
 
-    // For now, just log that we received the data
-    logger.debug('Restored data', { data })
+    if (!data || typeof data !== "object") {
+      throw new Error("Invalid backup data format: data is not an object")
+    }
+
+    const backupPayload = data as { collections?: Record<string, any[]> }
+    if (!backupPayload.collections) {
+      logger.warn("No collections found in backup data")
+      return
+    }
+
+    // Process each collection in the backup
+    for (const [collectionName, items] of Object.entries(backupPayload.collections)) {
+      const dao = allDAOs[collectionName]
+      if (!dao) {
+        logger.warn(`No DAO registered for collection: ${collectionName}. Skipping.`)
+        continue
+      }
+
+      try {
+        logger.info(`Restoring collection: ${collectionName} (${items.length} items)`)
+
+        // 1. Clear existing data
+        await dao.deleteAll()
+
+        // 2. Insert restored data
+        if (items.length > 0) {
+          await dao.insertMany(items)
+        }
+
+        logger.debug(`Successfully restored collection: ${collectionName}`)
+      } catch (error) {
+        logger.error(`Failed to restore collection ${collectionName}:`, error)
+        throw new Error(`Failed to restore collection ${collectionName}: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+
+    logger.info("Data restoration processed successfully")
   }
-}
 
 // Export the manager for use in the application
 export default BackupSecurityManager
