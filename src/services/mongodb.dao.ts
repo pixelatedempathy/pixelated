@@ -119,7 +119,7 @@ export class DataExportDAO {
   }
 
   async create(
-    exportRequest: Omit<DataExport, User, Session, '_id'>,
+    exportRequest: Omit<DataExport, '_id'>,
   ): Promise<DataExport> {
     const collection = await this.getCollection()
     // Ensure files is initialized
@@ -671,7 +671,7 @@ export class SessionDAO {
   async findBySessionId(sessionId: string): Promise<Session | null> {
     const collection = await this.getCollection()
     const session = await collection.findOne({ sessionId })
-    return session ? { ...session, id: session._id.toString() } : null
+    return session ? { ...session, id: session._id.toString() } as any : null
   }
 }
 
@@ -765,7 +765,6 @@ export class ConsentManagementDAO {
 }
 
 // Export instances for use throughout the application
-
 export const userDAO = new UserDAO()
 export const sessionDAO = new SessionDAO()
 export const todoDAO = new TodoDAO()
