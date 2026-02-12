@@ -54,6 +54,38 @@ async function initializeDependencies() {
   }
   return serverDepsPromise
 }
+/**
+ * Helper to convert string to ObjectId if valid
+ */
+function toObjectId(value: any): any {
+  if (value && typeof value === "string" && ObjectId && (ObjectId as any).isValid(value)) {
+    try {
+      return new (ObjectId as any)(value)
+    } catch {
+      return value
+    }
+  }
+  return value
+}
+
+/**
+ * Recursively process object to convert specific fields to ObjectIds
+ */
+function processObjectIds(obj: any): any {
+  if (!obj || typeof obj !== "object") return obj
+  if (Array.isArray(obj)) return obj.map(processObjectIds)
+
+  const result = { ...obj }
+  for (const key in result) {
+    if (["_id", "userId", "therapistId", "resolvedBy"].includes(key)) {
+      result[key] = toObjectId(result[key])
+    } else if (result[key] && typeof result[key] === "object" && !(result[key] instanceof Date)) {
+      result[key] = processObjectIds(result[key])
+    }
+  }
+  return result
+}
+
 import type {
   AIMetrics,
   BiasDetection,
@@ -61,10 +93,22 @@ import type {
   CrisisSessionFlag,
   Todo,
   TreatmentPlan,
-  DataExport,
+  DataExport, User, Session,
 } from '../types/mongodb.types'
 
 export class DataExportDAO {
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<DataExport>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -75,7 +119,7 @@ export class DataExportDAO {
   }
 
   async create(
-    exportRequest: Omit<DataExport, '_id'>,
+    exportRequest: Omit<DataExport, User, Session, '_id'>,
   ): Promise<DataExport> {
     const collection = await this.getCollection()
     // Ensure files is initialized
@@ -150,6 +194,18 @@ export class DataExportDAO {
 }
 
 export class TodoDAO {
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<Todo>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -219,6 +275,23 @@ export class TodoDAO {
 }
 
 export class AIMetricsDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<AIMetrics>> {
     console.log('Initializing dependencies for AI Metrics DAO...')
     await initializeDependencies()
@@ -300,6 +373,23 @@ export class AIMetricsDAO {
 }
 
 export class BiasDetectionDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<BiasDetection>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -342,6 +432,23 @@ export class BiasDetectionDAO {
 }
 
 export class TreatmentPlanDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<TreatmentPlan>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -409,6 +516,23 @@ export class TreatmentPlanDAO {
 }
 
 export class CrisisSessionFlagDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<CrisisSessionFlag>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -476,7 +600,99 @@ export class CrisisSessionFlagDAO {
   }
 }
 
+
+export class UserDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
+  private async getCollection(): Promise<MongoCollection<User>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error("MongoDB client not initialized")
+    }
+    const db = await mongodb.connect()
+    return db.collection<User>("users")
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const collection = await this.getCollection()
+    const user = await collection.findOne({ _id: new ObjectId!(id) })
+    return user ? { ...user, id: user._id.toString() } : null
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const collection = await this.getCollection()
+    const user = await collection.findOne({ email })
+    return user ? { ...user, id: user._id.toString() } : null
+  }
+}
+
+export class SessionDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
+  private async getCollection(): Promise<MongoCollection<Session>> {
+    await initializeDependencies()
+    if (!mongodb) {
+      throw new Error("MongoDB client not initialized")
+    }
+    const db = await mongodb.connect()
+    return db.collection<Session>("sessions")
+  }
+
+  async findBySessionId(sessionId: string): Promise<Session | null> {
+    const collection = await this.getCollection()
+    const session = await collection.findOne({ sessionId })
+    return session ? { ...session, id: session._id.toString() } : null
+  }
+}
+
 export class ConsentManagementDAO {
+  async findAll(): Promise<any[]> {
+    const collection = await this.getCollection()
+    return collection.find({}).toArray()
+  }
+
+  async deleteAll(): Promise<void> {
+    const collection = await this.getCollection()
+    await collection.deleteMany({})
+  }
+
+  async insertMany(items: any[]): Promise<void> {
+    if (items.length === 0) return
+    const collection = await this.getCollection()
+    const processedItems = items.map(processObjectIds)
+    await collection.insertMany(processedItems)
+  }
+
   private async getCollection(): Promise<MongoCollection<ConsentManagement>> {
     await initializeDependencies()
     if (!mongodb) {
@@ -549,6 +765,9 @@ export class ConsentManagementDAO {
 }
 
 // Export instances for use throughout the application
+
+export const userDAO = new UserDAO()
+export const sessionDAO = new SessionDAO()
 export const todoDAO = new TodoDAO()
 export const aiMetricsDAO = new AIMetricsDAO()
 export const biasDetectionDAO = new BiasDetectionDAO()
@@ -556,3 +775,15 @@ export const treatmentPlanDAO = new TreatmentPlanDAO()
 export const crisisSessionFlagDAO = new CrisisSessionFlagDAO()
 export const consentManagementDAO = new ConsentManagementDAO()
 export const dataExportDAO = new DataExportDAO()
+
+export const allDAOs: Record<string, any> = {
+  data_exports: dataExportDAO,
+  todos: todoDAO,
+  ai_metrics: aiMetricsDAO,
+  bias_detection: biasDetectionDAO,
+  treatment_plans: treatmentPlanDAO,
+  crisis_session_flags: crisisSessionFlagDAO,
+  users: userDAO,
+  sessions: sessionDAO,
+  consent_management: consentManagementDAO,
+}
