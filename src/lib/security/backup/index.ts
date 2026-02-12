@@ -14,6 +14,7 @@
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import { logAuditEvent, AuditEventType } from '../../audit'
 import { dlpService } from '../dlp'
+import { allDAOs } from "../../../services/mongodb.dao"
 import {
   type BackupMetadata as BaseBackupMetadata,
   type StorageProvider,
@@ -22,7 +23,6 @@ import {
 } from './types'
 import { isBrowser } from '../../browser/is-browser'
 import * as NodeCrypto from 'crypto'
-import { allDAOs } from "../../../services/mongodb.dao"
 
 // Import crypto polyfill statically to avoid issues during build
 
@@ -823,7 +823,7 @@ export class BackupSecurityManager {
       } catch (error) {
         logger.error(`Failed to back up collection ${collectionName}:`, error)
         // For full backup, we might want to fail if any collection fails
-        if (type === BackupType.FULL) {
+        if (type === "full") {
           throw error
         }
       }
@@ -1023,16 +1023,48 @@ export class BackupSecurityManager {
    * @param data The restored data object
    */
   private async processRestoredData(data: unknown): Promise<void> {
-    // This is where you would implement the actual data restoration logic
-    // The implementation would be specific to your application's needs
-    // [PIX-43] TODO: What did I just fucking say?
-    logger.info('Processing restored data')
+    logger.info("Processing restored data")
 
-    // For now, just log that we received the data
-    logger.debug('Restored data', { data })
+    if (!data || typeof data !== "object") {
+      throw new Error("Invalid backup data format: data is not an object")
+    }
+
+    const backupPayload = data as { collections?: Record<string, any[]> }
+    if (!backupPayload.collections) {
+      logger.warn("No collections found in backup data")
+      return
+    }
+
+    // Process each collection in the backup
+    for (const [collectionName, items] of Object.entries(backupPayload.collections)) {
+      const dao = allDAOs[collectionName]
+      if (!dao) {
+        logger.warn(`No DAO registered for collection: ${collectionName}. Skipping.`)
+        continue
+      }
+
+      try {
+        logger.info(`Restoring collection: ${collectionName} (${items.length} items)`)
+
+        // 1. Clear existing data
+        await dao.deleteAll()
+
+        // 2. Insert restored data
+        if (items.length > 0) {
+          await dao.insertMany(items)
+        }
+
+        logger.debug(`Successfully restored collection: ${collectionName}`)
+      } catch (error) {
+        logger.error(`Failed to restore collection ${collectionName}:`, error)
+        throw new Error(`Failed to restore collection ${collectionName}: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+
+    logger.info("Data restoration processed successfully")
   }
-}
 
+}
 // Export the manager for use in the application
 export default BackupSecurityManager
 
