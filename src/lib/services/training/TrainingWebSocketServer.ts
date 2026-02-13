@@ -31,6 +31,11 @@ interface WebSocketMessage {
   payload: any
 }
 
+interface RateLimitBucket {
+  tokens: number
+  lastRefill: number
+}
+
 export class TrainingWebSocketServer {
   private wss: WebSocketServer
   private clients: Map<string, TrainingSessionClient> = new Map()
@@ -38,8 +43,10 @@ export class TrainingWebSocketServer {
   private sessionOwners: Map<string, string> = new Map() // sessionId -> userId
   private mutedUsers: Map<string, Set<string>> = new Map() // sessionId -> Set of userIds
   private bannedUsers: Map<string, Set<string>> = new Map() // sessionId -> Set of userIds
-  private messageRateLimits: Map<string, number[]> = new Map() // userId -> timestamps
-  private readonly MAX_MESSAGES_PER_MINUTE = 30
+  private userBuckets: Map<string, RateLimitBucket> = new Map() // userId -> RateLimitBucket
+
+  private readonly MAX_TOKENS = 30
+  private readonly REFILL_RATE_PER_MS = 30 / 60000 // 30 tokens per minute
 
   constructor(port: number) {
     this.wss = new WebSocketServer({ port })
@@ -209,17 +216,34 @@ export class TrainingWebSocketServer {
     }
   }
 
+  /**
+   * Check if a user is allowed to send a message based on rate limits
+   * Uses Token Bucket algorithm for efficiency
+   *
+   * @param userId - User ID to check
+   * @returns true if allowed, false if rate limited
+   */
   private checkRateLimit(userId: string): boolean {
     const now = Date.now()
-    const timestamps = this.messageRateLimits.get(userId) || []
-    const oneMinuteAgo = now - 60000
-    const recentTimestamps = timestamps.filter(ts => ts > oneMinuteAgo)
+    let bucket = this.userBuckets.get(userId)
 
-    if (recentTimestamps.length >= this.MAX_MESSAGES_PER_MINUTE) return false
+    if (!bucket) {
+      bucket = { tokens: this.MAX_TOKENS, lastRefill: now }
+      this.userBuckets.set(userId, bucket)
+    } else {
+      // Refill tokens based on time passed
+      const delta = now - bucket.lastRefill
+      const refill = delta * this.REFILL_RATE_PER_MS
+      bucket.tokens = Math.min(this.MAX_TOKENS, bucket.tokens + refill)
+      bucket.lastRefill = now
+    }
 
-    recentTimestamps.push(now)
-    this.messageRateLimits.set(userId, recentTimestamps)
-    return true
+    if (bucket.tokens >= 1) {
+      bucket.tokens -= 1
+      return true
+    }
+
+    return false
   }
 
   private handleJoinSession(ws: WebSocket, clientId: string, payload: { sessionId: string, role: 'trainee' | 'observer' | 'supervisor', userId: string }) {
@@ -396,7 +420,7 @@ export class TrainingWebSocketServer {
         c => c.id !== clientId && c.userId === userId
       )
       if (!otherConnectionsForUser) {
-        this.messageRateLimits.delete(userId)
+        this.userBuckets.delete(userId)
       }
 
       this.clients.delete(clientId)

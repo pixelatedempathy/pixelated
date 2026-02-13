@@ -180,11 +180,11 @@ describe('TrainingWebSocketServer Permissions & Cleanup', () => {
       payload: { content: 'msg 1', role: 'therapist' }
     }))
 
-    expect((server as any).messageRateLimits.has('user-1')).toBe(true)
+    expect((server as any).userBuckets.has('user-1')).toBe(true)
 
     ch1()
 
-    expect((server as any).messageRateLimits.has('user-1')).toBe(false)
+    expect((server as any).userBuckets.has('user-1')).toBe(false)
   })
 
   it('should enforce rate limiting', async () => {
