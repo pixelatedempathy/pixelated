@@ -55,14 +55,14 @@ const getCrypto = async () => {
         iv: Uint8Array,
       ): Promise<{ encryptedData: Uint8Array; authTag: Uint8Array }> => {
         const { subtle } = window.crypto
-        const importedKey = await subtle.importKey(
+        const importedKey = await (subtle.importKey as any)(
           'raw',
           key,
           { name: 'AES-GCM' },
           false,
           ['encrypt'],
         )
-        const encrypted = await subtle.encrypt(
+        const encrypted = await (subtle.encrypt as any)(
           { name: 'AES-GCM', iv },
           importedKey,
           data,
@@ -80,7 +80,7 @@ const getCrypto = async () => {
         authTag: Uint8Array,
       ): Promise<Uint8Array> => {
         const { subtle } = window.crypto
-        const importedKey = await subtle.importKey(
+        const importedKey = await (subtle.importKey as any)(
           'raw',
           key,
           { name: 'AES-GCM' },
@@ -94,7 +94,7 @@ const getCrypto = async () => {
         // Create a new ArrayBuffer to ensure proper typing
         const combinedBuffer = new ArrayBuffer(combined.byteLength)
         new Uint8Array(combinedBuffer).set(combined)
-        const decrypted = await subtle.decrypt(
+        const decrypted = await (subtle.decrypt as any)(
           { name: 'AES-GCM', iv },
           importedKey,
           combinedBuffer,
@@ -423,8 +423,7 @@ export class BackupSecurityManager {
         `Failed to initialize backup security manager: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
-        { cause: error },
+        `Backup manager initialization failed: ${error instanceof Error ? String(error) : String(error)}`
       )
     }
   }
@@ -504,10 +503,9 @@ export class BackupSecurityManager {
 
       return backupId
     } catch (error: unknown) {
-      logger.error('Backup creation failed:', { error: String(error) })
+      logger.error('Backup creation failed:' + " " + JSON.stringify({ error: String(error) }))
       throw new Error(
-        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`,
-        { cause: error },
+        `Failed to create backup: ${error instanceof Error ? String(error) : String(error)}`
       )
     }
   }
@@ -557,8 +555,8 @@ export class BackupSecurityManager {
         authTag,
       )
     } catch (error: unknown) {
-      logger.error('Decryption failed:', { error: String(error) })
-      throw new Error('Failed to decrypt backup data', { cause: error })
+      logger.error('Decryption failed:' + " " + JSON.stringify({ error: String(error) }))
+      throw new Error('Failed to decrypt backup data')
     }
   }
 
@@ -1012,8 +1010,7 @@ export class BackupSecurityManager {
         `Failed to restore data: ${error instanceof Error ? String(error) : String(error)}`,
       )
       throw new Error(
-        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`,
-        { cause: error },
+        `Data restoration failed: ${error instanceof Error ? String(error) : String(error)}`
       )
     }
   }
@@ -1110,8 +1107,7 @@ async function getStorageProvider(
       `Failed to load storage provider: ${error instanceof Error ? String(error) : String(error)}`,
     )
     throw new Error(
-      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`,
-      { cause: error },
+      `Storage provider loading failed: ${error instanceof Error ? String(error) : String(error)}`
     )
   }
 }

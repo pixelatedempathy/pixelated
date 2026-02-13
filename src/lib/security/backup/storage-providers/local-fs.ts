@@ -79,6 +79,7 @@ export class LocalFileSystemProvider implements StorageProvider {
       )
       throw new Error(
         `Local filesystem initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -112,6 +113,7 @@ export class LocalFileSystemProvider implements StorageProvider {
       console.error('Failed to list files from local filesystem:', error)
       throw new Error(
         `Failed to list files: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -134,6 +136,7 @@ export class LocalFileSystemProvider implements StorageProvider {
       console.error(`Failed to store file ${key} to local filesystem:`, error)
       throw new Error(
         `Failed to store file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -157,6 +160,7 @@ export class LocalFileSystemProvider implements StorageProvider {
       console.error(`Failed to get file ${key} from local filesystem:`, error)
       throw new Error(
         `Failed to get file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -186,6 +190,7 @@ export class LocalFileSystemProvider implements StorageProvider {
       )
       throw new Error(
         `Failed to delete file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }

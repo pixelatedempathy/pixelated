@@ -97,6 +97,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
       )
       throw new Error(
         `Google Cloud Storage initialization failed: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -138,6 +139,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
       console.error('Failed to list files from Google Cloud Storage:', error)
       throw new Error(
         `Failed to list files: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -176,6 +178,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
       )
       throw new Error(
         `Failed to store file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -205,6 +208,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
       )
       throw new Error(
         `Failed to get file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
@@ -232,6 +236,7 @@ export class GoogleCloudStorageProvider implements StorageProvider {
       )
       throw new Error(
         `Failed to delete file: ${error instanceof Error ? String(error) : String(error)}`,
+        // @ts-ignore
         { cause: error },
       )
     }
