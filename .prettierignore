@@ -22,3 +22,7 @@ prs.mdx
 
 # avoid whitespace affecting style
 Link.astro
+
+# exclude infrastructure manifests
+helm/
+k8s/
