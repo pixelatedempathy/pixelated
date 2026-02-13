@@ -57,15 +57,15 @@ const getCrypto = async () => {
         const { subtle } = window.crypto
         const importedKey = await subtle.importKey(
           'raw',
-          key,
-          { name: 'AES-GCM' },
+          key as any,
+          { name: 'AES-GCM' } as AlgorithmIdentifier,
           false,
-          ['encrypt'],
+          ['encrypt'] as KeyUsage[],
         )
         const encrypted = await subtle.encrypt(
-          { name: 'AES-GCM', iv },
+          { name: 'AES-GCM', iv } as AesGcmParams,
           importedKey,
-          data,
+          data as any,
         )
         // In Web Crypto API, the auth tag is appended to the ciphertext
         const encryptedArray = new Uint8Array(encrypted)
@@ -82,10 +82,10 @@ const getCrypto = async () => {
         const { subtle } = window.crypto
         const importedKey = await subtle.importKey(
           'raw',
-          key,
-          { name: 'AES-GCM' },
+          key as any,
+          { name: 'AES-GCM' } as AlgorithmIdentifier,
           false,
-          ['decrypt'],
+          ['decrypt'] as KeyUsage[],
         )
         // Combine ciphertext and auth tag for Web Crypto API
         const combined = new Uint8Array(data.length + authTag.length)
@@ -95,9 +95,9 @@ const getCrypto = async () => {
         const combinedBuffer = new ArrayBuffer(combined.byteLength)
         new Uint8Array(combinedBuffer).set(combined)
         const decrypted = await subtle.decrypt(
-          { name: 'AES-GCM', iv },
+          { name: 'AES-GCM', iv } as AesGcmParams,
           importedKey,
-          combinedBuffer,
+          combinedBuffer as any,
         )
         return new Uint8Array(decrypted)
       },
