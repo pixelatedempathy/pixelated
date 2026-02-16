@@ -22,6 +22,42 @@ is_protected() {
     return 1
 }
 
+# Return the name of a remote that has a ref for the given branch.
+# If none is found, fall back to "origin".
+get_remote_for_branch() {
+    local branch="$1"
+    # List all remotes safely using a while-read loop
+    while IFS= read -r remote; do
+        # Check if a ref like refs/remotes/<remote>/<branch> exists
+        if git show-ref --verify --quiet "refs/remotes/$remote/$branch"; then
+            echo "$remote"
+            return
+        fi
+    done < <(git remote)
+    # Fallback – if no remote matches, assume the conventional name
+    echo "origin"
+}
+
+# ------------------------------
+# Staleness check
+# ------------------------------
+is_stale() {
+    local branch="$1"
+    # Define a cutoff: 30 days ago in seconds
+    local cutoff=$(( $(date +%s) - 30*24*60*60 ))
+    # Get the commit timestamp of the most recent commit on the branch
+    local branch_date
+    # Use the remote determined at runtime to fetch the commit date
+    local remote
+    remote=$(get_remote_for_branch "$branch")
+    branch_date=$(git log -1 --format=%ct -- "refs/remotes/$remote/$branch" 2>/dev/null || echo 0)
+    if (( branch_date < cutoff )); then
+        return 0  # stale
+    else
+        return 1  # not stale
+    fi
+}
+
 # ------------------------------
 # Argument parsing
 # ------------------------------
@@ -53,9 +89,9 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit 1
 fi
 
-# Ensure the remote 'origin' exists
-if ! git remote get-url origin >/dev/null 2>&1; then
-    echo "Error: Remote 'origin' does not exist in this repository." >&2
+# Ensure at least one remote exists (we will use the first one found)
+if ! git remote | grep -q .; then
+    echo "Error: No remote configured in this repository." >&2
     exit 1
 fi
 
@@ -88,8 +124,15 @@ for branch in "${affected_branches[@]}"; do
         continue
     fi
 
-    echo "Would delete remote branch: $branch"
+    # Check if the branch is stale (no recent activity)
+    if ! is_stale "$branch"; then
+        echo "Skipping non‑stale branch: $branch"
+        continue
+    fi
+
+    remote_name=$(get_remote_for_branch "$branch")
+    echo "Would delete stale remote branch: $branch (via remote '$remote_name')"
     if $EXECUTE; then
-        git push origin --delete "$branch"
+        git push "$remote_name" --delete "$branch"
     fi
 done
