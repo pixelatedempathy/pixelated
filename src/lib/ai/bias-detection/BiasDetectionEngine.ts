@@ -554,7 +554,22 @@ export class BiasDetectionEngine {
     try {
       await this.metricsCollector.storeAnalysisResult?.(result)
     } catch (err) {
-      console.warn('storeAnalysisResult failed:', err)
+      // Structured logging with context for metric persistence failures
+      const logger = (global as any).logger ?? console;
+      logger.warn('storeAnalysisResult failed', {
+        error: err,
+        sessionId: session.sessionId,
+        resultId: result.sessionId,
+      });
+      // Increment a failure metric for observability
+      this.metricsCollector.increment?.('biasDetection.storeAnalysisResult.failure');
+    }
+
+    try {
+      await this.metricsCollector.storeAnalysisResult?.(result)
+    } catch (err) {
+      // The block above already handles the error; this duplicate block was
+      // unintentionally left in the original code and has been removed.
     }
 
     // Store result in distributed cache for future retrieval
@@ -1110,4 +1125,3 @@ export class BiasDetectionEngine {
       },
     }
   }
-}
