@@ -537,8 +537,9 @@ export class BiasDetectionEngine {
               ((maskedDemo as Record<string, unknown>)['age'] as string) ??
               '',
             gender:
-              ((maskedDemo as Record<string, unknown>)['gender'] as string) ??
-              '',
+              ((maskedDemo as Record<string, unknown>)[
+                'gender'
+              ] as string) ?? '',
             ethnicity:
               ((maskedDemo as Record<string, unknown>)[
                 'ethnicity'
@@ -549,27 +550,6 @@ export class BiasDetectionEngine {
               ] as string) ?? '',
           }
           : { age: '', gender: '', ethnicity: '', primaryLanguage: '' },
-    }
-
-    try {
-      await this.metricsCollector.storeAnalysisResult?.(result)
-    } catch (err) {
-      // Structured logging with context for metric persistence failures
-      const logger = (global as any).logger ?? console;
-      logger.warn('storeAnalysisResult failed', {
-        error: err,
-        sessionId: session.sessionId,
-        resultId: result.sessionId,
-      });
-      // Increment a failure metric for observability
-      this.metricsCollector.increment?.('biasDetection.storeAnalysisResult.failure');
-    }
-
-    try {
-      await this.metricsCollector.storeAnalysisResult?.(result)
-    } catch (err) {
-      // The block above already handles the error; this duplicate block was
-      // unintentionally left in the original code and has been removed.
     }
 
     // Store result in distributed cache for future retrieval
