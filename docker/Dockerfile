@@ -5,7 +5,7 @@ FROM node:24.12.0-bookworm-slim AS base
 # Builder stage: install deps and run the static build
 FROM base AS builder
 ENV NODE_ENV=production
-ARG PNPM_VERSION=10.28.1
+ARG PNPM_VERSION=10.28.2
 WORKDIR /app
 
 # Install build-time tools and enable pnpm
@@ -50,7 +50,7 @@ RUN ( \
     INSTALL_SUCCESS=0; \
     for i in 1 2 3; do \
     echo "Attempt $i: Installing dependencies with frozen lockfile..." && \
-    if pnpm install --frozen-lockfile; then \
+    if pnpm install --frozen-lockfile --prod=false; then \
     echo "✅ Dependencies installed successfully" && \
     INSTALL_SUCCESS=1 && \
     break; \
@@ -59,7 +59,7 @@ RUN ( \
     echo "❌ Attempt $i failed (exit code: $EXIT_CODE)" && \
     if [ $i -eq 3 ]; then \
     echo "⚠️ Falling back to --no-frozen-lockfile to resolve lockfile mismatch..." && \
-    if pnpm install --no-frozen-lockfile; then \
+    if pnpm install --no-frozen-lockfile --prod=false; then \
     echo "✅ Dependencies installed with lockfile update" && \
     INSTALL_SUCCESS=1 && \
     break; \
@@ -98,7 +98,7 @@ WORKDIR /app
 
 # Install pnpm and build tools needed for native dependencies (like better-sqlite3)
 # Update all packages first to patch known vulnerabilities
-ARG PNPM_VERSION=10.28.1
+ARG PNPM_VERSION=10.28.2
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     make \
