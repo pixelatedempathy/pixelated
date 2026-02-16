@@ -107,23 +107,24 @@ const Button = React.forwardRef<
 
       const isDisabled = disabled || loading
 
-      // Guard against activation when disabled
+      // Invoke any onClick handler supplied via props
       const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (isDisabled) {
           e.preventDefault()
           e.stopPropagation()
           return
         }
-        // Invoke any onClick handler supplied via props
         props.onClick?.(e)
       }
 
+      // Fix: properly forward onKeyDown and handle default prevention when disabled
       const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
-        if (!isDisabled) return
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (isDisabled && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault()
           e.stopPropagation()
+          return
         }
+        props.onKeyDown?.(e)
       }
 
       return (
