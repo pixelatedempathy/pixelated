@@ -103,9 +103,28 @@ const Button = React.forwardRef<
         type: _type,
         disabled: _disabled,
         ...anchorProps
-      } = commonProps as { type?: string; disabled?: boolean }
+      } = commonProps
 
       const isDisabled = disabled || loading
+
+      // Guard against activation when disabled
+      const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (isDisabled) {
+          e.preventDefault()
+          e.stopPropagation()
+          return
+        }
+        // Invoke any onClick handler supplied via props
+        props.onClick?.(e)
+      }
+
+      const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
+        if (!isDisabled) return
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      }
 
       return (
         <a
@@ -116,13 +135,8 @@ const Button = React.forwardRef<
           aria-disabled={isDisabled}
           tabIndex={isDisabled ? -1 : undefined}
           {...anchorProps}
-          onClick={(e) => {
-            if (isDisabled) {
-              e.preventDefault()
-              return
-            }
-            props.onClick?.(e as any)
-          }}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
         >
           {contentWrapper}
         </a>
