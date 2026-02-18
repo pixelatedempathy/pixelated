@@ -395,16 +395,21 @@ export class TrainingWebSocketServer {
       return
     }
 
-    // TODO: Validate user has permission to send coaching notes
-    // - Only supervisors/observers should be able to send coaching notes
-    // - Verify role matches 'supervisor' or 'observer'
-
+    // Validate user has permission to send coaching notes
+    // Only supervisors and observers should be able to send coaching notes
     if (client.role !== 'supervisor' && client.role !== 'observer') {
       logger.warn('Unauthorized coaching note attempt', {
         clientId,
         userId: client.userId,
         role: client.role
       })
+      this.sendError(client.ws, 'Unauthorized: Only supervisors and observers can send coaching notes')
+      return
+    }
+
+    // Validate coaching note content is not empty
+    if (!payload.content || payload.content.trim() === '') {
+      this.sendError(client.ws, 'Coaching note content cannot be empty')
       return
     }
 
