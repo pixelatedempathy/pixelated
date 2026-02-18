@@ -1,7 +1,24 @@
 // Use server-only helper for MongoDB types
+import { getServerMongoExports } from "@/lib/server-only/mongodb-types"
+import { mongoClient } from "./mongoClient"
+import { createAuditLog } from "../audit"
 import type { ObjectId } from '@/lib/server-only/mongodb-types'
 
-let ObjectId: unknown
+let ObjectIdClass: any
+
+async function initMongo() {
+  if (!ObjectIdClass) {
+    const exports = await getServerMongoExports();
+    ObjectIdClass = exports.ObjectId;
+  }
+}
+
+async function getCollection() {
+  await initMongo();
+  await mongoClient.connect();
+  return mongoClient.db.collection<UserSettings>("user_settings");
+}
+
 
 // MongoDB-based user settings types
 
@@ -53,10 +70,10 @@ export interface UpdateUserSettings {
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  const collection = await getCollection();
+  return await collection.findOne({ user_id: userId });
 }
 
 /**
@@ -64,10 +81,37 @@ export async function getUserSettings(
  */
 export async function createUserSettings(
   settings: NewUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  const collection = await getCollection();
+
+  const newSettings: UserSettings = {
+    ...settings,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const result = await collection.insertOne(newSettings as any);
+
+  const createdSettings = {
+    ...newSettings,
+    _id: result.insertedId,
+  };
+
+  await createAuditLog(
+    settings.user_id,
+    "settings_created",
+    settings.user_id,
+    "user_settings",
+    {
+      theme: settings.theme,
+      language: settings.language,
+      ipAddress: request?.headers.get("x-forwarded-for") || undefined,
+      userAgent: request?.headers.get("user-agent") || undefined
+    }
+  );
+
+  return createdSettings as UserSettings;
 }
 
 /**
@@ -76,10 +120,44 @@ export async function createUserSettings(
 export async function updateUserSettings(
   userId: string,
   updates: UpdateUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  const collection = await getCollection();
+
+  const flattenedUpdates: Record<string, any> = {
+    ...updates,
+    updatedAt: new Date()
+  };
+
+  if (updates.preferences) {
+    delete flattenedUpdates.preferences;
+    Object.keys(updates.preferences).forEach(key => {
+      flattenedUpdates[`preferences.${key}`] = (updates.preferences as any)[key];
+    });
+  }
+
+  const result = await collection.findOneAndUpdate(
+    { user_id: userId },
+    { $set: flattenedUpdates },
+    { returnDocument: "after", upsert: true }
+  );
+
+  if (!result) {
+    throw new Error("Failed to update user settings");
+  }
+
+  await createAuditLog(
+    userId,
+    "settings_updated",
+    userId,
+    "user_settings",
+    {
+      updates,
+      userAgent: request?.headers.get("user-agent") || undefined
+    }
+  );
+
+  return result as UserSettings;
 }
 
 /**
