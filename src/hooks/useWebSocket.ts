@@ -78,7 +78,8 @@ export function useWebSocket({
 
       ws.onmessage = (event) => {
         try {
-          const message: WebSocketMessage = JSON.parse(event.data) as unknown as WebSocketMessage
+          const rawData = JSON.parse(event.data)
+          const message = rawData as WebSocketMessage
           let wsError: Error
 
           switch (message.type) {
@@ -101,6 +102,17 @@ export function useWebSocket({
               setError(wsError)
               if (onError) {
                 onError(wsError)
+              }
+              break
+            default:
+              if (onMessage) {
+                // Forward non-standard message types as system messages
+                onMessage({
+                  id: crypto.randomUUID(),
+                  role: 'system',
+                  content: event.data,
+                  timestamp: Date.now(),
+                } as ChatMessage)
               }
               break
           }

@@ -21,12 +21,32 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
     url: 'ws://localhost:8080', // Placeholder URL
     sessionId: 'placeholder-session', // Placeholder session ID
     onMessage: (message) => {
-      // TODO: This is where incoming messages (lastMessage equivalent) would be handled
-      console.log('Received message:', message)
-      // For now, parsing and handling logic from the original useEffect [lastMessage] needs to be adapted here
-      // Example of how you might handle based on your previous logic:
-      // const data = JSON.parse(message.content) as unknown // Assuming message.content is the stringified data
-      // switch (data.type) { ... }
+      try {
+        const data = JSON.parse(message.content)
+        switch (data.type) {
+          case 'notifications':
+            setNotifications(data.data)
+            setUnreadCount(
+              data.data.filter(
+                (n: NotificationItem) => n.status === NotificationStatus.PENDING,
+              ).length,
+            )
+            break
+          case 'unreadCount':
+            setUnreadCount(data.count)
+            break
+          case 'notification':
+            setNotifications((prev) => [data.data, ...prev])
+            if (data.data.status === NotificationStatus.PENDING) {
+              setUnreadCount((prev) => prev + 1)
+            }
+            break
+          default:
+            console.log('Unhandled notification message type:', data.type)
+        }
+      } catch (error) {
+        console.error('Failed to parse notification message:', error)
+      }
     },
   })
 
@@ -112,6 +132,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
+              aria-label="Close"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -149,6 +170,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleMarkAsRead(notification.id)}
+                          aria-label="Mark as read"
                         >
                           <Check className="h-4 w-4" />
                         </Button>
@@ -157,6 +179,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                         variant="ghost"
                         size="icon"
                         onClick={() => handleDismiss(notification.id)}
+                        aria-label="Dismiss"
                       >
                         <X className="h-4 w-4" />
                       </Button>
