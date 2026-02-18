@@ -1646,9 +1646,8 @@ describe('BiasDetectionEngine', { timeout: 20000 }, () => {
       await biasEngine.analyzeSession(
         sessionDataToTherapeuticSession(mockSessionData),
       )
-
-      // TODO: Bug - storeAnalysisResult is not called when auditLogging is true.
-      expect(storeAnalysisResultSpy).not.toHaveBeenCalled()
+      // Should store analysis results even when auditLogging is enabled
+      expect(storeAnalysisResultSpy).toHaveBeenCalled()
     })
 
     it('should not create audit logs when disabled', async () => {
