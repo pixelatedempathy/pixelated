@@ -1,4 +1,5 @@
 !/.env.example
+.planning/
 opencode.json
 *$py.class
 **/.venv/
