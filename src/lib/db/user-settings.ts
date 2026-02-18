@@ -1,9 +1,10 @@
 // Use server-only helper for MongoDB types
-import type { ObjectId } from '@/lib/server-only/mongodb-types'
+import type { ObjectId } from "../server-only/mongodb-types"
+import { mongoClient } from "./mongoClient"
+import { createAuditLog } from "../audit/log"
+import { getServerMongoExports } from "../server-only/mongodb-types"
 
-let ObjectId: unknown
-
-// MongoDB-based user settings types
+let ObjectId: any
 
 export interface UserSettings {
   _id?: ObjectId
@@ -50,13 +51,45 @@ export interface UpdateUserSettings {
 }
 
 /**
+ * Helper to get the MongoDB collection
+ */
+async function getCollection() {
+  if (!ObjectId) {
+    const exports = await getServerMongoExports()
+    ObjectId = exports.ObjectId
+  }
+  await mongoClient.connect()
+  return mongoClient.db.collection<UserSettings>("user_settings")
+}
+
+/**
+ * Utility to flatten nested objects for MongoDB dot-notation updates
+ */
+function flattenObject(obj: any, prefix = ""): Record<string, any> {
+  return Object.keys(obj).reduce((acc: any, k: string) => {
+    const pre = prefix.length ? prefix + "." : ""
+    if (
+      typeof obj[k] === "object" &&
+      obj[k] !== null &&
+      !Array.isArray(obj[k]) &&
+      !(obj[k] instanceof Date)
+    ) {
+      Object.assign(acc, flattenObject(obj[k], pre + k))
+    } else {
+      acc[pre + k] = obj[k]
+    }
+    return acc
+  }, {})
+}
+
+/**
  * Get user settings
  */
 export async function getUserSettings(
-  _userId: string,
+  userId: string,
 ): Promise<UserSettings | null> {
-  // TODO: Replace with MongoDB implementation
-  return null
+  const collection = await getCollection()
+  return collection.findOne({ user_id: userId })
 }
 
 /**
@@ -64,10 +97,35 @@ export async function getUserSettings(
  */
 export async function createUserSettings(
   settings: NewUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return settings as UserSettings
+  const collection = await getCollection()
+  const now = new Date()
+  const fullSettings = {
+    ...settings,
+    createdAt: now,
+    updatedAt: now,
+  }
+
+  const result = await collection.insertOne(fullSettings as any)
+  const createdSettings = {
+    ...fullSettings,
+    _id: result.insertedId,
+  } as UserSettings
+
+  // Log the event for HIPAA compliance
+  await createAuditLog(
+    settings.user_id,
+    "user_settings_created",
+    createdSettings._id!.toString(),
+    "user_settings",
+    {
+      ipAddress: request?.headers.get("x-forwarded-for") || undefined,
+      userAgent: request?.headers.get("user-agent") || undefined,
+    },
+  )
+
+  return createdSettings
 }
 
 /**
@@ -76,10 +134,47 @@ export async function createUserSettings(
 export async function updateUserSettings(
   userId: string,
   updates: UpdateUserSettings,
-  _request?: Request,
+  request?: Request,
 ): Promise<UserSettings> {
-  // TODO: Replace with MongoDB implementation
-  return { ...updates, user_id: userId } as UserSettings
+  const collection = await getCollection()
+
+  // Flatten updates for nested preferences
+  const flattenedUpdates: any = flattenObject(updates)
+  flattenedUpdates.updatedAt = new Date()
+
+  const result = await collection.findOneAndUpdate(
+    { user_id: userId },
+    { $set: flattenedUpdates },
+    { returnDocument: "after", upsert: true },
+  )
+
+  // In MongoDB driver v7.1.0 (and generally v6+), findOneAndUpdate returns the document directly
+  // However, some versions/configurations might return an object with a .value property.
+  // Based on other files in this repo, it seems we might need .value.
+  // But let's see what actually happens.
+
+  const updatedDoc = (result as any).value || result
+
+  if (!updatedDoc) {
+    throw new Error("Failed to update user settings")
+  }
+
+  const updatedSettings = updatedDoc as UserSettings
+
+  // Log the event for HIPAA compliance
+  await createAuditLog(
+    userId,
+    "user_settings_updated",
+    updatedSettings._id!.toString(),
+    "user_settings",
+    {
+      updates,
+      ipAddress: request?.headers.get("x-forwarded-for") || undefined,
+      userAgent: request?.headers.get("user-agent") || undefined,
+    },
+  )
+
+  return updatedSettings
 }
 
 /**
