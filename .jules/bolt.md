@@ -1,0 +1,3 @@
+## 2025-05-15 - Synchronous Mock Failures in Parallel Promises
+**Learning:** When parallelizing multiple method calls (e.g., using `Promise.all`), if a mock object is missing one of those methods, the call will throw a synchronous `TypeError`. If this happens inside the `Promise.all` array expression, it bypasses individual `.catch()` handlers and crashes the entire operation.
+**Action:** Wrap potentially missing mock method calls in `Promise.resolve().then(() => this.service.method())` to ensure synchronous errors are converted into rejections that can be caught by the promise chain, maintaining robustness against incomplete test mocks.
