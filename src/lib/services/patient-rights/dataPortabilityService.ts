@@ -29,7 +29,6 @@ function getAuditLogger(context: string): AuditLoggingService {
 
 import { mongoClient as db } from '../../db/mongoClient'
 import { v4 as uuidv4 } from 'uuid'
-import { dataExportDAO } from '../../../services/mongodb.dao'
 
 // Replace missing permissions module with a stub
 // Setup logging
@@ -212,9 +211,7 @@ export async function createDataExportRequest(
 ): Promise<ExportResponse> {
   try {
     // Verify patient exists
-    const patient = await mockDb.patient.findUnique({
-      where: { id: input.patientId },
-    })
+        const patient = await db.db.collection("patient_profiles").findOne({ patient_id: input.patientId })
 
     if (!patient) {
       logger.warn('Export request for non-existent patient', {
@@ -261,7 +258,7 @@ export async function createDataExportRequest(
     }
 
     // Save to database
-    await dataExportDAO.create({
+        await db.db.collection("data_exports").insertOne({
       id: exportRequest.id,
       patientId: exportRequest.patientId,
       requestedBy: exportRequest.requestedBy,
@@ -271,6 +268,7 @@ export async function createDataExportRequest(
       priority: exportRequest.priority,
       status: exportRequest.status,
       createdAt: exportRequest.createdAt,
+      files: [],
     })
 
     // Trigger export job (will be processed asynchronously)
@@ -455,10 +453,15 @@ async function queueExportJob(exportRequest: DataExportRequest): Promise<void> {
     })
 
     // Update status to failed
-    await dataExportDAO.update(exportRequest.id, {
-      status: 'failed',
-      error: 'Failed to queue export job',
-    })
+        await db.db.collection("data_exports").updateOne(
+      { id: exportRequest.id },
+      {
+        $set: {
+          status: 'failed',
+          error: 'Failed to queue export job',
+        },
+      },
+    )
 
     throw error
   }
@@ -472,14 +475,21 @@ async function processExportRequest(exportId: string): Promise<void> {
   logger.info('Starting export processing', { exportId })
 
   try {
-    // Mark as processing
-    await dataExportDAO.update(exportId, {
-      status: 'processing',
-      startedAt: new Date(),
-    })
+        // Mark as processing
+    await db.db.collection("data_exports").updateOne(
+      { id: exportId },
+      {
+        $set: {
+          status: 'processing',
+          startedAt: new Date(),
+        },
+      },
+    )
 
     // Fetch export details
-    const exportData = await dataExportDAO.findById(exportId)
+    const exportData = (await db.db
+      .collection("data_exports")
+      .findOne({ id: exportId })) as unknown as DataExportRequest | null
 
     if (!exportData) {
       throw new Error(`Export request ${exportId} not found`)
@@ -513,15 +523,20 @@ async function processExportRequest(exportId: string): Promise<void> {
         exportFiles.push(file)
 
         // Save file record
-        await dataExportDAO.addFile(exportId, file)
+        await db.db.collection("data_exports").updateOne({ id: exportId }, { $push: { files: file } as any })
       }
     }
 
     // Mark as completed
-    await dataExportDAO.update(exportId, {
-      status: 'completed',
-      completedAt: new Date(),
-    })
+    await db.db.collection("data_exports").updateOne(
+      { id: exportId },
+      {
+        $set: {
+          status: 'completed',
+          completedAt: new Date(),
+        },
+      },
+    )
 
     logger.info('Export processing completed', {
       exportId,
@@ -538,10 +553,15 @@ async function processExportRequest(exportId: string): Promise<void> {
     })
 
     // Mark as failed
-    await dataExportDAO.update(exportId, {
-      status: 'failed',
-      error: error instanceof Error ? String(error) : String(error),
-    })
+    await db.db.collection("data_exports").updateOne(
+      { id: exportId },
+      {
+        $set: {
+          status: 'failed',
+          error: error instanceof Error ? String(error) : String(error),
+        },
+      },
+    )
   }
 }
 
@@ -563,11 +583,9 @@ async function verifyPatientDataAccess(
     // 4. User is an admin
 
     // For this example, we'll use a simple implementation
-    const patientUser = await mockDb.patientUser.findFirst({
-      where: {
-        patientId,
-        userId,
-      },
+        const patientUser = await db.db.collection("patient_users").findOne({
+      patientId,
+      userId,
     })
 
     if (patientUser) {
@@ -581,11 +599,9 @@ async function verifyPatientDataAccess(
     }
 
     // Check if user is a provider with access
-    const providerAccess = await mockDb.providerPatientAccess.findFirst({
-      where: {
-        patientId,
-        providerId: userId,
-      },
+    const providerAccess = await db.db.collection("provider_patient_access").findOne({
+      patientId,
+      providerId: userId,
     })
 
     if (providerAccess) {
@@ -612,16 +628,14 @@ async function verifyPatientDataAccess(
  */
 async function isAdminUser(userId: string): Promise<boolean> {
   try {
-    const user = await mockDb.user.findUnique({
-      where: { id: userId },
-      include: { roles: true },
-    })
+        const user = await db.db.collection("users").findOne({ id: userId })
 
     if (!user) {
       return false
     }
 
-    return user.roles.some((role: { name: string }) => role.name === 'admin')
+    // Check role property
+    return user.role === "admin"
   } catch (error: unknown) {
     logger.error('Error checking admin status', {
       error: error instanceof Error ? String(error) : String(error),
@@ -640,8 +654,10 @@ export async function getDataExportRequest(
   id: string,
 ): Promise<DataExportRequest | null> {
   try {
-    const exportRequest = await dataExportDAO.findById(id)
-    return exportRequest as unknown as DataExportRequest
+        const exportRequest = (await db.db
+      .collection("data_exports")
+      .findOne({ id })) as unknown as DataExportRequest | null
+    return exportRequest
   } catch (error: unknown) {
     logger.error('Error in getDataExportRequest', {
       error: error instanceof Error ? String(error) : String(error),
@@ -676,8 +692,12 @@ export async function getAllDataExportRequests(filters?: {
       }
     }
 
-    const results = await dataExportDAO.findAll(dbFilters)
-    return results as unknown as DataExportRequest[]
+        const results = (await db.db
+      .collection("data_exports")
+      .find(dbFilters)
+      .sort({ createdAt: -1 })
+      .toArray()) as unknown as DataExportRequest[]
+    return results
   } catch (error: unknown) {
     logger.error('Error in getAllDataExportRequests', {
       error: error instanceof Error ? String(error) : String(error),
@@ -714,12 +734,17 @@ async function updateExportStatus(
   options?: { errorMessage?: string },
 ): Promise<void> {
   try {
-    await dataExportDAO.update(exportId, {
-      status,
-      error: options?.errorMessage,
-      ...(status === 'completed' ? { completedAt: new Date() } : {}),
-      ...(status === 'processing' ? { startedAt: new Date() } : {}),
-    })
+        await db.db.collection("data_exports").updateOne(
+      { id: exportId },
+      {
+        $set: {
+          status,
+          error: options?.errorMessage,
+          ...(status === "completed" ? { completedAt: new Date() } : {}),
+          ...(status === "processing" ? { startedAt: new Date() } : {}),
+        },
+      },
+    )
 
     logger.info(`Export status updated to ${status}`, { exportId })
   } catch (error: unknown) {
@@ -1014,66 +1039,3 @@ export async function downloadDataExport(
   }
 }
 
-// Mock database types for the missing models
-interface Patient {
-  id: string
-  name: string
-}
-
-interface PatientUser {
-  id: string
-  patientId: string
-  userId: string
-}
-
-interface ProviderPatientAccess {
-  id: string
-  patientId: string
-  providerId: string
-}
-
-interface User {
-  id: string
-  roles: { name: string }[]
-}
-
-// Define types for mock database operations
-interface MockDbFindParams {
-  where: Record<string, unknown>
-  include?: Record<string, unknown>
-}
-
-// Extend the db object with mock implementations
-const mockDb = {
-  ...db,
-  // Add mock implementations for missing models
-  patient: {
-    findUnique: (_params: MockDbFindParams): Promise<Patient | null> => {
-      return Promise.resolve({
-        id: _params.where['id'] as string,
-        name: 'Test Patient',
-      })
-    },
-  },
-  // dataExport and exportFile removed - now using dataExportDAO
-  patientUser: {
-    findFirst: (_params: { where: unknown }): Promise<PatientUser | null> => {
-      return Promise.resolve(null)
-    },
-  },
-  providerPatientAccess: {
-    findFirst: (_params: {
-      where: unknown
-    }): Promise<ProviderPatientAccess | null> => {
-      return Promise.resolve(null)
-    },
-  },
-  user: {
-    findUnique: (_params: MockDbFindParams): Promise<User | null> => {
-      return Promise.resolve({
-        id: _params.where['id'] as string,
-        roles: [{ name: 'user' }],
-      })
-    },
-  },
-}
