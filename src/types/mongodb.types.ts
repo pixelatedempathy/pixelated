@@ -124,6 +124,17 @@ export interface ExportFile {
   createdAt: Date
 }
 
+export interface AuditLog {
+  _id?: MongoObjectId
+  id?: string
+  userId: MongoObjectId
+  action: string
+  resourceId: string
+  resourceType?: string
+  metadata: Record<string, unknown>
+  createdAt: Date
+}
+
 export interface DataExport {
   _id?: MongoObjectId
   id?: string
