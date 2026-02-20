@@ -1,11 +1,26 @@
 import { describe, it, expect, vi, beforeEach, afterEach, type MockedClass } from 'vitest'
+
+// Mock dependencies first
+vi.mock('../../../logging/build-safe-logger', () => {
+  const mockLogger = {
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
+    debug: vi.fn(),
+  }
+  return {
+    createBuildSafeLogger: vi.fn(() => mockLogger),
+    getStartupLogger: vi.fn(() => mockLogger),
+  }
+})
+
 import { ContactService } from '../ContactService'
 import { EmailService } from '../../email/EmailService'
 import { createBuildSafeLogger } from '../../../logging/build-safe-logger'
 
 const logger = createBuildSafeLogger('contact-service')
 
-// Mock dependencies
+// Mock other dependencies
 vi.mock('@/lib/services/email/EmailService')
 vi.mock('@/lib/utils/logger')
 vi.mock('@/lib/utils/server', () => ({
@@ -18,8 +33,9 @@ vi.mock('@/lib/utils', async () => {
     generateId: vi.fn(() => 'test-id'),
   }
 })
-vi.mock('fs/promises', () => ({
-  readFile: vi.fn().mockResolvedValue(`
+vi.mock('fs/promises', () => {
+  const mockFS = {
+    readFile: vi.fn().mockResolvedValue(`
     <!DOCTYPE html>
     <html>
       <head><title>{{subject}}</title></head>
@@ -31,14 +47,19 @@ vi.mock('fs/promises', () => ({
       </body>
     </html>
   `),
-  writeFile: vi.fn().mockResolvedValue(undefined),
-  mkdir: vi.fn().mockResolvedValue(undefined),
-  access: vi.fn().mockResolvedValue(undefined),
-  stat: vi
-    .fn()
-    .mockResolvedValue({ isFile: () => true, isDirectory: () => false }),
-  readdir: vi.fn().mockResolvedValue([]),
-}))
+    writeFile: vi.fn().mockResolvedValue(undefined),
+    mkdir: vi.fn().mockResolvedValue(undefined),
+    access: vi.fn().mockResolvedValue(undefined),
+    stat: vi
+      .fn()
+      .mockResolvedValue({ isFile: () => true, isDirectory: () => false }),
+    readdir: vi.fn().mockResolvedValue([]),
+  }
+  return {
+    ...mockFS,
+    default: mockFS,
+  }
+})
 
 const mockEmailService = {
   upsertTemplate: vi.fn().mockResolvedValue(undefined),
@@ -56,7 +77,9 @@ describe('ContactService', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    MockedEmailService.mockImplementation(() => mockEmailService as unknown)
+    MockedEmailService.mockImplementation(function (this: any) {
+      return mockEmailService as unknown as typeof EmailService
+    })
     contactService = new ContactService()
   })
 

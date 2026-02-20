@@ -1,56 +1,45 @@
 import type { APIContext } from 'astro'
 import { ContactService } from '../../lib/services/contact/ContactService'
 import { createBuildSafeLogger } from '../../lib/logging/build-safe-logger'
+import {
+  rateLimitMiddleware,
+  getClientIp,
+} from '../../lib/auth/middleware'
 
-// Mock ContactService
-class ContactService {
-  async submitContactForm(
-    _contactFormData: any,
-    _submissionContext: any,
-  ): Promise<{ success: boolean; submissionId: string }> {
-    return { success: true, submissionId: 'mock-submission-id' }
-  }
-}
 // Create a scoped logger for this endpoint
 const logger = createBuildSafeLogger('api/contact')
 
 // Initialize contact service
 const contactService = new ContactService()
 
-// Helper function to get client IP address
-function getClientIP(request: Request): string {
-  // Check for forwarded headers (common in production with load balancers)
-  const forwardedFor = request.headers.get('x-forwarded-for')
-  if (forwardedFor) {
-    const ip =
-      (typeof forwardedFor === 'string' ? forwardedFor : '')
-        .split(',')[0]
-        ?.trim?.() || ''
-    logger.debug('Extracted IP from x-forwarded-for', { forwardedFor, ip })
-    return ip
-  } else {
-    logger.debug('No x-forwarded-for header present', { forwardedFor })
-  }
-
-  const realIP = request.headers.get('x-real-ip')
-  if (realIP) {
-    logger.debug('Extracted IP from x-real-ip', { realIP })
-    return realIP
-  }
-
-  const remoteAddr = request.headers.get('x-remote-addr')
-  if (remoteAddr) {
-    logger.debug('Extracted IP from x-remote-addr', { remoteAddr })
-    return remoteAddr
-  }
-
-  // Fallback to localhost for development
-  logger.debug('Falling back to localhost IP', { fallback: '127.0.0.1' })
-  return '127.0.0.1'
-}
+const ALLOWED_ORIGINS = [
+  'https://pixelatedempathy.com',
+  process.env.ALLOWED_ORIGIN || 'http://localhost:4321',
+]
 
 export const POST = async ({ request }: APIContext) => {
   const startTime = Date.now()
+
+  // Set CORS headers
+  const origin = request.headers.get('origin')
+  const corsOrigin =
+    origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': corsOrigin,
+    'Vary': 'Origin',
+  }
+
+  // Apply rate limiting (3 attempts per hour for contact form)
+  const rateLimitResult = await rateLimitMiddleware(request, 'contact', 3, 60)
+  if (!rateLimitResult.success) {
+    const response = rateLimitResult.response!
+    // Add CORS headers to rate limit response
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      response.headers.set(key, value)
+    })
+    return response
+  }
 
   try {
     // Parse request data
@@ -61,7 +50,7 @@ export const POST = async ({ request }: APIContext) => {
       logger.warn('Invalid JSON in contact form request', {
         error: error instanceof Error ? String(error) : 'Unknown error',
         userAgent: request.headers.get('user-agent'),
-        ip: getClientIP(request),
+        ip: getClientIp(request),
       })
 
       return new Response(
@@ -72,7 +61,10 @@ export const POST = async ({ request }: APIContext) => {
         }),
         {
           status: 400,
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders,
+          },
         },
       )
     }
@@ -92,7 +84,10 @@ export const POST = async ({ request }: APIContext) => {
           }),
           {
             status: 400,
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders,
+            },
           },
         )
       }
@@ -108,7 +103,7 @@ export const POST = async ({ request }: APIContext) => {
 
     // Prepare submission context
     const submissionContext = {
-      ipAddress: getClientIP(request),
+      ipAddress: getClientIp(request),
       userAgent: request.headers.get('user-agent') || 'Unknown',
       timestamp: new Date().toISOString(),
     }
@@ -132,7 +127,10 @@ export const POST = async ({ request }: APIContext) => {
     // Return response
     return new Response(JSON.stringify(result), {
       status: result.success ? 200 : 400,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...corsHeaders,
+      },
     })
   } catch (error: unknown) {
     const duration = Date.now() - startTime
@@ -141,7 +139,7 @@ export const POST = async ({ request }: APIContext) => {
       error: error instanceof Error ? String(error) : 'Unknown error',
       stack: error instanceof Error ? (error as Error)?.stack : undefined,
       userAgent: request.headers.get('user-agent'),
-      ip: getClientIP(request),
+      ip: getClientIp(request),
       duration: `${duration}ms`,
     })
 
@@ -153,21 +151,29 @@ export const POST = async ({ request }: APIContext) => {
       }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...corsHeaders,
+        },
       },
     )
   }
 }
 
 // OPTIONS endpoint for CORS preflight
-export const OPTIONS = async () => {
+export const OPTIONS = async ({ request }: APIContext) => {
+  const origin = request.headers.get('origin')
+  const corsOrigin =
+    origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+
   return new Response(null, {
-    status: 200,
+    status: 204,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': corsOrigin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Max-Age': '86400',
+      'Vary': 'Origin',
     },
   })
 }

@@ -237,9 +237,9 @@ export class ContactService {
         }
       }
 
-      if (error instanceof Error && String(error).startsWith('SECURITY:')) {
+      if (error instanceof Error && error.message.startsWith('SECURITY:')) {
         logger.warn('Contact form security check failed', {
-          error: String(error),
+          error: error.message,
           context,
         })
 
