@@ -54,7 +54,16 @@ export const POST = async ({ request, clientAddress }: { request: Request; clien
 
     // Sanitize input
     const email = sanitizeInput(body.email)
-    const { password, role = 'user' } = body
+    const { password } = body
+
+    /**
+     * SECURITY: Role Escalation Prevention
+     *
+     * We hardcode the role to 'patient' for all public registrations.
+     * This prevents attackers from specifying 'admin' or 'therapist' roles
+     * in the request body to gain unauthorized privileges.
+     */
+    const role = 'patient'
 
     // Validate email
     if (!isValidEmail(email)) {
