@@ -5,10 +5,10 @@ import { useWebSocket } from '@/hooks/useWebSocket'
 
 // Mock useWebSocket hook
 vi.mock('@/hooks/useWebSocket', () => ({
-  useWebSocket: () => ({
+  useWebSocket: vi.fn(() => ({
     sendMessage: vi.fn(),
     lastMessage: null,
-  }),
+  })),
 }))
 
 describe('notificationCenter', () => {
