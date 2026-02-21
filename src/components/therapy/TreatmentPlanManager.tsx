@@ -592,6 +592,7 @@ const TreatmentPlanManager: FC = () => {
               type="button"
               variant="ghost"
               size="icon"
+              aria-label="Remove objective"
               onClick={() => removeObjective(goalIndex, objIndex, isEdit)}
               className="text-red-500 hover:text-red-700 md:col-span-1 place-self-center md:place-self-auto h-9 w-9"
             >
@@ -659,6 +660,7 @@ const TreatmentPlanManager: FC = () => {
               type="button"
               variant="ghost"
               size="icon"
+              aria-label="Remove goal"
               onClick={() => removeGoal(index, isEdit)}
               className="text-red-500 hover:text-red-700 md:col-span-1 place-self-center md:place-self-auto"
             >
