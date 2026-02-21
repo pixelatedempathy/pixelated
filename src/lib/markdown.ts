@@ -19,15 +19,26 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
+  // Escape HTML special characters to prevent XSS
+  const escapedText = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
   // Replace Markdown formatting with HTML
-  return text
+  return escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (match, label, url) => {
+      // Validate URL to prevent javascript: and other dangerous protocols
+      const trimmedUrl = url.trim()
+      const isDangerous = /^(javascript|data|vbscript|file):/i.test(trimmedUrl)
+      const safeUrl = isDangerous ? '#' : trimmedUrl
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${label}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
