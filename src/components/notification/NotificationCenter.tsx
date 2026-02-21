@@ -91,6 +91,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
         variant="ghost"
         size="icon"
         className="relative"
+        aria-label="Toggle notifications"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Bell className="h-5 w-5" />
@@ -111,6 +112,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="Close notifications"
               onClick={() => setIsOpen(false)}
             >
               <X className="h-4 w-4" />
@@ -148,6 +150,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                         <Button
                           variant="ghost"
                           size="icon"
+                          aria-label="Mark as read"
                           onClick={() => handleMarkAsRead(notification.id)}
                         >
                           <Check className="h-4 w-4" />
@@ -156,6 +159,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                       <Button
                         variant="ghost"
                         size="icon"
+                        aria-label="Dismiss notification"
                         onClick={() => handleDismiss(notification.id)}
                       >
                         <X className="h-4 w-4" />
