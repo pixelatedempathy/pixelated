@@ -249,7 +249,7 @@ export default function SyntheticTherapyDemo() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" aria-label="More information">
                 <InfoIcon className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
