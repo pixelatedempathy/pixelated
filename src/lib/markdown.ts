@@ -10,6 +10,40 @@ const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
 /**
+ * Escape HTML special characters to prevent XSS
+ * @param text Raw text
+ * @returns Escaped HTML
+ */
+export function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }
+  return text.replace(/[&<>"']/g, (m) => map[m])
+}
+
+/**
+ * Check if a URL is safe to use in an anchor tag
+ * @param url URL to check
+ * @returns True if the URL is safe
+ */
+function isSafeUrl(url: string): boolean {
+  // Disallow spaces as they could be used for attribute injection
+  if (/\s/.test(url)) {
+    return false
+  }
+  // Allow relative URLs, fragments, and common safe protocols
+  return (
+    /^(\/|#|\.)/.test(url) ||
+    /^(https?|mailto|tel):/i.test(url) ||
+    !url.includes(':')
+  )
+}
+
+/**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
  * @returns HTML with basic formatting
@@ -19,15 +53,19 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
+  // First escape all HTML tags to prevent XSS
+  const escapedText = escapeHtml(text)
+
   // Replace Markdown formatting with HTML
-  return text
+  return escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (match, linkText, url) => {
+      // Validate URL to prevent javascript: and other dangerous protocols
+      const safeUrl = isSafeUrl(url) ? url : '#'
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkText}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
@@ -153,6 +191,7 @@ export function markdownToHtml(text: string): string {
 }
 
 export default {
+  escapeHtml,
   simpleMarkdownToHtml,
   stripMarkdown,
   extractHeadings,
