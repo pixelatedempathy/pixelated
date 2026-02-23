@@ -10,6 +10,40 @@ const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
 /**
+ * Helper to escape HTML special characters to prevent XSS
+ */
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+/**
+ * Helper to validate if a URL is safe to use in a link
+ */
+function isSafeUrl(url: string): boolean {
+  const lowercaseUrl = url.toLowerCase().trim()
+  // Block dangerous protocols
+  const blockedProtocols = /^(javascript|data|vbscript|file):/i
+  if (blockedProtocols.test(lowercaseUrl.replace(/\s/g, ''))) {
+    return false
+  }
+  // Allow common safe protocols or relative paths
+  return (
+    lowercaseUrl.startsWith('/') ||
+    lowercaseUrl.startsWith('./') ||
+    lowercaseUrl.startsWith('../') ||
+    lowercaseUrl.startsWith('http://') ||
+    lowercaseUrl.startsWith('https://') ||
+    lowercaseUrl.startsWith('mailto:') ||
+    lowercaseUrl.startsWith('tel:')
+  )
+}
+
+/**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
  * @returns HTML with basic formatting
@@ -19,15 +53,23 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
+  // First, escape HTML special characters to prevent XSS
+  const escapedText = escapeHtml(text)
+
   // Replace Markdown formatting with HTML
-  return text
+  return escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (match, linkText, url) => {
+      // Decode entities for URL validation, but keep them encoded in the href
+      const decodedUrl = url.replace(/&quot;/g, '"').replace(/&amp;/g, '&')
+      if (isSafeUrl(decodedUrl)) {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${linkText}</a>`
+      }
+      // Return plain text link if URL is unsafe
+      return `${linkText} (${url})`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
