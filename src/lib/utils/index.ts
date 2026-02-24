@@ -14,15 +14,19 @@ export function generateId(): string {
 }
 
 /**
- * Creates a memoized version of a function that caches its results
+ * Creates a memoized version of a function that caches its results.
+ * Optimized to use reference-based caching for single-argument functions
+ * and avoid expensive stringification for large inputs.
  * @param fn Function to memoize
  * @returns Memoized function with same signature
  */
 export function memoize<T extends (...args: unknown[]) => unknown>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>();
+  const cache = new Map<unknown, ReturnType<T>>();
 
   return ((...args: Parameters<T>): ReturnType<T> => {
-    const key = JSON.stringify(args);
+    // Use the first argument directly as key for single-argument functions
+    // This enables reference-based caching for objects and high performance for primitives/large strings
+    const key = args.length === 1 ? args[0] : JSON.stringify(args);
 
     if (cache.has(key)) {
       return cache.get(key) as ReturnType<T>;

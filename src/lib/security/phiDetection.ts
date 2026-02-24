@@ -40,12 +40,15 @@ class Anonymizer {
   }
 }
 
-// Mock implementation of memoize since the original is not accessible
+// Mock implementation of memoize since the original is not accessible.
+// Optimized to avoid expensive stringification of large clinical texts.
 function memoize<T extends (...args: unknown[]) => unknown>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>()
+  const cache = new Map<unknown, ReturnType<T>>()
 
   return ((...args: Parameters<T>): ReturnType<T> => {
-    const key = JSON.stringify(args)
+    // Use the first argument directly as key for single-argument functions
+    // This is significantly faster for large clinical texts than JSON.stringify
+    const key = args.length === 1 ? args[0] : JSON.stringify(args)
 
     if (cache.has(key)) {
       return cache.get(key) as ReturnType<T>

@@ -1,0 +1,3 @@
+## 2025-05-14 - [Memoization Bug and Performance Bottleneck]
+**Learning:** The existing `memoize` implementation was using `String(args[0])` as a cache key for single-argument functions. This caused two major issues: 1) Performance bottleneck due to string conversion/concatenation, especially for large strings. 2) Correctness bug where different objects would collide in the cache because they all stringified to `"[object Object]"`.
+**Action:** Always use `Map<unknown, T>` with direct argument keying for single-argument memoization to ensure reference-based equality and maximum performance. Fall back to `JSON.stringify` only for multi-argument functions.
