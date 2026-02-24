@@ -196,7 +196,8 @@ export const PasswordInputWithStrength = forwardRef<
                 }
                 aria-valuemin={0}
                 aria-valuemax={100}
-                aria-label={`Password strength: ${strength}`}
+                aria-label="Password strength"
+                aria-valuetext={strength}
               >
                 <div
                   className={`strength-${strength}`}
@@ -220,6 +221,7 @@ export const PasswordInputWithStrength = forwardRef<
                 <div
                   className="password-feedback text-xs mt-1"
                   style={{ color }}
+                  aria-live="polite"
                 >
                   {feedback}
                 </div>
