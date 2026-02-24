@@ -1040,16 +1040,19 @@ export function randomElement<T>(array: readonly T[]): T | undefined {
 }
 
 /**
- * Creates a memoized version of a function with a simple cache
+ * Creates a memoized version of a function with a simple cache.
+ * Optimized to use reference-based caching for single-argument functions
+ * and avoid expensive stringification for large inputs.
  * @param fn - Function to memoize
  * @returns Memoized function
  */
 export function memoize<T extends (...args: unknown[]) => unknown>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>();
+  const cache = new Map<unknown, ReturnType<T>>();
 
   return ((...args: Parameters<T>): ReturnType<T> => {
-    // Use faster cache key generation for better performance
-    const key = args.length === 1 ? String(args[0]) : JSON.stringify(args);
+    // Use the first argument directly as key for single-argument functions
+    // This enables reference-based caching for objects and high performance for primitives/large strings
+    const key = args.length === 1 ? args[0] : JSON.stringify(args);
 
     if (cache.has(key)) {
       return cache.get(key) as ReturnType<T>;
