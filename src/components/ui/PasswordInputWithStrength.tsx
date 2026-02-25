@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react'
 import { usePasswordStrength } from '../../hooks/usePasswordStrength'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, AlertTriangle } from 'lucide-react'
 
 interface PasswordInputWithStrengthProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -38,7 +38,7 @@ export const PasswordInputWithStrength = forwardRef<
       required = false,
       onChange,
       onBlur,
-      value = '',
+      value,
       ...props
     },
     ref,
@@ -46,6 +46,7 @@ export const PasswordInputWithStrength = forwardRef<
     const [isFocused, setIsFocused] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [valueState, setValueState] = useState('')
+    const [capsLockActive, setCapsLockActive] = useState(false)
 
     // Use the controlled value prop if provided, otherwise use internal state
     const currentValue = typeof value === 'string' ? value : valueState
@@ -67,8 +68,12 @@ export const PasswordInputWithStrength = forwardRef<
       setShowPassword((prev) => !prev)
     }
 
-    // Add haptic feedback on mobile when typing
-    const handleKeyDown = () => {
+    // Add haptic feedback on mobile when typing and detect Caps Lock
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.getModifierState) {
+        setCapsLockActive(e.getModifierState('CapsLock'))
+      }
+
       if (
         'vibrate' in navigator &&
         isFocused &&
@@ -76,6 +81,20 @@ export const PasswordInputWithStrength = forwardRef<
         strength === 'weak'
       ) {
         navigator.vibrate(5) // Very subtle vibration for weak passwords
+      }
+
+      if (props.onKeyDown) {
+        props.onKeyDown(e)
+      }
+    }
+
+    const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.getModifierState) {
+        setCapsLockActive(e.getModifierState('CapsLock'))
+      }
+
+      if (props.onKeyUp) {
+        props.onKeyUp(e)
       }
     }
 
@@ -91,7 +110,7 @@ export const PasswordInputWithStrength = forwardRef<
       }
     }
 
-    const isShowingError = !!error && !isFocused
+    const isShowingError = !!error
 
     // Determine aria-describedby value
     const getAriaDescribedBy = () => {
@@ -137,6 +156,7 @@ export const PasswordInputWithStrength = forwardRef<
               onFocus={handleFocus}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}
+              onKeyUp={handleKeyUp}
               aria-invalid={isShowingError ? 'true' : 'false'}
               aria-describedby={getAriaDescribedBy()}
               {...props}
@@ -159,6 +179,18 @@ export const PasswordInputWithStrength = forwardRef<
             )}
 
             {isShowingError && <div className="error-label">{error}</div>}
+
+            {capsLockActive && !isShowingError && (
+              <div
+                className="absolute right-12 top-1/2 transform -translate-y-1/2 text-amber-500 flex items-center pointer-events-none"
+                aria-live="polite"
+              >
+                <AlertTriangle className="h-4 w-4 mr-1" />
+                <span className="text-[10px] font-bold uppercase hidden sm:inline">
+                  Caps Lock
+                </span>
+              </div>
+            )}
           </div>
 
           {isShowingError && (
@@ -196,6 +228,7 @@ export const PasswordInputWithStrength = forwardRef<
                 }
                 aria-valuemin={0}
                 aria-valuemax={100}
+                aria-valuetext={strength.charAt(0).toUpperCase() + strength.slice(1)}
                 aria-label={`Password strength: ${strength}`}
               >
                 <div
@@ -220,6 +253,7 @@ export const PasswordInputWithStrength = forwardRef<
                 <div
                   className="password-feedback text-xs mt-1"
                   style={{ color }}
+                  aria-live="polite"
                 >
                   {feedback}
                 </div>
