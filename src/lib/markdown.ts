@@ -10,6 +10,33 @@ const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
 /**
+ * Escape HTML special characters to prevent XSS
+ */
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+/**
+ * Validate if a URL is safe to use in a link to prevent javascript: and other malicious protocols
+ */
+function isSafeUrl(url: string): boolean {
+  const lowercaseUrl = url.toLowerCase().trim()
+  return (
+    lowercaseUrl.startsWith('http://') ||
+    lowercaseUrl.startsWith('https://') ||
+    lowercaseUrl.startsWith('mailto:') ||
+    lowercaseUrl.startsWith('tel:') ||
+    lowercaseUrl.startsWith('/') ||
+    lowercaseUrl.startsWith('#')
+  )
+}
+
+/**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
  * @returns HTML with basic formatting
@@ -19,21 +46,30 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
+  // First, escape HTML to prevent XSS
+  const escapedText = escapeHtml(text)
+
   // Replace Markdown formatting with HTML
-  return text
+  return escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (_match, text, url) => {
+      // Whitelist URL protocols
+      const safeUrl = isSafeUrl(url) ? url : '#'
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${text}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
     })
     .split('\n\n')
-    .map((para) => (para ? `<p>${para}</p>` : ''))
+    .map((para) => {
+      if (!para) return ''
+      // Don't wrap headings in <p> tags
+      if (para.startsWith('<h')) return para
+      return `<p>${para}</p>`
+    })
     .join('')
 }
 
