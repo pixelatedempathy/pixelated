@@ -346,9 +346,25 @@ export class BiasDetectionEngine {
     let evaluation: import('./types').EvaluationAnalysisResult
     const recs: string[] = []
 
-    try {
-      preprocessing = await this.pythonService.runPreprocessingAnalysis(session)
-    } catch {
+    // Parallelize independent analysis layers to reduce latency
+    const results = await Promise.allSettled([
+      this.pythonService.runPreprocessingAnalysis(session),
+      this.pythonService.runModelLevelAnalysis(session),
+      this.pythonService.runInteractiveAnalysis(session),
+      this.pythonService.runEvaluationAnalysis(session),
+    ])
+
+    // Process results with deterministic order for fallbacks and recommendations
+    const [
+      preprocessingRes,
+      modelLevelRes,
+      interactiveRes,
+      evaluationRes,
+    ] = results
+
+    if (preprocessingRes.status === 'fulfilled') {
+      preprocessing = preprocessingRes.value
+    } else {
       const fb = this.fallbackLayer()
       preprocessing = {
         biasScore: fb.biasScore,
@@ -384,9 +400,10 @@ export class BiasDetectionEngine {
       }
       recs.push('Preprocessing analysis unavailable; using fallback results')
     }
-    try {
-      modelLevel = await this.pythonService.runModelLevelAnalysis(session)
-    } catch {
+
+    if (modelLevelRes.status === 'fulfilled') {
+      modelLevel = modelLevelRes.value
+    } else {
       const fb = this.fallbackLayer()
       modelLevel = {
         biasScore: fb.biasScore,
@@ -412,9 +429,10 @@ export class BiasDetectionEngine {
       }
       recs.push('Model-level analysis unavailable; using fallback results')
     }
-    try {
-      interactive = await this.pythonService.runInteractiveAnalysis(session)
-    } catch {
+
+    if (interactiveRes.status === 'fulfilled') {
+      interactive = interactiveRes.value
+    } else {
       const fb = this.fallbackLayer()
       interactive = {
         biasScore: fb.biasScore,
@@ -430,9 +448,10 @@ export class BiasDetectionEngine {
       }
       recs.push('Interactive analysis unavailable; using fallback results')
     }
-    try {
-      evaluation = await this.pythonService.runEvaluationAnalysis(session)
-    } catch {
+
+    if (evaluationRes.status === 'fulfilled') {
+      evaluation = evaluationRes.value
+    } else {
       const fb = this.fallbackLayer()
       evaluation = {
         biasScore: fb.biasScore,
