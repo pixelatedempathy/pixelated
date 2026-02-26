@@ -10,6 +10,33 @@ const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
 /**
+ * Escape HTML special characters to prevent XSS
+ */
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  }
+  return text.replace(/[&<>"']/g, (m) => map[m])
+}
+
+/**
+ * Check if a URL uses a safe protocol
+ */
+function isSafeUrl(url: string): boolean {
+  const protocol = url.split(':')[0].toLowerCase()
+  return (
+    ['http', 'https', 'mailto', 'tel'].includes(protocol) ||
+    url.startsWith('/') ||
+    url.startsWith('.') ||
+    !url.includes(':')
+  )
+}
+
+/**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
  * @returns HTML with basic formatting
@@ -19,21 +46,30 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
-  // Replace Markdown formatting with HTML
-  return text
+  // Escape HTML first, then replace Markdown formatting with HTML
+  const html = escapeHtml(text)
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (match, linkText, url) => {
+      const safeUrl = isSafeUrl(url) ? url : '#'
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkText}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
     })
+
+  return html
     .split('\n\n')
-    .map((para) => (para ? `<p>${para}</p>` : ''))
+    .map((para) => {
+      if (!para) return ''
+      // Don't wrap headings in paragraph tags
+      if (para.trim().startsWith('<h')) {
+        return para
+      }
+      return `<p>${para}</p>`
+    })
     .join('')
 }
 
