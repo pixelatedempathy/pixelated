@@ -10,6 +10,48 @@ const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
 /**
+ * Escapes HTML special characters to prevent XSS
+ * @param text Unsafe text
+ * @returns Safely escaped text
+ */
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  }
+  return text.replace(/[&<>"']/g, (m) => map[m])
+}
+
+/**
+ * Sanitizes a URL to prevent javascript: and other malicious schemes
+ * @param url The URL to sanitize
+ * @returns A safe URL or '#' if the input was unsafe
+ */
+function sanitizeUrl(url: string): string {
+  const trimmedUrl = url.trim()
+  // Block javascript:, data:, and vbscript: protocols
+  if (/^(?:javascript|data|vbscript):/i.test(trimmedUrl)) {
+    return '#'
+  }
+  // Allow only safe protocols or relative paths
+  if (/^(?:https?|mailto|tel):/i.test(trimmedUrl) || /^[\/#?]/.test(trimmedUrl)) {
+    return trimmedUrl
+  }
+  // If it doesn't match any known safe pattern but isn't explicitly blocked,
+  // it might be a relative path without a leading slash or a malformed URL.
+  // We'll allow it but it's risky if it's not a relative path.
+  // A safer approach is to only allow what we know is safe.
+  if (/^[a-zA-Z0-9]/.test(trimmedUrl) && !trimmedUrl.includes(':')) {
+    return trimmedUrl
+  }
+
+  return '#'
+}
+
+/**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
  * @returns HTML with basic formatting
@@ -19,21 +61,35 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
-  // Replace Markdown formatting with HTML
-  return text
+  // 1. Escape HTML first to prevent XSS from raw tags
+  let escapedText = escapeHtml(text)
+
+  // 2. Apply Markdown transformations on the escaped text
+  let html = escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (match, linkText, url) => {
+      const safeUrl = sanitizeUrl(url)
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkText}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
     })
+
+  // 3. Process paragraphs, taking care not to wrap headings
+  return html
     .split('\n\n')
-    .map((para) => (para ? `<p>${para}</p>` : ''))
+    .map((para) => {
+      const trimmedPara = para.trim()
+      if (!trimmedPara) return ''
+      // If it starts with a heading tag, don't wrap it in <p>
+      if (/^<h[1-6]>/.test(trimmedPara)) {
+        return trimmedPara
+      }
+      return `<p>${trimmedPara}</p>`
+    })
     .join('')
 }
 
