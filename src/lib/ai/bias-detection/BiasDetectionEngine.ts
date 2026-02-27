@@ -328,6 +328,114 @@ export class BiasDetectionEngine {
     )
   }
 
+  /**
+   * Private helper methods for fallback results in case of service failures
+   */
+  private getPreprocessingFallback(): import('./types').PreprocessingAnalysisResult {
+    const fb = this.fallbackLayer()
+    return {
+      biasScore: fb.biasScore,
+      linguisticBias: {
+        genderBiasScore: 0,
+        racialBiasScore: 0,
+        ageBiasScore: 0,
+        culturalBiasScore: 0,
+        biasedTerms: [],
+        sentimentAnalysis: {
+          overallSentiment: 0,
+          emotionalValence: 0,
+          subjectivity: 0,
+          demographicVariations: {},
+        },
+      },
+      representationAnalysis: {
+        demographicDistribution: {},
+        underrepresentedGroups: [],
+        overrepresentedGroups: [],
+        diversityIndex: 0,
+        intersectionalityAnalysis: [],
+      },
+      dataQualityMetrics: {
+        completeness: 1,
+        consistency: 1,
+        accuracy: 1,
+        timeliness: 1,
+        validity: 1,
+        missingDataByDemographic: {},
+      },
+      recommendations: [],
+    }
+  }
+
+  private getModelLevelFallback(): import('./types').ModelLevelAnalysisResult {
+    const fb = this.fallbackLayer()
+    return {
+      biasScore: fb.biasScore,
+      fairnessMetrics: {
+        demographicParity: 0,
+        equalizedOdds: 0,
+        equalOpportunity: 0,
+        calibration: 0,
+        individualFairness: 0,
+        counterfactualFairness: 0,
+      },
+      performanceMetrics: {
+        accuracy: 0,
+        precision: 0,
+        recall: 0,
+        f1Score: 0,
+        auc: 0,
+        calibrationError: 0,
+        demographicBreakdown: {},
+      },
+      groupPerformanceComparison: [],
+      recommendations: [],
+    }
+  }
+
+  private getInteractiveFallback(): import('./types').InteractiveAnalysisResult {
+    const fb = this.fallbackLayer()
+    return {
+      biasScore: fb.biasScore,
+      counterfactualAnalysis: {
+        scenariosAnalyzed: 0,
+        biasDetected: false,
+        consistencyScore: 0,
+        problematicScenarios: [],
+      },
+      featureImportance: [],
+      whatIfScenarios: [],
+      recommendations: [],
+    }
+  }
+
+  private getEvaluationFallback(): import('./types').EvaluationAnalysisResult {
+    const fb = this.fallbackLayer()
+    return {
+      biasScore: fb.biasScore,
+      huggingFaceMetrics: {
+        toxicity: 0.05,
+        bias: 0.15,
+        regard: {},
+        stereotype: 0.1,
+        fairness: 0.85,
+      },
+      customMetrics: {
+        therapeuticBias: 0.1,
+        culturalSensitivity: 0.1,
+        professionalEthics: 0.1,
+        patientSafety: 0.1,
+      },
+      temporalAnalysis: {
+        trendDirection: 'stable',
+        changeRate: 0,
+        seasonalPatterns: [],
+        interventionEffectiveness: [],
+      },
+      recommendations: [],
+    }
+  }
+
   async analyzeSession(session: SessionData): Promise<AnalysisResult> {
     this.ensureInitialized()
     if (!session) {
@@ -346,117 +454,46 @@ export class BiasDetectionEngine {
     let evaluation: import('./types').EvaluationAnalysisResult
     const recs: string[] = []
 
-    try {
-      preprocessing = await this.pythonService.runPreprocessingAnalysis(session)
-    } catch {
-      const fb = this.fallbackLayer()
-      preprocessing = {
-        biasScore: fb.biasScore,
-        linguisticBias: {
-          genderBiasScore: 0,
-          racialBiasScore: 0,
-          ageBiasScore: 0,
-          culturalBiasScore: 0,
-          biasedTerms: [],
-          sentimentAnalysis: {
-            overallSentiment: 0,
-            emotionalValence: 0,
-            subjectivity: 0,
-            demographicVariations: {},
-          },
-        },
-        representationAnalysis: {
-          demographicDistribution: {},
-          underrepresentedGroups: [],
-          overrepresentedGroups: [],
-          diversityIndex: 0,
-          intersectionalityAnalysis: [],
-        },
-        dataQualityMetrics: {
-          completeness: 1,
-          consistency: 1,
-          accuracy: 1,
-          timeliness: 1,
-          validity: 1,
-          missingDataByDemographic: {},
-        },
-        recommendations: [],
-      }
+    // Parallelize all four analysis layers using Promise.allSettled
+    // This reduces the latency from the sum of all layer processing times
+    // to the maximum of any single layer's processing time.
+    // Wrapped in async closures to catch synchronous errors from malformed mocks/services.
+    const results = await Promise.allSettled([
+      (async () => await this.pythonService.runPreprocessingAnalysis(session))(),
+      (async () => await this.pythonService.runModelLevelAnalysis(session))(),
+      (async () => await this.pythonService.runInteractiveAnalysis(session))(),
+      (async () => await this.pythonService.runEvaluationAnalysis(session))(),
+    ])
+
+    // Process preprocessing result
+    if (results[0].status === 'fulfilled') {
+      preprocessing = results[0].value
+    } else {
+      preprocessing = this.getPreprocessingFallback()
       recs.push('Preprocessing analysis unavailable; using fallback results')
     }
-    try {
-      modelLevel = await this.pythonService.runModelLevelAnalysis(session)
-    } catch {
-      const fb = this.fallbackLayer()
-      modelLevel = {
-        biasScore: fb.biasScore,
-        fairnessMetrics: {
-          demographicParity: 0,
-          equalizedOdds: 0,
-          equalOpportunity: 0,
-          calibration: 0,
-          individualFairness: 0,
-          counterfactualFairness: 0,
-        },
-        performanceMetrics: {
-          accuracy: 0,
-          precision: 0,
-          recall: 0,
-          f1Score: 0,
-          auc: 0,
-          calibrationError: 0,
-          demographicBreakdown: {},
-        },
-        groupPerformanceComparison: [],
-        recommendations: [],
-      }
+
+    // Process modelLevel result
+    if (results[1].status === 'fulfilled') {
+      modelLevel = results[1].value
+    } else {
+      modelLevel = this.getModelLevelFallback()
       recs.push('Model-level analysis unavailable; using fallback results')
     }
-    try {
-      interactive = await this.pythonService.runInteractiveAnalysis(session)
-    } catch {
-      const fb = this.fallbackLayer()
-      interactive = {
-        biasScore: fb.biasScore,
-        counterfactualAnalysis: {
-          scenariosAnalyzed: 0,
-          biasDetected: false,
-          consistencyScore: 0,
-          problematicScenarios: [],
-        },
-        featureImportance: [],
-        whatIfScenarios: [],
-        recommendations: [],
-      }
+
+    // Process interactive result
+    if (results[2].status === 'fulfilled') {
+      interactive = results[2].value
+    } else {
+      interactive = this.getInteractiveFallback()
       recs.push('Interactive analysis unavailable; using fallback results')
     }
-    try {
-      evaluation = await this.pythonService.runEvaluationAnalysis(session)
-    } catch {
-      const fb = this.fallbackLayer()
-      evaluation = {
-        biasScore: fb.biasScore,
-        huggingFaceMetrics: {
-          toxicity: 0.05,
-          bias: 0.15,
-          regard: {},
-          stereotype: 0.1,
-          fairness: 0.85,
-        },
-        customMetrics: {
-          therapeuticBias: 0.1,
-          culturalSensitivity: 0.1,
-          professionalEthics: 0.1,
-          patientSafety: 0.1,
-        },
-        temporalAnalysis: {
-          trendDirection: 'stable',
-          changeRate: 0,
-          seasonalPatterns: [],
-          interventionEffectiveness: [],
-        },
-        recommendations: [],
-      }
+
+    // Process evaluation result
+    if (results[3].status === 'fulfilled') {
+      evaluation = results[3].value
+    } else {
+      evaluation = this.getEvaluationFallback()
       recs.push('Evaluation analysis unavailable; using fallback results')
     }
 
