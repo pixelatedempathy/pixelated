@@ -5,6 +5,7 @@
  * sensitive data to ensure HIPAA compliance.
  */
 
+import { deepClone } from '../../utils'
 import type { TherapeuticSession } from './types'
 
 /**
@@ -16,7 +17,7 @@ import type { TherapeuticSession } from './types'
 export function anonymizeSession(
   session: TherapeuticSession,
 ): TherapeuticSession {
-  const anonymizedSession = JSON.parse(JSON.stringify(session) as unknown)
+  const anonymizedSession = deepClone(session)
 
   // Anonymize participant demographics
   anonymizedSession.participantDemographics = {

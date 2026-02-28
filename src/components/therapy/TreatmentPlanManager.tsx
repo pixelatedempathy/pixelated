@@ -39,6 +39,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { toast } from 'sonner'
 import { PlusCircle, Trash2 } from 'lucide-react'
+import { deepClone } from '@/lib/utils'
 
 const formatDate = (dateString?: string | Date) => {
   if (!dateString) {
@@ -112,7 +113,7 @@ const TreatmentPlanManager: FC = () => {
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [newPlanData, setNewPlanData] = useState<FormNewPlanData>(
-    JSON.parse(JSON.stringify(initialNewPlanData) as unknown),
+    deepClone(initialNewPlanData),
   )
 
   const [planToDelete, setPlanToDelete] = useState<TreatmentPlan | null>(null)
@@ -258,8 +259,8 @@ const TreatmentPlanManager: FC = () => {
     }
 
     if (isEdit && editingPlanData) {
-      const updatedGoals = JSON.parse(
-        JSON.stringify(editingPlanData.goals || []),
+      const updatedGoals = deepClone(
+        editingPlanData.goals || [],
       ) as EditableGoal[]
       if (updatedGoals[goalIndex]) {
         updatedGoals[goalIndex].objectives = [
@@ -271,8 +272,8 @@ const TreatmentPlanManager: FC = () => {
         )
       }
     } else {
-      const updatedGoals = JSON.parse(
-        JSON.stringify(newPlanData.goals),
+      const updatedGoals = deepClone(
+        newPlanData.goals,
       ) as ClientSideNewGoal[]
       if (updatedGoals[goalIndex]) {
         updatedGoals[goalIndex].objectives = [
@@ -295,8 +296,8 @@ const TreatmentPlanManager: FC = () => {
     isEdit = false,
   ) => {
     if (isEdit && editingPlanData) {
-      const updatedGoals = JSON.parse(
-        JSON.stringify(editingPlanData.goals || []),
+      const updatedGoals = deepClone(
+        editingPlanData.goals || [],
       ) as EditableGoal[]
       if (
         updatedGoals[goalIndex] &&
@@ -310,8 +311,8 @@ const TreatmentPlanManager: FC = () => {
         )
       }
     } else {
-      const updatedNewGoals = JSON.parse(
-        JSON.stringify(newPlanData.goals),
+      const updatedNewGoals = deepClone(
+        newPlanData.goals,
       ) as ClientSideNewGoal[]
       if (
         updatedNewGoals[goalIndex] &&
@@ -336,8 +337,8 @@ const TreatmentPlanManager: FC = () => {
     isEdit = false,
   ) => {
     if (isEdit && editingPlanData) {
-      const updatedGoals = JSON.parse(
-        JSON.stringify(editingPlanData.goals || []),
+      const updatedGoals = deepClone(
+        editingPlanData.goals || [],
       ) as EditableGoal[]
       if (updatedGoals[goalIndex] && updatedGoals[goalIndex].objectives) {
         updatedGoals[goalIndex].objectives.splice(objIndex, 1)
@@ -346,8 +347,8 @@ const TreatmentPlanManager: FC = () => {
         )
       }
     } else {
-      const updatedNewGoals = JSON.parse(
-        JSON.stringify(newPlanData.goals),
+      const updatedNewGoals = deepClone(
+        newPlanData.goals,
       ) as ClientSideNewGoal[]
       if (updatedNewGoals[goalIndex] && updatedNewGoals[goalIndex].objectives) {
         updatedNewGoals[goalIndex].objectives.splice(objIndex, 1)
@@ -402,7 +403,7 @@ const TreatmentPlanManager: FC = () => {
       }
       await fetchPlans()
       setIsCreateModalOpen(false)
-      setNewPlanData(JSON.parse(JSON.stringify(initialNewPlanData) as unknown))
+      setNewPlanData(deepClone(initialNewPlanData))
       toast.success('Treatment plan created successfully!')
     } catch (err: unknown) {
       const errorMessage =
@@ -494,10 +495,8 @@ const TreatmentPlanManager: FC = () => {
         ? new Date(plan.startDate).toISOString().split('T')[0]
         : '',
       goals: plan.goals
-        ? JSON.parse(
-            JSON.stringify(
-              plan.goals.map((g) => ({ ...g, objectives: g.objectives || [] })),
-            ),
+        ? deepClone(
+            plan.goals.map((g) => ({ ...g, objectives: g.objectives || [] })),
           )
         : [], // Deep copy goals, ensure objectives is array
     } as FormUpdatePlanData) // Cast to ensure type compatibility
@@ -505,7 +504,7 @@ const TreatmentPlanManager: FC = () => {
   }
 
   const openCreateModal = () => {
-    setNewPlanData(JSON.parse(JSON.stringify(initialNewPlanData) as unknown)) // Reset with deep copy
+    setNewPlanData(deepClone(initialNewPlanData)) // Reset with deep copy
     setIsCreateModalOpen(true)
   }
 

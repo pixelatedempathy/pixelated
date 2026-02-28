@@ -1040,23 +1040,43 @@ export function randomElement<T>(array: readonly T[]): T | undefined {
 }
 
 /**
- * Creates a memoized version of a function with a simple cache
+ * Creates a memoized version of a function with an identity-based cache.
+ * Uses a single Map for single-argument functions and nested Maps for multi-argument functions
+ * to avoid expensive stringification and provide correct results for different types that stringify the same.
+ *
  * @param fn - Function to memoize
  * @returns Memoized function
  */
-export function memoize<T extends (...args: unknown[]) => unknown>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>();
+export function memoize<T extends (...args: any[]) => any>(fn: T): T {
+  // Use a more robust check for single-argument functions
+  // We can't rely solely on fn.length due to default/rest parameters
+  const rootCache = new Map<any, any>();
 
-  return ((...args: Parameters<T>): ReturnType<T> => {
-    // Use faster cache key generation for better performance
-    const key = args.length === 1 ? String(args[0]) : JSON.stringify(args);
-
-    if (cache.has(key)) {
-      return cache.get(key) as ReturnType<T>;
+  return ((...args: any[]): any => {
+    if (args.length === 0) {
+      const key = "__no_args__";
+      if (rootCache.has(key)) return rootCache.get(key);
+      const result = fn();
+      rootCache.set(key, result);
+      return result;
     }
 
-    const result = fn(...args) as ReturnType<T>;
-    cache.set(key, result);
+    let currentCache = rootCache;
+    for (let i = 0; i < args.length - 1; i++) {
+      const arg = args[i];
+      if (!currentCache.has(arg)) {
+        currentCache.set(arg, new Map());
+      }
+      currentCache = currentCache.get(arg);
+    }
+
+    const lastArg = args[args.length - 1];
+    if (currentCache.has(lastArg)) {
+      return currentCache.get(lastArg);
+    }
+
+    const result = fn(...args);
+    currentCache.set(lastArg, result);
     return result;
   }) as T;
 }
