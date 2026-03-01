@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react'
+import React, { useState, forwardRef, useEffect } from 'react'
 import { usePasswordStrength } from '../../hooks/usePasswordStrength'
 import { Eye, EyeOff } from 'lucide-react'
 
@@ -51,6 +51,13 @@ export const PasswordInputWithStrength = forwardRef<
     const currentValue = typeof value === 'string' ? value : valueState
 
     const { strength, feedback, color } = usePasswordStrength(currentValue)
+
+    // Debounce feedback to reduce noisy announcements
+    const [debouncedFeedback, setDebouncedFeedback] = useState(feedback)
+    useEffect(() => {
+      const handler = setTimeout(() => setDebouncedFeedback(feedback), 500)
+      return () => clearTimeout(handler)
+    }, [feedback])
 
     // Handle controlled and uncontrolled input cases
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,13 +167,13 @@ export const PasswordInputWithStrength = forwardRef<
               </button>
             )}
 
-            {isShowingError && <div className="error-label">{error}</div>}
+            {isShowingError && <div className="error-label md:hidden">{error}</div>}
           </div>
 
           {isShowingError && (
             <div
               id={`${name}-error`}
-              className="text-red-500 text-sm mt-1"
+              className={`${isFocused ? 'hidden md:block' : ''} text-red-500 text-sm mt-1`}
               role="alert"
             >
               {error}
@@ -224,8 +231,10 @@ export const PasswordInputWithStrength = forwardRef<
                   className="password-feedback text-xs mt-1"
                   style={{ color }}
                   aria-live="polite"
+                  aria-atomic="true"
+                  role="status"
                 >
-                  {feedback}
+                  {debouncedFeedback}
                 </div>
               )}
             </>

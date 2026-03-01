@@ -23,7 +23,7 @@ describe('PasswordInputWithStrength', () => {
       />
     )
     // Use selector to avoid matching the button title
-    expect(screen.getByLabelText('Password', { selector: 'input' })).toBeDefined()
+    expect(screen.getByLabelText('Password', { selector: 'input' })).toBeInTheDocument()
   })
 
   it('shows error even when focused', () => {
@@ -38,10 +38,9 @@ describe('PasswordInputWithStrength', () => {
     const input = screen.getByLabelText('Password', { selector: 'input' })
     fireEvent.focus(input)
 
-    // Error label should still be present (Palette enhancement)
-    const errorLabel = container.querySelector('.error-label')
-    expect(errorLabel).not.toBeNull()
-    expect(errorLabel?.textContent).toBe('Invalid password')
+    // Error label should be present and announced as an alert
+    const errorAlert = screen.getByRole('alert')
+    expect(errorAlert).toHaveTextContent('Invalid password')
 
     // aria-invalid should be true
     expect(input.getAttribute('aria-invalid')).toBe('true')
