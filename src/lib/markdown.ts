@@ -9,6 +9,42 @@ const CODE_REGEX = /`(.*?)`/g
 const LINK_REGEX = /\[([^\]]+)\]\(([^)]+)\)/g
 const HEADING_REGEX = /^(#{1,6})\s+(.+)$/gm
 
+import { escapeHtml } from './utils'
+
+/**
+ * Sanitize URL to prevent javascript: and other malicious schemes
+ * @param url URL to sanitize
+ * @returns Sanitized URL
+ */
+export function sanitizeUrl(url: string): string {
+  if (!url) return '#'
+
+  // Decode potential HTML entities to check the protocol
+  const decodedUrl = url
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+    .trim()
+    .toLowerCase()
+
+  // Whitelist safe protocols
+  if (
+    decodedUrl.startsWith('http://') ||
+    decodedUrl.startsWith('https://') ||
+    decodedUrl.startsWith('mailto:') ||
+    decodedUrl.startsWith('tel:') ||
+    decodedUrl.startsWith('/') ||
+    decodedUrl.startsWith('./') ||
+    decodedUrl.startsWith('../')
+  ) {
+    return url
+  }
+
+  return '#'
+}
+
 /**
  * Simple Markdown to HTML conversion for basic formatting
  * @param text Markdown text
@@ -19,15 +55,18 @@ export function simpleMarkdownToHtml(text: string): string {
     return ''
   }
 
-  // Replace Markdown formatting with HTML
-  return text
+  // 1. Escape HTML to prevent XSS
+  const escapedText = escapeHtml(text)
+
+  // 2. Replace Markdown formatting with HTML
+  return escapedText
     .replace(BOLD_REGEX, '<strong>$1</strong>')
     .replace(ITALIC_REGEX, '<em>$1</em>')
     .replace(CODE_REGEX, '<code>$1</code>')
-    .replace(
-      LINK_REGEX,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
-    )
+    .replace(LINK_REGEX, (_, text, url) => {
+      const safeUrl = sanitizeUrl(url)
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${text}</a>`
+    })
     .replace(HEADING_REGEX, (_, level, content) => {
       const headingLevel = Math.min(level.length, 6)
       return `<h${headingLevel}>${content}</h${headingLevel}>`
