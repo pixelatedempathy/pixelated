@@ -65,7 +65,7 @@ definitions:
           - corepack enable
           - corepack prepare pnpm@latest --activate
           - pnpm install --frozen-lockfile
-          - pnpm test:e2e:smoke
+          - pnpm e2e:smoke
     - step: &build-test-sonarcloud
         name: Build, test and analyze on SonarCloud
         size: 2x  # Use 2x build environment for more resources

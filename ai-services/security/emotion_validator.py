@@ -4,12 +4,16 @@ Validates emotion detection results with bias detection integration
 """
 
 import logging
+import os
 import re
 from enum import Enum
 
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
+
+# Import the ProtectedHealthData utility for PHI handling
+from ai.services.security.protected_health_data import protect_phi
 
 
 class EmotionCategory(str, Enum):
@@ -72,6 +76,16 @@ VALID_EMOTIONS = [e.value for e in EmotionCategory]
 def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResult:
     """Validate emotion detection result with bias detection"""
 
+    # Emit HIPAA audit event for access
+    logger.info("HIPAA_AUDIT: validate_emotion_result accessed session_id=%s", emotion_data.session_id)
+
+    # Consent verification - ensure explicit consent before processing PHI
+    consent = os.getenv("CONSENT_GRANTED", "").lower()
+    if consent != "true":
+        raise PermissionError(
+            "Consent not granted for processing participant-linked emotional health data"
+        )
+
     issues = []
     recommendations = []
 
@@ -85,9 +99,9 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
     if emotion_data.confidence < 0.3:
         issues.append("Low emotion detection confidence")
 
-    # Check for valid emotion categories
+    # Check for valid emotion categories - exact match only (previously used substring matching)
     if not any(
-        valid_emotion in emotion_data.detected_emotion.lower() for valid_emotion in VALID_EMOTIONS
+        emotion_data.detected_emotion.lower() == valid_emotion for valid_emotion in VALID_EMOTIONS
     ):
         issues.append("Unrecognized emotion category")
 
@@ -117,11 +131,14 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
         issues.append("Contextually inappropriate emotional response")
 
     # Calculate bias score (simplified)
-    bias_score = 0.0
-    if emotion_data.participant_demographics and emotion_data.response_text:
+    # Protect PHI before processing
+    if emotion_data.participant_demographics:
+        protected_demographics = protect_phi(emotion_data.participant_demographics)
         bias_score = detect_bias_patterns(
-            emotion_data.response_text, emotion_data.participant_demographics
+            emotion_data.response_text, protected_demographics
         )
+    else:
+        bias_score = 0.0
 
     # Generate recommendations
     if emotion_data.confidence < 0.5:
@@ -140,6 +157,9 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
 
     # Determine validity
     is_valid = len(issues) == 0 and bias_score < 0.6 and overall_confidence > 0.5
+
+    # TODO: Route participant_demographics through ProtectedHealthData utility before further processing
+    # (e.g., protect_phi(emotion_data.participant_demographics))
 
     return EmotionValidationResult(
         is_valid=is_valid,
@@ -186,7 +206,30 @@ def calculate_emotion_consistency(context: str, emotion: str) -> float:
 
 
 def assess_contextual_appropriateness(context: str, emotion: str, confidence: float) -> bool:
-    """Assess if emotion is contextually appropriate"""
+    """Assess if emotion is contextually appropriate
+    
+    This function evaluates whether an emotional response is appropriate given the
+    conversation context. In a production setting this decision would be subject
+    to Clinical Decision Support safeguards including:
+      - Audit logging of the assessment parameters
+      - Potential clinician override via environment variable CLINICIAN_OVERRIDE
+      - Explainability artifacts for safety boards
+    
+    Returns:
+        bool: True if appropriate, False if inappropriate.
+    """
+    # Emit audit event for CDS assessment
+    logger.info(
+        "CDS_ASSESSMENT: context=%s emotion=%s confidence=%.2f",
+        context, emotion, confidence
+    )
+
+    # Simple clinician override mechanism (placeholder)
+    # In a production setting this could be replaced with a proper override service.
+    if os.getenv("CLINICIAN_OVERRIDE", "").lower() == "true":
+        logger.info("CDS_OVERRIDE: clinician override enabled, allowing assessment")
+        # Override logic would be implemented here; for now we allow the assessment
+        return True
 
     inappropriate_combos = [
         {"context": r"therapy|counseling|support", "emotion": r"happy|excited", "threshold": 0.8},
@@ -200,8 +243,13 @@ def assess_contextual_appropriateness(context: str, emotion: str, confidence: fl
             and re.search(combo["emotion"], emotion)
             and confidence > combo["threshold"]
         ):
+            logger.info(
+                "CDS_ISSUE: Inappropriate emotional response detected: context=%s emotion=%s confidence=%.2f",
+                context, emotion, confidence
+            )
             return False
 
+    logger.info("CDS_CLEAR: No inappropriate emotional response detected")
     return True
 
 

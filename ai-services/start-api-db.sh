@@ -25,11 +25,17 @@ cd ~/pixelated/ai-services
 # Kill existing process
 if [[ -f api.pid ]]; then
 	PID=$(cat api.pid)
-	# Check if process is actually running
+	# Check if process is actually running and belongs to this API
 	if kill -0 "${PID}" 2>/dev/null; then
-		echo "🛑 Stopping existing API (PID: ${PID})"
-		kill "${PID}"
-		sleep 2
+		# Verify that the process's command line includes 'api.py' to ensure it's the correct API process
+		RUNNING_ARGS=$(ps -p "${PID}" -o args=)
+		if echo "$RUNNING_ARGS" | grep -q "api.py"; then
+			echo "🛑 Stopping existing API (PID: ${PID})"
+			kill "${PID}"
+			sleep 2
+		else
+			echo "⚠️  PID file exists but process ${PID} is not the API (command: $RUNNING_ARGS)"
+		fi
 	else
 		echo "⚠️  PID file exists but process ${PID} is not running"
 	fi

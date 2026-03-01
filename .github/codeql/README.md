@@ -67,8 +67,8 @@ Defines the custom query pack for healthcare compliance checks.
 ## Workflow Integration
 
 The CodeQL analysis runs:
-- On every push to `master` and `develop` branches
-- On every pull request targeting `master` or `develop`
+- On every push to `master` and `staging` branches
+- On every pull request targeting `master` or `staging`
 - Weekly on Monday at 2:00 AM UTC (scheduled scan)
 
 ## Languages Analyzed

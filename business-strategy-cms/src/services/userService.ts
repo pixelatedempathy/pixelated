@@ -4,6 +4,15 @@ import { UserModel } from '@/models/User'
 import { EmailService } from './emailService'
 
 export class UserService {
+  private static async hashPassword(password: string): Promise<string> {
+    // Parse BCRYPT_ROUNDS with radix 10 and ensure we have a valid number.
+    const rawRounds = process.env['BCRYPT_ROUNDS']
+    const parsedRounds = parseInt(rawRounds ?? '12', 10)
+    // Fallback to 12 if parsing fails or the value is less than 4 (bcrypt minimum).
+    const saltRounds = Number.isNaN(parsedRounds) || parsedRounds < 4 ? 12 : parsedRounds
+    return bcrypt.hash(password, saltRounds)
+  }
+
   static async getAllUsers(): Promise<User[]> {
     return UserModel.findAll()
   }
@@ -34,8 +43,7 @@ export class UserService {
     const temporaryPassword = Math.random().toString(36).substring(2, 15)
     const username = email.split('@')[0]
 
-    const saltRounds = parseInt(process.env['BCRYPT_ROUNDS'] || '12')
-    const hashedPassword = await bcrypt.hash(temporaryPassword, saltRounds)
+    const hashedPassword = await this.hashPassword(temporaryPassword)
 
     const user = await UserModel.create({
       email,
@@ -58,8 +66,7 @@ export class UserService {
     lastName: string,
     newPassword: string,
   ): Promise<User | null> {
-    const saltRounds = parseInt(process.env['BCRYPT_ROUNDS'] || '12')
-    const hashedPassword = await bcrypt.hash(newPassword, saltRounds)
+    const hashedPassword = await this.hashPassword(newPassword)
 
     const user = await UserModel.update(userId, {
       firstName,
@@ -75,4 +82,3 @@ export class UserService {
     return user
   }
 }
-
