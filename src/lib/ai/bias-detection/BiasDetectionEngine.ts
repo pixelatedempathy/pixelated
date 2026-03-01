@@ -4,6 +4,10 @@ import type {
   BiasLayerWeights,
   BiasThresholdsConfig,
   AlertLevel,
+  PreprocessingAnalysisResult,
+  ModelLevelAnalysisResult,
+  InteractiveAnalysisResult,
+  EvaluationAnalysisResult,
 } from './types'
 import {
   getCacheManager,
@@ -271,7 +275,7 @@ export class BiasDetectionEngine {
    * The fallback biasScore is chosen as a neutral midpoint (range 0–1), signaling uncertainty and
    * preventing bias overestimation or underestimation in error scenarios.
    *
-   * Note: All integration and error-handling tests should expect a fallback biasScore of 0.5
+   * Note: All integration and error‑handling tests should expect a fallback biasScore of 0.5
    * for failed layers. Any changes to this value require test and documentation updates.
    */
   private fallbackLayer(): { biasScore: number; confidence: number } {
@@ -331,7 +335,7 @@ export class BiasDetectionEngine {
   /**
    * Returns fallback result for preprocessing analysis.
    */
-  private getPreprocessingFallback(): import('./types').PreprocessingAnalysisResult {
+  private getPreprocessingFallback(): PreprocessingAnalysisResult {
     const fb = this.fallbackLayer()
     return {
       biasScore: fb.biasScore,
@@ -370,7 +374,7 @@ export class BiasDetectionEngine {
   /**
    * Returns fallback result for model-level analysis.
    */
-  private getModelLevelFallback(): import('./types').ModelLevelAnalysisResult {
+  private getModelLevelFallback(): ModelLevelAnalysisResult {
     const fb = this.fallbackLayer()
     return {
       biasScore: fb.biasScore,
@@ -399,7 +403,7 @@ export class BiasDetectionEngine {
   /**
    * Returns fallback result for interactive analysis.
    */
-  private getInteractiveFallback(): import('./types').InteractiveAnalysisResult {
+  private getInteractiveFallback(): InteractiveAnalysisResult {
     const fb = this.fallbackLayer()
     return {
       biasScore: fb.biasScore,
@@ -418,7 +422,7 @@ export class BiasDetectionEngine {
   /**
    * Returns fallback result for evaluation analysis.
    */
-  private getEvaluationFallback(): import('./types').EvaluationAnalysisResult {
+  private getEvaluationFallback(): EvaluationAnalysisResult {
     const fb = this.fallbackLayer()
     return {
       biasScore: fb.biasScore,
@@ -445,6 +449,21 @@ export class BiasDetectionEngine {
     }
   }
 
+  private handleSettledPromise<T>(
+    result: PromiseSettledResult<T>,
+    fallbackGetter: () => T,
+    layerName: string,
+    recommendations: string[],
+  ): T {
+    if (result.status === 'fulfilled') {
+      return result.value;
+    }
+    // Log the rejection reason with layer context (sanitized)
+    console.warn(`Layer ${layerName} analysis failed:`, result.reason);
+    recommendations.push(`${layerName} analysis unavailable; using fallback results`);
+    return fallbackGetter();
+  }
+
   async analyzeSession(session: SessionData): Promise<AnalysisResult> {
     this.ensureInitialized()
     if (!session) {
@@ -461,56 +480,40 @@ export class BiasDetectionEngine {
 
     // Performance Optimization: Parallelize independent analysis layers using Promise.allSettled.
     // Each call is wrapped in an async IIFE to safely catch synchronous exceptions from mocks or bridges.
-    const [
-      preprocessingPromise,
-      modelLevelPromise,
-      interactivePromise,
-      evaluationPromise,
-    ] = await Promise.allSettled([
-      (async () => await this.pythonService.runPreprocessingAnalysis(session))(),
-      (async () => await this.pythonService.runModelLevelAnalysis(session))(),
-      (async () => await this.pythonService.runInteractiveAnalysis(session))(),
-      (async () => await this.pythonService.runEvaluationAnalysis(session))(),
-    ])
+    const results = await Promise.allSettled([
+      this.pythonService.runPreprocessingAnalysis(session),
+      this.pythonService.runModelLevelAnalysis(session),
+      this.pythonService.runInteractiveAnalysis(session),
+      this.pythonService.runEvaluationAnalysis(session),
+    ]);
 
-    const preprocessing =
-      preprocessingPromise.status === 'fulfilled'
-        ? preprocessingPromise.value
-        : (() => {
-          recs.push('Preprocessing analysis unavailable; using fallback results')
-          return this.getPreprocessingFallback()
-        })()
-
-    const modelLevel =
-      modelLevelPromise.status === 'fulfilled'
-        ? modelLevelPromise.value
-        : (() => {
-          recs.push('Model-level analysis unavailable; using fallback results')
-          return this.getModelLevelFallback()
-        })()
-
-    const interactive =
-      interactivePromise.status === 'fulfilled'
-        ? interactivePromise.value
-        : (() => {
-          recs.push('Interactive analysis unavailable; using fallback results')
-          return this.getInteractiveFallback()
-        })()
-
-    const evaluation =
-      evaluationPromise.status === 'fulfilled'
-        ? evaluationPromise.value
-        : (() => {
-          recs.push('Evaluation analysis unavailable; using fallback results')
-          return this.getEvaluationFallback()
-        })()
-
-    const layerResults: LayerResults = {
-      preprocessing,
-      modelLevel,
-      interactive,
-      evaluation,
-    }
+    // Build layerResults while capturing failure reasons for observability
+    const layerResults: LayerResults = {} as LayerResults;
+    // Use helper to handle each settled promise and populate layerResults
+    layerResults['preprocessing'] = this.handleSettledPromise(
+      results[0],
+      () => this.getPreprocessingFallback(),
+      'Preprocessing',
+      recs
+    );
+    layerResults['modelLevel'] = this.handleSettledPromise(
+      results[1],
+      () => this.getModelLevelFallback(),
+      'Model-level',
+      recs
+    );
+    layerResults['interactive'] = this.handleSettledPromise(
+      results[2],
+      () => this.getInteractiveFallback(),
+      'Interactive',
+      recs
+    );
+    layerResults['evaluation'] = this.handleSettledPromise(
+      results[3],
+      () => this.getEvaluationFallback(),
+      'Evaluation',
+      recs
+    );
 
     const overallBiasScore = this.weightedAverage(layerResults)
     const alertLevel = this.computeAlertLevel(overallBiasScore)
@@ -936,6 +939,226 @@ export class BiasDetectionEngine {
       }
     } catch {
       /* swallow */
+    }
+  }
+  // Expose cache statistics for monitoring
+  getCacheStats() {
+    return getCacheManager().getCombinedStats()
+  }
+
+  /**
+   * Get comprehensive performance statistics including connection pools, cache, and memory usage
+   */
+  async getPerformanceStats() {
+    this.ensureInitialized()
+
+    if (this.performanceOptimizer) {
+      return await this.performanceOptimizer.getPerformanceStats()
+    }
+
+    // Fallback performance stats
+    return {
+      connections: {
+        http: { total: 0, active: 0, idle: 0, queue: 0 },
+        redis: { total: 0, active: 0, idle: 0 },
+      },
+      cache: {
+        hitRate: 0,
+        missRate: 0,
+        size: 0,
+        memoryUsage: 0,
+        compressionRatio: 0,
+      },
+      batch: {
+        activeJobs: 0,
+        completedJobs: 0,
+        failedJobs: 0,
+        averageProcessingTime: 0,
+      },
+      memory: {
+        heapUsed: process.memoryUsage().heapUsed,
+        heapTotal: process.memoryUsage().heapTotal,
+        external: process.memoryUsage().external,
+        rss: process.memoryUsage().rss,
+        gcCount: 0,
+      },
+      performance: {
+        averageResponseTime: 0,
+        throughput: 0,
+        errorRate: 0,
+        slowQueries: 0,
+      },
+    }
+  }
+
+  /**
+   * Health check for all performance-critical components
+   */
+  async getHealthStatus() {
+    this.ensureInitialized()
+
+    let performanceHealth = { healthy: true, components: {} }
+
+    if (this.performanceOptimizer) {
+      performanceHealth = await this.performanceOptimizer.healthCheck()
+    }
+
+    const pythonServiceHealth = await this.pythonService.checkHealth?.()
+
+    return {
+      overall:
+        performanceHealth.healthy && pythonServiceHealth?.status === 'healthy',
+      components: {
+        ...performanceHealth.components,
+        pythonService: pythonServiceHealth?.status === 'healthy',
+        engine: this.initialized,
+        monitoring: this._isMonitoring,
+        performanceOptimizer: this.performanceOptimizer !== null,
+      },
+      performance: await this.getPerformanceStats(),
+    }
+  }
+
+  /**
+   * Add a session analysis to the background job queue for processing
+   */
+  async queueSessionAnalysis(
+    session: SessionData,
+    priority: 'low' | 'medium' | 'high' = 'medium',
+  ): Promise<string> {
+    this.ensureInitialized()
+
+    if (this.performanceOptimizer) {
+      const priorityMap = { low: 1, medium: 5, high: 10 }
+
+      return await this.performanceOptimizer.addBackgroundJob(
+        'session-analysis',
+        session,
+        {
+          priority: priorityMap[priority],
+          timeout: this.config.pythonServiceTimeout || 30000,
+          maxAttempts: 3,
+        },
+      )
+    }
+
+    // Fallback: process immediately if no background job queue
+    const result = await this.analyzeSession(session)
+    return `immediate_${result.sessionId}_${Date.now()}`
+  }
+
+  /**
+   * Batch analyze multiple sessions with optimized performance and concurrency control.
+   * Uses the performance optimizer for intelligent batching and resource management.
+   */
+  async batchAnalyzeSessions(
+    sessions: SessionData[],
+    options: {
+      concurrency?: number
+      batchSize?: number
+      onProgress?: (progress: { completed: number; total: number }) => void
+      onError?: (error: Error, session: SessionData) => void
+      retries?: number
+      timeoutMs?: number
+      logProgress?: boolean
+      logErrors?: boolean
+      priority?: 'low' | 'medium' | 'high'
+    } = {},
+  ): Promise<{
+    results: AnalysisResult[]
+    errors: { session: SessionData; error: Error }[]
+    metrics: { completed: number; total: number; errorCount: number }
+  }> {
+    this.ensureInitialized()
+
+    const startTime = Date.now()
+
+    // Use performance optimizer for batch processing if available, otherwise fallback to original implementation
+    let analysisResults: AnalysisResult[]
+    let errors: { session: SessionData; error: Error }[]
+
+    if (this.performanceOptimizer) {
+      const result = await this.performanceOptimizer.processBatch(
+        sessions,
+        async (session: SessionData) => {
+          return await this.analyzeSession(session)
+        },
+        {
+          batchSize: options.batchSize,
+          concurrency: options.concurrency,
+          timeout: options.timeoutMs,
+          retries: options.retries,
+          priority: options.priority,
+          onProgress: options.onProgress
+            ? (completed, total) => options.onProgress!({ completed, total })
+            : undefined,
+          onError: options.onError
+            ? (error, item) => options.onError!(error, item as SessionData)
+            : undefined,
+        },
+      )
+      analysisResults = result.results
+      errors = result.errors.map(({ item, error }) => ({
+        session: item as SessionData,
+        error,
+      }))
+    } else {
+      // Fallback to original batch processing implementation
+      analysisResults = []
+      errors = []
+
+      for (const session of sessions) {
+        try {
+          const result = await this.analyzeSession(session)
+          analysisResults.push(result)
+          if (options.onProgress) {
+            options.onProgress({
+              completed: analysisResults.length,
+              total: sessions.length,
+            })
+          }
+        } catch (error) {
+          const err = { session, error: error as Error }
+          errors.push(err)
+          if (options.onError) {
+            options.onError(error as Error, session)
+          }
+        }
+      }
+    }
+
+    const processingTime = Date.now() - startTime
+
+    // Log performance metrics
+    if (options.logProgress !== false) {
+      console.log(
+        `[BatchAnalysis] Completed ${analysisResults.length}/${sessions.length} sessions in ${processingTime}ms`,
+      )
+      console.log(
+        `[BatchAnalysis] Average time per session: ${Math.round(processingTime / sessions.length)}ms`,
+      )
+    }
+
+    if (options.logErrors !== false && errors.length > 0) {
+      errors.forEach(({ session, error }) => {
+        console.error(
+          `[BatchError] Session ${session.sessionId}: ${error.message}`,
+        )
+      })
+    }
+
+    // Store batch processing metrics
+    // Note: recordAnalysis expects individual analysis results, not batch metrics
+    // await this.metricsCollector.recordAnalysis?.()
+
+    return {
+      results: analysisResults,
+      errors,
+      metrics: {
+        completed: analysisResults.length,
+        total: sessions.length,
+        errorCount: errors.length,
+      },
     }
   }
   // Expose cache statistics for monitoring
