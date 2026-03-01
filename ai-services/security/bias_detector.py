@@ -210,7 +210,17 @@ def detect_ethnicity_bias(text: str, ethnicity: str) -> list[BiasIndicator]:
     if not ethnicity or ethnicity.lower() in ["", "prefer not to say"]:
         return indicators
 
-    for pattern, _target_group, severity in ETHNICITY_BIAS_PATTERNS:
+    for pattern, target_group, severity in ETHNICITY_BIAS_PATTERNS:
+        # Apply pattern only if the target_group matches the participant's ethnicity
+        # - For "non-white" patterns, apply to any ethnicity that is not "white"
+        # - For explicit target groups, match exactly (case‑insensitive)
+        if target_group.lower() == "non-white":
+            if ethnicity.lower() == "white":
+                continue  # Skip non-white patterns for white participants
+        else:
+            if ethnicity.lower() != target_group.lower():
+                continue  # Skip patterns not intended for this ethnicity
+
         matches = re.findall(pattern, text, re.I)
         if matches:
             indicators.append(

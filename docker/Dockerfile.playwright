@@ -16,6 +16,9 @@ USER pwuser
 # Copy package files
 COPY --chown=pwuser:pwuser package.json pnpm-lock.yaml* ./
 
+# Set environment variable to skip browser download (must be set before npm install)
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+
 # Install dependencies
 RUN pnpm install --frozen-lockfile
 
@@ -24,9 +27,6 @@ COPY --chown=pwuser:pwuser . .
 
 # Expose port for development
 EXPOSE 3000
-
-# Set environment variable to skip browser download (not needed since browsers are pre-installed)
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 # Run tests by default
 CMD ["pnpm", "test:e2e"]

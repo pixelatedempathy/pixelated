@@ -6,6 +6,7 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+import { requireConsent } from '../../security/consent'
 
 const logger = createBuildSafeLogger('PIIScrubber')
 
@@ -30,7 +31,7 @@ const PII_PATTERNS: Record<PIICategory, RegExp> = {
     phones: /\b(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b/g,
     addresses: /\b\d{1,5}\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:St|Ave|Rd|Blvd|Ln|Ct|Dr)\b/g,
     ssn: /\b\d{3}-\d{2}-\d{4}\b/g,
-    dates: /\b(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})\b/g,
+    dates: /\b(?:(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4}))\b/g,
     financial: /\b(?:\d{4}-){3}\d{4}\b/g, // Credit card format
 }
 
@@ -73,8 +74,28 @@ export function scrubPII(text: string, options: ScrubberOptions = {}): string {
             scrubbedText = scrubbedText.replace(pattern, PLACEHOLDERS[category])
         } else if (maskType === 'redacted') {
             scrubbedText = scrubbedText.replace(pattern, '[REDACTED]')
+        } else if (maskType === 'randomized') {
+            // Randomly pick a placeholder (could be any from the map) for each match
+            const randomPlaceholder = Object.values(PLACEHOLDERS)[
+                Math.floor(Math.random() * Object.values(PLACEHOLDERS).length)
+            ]
+            scrubbedText = scrubbedText.replace(pattern, randomPlaceholder)
         }
     }
+
+    // Validate maskType to catch future typos early
+    if (!['placeholder', 'redacted', 'randomized'].includes(maskType)) {
+        throw new Error(`Unsupported maskType: "${maskType}". Valid values are "placeholder", "redacted", or "randomized".`);
+    }
+
+    // Emit HIPAA audit event for PHI access
+    logger.info('HIPAA audit: scrubPII accessed text', {
+        accessedAt: new Date().toISOString(),
+        function: 'scrubPII',
+        categories: enabledCategories,
+        originalLength: text.length,
+        newLength: scrubbedText.length,
+    })
 
     logger.debug('Text scrubbed for PII', {
         originalLength: text.length,
@@ -93,6 +114,9 @@ export function scanForPII(text: string): {
     categories: PIICategory[]
     count: number
 } {
+    // Verify consent before accessing PHI
+    requireConsent('scanForPII')
+
     const result = {
         found: false,
         categories: [] as PIICategory[],
@@ -107,6 +131,14 @@ export function scanForPII(text: string): {
             result.count += matches.length
         }
     }
+
+    // Emit HIPAA audit event for PHI access
+    logger.info('HIPAA audit: scanForPII accessed text', {
+        accessedAt: new Date().toISOString(),
+        function: 'scanForPII',
+        categories: result.categories,
+        matchCount: result.count,
+    })
 
     return result
 }

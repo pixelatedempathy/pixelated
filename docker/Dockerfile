@@ -4,7 +4,6 @@ FROM node:24.12.0-bookworm-slim AS base
 
 # Builder stage: install deps and run the static build
 FROM base AS builder
-ENV NODE_ENV=production
 ARG PNPM_VERSION=10.28.2
 WORKDIR /app
 
