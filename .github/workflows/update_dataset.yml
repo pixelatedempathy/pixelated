@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
 
     - name: Install uv (Python Package Manager)
-      uses: astral-sh/setup-uv@v1
+      uses: astral-sh/setup-uv@v7
 
     - name: Set up Python
       run: uv python install 3.11
@@ -37,7 +37,7 @@ jobs:
         
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v6
       with:
         name: final-dataset
         path: ai/training_ready/datasets/final_instruct/final_train.jsonl
