@@ -1,5 +1,6 @@
 import { sanitizeUrl } from './sanitize';
-import { CODE_REGEX, HEADING_REGEX } from './constants';
+import { CODE_REGEX, HEADING_REGEX, LINK_REGEX } from './constants';
+import { escapeHtml } from './escapeHtml';
 
 export function simpleMarkdownToHtml(text: string): string {
   return text
