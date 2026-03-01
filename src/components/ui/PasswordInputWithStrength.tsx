@@ -91,18 +91,20 @@ export const PasswordInputWithStrength = forwardRef<
       }
     }
 
-    const isShowingError = !!error && !isFocused
+    const isShowingError = !!error
 
     // Determine aria-describedby value
     const getAriaDescribedBy = () => {
+      const ids: string[] = []
+
       if (isShowingError) {
-        return `${name}-error`
+        ids.push(`${name}-error`)
       }
 
-      const ids: string[] = []
       if (helperText) {
         ids.push(`${name}-helper`)
       }
+
       // Only reference strength meter if it's actually rendered (requires currentValue)
       if (showStrengthMeter && currentValue) {
         ids.push(`${name}-strength`)
@@ -171,7 +173,7 @@ export const PasswordInputWithStrength = forwardRef<
             </div>
           )}
 
-          {!isShowingError && helperText && (
+          {helperText && (
             <div id={`${name}-helper`} className="text-gray-500 text-xs mt-1">
               {helperText}
             </div>
@@ -196,7 +198,8 @@ export const PasswordInputWithStrength = forwardRef<
                 }
                 aria-valuemin={0}
                 aria-valuemax={100}
-                aria-label={`Password strength: ${strength}`}
+                aria-label="Password strength"
+                aria-valuetext={strength}
               >
                 <div
                   className={`strength-${strength}`}
@@ -220,6 +223,7 @@ export const PasswordInputWithStrength = forwardRef<
                 <div
                   className="password-feedback text-xs mt-1"
                   style={{ color }}
+                  aria-live="polite"
                 >
                   {feedback}
                 </div>
