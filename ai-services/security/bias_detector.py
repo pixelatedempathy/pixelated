@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 logger = logging.getLogger(__name__)
 
 # Import PII scrubber for HIPAA‑compliant redaction
-from ai.services.security.pii_scrubber import scrub_pii
+from ai_services.security.pii_scrubber import scrub_pii
 
 
 class BiasLevel(str, Enum):
@@ -92,8 +92,11 @@ ETHNICITY_BIAS_PATTERNS = [
 
 def analyze_session_bias(session: TherapeuticSession) -> BiasAnalysisResult:
     """Analyze therapeutic session for demographic bias"""
-    # Emit HIPAA audit event for PHI access
-    logger.info("HIPAA_AUDIT_EVENT: Bias analysis initiated for session %s", session.session_id)
+    # Emit HIPAA audit event for PHI access (scrubbed identifier)
+    logger.info(
+        "HIPAA_AUDIT_EVENT: Bias analysis initiated for session %s",
+        scrub_pii(session.session_id),
+    )
 
     indicators = []
     recommendations = []
@@ -216,18 +219,19 @@ def detect_ethnicity_bias(text: str, ethnicity: str) -> list[BiasIndicator]:
         return indicators
 
     for pattern, target_group, severity in ETHNICITY_BIAS_PATTERNS:
-        # Only apply pattern if the target group matches the participant's ethnicity
-        if ethnicity.lower() == target_group.lower():
-            matches = re.findall(pattern, text, re.I)
-            if matches:
-                indicators.append(
-                    BiasIndicator(
-                        category="ethnicity",
-                        severity=severity,
-                        evidence=matches[:3],
-                        affected_group=f"{ethnicity} participants",
-                    )
+        # Apply each pattern to the text regardless of the participant's ethnicity.
+        # The previous exact‑match gate (ethnicity == target_group) was overly restrictive
+        # and suppressed detection for most real ethnicity values (e.g., "asian" vs "non-white").
+        matches = re.findall(pattern, text, re.I)
+        if matches:
+            indicators.append(
+                BiasIndicator(
+                    category="ethnicity",
+                    severity=severity,
+                    evidence=matches[:3],
+                    affected_group=f"{ethnicity} participants",
                 )
+            )
 
     return indicators
 

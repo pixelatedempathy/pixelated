@@ -138,6 +138,7 @@ def detect_crisis_endpoint():
         # Apply confidence threshold before marking action as required
         should_act = result.confidence >= CONFIDENCE_THRESHOLD
         crisis_detail = {
+            "success": True,
             "has_signal": result.has_crisis_signal,
             "risk_level": result.risk_level.value,
             "confidence": result.confidence,
@@ -165,7 +166,8 @@ def detect_crisis_endpoint():
             # Save the clinical decision support response
             db_service.save_analysis_result("crisis_detection", crisis_detail, session_id)
             # Emit dedicated audit artifact for clinical safety review
-            emit_audit_event("crisis_detection", session_id, crisis_detail)
+            if session_id:
+                emit_audit_event("crisis_detection", session_id, crisis_detail)
             # Also emit combined audit if session_id present
             if session_id:
                 emit_audit_event("crisis_audit", session_id, crisis_detail)
@@ -232,6 +234,10 @@ def analyze_conversation_endpoint():
         text = data.get("text", "")
         session_id = data.get("session_id")
 
+        # Consent verification before processing PHI
+        if session_id and not verify_consent(session_id):
+            return jsonify({"success": False, "error": "Consent required"}), 403
+
         response = {"success": True, "analyses": {}}
 
         # PII scrubbing
@@ -251,6 +257,7 @@ def analyze_conversation_endpoint():
             # Apply confidence threshold and add review flags
             should_act = crisis.confidence >= CONFIDENCE_THRESHOLD
             crisis_detail = {
+                "success": True,
                 "has_signal": crisis.has_crisis_signal,
                 "risk_level": crisis.risk_level.value,
                 "confidence": crisis.confidence,

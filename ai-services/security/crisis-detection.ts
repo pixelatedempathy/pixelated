@@ -25,7 +25,6 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
-import { ProtectedHealthData } from '../../security/ProtectedHealthData' // PHI handling utilities
 import { ConsentChecker } from '../../auth/ConsentChecker' // consent verification
 import crypto from 'crypto' // for deterministic hashing
 
@@ -149,7 +148,7 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
 
     // Emit an audit event that PHI is being accessed (hashed for privacy)
     const auditHash = hashString(text)
-    logger.info('CrisisDetectionPHIAccess', { hashedTextLength: auditHash.length })
+    logger.info('CrisisDetectionPHIAccess', { hashedText: auditHash })
 
     // -------------------------------------------------------------------------
     // 2️⃣ Core Detection Logic
@@ -189,10 +188,10 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
                     contextSnippet: hashedSnippet,
                 })
 
-                // Record explainability details (original matched text kept for audit)
+                // Record explainability details (original matched text hashed for PHI safety)
                 explainabilityData.matchedPatterns.push(pattern.source)
                 explainabilityData.severityFactors.push(`category=${category}, severity=${severity}`)
-                explainabilityData.matchedTexts.push(match[0])
+                explainabilityData.matchedTexts.push(hashString(match[0]))
                 explainabilityData.categories.push(category as string)
 
                 // Emit a PHI‑access audit event with hashed snippet/keyword

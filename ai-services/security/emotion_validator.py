@@ -12,6 +12,9 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
+# Import the ProtectedHealthData utility for PHI handling
+from ai.services.security.protected_health_data import protect_phi
+
 
 class EmotionCategory(str, Enum):
     HAPPY = "happy"
@@ -77,7 +80,8 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
     logger.info("HIPAA_AUDIT: validate_emotion_result accessed session_id=%s", emotion_data.session_id)
 
     # Consent verification - ensure explicit consent before processing PHI
-    if not os.getenv("CONSENT_GRANTED"):
+    consent = os.getenv("CONSENT_GRANTED", "").lower()
+    if consent != "true":
         raise PermissionError(
             "Consent not granted for processing participant-linked emotional health data"
         )
@@ -127,11 +131,14 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
         issues.append("Contextually inappropriate emotional response")
 
     # Calculate bias score (simplified)
-    bias_score = 0.0
-    if emotion_data.participant_demographics and emotion_data.response_text:
+    # Protect PHI before processing
+    if emotion_data.participant_demographics:
+        protected_demographics = protect_phi(emotion_data.participant_demographics)
         bias_score = detect_bias_patterns(
-            emotion_data.response_text, emotion_data.participant_demographics
+            emotion_data.response_text, protected_demographics
         )
+    else:
+        bias_score = 0.0
 
     # Generate recommendations
     if emotion_data.confidence < 0.5:
@@ -218,11 +225,11 @@ def assess_contextual_appropriateness(context: str, emotion: str, confidence: fl
     )
 
     # Simple clinician override mechanism (placeholder)
-    # In a real deployment this could be replaced with a proper override service.
+    # In a production setting this could be replaced with a proper override service.
     if os.getenv("CLINICIAN_OVERRIDE", "").lower() == "true":
         logger.info("CDS_OVERRIDE: clinician override enabled, allowing assessment")
         # Override logic would be implemented here; for now we allow the assessment
-        pass
+        return True
 
     inappropriate_combos = [
         {"context": r"therapy|counseling|support", "emotion": r"happy|excited", "threshold": 0.8},

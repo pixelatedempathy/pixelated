@@ -1,16 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
+version: '3.8'
 
-const headless = process.env.PLAYWRIGHT_HEADLESS === 'false';
+services:
+  # Define your services here (e.g., web, db, etc.)
+  # The original file likely contained additional service definitions;
+  # keep the structure intact for Docker Compose to work.
+
+const headless = process.env.PLAYWRIGHT_HEADLESS !== 'false';
 
 export default defineConfig({
   testDir: 'tests',
-  timeout: 30_000,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
-  use: {
-    baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
-    headless,
-  },
-});

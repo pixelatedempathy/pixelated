@@ -7,6 +7,7 @@
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import { ProtectedHealthData } from '../../security/ProtectedHealthData'
+import { emitAuditEvent } from '../../logging/audit'
 
 const logger = createBuildSafeLogger('PIIScrubber')
 

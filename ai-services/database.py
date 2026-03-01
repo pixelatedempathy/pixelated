@@ -30,10 +30,9 @@ class DatabaseService:
         self._fernet = None
         key = os.getenv("ENCRYPTION_KEY")
         if key:
-            # Fernet expects a URL‑safe base64‑encoded 32‑byte key
+            # Fernet expects a URL‑safe base64‑encoded 32‑byte key (string)
             try:
-                decoded_key = base64.urlsafe_b64decode(key)
-                self._fernet = Fernet(decoded_key)
+                self._fernet = Fernet(key)
             except Exception as e:
                 logger.error(f"Invalid encryption key format: {type(e).__name__}")
 
@@ -137,6 +136,25 @@ class DatabaseService:
             logger.warning("Save aborted: user consent not provided")
             return None
 
+        # Prepare audit extra data
+        extra_audit = {}
+        # Clinical decision support safeguard for crisis detection (run before encryption)
+        if analysis_type == "crisis_detection":
+            # 1. Confidence threshold
+            confidence = data.get("confidence")
+            if confidence is not None and confidence < 0.8:
+                logger.warning(f"Crisis detection saved with low confidence ({confidence})")
+            # 2. Require explicit clinical review flag
+            if not data.get("requires_clinical_review", False):
+                raise PermissionError("Crisis detection requires explicit clinical review")
+            # 3. Add model explainability metadata if present
+            explanation = data.get("explanation")
+            if explanation:
+                data["model_explanation"] = explanation
+            # 4. Record intended use for audit
+            intended_use = data.get("intended_use", "clinical_review")
+            extra_audit["intended_use"] = intended_use
+
         # Apply HIPAA compliance measures
         phi_detected = self._contains_phi(data) or analysis_type in [
             "therapy_session",
@@ -152,30 +170,6 @@ class DatabaseService:
                 raise
 
         # Log audit event with intended use for clinical safety review
-        extra_audit = {}
-        if analysis_type == "crisis_detection":
-            # Clinical decision support safeguard for crisis detection
-            # 1. Confidence threshold
-            confidence = data.get("confidence")
-            if confidence is not None and confidence < 0.8:
-                logger.warning(
-                    f"Crisis detection saved with low confidence ({confidence})"
-                )
-            # 2. Require explicit clinical review flag
-            if not data.get("requires_clinical_review", False):
-                logger.warning(
-                    "Crisis detection saved without documented clinical review; "
-                    "ensure proper oversight before storage."
-                )
-            # 3. Add model explainability metadata if present
-            explanation = data.get("explanation")
-            if explanation:
-                data["model_explanation"] = explanation
-            # 4. Record intended use for audit
-            intended_use = data.get("intended_use", "clinical_review")
-            extra_audit["intended_use"] = intended_use
-
-        # Log audit event
         if session_id:
             self._log_audit_event(
                 f"save_{analysis_type}",
@@ -183,19 +177,6 @@ class DatabaseService:
                 user_id,
                 extra=extra_audit,
             )
-
-        # Clinical decision support safeguard for crisis detection
-        if analysis_type == "crisis_detection":
-            # Require an explicit flag indicating clinical review has occurred
-            if not data.get("requires_clinical_review", False):
-                logger.warning(
-                    "Crisis detection saved without documented clinical review; "
-                    "ensure proper oversight before storage."
-                )
-            # Optionally, block saving if the flag is missing
-            # Uncomment the following line to enforce the safeguard:
-            # if not data.get("requires_clinical_review", False):
-            #     raise PermissionError("Crisis detection requires documented clinical review")
 
         collection = self.db["analysis_results"]
 
@@ -227,11 +208,11 @@ class DatabaseService:
         # Authorization and consent check
         user_role = os.getenv("USER_ROLE")
         if not user_role or user_role.lower() != "clinician":
-            logger.warning(f"Unauthorized role {user_role} for user {user_id}; access denied")
+            logger.warning("Unauthorized role; access denied for session")
             raise PermissionError("Insufficient permissions to access session history")
         # Patient consent verification
         if os.getenv("PATIENT_CONSENT", "").lower() != "granted":
-            logger.warning(f"Patient consent not granted for user {user_id}; access denied")
+            logger.warning("Patient consent not granted; access denied")
             raise PermissionError("Patient consent not granted")
 
         # Log audit event
