@@ -23,8 +23,8 @@ from pii_scrubber import ScrubberOptions, scan_for_pii, scrub_pii
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend integration
+# Clinical Decision Support Safeguards: minimum confidence for actionable escalation
+MIN_CONFIDENCE = 0.8
 
 # Initialize Database
 MONGODB_URI = os.environ.get("MONGODB_URI")
@@ -58,9 +58,10 @@ def scrub_pii_endpoint():
     """
     try:
         data = request.json
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         options_dict = data.get("options", {})
-        session_id = data.get("session_id")
 
         options = ScrubberOptions(**options_dict) if options_dict else None
         scrubbed = scrub_pii(text, options)
@@ -77,8 +78,9 @@ def scrub_pii_endpoint():
 
         return jsonify(result)
     except Exception as e:
-        logger.error(f"PII scrubbing error: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        # Sanitize error logging and response to prevent PHI leakage
+        logger.error("PII scrubbing error occurred")
+        return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
 @app.route("/api/security/detect-crisis", methods=["POST"])
@@ -88,19 +90,31 @@ def detect_crisis_endpoint():
     """
     try:
         data = request.json
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         session_id = data.get("session_id")
 
         result = detect_crisis_signals(text)
 
-        # Convert dataclass to dict (CrisisDetectionService still uses dataclasses)
+        # Clinical Decision Support Safeguards: enforce confidence threshold and include explainability
+        action_required = result.action_required if result.confidence >= MIN_CONFIDENCE else False
+        escalation_protocol = result.escalation_protocol if result.confidence >= MIN_CONFIDENCE else None
+
+        # Audit log for clinical safety board
+        logger.info(
+            f"Crisis detection audit: risk_level={result.risk_level.value}, "
+            f"confidence={result.confidence:.2f}, action_required={action_required}"
+        )
+
         response = {
             "success": True,
             "has_crisis_signal": result.has_crisis_signal,
             "risk_level": result.risk_level.value,
             "confidence": result.confidence,
-            "action_required": result.action_required,
-            "escalation_protocol": result.escalation_protocol,
+            "action_required": action_required,
+            "escalation_protocol": escalation_protocol,
+            "model_explanation": "Risk assessment based on detected crisis signals.",
             "signals": [
                 {
                     "category": s.category.value,
@@ -118,8 +132,8 @@ def detect_crisis_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error(f"Crisis detection error: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        logger.error("Crisis detection error occurred")
+        return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
 @app.route("/api/emotion/validate", methods=["POST"])
@@ -129,6 +143,8 @@ def validate_emotion_endpoint():
     """
     try:
         data = request.json
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         emotion_data = EmotionData(**data)
 
         result = validate_emotion_result(emotion_data)
@@ -139,8 +155,8 @@ def validate_emotion_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error(f"Emotion validation error: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        logger.error("Emotion validation error occurred")
+        return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
 @app.route("/api/bias/analyze-session", methods=["POST"])
@@ -150,6 +166,8 @@ def analyze_bias_endpoint():
     """
     try:
         data = request.json
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         session = TherapeuticSession(**data)
 
         result = analyze_session_bias(session)
@@ -160,8 +178,8 @@ def analyze_bias_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error(f"Bias analysis error: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        logger.error("Bias analysis error occurred")
+        return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
 @app.route("/api/combined/analyze-conversation", methods=["POST"])
@@ -171,6 +189,8 @@ def analyze_conversation_endpoint():
     """
     try:
         data = request.json
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         session_id = data.get("session_id")
 
@@ -186,14 +206,36 @@ def analyze_conversation_endpoint():
                 "categories": pii_scan["categories"],
             }
 
-        # Crisis detection
+        # Crisis detection with safeguards
         if data.get("detect_crisis", True):
             crisis = detect_crisis_signals(text)
+
+            # Apply confidence threshold and include explanation
+            action_required = crisis.action_required if crisis.confidence >= MIN_CONFIDENCE else False
+            escalation_protocol = crisis.escalation_protocol if crisis.confidence >= MIN_CONFIDENCE else None
+
+            # Audit log for clinical safety board
+            logger.info(
+                f"Combined analysis crisis audit: risk_level={crisis.risk_level.value}, "
+                f"confidence={crisis.confidence:.2f}, action_required={action_required}"
+            )
+
             response["analyses"]["crisis"] = {
                 "has_signal": crisis.has_crisis_signal,
                 "risk_level": crisis.risk_level.value,
-                "action_required": crisis.action_required,
-                "protocol": crisis.escalation_protocol,
+                "confidence": crisis.confidence,
+                "action_required": action_required,
+                "protocol": escalation_protocol,
+                "model_explanation": "Risk assessment based on detected crisis signals.",
+                "signals": [
+                    {
+                        "category": s.category.value,
+                        "severity": s.severity,
+                        "keywords": s.keywords,
+                        "context": s.context_snippet,
+                    }
+                    for s in crisis.signals
+                ],
             }
 
         # Emotion validation (if emotion data provided)
@@ -213,8 +255,8 @@ def analyze_conversation_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error(f"Combined analysis error: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        logger.error("Combined analysis error occurred")
+        return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
 if __name__ == "__main__":
@@ -222,4 +264,6 @@ if __name__ == "__main__":
     logger.info("Mode: CPU-only")
     logger.info("Listening on http://0.0.0.0:5000")
 
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Use environment variable to control debug mode; default to False for production safety
+    debug_mode = os.getenv("FLASK_DEBUG", "False") == "True"
+    app.run(host="0.0.0.0", port=5000, debug=debug_mode)

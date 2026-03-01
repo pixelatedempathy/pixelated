@@ -4,9 +4,22 @@ HIPAA-compliant PII redaction for therapeutic transcripts
 """
 
 import re
+import random
+import string
+import json
+import datetime
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
+import logging
+
+# Audit logger for HIPAA access events
+_audit_logger = logging.getLogger('hipaa.audit')
+
+
+def _emit_hipaa_audit(event: str, details: dict) -> None:
+    """Emit a structured audit event to the HIPAA audit topic."""
+    _audit_logger.info("HIPAA_AUDIT:%s:%s", event, json.dumps(details))
 
 
 class PIICategory(str, Enum):
@@ -54,7 +67,7 @@ PII_PATTERNS: dict[PIICategory, list[re.Pattern]] = {
         re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
     ],
     PIICategory.DATES: [
-        re.compile(r"\b(?:\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})\b"),
+        re.compile(r"\b(?:(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4}))\b"),
     ],
     PIICategory.FINANCIAL: [
         re.compile(r"\b(?:\d{4}-){3}\d{4}\b"),  # Credit card format
@@ -94,6 +107,33 @@ def scrub_pii(text: str, options: ScrubberOptions | None = None) -> str:
                 scrubbed_text = pattern.sub(PLACEHOLDERS[category], scrubbed_text)
             elif options.mask_type == "redacted":
                 scrubbed_text = pattern.sub("[REDACTED]", scrubbed_text)
+            elif options.mask_type == "randomized":
+                # Replace each match with a random alphanumeric string of the same length
+                scrubbed_text = pattern.sub(
+                    lambda m: ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(len(m.group(0)))),
+                    scrubbed_text
+                )
+            else:
+                raise ValueError(f"Unsupported mask_type: {options.mask_type}")
+
+    # Emit audit event if any PHI was processed
+    if options.enabled_categories:
+        matched_categories = []
+        for category in options.enabled_categories:
+            patterns = PII_PATTERNS.get(category, [])
+            for pattern in patterns:
+                if pattern.search(text):
+                    matched_categories.append(category.value)
+        if matched_categories:
+            _emit_hipaa_audit(
+                "scrub",
+                {
+                    "operation": "scrub_pii",
+                    "mask_type": options.mask_type,
+                    "matched_categories": matched_categories,
+                    "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
+                }
+            )
 
     return scrubbed_text
 
@@ -114,6 +154,18 @@ def scan_for_pii(text: str) -> dict[str, Any]:
                 result["categories"].append(category.value)
                 result["count"] += len(matches)
 
+    # Emit audit event for the scan operation
+    if result["found"]:
+        _emit_hipaa_audit(
+            "scan",
+            {
+                "found": result["found"],
+                "categories": result["categories"],
+                "count": result["count"],
+                "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
+            }
+        )
+
     return result
 
 
@@ -125,6 +177,6 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
-    logger.info("Original: %s", sample)
+    logger.info("Original: [REDACTED]")
     logger.info("Scrubbed: %s", scrub_pii(sample))
     logger.info("Scan: %s", scan_for_pii(sample))

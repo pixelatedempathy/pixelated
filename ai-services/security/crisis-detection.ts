@@ -8,6 +8,7 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
+import { ProtectedHealthData } from '../../security/protected-health-data'
 
 const logger = createBuildSafeLogger('CrisisDetectionService')
 
@@ -27,6 +28,10 @@ export interface CrisisAnalysisResult {
     signals: CrisisSignal[]
     actionRequired: boolean
     escalationProtocol: string[]
+    /** Indicates whether a clinician must approve before any escalation action. */
+    requiresClinicianApproval?: boolean
+    /** Human‑readable explanation of which patterns matched and why. */
+    explanation?: string
 }
 
 const CRISIS_PATTERNS: Record<CrisisSignal['category'], RegExp[]> = {
@@ -66,11 +71,15 @@ export function detectCrisisSignals(text: string): CrisisAnalysisResult {
             signals: [],
             actionRequired: false,
             escalationProtocol: [],
+            // No approval needed for empty input
+            requiresClinicianApproval: false,
+            explanation: 'No text provided – minimal risk.',
         }
     }
 
     const signals: CrisisSignal[] = []
     let maxSeverity = 0
+    const matchedDetails: string[] = [] // collect details for explanation
 
     for (const [category, patterns] of Object.entries(CRISIS_PATTERNS)) {
         for (const pattern of patterns) {
@@ -79,21 +88,29 @@ export function detectCrisisSignals(text: string): CrisisAnalysisResult {
                 const severity = calculateSeverity(category as CrisisSignal['category'], text)
                 maxSeverity = Math.max(maxSeverity, severity)
 
+                const keyword = match[0]
+                matchedDetails.push(`${category} ("${keyword}")`)
+
+                // Redact PHI in the snippet before storing
+                const redactedSnippet = ProtectedHealthData.redact(
+                    text.substring(
+                        Math.max(0, match.index! - 30),
+                        Math.min(text.length, match.index! + keyword.length + 30)
+                    )
+                )
+
                 signals.push({
                     category: category as CrisisSignal['category'],
                     severity,
-                    keywords: [match[0]],
-                    contextSnippet: text.substring(
-                        Math.max(0, match.index! - 30),
-                        Math.min(text.length, match.index! + match[0].length + 30)
-                    ),
+                    keywords: [ProtectedHealthData.redact(keyword)],
+                    contextSnippet: redactedSnippet,
                 })
             }
         }
     }
 
     const riskLevel = determineRiskLevel(maxSeverity, signals.length)
-    const actionRequired = ['moderate', 'high', 'imminent'].includes(riskLevel)
+    const actionRequired = ['moderate', 'high', 'imminent'].includes(riskLevel) && isEscalationAllowed()
 
     const result: CrisisAnalysisResult = {
         hasCrisisSignal: signals.length > 0,
@@ -102,13 +119,29 @@ export function detectCrisisSignals(text: string): CrisisAnalysisResult {
         signals,
         actionRequired,
         escalationProtocol: generateEscalationProtocol(riskLevel, signals),
+        // New fields for clinical safeguards
+        requiresClinicianApproval: ['high', 'imminent'].includes(riskLevel),
+        explanation: `Matched patterns: ${matchedDetails.join(', ')}`,
     }
 
     if (actionRequired) {
         logger.warn('Crisis signal detected', { riskLevel, signalCount: signals.length })
     }
 
+    // Emit audit event for PHI access
+    logger.audit('CrisisDetectionService.analyze', {
+        riskLevel,
+        snippetCount: signals.length,
+        originalTextLength: text.length,
+    })
+
     return result
+}
+
+/** Placeholder for clinician override – replace with real override mechanism. */
+function isEscalationAllowed(): boolean {
+    // TODO: Integrate clinician override flag (e.g., feature flag or UI confirmation)
+    return true; // Default to allow escalation until override logic is implemented
 }
 
 function calculateSeverity(category: CrisisSignal['category'], text: string): number {
@@ -127,7 +160,7 @@ function calculateSeverity(category: CrisisSignal['category'], text: string): nu
 function determineRiskLevel(severity: number, count: number): CrisisRiskLevel {
     if (severity > 0.9) return 'imminent'
     if (severity > 0.7 || count > 2) return 'high'
-    if (severity > 0.4 || count > 0) return 'moderate'
+    if (severity > 0.4) return 'moderate'
     if (severity > 0.2) return 'low'
     return 'minimal'
 }

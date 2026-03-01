@@ -117,7 +117,7 @@ def analyze_session_bias(session: TherapeuticSession) -> BiasAnalysisResult:
     indicators.extend(ethnicity_indicators)
 
     # Calculate overall bias score
-    overall_bias_score = np.mean([ind.severity for ind in indicators]) if indicators else 0.0
+    overall_bias_score = float(np.mean([ind.severity for ind in indicators])) if indicators else 0.0
 
     # Determine bias level
     bias_level = determine_bias_level(overall_bias_score)
@@ -211,6 +211,13 @@ def detect_ethnicity_bias(text: str, ethnicity: str) -> list[BiasIndicator]:
         return indicators
 
     for pattern, _target_group, severity in ETHNICITY_BIAS_PATTERNS:
+        # Skip patterns that target a group the participant does not belong to
+        if _target_group == "non-white" and ethnicity.lower() == "white":
+            continue  # white participants should not trigger non-white patterns
+        # For any future explicit target groups, match case‑insensitively
+        if _target_group.lower() != "non-white" and ethnicity.lower() != _target_group.lower():
+            continue
+
         matches = re.findall(pattern, text, re.I)
         if matches:
             indicators.append(

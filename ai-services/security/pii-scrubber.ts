@@ -30,7 +30,7 @@ const PII_PATTERNS: Record<PIICategory, RegExp> = {
     phones: /\b(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b/g,
     addresses: /\b\d{1,5}\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:St|Ave|Rd|Blvd|Ln|Ct|Dr)\b/g,
     ssn: /\b\d{3}-\d{2}-\d{4}\b/g,
-    dates: /\b(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})\b/g,
+    dates: /\b(?:(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4}))\b/g,
     financial: /\b(?:\d{4}-){3}\d{4}\b/g, // Credit card format
 }
 
@@ -42,6 +42,16 @@ const PLACEHOLDERS: Record<PIICategory, string> = {
     ssn: '[SSN]',
     dates: '[DATE]',
     financial: '[FINANCIAL]',
+}
+
+/**
+ * Generates a randomized placeholder for a given PII category.
+ * Appends a random numeric suffix to make each redaction unique.
+ */
+function getRandomizedPlaceholder(category: PIICategory): string {
+    const base = PLACEHOLDERS[category];
+    const randomSuffix = Math.floor(Math.random() * 1000).toString();
+    return `${base.replace(/[\[\]]/g, '')}${randomSuffix}`;
 }
 
 /**
@@ -73,6 +83,11 @@ export function scrubPII(text: string, options: ScrubberOptions = {}): string {
             scrubbedText = scrubbedText.replace(pattern, PLACEHOLDERS[category])
         } else if (maskType === 'redacted') {
             scrubbedText = scrubbedText.replace(pattern, '[REDACTED]')
+        } else if (maskType === 'randomized') {
+            scrubbedText = scrubbedText.replace(pattern, getRandomizedPlaceholder(category))
+        } else {
+            // Fail fast for unsupported mask types to avoid silent data leakage
+            throw new Error(`Unsupported maskType: ${maskType}. Allowed values are 'placeholder', 'redacted', 'randomized'.`);
         }
     }
 

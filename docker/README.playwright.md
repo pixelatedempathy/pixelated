@@ -28,7 +28,7 @@ docker-compose -f docker/docker-compose.playwright.yml run --rm playwright pnpm 
 1. **No sudo required**: Browsers are pre-installed in the Docker image
 2. **Consistent environment**: Same environment across all machines and CI
 3. **All browsers included**: Chromium, Firefox, and WebKit are pre-installed
-4. **No OS compatibility issues**: Uses Ubuntu 20.04 (jammy) which is well-supported
+4. **No OS compatibility issues**: Uses Ubuntu 22.04 (jammy) which is well-supported
 
 ## Troubleshooting
 

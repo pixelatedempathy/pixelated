@@ -22,7 +22,7 @@ ollama.pixelatedempathy.tech {
 
     # CORS Headers (Ollama handles some, but we ensure they are set for the proxy)
     header {
-        Access-Control-Allow-Origin *
+        Access-Control-Allow-Origin {$CORS_ORIGIN}
         Access-Control-Allow-Methods "GET, POST, OPTIONS"
         Access-Control-Allow-Headers "Content-Type, Authorization"
         Access-Control-Max-Age 3600

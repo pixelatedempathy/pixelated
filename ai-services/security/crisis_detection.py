@@ -10,7 +10,20 @@ from enum import Enum
 
 logger = logging.getLogger(__name__)
 
+# ----------------------------------------------------------------------
+# PHI handling utilities
+# ----------------------------------------------------------------------
+def redact_phi(text: str) -> str:
+    """Redact protected health information (PHI) in text."""
+    return "[REDACTED]"
 
+def emit_phi_audit(event: str, details: dict) -> None:
+    """Emit an audit event for PHI access/processing."""
+    logger.info("PHI_AUDIT: event=%s details=%s", event, details)
+
+# ----------------------------------------------------------------------
+# Crisis risk levels and categories
+# ----------------------------------------------------------------------
 class CrisisRiskLevel(str, Enum):
     MINIMAL = "minimal"
     LOW = "low"
@@ -27,6 +40,9 @@ class CrisisCategory(str, Enum):
     MEDICAL = "medical"
 
 
+# ----------------------------------------------------------------------
+# Data structures
+# ----------------------------------------------------------------------
 @dataclass
 class CrisisSignal:
     category: CrisisCategory
@@ -45,6 +61,9 @@ class CrisisAnalysisResult:
     escalation_protocol: list[str]
 
 
+# ----------------------------------------------------------------------
+# Crisis pattern definitions
+# ----------------------------------------------------------------------
 CRISIS_PATTERNS: dict[CrisisCategory, list[re.Pattern]] = {
     CrisisCategory.SELF_HARM: [
         re.compile(r"\b(kill|harm|hurt|end)\b.*\b(myself|my life|it all)\b", re.I),
@@ -58,7 +77,7 @@ CRISIS_PATTERNS: dict[CrisisCategory, list[re.Pattern]] = {
     ],
     CrisisCategory.DESPAIR: [
         re.compile(r"\b(no hope|hopeless|give up|can\'?t go on|nothing matters)\b", re.I),
-        re.compile(r"\b(everything is dark|drowning|trapped)\b", re.I),
+        re.compile(r"\b(drowning|trapped|everything is dark)\b", re.I),
     ],
     CrisisCategory.SUBSTANCE_ABUSE: [
         re.compile(r"\b(drunk|high|relapse|using|using again|overdose)\b", re.I),
@@ -69,6 +88,13 @@ CRISIS_PATTERNS: dict[CrisisCategory, list[re.Pattern]] = {
         re.compile(r"\b(emergency|ambulance|911|hospital)\b", re.I),
     ],
 }
+
+
+# ----------------------------------------------------------------------
+# Core logic
+# ----------------------------------------------------------------------
+# HIPAA compliance flags
+AUTO_ESCALATION_ENABLED = False  # Must be set to True after clinician approval
 
 
 def calculate_severity(_category: CrisisCategory, text: str) -> float:
@@ -97,12 +123,15 @@ def determine_risk_level(severity: float, count: int) -> CrisisRiskLevel:
     """Determine overall risk level"""
     if severity > 0.9:
         return CrisisRiskLevel.IMMINENT
-    if severity > 0.7 or count > 2:
+    if severity > 0.7:
         return CrisisRiskLevel.HIGH
-    if severity > 0.4 or count > 0:
+    if severity > 0.5:
         return CrisisRiskLevel.MODERATE
-    if severity > 0.2:
+    if severity > 0.3:
         return CrisisRiskLevel.LOW
+    # If signals exist but severity is very low, default to MODERATE
+    if count > 0:
+        return CrisisRiskLevel.MODERATE
     return CrisisRiskLevel.MINIMAL
 
 
@@ -117,12 +146,9 @@ def calculate_confidence(signals: list[CrisisSignal]) -> float:
 def generate_escalation_protocol(
     risk_level: CrisisRiskLevel, _signals: list[CrisisSignal]
 ) -> list[str]:
-    """Generate escalation protocol based on risk level
-
-    Args:
-        risk_level: Assessed risk level
-        _signals: Detected crisis signals (unused, reserved for future signal-specific protocols)
-    """
+    """Generate escalation protocol based on risk level"""
+    if not AUTO_ESCALATION_ENABLED:
+        return []
     protocol = []
 
     if risk_level == CrisisRiskLevel.IMMINENT:
@@ -175,6 +201,16 @@ def detect_crisis_signals(text: str) -> CrisisAnalysisResult:
                 severity = calculate_severity(category, text)
                 max_severity = max(max_severity, severity)
 
+                # Emit audit event for PHI access
+                emit_phi_audit(
+                    "phi_access",
+                    {
+                        "category": category.value,
+                        "severity": severity,
+                        "match": match.group(0),
+                    },
+                )
+
                 # Extract context snippet
                 start = max(0, match.start() - 30)
                 end = min(len(text), match.end() + 30)
@@ -190,17 +226,41 @@ def detect_crisis_signals(text: str) -> CrisisAnalysisResult:
                 )
 
     risk_level = determine_risk_level(max_severity, len(signals))
-    action_required = risk_level in [
-        CrisisRiskLevel.MODERATE,
-        CrisisRiskLevel.HIGH,
-        CrisisRiskLevel.IMMINENT,
+
+    # Clinical Decision Support Safeguard: require confidence threshold and clinician approval
+    MIN_CONFIDENCE_FOR_ACTION = 0.8  # Minimum confidence required before triggering actions
+    # Placeholder for clinician approval – in production this would interface with a
+    # review system to obtain human sign‑off before escalation.
+    clinician_approved = True  # Replace with actual approval mechanism
+
+    confidence = calculate_confidence(signals)
+    action_required = (
+        risk_level in [
+            CrisisRiskLevel.MODERATE,
+            CrisisRiskLevel.HIGH,
+            CrisisRiskLevel.IMMINENT,
+        ]
+        and confidence >= MIN_CONFIDENCE_FOR_ACTION
+        and clinician_approved
+        and AUTO_ESCALATION_ENABLED  # Only allow action if auto‑escalation is enabled
+    )
+
+    # Redact PHI in signals before returning
+    redacted_signals = [
+        CrisisSignal(
+            category=sig.category,
+            severity=sig.severity,
+            keywords=[redact_phi(kw) for kw in sig.keywords],
+            context_snippet=redact_phi(sig.context_snippet),
+        )
+        for sig in signals
     ]
 
     return CrisisAnalysisResult(
         has_crisis_signal=len(signals) > 0,
         risk_level=risk_level,
-        confidence=calculate_confidence(signals),
-        signals=signals,
+        confidence=confidence,
+        signals=redacted_signals,
         action_required=action_required,
         escalation_protocol=generate_escalation_protocol(risk_level, signals),
     )
@@ -218,7 +278,7 @@ if __name__ == "__main__":
 
     for text in test_cases:
         result = detect_crisis_signals(text)
-        logger.info("\nText: %s...", text[:50])
+        logger.info("\nText: %s...", "[REDACTED]")
         logger.info("Risk: %s, Signals: %d", result.risk_level.value, len(result.signals))
         if result.action_required:
             logger.info("Action: %s", result.escalation_protocol[0])
