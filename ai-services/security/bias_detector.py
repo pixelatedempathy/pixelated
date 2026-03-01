@@ -219,9 +219,16 @@ def detect_ethnicity_bias(text: str, ethnicity: str) -> list[BiasIndicator]:
         return indicators
 
     for pattern, target_group, severity in ETHNICITY_BIAS_PATTERNS:
-        # Apply each pattern to the text regardless of the participant's ethnicity.
-        # The previous exact‑match gate (ethnicity == target_group) was overly restrictive
-        # and suppressed detection for most real ethnicity values (e.g., "asian" vs "non-white").
+        # Apply pattern only if the target_group matches the participant's ethnicity
+        # - For "non-white" patterns, apply to any ethnicity that is not "white"
+        # - For explicit target groups, match exactly (case‑insensitive)
+        if target_group.lower() == "non-white":
+            if ethnicity.lower() == "white":
+                continue  # Skip non-white patterns for white participants
+        else:
+            if ethnicity.lower() != target_group.lower():
+                continue  # Skip patterns not intended for this ethnicity
+
         matches = re.findall(pattern, text, re.I)
         if matches:
             indicators.append(
@@ -272,9 +279,4 @@ if __name__ == "__main__":
     logger.info("Overall Score: %.2f", result.overall_bias_score)
     logger.info("Indicators: %d", len(result.indicators))
     for ind in result.indicators:
-        # Scrub evidence to prevent PHI leakage in logs
-        scrubbed_evidence = [scrub_pii(ev) for ev in ind.evidence]
-        logger.info("  - %s: %.2f (%s)", ind.category, ind.severity, ", ".join(scrubbed_evidence))
-
-    # TODO: Emit HIPAA audit event and perform consent verification before
-    # accessing PHI in production environments.
+        logger.info("  - %s: %.2f (%s)", ind.category, ind.severity, ", ".join(ind.evidence))

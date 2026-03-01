@@ -99,10 +99,8 @@ def validate_emotion_result(emotion_data: EmotionData) -> EmotionValidationResul
     if emotion_data.confidence < 0.3:
         issues.append("Low emotion detection confidence")
 
-    # Check for valid emotion categories - exact match only (previously used substring matching)
-    if not any(
-        emotion_data.detected_emotion.lower() == valid_emotion for valid_emotion in VALID_EMOTIONS
-    ):
+    # Check for valid emotion categories
+    if emotion_data.detected_emotion.lower() not in VALID_EMOTIONS:
         issues.append("Unrecognized emotion category")
 
     # Calculate authenticity score

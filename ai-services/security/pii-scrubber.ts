@@ -6,8 +6,7 @@
  */
 
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
-import { ProtectedHealthData } from '../../security/ProtectedHealthData'
-import { emitAuditEvent } from '../../logging/audit'
+import { requireConsent } from '../../security/consent'
 
 const logger = createBuildSafeLogger('PIIScrubber')
 
@@ -95,21 +94,27 @@ export function scrubPII(text: string, options: ScrubberOptions = {}): string {
         } else if (maskType === 'redacted') {
             scrubbedText = scrubbedText.replace(pattern, '[REDACTED]')
         } else if (maskType === 'randomized') {
-            // Choose a random placeholder from all available placeholders
-            const allPlaceholders = Object.values(PLACEHOLDERS)
-            const randomPlaceholder = allPlaceholders[Math.floor(Math.random() * allPlaceholders.length)]
+            // Randomly pick a placeholder (could be any from the map) for each match
+            const randomPlaceholder = Object.values(PLACEHOLDERS)[
+                Math.floor(Math.random() * Object.values(PLACEHOLDERS).length)
+            ]
             scrubbedText = scrubbedText.replace(pattern, randomPlaceholder)
         }
     }
 
-    // Emit audit event for PHI access during scrubbing
-    emitAuditEvent('HIPAA_AUDIT', {
-        operation: 'scrub',
+    // Validate maskType to catch future typos early
+    if (!['placeholder', 'redacted', 'randomized'].includes(maskType)) {
+        throw new Error(`Unsupported maskType: "${maskType}". Valid values are "placeholder", "redacted", or "randomized".`);
+    }
+
+    // Emit HIPAA audit event for PHI access
+    logger.info('HIPAA audit: scrubPII accessed text', {
+        accessedAt: new Date().toISOString(),
+        function: 'scrubPII',
         categories: enabledCategories,
         originalLength: text.length,
         newLength: scrubbedText.length,
-        timestamp: new Date().toISOString(),
-    });
+    })
 
     logger.debug('Text scrubbed for PII', {
         originalLength: text.length,
@@ -128,8 +133,8 @@ export function scanForPII(text: string): {
     categories: PIICategory[]
     count: number
 } {
-    // Ensure PHI scanning is consented and audited before accessing the text
-    ensurePHIProcessingAllowed('scanForPII')
+    // Verify consent before accessing PHI
+    requireConsent('scanForPII')
 
     const result = {
         found: false,
@@ -146,13 +151,13 @@ export function scanForPII(text: string): {
         }
     }
 
-    // Emit audit event for PHI scanning
-    emitAuditEvent('HIPAA_AUDIT', {
-        operation: 'scan',
+    // Emit HIPAA audit event for PHI access
+    logger.info('HIPAA audit: scanForPII accessed text', {
+        accessedAt: new Date().toISOString(),
+        function: 'scanForPII',
         categories: result.categories,
-        count: result.count,
-        timestamp: new Date().toISOString(),
-    });
+        matchCount: result.count,
+    })
 
-    return result;
+    return result
 }

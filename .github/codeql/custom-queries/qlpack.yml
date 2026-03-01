@@ -14,6 +14,9 @@ dependencies:
 # Extend the JavaScript query pack
 extractor: javascript
 
+# Define the default suite for this pack
+defaultSuite: hipaa-compliance
+
 # Define the query suites available in this pack
 suites:
   - name: hipaa-compliance

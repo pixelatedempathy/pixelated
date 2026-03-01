@@ -92,8 +92,10 @@ const CRISIS_PATTERNS: Record<CrisisSignal['category'], RegExp[]> = {
         /\b(everything is dark|drowning|trapped)\b/i,
     ],
     substance_abuse: [
-        /\b(drunk|high|relapse|using|using again|overdose)\b/i,
-        /\b(drinking|drugs|pills|bottle)\b/i,
+        /\b(using\s+(drugs?|substances?|pills?)\b.*\b(again|relapse|overdose)?\b)/i,
+        /\b(drunk\s+on\s+(substances?|drugs?)\b)/i,
+        /\b(drinking\s+(alcohol|substances?)\b)/i,
+        /\b(bottle\s+of\s+(pills?|medication|substances?)\b)/i,
     ],
     medical: [
         /\b(chest pain|can'?t breathe|heart attack|seizure|stroke)\b/i,
@@ -171,34 +173,23 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
                 const severity = calculateSeverity(category as CrisisSignal['category'], text)
                 maxSeverity = Math.max(maxSeverity, severity)
 
-                // Store hashed versions of PHI fields to avoid exposing raw text
-                const hashedKeyword = hashString(match[0])
-                const contextStart = Math.max(0, match.index! - 30)
-                const contextEnd = Math.min(
-                    text.length,
-                    match.index! + match[0].length + 30
+                // Capture raw snippet for audit before redaction
+                const rawSnippet = text.substring(
+                    Math.max(0, match.index! - 30),
+                    Math.min(text.length, match.index! + match[0].length + 30)
                 )
-                const rawSnippet = text.substring(contextStart, contextEnd)
-                const hashedSnippet = hashString(rawSnippet)
+                // Emit HIPAA audit event
+                logger.info('HIPAA_AUDIT', {
+                    event: 'PHI_ACCESS',
+                    category,
+                    snippetLength: rawSnippet.length,
+                })
 
                 signals.push({
                     category: category as CrisisSignal['category'],
                     severity,
-                    keywords: [hashedKeyword],
-                    contextSnippet: hashedSnippet,
-                })
-
-                // Record explainability details (original matched text hashed for PHI safety)
-                explainabilityData.matchedPatterns.push(pattern.source)
-                explainabilityData.severityFactors.push(`category=${category}, severity=${severity}`)
-                explainabilityData.matchedTexts.push(hashString(match[0]))
-                explainabilityData.categories.push(category as string)
-
-                // Emit a PHI‑access audit event with hashed snippet/keyword
-                logger.info('CrisisDetectionPHIRead', {
-                    category,
-                    hashedMatchedText: hashedKeyword,
-                    hashedContextSnippet: hashedSnippet,
+                    keywords: ['[REDACTED]'], // Redact keyword content
+                    contextSnippet: '[REDACTED]', // Redact context snippet
                 })
             }
         }
@@ -207,12 +198,33 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
     const riskLevel = determineRiskLevel(maxSeverity, signals.length)
     const confidence = calculateConfidence(signals)
 
-    // Gate automated actions behind a confidence threshold AND the manual override flag
-    const MIN_CONFIDENCE_FOR_ACTION = 0.8
-    const actionRequired =
-        confidence >= MIN_CONFIDENCE_FOR_ACTION &&
-        ['moderate', 'high', 'imminent'].includes(riskLevel) &&
-        AUTOMATIC_ESCALATION_ENABLED
+    // Clinical Decision Support Safeguards: only act when confidence is sufficient
+    const confidenceThreshold = 0.8
+    const actionRequired = confidence >= confidenceThreshold && ['moderate', 'high', 'imminent'].includes(riskLevel)
+    const humanReviewRequired = !actionRequired // true when confidence is low or risk level not actionable
+
+    // Build an explainability string for audit & human review
+    const explanation = [
+        `Detected ${signals.length} crisis signal(s).`,
+        `Risk level: ${riskLevel}.`,
+        `Confidence: ${confidence.toFixed(2)}.`,
+        `Threshold met: ${confidence >= confidenceThreshold}.`,
+        `Action required: ${actionRequired}.`,
+        `Human review required: ${humanReviewRequired}.`
+    ].join(' ')
+
+    // Emit an audit‑level log entry (does not contain raw PHI beyond what already exists)
+    logger.info('CrisisDetectionAudit', {
+        riskLevel,
+        confidence,
+        signalCount: signals.length,
+        explanation,
+    })
+
+    // Log warning only when an action is actually required (per original behaviour)
+    if (actionRequired) {
+        logger.warn('Crisis signal detected', { riskLevel, signalCount: signals.length })
+    }
 
     const result: CrisisAnalysisResult = {
         hasCrisisSignal: signals.length > 0,
@@ -220,22 +232,9 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
         confidence,
         signals,
         actionRequired,
+        humanReviewRequired,
         escalationProtocol: generateEscalationProtocol(riskLevel, signals),
-        explainability: explainabilityData,
-    }
-
-    if (actionRequired) {
-        logger.warn('Crisis signal detected – escalation pending human review', {
-            riskLevel,
-            signalCount: signals.length,
-        })
-        // Emit audit artifact for clinical safety board review (includes hashed explainability)
-        logger.info('CrisisDetectionAudit', {
-            riskLevel,
-            confidence,
-            signalsCount: signals.length,
-            explainability: result.explainability,
-        })
+        explanation,
     }
 
     return result
@@ -248,28 +247,15 @@ export async function detectCrisisSignals(text: string): Promise<CrisisAnalysisR
  * achieve low‑severity values (e.g., 0.2‑0.4) and thus be classified as `'low'`.
  */
 function calculateSeverity(category: CrisisSignal['category'], text: string): number {
-    // Base severity varies by category; less acute categories start lower.
-    let score = 0.0;
-
-    switch (category) {
-        case 'self_harm':
-            score = 0.6;
-            break;
-        case 'violence':
-            score = 0.7;
-            break;
-        case 'medical':
-            score = 0.6;
-            break;
-        case 'despair':
-            score = 0.4;
-            break;
-        case 'substance_abuse':
-            score = 0.4;
-            break;
-        default:
-            score = 0.3;
-    }
+    // Base severity varies by category to allow a 'low' risk tier
+    const CATEGORY_BASE_SEVERITY: Record<CrisisSignal['category'], number> = {
+        self_harm: 0.7,
+        violence: 0.6,
+        despair: 0.5,
+        substance_abuse: 0.3,
+        medical: 0.4,
+    };
+    let score = CATEGORY_BASE_SEVERITY[category] ?? 0.5;
 
     // Specificity increases severity
     if (/\b(plan|how|where|when|tonight|today)\b/i.test(text)) score += 0.3;
@@ -278,15 +264,11 @@ function calculateSeverity(category: CrisisSignal['category'], text: string): nu
     // Immediacy
     if (/\b(now|right now|immediately)\b/i.test(text)) score += 0.2;
 
-    // Clamp to [0,1] to guarantee a valid severity score
-    return Math.min(1.0, Math.max(0.0, score));
+    return Math.min(1.0, score);
 }
 
-/**
- * Maps combined severity to a risk level.
- * The signal count is no longer used to block 'low' or 'moderate' levels.
- */
 function determineRiskLevel(severity: number, _count: number): CrisisRiskLevel {
+    // Risk level now depends only on severity, making 'low' reachable
     if (severity > 0.9) return 'imminent';
     if (severity > 0.7) return 'high';
     if (severity > 0.4) return 'moderate';
