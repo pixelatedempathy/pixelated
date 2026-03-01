@@ -43,7 +43,8 @@ export class UserService {
     const temporaryPassword = Math.random().toString(36).substring(2, 15)
     const username = email.split('@')[0]
 
-    const hashedPassword = await this.hashPassword(temporaryPassword)
+    const saltRounds = parseInt(process.env['BCRYPT_ROUNDS'] || '12', 10) || 12
+    const hashedPassword = await bcrypt.hash(temporaryPassword, saltRounds)
 
     const user = await UserModel.create({
       email,
@@ -66,7 +67,8 @@ export class UserService {
     lastName: string,
     newPassword: string,
   ): Promise<User | null> {
-    const hashedPassword = await this.hashPassword(newPassword)
+    const saltRounds = parseInt(process.env['BCRYPT_ROUNDS'] || '12', 10) || 12
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds)
 
     const user = await UserModel.update(userId, {
       firstName,

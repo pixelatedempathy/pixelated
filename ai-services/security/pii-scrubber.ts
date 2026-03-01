@@ -46,13 +46,13 @@ const PLACEHOLDERS: Record<PIICategory, string> = {
 }
 
 /**
- * Ensures that PHI processing is allowed by checking consent and logging the operation
- * through the ProtectedHealthData utility. This satisfies the HIPAA-Compliant PHI Handling rule.
+ * Generates a randomized placeholder for a given PII category.
+ * Appends a random numeric suffix to make each redaction unique.
  */
-function ensurePHIProcessingAllowed(operation: string): void {
-    // The ProtectedHealthData utility should verify consent and emit an audit event.
-    // In a full implementation, this would check user consent and log access.
-    ProtectedHealthData.ensureAllowed(operation);
+function getRandomizedPlaceholder(category: PIICategory): string {
+    const base = PLACEHOLDERS[category];
+    const randomSuffix = Math.floor(Math.random() * 1000).toString();
+    return `${base.replace(/[\[\]]/g, '')}${randomSuffix}`;
 }
 
 /**
@@ -94,11 +94,10 @@ export function scrubPII(text: string, options: ScrubberOptions = {}): string {
         } else if (maskType === 'redacted') {
             scrubbedText = scrubbedText.replace(pattern, '[REDACTED]')
         } else if (maskType === 'randomized') {
-            // Randomly pick a placeholder (could be any from the map) for each match
-            const randomPlaceholder = Object.values(PLACEHOLDERS)[
-                Math.floor(Math.random() * Object.values(PLACEHOLDERS).length)
-            ]
-            scrubbedText = scrubbedText.replace(pattern, randomPlaceholder)
+            scrubbedText = scrubbedText.replace(pattern, getRandomizedPlaceholder(category))
+        } else {
+            // Fail fast for unsupported mask types to avoid silent data leakage
+            throw new Error(`Unsupported maskType: ${maskType}. Allowed values are 'placeholder', 'redacted', 'randomized'.`);
         }
     }
 

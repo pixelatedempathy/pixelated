@@ -23,12 +23,8 @@ from pii_scrubber import ScrubberOptions, scan_for_pii, scrub_pii
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Clinical Decision Support Safeguards: confidence threshold for actionable alerts
-CONFIDENCE_THRESHOLD = 0.8
-
-# Initialize Flask app
-app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend integration
+# Clinical Decision Support Safeguards: minimum confidence for actionable escalation
+MIN_CONFIDENCE = 0.8
 
 # Initialize Database
 MONGODB_URI = os.environ.get("MONGODB_URI")
@@ -81,14 +77,10 @@ def scrub_pii_endpoint():
     """
     try:
         data = request.json
-        # ---- Consent verification ----
-        ok, resp, code = require_consent(data)
-        if not ok:
-            return resp, code
-
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         options_dict = data.get("options", {})
-        session_id = data.get("session_id")
 
         # Consent verification before processing PHI
         if session_id and not verify_consent(session_id):
@@ -109,7 +101,8 @@ def scrub_pii_endpoint():
 
         return jsonify(result)
     except Exception as e:
-        logger.error("PII scrubbing error")
+        # Sanitize error logging and response to prevent PHI leakage
+        logger.error("PII scrubbing error occurred")
         return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
@@ -120,11 +113,8 @@ def detect_crisis_endpoint():
     """
     try:
         data = request.json
-        # ---- Consent verification ----
-        ok, resp, code = require_consent(data)
-        if not ok:
-            return resp, code
-
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         session_id = data.get("session_id")
 
@@ -134,49 +124,34 @@ def detect_crisis_endpoint():
 
         result = detect_crisis_signals(text)
 
-        # Enforce confidence threshold and add explainability metadata
-        MIN_CONFIDENCE = 0.7
-        explanation = f"Crisis detection performed by CrisisDetectionService. Confidence: {result.confidence:.2f}"
-        if result.confidence < MIN_CONFIDENCE:
-            # Below threshold: require clinician review, suppress automatic escalation
-            response = {
-                "success": True,
-                "has_crisis_signal": result.has_crisis_signal,
-                "risk_level": result.risk_level.value,
-                "confidence": result.confidence,
-                "action_required": False,
-                "escalation_protocol": None,
-                "explanation": explanation,
-                "signals": [
-                    {
-                        "category": s.category.value,
-                        "severity": s.severity,
-                        "keywords": s.keywords,
-                        "context": s.context_snippet,
-                    }
-                    for s in result.signals
-                ],
-            }
-        else:
-            # Sufficient confidence: include escalation protocol and allow automated action
-            response = {
-                "success": True,
-                "has_crisis_signal": result.has_crisis_signal,
-                "risk_level": result.risk_level.value,
-                "confidence": result.confidence,
-                "action_required": result.action_required,
-                "escalation_protocol": result.escalation_protocol,
-                "explanation": explanation,
-                "signals": [
-                    {
-                        "category": s.category.value,
-                        "severity": s.severity,
-                        "keywords": s.keywords,
-                        "context": s.context_snippet,
-                    }
-                    for s in result.signals
-                ],
-            }
+        # Clinical Decision Support Safeguards: enforce confidence threshold and include explainability
+        action_required = result.action_required if result.confidence >= MIN_CONFIDENCE else False
+        escalation_protocol = result.escalation_protocol if result.confidence >= MIN_CONFIDENCE else None
+
+        # Audit log for clinical safety board
+        logger.info(
+            f"Crisis detection audit: risk_level={result.risk_level.value}, "
+            f"confidence={result.confidence:.2f}, action_required={action_required}"
+        )
+
+        response = {
+            "success": True,
+            "has_crisis_signal": result.has_crisis_signal,
+            "risk_level": result.risk_level.value,
+            "confidence": result.confidence,
+            "action_required": action_required,
+            "escalation_protocol": escalation_protocol,
+            "model_explanation": "Risk assessment based on detected crisis signals.",
+            "signals": [
+                {
+                    "category": s.category.value,
+                    "severity": s.severity,
+                    "keywords": s.keywords,
+                    "context": s.context_snippet,
+                }
+                for s in result.signals
+            ],
+        }
 
         if db_service and (result.has_crisis_signal or session_id):
             # Save the clinical decision support response
@@ -190,7 +165,7 @@ def detect_crisis_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error("Crisis detection error")
+        logger.error("Crisis detection error occurred")
         return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
@@ -201,11 +176,8 @@ def validate_emotion_endpoint():
     """
     try:
         data = request.json
-        # ---- Consent verification ----
-        ok, resp, code = require_consent(data)
-        if not ok:
-            return resp, code
-
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         emotion_data = EmotionData(**data)
 
         result = validate_emotion_result(emotion_data)
@@ -216,7 +188,7 @@ def validate_emotion_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error("Emotion validation error")
+        logger.error("Emotion validation error occurred")
         return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
@@ -227,11 +199,8 @@ def analyze_bias_endpoint():
     """
     try:
         data = request.json
-        # ---- Consent verification ----
-        ok, resp, code = require_consent(data)
-        if not ok:
-            return resp, code
-
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         session = TherapeuticSession(**data)
 
         result = analyze_session_bias(session)
@@ -242,7 +211,7 @@ def analyze_bias_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error("Bias analysis error")
+        logger.error("Bias analysis error occurred")
         return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
@@ -253,11 +222,8 @@ def analyze_conversation_endpoint():
     """
     try:
         data = request.json
-        # ---- Consent verification ----
-        ok, resp, code = require_consent(data)
-        if not ok:
-            return resp, code
-
+        if data is None:
+            return jsonify({"success": False, "error": "Invalid JSON payload"}), 400
         text = data.get("text", "")
         session_id = data.get("session_id")
 
@@ -281,22 +247,23 @@ def analyze_conversation_endpoint():
         if data.get("detect_crisis", True):
             crisis = detect_crisis_signals(text)
 
-            # Apply confidence threshold and add review flags
-            should_act = crisis.confidence >= CONFIDENCE_THRESHOLD
-            crisis_detail = {
-                "success": True,
+            # Apply confidence threshold and include explanation
+            action_required = crisis.action_required if crisis.confidence >= MIN_CONFIDENCE else False
+            escalation_protocol = crisis.escalation_protocol if crisis.confidence >= MIN_CONFIDENCE else None
+
+            # Audit log for clinical safety board
+            logger.info(
+                f"Combined analysis crisis audit: risk_level={crisis.risk_level.value}, "
+                f"confidence={crisis.confidence:.2f}, action_required={action_required}"
+            )
+
+            response["analyses"]["crisis"] = {
                 "has_signal": crisis.has_crisis_signal,
                 "risk_level": crisis.risk_level.value,
                 "confidence": crisis.confidence,
-                "action_required": crisis.action_required if should_act else False,
-                "escalation_protocol": crisis.escalation_protocol,
-                "requires_clinician_review": True,
-                "human_review_required": True,
-                "model_explainability": {
-                    "confidence": crisis.confidence,
-                    "risk_level": crisis.risk_level.value,
-                    "signal_count": len(crisis.signals),
-                },
+                "action_required": action_required,
+                "protocol": escalation_protocol,
+                "model_explanation": "Risk assessment based on detected crisis signals.",
                 "signals": [
                     {
                         "category": s.category.value,
@@ -340,7 +307,7 @@ def analyze_conversation_endpoint():
 
         return jsonify(response)
     except Exception as e:
-        logger.error("Combined analysis error")
+        logger.error("Combined analysis error occurred")
         return jsonify({"success": False, "error": "Internal server error"}), 500
 
 
@@ -349,4 +316,6 @@ if __name__ == "__main__":
     logger.info("Mode: CPU-only")
     logger.info("Listening on http://0.0.0.0:5000")
 
-    app.run(host="0.0.0.0", port=5000, debug=os.getenv("FLASK_DEBUG", "False").lower() == "true")
+    # Use environment variable to control debug mode; default to False for production safety
+    debug_mode = os.getenv("FLASK_DEBUG", "False") == "True"
+    app.run(host="0.0.0.0", port=5000, debug=debug_mode)
