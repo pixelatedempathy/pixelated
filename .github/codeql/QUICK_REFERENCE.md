@@ -13,11 +13,9 @@ CodeQL is GitHub's semantic code analysis engine that treats code as data, allow
 ## When Does CodeQL Run?
 
 ✅ **Automatic Triggers:**
-- Push to `master` or `develop` branches
-- Pull requests targeting `master` or `develop`
+- Push to `master` or `staging` branches
+- Pull requests targeting `master` or `staging`
 - Every Monday at 2:00 AM UTC (scheduled)
-
-⏱️ **Expected Duration:** 5-20 minutes depending on code size
 
 ## Understanding Alert Severity
 

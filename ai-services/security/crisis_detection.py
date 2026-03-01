@@ -5,10 +5,18 @@ Detects psychiatric emergencies and distress signals in therapeutic conversation
 
 import logging
 import re
+import os
 from dataclasses import dataclass
 from enum import Enum
+from typing import List
 
 logger = logging.getLogger(__name__)
+audit_logger = logging.getLogger('audit')
+
+
+def redact_text(text: str) -> str:
+    """Replace potentially PHI-containing text with a placeholder."""
+    return "[REDACTED]"
 
 
 class CrisisRiskLevel(str, Enum):
@@ -43,6 +51,7 @@ class CrisisAnalysisResult:
     signals: list[CrisisSignal]
     action_required: bool
     escalation_protocol: list[str]
+    explanation: str  # new field for model explainability
 
 
 CRISIS_PATTERNS: dict[CrisisCategory, list[re.Pattern]] = {
@@ -58,7 +67,7 @@ CRISIS_PATTERNS: dict[CrisisCategory, list[re.Pattern]] = {
     ],
     CrisisCategory.DESPAIR: [
         re.compile(r"\b(no hope|hopeless|give up|can\'?t go on|nothing matters)\b", re.I),
-        re.compile(r"\b(everything is dark|drowning|trapped)\b", re.I),
+        re.compile(r"\b(drowning|trapped|everything is dark)\b", re.I),
     ],
     CrisisCategory.SUBSTANCE_ABUSE: [
         re.compile(r"\b(drunk|high|relapse|using|using again|overdose)\b", re.I),
@@ -94,12 +103,22 @@ def calculate_severity(_category: CrisisCategory, text: str) -> float:
 
 
 def determine_risk_level(severity: float, count: int) -> CrisisRiskLevel:
-    """Determine overall risk level"""
+    """Determine overall risk level
+
+    Args:
+        severity: The highest severity score among detected signals.
+        count: Number of distinct crisis signals detected.
+
+    Returns:
+        The appropriate :class:`CrisisRiskLevel` based on severity thresholds.
+        The ``count`` parameter is no longer used for classification but is
+        retained for potential future extensions.
+    """
     if severity > 0.9:
         return CrisisRiskLevel.IMMINENT
-    if severity > 0.7 or count > 2:
+    if severity > 0.7:
         return CrisisRiskLevel.HIGH
-    if severity > 0.4 or count > 0:
+    if severity > 0.4:
         return CrisisRiskLevel.MODERATE
     if severity > 0.2:
         return CrisisRiskLevel.LOW
@@ -153,6 +172,16 @@ def generate_escalation_protocol(
     return protocol
 
 
+def generate_explanation(signals: list[CrisisSignal]) -> str:
+    """Generate a human‑readable explanation of detected signals"""
+    if not signals:
+        return "No crisis signals detected."
+    parts = []
+    for s in signals:
+        parts.append(f"{s.category.value} (severity {s.severity:.2f})")
+    return " | ".join(parts)
+
+
 def detect_crisis_signals(text: str) -> CrisisAnalysisResult:
     """Detects psychiatric and medical crisis signals in text"""
     if not text:
@@ -163,6 +192,7 @@ def detect_crisis_signals(text: str) -> CrisisAnalysisResult:
             signals=[],
             action_required=False,
             escalation_protocol=[],
+            explanation="No crisis signals detected.",
         )
 
     signals: list[CrisisSignal] = []
@@ -175,34 +205,57 @@ def detect_crisis_signals(text: str) -> CrisisAnalysisResult:
                 severity = calculate_severity(category, text)
                 max_severity = max(max_severity, severity)
 
-                # Extract context snippet
+                # Extract context snippet and redact it to protect PHI
                 start = max(0, match.start() - 30)
                 end = min(len(text), match.end() + 30)
                 context = text[start:end]
+                redacted_context = redact_text(context)
 
                 signals.append(
                     CrisisSignal(
                         category=category,
                         severity=severity,
                         keywords=[match.group(0)],
-                        context_snippet=context,
+                        context_snippet=redacted_context,
                     )
                 )
 
     risk_level = determine_risk_level(max_severity, len(signals))
-    action_required = risk_level in [
-        CrisisRiskLevel.MODERATE,
-        CrisisRiskLevel.HIGH,
-        CrisisRiskLevel.IMMINENT,
-    ]
+    confidence = calculate_confidence(signals)
+
+    # Clinical Decision Support Safeguard: action only if confidence is sufficient
+    # and a clinician override flag is explicitly set (default False)
+    clinician_override = os.getenv("CRISIS_CLINICIAN_OVERRIDE", "false").lower() == "true"
+    # Require higher confidence for automatic actions
+    action_required = (
+        risk_level in [CrisisRiskLevel.MODERATE, CrisisRiskLevel.HIGH, CrisisRiskLevel.IMMINENT]
+        and confidence >= 0.9
+        and clinician_override
+    )
+
+    # Generate explanation for model output
+    explanation = generate_explanation(signals)
+
+    # Audit the decision (no PHI is logged)
+    audit_logger.info(
+        "CrisisDetectionAudit: risk=%s, confidence=%.2f, signals=%d, action_required=%s",
+        risk_level.value,
+        confidence,
+        len(signals),
+        action_required,
+    )
+
+    # Build escalation protocol (still generated but only acted upon if action_required)
+    escalation_protocol = generate_escalation_protocol(risk_level, signals)
 
     return CrisisAnalysisResult(
         has_crisis_signal=len(signals) > 0,
         risk_level=risk_level,
-        confidence=calculate_confidence(signals),
+        confidence=confidence,
         signals=signals,
         action_required=action_required,
-        escalation_protocol=generate_escalation_protocol(risk_level, signals),
+        escalation_protocol=escalation_protocol,
+        explanation=explanation,
     )
 
 
@@ -218,7 +271,9 @@ if __name__ == "__main__":
 
     for text in test_cases:
         result = detect_crisis_signals(text)
-        logger.info("\nText: %s...", text[:50])
+        # Redact the original text before logging
+        logger.info("\nText: [REDACTED]...")
         logger.info("Risk: %s, Signals: %d", result.risk_level.value, len(result.signals))
         if result.action_required:
             logger.info("Action: %s", result.escalation_protocol[0])
+        logger.info("Explanation: %s", result.explanation)

@@ -8,6 +8,9 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
+# Import the HIPAA audit utilities for emitting access events
+from protected_health_data import ProtectedHealthData
+
 
 class PIICategory(str, Enum):
     NAMES = "names"
@@ -32,6 +35,9 @@ class ScrubberOptions:
                 PIICategory.EMAILS,
                 PIICategory.PHONES,
                 PIICategory.SSN,
+                PIICategory.ADDRESSES,
+                PIICategory.DATES,
+                PIICategory.FINANCIAL,
             ]
         if self.custom_replacements is None:
             self.custom_replacements = {}
@@ -54,7 +60,7 @@ PII_PATTERNS: dict[PIICategory, list[re.Pattern]] = {
         re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
     ],
     PIICategory.DATES: [
-        re.compile(r"\b(?:\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})\b"),
+        re.compile(r"\b(?:(?:\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4})|(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4}))\b"),
     ],
     PIICategory.FINANCIAL: [
         re.compile(r"\b(?:\d{4}-){3}\d{4}\b"),  # Credit card format
@@ -74,6 +80,9 @@ PLACEHOLDERS: dict[PIICategory, str] = {
 
 def scrub_pii(text: str, options: ScrubberOptions | None = None) -> str:
     """Redacts PII from text based on configured categories"""
+    # Emit HIPAA audit event for PHI processing
+    ProtectedHealthData.emit_audit_event("PII_PROCESSING", {"function": "scrub_pii"})
+    
     if not text:
         return text
 
@@ -94,12 +103,19 @@ def scrub_pii(text: str, options: ScrubberOptions | None = None) -> str:
                 scrubbed_text = pattern.sub(PLACEHOLDERS[category], scrubbed_text)
             elif options.mask_type == "redacted":
                 scrubbed_text = pattern.sub("[REDACTED]", scrubbed_text)
+            elif options.mask_type == "randomized":
+                scrubbed_text = pattern.sub(lambda m: 'X' * len(m.group(0)), scrubbed_text)
+            else:
+                raise ValueError(f"Unsupported mask_type: {options.mask_type}")
 
     return scrubbed_text
 
 
 def scan_for_pii(text: str) -> dict[str, Any]:
     """Scans text for PII without modifying it"""
+    # Emit HIPAA audit event for PHI processing
+    ProtectedHealthData.emit_audit_event("PII_PROCESSING", {"function": "scan_for_pii"})
+    
     result = {
         "found": False,
         "categories": [],
@@ -125,6 +141,5 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
-    logger.info("Original: %s", sample)
     logger.info("Scrubbed: %s", scrub_pii(sample))
     logger.info("Scan: %s", scan_for_pii(sample))
