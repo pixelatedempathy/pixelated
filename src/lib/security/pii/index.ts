@@ -13,6 +13,7 @@ import { fheService } from '../../fhe'
 import { FHEOperation } from '../../fhe/types'
 import { createBuildSafeLogger } from '../../logging/build-safe-logger'
 import type { RealFHEService } from '../../fhe/fhe-service'
+import { deepClone } from '../../utils'
 
 // Initialize logger
 const logger = createBuildSafeLogger('default')
@@ -612,7 +613,7 @@ class PIIDetectionService {
     const sensitiveKeys = options.sensitiveKeys ?? []
 
     // Create a copy of the data to avoid modifying the original
-    const result = JSON.parse(JSON.stringify(data)) as T
+    const result = deepClone(data) as T
     let detectedPII = false
 
     // Process the object recursively
