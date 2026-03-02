@@ -514,10 +514,14 @@ export function memoize<T extends (...args: unknown[]) => unknown>(
   func: T,
   keyGenerator?: (...args: Parameters<T>) => string,
 ): T {
-  const cache = new Map<string, ReturnType<T>>()
+  const cache = new Map<unknown, ReturnType<T>>()
 
   return ((...args: Parameters<T>): ReturnType<T> => {
-    const key = keyGenerator ? keyGenerator(...args) : JSON.stringify(args)
+    // Use the first argument directly if there's exactly one argument and no custom key generator
+    // This allows reference-based caching for objects and avoids string conversion for primitives
+    const key = keyGenerator
+      ? keyGenerator(...args)
+      : (args.length === 1 ? args[0] : JSON.stringify(args))
 
     if (cache.has(key)) {
       return cache.get(key)!

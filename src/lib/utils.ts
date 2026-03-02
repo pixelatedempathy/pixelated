@@ -1045,11 +1045,12 @@ export function randomElement<T>(array: readonly T[]): T | undefined {
  * @returns Memoized function
  */
 export function memoize<T extends (...args: unknown[]) => unknown>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>();
+  const cache = new Map<unknown, ReturnType<T>>();
 
   return ((...args: Parameters<T>): ReturnType<T> => {
-    // Use faster cache key generation for better performance
-    const key = args.length === 1 ? String(args[0]) : JSON.stringify(args);
+    // Use the first argument directly if there's exactly one argument
+    // This allows reference-based caching for objects and avoids string conversion for primitives
+    const key = args.length === 1 ? args[0] : JSON.stringify(args);
 
     if (cache.has(key)) {
       return cache.get(key) as ReturnType<T>;

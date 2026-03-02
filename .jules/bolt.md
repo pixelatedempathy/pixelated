@@ -1,0 +1,3 @@
+## 2025-05-22 - [Optimizing Memoize with Identity Caching]
+**Learning:** The `memoize` utility was bottlenecked by `JSON.stringify` on every call, even for single-argument functions. Switching to a `Map<unknown, T>` and using the first argument directly as a key for single-arity calls provides a ~2.5x performance boost for cached hits. However, `structuredClone` is significantly slower than manual recursion for `deepClone` in Node 22 for the object shapes common in this codebase.
+**Action:** Always prefer identity-based caching for single-argument memoization. Benchmark native "optimized" utilities like `structuredClone` against manual implementations before assuming they are faster in all environments.
