@@ -54,7 +54,9 @@ export const POST = async ({ request, clientAddress }: { request: Request; clien
 
     // Sanitize input
     const email = sanitizeInput(body.email)
-    const { password, role = 'user' } = body
+    const { password } = body
+    // Hardcode role to 'patient' to prevent role escalation during signup
+    const role = 'patient'
 
     // Validate email
     if (!isValidEmail(email)) {
