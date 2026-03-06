@@ -225,7 +225,7 @@
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "express-openid-connect": "^2.19.4",
-    "express-rate-limit": "^8.2.1",
+    "express-rate-limit": "^8.2.2",
     "flexsearch": "^0.8.212",
     "framer-motion": "^12.31.1",
     "helmet": "^8.1.0",
