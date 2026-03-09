@@ -295,7 +295,7 @@ jobs:
 
       - name: Upload test results
         if: always() && steps.health-check.outputs.status == 'passing'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-test-results-production
           path: playwright-report/
@@ -547,7 +547,7 @@ jobs:
 
       - name: Upload test results
         if: always() && (steps.health-check.outputs.status == 'passing' || steps.health-check.outputs.status == 'warning')
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-test-results-staging
           path: playwright-report/
@@ -762,7 +762,7 @@ jobs:
 
       - name: Upload test results
         if: always() && (steps.health-check.outputs.status == 'passing' || steps.health-check.outputs.status == 'warning')
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-test-results-preview
           path: playwright-report/
