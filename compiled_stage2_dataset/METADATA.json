@@ -1,12 +1,12 @@
 {
   "dataset_name": "Pixelated Empathy Stage 2 - Defense Mechanisms & Clinical Reasoning",
   "version": "2.0.0",
-  "compiled_at": "2026-03-07T20:18:32.403907+00:00",
-  "total_records": 246,
+  "compiled_at": "2026-03-09T22:19:49.994917+00:00",
+  "total_records": 450,
   "splits": {
-    "train": 221,
-    "val": 12,
-    "test": 13
+    "train": 405,
+    "val": 22,
+    "test": 23
   },
   "features": {
     "defense_mechanisms": true,
