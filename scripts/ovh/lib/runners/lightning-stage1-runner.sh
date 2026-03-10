@@ -46,7 +46,8 @@ submit_lightning_cloud_job() {
         return 1
     fi
     
-    # Build command - downloads and runs standalone training script
+    # Download and run standalone training script from scripts/colab/
+    local cmd="pip install -q torch transformers datasets accelerate peft bitsandbytes boto3 && curl -fsSL https://raw.githubusercontent.com/vivirox/pixelated/main/scripts/colab/train_lightning_standalone.py -o /tmp/train.py && python /tmp/train.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints"
     # This approach works in containers without full project structure
     local cmd="pip install -q torch transformers datasets accelerate peft bitsandbytes boto3 unsloth && python /tmp/train_standalone.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints"
     
