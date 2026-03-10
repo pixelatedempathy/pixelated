@@ -46,52 +46,34 @@ submit_lightning_cloud_job() {
         return 1
     fi
     
-    # Download and run standalone training script from scripts/colab/
-    local cmd="pip install -q torch transformers datasets accelerate peft bitsandbytes boto3 && curl -fsSL https://raw.githubusercontent.com/vivirox/pixelated/main/scripts/colab/train_lightning_standalone.py -o /tmp/train.py && python /tmp/train.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints"
-    # This approach works in containers without full project structure
-    local cmd="pip install -q torch transformers datasets accelerate peft bitsandbytes boto3 unsloth && python /tmp/train_standalone.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints"
+    # Build command that downloads script from GitHub and runs it
+    # Using curl to download from raw GitHub URL
+    local cmd="pip install -q torch transformers datasets accelerate peft bitsandbytes && python /tmp/train.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints"
     
-    # Write training script to a temp file that will be uploaded
-    local temp_script="/tmp/lightning_train_${job_name}.sh"
-    cat > "${temp_script}" << 'TRAINING_SCRIPT'
+    # Create a wrapper script that downloads and executes
+    local wrapper=$(mktemp)
+    cat > "${wrapper}" << WRAPPER_EOF
 #!/bin/bash
 set -e
-
-echo "=== Lightning.ai Training Container ==="
-echo "Stage: $1"
-echo "Data: /app/data"
-echo "Checkpoints: /checkpoints"
-
-# Install dependencies
-echo "Installing dependencies..."
-pip install -q torch transformers datasets accelerate peft bitsandbytes boto3 unsloth
-
-# Download standalone training script
-echo "Downloading training script..."
-curl -fsSL -o /tmp/train.py https://raw.githubusercontent.com/vivirox/pixelated/main/ai/training/ready_packages/platforms/lightning/train_lightning_standalone.py || {
-    echo "Download failed. Using local script if available."
-}
-
-# Run training
-echo "Starting training..."
-if [ -f /tmp/train.py ]; then
-    python /tmp/train.py --stage "$1" --data-dir /app/data --checkpoint-dir /checkpoints
-else
-    echo "Training script not found. Exiting."
-    exit 1
-fi
-TRAINING_SCRIPT
-
-    chmod +x "${temp_script}"
+echo "=== Lightning Training Job ==="
+echo "Stage: ${stage}"
+echo "Downloading training script from GitHub..."
+curl -fsSL -o /tmp/train.py https://raw.githubusercontent.com/vivirox/pixelated/main/scripts/colab/train_lightning_standalone.py
+echo "Running training..."
+python /tmp/train.py --stage ${stage} --data-dir /app/data --checkpoint-dir /checkpoints
+echo "=== Done ==="
+WRAPPER_EOF
+    chmod +x "${wrapper}"
     
     # Using L40S (single GPU) - fits within free tier limit
+    # The wrapper script handles downloading and running
     lightning run job \
         --name "${job_name}" \
         --teamspace "pixelated" \
         --user "vivirox" \
         --machine L40S \
         --image "python:3.11-slim" \
-        --command "/bin/bash ${temp_script} ${stage}" \
+        --command "$(cat ${wrapper})" \
         -e OVH_S3_ACCESS_KEY="${OVH_S3_ACCESS_KEY}" \
         -e OVH_S3_SECRET_KEY="${OVH_S3_SECRET_KEY}" \
         -e OVH_S3_BUCKET="${OVH_S3_BUCKET:-pixel-data}" \
@@ -102,6 +84,6 @@ TRAINING_SCRIPT
         2>&1
     
     local status=$?
-    rm -f "${temp_script}"
+    rm -f "${wrapper}"
     return ${status}
 }
