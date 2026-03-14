@@ -32,7 +32,7 @@ attrs==25.4.0
     #   jsonlines
     #   jsonschema
     #   referencing
-black==26.1.0
+black==26.3.1
     # via -r src/lib/ai/bias-detection/requirements.txt
 blinker==1.9.0
     # via flask
@@ -106,7 +106,7 @@ executing==2.2.1
     # via stack-data
 fairlearn==0.13.0
     # via -r src/lib/ai/bias-detection/requirements.txt
-filelock==3.24.3
+filelock==3.25.2
     # via
     #   -r src/lib/ai/bias-detection/requirements.txt
     #   datasets
@@ -460,7 +460,7 @@ propcache==0.4.1
     #   yarl
 proto-plus==1.27.0
     # via google-api-core
-protobuf==6.33.5
+protobuf==7.34.0
     # via
     #   -r src/lib/ai/bias-detection/requirements.txt
     #   google-api-core
