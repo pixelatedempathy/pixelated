@@ -30,7 +30,7 @@ attrs==25.4.0
     # via aiohttp
 bitsandbytes==0.49.1
     # via -r src/lib/ai/training/requirements.txt
-black==26.1.0
+black==26.3.1
     # via -r src/lib/ai/training/requirements.txt
 blessed==1.27.0
     # via gpustat
@@ -128,7 +128,7 @@ fastapi==0.128.0
     # via
     #   -r src/lib/ai/training/requirements.txt
     #   mlflow-skinny
-filelock==3.24.3
+filelock==3.25.2
     # via
     #   datasets
     #   huggingface-hub
@@ -439,7 +439,7 @@ propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
-protobuf==6.33.5
+protobuf==7.34.0
     # via
     #   databricks-sdk
     #   mlflow-skinny
